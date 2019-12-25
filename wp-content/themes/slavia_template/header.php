@@ -49,7 +49,8 @@
             <div class="row">
                 <div class="col-lg-4 col-9">
                     <!--Логотип и название -->
-                    <img src="<?php echo get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
+                    <?php $upload_dir = wp_upload_dir(); ?>
+                    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
                     <h3 class="header-h3">
                         <span>МПК</span> СЛАВИЯ
                     </h3>
