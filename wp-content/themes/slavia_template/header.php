@@ -22,7 +22,20 @@
 
 <body <?php body_class(); ?>>
 
+<?php $upload_dir = wp_upload_dir(); ?>
 
+<!-- Вставки на фон -->
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-left-bottom.png'?>" class="img-bg-left-bottom">
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-right-top.png'?>" class="img-bg-right-top">
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-center.png'?>" class="img-bg-center">
+
+<!-- Иконки слева десктоп -->
+<div class="desctop-icons text-center " style="z-index: 5">
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'teleg.png'?>"><br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'medium.png'?>"> <br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'twitter.png'?>"><br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'github.png'?>">
+</div>
 
 <!--мобильное меню тело -->
 <div class="mobile-menu">
@@ -48,15 +61,17 @@
         <div class="col-md-12"  style="z-index: 5;">
             <div class="row">
                 <div class="col-lg-4 col-9">
-                    <!--Логотип и название -->
-                    <?php $upload_dir = wp_upload_dir(); ?>
-                    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
-                    <h3 class="header-h3">
-                        <span>МПК</span> СЛАВИЯ
-                    </h3>
+                    <a href="http://slv.dig-studio.ru">
+                        <!--Логотип и название -->
+
+                        <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
+                        <h3 class="header-h3">
+                            <span>МПК</span> СЛАВИЯ
+                        </h3>
+                    </a>
 
                 </div>
-                <div class="col-lg-7 col-2 px-0">
+                <div class="col-lg-6 col-2 px-0">
                     <!-- Десктоп меню -->
                     <?php
                     wp_nav_menu( array(
@@ -79,15 +94,13 @@
                     </div>
 
                 </div>
-                <div class="col-lg-1 col-1 px-0">
+                <div class="col-lg-2 col-1 px-0">
                     <div class="desctop-menu">
                         <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal"><li class="btn-custom-one text-center">Авторизация</li></a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 

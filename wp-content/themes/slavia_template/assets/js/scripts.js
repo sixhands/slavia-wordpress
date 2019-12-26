@@ -19,9 +19,26 @@
 $("#profil_user_btn")
   .mouseover(function() {
     // навели курсор на объект
-    $('#profil_user_btn img').attr('src', 'img/profil_active.png');
+    $('#profil_user_btn img').attr('src', '/wp-content/uploads/profil_active.png');
   })
   .mouseout(function(){           
     // отвели курсор с объекта
-    $('#profil_user_btn img').attr('src', 'img/profil.png');
+    $('#profil_user_btn img').attr('src', '/wp-content/uploads/profil.png');
   });
+
+//открытие текста вопроса
+    $('.question').click(function (){
+        var id = this.id;
+        var block = $('#'+id+ ' .question-text').css('display');
+        if (block == 'none')
+        {
+            $('#' + id + ' .question-text').slideDown("slow");
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/open.png')
+        }
+        else
+        {
+            $('#' + id + ' .question-text').slideUp("slow");
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/close.png')
+        }
+
+    });
