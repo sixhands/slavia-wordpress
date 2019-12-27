@@ -853,3 +853,7 @@ a:hover
 			margin-right: 45px;
 		}
 	}
+
+#primary.content-area {
+	width: 100%;
+}

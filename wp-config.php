@@ -81,6 +81,7 @@ $table_prefix = 'wp_';
  */
 define( 'WP_DEBUG', true );
 
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */

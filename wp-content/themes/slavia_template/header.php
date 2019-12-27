@@ -25,16 +25,16 @@
 <?php $upload_dir = wp_upload_dir(); ?>
 
 <!-- Вставки на фон -->
-<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-left-bottom.png'?>" class="img-bg-left-bottom">
-<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-right-top.png'?>" class="img-bg-right-top">
-<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'bg-center.png'?>" class="img-bg-center">
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-left-bottom.png'?>" class="img-bg-left-bottom">
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-right-top.png'?>" class="img-bg-right-top">
+<img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-center.png'?>" class="img-bg-center">
 
 <!-- Иконки слева десктоп -->
 <div class="desctop-icons text-center " style="z-index: 5">
-    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'teleg.png'?>"><br>
-    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'medium.png'?>"> <br>
-    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'twitter.png'?>"><br>
-    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'github.png'?>">
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/teleg.png'?>"><br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/medium.png'?>"> <br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/twitter.png'?>"><br>
+    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/github.png'?>">
 </div>
 
 <!--мобильное меню тело -->
@@ -64,7 +64,7 @@
                     <a href="http://slv.dig-studio.ru">
                         <!--Логотип и название -->
 
-                        <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . 'hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
+                        <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">
                         <h3 class="header-h3">
                             <span>МПК</span> СЛАВИЯ
                         </h3>
@@ -89,7 +89,7 @@
                     <!--Мобильное меню кнопка-->
                     <div class="row d-lg-none">
                         <div class="col-12 text-right">
-                            <img id="burger" class="burger-ico  text-right" src= "<?php echo get_template_directory_uri() . "/assets/img/burger.png" ?>" status="close">
+                            <img id="burger" class="burger-ico  text-right" src= "<?php echo trailingslashit( $upload_dir['baseurl'] ) . "2019/12/burger.png" ?>" status="close">
                         </div>
                     </div>
 
