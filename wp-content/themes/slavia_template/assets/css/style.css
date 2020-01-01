@@ -4,6 +4,13 @@ body
 	min-height: 1080px;
 	background: transparent linear-gradient(to left, #F5F7FA 0%, #C3CFE2 100%) 0% 0% no-repeat padding-box;
 }
+
+#left-menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 a:focus
 {
 	text-decoration: none;
@@ -433,7 +440,7 @@ a:hover
 	height: 62.6px;
 	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border-radius: 4px;
-	background: #f7f9fb url(../img/menu_select.png) 100% 50% no-repeat;
+	background: #f7f9fb url(/wp-content/uploads/2019/12/menu_select.png) 100% 50% no-repeat;
 	-webkit-appearance: none;
 	border-right: none;
 	-moz-appearance: none;
@@ -545,17 +552,17 @@ a:hover
 .input-custom-rub input
 {
 	border-right: none;
-	background: #ffff url(../img/rub.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/rub.png) no-repeat 100% 50%;
 }
 .input-custom-procent input
 {
 	border-right: none;
-	background: #fff url(../img/custom-procent.png) no-repeat 100% 50%;
+	background: #fff url(/wp-content/uploads/2019/12/custom-procent.png) no-repeat 100% 50%;
 }
 .input-custom-rubl input
 {
 	border-right: none;
-	background: #fff url(../img/custom-rub.png) no-repeat 100% 50%;
+	background: #fff url(/wp-content/uploads/2019/12/custom-rub.png) no-repeat 100% 50%;
 }
 .orange-input input
 {
@@ -570,12 +577,12 @@ a:hover
 .input-custom-prizm input
 {
 	border-right: none !important;
-	background: #ffff url(../img/prizm.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/prizm.png) no-repeat 100% 50%;
 }
 .input-custom-waws input
 {
 	border-right: none !important;
-	background: #ffff url(../img/waws.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/waws.png) no-repeat 100% 50%;
 }
 .input-exchange input,
 .input-exchange select
@@ -594,7 +601,7 @@ a:hover
 	-moz-appearance: none;
 	-ms-appearance: none;
 	appearance: none!important;
-	background: #ffff url(../img/select.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/select.png) no-repeat 100% 50%;
 }
 .exchange-pd
 {
@@ -661,11 +668,11 @@ a:hover
 }
 .input-custom-copy input
 {
-	background: #fff url(../img/custom-copy.png) no-repeat 99% 50% !important;
+	background: #fff url(/wp-content/uploads/2019/12/custom-copy.png) no-repeat 99% 50% !important;
 }
 .verification-ok
 {
-	background: #fff url(../img/verification_ok.png) no-repeat 95% 50% !important;
+	background: #fff url(/wp-content/uploads/2019/12/verification_ok.png) no-repeat 95% 50% !important;
 }
 .profil-user-verification
 {

@@ -24,10 +24,13 @@
 
 <?php $upload_dir = wp_upload_dir(); ?>
 
+<?php if (is_front_page()): ?>
 <!-- Вставки на фон -->
 <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-left-bottom.png'?>" class="img-bg-left-bottom">
 <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-right-top.png'?>" class="img-bg-right-top">
 <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/bg-center.png'?>" class="img-bg-center">
+
+<?php endif; ?>
 
 <!-- Иконки слева десктоп -->
 <div class="desctop-icons text-center " style="z-index: 5">

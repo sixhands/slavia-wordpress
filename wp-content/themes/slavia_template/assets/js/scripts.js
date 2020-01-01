@@ -33,12 +33,28 @@ $("#profil_user_btn")
         if (block == 'none')
         {
             $('#' + id + ' .question-text').slideDown("slow");
-            $('#'+id + ' img').attr('src', '/wp-content/uploads/open.png')
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/open.png')
         }
         else
         {
             $('#' + id + ' .question-text').slideUp("slow");
-            $('#'+id + ' img').attr('src', '/wp-content/uploads/close.png')
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/close.png')
         }
 
+    });
+    //exchange
+    //open and close mobile form exchange
+    $('.click_ex').click(function(){
+        var id = this.id;
+        var block = $('#'+id+ ' .tab-ex').css('display');
+        if (block == 'none')
+        {
+            $('#' + id + ' .tab-ex').slideDown("slow");
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/open.png')
+        }
+        else
+        {
+            $('#' + id + ' .tab-ex').slideUp("slow");
+            $('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/close.png')
+        }
     });

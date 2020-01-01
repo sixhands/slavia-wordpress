@@ -200,8 +200,45 @@ function custom_menu_item ( $items, $args ) {
 
         //Присваиваем изображения
         $dom = new DOMDocument();
-        $dom->loadHTML($items);
-        
+        $dom->loadHTML('<html>' .$items .'</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $xpath = new DOMXpath($dom);
+        $images = $xpath->query("li//img");
+        foreach ($images as $img) {
+            $item_name = $img->nextSibling->firstChild->textContent;
+            $item_name = utf8_decode($item_name);
+            switch ($item_name) {
+                case "Главная":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/home_active.png");
+                    break;
+                case "Операции":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/operation_dis.png");
+                    break;
+                case "Документы":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/document_dis.png");
+                    break;
+                case "Заявки":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/zayavki_dis.png");
+                    break;
+                case "Люди":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/people_dis.png");
+                    break;
+                case "Настройки":
+                    if(!$img->hasAttribute("src"))
+                        $img->setAttribute("src", "/wp-content/uploads/2019/12/settings_dis.png");
+                    break;
+
+            }
+        }
+        //Удаляем последний разделитель
+        $last_separator = $xpath->query("//div[@class='profil-menu-line'][last()]");
+        $last_separator->item(0)->parentNode->removeChild($last_separator->item(0));
+        //Сохраняем измененное меню
+        $items = str_replace(array('<html>','</html>') , '' , utf8_decode($dom->saveHTML($dom->documentElement)));
     }
     return $items;
 }
