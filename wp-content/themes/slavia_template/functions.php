@@ -211,8 +211,10 @@ function custom_menu_item ( $items, $args ) {
             //Удаляем элементы меню в зависимости от страницы
             if (is_page(array(273))) //Администратор
                 $is_admin = true;
-            if (is_page(array(271, 267, 263)))
+            if (is_page(array(271, 267, 263))) //263 - профиль
                 $is_manager = true;
+            if (is_page(array(261, 259)))
+                $is_user = true;
 
             foreach ($images as $img) {
                 $item_name = $img->nextSibling->firstChild->textContent;
@@ -231,15 +233,27 @@ function custom_menu_item ( $items, $args ) {
                             $img->setAttribute("src", "/wp-content/uploads/2019/12/document_dis.png");
                         break;
                     case "Заявки":
+                        if (isset($is_user) && $is_user == true)
+                        {
+                            $li_item = $img->parentNode->parentNode->parentNode;
+                            $li_item->setAttribute("style", "display: none");
+                            break;
+                        }
                         if (!$img->hasAttribute("src"))
                             $img->setAttribute("src", "/wp-content/uploads/2019/12/zayavki_dis.png");
                         break;
                     case "Люди":
+                        if (isset($is_user) && $is_user == true)
+                        {
+                            $li_item = $img->parentNode->parentNode->parentNode;
+                            $li_item->setAttribute("style", "display: none");
+                            break;
+                        }
                         if (!$img->hasAttribute("src"))
                             $img->setAttribute("src", "/wp-content/uploads/2019/12/people_dis.png");
                         break;
                     case "Настройки":
-                        if ($is_manager)
+                        if (isset($is_manager) && $is_manager == true)
                         {
                             $li_item = $img->parentNode->parentNode->parentNode;
                             $li_item->setAttribute("style", "display: none");
