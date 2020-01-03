@@ -19,11 +19,11 @@
 $("#profil_user_btn")
   .mouseover(function() {
     // навели курсор на объект
-    $('#profil_user_btn img').attr('src', '/wp-content/uploads/profil_active.png');
+    $('#profil_user_btn img').attr('src', '/wp-content/uploads/2019/12/profil_active.png');
   })
   .mouseout(function(){           
     // отвели курсор с объекта
-    $('#profil_user_btn img').attr('src', '/wp-content/uploads/profil.png');
+    $('#profil_user_btn img').attr('src', '/wp-content/uploads/2019/12/profil.png');
   });
 
 //открытие текста вопроса
@@ -57,4 +57,15 @@ $("#profil_user_btn")
             $('#' + id + ' .tab-ex').slideUp("slow");
             $('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/close.png')
         }
+    });
+
+    $(document).ready(function(){
+        let curEl = $("select.profil-mobile-menu.w-100 > option.current-menu-item");
+        curEl.attr("selected", "selected");
+        curEl.attr("disabled", "disabled");
+    });
+    $('select.profil-mobile-menu.w-100').change(function(){
+
+        let selectedVal = this.options[this.selectedIndex].value;
+        window.location = selectedVal;
     });

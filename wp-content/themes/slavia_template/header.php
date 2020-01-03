@@ -44,18 +44,24 @@
 <div class="mobile-menu">
     <div class="container">
         <div class="row">
-            <ul class="mobile-menu-ul text-left">
-                <a href="coop_cards.html"><li>Кооперативные карты</li></a>
-                <a href="documents.html"><li>Документы</li></a>
-                <a href="partners.html"><li>Партнеры</li></a>
-                <a href="about_us.html"><li>О нас</li></a>
-                <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal"><li class="btn-custom-one text-center">Авторизация</li></a>
-            </ul>
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'menu-1',
+                'menu_class'        => 'mobile-menu-ul text-left',
+            ) );
+            ?>
+
+<!--            <ul class="">-->
+<!--                <a href="coop_cards.html"><li>Кооперативные карты</li></a>-->
+<!--                <a href="documents.html"><li>Документы</li></a>-->
+<!--                <a href="partners.html"><li>Партнеры</li></a>-->
+<!--                <a href="about_us.html"><li>О нас</li></a>-->
+<!--                <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal"><li class="btn-custom-one text-center">Авторизация</li></a>-->
+<!--            </ul>-->
         </div>
     </div>
 </div>
 <div class="mobile-menu-bg">
-
 </div>
 
 <div class="container">
@@ -99,11 +105,51 @@
                 </div>
                 <div class="col-lg-2 col-1 px-0">
                     <div class="desctop-menu">
-                        <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal"><li class="btn-custom-one text-center">Авторизация</li></a>
+                        <?php //if ($user || $manager): ?>
+                            <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal" style="display: none"><li class="btn-custom-one text-center">Авторизация</li></a>
+                        <?php //else: ?>
+                            <a id="modal-545065" href="/profile" role="button">
+                                <li class="btn-custom-two text-center" id="profil_user_btn">
+                                    <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/profil.png'?>"> Профиль
+                                </li>
+                            </a>
+                        <?php //endif; ?>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Переделать условие под если залогинен-->
+        <?php if ( !is_page( array( 147, 16, 14, 22, 20 ) ) ): ?> <!-- 20-партнеры, 147-главная, 16-документы, 14-корпоративные карты, 22-о нас-->
+
+        <!--Кнопка чата fixed-->
+        <img src="/wp-content/uploads/2019/12/chat_ico.png" class="chat_ico-fixed d-lg-none">
+
+        <div class="d-lg-none col-md-12"  style="z-index: 4; margin-top: 10px;">
+            <div class="row">
+                <div class="coop_maps question-bg  ex-mob-pd col-6">
+                    <h1 class="ib ex-mobile-h1-num">0.897600</h1>
+                    <h1 class="ib ex-mobile-h1-prizm">prizm</h1>
+                </div>
+<!--                <div class="col-6">-->
+<!--                    <select class="profil-mobile-menu w-100">-->
+<!--                        <option>Главная</option>-->
+<!--                        <option>Операции</option>-->
+<!--                        <option>Документы</option>-->
+<!--                        <option>Заявки</option>-->
+<!--                        <option>Люди</option>-->
+                       <?php wp_nav_menu(array(
+                        'theme_location' => 'left-menu', // your theme location here
+                        'walker'         => new Walker_Nav_Menu_Dropdown(),
+                        'items_wrap'     => '<select class="%2$s">%3$s</select>',
+                        'menu_class'     => 'profil-mobile-menu w-100',
+                        'container_class' => 'col-6',
+                        )); ?>
+<!--                    </select>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <?php endif; ?>
 
 
 

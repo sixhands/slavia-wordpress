@@ -174,7 +174,7 @@ $snippetDetails = $snippetDetails[0];
                             &nbsp;:&nbsp;
                         </td>
                         <td >
-                            <textarea name="snippetContent" style="width:80%;height:150px;"><?php if(isset($_POST['snippetContent'])){ echo esc_textarea($_POST['snippetContent']);}else{ echo esc_textarea($snippetDetails->content); }?></textarea>
+                            <textarea name="snippetContent" style="width:90%;height:700px;"><?php if(isset($_POST['snippetContent'])){ echo esc_textarea($_POST['snippetContent']);}else{ echo esc_textarea($snippetDetails->content); }?></textarea>
                         </td>
                     </tr>
                     <tr>
