@@ -70,7 +70,7 @@
         </entry>
       </file>
       <file pinned="true" current-in-tab="true">
-        <entry file="remoteDeploymentFS://&lt;435703b4-fecb-4dbe-8f56-9bc7bbd6e2c6&gt;/var/www/slv.dig-studio.ru/www/wp-config.php">
+        <entry file="remoteDeploymentFS://&lt;435703b4-fecb-4dbe-8f56-9bc7bbd6e2c6&gt;/slv/public_html/wp-config.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1710">
               <caret line="90" selection-start-line="90" selection-end-line="90" />
@@ -100,7 +100,7 @@
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/functions.php" />
-        <option value="&lt;435703b4-fecb-4dbe-8f56-9bc7bbd6e2c6&gt;/var/www/slv.dig-studio.ru/www/wp-config.php" />
+        <option value="&lt;435703b4-fecb-4dbe-8f56-9bc7bbd6e2c6&gt;/slv/public_html/wp-config.php" />
       </list>
     </option>
   </component>
