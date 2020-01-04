@@ -190,10 +190,56 @@ function custom_nav_menu_items( $items, $menu ){
 
 add_filter( 'wp_nav_menu_items', 'custom_menu_item', 10, 2 );
 function custom_menu_item ( $items, $args ) {
+
     if ($args->theme_location == 'left-menu')
     {
+        //MOBILE MENU/////////////
         if ($args->menu_class == 'profil-mobile-menu w-100')
-        {}
+        {
+            //Присваиваем изображения
+            $dom = new DOMDocument();
+            $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $xpath = new DOMXpath($dom);
+
+            //Удаляем элементы меню в зависимости от страницы
+            if (is_page(array(273))) //Администратор
+                $is_admin = true;
+            if (is_page(array(271, 267, 263))) //263 - профиль
+                $is_manager = true;
+            if (is_page(array(261, 259)))
+                $is_user = true;
+
+            $option_items = $xpath->query("option");
+            foreach ($option_items as $option) {
+                $option_name = $option->textContent;
+                $option_name = utf8_decode($option_name);
+
+                switch ($option_name) {
+                    case "Заявки":
+                        if (isset($is_user) && $is_user == true) {
+                            $option->setAttribute("style", "display: none");
+                            break;
+                        }
+                        break;
+                    case "Люди":
+                        if (isset($is_user) && $is_user == true) {
+                            $option->setAttribute("style", "display: none");
+                            break;
+                        }
+                        break;
+                    case "Настройки":
+                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true)) {
+                            $option->setAttribute("style", "display: none");
+                            break;
+                        }
+                        break;
+                }
+            }
+            //Сохраняем измененное меню
+            $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
+        }
+
+        //DESKTOP MENU///////////
         else {
             $lastPos = 0;
             //Вставляем разделители после каждого элемента меню
@@ -206,7 +252,6 @@ function custom_menu_item ( $items, $args ) {
             $dom = new DOMDocument();
             $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
             $xpath = new DOMXpath($dom);
-            $images = $xpath->query("li//img");
 
             //Удаляем элементы меню в зависимости от страницы
             if (is_page(array(273))) //Администратор
@@ -216,52 +261,88 @@ function custom_menu_item ( $items, $args ) {
             if (is_page(array(261, 259)))
                 $is_user = true;
 
+            $images = $xpath->query("li//img");
+
             foreach ($images as $img) {
                 $item_name = $img->nextSibling->firstChild->textContent;
                 $item_name = utf8_decode($item_name);
                 switch ($item_name) {
                     case "Главная":
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/home_active.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(263))
+                                $img_path = "/wp-content/uploads/2019/12/home_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/home_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
                     case "Операции":
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/operation_dis.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(261))
+                                $img_path = "/wp-content/uploads/2019/12/operation_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/operation_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
                     case "Документы":
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/document_dis.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(259))
+                                $img_path = "/wp-content/uploads/2019/12/documents_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/document_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
                     case "Заявки":
                         if (isset($is_user) && $is_user == true)
                         {
                             $li_item = $img->parentNode->parentNode->parentNode;
                             $li_item->setAttribute("style", "display: none");
+                            //Т.к. previous sibling у li является символ переноса на новую строку, делаем 2 previousSibling
+                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
                             break;
                         }
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/zayavki_dis.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(271))
+                                $img_path = "/wp-content/uploads/2019/12/zayavki_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/zayavki_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
                     case "Люди":
                         if (isset($is_user) && $is_user == true)
                         {
                             $li_item = $img->parentNode->parentNode->parentNode;
                             $li_item->setAttribute("style", "display: none");
+                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
                             break;
                         }
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/people_dis.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(267))
+                                $img_path = "/wp-content/uploads/2019/12/people_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/people_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
                     case "Настройки":
-                        if (isset($is_manager) && $is_manager == true)
+                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true))
                         {
                             $li_item = $img->parentNode->parentNode->parentNode;
                             $li_item->setAttribute("style", "display: none");
                             //Убираем разделитель
+                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
                             break;
                         }
-                        if (!$img->hasAttribute("src"))
-                            $img->setAttribute("src", "/wp-content/uploads/2019/12/settings_dis.png");
+                        if (!$img->hasAttribute("src")) {
+                            if (is_page(273))
+                                $img_path = "/wp-content/uploads/2019/12/settings_active.png";
+                            else
+                                $img_path = "/wp-content/uploads/2019/12/settings_dis.png";
+                            $img->setAttribute("src", $img_path);
+                        }
                         break;
 
                 }
@@ -278,7 +359,7 @@ function custom_menu_item ( $items, $args ) {
     //Верхнее меню
     elseif ($args->theme_location == 'menu-1') {
         if ($args->menu_class == 'mobile-menu-ul text-left') {
-            if (false)//($user || $manager)
+            if (true)//($user || $manager)
                 $items .= "<a id='modal-545065' href='#modal-container-545065' role='button' class='' data-toggle='modal'>" .
                     "<li class='btn-custom-one text-center'>Авторизация</li>" .
                     "</a>";

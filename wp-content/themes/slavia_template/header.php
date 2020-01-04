@@ -106,9 +106,9 @@
                 <div class="col-lg-2 col-1 px-0">
                     <div class="desctop-menu">
                         <?php //if ($user || $manager): ?>
-                            <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal" style="display: none"><li class="btn-custom-one text-center">Авторизация</li></a>
+                            <a id="modal-545065" href="#modal-container-545065" role="button" class="" data-toggle="modal"><li class="btn-custom-one text-center">Авторизация</li></a>
                         <?php //else: ?>
-                            <a id="modal-545065" href="/profile" role="button">
+                            <a id="modal-545065" href="/profile" role="button" style="display: none">
                                 <li class="btn-custom-two text-center" id="profil_user_btn">
                                     <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/profil.png'?>"> Профиль
                                 </li>

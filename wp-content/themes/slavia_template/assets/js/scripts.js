@@ -69,3 +69,7 @@ $("#profil_user_btn")
         let selectedVal = this.options[this.selectedIndex].value;
         window.location = selectedVal;
     });
+
+    $('.info-zayavki').click(function(){
+        $('#modal-54506521').trigger('click');
+    });
