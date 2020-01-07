@@ -51,12 +51,17 @@
                         <!--Изображение профиля-->
                         <img src="/wp-content/uploads/2019/12/profil_index_img.png" class="profil-index-img">
                     </div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-8">
                         <!--Имя авторизированного пользователя -->
                         <h1 class="profil-user-h1">
                             С возвращением, Антон Викторович!
                         </h1>
                         <p class="profil-user-verification">Профиль верифицирован</p>
+                    </div>
+                    <div class="col-lg-2" style="margin-top: 5%">
+                        <div class="btn-modal">
+                            <input type="button" class="btn-custom-two text-center" onclick="document.location.href='<?php echo wp_logout_url(); ?>';" value="Выход">
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">

@@ -137,6 +137,7 @@ function rcl_get_register_user( $errors ) {
     $pass	 = sanitize_text_field( $_POST['user_pass'] );
     $email	 = $_POST['user_email'];
     $login	 = sanitize_user( $_POST['user_login'] );
+    $fio     = sanitize_text_field( $_POST['user_fio'] );
 
     $ref = ($_POST['redirect_to']) ? apply_filters( 'url_after_register_rcl', $_POST['redirect_to'] ) : wp_registration_url();
 
@@ -178,7 +179,7 @@ function rcl_get_register_user( $errors ) {
         }
     }
 
-    if ( ! $pass || ! $email || ! $login || ! $required ) {
+    if ( ! $pass || ! $email || ! $login || ! $required || !$fio) {
         $wp_errors->add( 'rcl_register_empty', __( 'Fill in the required fields!', 'wp-recall' ) );
         return $wp_errors;
     }

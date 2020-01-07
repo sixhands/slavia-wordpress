@@ -19,24 +19,24 @@ $f_reg = ($typeform == 'register') ? 'style="display:block;"' : '';
 
         <div class="col-md-12 text-center modal-form">
 <!--        <div class="form-block-rcl default-field">-->
-            <input class="input-modal text-center" type="text" name="user_name" placeholder="ФИО">
+            <input class="input-modal text-center" required type="text" name="user_fio" placeholder="ФИО">
             <input class="input-modal text-center" required type="text" placeholder="<?php _e( 'Login', 'wp-recall' ); ?>" value="<?php echo $user_login; ?>" name="user_login" id="login-user">
 <!--            <i class="rcli fa-user"></i>-->
 <!--            <span class="required">*</span>-->
 <!--        </div>-->
 <!--        <div class="form-block-rcl default-field">-->
-<!--            <input required type="email" placeholder="--><?php //_e( 'E-mail', 'wp-recall' ); ?><!--" value="--><?php //echo $user_email; ?><!--" name="user_email" id="email-user">-->
+            <input class="input-modal text-center" required type="email" placeholder="<?php _e( 'E-mail', 'wp-recall' ); ?>" value="<?php echo $user_email; ?>" name="user_email" id="email-user">
 <!--            <i class="rcli fa-at"></i>-->
 <!--            <span class="required">*</span>-->
 <!--        </div>-->
 		<div class="form-block-rcl form_extend">
 <?php do_action( 'register_form' ); ?>
 		</div>
-        <div class="form-block-rcl">
-            <input type="submit" class="recall-button" name="submit-register" value="<?php _e( 'Signup', 'wp-recall' ); // Зарегистрироваться  ?>">
+        <div class="form-block-rcl btn-modal" style="margin-left: 12%; margin-top: -2%;">
+            <input type="submit" class="btn-custom-one text-center" name="submit-register" value="<?php _e( 'Signup', 'wp-recall' ); // Зарегистрироваться  ?>">
 
 <?php echo wp_nonce_field( 'register-key-rcl', 'register_wpnonce', true, false ); ?>
-            <input type="hidden" name="redirect_to" value="<?php rcl_referer_url( 'register' ); ?>">
+            <input type="hidden" name="redirect_to" value="<?php echo "/profile"//rcl_referer_url( 'register' ); ?>">
         </div>
     </form>
 </div>
