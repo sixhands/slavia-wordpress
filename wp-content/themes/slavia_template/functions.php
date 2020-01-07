@@ -356,11 +356,11 @@ function custom_menu_item ( $items, $args ) {
             $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
         }
     }
-    //Верхнее меню
+    //Верхнее мобильное меню
     elseif ($args->theme_location == 'menu-1') {
         if ($args->menu_class == 'mobile-menu-ul text-left') {
-            if (true)//($user || $manager)
-                $items .= "<a id='modal-545065' href='#modal-container-545065' role='button' class='' data-toggle='modal'>" .
+            if (!is_user_logged_in())
+                $items .= "<a id='modal-545065' href='#modal-container-545065' role='button' class='rcl-login' data-toggle='modal'>" .
                     "<li class='btn-custom-one text-center'>Авторизация</li>" .
                     "</a>";
             else
@@ -399,3 +399,10 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu{
         $output .= "</option>\n";
     }
 }
+
+// включим регистрацию реколл когда в настройках вордпресса она отключена
+function dd3_open_rcl_register(){
+    $option = 1;
+    return $option;
+}
+add_filter('rcl_users_can_register','dd3_open_rcl_register');
