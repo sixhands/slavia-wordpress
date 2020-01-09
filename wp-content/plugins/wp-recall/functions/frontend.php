@@ -43,7 +43,7 @@ function rcl_apply_filters_area_menu() {
             </div>
 
         </div>';
-	$content .= '</div>';
+	$content .= '</div>'; //lk-menu
 
 	echo $content;
 }

@@ -3,22 +3,22 @@
 
 
     <div class="col-lg-2 left-panel d-none d-lg-block" style=" margin-top: 10px;">
-        <div class="coop_maps question-bg col-lg-12 col-md-4">
-            <div class="row ">
-                <div class="col-12 text-center" >
-                    <?php
-                    wp_nav_menu( array(
-                        'theme_location' => 'left-menu',
-                        'menu_id'        => 'left-menu',
-                        'menu_class'        => 'left-menu',
-                        'container'     =>   '',
-                        'link_before'    =>   "<div class='profil-user-menu-item w-100 text-center'><img><p>",
-                        'link_after'    =>    "</p></div>",
-                    ) );
-                    ?>
-                </div>
-            </div>
-        </div>
+<!--        <div class="coop_maps question-bg col-lg-12 col-md-4">-->
+<!--            <div class="row ">-->
+<!--                <div class="col-12 text-center" >-->
+<!--                    --><?php
+//                    wp_nav_menu( array(
+//                        'theme_location' => 'left-menu',
+//                        'menu_id'        => 'left-menu',
+//                        'menu_class'        => 'left-menu',
+//                        'container'     =>   '',
+//                        'link_before'    =>   "<div class='profil-user-menu-item w-100 text-center'><img><p>",
+//                        'link_after'    =>    "</p></div>",
+//                    ) );
+//                    ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
 
         <div class="coop_maps question-bg col-lg-12 col-md-4">

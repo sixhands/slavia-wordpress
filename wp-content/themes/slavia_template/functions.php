@@ -192,173 +192,173 @@ function custom_nav_menu_items( $items, $menu ){
 add_filter( 'wp_nav_menu_items', 'custom_menu_item', 10, 2 );
 function custom_menu_item ( $items, $args ) {
 
-    if ($args->theme_location == 'left-menu')
-    {
-        //MOBILE MENU/////////////
-        if ($args->menu_class == 'profil-mobile-menu w-100')
-        {
-            //Присваиваем изображения
-            $dom = new DOMDocument();
-            $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $xpath = new DOMXpath($dom);
-
-            //Удаляем элементы меню в зависимости от страницы
-            if (is_page(array(273))) //Администратор
-                $is_admin = true;
-            if (is_page(array(271, 267, 263))) //263 - профиль
-                $is_manager = true;
-            if (is_page(array(261, 259)))
-                $is_user = true;
-
-            $option_items = $xpath->query("option");
-            foreach ($option_items as $option) {
-                $option_name = $option->textContent;
-                $option_name = utf8_decode($option_name);
-
-                switch ($option_name) {
-                    case "Заявки":
-                        if (isset($is_user) && $is_user == true) {
-                            $option->setAttribute("style", "display: none");
-                            break;
-                        }
-                        break;
-                    case "Люди":
-                        if (isset($is_user) && $is_user == true) {
-                            $option->setAttribute("style", "display: none");
-                            break;
-                        }
-                        break;
-                    case "Настройки":
-                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true)) {
-                            $option->setAttribute("style", "display: none");
-                            break;
-                        }
-                        break;
-                }
-            }
-            //Сохраняем измененное меню
-            $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
-        }
-
-        //DESKTOP MENU///////////
-        else {
-            $lastPos = 0;
-            //Вставляем разделители после каждого элемента меню
-            while (($lastPos = strpos($items, "</li>", $lastPos)) !== false) {
-                $lastPos = $lastPos + strlen("</li>");
-                $items = substr_replace($items, "<div class='profil-menu-line'></div>", $lastPos, 0);
-            }
-
-            //Присваиваем изображения
-            $dom = new DOMDocument();
-            $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-            $xpath = new DOMXpath($dom);
-
-            //Удаляем элементы меню в зависимости от страницы
-            if (is_page(array(273))) //Администратор
-                $is_admin = true;
-            if (is_page(array(271, 267, 263))) //263 - профиль
-                $is_manager = true;
-            if (is_page(array(261, 259)))
-                $is_user = true;
-
-            $images = $xpath->query("li//img");
-
-            foreach ($images as $img) {
-                $item_name = $img->nextSibling->firstChild->textContent;
-                $item_name = utf8_decode($item_name);
-                switch ($item_name) {
-                    case "Главная":
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(263))
-                                $img_path = "/wp-content/uploads/2019/12/home_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/home_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-                    case "Операции":
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(261))
-                                $img_path = "/wp-content/uploads/2019/12/operation_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/operation_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-                    case "Документы":
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(259))
-                                $img_path = "/wp-content/uploads/2019/12/documents_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/document_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-                    case "Заявки":
-                        if (isset($is_user) && $is_user == true)
-                        {
-                            $li_item = $img->parentNode->parentNode->parentNode;
-                            $li_item->setAttribute("style", "display: none");
-                            //Т.к. previous sibling у li является символ переноса на новую строку, делаем 2 previousSibling
-                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
-                            break;
-                        }
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(271))
-                                $img_path = "/wp-content/uploads/2019/12/zayavki_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/zayavki_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-                    case "Люди":
-                        if (isset($is_user) && $is_user == true)
-                        {
-                            $li_item = $img->parentNode->parentNode->parentNode;
-                            $li_item->setAttribute("style", "display: none");
-                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
-                            break;
-                        }
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(267))
-                                $img_path = "/wp-content/uploads/2019/12/people_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/people_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-                    case "Настройки":
-                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true))
-                        {
-                            $li_item = $img->parentNode->parentNode->parentNode;
-                            $li_item->setAttribute("style", "display: none");
-                            //Убираем разделитель
-                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
-                            break;
-                        }
-                        if (!$img->hasAttribute("src")) {
-                            if (is_page(273))
-                                $img_path = "/wp-content/uploads/2019/12/settings_active.png";
-                            else
-                                $img_path = "/wp-content/uploads/2019/12/settings_dis.png";
-                            $img->setAttribute("src", $img_path);
-                        }
-                        break;
-
-                }
-            }
-            //Удаляем последний разделитель
-            $last_separator = $xpath->query("//div[@class='profil-menu-line'][last()]");
-            $last_separator->item(0)->parentNode->removeChild($last_separator->item(0));
-
-
-            //Сохраняем измененное меню
-            $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
-        }
-    }
+//    if ($args->theme_location == 'left-menu')
+//    {
+//        //MOBILE MENU/////////////
+//        if ($args->menu_class == 'profil-mobile-menu w-100')
+//        {
+//            //Присваиваем изображения
+//            $dom = new DOMDocument();
+//            $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+//            $xpath = new DOMXpath($dom);
+//
+//            //Удаляем элементы меню в зависимости от страницы
+//            if (is_page(array(273))) //Администратор
+//                $is_admin = true;
+//            if (is_page(array(271, 267, 263))) //263 - профиль
+//                $is_manager = true;
+//            if (is_page(array(261, 259)))
+//                $is_user = true;
+//
+//            $option_items = $xpath->query("option");
+//            foreach ($option_items as $option) {
+//                $option_name = $option->textContent;
+//                $option_name = utf8_decode($option_name);
+//
+//                switch ($option_name) {
+//                    case "Заявки":
+//                        if (isset($is_user) && $is_user == true) {
+//                            $option->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        break;
+//                    case "Люди":
+//                        if (isset($is_user) && $is_user == true) {
+//                            $option->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        break;
+//                    case "Настройки":
+//                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true)) {
+//                            $option->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        break;
+//                }
+//            }
+//            //Сохраняем измененное меню
+//            $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
+//        }
+//
+//        //DESKTOP MENU///////////
+//        else {
+//            $lastPos = 0;
+//            //Вставляем разделители после каждого элемента меню
+//            while (($lastPos = strpos($items, "</li>", $lastPos)) !== false) {
+//                $lastPos = $lastPos + strlen("</li>");
+//                $items = substr_replace($items, "<div class='profil-menu-line'></div>", $lastPos, 0);
+//            }
+//
+//            //Присваиваем изображения
+//            $dom = new DOMDocument();
+//            $dom->loadHTML('<html>' . $items . '</html>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+//            $xpath = new DOMXpath($dom);
+//
+//            //Удаляем элементы меню в зависимости от страницы
+//            if (is_page(array(273))) //Администратор
+//                $is_admin = true;
+//            if (is_page(array(271, 267, 263))) //263 - профиль
+//                $is_manager = true;
+//            if (is_page(array(261, 259)))
+//                $is_user = true;
+//
+//            $images = $xpath->query("li//img");
+//
+//            foreach ($images as $img) {
+//                $item_name = $img->nextSibling->firstChild->textContent;
+//                $item_name = utf8_decode($item_name);
+//                switch ($item_name) {
+//                    case "Главная":
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(263))
+//                                $img_path = "/wp-content/uploads/2019/12/home_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/home_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//                    case "Операции":
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(261))
+//                                $img_path = "/wp-content/uploads/2019/12/operation_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/operation_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//                    case "Документы":
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(259))
+//                                $img_path = "/wp-content/uploads/2019/12/documents_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/document_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//                    case "Заявки":
+//                        if (isset($is_user) && $is_user == true)
+//                        {
+//                            $li_item = $img->parentNode->parentNode->parentNode;
+//                            $li_item->setAttribute("style", "display: none");
+//                            //Т.к. previous sibling у li является символ переноса на новую строку, делаем 2 previousSibling
+//                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(271))
+//                                $img_path = "/wp-content/uploads/2019/12/zayavki_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/zayavki_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//                    case "Люди":
+//                        if (isset($is_user) && $is_user == true)
+//                        {
+//                            $li_item = $img->parentNode->parentNode->parentNode;
+//                            $li_item->setAttribute("style", "display: none");
+//                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(267))
+//                                $img_path = "/wp-content/uploads/2019/12/people_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/people_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//                    case "Настройки":
+//                        if ((isset($is_manager) && $is_manager == true) || (isset($is_user) && $is_user == true))
+//                        {
+//                            $li_item = $img->parentNode->parentNode->parentNode;
+//                            $li_item->setAttribute("style", "display: none");
+//                            //Убираем разделитель
+//                            $li_item->previousSibling->previousSibling->setAttribute("style", "display: none");
+//                            break;
+//                        }
+//                        if (!$img->hasAttribute("src")) {
+//                            if (is_page(273))
+//                                $img_path = "/wp-content/uploads/2019/12/settings_active.png";
+//                            else
+//                                $img_path = "/wp-content/uploads/2019/12/settings_dis.png";
+//                            $img->setAttribute("src", $img_path);
+//                        }
+//                        break;
+//
+//                }
+//            }
+//            //Удаляем последний разделитель
+//            $last_separator = $xpath->query("//div[@class='profil-menu-line'][last()]");
+//            $last_separator->item(0)->parentNode->removeChild($last_separator->item(0));
+//
+//
+//            //Сохраняем измененное меню
+//            $items = str_replace(array('<html>', '</html>'), '', utf8_decode($dom->saveHTML($dom->documentElement)));
+//        }
+//    }
     //Верхнее мобильное меню
-    elseif ($args->theme_location == 'menu-1') {
+    if ($args->theme_location == 'menu-1') {
         if ($args->menu_class == 'mobile-menu-ul text-left') {
             if (!is_user_logged_in())
                 $items .= "<a id='modal-545065' href='#modal-container-545065' role='button' class='rcl-login' data-toggle='modal'>" .
@@ -375,31 +375,31 @@ function custom_menu_item ( $items, $args ) {
     }
     return $items;
 }
-class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu{
-
-    // don't output children opening tag (`<ul>`)
-    public function start_lvl(&$output, $depth = 0, $args=NULL){}
-
-    // don't output children closing tag
-    public function end_lvl(&$output, $depth = 0, $args=NULL){}
-
-    public function start_el(&$output, $item, $depth = 0, $args = NULL, $id=0){
-
-        // add spacing to the title based on the current depth
-        $item->title = str_repeat("&nbsp;", $depth * 4) . $item->title;
-        //var_dump($item);
-
-        // call the prototype and replace the <li> tag
-        // from the generated markup...
-        parent::start_el($output, $item, $depth, $args);
-        $output = str_replace('<li', '<option value="'.$item->url.'"', $output);
-    }
-
-    // replace closing </li> with the closing option tag
-    public function end_el(&$output, $item, $depth = 0, $args=NULL){
-        $output .= "</option>\n";
-    }
-}
+//class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu{
+//
+//    // don't output children opening tag (`<ul>`)
+//    public function start_lvl(&$output, $depth = 0, $args=NULL){}
+//
+//    // don't output children closing tag
+//    public function end_lvl(&$output, $depth = 0, $args=NULL){}
+//
+//    public function start_el(&$output, $item, $depth = 0, $args = NULL, $id=0){
+//
+//        // add spacing to the title based on the current depth
+//        $item->title = str_repeat("&nbsp;", $depth * 4) . $item->title;
+//        //var_dump($item);
+//
+//        // call the prototype and replace the <li> tag
+//        // from the generated markup...
+//        parent::start_el($output, $item, $depth, $args);
+//        $output = str_replace('<li', '<option value="'.$item->url.'"', $output);
+//    }
+//
+//    // replace closing </li> with the closing option tag
+//    public function end_el(&$output, $item, $depth = 0, $args=NULL){
+//        $output .= "</option>\n";
+//    }
+//}
 
 // включим регистрацию реколл когда в настройках вордпресса она отключена
 function dd3_open_rcl_register(){
