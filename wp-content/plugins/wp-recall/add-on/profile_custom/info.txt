@@ -1,0 +1,7 @@
+Name: Slavia Profile (Профиль пользователя Slavia);
+Version: 3.0.0;
+Support Core: 16.0.0;
+Description: Страница профиля для slavia;
+Author: Земянский Александр;
+Author URI: http://codeseller.ru/;
+Add-on URI: http://codeseller.ru/;

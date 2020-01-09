@@ -937,6 +937,10 @@ function rcl_get_button( $ancor, $url, $args = false ) {
 	$button .= '</a>';
 	return $button;
 }
+function rcl_get_slavia_button( $ancor, $url, $args = false )
+{
+    
+}
 
 function rcl_add_balloon_menu( $data, $args ) {
 	if ( $data['id'] != $args['tab_id'] )

@@ -9,31 +9,31 @@ http://blog.sodhanalibrary.com/2014/01/responsive-menu-or-navigation-bar-with.ht
 // верю что пользователям пригодятся - учитывая что дизайн этого шаблона на всю ширину страницы
 ?>
 
-    <div id="lk-conteyner">
-        <div class="cab_header">
-            <?php do_action('rcl_area_top'); ?>
-        </div>
-        <div class="cab_content">
-            <div class="cab_center">
-                <div class="lk-sidebar">
-                    <?php rcl_avatar(200); ?>
-                </div>
-                <div class="cab_title">
-                    <h2><?php rcl_username(); ?></h2>
-                    <div class="rcl-action"><?php rcl_action(); ?></div>
-                </div>
-            </div>
-
-            <div class="cab_footer">
-                <div class="cab_bttn">
-                    <?php do_action('rcl_area_actions'); ?>
-                </div>
-                <div class="cab_bttn_lite">
-                    <?php do_action('rcl_area_counters'); ?>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div id="lk-conteyner">-->
+<!--        <div class="cab_header">-->
+<!--            --><?php //do_action('rcl_area_top'); ?>
+<!--        </div>-->
+<!--        <div class="cab_content">-->
+<!--            <div class="cab_center">-->
+<!--                <div class="lk-sidebar">-->
+<!--                    --><?php //rcl_avatar(200); ?>
+<!--                </div>-->
+<!--                <div class="cab_title">-->
+<!--                    <h2>--><?php //rcl_username(); ?><!--</h2>-->
+<!--                    <div class="rcl-action">--><?php //rcl_action(); ?><!--</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="cab_footer">-->
+<!--                <div class="cab_bttn">-->
+<!--                    --><?php //do_action('rcl_area_actions'); ?>
+<!--                </div>-->
+<!--                <div class="cab_bttn_lite">-->
+<!--                    --><?php //do_action('rcl_area_counters'); ?>
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div id="rcl-tabs">
         <?php do_action('rcl_area_menu'); ?>

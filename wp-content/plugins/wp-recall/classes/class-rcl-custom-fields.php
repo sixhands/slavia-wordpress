@@ -75,9 +75,9 @@ class Rcl_Custom_Fields {
 		}
 
 		$content = '<div id="rcl-field-' . $this->field_id . '" class="rcl-field-input type-' . $field['type'] . '-input">'
-			. '<div class="rcl-field-core">'
+			//. '<div class="rcl-field-core">'
 			. $fieldHtml
-			. '</div>'
+			//. '</div>'
 			. $this->get_notice( $field )
 			. '</div>';
 
