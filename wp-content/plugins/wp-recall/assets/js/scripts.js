@@ -299,7 +299,7 @@ function rcl_add_class_upload_tab(e){
 
 rcl_add_action('rcl_before_upload_tab','rcl_add_preloader_tab');
 function rcl_add_preloader_tab(e){
-    rcl_preloader_show('#lk-content > div');
+    //rcl_preloader_show('#lk-content > div');
     rcl_preloader_show('#ssi-modalContent > div');
 }
 

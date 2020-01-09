@@ -939,7 +939,22 @@ function rcl_get_button( $ancor, $url, $args = false ) {
 }
 function rcl_get_slavia_button( $ancor, $url, $args = false )
 {
-
+    $button = '<a href="' . $url . '" ';
+    if ( isset( $args['attr'] ) && $args['attr'] )
+        $button .= $args['attr'] . ' ';
+    if ( isset( $args['id'] ) && $args['id'] )
+        $button .= 'id="' . $args['id'] . '" ';
+    $button .= 'class="recall-button ';
+    if ( isset( $args['class'] ) && $args['class'] )
+        $button .= $args['class'];
+    $button .= '">';
+    $button .= '<div class="profil-user-menu-item w-100 text-center">';
+    if ( isset( $args['icon'] ) && $args['icon'] )
+        $button .= '<img src="' . $args['icon'] . '">';
+    $button .= '<p>' . $ancor . '</p>';
+    $button .= '</div>';
+    $button .= '</a>';
+    return $button;
 }
 
 function rcl_add_balloon_menu( $data, $args ) {

@@ -13,7 +13,15 @@ add_action( 'rcl_area_menu', 'rcl_apply_filters_area_menu', 10 );
 function rcl_apply_filters_area_menu() {
 
 	$content = '<div id="lk-menu" class="rcl-menu col-lg-2 left-panel d-none d-lg-block">';
+	$content .= '<div class="coop_maps question-bg col-lg-12 col-md-4">';
+        $content .= '<div class="row ">';
+	        $content .= '<div class="col-12 text-center">';
+	            $content .= '<ul id="left-menu" class="left-menu">';
 	$content .= apply_filters( 'rcl_content_area_menu', '' );
+	            $content .= '</ul>';
+	        $content .= '</div>';
+	    $content .= '</div>';
+	$content .= '</div>';
 	$content .= '</div>';
 
 	echo $content;

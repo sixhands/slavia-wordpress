@@ -57,7 +57,8 @@ class Rcl_Tab{
     
     function print_tab_button($content){
         global $user_LK;
-        $content .= $this->get_tab_button($user_LK);
+        //$content .= $this->get_tab_button($user_LK);
+        $content .= $this->get_slavia_tab_button($user_LK);
         return $content;
     }
     
@@ -179,6 +180,54 @@ class Rcl_Tab{
 	return sprintf('<span class="rcl-tab-button" data-tab="%s" id="tab-button-%s">%s</span>',$this->id,$this->id,$html_button);
 
     }
+
+    //Кастомная кнопка для славии
+    function get_slavia_tab_button($master_id){
+        global $user_ID;
+
+        if(!$this->is_user_access($master_id)) return false;
+
+        $name = (isset($this->counter))? sprintf('%s <span class="rcl-menu-notice">%s</span>',$this->name,$this->counter): $this->name;
+
+        $icon = ($this->icon)? $this->icon: 'fa-cog';
+
+        if($this->onclick){
+
+            $html_button = rcl_get_slavia_button(
+                $name,
+                '#',
+                array(
+                    'class'=>'recall-button',
+                    'icon'=> $icon,
+                    'attr'=> 'onclick="'.$this->onclick.';return false;"'
+                )
+            );
+
+        }else{
+
+            $link = rcl_get_tab_permalink($master_id,$this->id);
+
+            $datapost = array(
+                'tab_id'=>$this->id,
+                'master_id'=>$master_id
+            );
+
+            $html_button = rcl_get_slavia_button(
+                $name,
+                $link,
+                array(
+                    'class'=>$this->get_class_button(),
+                    'icon'=> $icon,
+                    'attr'=>'data-post='.rcl_encode_post($datapost)
+                )
+            );
+
+        }
+
+        return sprintf('<li class="rcl-tab-button" data-tab="%s" id="tab-button-%s">%s</li><div class="profil-menu-line"></div>',$this->id,$this->id,$html_button);
+
+    }
+
     
     function get_tab($master_id, $subtab_id = false){
         global $user_ID;
