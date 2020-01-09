@@ -38,7 +38,6 @@ function rcl_tab( $tab_data, $deprecated_callback = false, $deprecated_name = ''
 
 		$tab_data = $args_tab;
 	}
-
 	if ( ! isset( $tab_data['icon'] ) || ! $tab_data['icon'] )
 		$tab_data['icon'] = 'fa-cog';
 
@@ -62,7 +61,6 @@ function rcl_init_custom_tabs() {
 			continue;
 
 		foreach ( $tabs as $tab ) {
-
 			if ( isset( $tab['default-tab'] ) )
 				continue;
 
@@ -142,7 +140,7 @@ function rcl_get_tab_button( $tab_id, $master_id ) {
 
 	$Rcl_Tab = new Rcl_Tab( $tab );
 
-	return $Rcl_Tab->get_tab_button( $master_id );
+	return $Rcl_Tab->get_slavia_tab_button($master_id);//$Rcl_Tab->get_tab_button( $master_id );
 }
 
 function rcl_get_tab_content( $tab_id, $master_id, $subtab_id = '' ) {
@@ -939,7 +937,7 @@ function rcl_get_button( $ancor, $url, $args = false ) {
 }
 function rcl_get_slavia_button( $ancor, $url, $args = false )
 {
-    $button = '<a href="' . $url . '" ';
+    $button = '<a style="margin:0 !important" href="' . $url . '" ';
     if ( isset( $args['attr'] ) && $args['attr'] )
         $button .= $args['attr'] . ' ';
     if ( isset( $args['id'] ) && $args['id'] )
@@ -951,6 +949,7 @@ function rcl_get_slavia_button( $ancor, $url, $args = false )
     $button .= '<div class="profil-user-menu-item w-100 text-center">';
     if ( isset( $args['icon'] ) && $args['icon'] )
         $button .= '<img src="' . $args['icon'] . '">';
+    //var_dump($args['icon']);
     $button .= '<p>' . $ancor . '</p>';
     $button .= '</div>';
     $button .= '</a>';

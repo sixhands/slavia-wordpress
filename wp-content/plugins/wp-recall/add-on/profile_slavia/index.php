@@ -14,6 +14,7 @@ function rcl_profile_scripts(){
     if(rcl_is_office($user_ID)){
         rcl_enqueue_style( 'rcl-profile', rcl_addon_url('style.css', __FILE__) );
         rcl_enqueue_script( 'rcl-profile-scripts', rcl_addon_url('js/scripts.js', __FILE__) );
+        //wp_enqueue_script( 'rcl-profile-scripts', rcl_addon_url('js/scripts.js', __FILE__), array('my_jquery'), '1.0', true );
     }
 }
 

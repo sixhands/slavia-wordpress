@@ -22,6 +22,27 @@ function rcl_apply_filters_area_menu() {
 	        $content .= '</div>';
 	    $content .= '</div>';
 	$content .= '</div>';
+	$content .= '
+    <div class="coop_maps question-bg col-lg-12 col-md-4">
+            <div class="row ">
+                <div class="col-12 text-center" >
+                    <h1 class="coin-num ">
+    0.897600
+                    </h1>
+                    <h1 class="coin-num-name ">
+    prizm
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="/wp-content/uploads/2019/12/chat_ico.png" class="chat_ico">
+                </div>
+            </div>
+
+        </div>';
 	$content .= '</div>';
 
 	echo $content;

@@ -131,22 +131,22 @@
                     <h1 class="ib ex-mobile-h1-num">0.897600</h1>
                     <h1 class="ib ex-mobile-h1-prizm">prizm</h1>
                 </div>
-<!--                <div class="col-6">-->
+                <div id="left-mobile-menu-location" class="col-6">
 <!--                    <select class="profil-mobile-menu w-100">-->
 <!--                        <option>Главная</option>-->
 <!--                        <option>Операции</option>-->
 <!--                        <option>Документы</option>-->
 <!--                        <option>Заявки</option>-->
 <!--                        <option>Люди</option>-->
-                       <?php wp_nav_menu(array(
-                        'theme_location' => 'left-menu', // your theme location here
-                        'walker'         => new Walker_Nav_Menu_Dropdown(),
-                        'items_wrap'     => '<select class="%2$s">%3$s</select>',
-                        'menu_class'     => 'profil-mobile-menu w-100',
-                        'container_class' => 'col-6',
-                        )); ?>
+                            <?php //wp_nav_menu(array(
+//                        'theme_location' => 'left-menu', // your theme location here
+//                        'walker'         => new Walker_Nav_Menu_Dropdown(),
+//                        'items_wrap'     => '<select class="%2$s">%3$s</select>',
+//                        'menu_class'     => 'profil-mobile-menu w-100',
+//                        'container_class' => 'col-6',
+//                        )); ?>
 <!--                    </select>-->
-<!--                </div>-->
+                </div>
             </div>
         </div>
         <?php endif; ?>

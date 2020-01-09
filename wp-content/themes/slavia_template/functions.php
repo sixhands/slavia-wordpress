@@ -109,18 +109,19 @@ add_action( 'widgets_init', 'slavia_template_widgets_init' );
  * Enqueue scripts and styles.
  */
 function slavia_template_scripts() {
+    //wp_enqueue_script( 'my_jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '1.0', true );
     wp_enqueue_style( 'slavia_template-style', get_stylesheet_uri() );
     wp_enqueue_style( 'slavia_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
     wp_enqueue_style( 'slavia_style', get_template_directory_uri() . '/assets/css/style.css');
     wp_enqueue_style( 'Comfortaa', 'https://fonts.googleapis.com/css?family=Comfortaa&display=swap', array(), '1.0' );
     wp_enqueue_style( 'Montserrat', 'https://fonts.googleapis.com/css?family=Montserrat&display=swap', array(), '1.0' );
     wp_enqueue_style( 'Comfortaa-700', 'https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap', array(), '1.0' );
-    wp_enqueue_script( 'my_jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '1.0', true );
+    wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'tether', "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js", array(), '1.0', true );
-    wp_enqueue_script( 'bootstrap.min', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('my_jquery', 'tether'), '1.0', true );
+    wp_enqueue_script( 'bootstrap.min', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery', 'tether'), '1.0' );
     wp_enqueue_script( 'owl_carousel', get_template_directory_uri() . '/assets/js/owl.carousel.js', array(), '1.0', true );
     wp_enqueue_script( 'slavia_mask', get_template_directory_uri() . '/assets/js/mask.js', array(), '1.0', true );
-    wp_enqueue_script( 'slavia_scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('my_jquery'), '1.0', true );
+    wp_enqueue_script( 'slavia_scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true );
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }
