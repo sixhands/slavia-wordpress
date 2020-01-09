@@ -939,7 +939,7 @@ function rcl_get_button( $ancor, $url, $args = false ) {
 }
 function rcl_get_slavia_button( $ancor, $url, $args = false )
 {
-    
+
 }
 
 function rcl_add_balloon_menu( $data, $args ) {
@@ -977,6 +977,8 @@ function rcl_office_class() {
 	}
 
 	$class[] = (rcl_get_option( 'buttons_place' ) == 1) ? "vertical-menu" : "horizontal-menu";
+
+	$class[] = "row";
 
 	echo 'class="' . implode( ' ', $class ) . '"';
 }

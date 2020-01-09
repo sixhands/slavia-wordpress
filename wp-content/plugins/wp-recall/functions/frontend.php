@@ -2,7 +2,7 @@
 add_action( 'rcl_area_tabs', 'rcl_apply_filters_area_tabs', 10 );
 function rcl_apply_filters_area_tabs() {
 
-	$content = '<div id="lk-content" class="rcl-content">';
+	$content = '<div id="lk-content" class="rcl-content col-lg-10 col-md-12">';
 	$content .= apply_filters( 'rcl_content_area_tabs', '' );
 	$content .= '</div>';
 
@@ -12,7 +12,7 @@ function rcl_apply_filters_area_tabs() {
 add_action( 'rcl_area_menu', 'rcl_apply_filters_area_menu', 10 );
 function rcl_apply_filters_area_menu() {
 
-	$content = '<div id="lk-menu" class="rcl-menu">';
+	$content = '<div id="lk-menu" class="rcl-menu col-lg-2 left-panel d-none d-lg-block">';
 	$content .= apply_filters( 'rcl_content_area_menu', '' );
 	$content .= '</div>';
 

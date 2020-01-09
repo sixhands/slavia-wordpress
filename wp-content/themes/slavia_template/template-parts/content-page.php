@@ -9,14 +9,14 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php if (is_page(array(306)) ) echo "style='margin-top: 20px;'"; else {} ?>>
 <!--	<header class="entry-header">-->
 <!--		--><?php //the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 <!--	</header><!-- .entry-header -->
 
 	<?php slavia_template_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content <?php if (is_page(array(306)) ) echo "container"; else {} ?>">
 		<?php
 		the_content();
 

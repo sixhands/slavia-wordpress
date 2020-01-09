@@ -1,4 +1,4 @@
-<div class="col-lg-10 col-md-12"  style="z-index: 4; margin-top: 10px;">
+<div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
             <div class="row">
