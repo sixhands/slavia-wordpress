@@ -5,8 +5,8 @@ function rcl_get_shortcode_wp_recall(){
     global $user_LK;
 
     if(!$user_LK){
-        return '<h4 class="rcl_cab_guest_message">'.__('To use your personal account, please log in or register on this site','wp-recall').'</h4>
-        <div class="authorize-form-rcl">'.rcl_get_authorize_form().'</div>';
+        return '<h4 class="rcl_cab_guest_message">'.__('To use your personal account, please log in or register on this site','wp-recall').'</h4>';
+        //. '<div class="authorize-form-rcl">'.rcl_include_template('form-sign.php') .'</div>'; //rcl_get_authorize_form()
     }
 
     ob_start();

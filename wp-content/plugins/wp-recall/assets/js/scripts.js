@@ -495,9 +495,9 @@ function rcl_init_login_form(type_form){
         
     }
     
-    if(rcl_url_params['action-rcl']){
-        rcl_show_login_form_tab(rcl_url_params['action-rcl'],type_form);
-    }
+    // if(rcl_url_params['action-rcl']){
+    //     rcl_show_login_form_tab(rcl_url_params['action-rcl'],type_form);
+    // }
     
 }
 

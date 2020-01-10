@@ -24,6 +24,32 @@ function rcl_init_js_profile_variables($data){
     return $data;
 }
 
+//Удаление таба
+function rcl_block_profile_pages_by_role($tab)
+{
+    if (parse_url($_SERVER['REQUEST_URI'])['path'] == '/profile/') {
+        if (!isset(wp_get_current_user()->roles) || !wp_get_current_user()->roles) //Если не назначена роль, не фильтруем табы
+            return $tab;
+        $roles = wp_get_current_user()->roles;
+        $current_role = array_shift($roles);
+
+        if ($current_role == 'manager') {
+            if ($tab['id'] == 'settings') {
+                $tab = array();
+            }
+        }
+        if ($current_role == 'user' || $current_role == 'need-confirm')
+        {
+            if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings') {
+                $tab = array();
+            }
+        }
+    }
+    return $tab;
+}
+add_filter('rcl_tab', 'rcl_block_profile_pages_by_role', 10, 1);
+
+
 add_action('init','rcl_tab_profile');
 add_action('init','rcl_tab_operations');
 add_action('init','rcl_tab_documents');

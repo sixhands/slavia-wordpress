@@ -407,3 +407,8 @@ function dd3_open_rcl_register(){
     return $option;
 }
 add_filter('rcl_users_can_register','dd3_open_rcl_register');
+
+remove_role( 'subscriber' );
+remove_role( 'editor' );
+remove_role( 'contributor' );
+remove_role( 'author' );
