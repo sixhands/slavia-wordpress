@@ -3,13 +3,13 @@
         <div class="coop_maps question-bg col-lg-12">
             <div class="row">
                 <div class="col-lg-2">
-                    <!--Изображение профиля-->
-                    <img src="/wp-content/uploads/2019/12/profil_index_img.png" class="profil-index-img">
+                    <!--Изображение профиля--> <!-- /wp-content/uploads/2019/12/profil_index_img.png -->
+                    <img src="<?php echo $avatar_url?>" class="profil-index-img">
                 </div>
                 <div class="col-lg-8">
                     <!--Имя авторизированного пользователя -->
                     <h1 class="profil-user-h1">
-                        С возвращением, Антон Викторович!
+                        С возвращением, <?php echo $username ?>!
                     </h1>
                     <p class="profil-user-verification">Профиль верифицирован</p>
                 </div>
@@ -22,68 +22,82 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-lg-4 input-exchange">
-                        <div class="row">
+                        <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                             <span>Имя пользователя</span>
-                            <input value="Борисов Антон Викторович" type="text" name="">
-                        </div>
+                            <input id="username_input" value="<?php echo $username ?>" type="text" name="">
+                        </form>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
                             <span class="select-exchange">Email</span>
                             <div class="select-exchange w-100">
-                                <input value="example@gmail.com" class="verification-ok" type="email" name="">
+<!--                                <input value="example@gmail.com" class="verification-ok" type="email" name="">-->
+                                <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                                    <?php echo $user_email ?>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
-                        <div class="row">
+                        <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                             <span>Телефон</span>
-                            <input value="8 (911) 718 25 22" class="verification-ok" type="text" name="">
-                        </div>
+<!--                            <input value="8 (911) 718 25 22" class="verification-ok" type="text" name="">-->
+                                <?php echo $user_phone ?>
+                        </form>
                     </div>
+
+<!--                    <div class="col-12" style="text-align: center; margin-top: 30px;">-->
+<!--                        <input type="submit" id="cpsubmit" class="btn-custom-two" value="Обновить профиль" onclick="return rcl_check_profile_form();" name="submit_user_profile" />-->
+<!--                    </div>-->
                 </div>
+                <?php //if (isset($_POST)) var_dump($_POST); ?>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Реферальная ссылка</h1>
             <div class="col-lg-4 input-exchange  input-custom-copy">
-                <div class="row ">
-                    <input placeholder="" value="https://slavia.com/5467889" type="text" name="">
-                </div>
+                <form class="row" name="profile_link" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                    <?php echo $user_ref_link ?>
+<!--                    <input placeholder="" value="https://slavia.com/5467889" type="text" name="">-->
+                </form>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Номер пайщика</h1>
             <div class="col-lg-4 input-exchange  input-custom-copy">
-                <div class="row ">
-                    <input placeholder="" value="00073" type="text" name="">
-                </div>
+                <form class="row" name="profile_client_num" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                    <?php echo $client_num ?>
+<!--                    <input placeholder="" value="00073" type="text" name="">-->
+                </form>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Ваш адрес Prizm</h1>
             <div class="row">
                 <div class="col-lg-6 input-exchange  custom-padding input-custom-copy">
-                    <div class="row ">
+                    <form class="row" name="profile_prizm_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                         <span>Адрес PRIZM</span>
-                        <input placeholder="" value="00073" type="text" name="">
-                    </div>
+                        <?php echo $prizm_address ?>
+<!--                        <input placeholder="" value="00073" type="text" name="">-->
+                    </form>
                 </div>
                 <div class="col-lg-6 input-exchange custom-padding  input-custom-copy">
-                    <div class="row ">
+                    <form class="row" name="profile_prizm_publickey" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                         <span>Публичный ключ</span>
-                        <input placeholder="" value="00073" type="text" name="">
-                    </div>
+                        <?php echo $prizm_public_key ?>
+<!--                        <input placeholder="" value="00073" type="text" name="">-->
+                    </form>
                 </div>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Ваш адрес Waves</h1>
             <div class="col-lg-12 input-exchange  input-custom-copy">
-                <div class="row ">
+                <form class="row" name="profile_waves_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                     <span>Адрес Waves</span>
-                    <input placeholder="" value="00073" type="text" name="">
-                </div>
+                    <?php echo $waves_address ?>
+<!--                    <input placeholder="" value="00073" type="text" name="">-->
+                </form>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
@@ -142,7 +156,7 @@
                             <input placeholder="Кем выдан" class="" type="text" name="">
                         </div>
                     </div>
-                    <?php //if ($manager): ?>
+                    <?php if ($is_manager): ?>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">
                             <div class="col-lg-4">
@@ -158,9 +172,8 @@
 
                         </div>
                     </div>
-                    <?php //endif; ?>
-                    <?php //if ($user): ?>
-                    <div class="col-lg-4" style="display: none">
+                    <?php else: ?>
+                    <div class="col-lg-4">
                         <div class="row">
                             <div class="skrepka w-100 text-center">
                                 <img src="/wp-content/uploads/2019/12/skrepka.png"> Прикрепить фото
@@ -170,21 +183,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8" style="display: none">
+                    <div class="col-lg-8">
                         <div class="row">
                             <p class="passport-text">
                                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
                             </p>
                         </div>
                     </div>
-                    <?php //endif; ?>
+                    <?php endif; ?>
 
                 </div>
             </div>
 
         </div>
         <!-- Статистика -->
-        <?php //if ($manager): ?>
+        <?php if ($is_manager): ?>
         <div class="coop_maps question-bg col-lg-12">
             <div class="row">
                 <div class="col-12">
@@ -249,7 +262,7 @@
                 </div>
             </div>
         </div>
-        <?php //endif; ?>
+        <?php endif; ?>
 
     </div>
 </div>

@@ -17,6 +17,10 @@ class Rcl_Custom_Fields {
 		$this->files = array();
 	}
 
+	function get_slug($field) {
+	    return $field['slug'];
+    }
+
 	function get_title( $field ) {
 
 		if ( $field['type'] == 'agree' && $field['url-agreement'] )
@@ -74,12 +78,12 @@ class Rcl_Custom_Fields {
 			$fieldHtml .= '<script>rcl_init_field_maxlength("' . $this->field_id . '");</script>';
 		}
 
-		$content = '<div id="rcl-field-' . $this->field_id . '" class="rcl-field-input type-' . $field['type'] . '-input">'
+		//$content = '<div id="rcl-field-' . $this->field_id . '" class="rcl-field-input type-' . $field['type'] . '-input">'
 			//. '<div class="rcl-field-core">'
-			. $fieldHtml
+		$content = $fieldHtml;
 			//. '</div>'
-			. $this->get_notice( $field )
-			. '</div>';
+//			. $this->get_notice( $field )
+//			. '</div>';
 
 		return $content;
 	}
@@ -527,11 +531,11 @@ class Rcl_Custom_Fields {
 
 		$pattern = (isset( $field['pattern'] ) && $field['pattern']) ? 'pattern="' . $field['pattern'] . '"' : '';
 
-		return '<input type="tel" ' . $pattern . ' ' . $this->required . ' ' . $this->placeholder . ' ' . $this->get_class( $field ) . ' name="' . $field['name'] . '" id="' . $this->field_id . '" maxlength="50" value="' . $this->value . '"/>';
+		return '<input type="tel" ' . $pattern . ' ' . $this->required . ' ' . $this->placeholder . ' ' . $this->get_class( $field ) . ' name="' . $field['name'] . '" id="rcl-field-' . $this->field_id . '" maxlength="50" value="' . $this->value . '"/>';
 	}
 
 	function get_type_email( $field ) {
-		return '<input type="email" ' . $this->required . ' ' . $this->placeholder . ' ' . $this->get_class( $field ) . ' name="' . $field['name'] . '" id="' . $this->field_id . '" maxlength="50" value="' . $this->value . '"/>';
+		return '<input type="email" ' . $this->required . ' ' . $this->placeholder . ' ' . $this->get_class( $field ) . ' name="' . $field['name'] . '" id="rcl-field-' . $this->field_id . '" maxlength="50" value="' . $this->value . '"/>';
 	}
 
 	function get_type_url( $field ) {

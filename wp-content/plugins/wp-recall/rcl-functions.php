@@ -1068,13 +1068,12 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 		);
 
 		foreach ( $profileFields as $field ) {
-
 			if ( isset( $field['field_select'] ) )
 				$field['values'] = $field['field_select'];
 
 			$field = apply_filters( 'rcl_pre_update_profile_field', $field, $user_id );
 
-			if ( ! $field || ! $field['slug'] )
+			if ( ! $field ||  !isset($field['slug']) )
 				continue;
 
 			$slug = $field['slug'];
@@ -1126,7 +1125,6 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 					if ( $currentEmail == $value )
 						continue;
 				}
-
 				wp_update_user( array( 'ID' => $user_id, $slug => $value ) );
 
 				continue;
@@ -1160,7 +1158,6 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 			}else {
 
 				if ( $value ) {
-
 					update_user_meta( $user_id, $slug, $value );
 				} else {
 

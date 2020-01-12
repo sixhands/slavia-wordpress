@@ -293,7 +293,8 @@ function rcl_notice() {
 	$notify	 = '';
 	$notify	 = apply_filters( 'notify_lk', $notify );
 	if ( $notify )
-		echo '<div class="notify-lk">' . $notify . '</div>';
+	    echo '<script type="text/javascript">alert(\''. $notify .'\');</script>';
+		//echo '<div class="notify-lk">' . $notify . '</div>';
 }
 
 //добавляем стили колорпикера и другие в хеадер
