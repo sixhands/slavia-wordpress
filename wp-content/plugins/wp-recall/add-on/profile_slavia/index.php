@@ -110,6 +110,14 @@ function add_profile_fields($fields){
         'title' => 'Адрес Waves',
     );
 
+    $fields[] = array(
+        'type' => 'text',
+        'slug' => 'is_verified',
+        'title' => 'Верификация профиля',
+        'value' => 'no',
+    );
+    
+
     return $fields;
 }
 
@@ -174,8 +182,12 @@ function rcl_tab_template_content()
         //$star = (isset($field['required'])&&$field['required']==1)? ' <span class="required">*</span> ': '';
 
         $field_name = $slug;//$CF->get_slug($field);
-        $field_value = /*$label . */$CF->get_input($field, $value);
-        $field_value = apply_filters('profile_options_rcl',$field_value,$userdata);
+        if ($field_name != 'is_verified') {
+            $field_value = /*$label . */$CF->get_input($field, $value);
+            $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
+        }
+        else
+            $field_value = $field['value'];
         $profile_args += array($field_name => $field_value);
     }
     //$profile_args += array('user_id' => $user_ID);
@@ -187,6 +199,7 @@ function rcl_tab_template_content()
 
     //Имя/фамилия пользователя
     $profile_args += array('username' => $userdata->display_name);
+
     //Аватар
     $profile_args += array('avatar_url' => get_avatar_url( $user_ID ));
     return $profile_args;

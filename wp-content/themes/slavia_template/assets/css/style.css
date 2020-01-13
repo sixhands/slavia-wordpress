@@ -680,7 +680,7 @@ a:hover
 {
 	font: Medium 12px/15px Montserrat;
 	letter-spacing: 0;
-	color: #179F37;
+	/*color: #179F37;*/
 	text-transform: uppercase;
 }
 .profil-user-h1
