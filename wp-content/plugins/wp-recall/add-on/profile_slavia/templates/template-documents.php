@@ -15,49 +15,23 @@
                             Наименование документа
                         </div>
                         <div class="col-2 text-center">
-
                         </div>
                     </div>
                 </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            08.11.19
-                        </div>
-                        <div class="col-8 text-left">
-                            Какое-нибудь длинное наименование документа
-                        </div>
-                        <div class="col-2 text-center">
-                            <img src="/wp-content/uploads/2019/12/don.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            08.11.19
-                        </div>
-                        <div class="col-8 text-left">
-                            Какое-нибудь длинное наименование документа
-                        </div>
-                        <div class="col-2 text-center">
-                            <img src="/wp-content/uploads/2019/12/don.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            08.11.19
-                        </div>
-                        <div class="col-8 text-left">
-                            Какое-нибудь длинное наименование документа
-                        </div>
-                        <div class="col-2 text-center">
-                            <img src="/wp-content/uploads/2019/12/don.png">
-                        </div>
-                    </div>
-                </div>
+                <?php echo $user_documents; ?>
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            08.11.19-->
+<!--                        </div>-->
+<!--                        <div class="col-8 text-left">-->
+<!--                            Какое-нибудь длинное наименование документа-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            <img src="/wp-content/uploads/2019/12/don.png">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

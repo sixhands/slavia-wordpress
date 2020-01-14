@@ -99,7 +99,27 @@ class Rcl_Custom_Fields {
 	function get_type_custom( $args ) {
 
 		if ( isset( $args['content'] ) ) {
-			return $args['content'];
+//		    if ( $args['slug'] == 'user_documents')
+//            {
+//                $content = '';
+//                foreach ($args['values'] as $value)
+//                {
+//                    $content .= '<div class="table-title w-100">' .
+//                                    '<div class="row">' .
+//                                        '<div class="col-2 text-center">' . $value['date'] . '</div>' .
+//                                        '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
+//                                        '<div class="col-2 text-center">
+//                                            <a href="' . $value['url'] . '" download>
+//                                                <img src="/wp-content/uploads/2019/12/don.png">
+//                                            </a>
+//                                        </div>
+//                                    </div>
+//                                </div>';
+//                }
+//                return $content;
+//            }
+//		    else
+			    return $args['content'];
 		}
 
 		return;

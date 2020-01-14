@@ -6,6 +6,10 @@
  *
  * @package slavia_template
  */
+
+// include autoloader
+require_once 'lib/dompdf-0.8.3/src/Autoloader.php';
+
 if ( ! function_exists( 'slavia_template_setup' ) ) :
     /**
      * Sets up theme defaults and registers support for various WordPress features.

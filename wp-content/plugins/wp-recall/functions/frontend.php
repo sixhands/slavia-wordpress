@@ -73,6 +73,12 @@ function rcl_user_name() {
 	echo $rcl_user->display_name;
 }
 
+function rcl_user_client_num() {
+    global $rcl_user;
+    $profileFields = rcl_get_profile_fields(array('user_id'=>$rcl_user->ID));
+    var_dump($profileFields);
+}
+
 function rcl_user_url() {
 	global $rcl_user;
 	echo get_author_posts_url( $rcl_user->ID, $rcl_user->user_nicename );

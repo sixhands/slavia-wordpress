@@ -116,7 +116,48 @@ function add_profile_fields($fields){
         'title' => 'Верификация профиля',
         'value' => 'no',
     );
-    
+
+
+    return $fields;
+}
+
+//Генерация документов пользователя
+function generate_user_documents()
+{
+
+}
+
+//Добавление документов для данного пользователя
+add_filter('rcl_profile_fields', 'add_user_documents', 10);
+//Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
+function add_user_documents($fields)
+{
+    $fields[] = array(
+        'type' => 'custom',
+        'slug' => 'user_documents',
+        'title' => 'Документы пользователя',
+        'values' => array(
+            array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png'),
+            array('date' => '09.12.19', 'filename' => 'document2.docx', 'url' => '/wp-content/uploads/2019/12/operation_dis.png')
+        ),
+    );
+    $content = '';
+    foreach ($fields[count($fields) - 1]['values'] as $value)
+    {
+        $content .= '<div class="table-text w-100">' .
+            '<div class="row">' .
+            '<div class="col-2 text-center">' . $value['date'] . '</div>' .
+            '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
+            '<div class="col-2 text-center">
+                <a href="' . $value['url'] . '" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>';
+    }
+    $fields[count($fields) - 1] += array("content" => $content);
+    //var_dump($fields[count($fields) - 1]);
 
     return $fields;
 }
@@ -189,7 +230,8 @@ function rcl_tab_template_content()
         else
             $field_value = $field['value'];
         $profile_args += array($field_name => $field_value);
-    }
+    } //foreach
+
     //$profile_args += array('user_id' => $user_ID);
     //Является ли менеджером
     if (rcl_get_current_role() == 'manager' || rcl_get_current_role() == 'administrator' || rcl_get_current_role() == 'director')
@@ -374,24 +416,8 @@ function rcl_tab_documents(){
 }
 function rcl_tab_documents_content($master_id)
 {
-    global $userdata, $user_ID;
-
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
-
-    $Table = new Rcl_Table(array(
-        'cols' => array(
-            array(
-                'width' => 30
-            ),
-            array(
-                'width' => 70
-            )
-        ),
-        'zebra' => true,
-        //'border' => array('table', 'rows')
-    ));
-
-    $content = rcl_get_include_template('template-documents.php', __FILE__);
+    $profile_args = rcl_tab_template_content();
+    $content = rcl_get_include_template('template-documents.php', __FILE__, $profile_args);
     return $content;
 }
 /******************************/
