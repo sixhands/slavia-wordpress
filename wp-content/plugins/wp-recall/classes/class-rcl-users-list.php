@@ -45,7 +45,6 @@ class Rcl_Users_List extends Rcl_Users_Query {
 
 			add_filter( 'rcl_users_query', array( $this, 'add_query_search' ) );
 		}
-
 		$this->add_uri['users-filter'] = $this->query['order'];
 
 		add_filter( 'rcl_users', array( $this, 'add_avatar_data' ) );
@@ -181,7 +180,7 @@ class Rcl_Users_List extends Rcl_Users_Query {
 
 	function add_profile_fields( $users ) {
 		global $wpdb;
-
+        $log = new Rcl_Log();
 		$profile_fields = rcl_get_profile_fields();
 
 		$profile_fields = apply_filters( 'rcl_userslist_custom_fields', $profile_fields );
@@ -191,21 +190,20 @@ class Rcl_Users_List extends Rcl_Users_Query {
 
 		$profile_fields = stripslashes_deep( $profile_fields );
 
-		$cf = new Rcl_Custom_Fields();
+		//$cf = new Rcl_Custom_Fields();
 
 		$slugs	 = array();
 		$fields	 = array();
 
 		foreach ( $profile_fields as $custom_field ) {
-			$custom_field = apply_filters( 'rcl_userslist_custom_field', $custom_field );
+			//$custom_field = apply_filters( 'rcl_userslist_custom_field', $custom_field );
 			if ( ! $custom_field )
 				continue;
-			if ( isset( $custom_field['req'] ) && $custom_field['req'] == 1 ) {
+			//if ( isset( $custom_field['req'] ) && $custom_field['req'] == 1 ) {
 				$fields[]	 = $custom_field;
 				$slugs[]	 = $custom_field['slug'];
-			}
+			//}
 		}
-
 		if ( ! $fields )
 			return $users;
 
@@ -243,7 +241,8 @@ class Rcl_Users_List extends Rcl_Users_Query {
 
 		if ( $newmetas )
 			$users = $this->merge_objects( $users, $newmetas, 'profile_fields' );
-
+//        $log->insert_log("new_metas:");
+//        $log->insert_log(print_r($newmetas, true));
 		return $users;
 	}
 

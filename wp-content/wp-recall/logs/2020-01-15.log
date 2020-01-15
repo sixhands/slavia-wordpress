@@ -1,0 +1,99 @@
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-15T09:18:43.077Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-15T09:18:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 15.109683448453
+                            [last_updated] => 2020-01-15T09:18:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-15T09:19:53.002Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-15T09:19:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 15.112937534916
+                            [last_updated] => 2020-01-15T09:19:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-15T09:20:22.554Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-15T09:19:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 15.112937534916
+                            [last_updated] => 2020-01-15T09:19:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+

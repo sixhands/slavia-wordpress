@@ -14,7 +14,7 @@ class Rcl_Users_Query extends Rcl_Query{
                 'user_email',
                 'user_registered',
                 'display_name',
-                'user_nicename'
+                'user_nicename',
             )
         );
         

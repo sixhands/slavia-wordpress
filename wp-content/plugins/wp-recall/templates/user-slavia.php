@@ -1,5 +1,5 @@
 <?php global $rcl_user,$rcl_users_set; ?>
-<?php var_dump($rcl_users_set); ?>
+<?php //var_dump($rcl_users_set); ?>
 <div class="table-text w-100 user-single" data-user-id="<?php echo $rcl_user->ID; ?>">
     <div class="row">
         <div class="col-lg-1 text-center">
@@ -12,7 +12,7 @@
             <?php rcl_user_client_num(); ?>
         </div>
         <div class="col-3 text-left">
-            03.02.2015
+            <?php echo $rcl_user->user_registered; ?>
         </div>
         <div class="col-2 text-left">
             0

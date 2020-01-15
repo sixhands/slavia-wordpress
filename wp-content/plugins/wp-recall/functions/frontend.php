@@ -5,7 +5,6 @@ function rcl_apply_filters_area_tabs() {
 	$content = '<div id="lk-content" class="rcl-content col-lg-10 col-md-12">';
 	$content .= apply_filters( 'rcl_content_area_tabs', '' );
 	$content .= '</div>';
-
 	echo $content;
 }
 
@@ -26,9 +25,8 @@ function rcl_apply_filters_area_menu() {
     <div class="coop_maps question-bg col-lg-12 col-md-4">
             <div class="row ">
                 <div class="col-12 text-center" >
-                    <h1 class="coin-num ">
-    0.897600
-                    </h1>
+                    <h1 class="coin-num ">' . rcl_slavia_get_prizm_price() .
+                    '</h1>
                     <h1 class="coin-num-name ">
     prizm
                     </h1>
@@ -75,8 +73,12 @@ function rcl_user_name() {
 
 function rcl_user_client_num() {
     global $rcl_user;
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$rcl_user->ID));
-    var_dump($profileFields);
+    foreach ($rcl_user->profile_fields as $field)
+        if ($field['slug'] == 'client_num') {
+            echo $field['value'];
+            return;
+        }
+    //var_dump($rcl_user->profile_fields);
 }
 
 function rcl_user_url() {
@@ -298,8 +300,8 @@ function rcl_username() {
 function rcl_notice() {
 	$notify	 = '';
 	$notify	 = apply_filters( 'notify_lk', $notify );
-	if ( $notify )
-	    echo '<script type="text/javascript">alert(\''. $notify .'\');</script>';
+//	if ( $notify )
+//	    echo '<script type="text/javascript">alert(\''. $notify .'\');</script>';
 		//echo '<div class="notify-lk">' . $notify . '</div>';
 }
 

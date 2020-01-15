@@ -38,7 +38,6 @@ function rcl_check_profile_form(){
 jQuery(document).ready(function(){
     jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #user_ref_link, #client_num," +
         " #prizm_address, #prizm_public_key, #waves_address").blur(function() {
-            console.log(jQuery(this).parents("form"));
         jQuery(this).parents("form").submit();
     });
 });

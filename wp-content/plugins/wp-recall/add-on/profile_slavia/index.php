@@ -72,6 +72,7 @@ function change_default_profile_fields($fields){
 }
 //Фильтр ВСЕХ полей лк
 add_filter('rcl_profile_fields', 'add_profile_fields', 10);
+//add_filter('rcl_public_form_fields', 'add_profile_fields', 10);
 function add_profile_fields($fields){
 
     $fields[] = array(
@@ -744,4 +745,39 @@ function rcl_delete_user_account(){
     }else{
         wp_die(__('Account deletion failed! Go back and try again.','wp-recall'));
     }
+}
+
+function rcl_slavia_get_prizm_price() {
+
+    $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';
+    $parameters = [
+        'symbol' => 'PZM',
+        'amount' => '1',
+        'convert' => 'RUB'
+    ];
+
+    $headers = [
+        'Accepts: application/json',
+        'X-CMC_PRO_API_KEY: 8225d03d-6029-4dad-8c1f-ca029644b3da'
+    ];
+    $qs = http_build_query($parameters); // query string encode the parameters
+    $request = "{$url}?{$qs}"; // create the request URL
+
+
+    $curl = curl_init(); // Get cURL resource
+// Set cURL options
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $request,            // set the request URL
+        CURLOPT_HTTPHEADER => $headers,     // set the headers
+        CURLOPT_RETURNTRANSFER => 1         // ask for raw response instead of bool
+    ));
+
+    $response = curl_exec($curl); // Send the request, save the response
+    curl_close($curl); // Close request
+
+    $rub_price = json_decode($response);
+    $rounded_price = round($rub_price->data->quote->RUB->price, 2);
+    $log = new Rcl_Log();
+    $log->insert_log(print_r(json_decode($response), true));
+    return $rounded_price . " RUB"; // print json decoded response
 }
