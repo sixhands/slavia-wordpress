@@ -36,10 +36,48 @@ function rcl_check_profile_form(){
 }
 
 jQuery(document).ready(function(){
+    //submit формы по потере фокуса в профиле
     jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #user_ref_link, #client_num," +
         " #prizm_address, #prizm_public_key, #waves_address").blur(function() {
         jQuery(this).parents("form").submit();
     });
+    var bank_inputs = jQuery("#settings_form").find("input");
+    //submit формы по потере фокуса в настройках
+    bank_inputs.blur(function() {
+        // jQuery('#settings_form input[type=hidden]').each(function(el){
+        //     jQuery(this).val(jQuery(this).siblings("span").text());
+        // })
+        jQuery(this).parents("#settings_form").submit();
+    });
+
+    //Добавить новый банк
+    jQuery("#subtab-settings .coop_maps.question-bg .btn-custom-one").click(function(){
+        var banks = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children(".row").children();
+        let new_row_style;
+        if (banks.length % 3 === 0)
+            new_row_style = "text-align: left";
+        else
+            new_row_style = "";
+
+        jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children(".row")
+            .append("<div class='col-lg-4 input-exchange input-custom-rubl' style='" + new_row_style + "'>" +
+                        "<div class='row '>" +
+                            //"<span class='select-exchange'>Название банка " + (banks.length + 1) + "</span>" +
+                            //"<input type='hidden' name='bank" + (banks.length + 1) + "[name]' value=''>" +
+                            "<div class='select-exchange w-100'>" +
+                "<input value='Название банка " + (banks.length + 1) + "' type='text' name='bank" + (banks.length + 1) + "[name]' style='background: #fff'>" +
+                                "<input value='0.25' type='text' name='bank" + (banks.length + 1) + "[value]'>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>");
+        jQuery("#settings_form .input-exchange:last-child input").blur(function() {
+            // jQuery('#settings_form input[type=hidden]').each(function(el){
+            //     jQuery(this).val(jQuery(this).siblings("span").text());
+            // })
+            jQuery(this).parents("#settings_form").submit();
+        });
+    });
+
 });
 
 // function rcl_update_field(e)

@@ -725,11 +725,14 @@ a:hover
 .people-ul li
 {
 	display: inline-block;
-	font: Medium 15px/19px Montserrat;
+	font: Bold 15px/19px Montserrat;
 	letter-spacing: 0;
 	color: #93A5CF;
 	text-transform: uppercase;
-	padding-left: 10px;
+	/*padding-left: 10px;*/
+	padding-left: 0 !important;
+	width: 32px;
+	height: 32px;
 	padding-top: 7px;
 }
 .people-ul li[status="active"]

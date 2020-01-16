@@ -78,7 +78,15 @@ function rcl_user_client_num() {
             echo $field['value'];
             return;
         }
-    //var_dump($rcl_user->profile_fields);
+}
+
+function rcl_user_is_verified() {
+    global $rcl_user;
+    foreach ($rcl_user->profile_fields as $field)
+        if ($field['slug'] == 'is_verified') {
+            echo $field['value'];
+            return;
+        }
 }
 
 function rcl_user_url() {

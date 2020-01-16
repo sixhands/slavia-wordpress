@@ -187,9 +187,9 @@ class Rcl_PageNavi{
             $class = $class.' rcl-ajax-navi';
         }
 
-        $content = '<div class="'.$class.'">';
+        $content = '<div class="'.$class. ' w-100 text-center' .'">';
         
-            $content .= '<div class="rcl-page-navi">';
+            $content .= '<ul class="people-ul rcl-page-navi">';//'<div class="rcl-page-navi">';
 
             foreach($query['output'] as $item){
                 foreach($item as $type=>$data){
@@ -224,11 +224,15 @@ class Rcl_PageNavi{
                     }else{
                         $html = '<span>'.$data.'</span>';
                     }
-                    $content .= '<span class="pager-item type-'.$type.'">'.$html.'</span>';
+                    if ($type == 'current')
+                        $active_status = ' status="active"';
+                    else
+                        $active_status = '';
+                    $content .= '<li class="pager-item type-'.$type.'"' . $active_status . '>'.$html.'</li>';
                 }
             }
 
-            $content .= '</div>';
+            $content .= '</ul>';
         
         $content .= '</div>';
         

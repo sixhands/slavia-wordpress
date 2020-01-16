@@ -536,24 +536,42 @@ function rcl_tab_settings(){
 }
 function rcl_tab_settings_content($master_id)
 {
-    global $userdata, $user_ID;
+//    global $userdata, $user_ID;
+//
+//    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+//
+//    $Table = new Rcl_Table(array(
+//        'cols' => array(
+//            array(
+//                'width' => 30
+//            ),
+//            array(
+//                'width' => 70
+//            )
+//        ),
+//        'zebra' => true,
+//        //'border' => array('table', 'rows')
+//    ));
+    $profile_args = rcl_tab_template_content();
 
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+    $bank_options = rcl_get_option('banks');
 
-    $Table = new Rcl_Table(array(
-        'cols' => array(
-            array(
-                'width' => 30
-            ),
-            array(
-                'width' => 70
-            )
-        ),
-        'zebra' => true,
-        //'border' => array('table', 'rows')
-    ));
+    $bank_content = '';
+    if ($bank_options && !empty($bank_options))
+    {
+        foreach ($bank_options as $bank)
+        {
+            $bank_content .= '<div class="col-lg-4 input-exchange input-custom-procent">'.
+                                '<div class="row">'.
+                                    '<span>' . 'Название банка 1' . '</span>'.
+                                    '<input value="0.5" type="text" name="bank_1">'.
+                                '</div>'.
+                            '</div>';
+        }
+        //$profile_args += array("banks" => $bank_options);
+    }
 
-    $content = rcl_get_include_template('template-settings.php', __FILE__);
+    $content = rcl_get_include_template('template-settings.php', __FILE__, $profile_args);
     return $content;
 }
 /******************************/
@@ -614,6 +632,15 @@ function rcl_update_profile_notice(){
         rcl_notice_text(__('Your profile has been updated','wp-recall'),'success');
 }
 
+if (!function_exists('array_key_first')) {
+    function array_key_first(array $arr) {
+        foreach($arr as $key => $unused) {
+            return $key;
+        }
+        return NULL;
+    }
+}
+
 //Обновляем профиль пользователя
 add_action('wp', 'rcl_edit_profile', 10);
 function rcl_edit_profile(){
@@ -625,28 +652,46 @@ function rcl_edit_profile(){
 //        rcl_update_profile_fields($user_ID);
     if (isset($_POST) && count($_POST) > 0)
     {
-        $profileFields = rcl_get_profile_fields(array('user_id'=>$user_ID));
-        $post_first_key = current(array_keys($_POST));
-        $field_found = false;
-        foreach($profileFields as $field)
+        //var_dump($_POST);
+        //Если добавление банков
+        if (strpos(array_key_first($_POST), 'bank') !== false )
         {
-            if ($post_first_key == $field['slug']) {
-                rcl_update_profile_fields($user_ID, array($field));
-                $field_found = true;
-                break;
-            }
+            //$bank_options = rcl_get_option('banks');
+//            if ($bank_options && !empty($bank_options))
+//            {
+//                var_dump($bank_options);
+//            }
+            rcl_update_option('banks', $_POST);
+
+            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
+
+            wp_redirect($redirect_url);
+
+            exit;
         }
-        if (!$field_found)
-            return false;
+        else {
+            $profileFields = rcl_get_profile_fields(array('user_id' => $user_ID));
+            $post_first_key = current(array_keys($_POST));
+            $field_found = false;
+            foreach ($profileFields as $field) {
+                if ($post_first_key == $field['slug']) {
+                    rcl_update_profile_fields($user_ID, array($field));
+                    $field_found = true;
+                    break;
+                }
+            }
+            if (!$field_found)
+                return false;
+        }
     }
     else
         return false;
 
-    do_action( 'personal_options_update', $user_ID );
+    do_action('personal_options_update', $user_ID);
 
-    $redirect_url = rcl_get_tab_permalink($user_ID,'profile').'&updated=true';
+    $redirect_url = rcl_get_tab_permalink($user_ID, 'profile') . '&updated=true';
 
-    wp_redirect( $redirect_url );
+    wp_redirect($redirect_url);
 
     exit;
 }

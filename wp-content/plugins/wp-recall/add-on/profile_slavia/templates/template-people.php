@@ -225,15 +225,15 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
-                <div class="w-100 text-center">
-                    <ul class="people-ul">
-                        <li status="active">1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>...</li>
-                        <li>50</li>
-                    </ul>
-                </div>
+<!--                <div class="w-100 text-center">-->
+<!--                    <ul class="people-ul">-->
+<!--                        <li status="active">1</li>-->
+<!--                        <li>2</li>-->
+<!--                        <li>3</li>-->
+<!--                        <li>...</li>-->
+<!--                        <li>50</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

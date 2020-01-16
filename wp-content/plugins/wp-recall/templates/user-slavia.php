@@ -3,7 +3,12 @@
 <div class="table-text w-100 user-single" data-user-id="<?php echo $rcl_user->ID; ?>">
     <div class="row">
         <div class="col-lg-1 text-center">
-            <img src="/wp-content/uploads/2019/12/verification_ok.png">
+            <?php $is_verified = rcl_user_is_verified();
+                  if ($is_verified): ?>
+                    <img src="/wp-content/uploads/2019/12/verification_ok.png">
+                  <?php else: ?>
+                    <img src="/wp-content/uploads/2019/12/verification_bad.png">
+                  <?php endif; ?>
         </div>
         <div class="col-3 text-left">
             <?php rcl_user_name(); ?>
