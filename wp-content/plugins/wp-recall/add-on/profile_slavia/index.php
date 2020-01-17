@@ -166,6 +166,7 @@ function add_user_documents($fields)
 //if (isset($_POST)) var_dump($_POST);
 
 add_action('init','rcl_tab_profile');
+add_action('init','rcl_tab_exchange');
 add_action('init','rcl_tab_operations');
 add_action('init','rcl_tab_documents');
 add_action('init','rcl_tab_people');
@@ -176,18 +177,7 @@ function rcl_tab_template_content()
 {
     global $userdata, $user_ID;
     $profileFields = rcl_get_profile_fields(array('user_id'=>$user_ID));
-//    $Table = new Rcl_Table(array(
-//        'cols' => array(
-//            array(
-//                'width' => 30
-//            ),
-//            array(
-//                'width' => 70
-//            )
-//        ),
-//        'zebra' => true,
-    //'border' => array('table', 'rows')
-    //));
+
     $CF = new Rcl_Custom_Fields();
 
     $profileFields = stripslashes_deep($profileFields);
@@ -273,6 +263,107 @@ function rcl_tab_profile_content($master_id)
 {
     $profile_args = rcl_tab_template_content();
     $content = rcl_get_include_template('template-profile.php', __FILE__, $profile_args);
+
+//    $content = '<h3>'.__('User profile','wp-recall').' '.$userdata->display_name.'</h3>
+//    <form name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">';
+//
+//    $CF = new Rcl_Custom_Fields();
+//
+//    $profileFields = stripslashes_deep($profileFields);
+//
+//    $hiddens = array();
+//    foreach($profileFields as $field){
+//
+//        $field = apply_filters('custom_field_profile',$field);
+//
+//        $slug = isset($field['name'])? $field['name']: $field['slug'];
+//
+//        if(!$field || !$slug) continue;
+//
+//        if($field['type'] == 'hidden'){
+//            $hiddens[] = $field; continue;
+//        }
+//
+//        $value = (isset($userdata->$slug))? $userdata->$slug: false;
+//
+//        if($slug == 'email')
+//            $value = get_the_author_meta('email',$user_ID);
+//
+//        if($field['slug'] != 'show_admin_bar_front' && !isset($field['value_in_key']) )
+//            $field['value_in_key'] = true;
+//
+//        $star = (isset($field['required'])&&$field['required']==1)? ' <span class="required">*</span> ': '';
+//
+//        $label = sprintf('<label>%s%s:</label>',$CF->get_title($field),$star);
+//
+//        $content.=$label;
+//        //$Table->add_row(array($label, $CF->get_input($field, $value)), array('id'=>array('profile-field-'.$slug)));
+//        $content.=$CF->get_input($field, $value);
+//
+//    }
+//
+//    //$content .= $Table->get_table();
+//
+//    foreach($hiddens as $field){
+//        $content .= $CF->get_input($field, $value = (isset($userdata->$slug))? $userdata->$slug: false);
+//    }
+//
+//    $content .= "<script>
+//                jQuery(function(){
+//                    jQuery('#your-profile').find('.required-checkbox').each(function(){
+//                        var name = jQuery(this).attr('name');
+//                        var chekval = jQuery('#your-profile input[name=\"'+name+'\"]:checked').val();
+//                        if(chekval) jQuery('#your-profile input[name=\"'+name+'\"]').attr('required',false);
+//                        else jQuery('#your-profile input[name=\"'+name+'\"]').attr('required',true);
+//                    });"
+//                . "});"
+//            . "</script>";
+//
+//    $content = apply_filters('profile_options_rcl',$content,$userdata);
+//
+//    $content .= wp_nonce_field( 'update-profile_' . $user_ID,'_wpnonce',true,false ).'
+//        <div style="text-align:right;">'
+//            . '<input type="submit" id="cpsubmit" class="recall-button" value="'.__('Update profile','wp-recall').'" onclick="return rcl_check_profile_form();" name="submit_user_profile" />
+//        </div>
+//    </form>';
+//
+//    if(rcl_get_option('delete_user_account')){
+//        $content .= '
+//        <form method="post" action="" name="delete_account" onsubmit="return confirm(\''.__('Are you sure? It can’t be restaured!','wp-recall').'\');">
+//        '.wp_nonce_field('delete-user-'.$user_ID,'_wpnonce',true,false).'
+//        <input type="submit" id="delete_acc" class="recall-button"  value="'.__('Delete your profile','wp-recall').'" name="rcl_delete_user_account"/>
+//        </form>';
+    //}
+
+    return $content;
+}
+/**********************/
+
+//PROFILE TAB
+function rcl_tab_exchange(){
+
+    rcl_tab(
+        array(
+            'id'=>'exchange',
+            'name'=>'Обмен паями',
+            'supports'=>array('ajax'),
+            'public'=>0,
+            'icon'=>'/wp-content/uploads/2020/01/exchange_dis.png',
+            'content'=>array(
+                array(
+                    'callback' => array(
+                        'name'=>'rcl_tab_exchange_content'
+                    )
+                )
+            )
+        )
+    );
+
+}
+function rcl_tab_exchange_content($master_id)
+{
+    $profile_args = rcl_tab_template_content();
+    $content = rcl_get_include_template('template-exchange.php', __FILE__, $profile_args);
 
 //    $content = '<h3>'.__('User profile','wp-recall').' '.$userdata->display_name.'</h3>
 //    <form name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">';
@@ -557,18 +648,37 @@ function rcl_tab_settings_content($master_id)
     $bank_options = rcl_get_option('banks');
 
     $bank_content = '';
-    if ($bank_options && !empty($bank_options))
+    if (isset($bank_options) && !empty($bank_options))
     {
+        $i = 0;
         foreach ($bank_options as $bank)
         {
+            $i++;
             $bank_content .= '<div class="col-lg-4 input-exchange input-custom-procent">'.
                                 '<div class="row">'.
-                                    '<span>' . 'Название банка 1' . '</span>'.
-                                    '<input value="0.5" type="text" name="bank_1">'.
+                                    '<a class="settings_close">&times;</a>'.
+                                    '<div class="select-exchange w-100">' .
+                                        '<input value="' . $bank['name'] . '" type="text" name="bank' . $i . '[name]" style="background: #fff">'.
+                                        '<input value="' . $bank['value'] . '" type="text" name="bank' . $i . '[value]">'.
+                                    '</div>'.
                                 '</div>'.
                             '</div>';
         }
-        //$profile_args += array("banks" => $bank_options);
+        $profile_args += array("banks" => $bank_content);
+    }
+
+    $ref_amount = rcl_get_option('ref_amount');
+    $ref_content = '';
+
+    if (isset($ref_amount) && !empty($ref_amount))
+    {
+        $ref_content .= '<div class="col-lg-4 input-exchange input-custom-procent">' .
+                        '<div class="row">' .
+                            '<span>За каждого реферала</span>' .
+                            '<input value="' . $ref_amount . '" type="text" name="ref_amount">' .
+                        '</div>' .
+                    '</div>';
+        $profile_args += array('ref_amount' => $ref_content);
     }
 
     $content = rcl_get_include_template('template-settings.php', __FILE__, $profile_args);
@@ -652,16 +762,38 @@ function rcl_edit_profile(){
 //        rcl_update_profile_fields($user_ID);
     if (isset($_POST) && count($_POST) > 0)
     {
-        //var_dump($_POST);
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
         {
-            //$bank_options = rcl_get_option('banks');
-//            if ($bank_options && !empty($bank_options))
-//            {
-//                var_dump($bank_options);
-//            }
-            rcl_update_option('banks', $_POST);
+            $new_banks = array();
+            foreach ($_POST as $key => $value)
+            {
+                if (strpos($key, 'submit_settings_banks') !== false)
+                    continue;
+                else
+                {
+                    $new_banks += array($key => $value);
+                }
+            }
+            rcl_update_option('banks', $new_banks);
+
+            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
+
+            wp_redirect($redirect_url);
+
+            exit;
+        }
+        elseif (strpos(array_key_first($_POST), 'ref_amount') !== false)
+        {
+            $ref_amount = 0;
+            foreach ($_POST as $key => $value)
+            {
+                if (strpos($key, 'ref_amount') !== false)
+                    $ref_amount = $value;
+                else
+                    continue;
+            }
+            rcl_update_option('ref_amount', $ref_amount);
 
             $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
 
@@ -792,6 +924,7 @@ function rcl_delete_user_account(){
     }
 }
 
+//Подгрузка курса prizm
 function rcl_slavia_get_prizm_price() {
 
     $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';

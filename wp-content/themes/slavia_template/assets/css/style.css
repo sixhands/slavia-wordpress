@@ -11,6 +11,15 @@ body
 	padding: 0;
 }
 
+a.settings_close {
+	position: relative;
+	left: 85%;
+	font-size: 30px;
+	display: none;
+	color: red !important;
+	cursor: pointer;
+}
+
 a:focus
 {
 	text-decoration: none;

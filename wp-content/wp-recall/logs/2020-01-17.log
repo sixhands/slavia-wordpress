@@ -2,1459 +2,7 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T06:08:47.480Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:08:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.113023770763
-                            [last_updated] => 2020-01-16T06:08:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:28:23.300Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 32
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:27:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.300679761068
-                            [last_updated] => 2020-01-16T06:27:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:28:59.524Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:28:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.287349710463
-                            [last_updated] => 2020-01-16T06:28:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:29:42.100Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:29:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.272620282641
-                            [last_updated] => 2020-01-16T06:29:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:31:51.674Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 17
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:31:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.308017619823
-                            [last_updated] => 2020-01-16T06:31:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:31:57.580Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 13
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:31:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.308017619823
-                            [last_updated] => 2020-01-16T06:31:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:32:30.557Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:31:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.308017619823
-                            [last_updated] => 2020-01-16T06:31:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:33:37.261Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:33:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.298354186978
-                            [last_updated] => 2020-01-16T06:33:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:33:57.107Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:33:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.298354186978
-                            [last_updated] => 2020-01-16T06:33:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:34:08.040Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:33:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.298354186978
-                            [last_updated] => 2020-01-16T06:33:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:34:12.990Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:33:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.298354186978
-                            [last_updated] => 2020-01-16T06:33:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:34:23.081Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:33:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.298354186978
-                            [last_updated] => 2020-01-16T06:33:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:35:01.881Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 17
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:34:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.284951314351
-                            [last_updated] => 2020-01-16T06:34:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:35:10.482Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:34:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.284951314351
-                            [last_updated] => 2020-01-16T06:34:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:35:13.845Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:34:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.284951314351
-                            [last_updated] => 2020-01-16T06:34:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:35:23.051Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:34:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.284951314351
-                            [last_updated] => 2020-01-16T06:34:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:36:55.435Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 9
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:36:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.499245244716
-                            [last_updated] => 2020-01-16T06:36:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:39:04.407Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:38:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.428831795134
-                            [last_updated] => 2020-01-16T06:38:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:39:06.645Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:38:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.428831795134
-                            [last_updated] => 2020-01-16T06:38:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:39:10.779Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:38:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.428831795134
-                            [last_updated] => 2020-01-16T06:38:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:39:12.317Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 6
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:38:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.428831795134
-                            [last_updated] => 2020-01-16T06:38:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:40:52.381Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:40:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.316292850696
-                            [last_updated] => 2020-01-16T06:40:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:42:21.068Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 9
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:41:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.318335924702
-                            [last_updated] => 2020-01-16T06:41:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:42:28.152Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 9
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:41:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.318335924702
-                            [last_updated] => 2020-01-16T06:41:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:49:32.366Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:49:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.374977239228
-                            [last_updated] => 2020-01-16T06:49:04.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:56:45.895Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:56:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.392936703413
-                            [last_updated] => 2020-01-16T06:56:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:58:09.922Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:57:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.417569609802
-                            [last_updated] => 2020-01-16T06:57:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:58:16.707Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 10
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:57:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.417569609802
-                            [last_updated] => 2020-01-16T06:57:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T06:59:02.863Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 13
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:58:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.461199924461
-                            [last_updated] => 2020-01-16T06:58:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:00:18.363Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T06:59:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.463951997216
-                            [last_updated] => 2020-01-16T06:59:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:02:22.414Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:01:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.387849511571
-                            [last_updated] => 2020-01-16T07:01:04.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:02:44.549Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 16
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:02:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.397329074312
-                            [last_updated] => 2020-01-16T07:02:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:02:52.309Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 13
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:02:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.397329074312
-                            [last_updated] => 2020-01-16T07:02:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:05:05.834Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:04:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.412865539953
-                            [last_updated] => 2020-01-16T07:04:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:07:44.445Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 13
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:07:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.387859574493
-                            [last_updated] => 2020-01-16T07:07:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:08:02.570Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 17
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:07:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.387859574493
-                            [last_updated] => 2020-01-16T07:07:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:09:20.170Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:08:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.379756169637
-                            [last_updated] => 2020-01-16T07:08:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:11:49.261Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:11:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.364285765317
-                            [last_updated] => 2020-01-16T07:11:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:12:01.960Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:11:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.364285765317
-                            [last_updated] => 2020-01-16T07:11:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:12:15.727Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 10
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:11:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.364285765317
-                            [last_updated] => 2020-01-16T07:11:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:12:29.065Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:11:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.364285765317
-                            [last_updated] => 2020-01-16T07:11:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:15:30.496Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:14:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.346973274509
-                            [last_updated] => 2020-01-16T07:14:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:17:35.697Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 13
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:17:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.345818550827
-                            [last_updated] => 2020-01-16T07:17:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:22:28.025Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:21:02.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.341528581462
-                            [last_updated] => 2020-01-16T07:21:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T07:27:28.119Z
+            [timestamp] => 2020-01-17T05:56:10.924Z
             [error_code] => 0
             [error_message] => 
             [elapsed] => 7
@@ -1468,13 +16,13 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T07:26:03.000Z
+            [last_updated] => 2020-01-17T05:55:02.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.3361055687
-                            [last_updated] => 2020-01-16T07:26:02.000Z
+                            [price] => 14.69175442693
+                            [last_updated] => 2020-01-17T05:55:01.000Z
                         )
 
                 )
@@ -1487,370 +35,7 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T07:29:08.578Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T07:28:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.300009139128
-                            [last_updated] => 2020-01-16T07:28:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:02:19.393Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 14
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:01:06.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.425916741228
-                            [last_updated] => 2020-01-16T11:01:03.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:17:40.528Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 15
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:17:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.481392178088
-                            [last_updated] => 2020-01-16T11:17:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:18:32.748Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 16
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:18:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.471343638749
-                            [last_updated] => 2020-01-16T11:18:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:23:29.949Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 22
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:22:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.464517531365
-                            [last_updated] => 2020-01-16T11:22:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:25:54.770Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:25:04.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.386930828552
-                            [last_updated] => 2020-01-16T11:25:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:27:06.011Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 7
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:26:03.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.277726626792
-                            [last_updated] => 2020-01-16T11:26:01.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:32:59.916Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 12
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:32:05.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.112690541841
-                            [last_updated] => 2020-01-16T11:32:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:33:20.158Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 16
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:32:05.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.112690541841
-                            [last_updated] => 2020-01-16T11:32:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:35:48.670Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 16
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:35:05.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.174501141818
-                            [last_updated] => 2020-01-16T11:35:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:36:15.330Z
-            [error_code] => 0
-            [error_message] => 
-            [elapsed] => 17
-            [credit_count] => 1
-            [notice] => 
-        )
-
-    [data] => stdClass Object
-        (
-            [id] => 1681
-            [symbol] => PZM
-            [name] => PRIZM
-            [amount] => 1
-            [last_updated] => 2020-01-16T11:35:05.000Z
-            [quote] => stdClass Object
-                (
-                    [RUB] => stdClass Object
-                        (
-                            [price] => 15.174501141818
-                            [last_updated] => 2020-01-16T11:35:02.000Z
-                        )
-
-                )
-
-        )
-
-)
-
-stdClass Object
-(
-    [status] => stdClass Object
-        (
-            [timestamp] => 2020-01-16T11:36:29.594Z
+            [timestamp] => 2020-01-17T05:56:31.932Z
             [error_code] => 0
             [error_message] => 
             [elapsed] => 13
@@ -1864,13 +49,13 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T11:35:05.000Z
+            [last_updated] => 2020-01-17T05:56:03.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.174501141818
-                            [last_updated] => 2020-01-16T11:35:02.000Z
+                            [price] => 14.633284623783
+                            [last_updated] => 2020-01-17T05:56:01.000Z
                         )
 
                 )
@@ -1883,10 +68,10 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T11:42:57.191Z
+            [timestamp] => 2020-01-17T05:59:59.907Z
             [error_code] => 0
             [error_message] => 
-            [elapsed] => 16
+            [elapsed] => 8
             [credit_count] => 1
             [notice] => 
         )
@@ -1897,13 +82,13 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T11:42:03.000Z
+            [last_updated] => 2020-01-17T05:59:04.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.260074411103
-                            [last_updated] => 2020-01-16T11:42:01.000Z
+                            [price] => 14.661872263437
+                            [last_updated] => 2020-01-17T05:59:01.000Z
                         )
 
                 )
@@ -1916,10 +101,10 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T11:44:17.280Z
+            [timestamp] => 2020-01-17T06:02:31.595Z
             [error_code] => 0
             [error_message] => 
-            [elapsed] => 13
+            [elapsed] => 9
             [credit_count] => 1
             [notice] => 
         )
@@ -1930,13 +115,13 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T11:43:04.000Z
+            [last_updated] => 2020-01-17T06:02:03.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.304012189817
-                            [last_updated] => 2020-01-16T11:43:02.000Z
+                            [price] => 14.696517691777
+                            [last_updated] => 2020-01-17T06:02:04.000Z
                         )
 
                 )
@@ -1949,7 +134,7 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T11:51:28.750Z
+            [timestamp] => 2020-01-17T06:03:12.314Z
             [error_code] => 0
             [error_message] => 
             [elapsed] => 11
@@ -1963,13 +148,13 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T11:50:02.000Z
+            [last_updated] => 2020-01-17T06:02:03.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.208866613161
-                            [last_updated] => 2020-01-16T11:50:01.000Z
+                            [price] => 14.696517691777
+                            [last_updated] => 2020-01-17T06:02:04.000Z
                         )
 
                 )
@@ -1982,7 +167,73 @@ stdClass Object
 (
     [status] => stdClass Object
         (
-            [timestamp] => 2020-01-16T11:51:54.511Z
+            [timestamp] => 2020-01-17T06:11:53.604Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:11:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.64133870019
+                            [last_updated] => 2020-01-17T06:11:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:14:07.377Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:13:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.654194818618
+                            [last_updated] => 2020-01-17T06:13:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:15:13.742Z
             [error_code] => 0
             [error_message] => 
             [elapsed] => 13
@@ -1996,13 +247,2323 @@ stdClass Object
             [symbol] => PZM
             [name] => PRIZM
             [amount] => 1
-            [last_updated] => 2020-01-16T11:51:04.000Z
+            [last_updated] => 2020-01-17T06:14:02.000Z
             [quote] => stdClass Object
                 (
                     [RUB] => stdClass Object
                         (
-                            [price] => 15.219345672171
-                            [last_updated] => 2020-01-16T11:51:01.000Z
+                            [price] => 14.654802285213
+                            [last_updated] => 2020-01-17T06:14:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:15:31.007Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:15:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.703255754593
+                            [last_updated] => 2020-01-17T06:15:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:16:09.043Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:15:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.703255754593
+                            [last_updated] => 2020-01-17T06:15:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:17:42.495Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.644861444611
+                            [last_updated] => 2020-01-17T06:17:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:18:30.634Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.644861444611
+                            [last_updated] => 2020-01-17T06:17:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:24:52.659Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:24:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.718239315614
+                            [last_updated] => 2020-01-17T06:24:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:25:07.217Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:24:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.718239315614
+                            [last_updated] => 2020-01-17T06:24:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:27:35.518Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:27:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.747649866415
+                            [last_updated] => 2020-01-17T06:27:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:27:40.850Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 8
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:27:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.747649866415
+                            [last_updated] => 2020-01-17T06:27:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:28:46.940Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 37
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:28:05.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.756526508687
+                            [last_updated] => 2020-01-17T06:28:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:29:27.667Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:28:05.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.756526508687
+                            [last_updated] => 2020-01-17T06:28:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:29:41.672Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:29:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.792119513561
+                            [last_updated] => 2020-01-17T06:29:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:30:38.887Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 17
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:30:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.701439618447
+                            [last_updated] => 2020-01-17T06:30:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:31:26.727Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:30:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.701439618447
+                            [last_updated] => 2020-01-17T06:30:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:31:53.979Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 16
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:31:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.706490796815
+                            [last_updated] => 2020-01-17T06:31:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:31:59.447Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 9
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:31:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.706490796815
+                            [last_updated] => 2020-01-17T06:31:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:32:07.025Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:31:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.706490796815
+                            [last_updated] => 2020-01-17T06:31:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:44:24.965Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:43:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.65518047981
+                            [last_updated] => 2020-01-17T06:43:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:44:30.537Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 15
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:43:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.65518047981
+                            [last_updated] => 2020-01-17T06:43:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:45:05.423Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:44:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.635455619292
+                            [last_updated] => 2020-01-17T06:44:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:47:29.164Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:46:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.668825031373
+                            [last_updated] => 2020-01-17T06:46:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:50:20.198Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:49:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.616718810674
+                            [last_updated] => 2020-01-17T06:49:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T06:51:11.665Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T06:50:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.620608808257
+                            [last_updated] => 2020-01-17T06:50:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:11:07.342Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:10:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.529032223645
+                            [last_updated] => 2020-01-17T07:10:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:11:21.909Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:10:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.529032223645
+                            [last_updated] => 2020-01-17T07:10:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:12:38.849Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:12:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.514897647169
+                            [last_updated] => 2020-01-17T07:12:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:17:59.144Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.562405109957
+                            [last_updated] => 2020-01-17T07:17:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:18:09.272Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.562405109957
+                            [last_updated] => 2020-01-17T07:17:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:24:27.134Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:23:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.618405482231
+                            [last_updated] => 2020-01-17T07:23:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:26:55.380Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:26:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.558365130499
+                            [last_updated] => 2020-01-17T07:26:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:28:37.408Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:28:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.563723051176
+                            [last_updated] => 2020-01-17T07:28:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:30:31.287Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 8
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:30:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.554023394071
+                            [last_updated] => 2020-01-17T07:30:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:31:05.799Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:30:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.554023394071
+                            [last_updated] => 2020-01-17T07:30:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:31:14.107Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:30:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.554023394071
+                            [last_updated] => 2020-01-17T07:30:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:33:45.833Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:33:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.53963945373
+                            [last_updated] => 2020-01-17T07:33:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:34:31.819Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:34:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.531168860699
+                            [last_updated] => 2020-01-17T07:34:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:35:24.372Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 31
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:34:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.531168860699
+                            [last_updated] => 2020-01-17T07:34:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:35:35.923Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 9
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:35:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.56164669871
+                            [last_updated] => 2020-01-17T07:35:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:35:44.509Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:35:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.56164669871
+                            [last_updated] => 2020-01-17T07:35:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:37:41.325Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:37:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.594784407948
+                            [last_updated] => 2020-01-17T07:37:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:37:49.798Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:37:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.594784407948
+                            [last_updated] => 2020-01-17T07:37:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:37:55.729Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:37:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.594784407948
+                            [last_updated] => 2020-01-17T07:37:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:38:04.764Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:37:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.594784407948
+                            [last_updated] => 2020-01-17T07:37:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:38:09.064Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:37:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.594784407948
+                            [last_updated] => 2020-01-17T07:37:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:40:39.419Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:40:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.626174151364
+                            [last_updated] => 2020-01-17T07:40:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:42:20.628Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:41:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.604303842175
+                            [last_updated] => 2020-01-17T07:41:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:42:30.798Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 12
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:41:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.604303842175
+                            [last_updated] => 2020-01-17T07:41:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:43:05.205Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:42:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.579622334398
+                            [last_updated] => 2020-01-17T07:42:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:43:37.353Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:43:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.607322901972
+                            [last_updated] => 2020-01-17T07:43:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:43:43.987Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:43:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.607322901972
+                            [last_updated] => 2020-01-17T07:43:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:44:58.162Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:44:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.58300959865
+                            [last_updated] => 2020-01-17T07:44:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:45:04.057Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 23
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:44:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.58300959865
+                            [last_updated] => 2020-01-17T07:44:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:46:29.902Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:45:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.673731505401
+                            [last_updated] => 2020-01-17T07:45:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T07:47:29.637Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T07:46:01.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.609098433959
+                            [last_updated] => 2020-01-17T07:46:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:17:44.542Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 8
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:18:00.882Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:18:04.875Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:18:08.598Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:18:12.250Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 6
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:18:16.864Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 8
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:17:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.642764012017
+                            [last_updated] => 2020-01-17T08:17:04.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:19:55.748Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 6
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:19:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.648367043302
+                            [last_updated] => 2020-01-17T08:19:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:20:50.405Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:20:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.685093340936
+                            [last_updated] => 2020-01-17T08:20:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:21:16.310Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 13
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:20:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.685093340936
+                            [last_updated] => 2020-01-17T08:20:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:26:04.704Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 15
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:25:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.615595441944
+                            [last_updated] => 2020-01-17T08:25:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:26:23.536Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:25:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.615595441944
+                            [last_updated] => 2020-01-17T08:25:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:26:37.935Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 7
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:26:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.648584909782
+                            [last_updated] => 2020-01-17T08:26:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:26:47.384Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 20
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:26:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.648584909782
+                            [last_updated] => 2020-01-17T08:26:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:26:57.949Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:26:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.648584909782
+                            [last_updated] => 2020-01-17T08:26:02.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:31:00.896Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:30:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.66825501445
+                            [last_updated] => 2020-01-17T08:30:03.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:53:25.131Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 15
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:52:05.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.66993389108
+                            [last_updated] => 2020-01-17T08:52:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T08:57:26.755Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 10
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T08:56:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.65393396751
+                            [last_updated] => 2020-01-17T08:56:03.000Z
                         )
 
                 )

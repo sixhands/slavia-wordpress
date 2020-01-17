@@ -5,65 +5,33 @@
 
 
             <div class="col-12">
-                <form class="row" name="settings" id="settings_form" action="" method="post"  enctype="multipart/form-data">
-                    <div class="col-lg-4 input-exchange input-custom-procent">
-                        <div class="row">
-                            <div class="select-exchange w-100">
-                                <input value="Название банка 1" type="text" name="bank1[name]" style="background: #fff">
-    <!--                            <input type="hidden" name="bank1[name]" value="">-->
-                                <input value="0.5" type="text" name="bank1[value]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 input-exchange input-custom-rubl">
-                        <div class="row ">
-<!--                            <span class="select-exchange">Название банка 2</span>-->
-<!--                            <input type="hidden" name="bank2[name]" value="">-->
-                            <div class="select-exchange w-100">
-                                <input value="Название банка 2" type="text" name="bank2[name]" style="background: #fff">
-                                <input value="0.25" type="text" name="bank2[value]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 input-exchange input-custom-rubl">
-                        <div class="row ">
-<!--                            <span class="select-exchange">Название банка 3</span>-->
-<!--                            <input type="hidden" name="bank3[name]" value="">-->
-                            <div class="select-exchange w-100">
-                                <input value="Название банка 3" type="text" name="bank3[name]" style="background: #fff">
-                                <input value="0.25" type="text" name="bank3[value]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 input-exchange input-custom-procent">
-                        <div class="row">
-                            <div class="select-exchange w-100">
-                                <input value="Название банка 4" type="text" name="bank4[name]" style="background: #fff">
-    <!--                            <span>Название банка 4</span>-->
-    <!--                            <input type="hidden" name="bank4[name]" value="">-->
-                                <input value="0.5" type="text" name="bank4[value]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 input-exchange input-custom-rubl">
-                        <div class="row ">
-<!--                            <span class="select-exchange">Название банка 4</span>-->
-<!--                            <input type="hidden" name="bank5[name]" value="">-->
-                            <div class="select-exchange w-100">
-                                <input value="Название банка 5" type="text" name="bank5[name]" style="background: #fff">
-                                <input value="0.25" type="text" name="bank5[value]">
-                            </div>
-                        </div>
-                    </div>
+                <form class="row" name="settings_banks" id="settings_form_banks" action="" method="post"  enctype="multipart/form-data">
+                    <?php if (isset($banks) && !empty($banks)): echo $banks;
+                          else: ?>
 
+                        <div class="col-lg-4 input-exchange input-custom-procent">
+                            <div class="row">
+                                <a class="settings_close">&times;</a>
+                                <div class="select-exchange w-100">
+                                    <input value="Название банка 1" type="text" name="bank1[name]" style="background: #fff">
+                                    <input value="0.5" type="text" name="bank1[value]">
+                                    </div>
+                                </div>
+                        </div>
 
+                    <?php endif; ?>
                 </form>
             </div> <br>
 
-            <div class="col-lg-3 text-center">
+            <div class="col-lg-6 text-center">
                 <div class="row">
-                    <div class="btn-custom-one">
-                        Добавить банк
+                    <div class="col-6">
+                        <div id="add_bank" class="btn-custom-one">
+                            Добавить банк
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input style="width: 100%" form="settings_form_banks" type="submit" class="btn-custom-one" value="Сохранить" name="submit_settings_banks" />
                     </div>
                 </div>
             </div>
@@ -74,17 +42,28 @@
 
 
             <div class="col-12">
-                <div class="row">
+                <form class="row" name="settings_ref" id="settings_form_ref" action="" method="post"  enctype="multipart/form-data">
+
+                    <?php if (isset($ref_amount) && !empty($ref_amount)): echo $ref_amount;
+                          else: ?>
+
                     <div class="col-lg-4 input-exchange input-custom-procent">
                         <div class="row">
                             <span>За каждого реферала</span>
-                            <input value="0.5" type="text" name="">
+                            <input value="0.5" type="text" name="ref_amount">
+                        </div>
+                    </div>
+
+                    <?php endif; ?>
+
+                    <div class="col-lg-3 text-center" style="padding-top: 8%; margin-left: 8%;">
+                        <div class="row">
+                            <input form="settings_form_ref" type="submit" class="btn-custom-one" value="Сохранить" name="submit_settings_ref" />
                         </div>
                     </div>
 
 
-
-                </div>
+                </form>
             </div> <br>
 
 

@@ -42,26 +42,6 @@ jQuery('.question').click(function (){
         }
 
     });
-    //exchange
-    //open and close mobile form exchange
-jQuery('.click_ex').click(function(){
-        var id = this.id;
-        var block = jQuery('#'+id+ ' .tab-ex').css('display');
-        if (block == 'none')
-        {
-            jQuery('#' + id + ' .tab-ex').slideDown("slow");
-            jQuery('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/open.png')
-        }
-        else
-        {
-            jQuery('#' + id + ' .tab-ex').slideUp("slow");
-            jQuery('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/close.png')
-        }
-    });
-
-jQuery('.info-zayavki').click(function(){
-    jQuery('#modal-54506521').trigger('click');
-});
 
 //Скрипты для страницы профиля
 if (top.location.pathname === '/profile/') {
