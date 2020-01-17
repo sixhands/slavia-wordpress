@@ -3793,3 +3793,168 @@ stdClass Object
 
 )
 
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T14:13:22.861Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T14:12:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.498627403914
+                            [last_updated] => 2020-01-17T14:12:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T14:20:04.755Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 14
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T14:19:04.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.686228161953
+                            [last_updated] => 2020-01-17T14:19:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T14:20:44.011Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T14:20:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.695717115761
+                            [last_updated] => 2020-01-17T14:20:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T14:21:09.128Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T14:20:03.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.695717115761
+                            [last_updated] => 2020-01-17T14:20:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+
+stdClass Object
+(
+    [status] => stdClass Object
+        (
+            [timestamp] => 2020-01-17T14:21:43.059Z
+            [error_code] => 0
+            [error_message] => 
+            [elapsed] => 11
+            [credit_count] => 1
+            [notice] => 
+        )
+
+    [data] => stdClass Object
+        (
+            [id] => 1681
+            [symbol] => PZM
+            [name] => PRIZM
+            [amount] => 1
+            [last_updated] => 2020-01-17T14:21:02.000Z
+            [quote] => stdClass Object
+                (
+                    [RUB] => stdClass Object
+                        (
+                            [price] => 14.692700682662
+                            [last_updated] => 2020-01-17T14:21:01.000Z
+                        )
+
+                )
+
+        )
+
+)
+

@@ -25,7 +25,7 @@ function rcl_apply_filters_area_menu() {
     <div class="coop_maps question-bg col-lg-12 col-md-4">
             <div class="row ">
                 <div class="col-12 text-center" >
-                    <h1 class="coin-num ">' . rcl_slavia_get_prizm_price() .
+                    <h1 class="coin-num ">' . rcl_slavia_get_crypto_price('PZM') . " RUB" .
                     '</h1>
                     <h1 class="coin-num-name ">
     prizm

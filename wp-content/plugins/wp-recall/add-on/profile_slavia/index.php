@@ -933,11 +933,11 @@ function rcl_delete_user_account(){
 }
 
 //Подгрузка курса prizm
-function rcl_slavia_get_prizm_price() {
+function rcl_slavia_get_crypto_price($currency = 'PZM') {
 
     $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';
     $parameters = [
-        'symbol' => 'PZM',
+        'symbol' => $currency,
         'amount' => '1',
         'convert' => 'RUB'
     ];
@@ -963,7 +963,7 @@ function rcl_slavia_get_prizm_price() {
 
     $rub_price = json_decode($response);
     $rounded_price = round($rub_price->data->quote->RUB->price, 2);
-    $log = new Rcl_Log();
-    $log->insert_log(print_r(json_decode($response), true));
-    return $rounded_price . " RUB"; // print json decoded response
+//    $log = new Rcl_Log();
+//    $log->insert_log(print_r(json_decode($response), true));
+    return $rounded_price; // print json decoded response
 }
