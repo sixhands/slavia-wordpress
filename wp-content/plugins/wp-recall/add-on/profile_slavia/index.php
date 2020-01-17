@@ -363,6 +363,14 @@ function rcl_tab_exchange(){
 function rcl_tab_exchange_content($master_id)
 {
     $profile_args = rcl_tab_template_content();
+
+    $bank_options = rcl_get_option('banks');
+
+    if (isset($bank_options) && !empty($bank_options))
+    {
+        $profile_args += array('banks' => $bank_options);
+    }
+
     $content = rcl_get_include_template('template-exchange.php', __FILE__, $profile_args);
 
 //    $content = '<h3>'.__('User profile','wp-recall').' '.$userdata->display_name.'</h3>

@@ -20,8 +20,13 @@
                         <div class="row ">
                             <span class="select-exchange">Выбрать банк</span>
                             <div class="select-exchange w-100">
-                                <select>
-                                    <option>Название выбранного банка</option>
+                                <select id="bank_list_desktop">
+<!--                                    <option>Название выбранного банка</option>-->
+                                    <?php if (isset($banks) && !empty($banks)): ?>
+                                        <?php foreach ($banks as $key => $value): ?>
+                                            <option value="<?=$key?>"><?=$value['name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                         </div>
@@ -181,7 +186,7 @@
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select>
+                                        <select id="bank_list_mobile">
                                             <option>Название выбранного банка</option>
                                         </select>
                                     </div>
@@ -319,3 +324,16 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var vals = new Array(<?php if (isset($banks) && !empty($banks)){
+        foreach ($banks as $key => $value)
+        {
+            echo $value['value'].', ';
+        }
+    } ?>);
+    let active_select;
+    if (window.innerWidth >= 992)
+        active_select = jQuery("#bank_list_desktop");
+    else
+        active_select = jQuery("#bank_list_mobile");
+</script>

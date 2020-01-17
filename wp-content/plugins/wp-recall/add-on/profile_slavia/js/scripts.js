@@ -122,6 +122,17 @@ function tab_config()
         jQuery('#modal-54506521').trigger('click');
     });
 
+    // jQuery('#price').keypress(function(event) {
+    //     var code = (event.keyCode ? event.keyCode : event.which);
+    //     if (!(
+    //             (code >= 48 && code <= 57) //numbers
+    //             || (code == 46) //period
+    //         )
+    //         || (code == 46 && $(this).val().indexOf('.') != -1)
+    //     )
+    //         event.preventDefault();
+    // });
+
 
 };
 
