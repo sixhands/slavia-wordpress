@@ -128,7 +128,7 @@
         <div class="d-lg-none col-md-12"  style="z-index: 4; margin-top: 10px;">
             <div class="row">
                 <div class="coop_maps question-bg  ex-mob-pd col-6">
-                    <h1 class="ib ex-mobile-h1-num">0.897600</h1>
+                    <h1 class="ib ex-mobile-h1-num"><?php echo rcl_slavia_get_crypto_price('PZM') . " RUB"; ?></h1>
                     <h1 class="ib ex-mobile-h1-prizm">prizm</h1>
                 </div>
                 <div id="left-mobile-menu-location" class="col-6">

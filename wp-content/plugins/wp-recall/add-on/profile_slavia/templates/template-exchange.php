@@ -343,37 +343,104 @@
         return result;
     }
 
-    function keypress_calc(event, el, crypto_price, active_bank_val)
+    //Калькулятор
+    function keypress_calc(event, el, crypto_price, active_bank_val, is_backspace = false)
     {
         var code = (event.keyCode ? event.keyCode : event.which);
-        if (( (code >= 48 && code <= 57) //numbers
-            || (code == 46)) //period
+        var is_symbol = (!is_backspace && (
+            ( (code >= 48 && code <= 57) || (code == 46) ) //numbers || period
             || !(code == 46 && jQuery(this).val().indexOf('.') != -1) //уже есть точка
-        )
+        ) );
+        var is_backspace_pressed = (is_backspace && code == 8);
+
+        var input_amount;
+
+        //Если backspace - удаляем символ
+        if (is_backspace_pressed)
         {
-            //event.preventDefault();
-            let input_amount = el.val() + String.fromCharCode(code);
-            input_amount = parseInt(input_amount);
+            input_amount = el.val().slice(0, -1);
+        }
+        else {
+            if (is_symbol)
+                input_amount = el.val() + String.fromCharCode(code);
+        }
 
-            let is_get_rubles;
-            if (el.hasClass("prizm_to_rubles") || el.parents(".input-exchange").siblings().find(".prizm_to_rubles").length > 0)
-                is_get_rubles = true;
-
+        if ((is_backspace_pressed || is_symbol) && input_amount !== null)
+        {
+            if (input_amount === '')
+                input_amount = 0;
+            else
+                input_amount = parseFloat(input_amount);
+            var is_commission = false;
             var output_el;
             var is_reverse;
-            if (el.attr("id") === "exp")
-            {
-                is_reverse = true;
-                output_el = el.parents(".input-exchange").siblings().find(".prizm_to_rubles");
-            }
-            else
-            {
-                if (el.hasClass("rubles_to_prizm") || el.hasClass("prizm_to_rubles") || el.hasClass("rubles_to_waves"))
+            //Если получение рублей, то комиссия
+            if (el.hasClass("prizm_to_rubles") || el.parents(".input-exchange").siblings().find(".prizm_to_rubles").length > 0) {
+                is_commission = true;
+                //Если ввели количество рублей
+                if (el.attr("id") === "exp")
+                {
+                    is_reverse = true;
+                    output_el = el.parents(".input-exchange").siblings().find(".prizm_to_rubles");
+                }
+                else
                     output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
             }
 
-            output_el.val(calc_exchange(input_amount, crypto_price, active_bank_val, is_reverse, is_get_rubles));
+            //Если рубли в призму, то считаем наоборот и без комиссии
+            if (el.hasClass("rubles_to_prizm") || el.parents(".input-exchange").siblings().find(".rubles_to_prizm").length > 0) {
+                //Рубли в призму, ввод призмы
+                if (el.attr("id") === "exp")
+                {
+                    is_reverse = false;
+                    output_el = el.parents(".input-exchange").siblings().find(".rubles_to_prizm");
+                }
+                //Рубли в призму, ввод рублей
+                else {
+                    is_reverse = true;
+                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                }
+            }
+
+            else
+            {
+                if (el.hasClass("rubles_to_waves") || el.parents(".input-exchange").siblings().find(".rubles_to_waves").length > 0) {
+                    //Рубли в waves, ввод waves
+                    if (el.attr("id") === "exp")
+                    {
+                        is_reverse = false;
+                        output_el = el.parents(".input-exchange").siblings().find(".rubles_to_waves");
+                    }
+                    //Рубли в waves, ввод рублей
+                    else {
+                        is_reverse = true;
+                        output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                    }
+                }
+            }
+
+            output_el.val(calc_exchange(input_amount, crypto_price, active_bank_val, is_reverse, is_commission));
         }
+    }
+    function get_currency(el, prizm_price, waves_price) {
+        let currency;
+        if (el.attr("id") === "exp")
+        {
+            let siblings = el.parents(".input-exchange").siblings();
+            if (siblings.find(".prizm_to_rubles").length > 0 || siblings.find(".rubles_to_prizm").length > 0)
+                currency = prizm_price;
+            else
+            if (siblings.find(".rubles_to_waves").length > 0)
+                currency = waves_price;
+        }
+        else {
+            if (el.hasClass("rubles_to_prizm") || el.hasClass("prizm_to_rubles"))
+                currency = prizm_price;
+            else
+            if (el.hasClass("rubles_to_waves"))
+                currency = waves_price;
+        }
+        return currency === null ? false : currency;
     }
 
     var vals = {<?php if (isset($banks) && !empty($banks)){
@@ -403,55 +470,18 @@
     var prizm_price = <?php echo rcl_slavia_get_crypto_price('PZM'); ?>; //Курс призма
     var waves_price = <?php echo rcl_slavia_get_crypto_price('WAVES'); ?>; //Курс waves
 
+
     //При вводе значения
     jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keypress(function(event) {
-        let currency;
-        if (jQuery(this).attr("id") === "exp")
-        {
-            let siblings = jQuery(this).parents(".input-exchange").siblings();
-            if (siblings.find(".prizm_to_rubles").length > 0 || siblings.find(".rubles_to_prizm").length > 0)
-                currency = prizm_price;
-            else
-                if (siblings.find(".rubles_to_waves").length > 0)
-                    currency = waves_price;
-        }
-        else {
-            if (jQuery(this).hasClass("rubles_to_prizm") || jQuery(this).hasClass("prizm_to_rubles"))
-                currency = prizm_price;
-            else
-                if (jQuery(this).hasClass("rubles_to_waves"))
-                    currency = waves_price;
-        }
-
-        keypress_calc(event, jQuery(this), currency, active_bank_val)
-        // var code = (event.keyCode ? event.keyCode : event.which);
-        // if (( (code >= 48 && code <= 57) //numbers
-        //         || (code == 46)) //period
-        //     || !(code == 46 && jQuery(this).val().indexOf('.') != -1) //уже есть точка
-        // )
-        // {
-        //     //event.preventDefault();
-        //     let prizm_amount = jQuery(this).val() + String.fromCharCode(code);
-        //     prizm_amount = parseInt(prizm_amount);
-        //     jQuery(this).parents(".input-exchange").siblings(".orange-input").find("#exp")
-        //         .val(calc_exchange(prizm_amount, prizm_price, active_bank_val));
-        // }
+        let currency = get_currency(jQuery(this), prizm_price, waves_price);
+        keypress_calc(event, jQuery(this), currency, active_bank_val);
+    });
+    //При нажатии backspace
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
+        let currency = get_currency(jQuery(this), prizm_price, waves_price);
+        keypress_calc(event, jQuery(this), currency, active_bank_val, true);
     });
 
-    // jQuery('.rubles_to_prizm').keypress(function(event) {
-    //     var code = (event.keyCode ? event.keyCode : event.which);
-    //     if (( (code >= 48 && code <= 57) //numbers
-    //         || (code == 46)) //period
-    //         || !(code == 46 && jQuery(this).val().indexOf('.') != -1) //уже есть точка
-    //     )
-    //     {
-    //         //event.preventDefault();
-    //         let ruble_amount = jQuery(this).val() + String.fromCharCode(code);
-    //         ruble_amount = parseInt(ruble_amount);
-    //         jQuery(this).parents(".input-exchange").siblings(".orange-input").find("#exp")
-    //             .val(calc_exchange(ruble_amount, prizm_price, active_bank_val, true));
-    //     }
-    // });
 
     jQuery('#bank_list_desktop, #bank_list_mobile').change(function(){
        if (jQuery(this).parents(".input-exchange").prev().find(".prizm_to_rubles.prizm").val() !== '')
