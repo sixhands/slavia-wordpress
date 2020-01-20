@@ -107,47 +107,49 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-3 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-2 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-
-                        </div>
-                        <div class="col-2 text-right">
-                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
-                        </div>
-                        <div class="col-3 text-center">
-                            <div class="btn-custom-one btn-zayavki">
-                                Одобрить
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-3 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-2 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-
-                        </div>
-                        <div class="col-2 text-right">
-                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
-                        </div>
-                        <div class="col-3 text-center">
-                            <div class="btn-custom-one btn-zayavki">
-                                Одобрить
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php echo $verification_requests; ?>
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!---->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-right">-->
+<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-center">-->
+<!--                            <div class="btn-custom-one btn-zayavki">-->
+<!--                                Одобрить-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!---->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-right">-->
+<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-center">-->
+<!--                            <div class="btn-custom-one btn-zayavki">-->
+<!--                                Одобрить-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
 

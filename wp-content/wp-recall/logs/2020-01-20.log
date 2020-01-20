@@ -1,0 +1,1394 @@
+Array
+(
+    [type] => custom
+    [slug] => verification
+    [title] => Данные верификации
+    [content] => 
+    [value] => Array
+        (
+            [name] => fhggfdhfgh
+            [surname] => thfjhgfhgf
+            [last_name] => yhgfhffg
+            [passport_number] => 5646546
+            [passport_date] => 64564-05-04
+            [passport_code] => trhfghghf
+            [passport_who] => gfhfghfghf
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+update_profile_fields:
+Array
+(
+    [name] => hgfhfghfgh
+    [surname] => hgfhghfghqhg
+    [last_name] => ghfhgfghfgh
+    [passport_number] => 453654656
+    [passport_date] => 53654-06-04
+    [passport_code] => 65465gf
+    [passport_who] => GFSDGFGD
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+update_profile_fields: Field:
+Array
+(
+    [name] => gfdfgdfg
+    [surname] => gfdgdfhgfh
+    [last_name] => rhjgjhgjhgh
+    [passport_number] => 345345645
+    [passport_date] => 46546-06-05
+    [passport_code] => 65646456
+    [passport_who] => dfgdfgdfgdfgdf
+)
+
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
+get_profile_fields: 
+Array
+(
+    [0] => Array
+        (
+            [slug] => show_admin_bar_front
+            [title] => Панель администратора
+            [type] => select
+            [values] => Array
+                (
+                    [false] => Отключено
+                    [true] => Подключено
+                )
+
+        )
+
+    [1] => Array
+        (
+            [slug] => user_email
+            [title] => E-mail
+            [type] => email
+            [required] => 1
+        )
+
+    [2] => Array
+        (
+            [slug] => primary_pass
+            [title] => Новый пароль
+            [type] => password
+            [required] => 0
+            [notice] => Если вы хотите сменить пароль - введите новый
+        )
+
+    [3] => Array
+        (
+            [slug] => repeat_pass
+            [title] => Повтор пароля
+            [type] => password
+            [required] => 0
+            [notice] => Повтор нового пароля
+        )
+
+    [4] => Array
+        (
+            [type] => tel
+            [slug] => user_phone
+            [title] => Телефон
+        )
+
+    [5] => Array
+        (
+            [type] => url
+            [slug] => user_ref_link
+            [title] => Реферальная ссылка
+        )
+
+    [6] => Array
+        (
+            [type] => text
+            [slug] => client_num
+            [title] => Номер пайщика
+        )
+
+    [7] => Array
+        (
+            [type] => text
+            [slug] => prizm_address
+            [title] => Адрес PRIZM
+        )
+
+    [8] => Array
+        (
+            [type] => text
+            [slug] => prizm_public_key
+            [title] => Публичный ключ
+        )
+
+    [9] => Array
+        (
+            [type] => text
+            [slug] => waves_address
+            [title] => Адрес Waves
+        )
+
+    [10] => Array
+        (
+            [type] => text
+            [slug] => is_verified
+            [title] => Верификация профиля
+            [value] => no
+        )
+
+    [11] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+        )
+
+    [12] => Array
+        (
+            [type] => custom
+            [slug] => user_documents
+            [title] => Документы пользователя
+            [values] => Array
+                (
+                    [0] => Array
+                        (
+                            [date] => 08.11.19
+                            [filename] => document1.docx
+                            [url] => /wp-content/uploads/2019/12/don.png
+                        )
+
+                    [1] => Array
+                        (
+                            [date] => 09.12.19
+                            [filename] => document2.docx
+                            [url] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [content] => <div class="table-text w-100"><div class="row"><div class="col-2 text-center">08.11.19</div><div class="col-8 text-left">document1.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/don.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div><div class="table-text w-100"><div class="row"><div class="col-2 text-center">09.12.19</div><div class="col-8 text-left">document2.docx</div><div class="col-2 text-center">
+                <a href="/wp-content/uploads/2019/12/operation_dis.png" download>
+                    <img src="/wp-content/uploads/2019/12/don.png">
+                </a>
+            </div>
+            </div>
+            </div>
+        )
+
+)
+
+userdata:
+WP_User Object
+(
+    [data] => stdClass Object
+        (
+            [ID] => 7
+            [user_login] => vasiliy
+            [user_pass] => $P$BrF4pGOec4UOJX698TE/.3ukO3uzmL/
+            [user_nicename] => vasiliy
+            [user_email] => jitohe2533@seomail.top
+            [user_url] => 
+            [user_registered] => 2020-01-10 05:32:21
+            [user_activation_key] => 
+            [user_status] => 0
+            [display_name] => Василек Василий Васильевич
+        )
+
+    [ID] => 7
+    [caps] => Array
+        (
+            [user] => 1
+        )
+
+    [cap_key] => wp_capabilities
+    [roles] => Array
+        (
+            [0] => user
+        )
+
+    [allcaps] => Array
+        (
+            [read] => 1
+            [read_private_pages] => 1
+            [read_private_posts] => 1
+            [read_private_products] => 1
+            [read_private_shop_coupons] => 1
+            [read_private_shop_orders] => 1
+            [read_product] => 1
+            [read_shop_coupon] => 1
+            [read_shop_order] => 1
+            [upload_files] => 1
+            [user] => 1
+        )
+
+    [filter] => 
+    [site_id:WP_User:private] => 1
+)
+
+userdata:
+WP_User Object
+(
+    [data] => stdClass Object
+        (
+            [ID] => 1
+            [user_login] => admin
+            [user_pass] => $P$BStwgUW/Ell/MLAUxlhHDVeau/lTEv0
+            [user_nicename] => admin
+            [user_email] => cms.pkslav@gmail.com
+            [user_url] => 
+            [user_registered] => 2019-12-23 16:51:45
+            [user_activation_key] => 
+            [user_status] => 0
+            [display_name] => admin
+        )
+
+    [ID] => 1
+    [caps] => Array
+        (
+            [administrator] => 1
+        )
+
+    [cap_key] => wp_capabilities
+    [roles] => Array
+        (
+            [0] => administrator
+        )
+
+    [allcaps] => Array
+        (
+            [switch_themes] => 1
+            [edit_themes] => 1
+            [activate_plugins] => 1
+            [edit_plugins] => 1
+            [edit_users] => 1
+            [edit_files] => 1
+            [manage_options] => 1
+            [moderate_comments] => 1
+            [manage_categories] => 1
+            [manage_links] => 1
+            [upload_files] => 1
+            [import] => 1
+            [unfiltered_html] => 1
+            [edit_posts] => 1
+            [edit_others_posts] => 1
+            [edit_published_posts] => 1
+            [publish_posts] => 1
+            [edit_pages] => 1
+            [read] => 1
+            [level_10] => 1
+            [level_9] => 1
+            [level_8] => 1
+            [level_7] => 1
+            [level_6] => 1
+            [level_5] => 1
+            [level_4] => 1
+            [level_3] => 1
+            [level_2] => 1
+            [level_1] => 1
+            [level_0] => 1
+            [edit_others_pages] => 1
+            [edit_published_pages] => 1
+            [publish_pages] => 1
+            [delete_pages] => 1
+            [delete_others_pages] => 1
+            [delete_published_pages] => 1
+            [delete_posts] => 1
+            [delete_others_posts] => 1
+            [delete_published_posts] => 1
+            [delete_private_posts] => 1
+            [edit_private_posts] => 1
+            [read_private_posts] => 1
+            [delete_private_pages] => 1
+            [edit_private_pages] => 1
+            [read_private_pages] => 1
+            [delete_users] => 1
+            [create_users] => 1
+            [unfiltered_upload] => 1
+            [edit_dashboard] => 1
+            [update_plugins] => 1
+            [delete_plugins] => 1
+            [install_plugins] => 1
+            [update_themes] => 1
+            [install_themes] => 1
+            [update_core] => 1
+            [list_users] => 1
+            [remove_users] => 1
+            [promote_users] => 1
+            [edit_theme_options] => 1
+            [delete_themes] => 1
+            [export] => 1
+            [manage_woocommerce] => 1
+            [view_woocommerce_reports] => 1
+            [edit_product] => 1
+            [read_product] => 1
+            [delete_product] => 1
+            [edit_products] => 1
+            [edit_others_products] => 1
+            [publish_products] => 1
+            [read_private_products] => 1
+            [delete_products] => 1
+            [delete_private_products] => 1
+            [delete_published_products] => 1
+            [delete_others_products] => 1
+            [edit_private_products] => 1
+            [edit_published_products] => 1
+            [manage_product_terms] => 1
+            [edit_product_terms] => 1
+            [delete_product_terms] => 1
+            [assign_product_terms] => 1
+            [edit_shop_order] => 1
+            [read_shop_order] => 1
+            [delete_shop_order] => 1
+            [edit_shop_orders] => 1
+            [edit_others_shop_orders] => 1
+            [publish_shop_orders] => 1
+            [read_private_shop_orders] => 1
+            [delete_shop_orders] => 1
+            [delete_private_shop_orders] => 1
+            [delete_published_shop_orders] => 1
+            [delete_others_shop_orders] => 1
+            [edit_private_shop_orders] => 1
+            [edit_published_shop_orders] => 1
+            [manage_shop_order_terms] => 1
+            [edit_shop_order_terms] => 1
+            [delete_shop_order_terms] => 1
+            [assign_shop_order_terms] => 1
+            [edit_shop_coupon] => 1
+            [read_shop_coupon] => 1
+            [delete_shop_coupon] => 1
+            [edit_shop_coupons] => 1
+            [edit_others_shop_coupons] => 1
+            [publish_shop_coupons] => 1
+            [read_private_shop_coupons] => 1
+            [delete_shop_coupons] => 1
+            [delete_private_shop_coupons] => 1
+            [delete_published_shop_coupons] => 1
+            [delete_others_shop_coupons] => 1
+            [edit_private_shop_coupons] => 1
+            [edit_published_shop_coupons] => 1
+            [manage_shop_coupon_terms] => 1
+            [edit_shop_coupon_terms] => 1
+            [delete_shop_coupon_terms] => 1
+            [assign_shop_coupon_terms] => 1
+            [ure_edit_roles] => 1
+            [ure_create_roles] => 1
+            [ure_delete_roles] => 1
+            [ure_create_capabilities] => 1
+            [ure_delete_capabilities] => 1
+            [ure_manage_options] => 1
+            [ure_reset_roles] => 1
+            [administrator] => 1
+        )
+
+    [filter] => 
+    [site_id:WP_User:private] => 1
+)
+

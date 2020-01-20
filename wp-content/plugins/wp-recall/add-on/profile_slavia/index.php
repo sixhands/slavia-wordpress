@@ -117,7 +117,29 @@ function add_profile_fields($fields){
         'title' => 'Верификация профиля',
         'value' => 'no',
     );
-
+    //Верификация
+    $fields[] = array(
+        'type' => 'custom',
+        'slug' => 'verification',
+        'title' => 'Данные верификации',
+        'content' => '',
+    );
+    //Фото паспорта
+    $fields[] = array(
+        'type' => 'file',
+        'slug' => 'passport_photo_1',
+        'title' => 'Фото паспорта 1',
+    );
+    $fields[] = array(
+        'type' => 'file',
+        'slug' => 'passport_photo_2',
+        'title' => 'Фото паспорта 2',
+    );
+    $fields[] = array(
+        'type' => 'file',
+        'slug' => 'passport_photo_3',
+        'title' => 'Фото паспорта 3',
+    );
 
     return $fields;
 }
@@ -163,7 +185,27 @@ function add_user_documents($fields)
     return $fields;
 }
 
-//if (isset($_POST)) var_dump($_POST);
+//add_filter('rcl_profile_fields', 'add_user_verification', 10);
+////Верификация
+//function add_user_verification($fields)
+//{
+//    $fields[] = array(
+//        'type' => 'custom',
+//        'slug' => 'verification',
+//        'title' => 'Данные верификации',
+//        'values' =>
+//            array('name' => '', 'surname' => '', 'last_name' => '', 'passport_number' => '',
+//                'passport_date' => '', 'passport_code' => '', 'passport_who' => '', 'passport-photos' => array('', ''))
+//    );
+//    $content = '';
+//    foreach ($fields[count($fields) - 1]['values'] as $value)
+//    {
+//    }
+//    $fields[count($fields) - 1] += array("content" => $content);
+//    //var_dump($fields[count($fields) - 1]);
+//
+//    return $fields;
+//}
 
 add_action('init','rcl_tab_profile');
 add_action('init','rcl_tab_exchange');
@@ -176,6 +218,7 @@ add_action('init','rcl_tab_settings');
 function rcl_tab_template_content()
 {
     global $userdata, $user_ID;
+
     $profileFields = rcl_get_profile_fields(array('user_id'=>$user_ID));
 
     $CF = new Rcl_Custom_Fields();
@@ -214,12 +257,22 @@ function rcl_tab_template_content()
         //$star = (isset($field['required'])&&$field['required']==1)? ' <span class="required">*</span> ': '';
 
         $field_name = $slug;//$CF->get_slug($field);
-        if ($field_name != 'is_verified') {
+        $field_value = null;
+        if ($field_name != 'is_verified' && $field_name != 'verification') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
-        else
-            $field_value = $field['value'];
+        else {
+            if ($field_name == 'verification') {
+                $field_value = $value;
+            }
+            else {
+                if (isset($field['value']))
+                    $field_value = $field['value'];
+                else
+                    $field_value = '';
+            }
+        }
         $profile_args += array($field_name => $field_value);
     } //foreach
 
@@ -590,24 +643,46 @@ function rcl_tab_requests(){
 }
 function rcl_tab_requests_content($master_id)
 {
-    global $userdata, $user_ID;
+//    global $userdata, $user_ID;
+//
+//    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
 
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+    $profile_args = rcl_tab_template_content();
 
-    $Table = new Rcl_Table(array(
-        'cols' => array(
-            array(
-                'width' => 30
-            ),
-            array(
-                'width' => 70
-            )
-        ),
-        'zebra' => true,
-        //'border' => array('table', 'rows')
-    ));
+    $verification_requests = rcl_get_option('verification_requests');
+    $verification_content = '';
+    if (isset($verification_requests) && !empty($verification_requests))
+    {
+        $i = 0;
+        foreach ($verification_requests as $key => $value)
+        {
+            $log->insert_log(get_user_meta( $key, 'client_num', true ));
+            $i++;
+            $verification_content .= '<div class="table-text w-100">'.
+                                        '<div class="row">'.
+                                            '<div class="col-3 text-left" style="padding-left: 42px;">'.
+                                               $value['name'].' '.$value['surname'].' '.$value['last_name'].
+                                            '</div>'.
+                                            '<div class="col-2 text-left">'.
+                                                get_user_meta( $key, 'client_num', true ). //Возвращает client_num по id пользователя
+                                            '</div>'.
+                                            '<div class="col-2 text-left">'.
+                                            '</div>
+                                            <div class="col-2 text-right">
+                                                <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                            </div>
+                                            <div class="col-3 text-center">
+                                                <div class="btn-custom-one btn-zayavki">
+                            Одобрить
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+        }
+        $profile_args += array("verification_requests" => $verification_content);
+    }
 
-    $content = rcl_get_include_template('template-requests.php', __FILE__);
+    $content = rcl_get_include_template('template-requests.php', __FILE__, $profile_args);
     return $content;
 }
 /******************************/
@@ -807,6 +882,72 @@ function rcl_edit_profile(){
 
             wp_redirect($redirect_url);
 
+            exit;
+        }
+        //Если верификация
+        elseif (strpos(array_key_first($_POST), 'verification') !== false )
+        {
+            /*****************Сохраняем в запросы на верификацию******************/
+            $verification_requests = rcl_get_option('verification_requests');
+
+            $verification_exists = false;
+            if (isset($verification_requests) && !empty($verification_requests))
+            {
+                foreach ($verification_requests as $key => $value)
+                {
+                    if ($key == $user_ID) {
+                        $verification_exists = true;
+                        break;
+                    }
+                }
+            }
+            $verification_fields = array();
+            foreach ($_POST['verification'] as $key => $value) {
+                if (strpos($key, 'submit') !== false)
+                    continue;
+                else {
+                    $verification_fields += array($key => $value);
+                }
+            }
+            if (isset($verification_requests) && !empty($verification_requests)) {
+                //Если нету заявок от этого же пользователя на верификацию
+                if (!$verification_exists)
+                    $verification_requests += array($user_ID => $verification_fields);
+                //Если есть верификация от этого пользователя, перезаписываем ее
+                else
+                    $verification_requests[$user_ID] = $verification_fields;
+            }
+            else
+                $verification_requests = array($user_ID => $verification_fields);
+            rcl_update_option('verification_requests', $verification_requests);
+
+            /**********************************************************************/
+
+            /*************Сохраняем верификацию в поля профиля*******************************/
+
+            $profileFields = rcl_get_profile_fields(array('user_id' => $user_ID));
+
+            $post_first_key = current(array_keys($_POST));
+            $field_found = false;
+            foreach ($profileFields as $field) {
+                if ($post_first_key == $field['slug']) {
+                    $field += array('value' => $verification_fields);
+
+                    rcl_update_profile_fields($user_ID, array($field));
+                    $field_found = true;
+                    break;
+                }
+            }
+//            $log = new Rcl_Log();
+//            $log->insert_log(print_r(rcl_get_profile_fields(array('user_id' => $user_ID)), true));
+            if (!$field_found)
+                return false;
+
+            /********************************************************************/
+
+            $redirect_url = rcl_get_tab_permalink($user_ID, 'profile') . '&updated=true';
+
+            wp_redirect($redirect_url);
             exit;
         }
         else {

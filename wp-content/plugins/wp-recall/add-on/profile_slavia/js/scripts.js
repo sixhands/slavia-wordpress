@@ -42,10 +42,11 @@ rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
     //submit формы по потере фокуса в профиле
-    jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #user_ref_link, #client_num," +
-        " #prizm_address, #prizm_public_key, #waves_address").blur(function() {
+    jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone").blur(function() {
         jQuery(this).parents("form").submit();
     });
+
+    jQuery("#user_ref_link, #client_num, #prizm_address, #prizm_public_key, #waves_address").prop("disabled", true);
     //var bank_inputs = jQuery("#settings_form").find("input");
     //submit формы по потере фокуса в настройках
     // bank_inputs.blur(function() {
