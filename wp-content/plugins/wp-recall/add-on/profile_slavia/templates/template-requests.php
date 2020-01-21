@@ -1,3 +1,7 @@
+<?php if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
+    echo print_r($_POST['user_id'], true);
+    exit;
+} ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
@@ -107,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                <?php echo $verification_requests; ?>
+                <?php echo $verification_content; ?>
 <!--                <div class="table-text w-100">-->
 <!--                    <div class="row">-->
 <!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
@@ -248,3 +252,54 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    // jQuery('.info-zayavki').click(function(){
+    //     //Получаем id текущего пользователя из кнопки
+    //     let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
+    //     request_user_id = request_user_id.split('_');
+    //     request_user_id = request_user_id[request_user_id.length - 1];
+    //     request_user_id = parseInt(request_user_id);
+    //     console.log(request_user_id);
+    //     jQuery('#modal-54506521').trigger('click');
+    // });
+</script>
+<?php
+
+
+//function my_action_javascript() {
+//    ?>
+    <script type="text/javascript">
+        //jQuery(document).ready(function($) {
+            jQuery('.info-zayavki').click(function(){
+                //Получаем id текущего пользователя из кнопки
+                let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
+                request_user_id = request_user_id.split('_');
+                request_user_id = request_user_id[request_user_id.length - 1];
+                request_user_id = parseInt(request_user_id);
+                //console.log(request_user_id);
+
+                var data = {
+                    //action: 'my_action',
+                    user_id: request_user_id
+                };
+                //console.log(myajax.url);
+                // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
+                jQuery.post( window.location, data, function(response) {
+                    jQuery('#modal-54506521').trigger('click');
+                    console.log('Получено с сервера: ' + response);
+                });
+            });
+        //});
+    </script>
+    <?php
+//}
+//add_action('wp_ajax_my_action', 'my_action_callback');
+//add_action('wp_ajax_nopriv_my_action', 'my_action_callback');
+//function my_action_callback() {
+//    //$whatever = intval( $_POST['whatever'] );
+//    echo print_r($_POST, true);
+//    //echo $whatever + 10;
+//
+//    // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
+//    wp_die();
+//}

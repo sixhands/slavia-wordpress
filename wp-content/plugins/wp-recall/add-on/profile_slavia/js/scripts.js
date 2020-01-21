@@ -126,10 +126,7 @@ function tab_config()
             jQuery('#'+id + ' img').attr('src', '/wp-content/uploads/2019/12/close.png')
         }
     });
-
-    jQuery('.info-zayavki').click(function(){
-        jQuery('#modal-54506521').trigger('click');
-    });
+    
 
     //Кастомный вывод фотографий паспорта
 

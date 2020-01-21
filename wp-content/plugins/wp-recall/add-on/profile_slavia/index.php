@@ -633,7 +633,7 @@ function rcl_tab_requests(){
 }
 function rcl_tab_requests_content($master_id)
 {
-//    global $userdata, $user_ID;
+    global $userdata, $user_ID;
 //
 //    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
 
@@ -661,14 +661,15 @@ function rcl_tab_requests_content($master_id)
                                                 <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
                                             </div>
                                             <div class="col-3 text-center">
-                                                <div class="btn-custom-one btn-zayavki">
+                                                <div class="btn-custom-one btn-zayavki" id="request_approve_'.$key.'">
                             Одобрить
                                                 </div>
                                             </div>
                                         </div>
                                     </div>';
         }
-        $profile_args += array("verification_requests" => $verification_content);
+        $profile_args += array("verification_content" => $verification_content);
+        $profile_args += array("verification_requests" => $verification_requests);
     }
 
     $content = rcl_get_include_template('template-requests.php', __FILE__, $profile_args);
@@ -979,6 +980,17 @@ function rcl_edit_profile(){
                                 continue;
                             }
                     }
+                    //Добавляем ссылки на файлы в verification_requests
+                    $verification_requests = rcl_get_option('verification_requests');
+                    foreach ($verification_requests as $key => $value)
+                    {
+                        if ($key == $user_ID) {
+                            $verification_requests[$key] += array('passport_photos' => $field['value']);
+                            break;
+                        }
+                    }
+                    rcl_update_option('verification_requests', $verification_requests);
+
                     //$field += array('value' => $verification_fields);
                     rcl_update_profile_fields($user_ID, array($field));
                     $field_found = true;

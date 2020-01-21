@@ -167,7 +167,7 @@
                             <input <?php if (isset($verification)): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
                         </div>
                     </div>
-                    <?php if (isset($verification) && isset($passport_photos)): ?>
+                    <?php if (isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">
                             <?php foreach($passport_photos as $key => $value): ?>

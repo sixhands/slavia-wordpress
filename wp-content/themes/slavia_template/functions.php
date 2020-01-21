@@ -131,6 +131,16 @@ function slavia_template_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'slavia_template_scripts' );
+add_action( 'wp_enqueue_scripts', 'myajax_data', 99 );
+function myajax_data(){
+
+    wp_localize_script('slavia_scripts', 'myajax',
+        array(
+            'url' => admin_url('admin-ajax.php')
+        )
+    );
+
+}
 //Remove classes from wp_nav
 function wp_nav_menu_remove($var) {
     return is_array($var) ? array_intersect($var, array('current-menu-item')) : '';
