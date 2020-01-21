@@ -1,7 +1,3 @@
-<?php if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
-    echo print_r($_POST['user_id'], true);
-    exit;
-} ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
@@ -182,22 +178,22 @@
                 <div class="row">
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
-
-                            <input placeholder="Имя" type="text" name="">
+                            <span>Имя</span>
+                            <input class="verification_name" placeholder="Имя" type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
-
+                            <span>Фамилия</span>
                             <div class="select-exchange w-100">
-                                <input placeholder="Email" class="" type="email" name="">
+                                <input class="verification_surname" placeholder="Фамилия" type="text" name="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
-
-                            <input placeholder="Отчество" class="" type="text" name="">
+                            <span>Отчество</span>
+                            <input class="verification_last_name" placeholder="Отчество" type="text" name="">
                         </div>
                     </div>
                 </div>
@@ -207,41 +203,41 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>Серия и номер паспорта</span>
-                            <input placeholder="____-______"  type="text" name="">
+                            <input class="verification_passport_number" placeholder="____-______"  type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
-                            <span>&nbsp;</span>
+                            <span>Дата выдачи</span>
                             <div class="select-exchange w-100">
-                                <input placeholder="Дата выдачи" class="" type="email" name="">
+                                <input class="verification_passport_date" placeholder="Дата выдачи" type="date" name="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
-                            <span>&nbsp;</span>
-                            <input placeholder="Код подразделения" class="" type="text" name="">
+                            <span>Код подразделения</span>
+                            <input class="verification_passport_code" placeholder="Код подразделения" class="" type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-12 input-exchange">
                         <div class="row">
-                            <span>&nbsp;</span>
-                            <input placeholder="Кем выдан" class="" type="text" name="">
+                            <span>Кем выдан</span>
+                            <input class="verification_passport_who" placeholder="Кем выдан" class="" type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="row">
-                                    <img src="/wp-content/uploads/2019/12/zg.png">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 ">
-                                <div class="row">
-                                    <img class="" src="/wp-content/uploads/2019/12/zg.png">
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-4">-->
+<!--                                <div class="row">-->
+<!--                                    <img src="/wp-content/uploads/2019/12/zg.png">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-4 ">-->
+<!--                                <div class="row">-->
+<!--                                    <img class="" src="/wp-content/uploads/2019/12/zg.png">-->
+<!--                                </div>-->
+<!--                            </div>-->
 
 
                         </div>
@@ -253,53 +249,57 @@
     </div>
 </div>
 <script type="text/javascript">
-    // jQuery('.info-zayavki').click(function(){
-    //     //Получаем id текущего пользователя из кнопки
-    //     let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
-    //     request_user_id = request_user_id.split('_');
-    //     request_user_id = request_user_id[request_user_id.length - 1];
-    //     request_user_id = parseInt(request_user_id);
-    //     console.log(request_user_id);
-    //     jQuery('#modal-54506521').trigger('click');
-    // });
-</script>
-<?php
+    //Открытие модального окна с данными верификации данного пользователя
+    jQuery('.info-zayavki').click(function(){
+        //Получаем id текущего пользователя из кнопки
+        let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
+        request_user_id = request_user_id.split('_');
+        request_user_id = request_user_id[request_user_id.length - 1];
+        request_user_id = parseInt(request_user_id);
+        //console.log(request_user_id);
 
-
-//function my_action_javascript() {
-//    ?>
-    <script type="text/javascript">
-        //jQuery(document).ready(function($) {
-            jQuery('.info-zayavki').click(function(){
-                //Получаем id текущего пользователя из кнопки
-                let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
-                request_user_id = request_user_id.split('_');
-                request_user_id = request_user_id[request_user_id.length - 1];
-                request_user_id = parseInt(request_user_id);
-                //console.log(request_user_id);
-
-                var data = {
-                    //action: 'my_action',
-                    user_id: request_user_id
-                };
-                //console.log(myajax.url);
-                // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
-                jQuery.post( window.location, data, function(response) {
-                    jQuery('#modal-54506521').trigger('click');
-                    console.log('Получено с сервера: ' + response);
+        var data = {
+            //action: 'my_action',
+            request_user_id: request_user_id
+        };
+        //console.log(myajax.url);
+        // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
+        jQuery.post( window.location, data, function(response) {
+            if (response) {
+                let verification_data = JSON.parse(response);
+                let modal = jQuery('#modal-container-54506521');
+                jQuery.each(verification_data, function (item) {
+                    if (item !== 'passport_photos')
+                        modal.find('.verification_' + item).val(verification_data[item]);
                 });
-            });
-        //});
-    </script>
-    <?php
-//}
-//add_action('wp_ajax_my_action', 'my_action_callback');
-//add_action('wp_ajax_nopriv_my_action', 'my_action_callback');
-//function my_action_callback() {
-//    //$whatever = intval( $_POST['whatever'] );
-//    echo print_r($_POST, true);
-//    //echo $whatever + 10;
-//
-//    // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
-//    wp_die();
-//}
+                //Очищаем место для фотографий
+                modal.find('.passport-photo').children('.row').empty();
+
+                jQuery.each(verification_data['passport_photos'], function (photo) {
+                    modal.find('.passport-photo').children('.row')
+                        .append('<div class="col-lg-4">' +
+                            '<div class="row">' +
+                            '<img src="' + verification_data['passport_photos'][photo] + '">' +
+                            '</div>' +
+                            '</div>');
+                    //console.log(verification_data['passport_photos'][photo]);
+                });
+                jQuery('#modal-54506521').trigger('click');
+            }
+        });
+    });
+    //Нажатие кнопки "одобрить"
+    jQuery('.btn-zayavki').click(function() {
+        let request_user_id = jQuery(this).attr('id');
+        request_user_id = request_user_id.split('_');
+        request_user_id = request_user_id[request_user_id.length - 1];
+        request_user_id = parseInt(request_user_id);
+        var data = {
+            request_user_id: request_user_id,
+            approve_request: 'true'
+        };
+        jQuery.post( window.location, data, function(response) {
+            console.log(response);
+        });
+    });
+</script>

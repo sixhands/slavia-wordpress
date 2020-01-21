@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
-                            <span>&nbsp;</span>
+                            <span>Дата выдачи</span>
                             <div class="select-exchange w-100">
                                 <input <?php if (isset($verification)): ?>value="<?=$verification['passport_date']?>" <?php endif; ?> placeholder="Дата выдачи" required class="" type="date" name="verification[passport_date]">
                             </div>

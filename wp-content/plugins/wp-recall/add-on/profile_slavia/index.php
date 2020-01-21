@@ -23,6 +23,39 @@ function rcl_init_js_profile_variables($data){
     $data['local']['no_repeat_pass'] = __('Repeated password not correct!','wp-recall');
     return $data;
 }
+//Запрос на user_id из manager_requests
+if (isset($_POST['request_user_id']) && !empty($_POST['request_user_id'])) {
+
+    $verification_requests = rcl_get_option('verification_requests');
+
+    if (isset($verification_requests) && !empty($verification_requests)) {
+        if (isset($_POST['approve_request']) && $_POST['approve_request'] == 'true')
+        {
+            //Обновить is_verified на true
+            update_user_meta($_POST['request_user_id'], 'is_verified', 'yes');
+            //Удалить из verification_requests
+            foreach ($verification_requests as $key => $value) {
+                if ($key == $_POST['request_user_id']) {
+                    unset($verification_requests[$key]);
+                    //rcl_update_option('verification_requests', $verification_requests);
+                    echo print_r($verification_requests, true);//rcl_get_option('verification_requests'), true);
+                    break;
+                }
+            }
+            //echo true;
+            exit;
+        }
+        else {
+            foreach ($verification_requests as $key => $value) {
+                if ($key == $_POST['request_user_id']) {
+                    echo json_encode($value);
+                    break;
+                }
+            }
+            exit;
+        }
+    }
+}
 
 //Получить текущую роль
 function rcl_get_current_role()
@@ -140,7 +173,6 @@ function generate_user_documents()
 {
 
 }
-
 //Добавление документов для данного пользователя
 add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
@@ -669,7 +701,7 @@ function rcl_tab_requests_content($master_id)
                                     </div>';
         }
         $profile_args += array("verification_content" => $verification_content);
-        $profile_args += array("verification_requests" => $verification_requests);
+        //$profile_args += array("verification_requests" => $verification_requests);
     }
 
     $content = rcl_get_include_template('template-requests.php', __FILE__, $profile_args);
