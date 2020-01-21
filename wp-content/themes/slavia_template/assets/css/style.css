@@ -778,6 +778,9 @@ a:hover
 .passport-photo img
 {
 	max-width: 292px;
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
 }
 /*.passport-photo .passport-img
 {

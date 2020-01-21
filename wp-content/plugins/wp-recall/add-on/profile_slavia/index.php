@@ -209,7 +209,6 @@ add_action('init','rcl_tab_settings');
 function rcl_tab_template_content()
 {
     global $userdata, $user_ID;
-
     $profileFields = rcl_get_profile_fields(array('user_id'=>$user_ID));
 
     $CF = new Rcl_Custom_Fields();
@@ -249,12 +248,12 @@ function rcl_tab_template_content()
 
         $field_name = $slug;//$CF->get_slug($field);
         $field_value = null;
-        if ($field_name != 'is_verified' && $field_name != 'verification') {
+        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
-            if ($field_name == 'verification') {
+            if ($field_name == 'verification' || $field_name == 'passport_photos') {
                 $field_value = $value;
             }
             else {
@@ -931,11 +930,14 @@ function rcl_edit_profile(){
                 }
                 if ($field['slug'] == 'passport_photos' && isset($_FILES) && !empty($_FILES)) {
                     //Загружаем файлы
+                    if ( ! function_exists( 'wp_handle_upload' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+                    }
                     $field += array('value' => array());
                     for ($i=0; $i < count($_FILES['passport_photos']['name']); $i++)
                     {
                         $filetype	 = wp_check_filetype_and_ext( $_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i] );
-                        
+
                         if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP')))
                             wp_die( __( 'Prohibited file type!', 'wp-recall' ) );
                         $maxsize = 2;
@@ -973,7 +975,7 @@ function rcl_edit_profile(){
                                 $attach_data = wp_generate_attachment_metadata( $attach_id, $file['file'] );
 
                                 wp_update_attachment_metadata( $attach_id, $attach_data );
-                                $field['value'] += array($i => $file['url']);
+                                $field['value'][] = $file['url'];
                                 continue;
                             }
                     }

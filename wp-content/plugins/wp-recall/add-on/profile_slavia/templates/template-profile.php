@@ -167,20 +167,14 @@
                             <input <?php if (isset($verification)): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
                         </div>
                     </div>
-                    <?php if ($is_manager): ?>
+                    <?php if (isset($verification) && isset($passport_photos)): ?>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">
-                            <div class="col-lg-4">
-                                <div class="row">
-                                    <img src="/wp-content/uploads/2019/12/zg.png">
+                            <?php foreach($passport_photos as $key => $value): ?>
+                                <div class="col-lg-4 passport-img">
+                                    <img src="<?=$value?>">
                                 </div>
-                            </div>
-                            <div class="col-lg-4 passport-img">
-
-                                <img class="" src="/wp-content/uploads/2019/12/zg.png">
-
-                            </div>
-
+                            <?php endforeach; ?>
                         </div>
                     </div>
                     <?php else: ?>
@@ -189,7 +183,7 @@
                         <div class="row">
                             <div class="skrepka w-100 text-center">
                                 <img src="/wp-content/uploads/2019/12/skrepka.png" style="margin-left: 20%">
-                                <input accept="image/*" data-multiple-caption="{count} файлов выбрано" multiple type="file" name="passport_photos[]" id="passport_photos" class="upload" />
+                                <input required accept="image/*" data-multiple-caption="{count} файлов выбрано" multiple type="file" name="passport_photos[]" id="passport_photos" class="upload" />
                                 <label for="passport_photos">Прикрепить фото</label>
                             </div>
 

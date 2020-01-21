@@ -1102,11 +1102,8 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 				}
 			}
 
-			if ($slug == 'verification') {
-                $log = new Rcl_Log();
+			if ($slug == 'verification' || $slug == 'passport_photos') {
 			    $value = $field['value'];
-                $log->insert_log("update_profile_fields: input fields:");
-                $log->insert_log(print_r($profileFields, true));
                 update_user_meta($user_id, $slug, $value);
                 continue;
             }
