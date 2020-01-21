@@ -114,27 +114,27 @@
             <h1 class="coop_maps-h1 ib">Верификация профиля</h1>
             <a id="modal-54506521" href="#modal-container-54506521" role="button" class="" data-toggle="modal"><img src="/wp-content/uploads/2019/12/info.png" class="ib info-href"></a>
 
-            <form class="col-12" name="profile_verification" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+            <form class="col-12" name="profile_verification" id="profile_verification" action="" method="post"  enctype='multipart/form-data'>
             <div class="col-12">
                 <div class="row">
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
 
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['name']?>" disabled <?php endif; ?>placeholder="Имя" required type="text" name="verification[name]">
+                            <input <?php if (isset($verification)): ?>value="<?=$verification['name']?>"<?php endif; ?>placeholder="Имя" required type="text" name="verification[name]">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
 
                             <div class="select-exchange w-100">
-                                <input <?php if (isset($verification)): ?>value="<?=$verification['surname']?>" disabled <?php endif; ?>placeholder="Фамилия" required class="" type="text" name="verification[surname]">
+                                <input <?php if (isset($verification)): ?>value="<?=$verification['surname']?>" <?php endif; ?>placeholder="Фамилия" required class="" type="text" name="verification[surname]">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
 
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['last_name']?>" disabled <?php endif; ?>placeholder="Отчество" required class="" type="text" name="verification[last_name]">
+                            <input <?php if (isset($verification)): ?>value="<?=$verification['last_name']?>" <?php endif; ?>placeholder="Отчество" required class="" type="text" name="verification[last_name]">
                         </div>
                     </div>
                 </div>
@@ -144,27 +144,27 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>Серия и номер паспорта</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_number']?>" disabled <?php endif; ?>placeholder="____-______" required  type="text" name="verification[passport_number]">
+                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_number']?>" <?php endif; ?>placeholder="____-______" required  type="text" name="verification[passport_number]">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
                             <span>&nbsp;</span>
                             <div class="select-exchange w-100">
-                                <input <?php if (isset($verification)): ?>value="<?=$verification['passport_date']?>" disabled <?php endif; ?> placeholder="Дата выдачи" required class="" type="date" name="verification[passport_date]">
+                                <input <?php if (isset($verification)): ?>value="<?=$verification['passport_date']?>" <?php endif; ?> placeholder="Дата выдачи" required class="" type="date" name="verification[passport_date]">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>&nbsp;</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_code']?>" disabled <?php endif; ?> placeholder="Код подразделения" required class="" type="text" name="verification[passport_code]">
+                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_code']?>" <?php endif; ?> placeholder="Код подразделения" required class="" type="text" name="verification[passport_code]">
                         </div>
                     </div>
                     <div class="col-lg-12 input-exchange">
                         <div class="row">
                             <span>&nbsp;</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_who']?>" disabled <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
+                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
                         </div>
                     </div>
                     <?php if ($is_manager): ?>
@@ -188,10 +188,12 @@
                     <div class="col-lg-4">
                         <div class="row">
                             <div class="skrepka w-100 text-center">
-                                <img src="/wp-content/uploads/2019/12/skrepka.png"> Прикрепить фото
+                                <img src="/wp-content/uploads/2019/12/skrepka.png" style="margin-left: 20%">
+                                <input accept="image/*" data-multiple-caption="{count} файлов выбрано" multiple type="file" name="passport_photos[]" id="passport_photos" class="upload" />
+                                <label for="passport_photos">Прикрепить фото</label>
                             </div>
 
-                            <input type="submit" class="btn-custom-one w-100 text-center" value="Завершить регистрацию" name="submit_verification" style="margin-top: 30px; height: 42px"/>
+                            <input type="submit" class="btn-custom-one w-100 text-center" id="submit_verification" value="Завершить регистрацию" name="submit_verification" style="margin-top: 30px; height: 42px"/>
                         </div>
                     </div>
                     <div class="col-lg-8">

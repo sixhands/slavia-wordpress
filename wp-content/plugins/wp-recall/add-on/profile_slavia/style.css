@@ -1,3 +1,33 @@
+.upload {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+}
+.upload + label {
+    /*font-size: 1em;*/
+    /*font-weight: 500;*/
+    /*color: white;*/
+    /*line-height: 2.6em;*/
+    /*text-transform: uppercase;*/
+    /*text-align: center;*/
+    /*background-color: #ef494f;*/
+    display: inline-block;
+    width: 90%;
+    margin-left: -21%;
+    /*border-radius: 10px;*/
+    /*box-shadow: 0px 3px 0px #a73337;*/
+    /*transition: 150ms;*/
+}
+.skrepka:hover {
+    background: transparent linear-gradient(90deg, #EF7F1B 0%, #FDC501 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 10px #EF701B;
+    cursor:pointer;
+}
+.upload + label:hover {
+    cursor:pointer;
+}
+
+
 #tab-profile a:link:hover {
     color: inherit;
 }

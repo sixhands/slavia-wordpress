@@ -126,19 +126,10 @@ function add_profile_fields($fields){
     );
     //Фото паспорта
     $fields[] = array(
-        'type' => 'file',
-        'slug' => 'passport_photo_1',
-        'title' => 'Фото паспорта 1',
-    );
-    $fields[] = array(
-        'type' => 'file',
-        'slug' => 'passport_photo_2',
-        'title' => 'Фото паспорта 2',
-    );
-    $fields[] = array(
-        'type' => 'file',
-        'slug' => 'passport_photo_3',
-        'title' => 'Фото паспорта 3',
+        'type' => 'custom',
+        'slug' => 'passport_photos',
+        'title' => 'Фото паспорта',
+        'content' => '',
     );
 
     return $fields;
@@ -656,7 +647,6 @@ function rcl_tab_requests_content($master_id)
         $i = 0;
         foreach ($verification_requests as $key => $value)
         {
-            $log->insert_log(get_user_meta( $key, 'client_num', true ));
             $i++;
             $verification_content .= '<div class="table-text w-100">'.
                                         '<div class="row">'.
@@ -833,7 +823,6 @@ if (!function_exists('array_key_first')) {
         return NULL;
     }
 }
-
 //Обновляем профиль пользователя
 add_action('wp', 'rcl_edit_profile', 10);
 function rcl_edit_profile(){
@@ -887,6 +876,7 @@ function rcl_edit_profile(){
         //Если верификация
         elseif (strpos(array_key_first($_POST), 'verification') !== false )
         {
+            //var_dump($_POST);
             /*****************Сохраняем в запросы на верификацию******************/
             $verification_requests = rcl_get_option('verification_requests');
 
@@ -927,15 +917,70 @@ function rcl_edit_profile(){
 
             $profileFields = rcl_get_profile_fields(array('user_id' => $user_ID));
 
-            $post_first_key = current(array_keys($_POST));
+            //$post_first_key = current(array_keys($_POST));
             $field_found = false;
-            foreach ($profileFields as $field) {
-                if ($post_first_key == $field['slug']) {
+            foreach ($profileFields as $field)
+            {
+                if ($field['slug'] == 'verification') {
                     $field += array('value' => $verification_fields);
 
                     rcl_update_profile_fields($user_ID, array($field));
                     $field_found = true;
-                    break;
+                    continue;
+                    //break;
+                }
+                if ($field['slug'] == 'passport_photos' && isset($_FILES) && !empty($_FILES)) {
+                    //Загружаем файлы
+                    $field += array('value' => array());
+                    for ($i=0; $i < count($_FILES['passport_photos']['name']); $i++)
+                    {
+                        $filetype	 = wp_check_filetype_and_ext( $_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i] );
+                        
+                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP')))
+                            wp_die( __( 'Prohibited file type!', 'wp-recall' ) );
+                        $maxsize = 2;
+                        if ( $_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024 )
+                            wp_die( __( 'File size exceedes maximum!', 'wp-recall' ) );
+
+                        $info = pathinfo( $_FILES['passport_photos']['name'][$i] );
+                        if( ! empty( $info['extension'] ) )
+                            $_FILES['passport_photos']['name'][$i]  = sprintf( 'passport_photo_%s.%s', current_time( 'm-d-H-i-s' ), $info['extension'] );
+
+                        $uploadedfile = array(
+                            'name'     => $_FILES['passport_photos']['name'][$i],
+                            'type'     => $_FILES['passport_photos']['type'][$i],
+                            'tmp_name' => $_FILES['passport_photos']['tmp_name'][$i],
+                            'error'    => $_FILES['passport_photos']['error'][$i],
+                            'size'     => $_FILES['passport_photos']['size'][$i]
+                        );
+
+                        $file = wp_handle_upload( $uploadedfile, array( 'test_form' => FALSE ) );
+
+                        if ($file && !isset( $file['error'] ))
+                            if ( $file['url'] ) {
+                                $attachment = array(
+                                    'post_mime_type' => $file['type'],
+                                    'post_title'	 => preg_replace( '/\.[^.]+$/', '', basename( $file['file'] ) ),
+                                    'post_name'		 => 'passport_photos' . '-' . $user_ID . '-' . 0,
+                                    'post_content'	 => '',
+                                    'guid'			 => $file['url'],
+                                    'post_parent'	 => 0,
+                                    'post_author'	 => $user_ID,
+                                    'post_status'	 => 'inherit'
+                                );
+
+                                $attach_id	 = wp_insert_attachment( $attachment, $file['file'], 0);
+                                $attach_data = wp_generate_attachment_metadata( $attach_id, $file['file'] );
+
+                                wp_update_attachment_metadata( $attach_id, $attach_data );
+                                $field['value'] += array($i => $file['url']);
+                                continue;
+                            }
+                    }
+                    //$field += array('value' => $verification_fields);
+                    rcl_update_profile_fields($user_ID, array($field));
+                    $field_found = true;
+                    continue;
                 }
             }
 //            $log = new Rcl_Log();

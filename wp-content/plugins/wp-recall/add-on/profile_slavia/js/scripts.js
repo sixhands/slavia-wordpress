@@ -131,6 +131,64 @@ function tab_config()
         jQuery('#modal-54506521').trigger('click');
     });
 
+    //Кастомный вывод фотографий паспорта
+
+    jQuery( '#passport_photos' ).each( function()
+    {
+        var $input	 = jQuery( this ),
+            $label	 = $input.next( 'label' ),
+            labelVal = $label.html();
+
+        $input.on( 'change', function( e )
+        {
+            var fileName = '';
+
+            if( this.files && this.files.length > 1 )
+                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+            else if( e.target.value )
+                fileName = e.target.value.split( '\\' ).pop();
+
+            if( fileName )
+                $label.html( fileName );
+            else
+                $label.html( labelVal );
+        });
+
+        // Firefox bug fix
+        $input
+            .on( 'focus', function(){ $input.addClass( 'has-focus' ); })
+            .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+    });
+
+    // jQuery('#profile_verification').on('submit', function(e) {
+    //     e.preventDefault();
+    //     var fileInput = jQuery('#passport_photos');
+    //     console.log(fileInput);
+    //     var files = fileInput[0].files;
+    //     var verification_form = document.getElementById('profile_verification');
+    //      var form_data = new FormData(verification_form);
+    //      //form_data.delete("verification[photos]");
+    //     //var index = 1;
+    //     for(var i=0; i<files.length; i++) {
+    //         //let field_name = 'verification[photo' + (i + 1) + ']';
+    //         var today = new Date();
+    //         var dd = String(today.getDate()).padStart(2, '0');
+    //         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    //         var yyyy = today.getFullYear();
+    //         var h = today.getHours();
+    //         var m = today.getMinutes();
+    //         var s = today.getSeconds();
+    //         today = yyyy + '-' + mm + '-' + dd;
+    //         let file_name = 'passport_photo_' + today + '-' + h + m + s;
+    //
+    //         var blob = files[i].slice(0, files[i].size, 'image/*');
+    //         newFile = new File([blob], file_name, {type: blob.type});
+    //         console.log(newFile);
+    //         fileInput[0].files[i] = newFile;
+    //         //form_data.set(field_name, files[i], file_name);
+    //     }
+    //     verification_form.submit();
+    // });
 
 };
 

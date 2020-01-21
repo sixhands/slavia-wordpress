@@ -197,7 +197,10 @@ class Rcl_Custom_Fields {
 		$accept		 = ($accTypes) ? 'accept="' . implode( ',', $accTypes ) . '"' : '';
 		$required	 = ( ! $this->value) ? $this->required : '';
 
-		$size = ($field['sizefile']) ? $field['sizefile'] : 2;
+		if (isset($field['sizefile']) && !empty($field['sizefile']))
+		    $size = ($field['sizefile']);
+		else
+		    $size = 2;
 
 		$input .= '<span id="' . $this->slug . '-content" class="file-field-upload">';
 		$input .= '<span onclick="jQuery(\'#' . $this->field_id . '\').val(\'\');" class="file-input-recycle"><i class="rcli fa-recycle"></i></span>';

@@ -1,4 +1,123 @@
-1
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
+update_profile_fields: input fields:
+Array
+(
+    [0] => Array
+        (
+            [type] => custom
+            [slug] => verification
+            [title] => Данные верификации
+            [content] => 
+            [value] => Array
+                (
+                    [name] => gfdfgdfg
+                    [surname] => gfdgdfhgfh
+                    [last_name] => rhjgjhgjhgh
+                    [passport_number] => 345345645
+                    [passport_date] => 46546-06-05
+                    [passport_code] => 65646456
+                    [passport_who] => dfgdfgdfgdfgdf
+                )
+
+        )
+
+)
+
 update_profile_fields: input fields:
 Array
 (
