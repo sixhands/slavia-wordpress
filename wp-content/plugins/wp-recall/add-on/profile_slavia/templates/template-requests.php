@@ -1,6 +1,6 @@
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
-        <div class="coop_maps question-bg col-lg-12">
+        <div class="coop_maps question-bg col-lg-12 exchange_requests">
             <div class="row">
                 <div class="col-12">
                     <h1 class="coop_maps-h1 ib">Заявки на обмен</h1>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class="coop_maps question-bg col-lg-12">
+        <div class="coop_maps question-bg col-lg-12 verification_requests">
             <div class="row">
                 <div class="col-12">
                     <h1 class="coop_maps-h1 ib">Заявки на верификацию</h1>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </div>
-                <?php echo $verification_content; ?>
+                <?php if(isset($verification_content) && !empty($verification_content)) echo $verification_content; ?>
 <!--                <div class="table-text w-100">-->
 <!--                    <div class="row">-->
 <!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
@@ -250,7 +250,7 @@
 </div>
 <script type="text/javascript">
     //Открытие модального окна с данными верификации данного пользователя
-    jQuery('.info-zayavki').click(function(){
+    jQuery('.verification_requests .info-zayavki').click(function(){
         //Получаем id текущего пользователя из кнопки
         let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
         request_user_id = request_user_id.split('_');
@@ -296,10 +296,13 @@
         request_user_id = parseInt(request_user_id);
         var data = {
             request_user_id: request_user_id,
-            approve_request: 'true'
+            approve_request: 'true',
         };
+        var el = jQuery(this);
         jQuery.post( window.location, data, function(response) {
-            console.log(response);
+            if (response == 'true') {
+                el.parents('.table-text').remove();
+            }
         });
     });
 </script>

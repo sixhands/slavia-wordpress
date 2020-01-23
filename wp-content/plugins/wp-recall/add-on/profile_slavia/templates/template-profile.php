@@ -11,7 +11,7 @@
                     <h1 class="profil-user-h1">
                         С возвращением, <?php echo $username ?>!
                     </h1>
-                    <?php if ($is_verified == 'yes'): ?>
+                    <?php if (isset($is_verified) && $is_verified == 'yes'): ?>
                         <p class="profil-user-verification" style="color: #179F37;">
                             Профиль верифицирован
                         </p>

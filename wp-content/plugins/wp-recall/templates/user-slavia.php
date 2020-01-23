@@ -3,8 +3,8 @@
 <div class="table-text w-100 user-single" data-user-id="<?php echo $rcl_user->ID; ?>">
     <div class="row">
         <div class="col-lg-1 text-center">
-            <?php $is_verified = rcl_user_is_verified();
-                  if ($is_verified): ?>
+            <?php $is_verified = rcl_user_is_verified(true);
+                  if (isset($is_verified) && $is_verified == 'yes'): ?>
                     <img src="/wp-content/uploads/2019/12/verification_ok.png">
                   <?php else: ?>
                     <img src="/wp-content/uploads/2019/12/verification_bad.png">

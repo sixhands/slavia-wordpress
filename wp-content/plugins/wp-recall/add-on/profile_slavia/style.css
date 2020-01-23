@@ -27,6 +27,9 @@
     cursor:pointer;
 }
 
+.get-rubles, .get-prizm, .get-waves {
+    padding-bottom: 10px;
+}
 
 #tab-profile a:link:hover {
     color: inherit;

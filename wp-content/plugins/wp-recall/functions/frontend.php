@@ -80,12 +80,16 @@ function rcl_user_client_num() {
         }
 }
 
-function rcl_user_is_verified() {
+function rcl_user_is_verified($is_return = false) {
     global $rcl_user;
     foreach ($rcl_user->profile_fields as $field)
         if ($field['slug'] == 'is_verified') {
-            echo $field['value'];
-            return;
+            if ($is_return)
+                return $field['value'];
+            else {
+                echo $field['value'];
+                return;
+            }
         }
 }
 

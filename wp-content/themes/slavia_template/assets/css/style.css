@@ -15,7 +15,8 @@ a.settings_close {
 	position: relative;
 	left: 85%;
 	font-size: 30px;
-	display: none;
+	/*display: none;*/
+	visibility: hidden;
 	color: red !important;
 	cursor: pointer;
 }

@@ -92,10 +92,10 @@ function tab_config()
 
     //Вывод кнопки удаления банка
     jQuery('.input-exchange').mouseover(function() {
-        jQuery(this).find(".settings_close").show();
+        jQuery(this).find(".settings_close").css('visibility', 'visible');
     });
     jQuery('.input-exchange').mouseout(function() {
-        jQuery(this).find(".settings_close").hide();
+        jQuery(this).find(".settings_close").css('visibility', 'hidden');
     });
 
     jQuery('.settings_close').click(function(){

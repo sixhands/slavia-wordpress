@@ -1050,7 +1050,6 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 	require_once(ABSPATH . "wp-admin" . '/includes/image.php');
 	require_once(ABSPATH . "wp-admin" . '/includes/file.php');
 	require_once(ABSPATH . "wp-admin" . '/includes/media.php');
-
 	if ( ! $profileFields )
 		$profileFields = rcl_get_profile_fields();
 
@@ -1101,8 +1100,7 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 						continue;
 				}
 			}
-
-			if ($slug == 'verification' || $slug == 'passport_photos') {
+			if ($slug == 'verification' || $slug == 'passport_photos' || $slug == 'is_verified') {
 			    $value = $field['value'];
                 update_user_meta($user_id, $slug, $value);
                 continue;
