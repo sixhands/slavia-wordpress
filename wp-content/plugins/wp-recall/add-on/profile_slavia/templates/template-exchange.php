@@ -159,7 +159,7 @@
                 <h1 class="coop_maps-h1 ib">Получить рубль</h1>
                 <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
 
-                <div class="tab-ex">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_rubles">
                     <div class="col-12 pryamougolnik">
                         <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
                         <h3>PRIZM-AWTX-HDBX-ADDH-7SMM7</h3>
@@ -170,14 +170,14 @@
                             <div class="col-lg-3 input-exchange">
                                 <div class="row">
                                     <span>Количество монет PRIZM</span>
-                                    <input placeholder="0" type="text" class="prizm_to_rubles prizm" name="">
+                                    <input required placeholder="0" type="text" class="prizm_to_rubles prizm" name="get_rubles[prizm]">
                                 </div>
                             </div>
                             <div class="col-lg-6 input-exchange ">
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select id="bank_list_mobile">
+                                        <select required id="bank_list_mobile" name="get_rubles[bank]">
 <!--                                            <option>Название выбранного банка</option>-->
                                             <?php if (isset($banks) && !empty($banks)): ?>
                                                 <?php foreach ($banks as $key => $value): ?>
@@ -191,7 +191,7 @@
                             <div class="col-lg-3 input-exchange orange-input">
                                 <div class="row">
                                     <span>Вы получите</span>
-                                    <input placeholder="0" id="exp" type="text" name="">
+                                    <input required placeholder="0" id="exp" type="text" name="get_rubles[rubles]">
                                 </div>
                             </div>
                         </div>
@@ -200,24 +200,22 @@
                         <div class="row">
                             <div class="col-lg-6 input-exchange">
                                 <div class="row">
-                                    <input type="text" name="" class="input-pd-right" placeholder="Номер банковской карты для получения">
+                                    <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">
                                 </div>
                             </div>
                             <div class="col-lg-6 input-exchange">
                                 <div class="row">
-                                    <input type="text" name="" placeholder="Имя получателя (как на карте)">
+                                    <input type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="btn-custom-one exchange-pd text-center">
-                                        Отправить
-                                    </div>
+                                    <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -225,7 +223,7 @@
             <div class="click_ex" id="two-ex">
                 <h1 class="coop_maps-h1 ib">Получить PRIZM</h1>
                 <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
-                <div class="tab-ex">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_prizm">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-lg-3 input-exchange select-custom">
@@ -240,14 +238,14 @@
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
                                     <div class="select-exchange w-100">
-                                        <input class="rubles_to_prizm" placeholder="0" type="text" name="">
+                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="get_prizm[rubles]">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 input-exchange orange-input input-custom-prizm">
                                 <div class="row">
                                     <span>Вы получите</span>
-                                    <input placeholder="0" id="exp" type="text" name="">
+                                    <input required placeholder="0" id="exp" type="text" name="get_prizm[prizm]">
                                 </div>
                             </div>
                         </div>
@@ -257,14 +255,12 @@
 
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="btn-custom-one exchange-pd text-center">
-                                        Отправить
-                                    </div>
+                                    <input class="btn-custom-one exchange-pd get-prizm text-center" type="submit" name="" value="Отправить">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
 
@@ -273,7 +269,7 @@
             <div class="click_ex" id="three-ex">
                 <h1 class="coop_maps-h1 ib">Получить Waves</h1>
                 <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
-                <div class="tab-ex">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_waves">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-lg-3 input-exchange select-custom">
@@ -288,14 +284,14 @@
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
                                     <div class="select-exchange w-100">
-                                        <input class="rubles_to_waves" placeholder="0" type="text" name="">
+                                        <input required class="rubles_to_waves" placeholder="0" type="text" name="get_waves[rubles]">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 input-exchange orange-input input-custom-waws">
                                 <div class="row">
                                     <span>Вы получите</span>
-                                    <input placeholder="0" id="exp" type="text" name="">
+                                    <input required placeholder="0" id="exp" type="text" name="get_waves[waves]">
                                 </div>
                             </div>
                         </div>
@@ -305,14 +301,12 @@
 
                             <div class="col-12">
                                 <div class="row">
-                                    <div class="btn-custom-one exchange-pd text-center">
-                                        Отправить
-                                    </div>
+                                    <input class="btn-custom-one get-waves exchange-pd text-center" type="submit" name="" value="Отправить">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
 

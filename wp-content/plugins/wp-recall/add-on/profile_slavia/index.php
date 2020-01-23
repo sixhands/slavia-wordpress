@@ -509,22 +509,55 @@ function rcl_tab_operations_content($master_id)
 {
     global $userdata, $user_ID;
 
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+    //$profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
 
-    $Table = new Rcl_Table(array(
-        'cols' => array(
-            array(
-                'width' => 30
-            ),
-            array(
-                'width' => 70
-            )
-        ),
-        'zebra' => true,
-        //'border' => array('table', 'rows')
-    ));
+    $profile_args = rcl_tab_template_content();
 
-    $content = rcl_get_include_template('template-operations.php', __FILE__);
+    $exchange_requests = rcl_get_option('exchange_requests');
+    $exchange_content = '';
+    if (isset($exchange_requests) && !empty($exchange_requests) && isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
+    {
+        foreach ($exchange_requests[$user_ID] as $key => $value)
+        {
+            $exchange_content .= '<div class="table-text w-100">
+                                    <div class="row">
+                                        <div class="col-2 text-center">'.
+                                            $value['date'].
+                                        '</div>
+                                        
+                                        <div class="col-2 text-center">'.
+                                            $value['input_currency'].
+                                        '</div>
+                                        
+                                        <div class="col-2 text-center">'.
+                                            $value['output_currency'].
+                                        '</div>
+                                        
+                                        <div class="col-2 text-center">'.
+                                            $value['output_sum'].' '.$value['output_currency'].
+                                        '</div>
+                                        
+                                        <div class="col-2 text-center" style="visibility: hidden">
+                                            0.9188 PZM
+                                        </div>';
+            if ($value['status'] == 'no')
+                $exchange_content .= '<div class="col-2 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает проверки
+                                        </div>
+                                    </div>
+                                </div>';
+            elseif ($value['status'] == 'yes')
+                $exchange_content .= '<div class="col-2 text-center" style="font-size: 15px; color: green">
+                                       Завершена
+                                        </div>
+                                    </div>
+                                </div>';
+        }
+        $profile_args += array("exchange_content" => $exchange_content);
+        //$profile_args += array("verification_requests" => $verification_requests);
+    }
+
+    $content = rcl_get_include_template('template-operations.php', __FILE__, $profile_args);
     return $content;
 }
 /********************************/
@@ -852,7 +885,7 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
         $exchange_requests = array($user_ID => $new_request);
     }
 
-    rcl_update_option('exchange_requests', $exchange_requests);
+    //rcl_update_option('exchange_requests', $exchange_requests);
 }
 
 //Обновляем профиль пользователя
@@ -1084,13 +1117,28 @@ function rcl_edit_profile(){
             }
         }
 
-        //Если запрос на обмен
-        elseif (strpos(array_key_first($_POST), 'get_rubles') !== false)
+        /*****************Сохраняем в запросы на обмен******************/
+        elseif (strpos(array_key_first($_POST), 'get_rubles') !== false ||
+                strpos(array_key_first($_POST), 'get_prizm') !== false ||
+                strpos(array_key_first($_POST), 'get_waves') !== false)
         {
-            /*****************Сохраняем в запросы на обмен******************/
-            save_exchange_request('PRIZM', 'RUB',
-                $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
-                $_POST['get_rubles']['bank']);
+            if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
+                save_exchange_request('PRIZM', 'RUB',
+                    $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
+                    $_POST['get_rubles']['bank']);
+            }
+
+            if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
+
+                save_exchange_request('RUB', 'PRIZM',
+                    $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm']);
+            }
+
+            if (strpos(array_key_first($_POST), 'get_waves') !== false) {
+
+                save_exchange_request('RUB', 'WAVES',
+                    $_POST['get_waves']['rubles'], $_POST['get_waves']['waves']);
+            }
 
             $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
 

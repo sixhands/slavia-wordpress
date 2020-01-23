@@ -28,28 +28,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            08.11.19
-                        </div>
-                        <div class="col-2 text-center">
-                            RUB
-                        </div>
-                        <div class="col-2 text-center">
-                            PRIZM
-                        </div>
-                        <div class="col-2 text-center">
-                            0.788 PZM
-                        </div>
-                        <div class="col-2 text-center">
-                            0.9188 PZM
-                        </div>
-                        <div class="col-2 text-center" style="font-size: 15px; color: #EF701B">
-                            Ожидает проверки
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            08.11.19-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            RUB-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            PRIZM-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            0.788 PZM-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center">-->
+<!--                            0.9188 PZM-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-center" style="font-size: 15px; color: #EF701B">-->
+<!--                            Ожидает проверки-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <?php if (isset($exchange_content) && !empty($exchange_content))
+                    echo $exchange_content; ?>
             </div>
         </div>
     </div>
