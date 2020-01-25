@@ -731,7 +731,7 @@ function rcl_tab_requests_content($master_id)
                                                     </div>
                                                     
                                                     <div class="col-3 text-center">
-                                                        <div class="btn-custom-one btn-zayavki" id="request_approve_'.$user.'">
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
                                                     </div>
@@ -1183,6 +1183,20 @@ function rcl_edit_profile(){
                     echo 'false';
                 exit;
             }
+            //Одобрение запроса на обмен
+            elseif (isset($_POST['approve_exchange']) && $_POST['approve_exchange'] == 'true')
+            {
+                $exchange_requests = rcl_get_option('exchange_requests');
+
+                if (isset($exchange_requests) && !empty($exchange_requests))
+                {
+                    //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
+                    $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'yes';
+                    rcl_update_option('exchange_requests', $exchange_requests);
+                    echo 'true';
+                    exit;
+                }
+            }
         }
 
         /*****************Сохраняем в запросы на обмен******************/
@@ -1190,7 +1204,6 @@ function rcl_edit_profile(){
                 strpos(array_key_first($_POST), 'get_prizm') !== false ||
                 strpos(array_key_first($_POST), 'get_waves') !== false)
         {
-            var_dump($_POST);
             //Обмен только для верифицированных
             if (get_user_meta($user_ID, 'is_verified', true) == 'yes') {
                 if (strpos(array_key_first($_POST), 'get_rubles') !== false) {

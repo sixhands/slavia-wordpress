@@ -655,7 +655,6 @@
                    is_reverse = false;
                else
                    is_reverse = true;
-               console.log(is_reverse);
                el.parents(".input-exchange").next().find("#exp")
                    .val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
            }
@@ -704,8 +703,15 @@
     });
 
     jQuery('.click_ex form input[type=submit]').on('touchstart', function(){
-        jQuery(this).val('touch');
-        jQuery(this).parents('form').submit();
+        //jQuery(this).val('touch');
+        let form = jQuery(this).parents('form')[0];
+        for (var i=0; i < form.elements.length; i++)
+            if (form.elements[i].value === '' && form.elements[i].hasAttribute('required')) {
+                form.elements[i].setCustomValidity('Данное поле является обязательным!');
+                //jQuery(form.elements[i]).css('border', '2px red');
+                return false;
+            }
+        form.submit();
         //jQuery(this).trigger( "click" );
     });
 </script>

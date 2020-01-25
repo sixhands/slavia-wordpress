@@ -250,13 +250,20 @@
     </div>
 </div>
 <script type="text/javascript">
-    //Открытие модального окна с данными верификации данного пользователя
-    jQuery('.verification_requests .info-zayavki, .exchange_requests .info-zayavki').click(function(){
-        //Получаем id текущего пользователя из кнопки
-        let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
+    //Получение id пользователя из id кнопки
+    function request_get_user_id(el)
+    {
+        let request_user_id = el.attr('id');
         request_user_id = request_user_id.split('_');
         request_user_id = request_user_id[request_user_id.length - 1];
         request_user_id = parseInt(request_user_id);
+        return request_user_id;
+    }
+
+    //Открытие модального окна с данными верификации данного пользователя
+    jQuery('.verification_requests .info-zayavki, .exchange_requests .info-zayavki').click(function(){
+        //Получаем id текущего пользователя из кнопки
+        let request_user_id = request_get_user_id(jQuery(this).parent().next().children('.btn-zayavki'));
         //console.log(request_user_id);
         var is_exchange;
         if (jQuery(this).parents('.exchange_requests').length > 0)
@@ -300,13 +307,26 @@
     });
     //Нажатие кнопки "одобрить"
     jQuery('.verification_requests .btn-zayavki').click(function() {
-        let request_user_id = jQuery(this).attr('id');
-        request_user_id = request_user_id.split('_');
-        request_user_id = request_user_id[request_user_id.length - 1];
-        request_user_id = parseInt(request_user_id);
+        let request_user_id = request_get_user_id(jQuery(this));
         var data = {
             request_user_id: request_user_id,
             approve_request: 'true',
+        };
+        var el = jQuery(this);
+        jQuery.post( window.location, data, function(response) {
+            if (response == 'true') {
+                el.parents('.table-text').remove();
+            }
+        });
+    });
+
+    jQuery('.exchange_requests .btn-zayavki').click(function(){
+        let request_user_id = request_get_user_id(jQuery(this));
+        let request_num = jQuery(this).attr('data-request_num');
+        var data = {
+            request_user_id: request_user_id,
+            approve_exchange: 'true',
+            request_num: request_num
         };
         var el = jQuery(this);
         jQuery.post( window.location, data, function(response) {
