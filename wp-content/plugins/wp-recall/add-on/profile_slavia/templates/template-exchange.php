@@ -211,10 +211,12 @@
     <div class="row">
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd" style="">
             <div class="click_ex" id="one-ex">
-                <h1 class="coop_maps-h1 ib">Получить рубль</h1>
-                <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Получить рубль</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
 
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_rubles">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_rubles_mob">
                     <div class="col-12 pryamougolnik">
                         <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
                         <h3>PRIZM-AWTX-HDBX-ADDH-7SMM7</h3>
@@ -260,7 +262,7 @@
                             </div>
                             <div class="col-lg-6 input-exchange">
                                 <div class="row">
-                                    <input type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">
+                                    <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">
                                 </div>
                             </div>
                             <div class="col-12">
@@ -276,9 +278,11 @@
         </div>
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
             <div class="click_ex" id="two-ex">
-                <h1 class="coop_maps-h1 ib">Получить PRIZM</h1>
-                <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_prizm">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Получить PRIZM</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_prizm_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -350,9 +354,11 @@
         </div>
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
             <div class="click_ex" id="three-ex">
-                <h1 class="coop_maps-h1 ib">Получить Waves</h1>
-                <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_waves">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Получить Waves</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_waves_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -588,11 +594,13 @@
     jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
         var code = (event.keyCode ? event.keyCode : event.which);
         //Проверяем на допустимые символы
-        var is_allowed = (( (code >= 48 && code <= 57) || (code == 46) ) //numbers || period
-            || !(code == 46 && jQuery(this).val().indexOf('.') != -1) //уже есть точка
+        var is_allowed = ( (code >= 48 && code <= 57) || ((code == 190) //numbers || period
+            && !(code == 190 && jQuery(this).val().indexOf('.') != -1)) //уже есть точка
             || code == 8);
-        if (!is_allowed)
+        if (!is_allowed) {
+            event.preventDefault();
             return false;
+        }
     });
 
     //При вводе значения
@@ -600,23 +608,28 @@
         let currency = get_currency(jQuery(this), prizm_price, waves_price);
         window.active_input_class = jQuery(this).attr('class');
         let active_bank_val = get_active_bank_val(jQuery(this), vals);
-        keyup_calc(event, jQuery(this), currency, active_bank_val);
+        keyup_calc(/*event, */jQuery(this), currency, active_bank_val);
     });
-    //При нажатии backspace
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
-        let currency = get_currency(jQuery(this), prizm_price, waves_price);
-        window.active_input_class = jQuery(this).attr('class');
-        let active_bank_val = get_active_bank_val(jQuery(this), vals);
-        keyup_calc(event, jQuery(this), currency, active_bank_val, true);
-    });
+    // //При нажатии backspace
+    // jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
+    //     let currency = get_currency(jQuery(this), prizm_price, waves_price);
+    //     window.active_input_class = jQuery(this).attr('class');
+    //     let active_bank_val = get_active_bank_val(jQuery(this), vals);
+    //     keyup_calc(event, jQuery(this), currency, active_bank_val, true);
+    // });
+
 
     jQuery('#bank_list_desktop, #bank_list_mobile').change(function(){
         var active_el;
-        var active_class = window.active_input_class;
+        var active_class;
+        if (typeof window.active_input_class !== 'undefined')
+            active_class = window.active_input_class;
+
         var active_currency;
-       if (active_class === 'prizm_to_rubles' ||
+       if (typeof active_class !== 'undefined' &&
+           (active_class === 'prizm_to_rubles' ||
            active_class === 'rubles_to_prizm' ||
-           active_class === 'rubles_to_waves')
+           active_class === 'rubles_to_waves'))
        {
            active_el = jQuery(this).parents(".input-exchange").prev().find("." + active_class);
            //Определяем валюту
@@ -642,6 +655,7 @@
                    is_reverse = false;
                else
                    is_reverse = true;
+               console.log(is_reverse);
                el.parents(".input-exchange").next().find("#exp")
                    .val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
            }
@@ -651,14 +665,12 @@
            active_el = jQuery(this).parents(".input-exchange").next().find("#exp");
            if (active_el.val() !== '') {
                var el = jQuery(this);
-               let input_amount = active_el.val();
-               input_amount = parseFloat(input_amount);
 
-               var output_el = el.parents(".input-exchange").prev().find('input');
-               if (output_el.hasClass('prizm_to_rubles') || output_el.hasClass('rubles_to_prizm'))
+               var input_el = el.parents(".input-exchange").prev().find('input');
+               if (input_el.hasClass('prizm_to_rubles') || input_el.hasClass('rubles_to_prizm'))
                    active_currency = 'prizm';
                else
-                   if (output_el.hasClass('rubles_to_waves'))
+                   if (input_el.hasClass('rubles_to_waves'))
                        active_currency = 'waves';
                //Находим активный банк
                var active_bank_val;
@@ -669,12 +681,31 @@
                    }
                });
                var is_reverse;
-               if (output_el.attr('class') === 'prizm_to_rubles')
+               var output_el;
+               var input_amount;
+               if (input_el.attr('class') === 'prizm_to_rubles') {
                    is_reverse = true;
-               else
-                   is_reverse = false;
+                   //Выводим в левый input
+                   output_el = input_el;
+                   input_amount = active_el.val();
+                   input_amount = parseFloat(input_amount);
+               }
+               else {
+                   is_reverse = true;
+                   //Выводим в правый input
+                   output_el = active_el;
+                   input_amount = input_el.val();
+                   input_amount = parseFloat(input_amount);
+               }
+               console.log(is_reverse);
                output_el.val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
            }
        }
+    });
+
+    jQuery('.click_ex form input[type=submit]').on('touchstart', function(){
+        jQuery(this).val('touch');
+        jQuery(this).parents('form').submit();
+        //jQuery(this).trigger( "click" );
     });
 </script>

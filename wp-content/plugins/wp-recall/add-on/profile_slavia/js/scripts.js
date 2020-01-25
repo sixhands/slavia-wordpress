@@ -104,16 +104,16 @@ function tab_config()
 
     //exchange
     //open and close mobile form exchange
-    jQuery('.click_ex').click(function(e){
-        let forbid_tags = ['BUTTON', 'INPUT', 'SELECT', 'OPTION'];
-        if ( forbid_tags.includes(jQuery(e.target).prop("tagName")) || //Запрещаем закрытие на мобиле при нажатии на определенные теги
-            jQuery(e.target).hasClass('btn-custom-one') ||
-            jQuery(e.target).hasClass('btn-custom-two') )
-        {
-            return false;
-        }
-        
-        var id = this.id;
+    jQuery('.ex-header').click(function(e){
+        //let forbid_tags = ['BUTTON', 'INPUT', 'SELECT', 'OPTION'];
+        // if ( forbid_tags.includes(jQuery(e.target).prop("tagName")) || //Запрещаем закрытие на мобиле при нажатии на определенные теги
+        //     jQuery(e.target).hasClass('btn-custom-one') ||
+        //     jQuery(e.target).hasClass('btn-custom-two') )
+        // {
+        //     return false;
+        // }
+
+        var id = jQuery(this).parent().attr('id');
         var block = jQuery('#'+id+ ' .tab-ex').css('display');
         if (block == 'none')
         {
