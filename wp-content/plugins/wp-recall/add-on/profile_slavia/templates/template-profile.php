@@ -193,7 +193,8 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <p class="passport-text">
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                                <?php $side_text = get_field('verification_sidetext');
+                                      if (isset($side_text) && !empty($side_text)) echo $side_text; ?>
                             </p>
                         </div>
                     </div>
@@ -274,7 +275,7 @@
     </div>
 </div>
 <!--Модальное окно информации -->
-<div class="modal fade" id="modal-container-54506521" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade profile_video" id="modal-container-54506521" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content text-left">
             <div class="row">
@@ -289,7 +290,56 @@
 
             </div>
 
-            Здесь будет видео
+<!--            Здесь будет видео-->
+            <?php
+            $video_files = get_field('verification_video');
+            if ($video_files && !empty($video_files)) : ?>
+                <video controls width="100%" height="459">
+                    <?php foreach( $video_files as $video ): ?>
+                        <?php if (!empty($video) && $video['type'] == 'video'): ?>
+                            <?php $filename = $video['filename'];
+                            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                            $url = $video['url'];
+                            switch ($ext) {
+                                case "mp4":
+                                    $mime_type = "video/mp4";
+                                    break;
+                                case "webm":
+                                    $mime_type = "video/webm";
+                                    break;
+                                case "ogv":
+                                    $mime_type = "video/ogg";
+                                    break;
+                                case "swf":
+                                    $mime_type = "application/x-shockwave-flash";
+                                    break;
+                                case "3gp":
+                                    $mime_type = "video/3gpp";
+                                    break;
+                                case "m1v":
+                                    $mime_type = "video/mpeg";
+                                    break;
+                                case "avi":
+                                    $mime_type = "video/x-msvideo";
+                                    break;
+                            }
+                            if (strcmp($ext, "swf") !== 0): ?>
+                                <source src="<?php echo $url ?>" type="<?php echo $mime_type ?>">
+                            <?php else: ?>
+                                <object data="<?php echo $url ?>" type="<?php echo $mime_type ?>"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+                                    <param name="movie" value="<?php echo $url ?>">
+                                </object>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </video>
+            <?php endif; ?>
+
+            <?php $modal_text = get_field('verification_modal_text');
+                if (isset($modal_text) && !empty($modal_text))
+                    echo $modal_text;
+                ?>
+
         </div>
     </div>
 </div>

@@ -157,6 +157,12 @@ function tab_config()
             .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
     });
 
+    jQuery('.profile_video button.close.ib').click(function(){
+        let video = jQuery(this).parents('.modal-content').find('video');
+        if (video.length > 0)
+            video.trigger('pause');
+    });
+
     // jQuery('#profile_verification').on('submit', function(e) {
     //     e.preventDefault();
     //     var fileInput = jQuery('#passport_photos');
@@ -188,27 +194,3 @@ function tab_config()
     // });
 
 };
-
-// function rcl_update_field(e)
-// {
-//     let field = [];
-//     if (e.target.id === 'username_input')
-//         field['display_name'] = e.target.value;
-//     jQuery.ajax({
-//         type: "POST",
-//         url: "../../index.php",//"/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php?f=profile_update",
-//         data: {fields: field},
-//         cache: false,
-//         processData: false,
-//         contentType: false,
-//         success: function() {
-//             var rclFormFactory = new RclForm(jQuery('form#your-profile'));
-//             rclFormFactory.validate();
-//             console.log("SUCCESS");
-//         },
-//         error: function(data) {
-//             console.log("ERROR:" + JSON.stringify(data));
-//         },
-//     });
-//
-// }

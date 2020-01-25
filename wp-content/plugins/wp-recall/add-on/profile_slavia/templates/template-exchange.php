@@ -5,7 +5,10 @@
 
             <div class="col-12 pryamougolnik">
                 <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
-                <h3>PRIZM-AWTX-HDBX-ADDH-7SMM7</h3>
+                <h3><?php $exchange_address = get_field('exchange_address');
+                        if (isset($exchange_address) && !empty($exchange_address))
+                            echo $exchange_address; ?>
+                </h3>
                 <button class="btn-custom-two  text-center">Отправить</button>
             </div>
             <div class="col-12">
