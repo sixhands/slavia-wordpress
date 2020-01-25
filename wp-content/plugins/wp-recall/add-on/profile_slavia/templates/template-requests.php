@@ -31,49 +31,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-3 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-2 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-                            PRIZM
-                        </div>
-                        <div class="col-2 text-left">
-                            0.98760
-                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
-                        </div>
-                        <div class="col-3 text-center">
-                            <div class="btn-custom-one btn-zayavki">
-                                Закрыть сделку
-                            </div>
-                        </div>
-                    </div>
-                </div><div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-3 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-2 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-                            PRIZM
-                        </div>
-                        <div class="col-2 text-left">
-                            0.98760
-                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
-                        </div>
-                        <div class="col-3 text-center">
-                            <div class="btn-custom-one btn-zayavki">
-                                Закрыть сделку
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            PRIZM-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            0.98760-->
+<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-center">-->
+<!--                            <div class="btn-custom-one btn-zayavki">-->
+<!--                                Закрыть сделку-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div><div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            PRIZM-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            0.98760-->
+<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-center">-->
+<!--                            <div class="btn-custom-one btn-zayavki">-->
+<!--                                Закрыть сделку-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <?php if(isset($exchange_content) && !empty($exchange_content)) echo $exchange_content; ?>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12 verification_requests">
@@ -250,22 +251,27 @@
 </div>
 <script type="text/javascript">
     //Открытие модального окна с данными верификации данного пользователя
-    jQuery('.verification_requests .info-zayavki').click(function(){
+    jQuery('.verification_requests .info-zayavki, .exchange_requests .info-zayavki').click(function(){
         //Получаем id текущего пользователя из кнопки
         let request_user_id = jQuery(this).parent().next().children('.btn-zayavki').attr('id');
         request_user_id = request_user_id.split('_');
         request_user_id = request_user_id[request_user_id.length - 1];
         request_user_id = parseInt(request_user_id);
         //console.log(request_user_id);
-
+        var is_exchange;
+        if (jQuery(this).parents('.exchange_requests').length > 0)
+            is_exchange = 'true';
+        else
+            is_exchange = 'false';
         var data = {
             //action: 'my_action',
-            request_user_id: request_user_id
+            request_user_id: request_user_id,
+            is_exchange: is_exchange
         };
         //console.log(myajax.url);
         // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
         jQuery.post( window.location, data, function(response) {
-            if (response) {
+            if (response && response !== 'false') {
                 let verification_data = JSON.parse(response);
                 let modal = jQuery('#modal-container-54506521');
                 jQuery.each(verification_data, function (item) {
@@ -286,10 +292,14 @@
                 });
                 jQuery('#modal-54506521').trigger('click');
             }
+            else
+                if (response === 'false')
+                    console.log('Нет верификации для этого пользователя');
+
         });
     });
     //Нажатие кнопки "одобрить"
-    jQuery('.btn-zayavki').click(function() {
+    jQuery('.verification_requests .btn-zayavki').click(function() {
         let request_user_id = jQuery(this).attr('id');
         request_user_id = request_user_id.split('_');
         request_user_id = request_user_id[request_user_id.length - 1];

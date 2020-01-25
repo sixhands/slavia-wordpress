@@ -698,6 +698,58 @@ function rcl_tab_requests_content($master_id)
         //$profile_args += array("verification_requests" => $verification_requests);
     }
 
+    $exchange_requests = rcl_get_option('exchange_requests');
+    $exchange_content = '';
+    if (isset($exchange_requests) && !empty($exchange_requests))
+    {
+        foreach ($exchange_requests as $user => $requests) //Все пользователи с запросами на обмен, $user- id пользователя
+        {
+            $user_verification = get_user_meta($user, 'verification', true);
+
+            if (isset($user_verification) && !empty($user_verification))
+            {
+                foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
+                {
+                    if ($request_value['status'] == 'no') {
+                        $exchange_content .= '<div class="table-text w-100">
+                                                <div class="row">
+                                                    <div class="col-3 text-left" style="padding-left: 42px;">' .
+                                                        $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                                    '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                                        get_user_meta($user, 'client_num', true) .
+                                                    '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                                        $request_value['output_currency'] .
+                                                    '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                                        $request_value['output_sum'] .
+                                                        '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                                    </div>
+                                                    
+                                                    <div class="col-3 text-center">
+                                                        <div class="btn-custom-one btn-zayavki" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                    } elseif ($request_value['status'] == 'yes')
+                        continue;
+                }
+            }
+            //Если нет верификации
+            else
+                continue;
+        } //foreach внешний
+
+        $profile_args += array("exchange_content" => $exchange_content);
+
+    } //if exchange requests
+
     $content = rcl_get_include_template('template-requests.php', __FILE__, $profile_args);
     return $content;
 }
@@ -850,11 +902,11 @@ if (!function_exists('array_key_first')) {
     }
 }
 
-function save_exchange_request($input_currency, $output_currency, $input_sum, $output_sum, $bank = false)
+function save_exchange_request($input_currency, $output_currency, $input_sum, $output_sum, $bank = false, $card_num = false, $card_name = false)
 {
     global $user_ID;
     $exchange_requests = rcl_get_option('exchange_requests');
-    var_dump($exchange_requests);
+    //var_dump($exchange_requests);
     $exchange_fields = array();
     $exchange_fields += array('input_currency' => $input_currency);
     $exchange_fields += array('output_currency' => $output_currency);
@@ -862,6 +914,8 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
     $exchange_fields += array('output_sum' => $output_sum);
 
     $exchange_fields += array('bank' => $bank);
+    $exchange_fields += array('card_num' => $card_num);
+    $exchange_fields += array('card_name' => $card_name);
 
     $exchange_fields += array('date' => date('d.m.y'));
     $exchange_fields += array('status' => 'no'); //no - ожидает обработки, yes - одобрен и обработан
@@ -885,7 +939,7 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
         $exchange_requests = array($user_ID => $new_request);
     }
 
-    //rcl_update_option('exchange_requests', $exchange_requests);
+    rcl_update_option('exchange_requests', $exchange_requests);
 }
 
 //Обновляем профиль пользователя
@@ -899,6 +953,7 @@ function rcl_edit_profile(){
 //        rcl_update_profile_fields($user_ID);
     if (isset($_POST) && count($_POST) > 0)
     {
+        //var_dump($_POST);
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
         {
@@ -1078,42 +1133,55 @@ function rcl_edit_profile(){
 
         //Запрос на user_id из manager_requests
         elseif ((isset($_POST['request_user_id']) && !empty($_POST['request_user_id']))) {
+            if (isset($_POST['is_exchange']) && $_POST['is_exchange'] == 'false') {
+                $verification_requests = rcl_get_option('verification_requests');
 
-            $verification_requests = rcl_get_option('verification_requests');
-
-            if (isset($verification_requests) && !empty($verification_requests)) {
-                if (isset($_POST['approve_request']) && $_POST['approve_request'] == 'true') {
-                    //Обновить is_verified на true
-                $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
-                foreach ($profileFields as $field)
-                    if ($field['slug'] == 'is_verified') {
-                        if (isset($field['value']))
-                            $field['value'] = 'yes';
-                        else
-                            $field += array('value' => 'yes');
-                        rcl_update_profile_fields($_POST['request_user_id'], array($field));
-                        break;
-                    }
-                    //update_user_meta($_POST['request_user_id'], 'is_verified', 'yes');
-                    foreach ($verification_requests as $key => $value) {
-                        if ($key == $_POST['request_user_id']) {
-                            unset($verification_requests[$key]);
-                            rcl_update_option('verification_requests', $verification_requests);
-                            //echo print_r(rcl_get_option('verification_requests'), true);
-                            break;
+                if (isset($verification_requests) && !empty($verification_requests)) {
+                    if (isset($_POST['approve_request']) && $_POST['approve_request'] == 'true') {
+                        //Обновить is_verified на true
+                        $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
+                        foreach ($profileFields as $field)
+                            if ($field['slug'] == 'is_verified') {
+                                if (isset($field['value']))
+                                    $field['value'] = 'yes';
+                                else
+                                    $field += array('value' => 'yes');
+                                rcl_update_profile_fields($_POST['request_user_id'], array($field));
+                                break;
+                            }
+                        //update_user_meta($_POST['request_user_id'], 'is_verified', 'yes');
+                        foreach ($verification_requests as $key => $value) {
+                            if ($key == $_POST['request_user_id']) {
+                                unset($verification_requests[$key]);
+                                rcl_update_option('verification_requests', $verification_requests);
+                                //echo print_r(rcl_get_option('verification_requests'), true);
+                                break;
+                            }
                         }
-                    }
-                    echo 'true';
-                    exit;
-                } else {
-                    foreach ($verification_requests as $key => $value) {
-                        if ($key == $_POST['request_user_id']) {
-                            echo json_encode($value);
-                            break;
+                        echo 'true';
+                        exit;
+                    } else {
+                        foreach ($verification_requests as $key => $value) {
+                            if ($key == $_POST['request_user_id']) {
+                                echo json_encode($value);
+                                break;
+                            }
                         }
+                        exit;
                     }
-                    exit;
                 }
+            }
+            elseif (isset($_POST['is_exchange']) && $_POST['is_exchange'] == 'true')
+            {
+                $user_verification = get_user_meta($_POST['request_user_id'], 'verification', true);
+                $user_passport_photos = get_user_meta($_POST['request_user_id'], 'passport_photos', true);
+                if (!empty($user_passport_photos))
+                    $user_verification += array('passport_photos' => $user_passport_photos);
+                if (!empty($user_verification))
+                    echo json_encode($user_verification);
+                else
+                    echo 'false';
+                exit;
             }
         }
 
@@ -1122,29 +1190,42 @@ function rcl_edit_profile(){
                 strpos(array_key_first($_POST), 'get_prizm') !== false ||
                 strpos(array_key_first($_POST), 'get_waves') !== false)
         {
-            if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
-                save_exchange_request('PRIZM', 'RUB',
-                    $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
-                    $_POST['get_rubles']['bank']);
+            var_dump($_POST);
+            //Обмен только для верифицированных
+            if (get_user_meta($user_ID, 'is_verified', true) == 'yes') {
+                if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
+                    save_exchange_request('PRIZM', 'RUB',
+                        $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
+                        $_POST['get_rubles']['bank'], $_POST['get_rubles']['card_num'],
+                        $_POST['get_rubles']['card_name']);
+                }
+
+                if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
+
+                    save_exchange_request('RUB', 'PRIZM',
+                        $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm'],
+                        $_POST['get_prizm']['bank'], $_POST['get_prizm']['card_num'],
+                        $_POST['get_prizm']['card_name']);
+                }
+
+                if (strpos(array_key_first($_POST), 'get_waves') !== false) {
+
+                    save_exchange_request('RUB', 'WAVES',
+                        $_POST['get_waves']['rubles'], $_POST['get_waves']['waves'],
+                        $_POST['get_waves']['bank'], $_POST['get_waves']['card_num'],
+                        $_POST['get_waves']['card_name']);
+                }
+
+                $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
+
+                wp_redirect($redirect_url);
+
+                exit;
             }
-
-            if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
-
-                save_exchange_request('RUB', 'PRIZM',
-                    $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm']);
+            elseif (get_user_meta($user_ID, 'is_verified', true) == 'no') {
+                //echo '<script type="text/javascript">alert("Ваш профиль не верифицирован!")</script>';
+                exit;
             }
-
-            if (strpos(array_key_first($_POST), 'get_waves') !== false) {
-
-                save_exchange_request('RUB', 'WAVES',
-                    $_POST['get_waves']['rubles'], $_POST['get_waves']['waves']);
-            }
-
-            $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
-
-            wp_redirect($redirect_url);
-
-            exit;
         }
 
         else {
