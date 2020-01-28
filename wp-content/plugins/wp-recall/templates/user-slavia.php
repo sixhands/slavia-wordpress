@@ -22,7 +22,7 @@
         <div class="col-2 text-left">
             0
         </div>
-        <div class="col-1 text-center">
+        <div class="col-1 text-center show_user_operations">
             <img src="/wp-content/uploads/2019/12/people_href.png">
         </div>
     </div>

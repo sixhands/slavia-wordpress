@@ -620,6 +620,8 @@ function rcl_tab_operations_content($master_id)
                                         </div>
                                     </div>
                                 </div>';
+            else
+                $exchange_content .= '</div></div>';
         }
         $profile_args += array("exchange_content" => $exchange_content);
 
@@ -1200,7 +1202,7 @@ function rcl_edit_profile(){
         }
 
         //Запрос на user_id из manager_requests
-        elseif ((isset($_POST['request_user_id']) && !empty($_POST['request_user_id']))) {
+        elseif (isset($_POST['request_user_id']) && !empty($_POST['request_user_id'])) {
             if (isset($_POST['is_exchange']) && $_POST['is_exchange'] == 'false') {
                 $verification_requests = rcl_get_option('verification_requests');
 
@@ -1278,7 +1280,124 @@ function rcl_edit_profile(){
                 }
             }
 
-            //Вычисление checksum для сбербанка
+            elseif (isset($_POST['get_user_operations']) && $_POST['get_user_operations'] == 'true')
+            {
+                if (isset($_POST['get_user_stats']) && $_POST['get_user_stats'] == 'true')
+                {
+                    //Получаем запросы на обмен для данного пользователя
+                    $user_id = $_POST['request_user_id'];
+                    $exchange_requests = rcl_get_option('exchange_requests');
+                    $exchange_content = '';
+                    $response = array();
+                    if (isset($exchange_requests) && !empty($exchange_requests) &&
+                        isset($exchange_requests[$user_id]) && !empty($exchange_requests[$user_id]))
+                    {
+                        foreach ($exchange_requests[$user_id] as $key => $value) {
+                            $exchange_content .= '<div class="table-text w-100">
+                                                    <div class="row">
+                                                        <div class="col-2 text-center">' .
+                                                $value['date'] .
+                                                '</div>
+                                        
+                                                        <div class="col-2 text-center">' .
+                                                $value['input_currency'] .
+                                                '</div>
+                                                        
+                                                        <div class="col-2 text-center">' .
+                                                $value['output_currency'] .
+                                                '</div>
+                                                        
+                                                        <div class="col-2 text-center">' .
+                                                $value['output_sum'] . ' ' . $value['output_currency'] .
+                                                '</div>';
+
+//                                        <div class="col-2 text-center" style="visibility: hidden">
+//                                            0.9188 PZM
+//                                        </div>';
+                            if ($value['status'] == 'no')
+                                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает проверки
+                                        </div>
+                                    </div>
+                                </div>';
+                            //Одобренная менеджером заявка
+                            elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
+                                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                                                        Ожидание оплаты
+                                                    </div>
+                                                </div>
+                                            </div>';
+
+                            elseif ($value['status'] == 'completed')
+                                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
+                                       Завершена
+                                        </div>
+                                    </div>
+                                </div>';
+                            else
+                                $exchange_content .= '</div></div>';
+                        } //foreach
+
+                    } //if exchange_requests
+                    else //Если для данного пользователя нет операций
+                    {
+                        $exchange_content .= '<div class="table-text w-100">
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        Данный пользователь еще не совершал операций.
+                                                    </div>
+                                                </div>
+                                              </div>';
+                    }
+                    $response += array('exchange_content' => $exchange_content);
+
+                    $stats = rcl_get_option('user_stats');
+                    $stats_content = '';
+                    if (isset($stats[$user_id]) && !empty($stats[$user_id]))
+                    {
+                        $user_verification = get_user_meta($user_id, 'verification', true);
+
+                        if (isset($user_verification) && !empty($user_verification))
+                        {
+                            $stats_content .= '<div class="table-text w-100">
+                                                <div class="row">
+                                                        <div class="col-4 text-left" style="padding-left: 42px;">'.
+                                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                                    '</div>
+                                                        <div class="col-3 text-left">' .
+                                                    get_user_meta($user_id, 'client_num', true) .
+                                                    '</div>
+                                                        
+                                                        <div class="col-2 text-left">'.
+                                                    $stats[$user_id]['exchange_num'].
+                                                    '</div>
+                                                        <div class="col-3 text-left">'.
+                                                    $stats[$user_id]['exchange_sum'].' RUB'.
+                                                    '</div>
+                                                </div>
+                                            </div>';
+                        }
+                    }
+                    else
+                    {
+                        $stats_content .= '<div class="table-text w-100">
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        Статистика для данного пользователя не найдена.
+                                                    </div>
+                                                </div>
+                                              </div>';
+                    }
+                    $response += array('stats_content' => $stats_content);
+
+                    echo json_encode($response);
+                    exit;
+
+
+                } //if get_user_stats
+            }
+
+            //Сбербанк
             elseif (isset($_POST['is_sberbank']) && $_POST['is_sberbank'] == 'true')
             {
                 if (isset($_POST['order_data']) && !empty($_POST['order_data'])) {
