@@ -211,8 +211,8 @@
                 <div class="col-12">
                     <h1 class="coop_maps-h1 ib">Статистика</h1>
                     <div class="ib" style="float:right">
-                        <h1 class="coop_maps-h1 ib" style="font-size: 16px;">08.11.19</h1>
-                        <img src="/wp-content/uploads/2019/12/calendar.png" class="ib" style="">
+<!--                        <h1 class="coop_maps-h1 ib" style="font-size: 16px;">08.11.19</h1>-->
+<!--                        <img src="/wp-content/uploads/2019/12/calendar.png" class="ib" style="">-->
                         <img src="/wp-content/uploads/2019/12/loop.png" class="ib" style="margin-top: 10px;">
                         <img src="/wp-content/uploads/2019/12/donw.png" class="ib" style=" ">
                     </div>
@@ -237,37 +237,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-4 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-3 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-                            5
-                        </div>
-                        <div class="col-3 text-left">
-                            15 600 RUB
-                        </div>
-                    </div>
-                </div><div class="table-text w-100">
-                    <div class="row">
-                        <div class="col-4 text-left" style="padding-left: 42px;">
-                            Имя Фамилия Отчество
-                        </div>
-                        <div class="col-3 text-left">
-                            00002
-                        </div>
-                        <div class="col-2 text-left">
-                            5
-                        </div>
-                        <div class="col-3 text-left">
-                            15 600 RUB
-                        </div>
-                    </div>
-                </div>
+                <?php if (isset($stats_content) && !empty($stats_content)) echo $stats_content; ?>
+<!--                <div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-4 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            5-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-left">-->
+<!--                            15 600 RUB-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div><div class="table-text w-100">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-4 text-left" style="padding-left: 42px;">-->
+<!--                            Имя Фамилия Отчество-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-left">-->
+<!--                            00002-->
+<!--                        </div>-->
+<!--                        <div class="col-2 text-left">-->
+<!--                            5-->
+<!--                        </div>-->
+<!--                        <div class="col-3 text-left">-->
+<!--                            15 600 RUB-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
         <?php endif; ?>

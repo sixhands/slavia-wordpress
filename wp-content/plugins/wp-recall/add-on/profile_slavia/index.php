@@ -297,8 +297,44 @@ function rcl_tab_profile(){
 }
 function rcl_tab_profile_content($master_id)
 {
+    global $user_ID;
     //global $side_text, $video_files, $video_text;
     $profile_args = rcl_tab_template_content();
+
+    $stats = rcl_get_option('user_stats');
+    if (isset($stats) && !empty($stats))
+    {
+        $stats_content = '';
+        foreach ($stats as $user => $user_stats)
+        {
+            if (isset($user_stats) && !empty($user_stats))
+            {
+                $user_verification = get_user_meta($user, 'verification', true);
+
+                if (isset($user_verification) && !empty($user_verification))
+                {
+                    $stats_content .= '<div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-4 text-left" style="padding-left: 42px;">'.
+                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                            '</div>
+                                            <div class="col-3 text-left">' .
+                                                get_user_meta($user, 'client_num', true) .
+                                            '</div>
+                                            
+                                            <div class="col-2 text-left">'.
+                                                $user_stats['exchange_num'].
+                                            '</div>
+                                            <div class="col-3 text-left">'.
+                                                $user_stats['exchange_sum'].' RUB'.
+                                            '</div>
+                                        </div>
+                                    </div>';
+                }
+            }
+        } //foreach
+        $profile_args += array("stats_content" => $stats_content);
+    } //if stats
 
 //    $side_text = get_field('verification_sidetext');
 //    $video_files = get_field('verification_video');
