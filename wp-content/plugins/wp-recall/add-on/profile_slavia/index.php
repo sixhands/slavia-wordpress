@@ -297,7 +297,16 @@ function rcl_tab_profile(){
 }
 function rcl_tab_profile_content($master_id)
 {
+    //global $side_text, $video_files, $video_text;
     $profile_args = rcl_tab_template_content();
+
+//    $side_text = get_field('verification_sidetext');
+//    $video_files = get_field('verification_video');
+//    $video_text = get_field('verification_modal_text');
+//    $profile_args += array('side_text' => $side_text);
+//    $profile_args += array('video_files' => $video_files);
+//    $profile_args += array('video_text' => $video_text);
+
     $content = rcl_get_include_template('template-profile.php', __FILE__, $profile_args);
 
 //    $content = '<h3>'.__('User profile','wp-recall').' '.$userdata->display_name.'</h3>
@@ -535,26 +544,49 @@ function rcl_tab_operations_content($master_id)
                                         
                                         <div class="col-2 text-center">'.
                                             $value['output_sum'].' '.$value['output_currency'].
-                                        '</div>
+                                        '</div>';
                                         
-                                        <div class="col-2 text-center" style="visibility: hidden">
-                                            0.9188 PZM
-                                        </div>';
+//                                        <div class="col-2 text-center" style="visibility: hidden">
+//                                            0.9188 PZM
+//                                        </div>';
             if ($value['status'] == 'no')
-                $exchange_content .= '<div class="col-2 text-center" style="font-size: 15px; color: #EF701B">
+                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает проверки
                                         </div>
                                     </div>
                                 </div>';
-            elseif ($value['status'] == 'yes')
-                $exchange_content .= '<div class="col-2 text-center" style="font-size: 15px; color: green">
+            //Одобренная менеджером заявка
+            elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
+                $exchange_content .= '<div class="col-4 text-center">'.
+//                                        <div class="col-12">
+//                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
+//                                        </div>
+//                                        <div class="col-12">
+                                            '<a onclick="ipayCheckout({
+                                                amount:' . $value['input_sum'] .',
+                                                currency:\'RUB\',
+                                                order_number:\'\',
+                                                description: \'\'
+                                                },
+                                                function(order) { successCallback(order) },
+                                                function(order) { failureCallback(order) })"
+                                                 
+                                            class="btn-custom-one" style="display: inline-block;">Оплатить
+                                            </a>'.
+//                                        </div>
+                                     '</div>
+                                    </div>
+                                </div>';
+
+            elseif ($value['status'] == 'completed')
+                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
                                        Завершена
                                         </div>
                                     </div>
                                 </div>';
         }
         $profile_args += array("exchange_content" => $exchange_content);
-        //$profile_args += array("verification_requests" => $verification_requests);
+
     }
 
     $content = rcl_get_include_template('template-operations.php', __FILE__, $profile_args);
@@ -1137,6 +1169,7 @@ function rcl_edit_profile(){
                 $verification_requests = rcl_get_option('verification_requests');
 
                 if (isset($verification_requests) && !empty($verification_requests)) {
+                    //Одобрение заявки на верификацию
                     if (isset($_POST['approve_request']) && $_POST['approve_request'] == 'true') {
                         //Обновить is_verified на true
                         $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
@@ -1158,6 +1191,17 @@ function rcl_edit_profile(){
                                 break;
                             }
                         }
+                        //Меняем роль пользователя
+                        wp_update_user(array('ID' => $_POST['request_user_id'], 'role' => 'user'));
+
+                        //Отправка письма об успешной верификации данному пользователю
+                        $subject = 'Ваш профиль был верифицирован!';
+                        $textmail = '<p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p>'.
+                                    '<p>Перейдите на сайт '. $_SERVER['HTTP_HOST'] . ', чтобы начать совершать операции.</p>';
+                        $user_info = get_userdata($_POST['request_user_id']);
+                        $user_email = $user_info->user_email;
+                        //echo $user_email;
+                        rcl_mail( $user_email, $subject, $textmail );
                         echo 'true';
                         exit;
                     } else {
@@ -1398,4 +1442,14 @@ function rcl_slavia_get_crypto_price($currency = 'PZM') {
 //    $log = new Rcl_Log();
 //    $log->insert_log(print_r(json_decode($response), true));
     return $rounded_price; // print json decoded response
+}
+
+function sberbank_generate_checksum()
+{
+
+    $data = 'amount;123456;mdOrder;3ff6962a-7dcc-4283-ab50-a6d7dd3386fe;operation;deposited;orderNumber;10747;status;1;';
+    $key = 'yourSecretToken';
+    $hmac = hash_hmac ( 'sha256' , $data , $key);
+
+    return "[$hmac]\n";
 }

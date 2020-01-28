@@ -18,6 +18,9 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
+    <script>
+        var ipay = new IPAY({api_token: 'c5fv4u1thn44fvba2u2jatuva2'});
+    </script>
 </head>
 
 <body <?php body_class(); ?>>

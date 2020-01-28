@@ -2907,7 +2907,7 @@ function wplc_maa_set_user_as_agent( $user_id ) {
     } else {
       delete_user_meta( $user_id, 'wplc_ma_agent');
     }
-    if ($_POST['wplc_ma_agent'] == '1') {
+    if (isset($_POST['wplc_ma_agent']) && $_POST['wplc_ma_agent'] == '1') {
       $wplc_ma_user = new WP_User( $user_id );
       $wplc_ma_user->add_cap( 'wplc_ma_agent' );
       wplc_update_agent_time($user_id);

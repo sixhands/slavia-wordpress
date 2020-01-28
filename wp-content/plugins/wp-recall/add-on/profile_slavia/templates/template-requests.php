@@ -311,6 +311,7 @@
         var data = {
             request_user_id: request_user_id,
             approve_request: 'true',
+            is_exchange: 'false'
         };
         var el = jQuery(this);
         jQuery.post( window.location, data, function(response) {

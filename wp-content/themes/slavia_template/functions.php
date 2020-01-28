@@ -126,6 +126,10 @@ function slavia_template_scripts() {
     wp_enqueue_script( 'owl_carousel', get_template_directory_uri() . '/assets/js/owl.carousel.js', array(), '1.0', true );
     wp_enqueue_script( 'slavia_mask', get_template_directory_uri() . '/assets/js/mask.js', array(), '1.0', true );
     wp_enqueue_script( 'slavia_scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true );
+
+    //Скрипт сбербанка для подключения платежной кнопки
+    wp_enqueue_script( 'sberbank_acquiring', "https://3dsec.sberbank.ru/demopayment/docsite/assets/js/ipay.js", array(), null, false );
+
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
         wp_enqueue_script( 'comment-reply' );
     }

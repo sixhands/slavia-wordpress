@@ -5,7 +5,7 @@
 
             <div class="col-12 pryamougolnik">
                 <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
-                <h3><?php $exchange_address = get_field('exchange_address');
+                <h3><?php global $exchange_address;
                         if (isset($exchange_address) && !empty($exchange_address))
                             echo $exchange_address; ?>
                 </h3>

@@ -599,6 +599,7 @@ function rcl_ajax( prop ) {
 			}
 
 			if ( result.success ) {
+				//console.log(result.options);
 				rcl_notice( result.success, 'success', 5000 );
 			}
 

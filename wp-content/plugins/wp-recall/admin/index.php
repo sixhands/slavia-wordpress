@@ -165,22 +165,31 @@ function rcl_update_options() {
 
 	$options = apply_filters( 'rcl_pre_update_options', $options );
 
-	update_option( 'rcl_global_options', $options );
+	//Обновление опций, чтобы не затирались
+	foreach ($options as $key => $value)
+	    if (isset($rcl_options[$key]))
+	        $rcl_options[$key] = $value;
+	    else
+	        $rcl_options += array($key => $value);
 
+	update_option( 'rcl_global_options', $rcl_options );
 	if ( isset( $POST['local'] ) ) {
 		foreach ( ( array ) $POST['local'] as $key => $value ) {
 			$value = apply_filters( 'rcl_local_option_value', $value, $key );
-			if ( $value == '' )
-				delete_option( $key );
-			else
-				update_option( $key, $value );
+			if ( $value == '' ) {
+                delete_option($key);
+            }
+			else {
+                update_option($key, $value);
+            }
 		}
 	}
 
-	$rcl_options = $options;
+	//$rcl_options = $options;
 
 	wp_send_json( array(
 		'success' => __( 'Settings saved!', 'wp-recall' )
+        //'options' => print_r($rcl_options, true)
 	) );
 }
 

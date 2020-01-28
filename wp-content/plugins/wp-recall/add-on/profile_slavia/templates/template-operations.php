@@ -20,10 +20,10 @@
                         <div class="col-2 text-center">
                             КОЛИЧЕСТВО
                         </div>
-                        <div class="col-2 text-center">
-                            ОСТАЛОСЬ
-                        </div>
-                        <div class="col-2 text-center">
+<!--                        <div class="col-2 text-center">-->
+<!--                            ОСТАЛОСЬ-->
+<!--                        </div>-->
+                        <div class="col-4 text-center">
                             СТАТУС
                         </div>
                     </div>
@@ -56,3 +56,15 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function successCallback(order)
+    {
+        console.log("success:");
+        console.log(order);
+    }
+    function failureCallback(order)
+    {
+        console.log("failure:");
+        console.log(order);
+    }
+</script>

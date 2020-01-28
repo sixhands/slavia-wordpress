@@ -1,3 +1,4 @@
+<?php global $side_text, $video_files, $video_text; ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
@@ -193,8 +194,7 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <p class="passport-text">
-                                <?php $side_text = get_field('verification_sidetext');
-                                      if (isset($side_text) && !empty($side_text)) echo $side_text; ?>
+                                <?php if (isset($side_text) && !empty($side_text)) echo $side_text; ?>
                             </p>
                         </div>
                     </div>
@@ -292,8 +292,7 @@
 
 <!--            Здесь будет видео-->
             <?php
-            $video_files = get_field('verification_video');
-            if ($video_files && !empty($video_files)) : ?>
+            if (isset($video_files) && !empty($video_files)) : ?>
                 <video controls width="100%" height="459">
                     <?php foreach( $video_files as $video ): ?>
                         <?php if (!empty($video) && $video['type'] == 'video'): ?>
@@ -335,10 +334,8 @@
                 </video>
             <?php endif; ?>
 
-            <?php $modal_text = get_field('verification_modal_text');
-                if (isset($modal_text) && !empty($modal_text))
-                    echo $modal_text;
-                ?>
+            <?php if (isset($video_text) && !empty($video_text))
+                    echo $video_text; ?>
 
         </div>
     </div>

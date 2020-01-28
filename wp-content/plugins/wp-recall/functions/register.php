@@ -151,7 +151,7 @@ function rcl_get_register_user( $errors ) {
                 continue;
 
             $slug = $field['slug'];
-            if ( $field['required'] == 1 && isset($field['register']) && $field['register'] == 1 ) {
+            if ( isset($field['required']) && $field['required'] == 1 && isset($field['register']) && $field['register'] == 1 ) {
 
                 if ( $field['type'] == 'checkbox' ) {
 
