@@ -57,12 +57,34 @@
     </div>
 </div>
 <script type="text/javascript">
-    function successCallback(order)
+    function successCallback(order, event, user_id, request_num)
     {
+        var el = event.target;
+
+        //Отсылаем на сервер order для сравнения электронной подписи
+        var data = {
+            order_data: order,
+            is_sberbank: 'true',
+            request_user_id: user_id,
+            request_num: request_num
+        };
+        jQuery.post( window.location, data, function(response) {
+            //Поменять статус данного запроса
+            if (response === 'true')
+            {
+                let parent = jQuery(el).parent();
+                parent.empty();
+                parent.css('font-size', '15px');
+                parent.css('color', 'green');
+                parent.text('Завершена');
+            }
+            console.log("response:");
+            console.log(response);
+        });
         console.log("success:");
         console.log(order);
     }
-    function failureCallback(order)
+    function failureCallback(order, event, user_id, request_num)
     {
         console.log("failure:");
         console.log(order);

@@ -568,8 +568,8 @@ function rcl_tab_operations_content($master_id)
                                                 order_number:\'\',
                                                 description: \'\'
                                                 },
-                                                function(order) { successCallback(order) },
-                                                function(order) { failureCallback(order) })"
+                                                function(order) { successCallback(order, event, '. $user_ID . ', '. $key . ') },
+                                                function(order) { failureCallback(order, event, '. $user_ID . ', '. $key . ') })"
                                                  
                                             class="btn-custom-one" style="display: inline-block;">Оплатить
                                             </a>'.
@@ -1241,7 +1241,70 @@ function rcl_edit_profile(){
                     exit;
                 }
             }
-        }
+
+            //Вычисление checksum для сбербанка
+            elseif (isset($_POST['is_sberbank']) && $_POST['is_sberbank'] == 'true')
+            {
+                if (isset($_POST['order_data']) && !empty($_POST['order_data'])) {
+                    $order = $_POST['order_data'];
+                    //Если checksum совпадают
+                    if (true)//sberbank_generate_checksum($_POST['order_data']))
+                    {
+                        if (isset($_POST['request_num'])) {
+                            //Добавляем в статистику
+                            $stats = rcl_get_option('user_stats');
+                            if (isset($stats) && !empty($stats))
+                            {
+                                //Если статистика на этого пользователя есть, то прибавляем к ней
+                                if (isset($stats[$_POST['request_user_id']]) && !empty($stats[$_POST['request_user_id']])) {
+                                    $user_stat = $stats[$_POST['request_user_id']];
+                                    $user_stat['exchange_num'] += 1;
+                                    $user_stat['exchange_sum'] += (float)$order['formattedAmount'];
+
+                                    $stats[$_POST['request_user_id']] = $user_stat;
+
+                                //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
+                                } else {
+                                    $stats += array($_POST['request_user_id'] =>
+                                        array('exchange_num' => 1, 'exchange_sum' => (float)$order['formattedAmount']));
+
+                                }
+                            }
+                            //Если статистика полностью пустая
+                            else
+                            {
+                                $stats = array($_POST['request_user_id'] =>
+                                    array('exchange_num' => 1, 'exchange_sum' => (float)$order['formattedAmount']));
+                            }
+                            rcl_update_option('user_stats', $stats);
+
+                            //Меняем статус данного запроса на обмен на completed
+                            $exchange_requests = rcl_get_option('exchange_requests');
+
+                            if (isset($exchange_requests) && !empty($exchange_requests)) {
+                                //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
+                                $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'completed';
+                                rcl_update_option('exchange_requests', $exchange_requests);
+                            }
+//                            echo print_r($stats, true).'\n'.
+//                                 print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
+                        }
+                        echo 'true';
+                        exit;
+                    }
+//                    $exchange_requests = rcl_get_option('exchange_requests');
+//
+//                    if (isset($exchange_requests) && !empty($exchange_requests)) {
+//                        //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
+//                        $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'yes';
+//                        rcl_update_option('exchange_requests', $exchange_requests);
+//                        echo 'true';
+//                        exit;
+//                    }
+                }
+            }
+
+        } //if request_user_id
 
         /*****************Сохраняем в запросы на обмен******************/
         elseif (strpos(array_key_first($_POST), 'get_rubles') !== false ||
@@ -1444,9 +1507,10 @@ function rcl_slavia_get_crypto_price($currency = 'PZM') {
     return $rounded_price; // print json decoded response
 }
 
-function sberbank_generate_checksum()
+//Генерация checksum для сбербанка
+function sberbank_generate_checksum($order)
 {
-
+    $fields = json_decode($order);
     $data = 'amount;123456;mdOrder;3ff6962a-7dcc-4283-ab50-a6d7dd3386fe;operation;deposited;orderNumber;10747;status;1;';
     $key = 'yourSecretToken';
     $hmac = hash_hmac ( 'sha256' , $data , $key);
