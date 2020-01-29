@@ -160,6 +160,12 @@ final class WP_Recall {
 		require_once 'functions/deprecated.php';
 		require_once 'functions/shortcodes.php';
 
+        require_once 'lib/dompdf/lib/html5lib/Parser.php';
+        require_once 'lib/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php';
+        require_once 'lib/dompdf/lib/php-svg-lib/src/autoload.php';
+        require_once 'lib/dompdf/src/Autoloader.php';
+        Dompdf\Autoloader::register();
+
 		require_once 'rcl-functions.php';
 		require_once 'rcl-widgets.php';
 

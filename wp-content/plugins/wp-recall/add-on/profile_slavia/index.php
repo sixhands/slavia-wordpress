@@ -2,6 +2,8 @@
 
 require_once 'classes/class-rcl-profile-fields.php';
 
+use Dompdf\Dompdf;
+
 if (is_admin())
     require_once 'admin/index.php';
 
@@ -130,6 +132,12 @@ function add_profile_fields($fields){
         'title' => 'Фото паспорта',
         'content' => '',
     );
+    $fields[] = array(
+        'type' => 'custom',
+        'slug' => 'user_documents',
+        'title' => 'Документы пользователя',
+        'content' => '',
+    );
 
     return $fields;
 }
@@ -137,41 +145,54 @@ function add_profile_fields($fields){
 //Генерация документов пользователя
 function generate_user_documents()
 {
+    // instantiate and use the dompdf class
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml('hello world');
 
+// (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+    $dompdf->render();
+
+// Output the generated PDF to Browser
+//    $log = new Rcl_Log();
+//    $log->insert_log("pdf:".);
+    return $dompdf->output();
 }
 //Добавление документов для данного пользователя
-add_filter('rcl_profile_fields', 'add_user_documents', 10);
+//add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
 function add_user_documents($fields)
 {
-    $fields[] = array(
-        'type' => 'custom',
-        'slug' => 'user_documents',
-        'title' => 'Документы пользователя',
-        'values' => array(
-            array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png'),
-            array('date' => '09.12.19', 'filename' => 'document2.docx', 'url' => '/wp-content/uploads/2019/12/operation_dis.png')
-        ),
-    );
-    $content = '';
-    foreach ($fields[count($fields) - 1]['values'] as $value)
-    {
-        $content .= '<div class="table-text w-100">' .
-            '<div class="row">' .
-            '<div class="col-2 text-center">' . $value['date'] . '</div>' .
-            '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
-            '<div class="col-2 text-center">
-                <a href="' . $value['url'] . '" download>
-                    <img src="/wp-content/uploads/2019/12/don.png">
-                </a>
-            </div>
-            </div>
-            </div>';
-    }
-    $fields[count($fields) - 1] += array("content" => $content);
-    //var_dump($fields[count($fields) - 1]);
-
-    return $fields;
+//    $fields[] = array(
+//        'type' => 'custom',
+//        'slug' => 'user_documents',
+//        'title' => 'Документы пользователя',
+//        'values' => array(
+//            array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png'),
+//            array('date' => '09.12.19', 'filename' => 'document2.docx', 'url' => '/wp-content/uploads/2019/12/operation_dis.png')
+//        ),
+//    );
+//    $content = '';
+//    foreach ($fields[count($fields) - 1]['values'] as $value)
+//    {
+//        $content .= '<div class="table-text w-100">' .
+//            '<div class="row">' .
+//            '<div class="col-2 text-center">' . $value['date'] . '</div>' .
+//            '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
+//            '<div class="col-2 text-center">
+//                <a href="' . $value['url'] . '" download>
+//                    <img src="/wp-content/uploads/2019/12/don.png">
+//                </a>
+//            </div>
+//            </div>
+//            </div>';
+//    }
+//    $fields[count($fields) - 1] += array("content" => $content);
+//    //var_dump($fields[count($fields) - 1]);
+//
+//    return $fields;
 }
 
 //add_filter('rcl_profile_fields', 'add_user_verification', 10);
@@ -300,7 +321,6 @@ function rcl_tab_profile_content($master_id)
     global $user_ID;
     //global $side_text, $video_files, $video_text;
     $profile_args = rcl_tab_template_content();
-
     $stats = rcl_get_option('user_stats');
     if (isset($stats) && !empty($stats))
     {
@@ -343,6 +363,8 @@ function rcl_tab_profile_content($master_id)
 //    $profile_args += array('video_files' => $video_files);
 //    $profile_args += array('video_text' => $video_text);
 
+
+    //$profile_args += array('pdf' => generate_user_documents());
     $content = rcl_get_include_template('template-profile.php', __FILE__, $profile_args);
 
 //    $content = '<h3>'.__('User profile','wp-recall').' '.$userdata->display_name.'</h3>
@@ -656,6 +678,36 @@ function rcl_tab_documents(){
 function rcl_tab_documents_content($master_id)
 {
     $profile_args = rcl_tab_template_content();
+
+//    $fields[] = array(
+//        'type' => 'custom',
+//        'slug' => 'user_documents',
+//        'title' => 'Документы пользователя',
+//        'values' => array(
+//            array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png'),
+//            array('date' => '09.12.19', 'filename' => 'document2.docx', 'url' => '/wp-content/uploads/2019/12/operation_dis.png')
+//        ),
+//    );
+//    $content = '';
+//    foreach ($fields[count($fields) - 1]['values'] as $value)
+//    {
+//        $content .= '<div class="table-text w-100">' .
+//            '<div class="row">' .
+//            '<div class="col-2 text-center">' . $value['date'] . '</div>' .
+//            '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
+//            '<div class="col-2 text-center">
+//                <a href="' . $value['url'] . '" download>
+//                    <img src="/wp-content/uploads/2019/12/don.png">
+//                </a>
+//            </div>
+//            </div>
+//            </div>';
+//    }
+//    $fields[count($fields) - 1] += array("content" => $content);
+//    //var_dump($fields[count($fields) - 1]);
+//
+//    return $fields;
+
     $content = rcl_get_include_template('template-documents.php', __FILE__, $profile_args);
     return $content;
 }
