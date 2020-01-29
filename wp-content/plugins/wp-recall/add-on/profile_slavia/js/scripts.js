@@ -175,15 +175,15 @@ function tab_config()
 
     //Фильтрация
 
-    jQuery('#search-btn').click(function(){
-        let search_bar = jQuery(this).siblings('#search');
+    jQuery('.search-btn').click(function(){
+        let search_bar = jQuery(this).siblings('.search');
         if (search_bar.css('display') === 'none')
             search_bar.show();
         else
             search_bar.hide();
     });
 
-    jQuery("#datepicker").datepicker({
+    jQuery(".datepicker").datepicker({
         onSelect: function(d,obj){
             if(d !== obj.lastVal){
                 jQuery(this).change();

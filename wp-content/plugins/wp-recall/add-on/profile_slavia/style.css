@@ -1,7 +1,7 @@
-input#search {
+input.search {
     display: none;
 }
-#search-btn, #date-btn {
+.search-btn, .date-btn {
     cursor: pointer;
 }
 button.ui-datepicker-trigger {
@@ -12,7 +12,7 @@ button.ui-datepicker-trigger {
     overflow: hidden;
     outline:none;
 }
-#datepicker, #search {
+.datepicker, .search {
     font-size: 16px;
     letter-spacing: 0;
     color: #2E2A5C;

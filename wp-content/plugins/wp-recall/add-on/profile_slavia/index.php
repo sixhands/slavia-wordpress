@@ -1089,6 +1089,7 @@ function rcl_edit_profile(){
                     $verification_fields += array($key => $value);
                 }
             }
+            $verification_fields += array('date' => date('d.m.y'));
             if (isset($verification_requests) && !empty($verification_requests)) {
                 //Если нету заявок от этого же пользователя на верификацию
                 if (!$verification_exists)
@@ -1683,6 +1684,7 @@ function sberbank_generate_checksum($order)
 
 function filter_data($filter_type, $datatype, $filter_val)
 {
+    global $user_ID;
     switch ($datatype) {
         case 'exchange_requests':
             $exchange_requests = rcl_get_option('exchange_requests');
@@ -1715,7 +1717,7 @@ function filter_data($filter_type, $datatype, $filter_val)
 //                                    $log->insert_log("date_value:".$request_value['date']);
 //                                    $log->insert_log("------------------------------");
                                     //$date_value = str_replace('.', '/', $request_value['date']);
-                                    if ($request_value['date'] != $newfilter)
+                                    if (!isset($request_value['date']) || $request_value['date'] != $newfilter)
                                         continue;
                                 }
                                 if ($request_value['status'] == 'no')
@@ -1758,6 +1760,177 @@ function filter_data($filter_type, $datatype, $filter_val)
 
             return $exchange_content;
             //break;
+        case 'verification_requests':
+            $verification_requests = rcl_get_option('verification_requests');
+            $verification_content = '';
+            if (isset($verification_requests) && !empty($verification_requests))
+            {
+                $i = 0;
+                foreach ($verification_requests as $key => $value)
+                {
+                    $i++;
+                    $user_full_name = $value['name'] . ' ' . $value['surname'] . ' ' . $value['last_name'];
+
+                    if (($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
+                        continue;
+                    elseif (empty($filter_val) ||
+                        ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
+                        $filter_type == 'date')
+                    {
+                        if ($filter_type == 'date') {
+                            $time = strtotime($filter_val);
+
+                            $newfilter = date('d.m.y', $time);
+
+                            if (!isset($value['date']) || $value['date'] != $newfilter)
+                                continue;
+                        }
+                        $verification_content .= '<div class="table-text w-100">' .
+                            '<div class="row">' .
+                            '<div class="col-3 text-left" style="padding-left: 42px;">' .
+                            $value['name'] . ' ' . $value['surname'] . ' ' . $value['last_name'] .
+                            '</div>' .
+                            '<div class="col-2 text-left">' .
+                            get_user_meta($key, 'client_num', true) . //Возвращает client_num по id пользователя
+                            '</div>' .
+                            '<div class="col-2 text-left">' .
+                            '</div>
+                                            <div class="col-2 text-right">
+                                                <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                            </div>
+                                            <div class="col-3 text-center">
+                                                <div class="btn-custom-one btn-zayavki" id="request_approve_' . $key . '">
+                            Одобрить
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>';
+                    }
+                }
+            }
+            return $verification_content;
+
+        case 'operations':
+            $exchange_requests = rcl_get_option('exchange_requests');
+            $exchange_content = '';
+            if (isset($exchange_requests) && !empty($exchange_requests) &&
+                isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
+            {
+                foreach ($exchange_requests[$user_ID] as $key => $value) {
+                    if ($filter_type == 'date') {
+                        $time = strtotime($filter_val);
+
+                        $newfilter = date('d.m.y', $time);
+
+                        if (!isset($value['date']) || $value['date'] != $newfilter)
+                            continue;
+                    }
+                    $exchange_content .= '<div class="table-text w-100">
+                                    <div class="row">
+                                        <div class="col-2 text-center">' .
+                        $value['date'] .
+                        '</div>
+                                        
+                                        <div class="col-2 text-center">' .
+                        $value['input_currency'] .
+                        '</div>
+                                        
+                                        <div class="col-2 text-center">' .
+                        $value['output_currency'] .
+                        '</div>
+                                        
+                                        <div class="col-2 text-center">' .
+                        $value['output_sum'] . ' ' . $value['output_currency'] .
+                        '</div>';
+
+//                                        <div class="col-2 text-center" style="visibility: hidden">
+//                                            0.9188 PZM
+//                                        </div>';
+                    if ($value['status'] == 'no')
+                        $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает проверки
+                                        </div>
+                                    </div>
+                                </div>';
+                    //Одобренная менеджером заявка
+                    elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
+                        $exchange_content .= '<div class="col-4 text-center">' .
+//                                        <div class="col-12">
+//                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
+//                                        </div>
+//                                        <div class="col-12">
+                            '<a onclick="ipayCheckout({
+                                                amount:' . $value['input_sum'] . ',
+                                                currency:\'RUB\',
+                                                order_number:\'\',
+                                                description: \'\'
+                                                },
+                                                function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
+                                                function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
+                                                 
+                                            class="btn-custom-one" style="display: inline-block;">Оплатить
+                                            </a>' .
+//                                        </div>
+                            '</div>
+                                    </div>
+                                </div>';
+
+                    elseif ($value['status'] == 'completed')
+                        $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
+                                       Завершена
+                                        </div>
+                                    </div>
+                                </div>';
+                    else
+                        $exchange_content .= '</div></div>';
+                }
+            }
+            return $exchange_content;
+
+        case 'stats':
+            $stats = rcl_get_option('user_stats');
+            if (isset($stats) && !empty($stats)) {
+                $stats_content = '';
+                foreach ($stats as $user => $user_stats)
+                {
+                    if (isset($user_stats) && !empty($user_stats))
+                    {
+                        $user_verification = get_user_meta($user, 'verification', true);
+
+                        if (isset($user_verification) && !empty($user_verification))
+                        {
+                            $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+
+                            if (($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
+                                continue;
+                            elseif (empty($filter_val) ||
+                                ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
+                                $filter_type == 'date')
+                            {
+
+                                $stats_content .= '<div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-4 text-left" style="padding-left: 42px;">' .
+                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                    '</div>
+                                            <div class="col-3 text-left">' .
+                                    get_user_meta($user, 'client_num', true) .
+                                    '</div>
+                                            
+                                            <div class="col-2 text-left">' .
+                                    $user_stats['exchange_num'] .
+                                    '</div>
+                                            <div class="col-3 text-left">' .
+                                    $user_stats['exchange_sum'] . ' RUB' .
+                                    '</div>
+                                        </div>
+                                    </div>';
+                            }
+                        }
+                    }
+                } //foreach
+            }
+            return $stats_content;
     }
 
 }

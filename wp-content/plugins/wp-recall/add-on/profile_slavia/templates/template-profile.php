@@ -213,13 +213,16 @@
                     <div class="ib" style="float:right">
 <!--                        <h1 class="coop_maps-h1 ib" style="font-size: 16px;">08.11.19</h1>-->
 <!--                        <img src="/wp-content/uploads/2019/12/calendar.png" class="ib" style="">-->
-                        <img src="/wp-content/uploads/2019/12/loop.png" class="ib" style="margin-top: 10px;">
+<!--                        <img src="/wp-content/uploads/2019/12/loop.png" class="ib" style="margin-top: 10px;">-->
+                        <input placeholder="Для поиска нажмите enter" name="filter" class="search" value="" style="margin-top: 0"/>
+                        <img class="search-btn ib" src="/wp-content/uploads/2019/12/loop.png" style="margin-top: 10px;">
+
                         <img src="/wp-content/uploads/2019/12/donw.png" class="ib" style=" ">
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row stats">
                 <div class="table-title w-100">
                     <div class="row">
 
@@ -341,3 +344,28 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    jQuery('.search').keyup(function(event){
+        var code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13) {
+            let el = jQuery(this);
+            let search = {
+                type: 'word',
+                datatype: 'stats',
+                val: el.val()
+            };
+            let output_el = jQuery('.row.stats');
+            search_ajax(el, search, search_callback, output_el);
+        }
+        else {
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    function search_callback(response, output_el) {
+        output_el.children().not('.table-title').remove();
+        output_el.append(response);
+    }
+</script>
