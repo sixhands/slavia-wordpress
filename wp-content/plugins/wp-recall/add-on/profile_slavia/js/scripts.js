@@ -195,6 +195,31 @@ function tab_config()
         buttonImage: "/wp-content/uploads/2019/12/calendar.png"
     });
 
+    //Блокируем ненужные символы
+    //Где блокировать все кроме цифр
+    var number_fields =
+        [ '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', //Поля страницы обмена
+        '.bank_value', 'input[name="ref_amount"]', //Поля страницы настроек
+        '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
+        ];
+
+    jQuery(number_fields.join(', ')).keydown(function(event) {
+        var code = (event.keyCode ? event.keyCode : event.which);
+        //Проверяем на допустимые символы
+        var is_allowed = ( (code >= 48 && code <= 57) || ((code == 190) //numbers || period
+            && !(code == 190 && jQuery(this).val().indexOf('.') != -1)) //уже есть точка
+            || code == 8);
+        //user_phone, verification inputs
+        if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+        jQuery(this).attr('name') === 'verification[passport_number]' ||
+        jQuery(this).attr('name') === 'verification[passport_code]') && code == 190)
+            is_allowed = false;
+        if (!is_allowed) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     // jQuery('#profile_verification').on('submit', function(e) {
     //     e.preventDefault();
     //     var fileInput = jQuery('#passport_photos');

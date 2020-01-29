@@ -14,7 +14,7 @@
                                 <a class="settings_close">&times;</a>
                                 <div class="select-exchange w-100">
                                     <input value="Название банка 1" type="text" name="bank1[name]" style="background: #fff">
-                                    <input value="0.5" type="text" name="bank1[value]">
+                                    <input class="bank_value" value="0.5" type="text" name="bank1[value]">
                                     </div>
                                 </div>
                         </div>

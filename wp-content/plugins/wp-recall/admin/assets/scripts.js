@@ -4,6 +4,19 @@ jQuery(function($){
     
     rcl_init_cookie();
 
+    //Валидация вводимых администратором полей
+    jQuery('#rcl-field-user_phone, #client_num').keydown(function(event) {
+        var code = (event.keyCode ? event.keyCode : event.which);
+        //Проверяем на допустимые символы
+        var is_allowed = ( (code >= 48 && code <= 57) //уже есть точка
+            || code == 8);
+
+        if (!is_allowed) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     if(rcl_url_params['rcl-addon-options']){
         $('.wrap-recall-options').hide();
         $('#recall .title-option').removeClass('active');

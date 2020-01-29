@@ -44,16 +44,16 @@
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div class="col-12">
                         <div class="row">
                             <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
@@ -112,16 +112,16 @@
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="col-12">
                         <div class="row">
@@ -183,16 +183,16 @@
             <div class="col-12">
                 <div class="row">
 
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_waves[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 input-exchange">
-                        <div class="row">
-                            <input required type="text" name="get_waves[card_name]" placeholder="Имя получателя (как на карте)">
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_waves[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-6 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <input required type="text" name="get_waves[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="col-12">
                         <div class="row">
@@ -258,16 +258,16 @@
                     </div>
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="col-12">
                                 <div class="row">
                                     <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
@@ -332,16 +332,16 @@
                     <div class="col-12">
                         <div class="row">
 
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <div class="col-12">
                                 <div class="row">
@@ -408,16 +408,16 @@
                     <div class="col-12">
                         <div class="row">
 
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_waves[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 input-exchange">
-                                <div class="row">
-                                    <input required type="text" name="get_waves[card_name]" placeholder="Имя получателя (как на карте)">
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_waves[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-lg-6 input-exchange">-->
+<!--                                <div class="row">-->
+<!--                                    <input required type="text" name="get_waves[card_name]" placeholder="Имя получателя (как на карте)">-->
+<!--                                </div>-->
+<!--                            </div>-->
 
                             <div class="col-12">
                                 <div class="row">
@@ -592,19 +592,6 @@
 
     var prizm_price = <?php echo rcl_slavia_get_crypto_price('PZM'); ?>; //Курс призма
     var waves_price = <?php echo rcl_slavia_get_crypto_price('WAVES'); ?>; //Курс waves
-
-    //Блокируем ненужные символы
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
-        var code = (event.keyCode ? event.keyCode : event.which);
-        //Проверяем на допустимые символы
-        var is_allowed = ( (code >= 48 && code <= 57) || ((code == 190) //numbers || period
-            && !(code == 190 && jQuery(this).val().indexOf('.') != -1)) //уже есть точка
-            || code == 8);
-        if (!is_allowed) {
-            event.preventDefault();
-            return false;
-        }
-    });
 
     //При вводе значения
     jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keyup(function(event) {

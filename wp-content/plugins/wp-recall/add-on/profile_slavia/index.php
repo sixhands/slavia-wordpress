@@ -880,7 +880,7 @@ function rcl_tab_settings_content($master_id)
                                     '<a class="settings_close">&times;</a>'.
                                     '<div class="select-exchange w-100">' .
                                         '<input value="' . $bank['name'] . '" type="text" name="bank' . $i . '[name]" style="background: #fff">'.
-                                        '<input value="' . $bank['value'] . '" type="text" name="bank' . $i . '[value]">'.
+                                        '<input class="bank_value" value="' . $bank['value'] . '" type="text" name="bank' . $i . '[value]">'.
                                     '</div>'.
                                 '</div>'.
                             '</div>';
@@ -984,8 +984,8 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
     $exchange_fields += array('output_sum' => $output_sum);
 
     $exchange_fields += array('bank' => $bank);
-    $exchange_fields += array('card_num' => $card_num);
-    $exchange_fields += array('card_name' => $card_name);
+//    $exchange_fields += array('card_num' => $card_num);
+//    $exchange_fields += array('card_name' => $card_name);
 
     $exchange_fields += array('date' => date('d.m.y'));
     $exchange_fields += array('status' => 'no'); //no - ожидает обработки, yes - одобрен и обработан
@@ -1480,24 +1480,24 @@ function rcl_edit_profile(){
                 if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
                     save_exchange_request('PRIZM', 'RUB',
                         $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
-                        $_POST['get_rubles']['bank'], $_POST['get_rubles']['card_num'],
-                        $_POST['get_rubles']['card_name']);
+                        $_POST['get_rubles']['bank']);//, $_POST['get_rubles']['card_num'],
+                        //$_POST['get_rubles']['card_name']);
                 }
 
                 if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
 
                     save_exchange_request('RUB', 'PRIZM',
                         $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm'],
-                        $_POST['get_prizm']['bank'], $_POST['get_prizm']['card_num'],
-                        $_POST['get_prizm']['card_name']);
+                        $_POST['get_prizm']['bank']);//, $_POST['get_prizm']['card_num'],
+                        //$_POST['get_prizm']['card_name']);
                 }
 
                 if (strpos(array_key_first($_POST), 'get_waves') !== false) {
 
                     save_exchange_request('RUB', 'WAVES',
                         $_POST['get_waves']['rubles'], $_POST['get_waves']['waves'],
-                        $_POST['get_waves']['bank'], $_POST['get_waves']['card_num'],
-                        $_POST['get_waves']['card_name']);
+                        $_POST['get_waves']['bank']);//, $_POST['get_waves']['card_num'],
+                        //$_POST['get_waves']['card_name']);
                 }
 
                 $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
