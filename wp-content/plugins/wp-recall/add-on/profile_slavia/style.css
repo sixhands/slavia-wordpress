@@ -1,3 +1,24 @@
+input#search {
+    display: none;
+}
+#search-btn, #date-btn {
+    cursor: pointer;
+}
+button.ui-datepicker-trigger {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+#datepicker, #search {
+    font-size: 16px;
+    letter-spacing: 0;
+    color: #2E2A5C;
+    opacity: 1;
+    margin-top: 23px;
+}
 .upload {
     width: 0.1px;
     height: 0.1px;

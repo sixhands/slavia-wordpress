@@ -116,11 +116,15 @@ function slavia_template_scripts() {
     //wp_enqueue_script( 'my_jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '1.0', true );
     wp_enqueue_style( 'slavia_template-style', get_stylesheet_uri() );
     wp_enqueue_style( 'slavia_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
+    wp_enqueue_style( 'jquery-ui-style', get_template_directory_uri() . '/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.css');
     wp_enqueue_style( 'slavia_style', get_template_directory_uri() . '/assets/css/style.css');
     wp_enqueue_style( 'Comfortaa', 'https://fonts.googleapis.com/css?family=Comfortaa&display=swap', array(), '1.0' );
     wp_enqueue_style( 'Montserrat', 'https://fonts.googleapis.com/css?family=Montserrat&display=swap', array(), '1.0' );
     wp_enqueue_style( 'Comfortaa-700', 'https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap', array(), '1.0' );
     wp_enqueue_script( 'jquery' );
+
+    wp_enqueue_script( 'jquery-ui-min', get_template_directory_uri() . '/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js', array('jquery'), null );
+
     wp_enqueue_script( 'tether', "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js", array(), '1.0', true );
     wp_enqueue_script( 'bootstrap.min', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery', 'tether'), '1.0' );
     wp_enqueue_script( 'owl_carousel', get_template_directory_uri() . '/assets/js/owl.carousel.js', array(), '1.0', true );

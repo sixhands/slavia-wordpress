@@ -1280,6 +1280,7 @@ function rcl_edit_profile(){
                 }
             }
 
+            //Модальное окно пользователя на странице люди
             elseif (isset($_POST['get_user_operations']) && $_POST['get_user_operations'] == 'true')
             {
                 if (isset($_POST['get_user_stats']) && $_POST['get_user_stats'] == 'true')
@@ -1460,6 +1461,13 @@ function rcl_edit_profile(){
             }
 
         } //if request_user_id
+
+        elseif (isset($_POST['search']) && !empty($_POST['search']))
+        {
+            $search_data = $_POST['search'];
+            echo filter_data($search_data['type'], $search_data['datatype'], $search_data['val']);
+            exit;
+        }
 
         /*****************Сохраняем в запросы на обмен******************/
         elseif (strpos(array_key_first($_POST), 'get_rubles') !== false ||
@@ -1671,4 +1679,85 @@ function sberbank_generate_checksum($order)
     $hmac = hash_hmac ( 'sha256' , $data , $key);
 
     return "[$hmac]\n";
+}
+
+function filter_data($filter_type, $datatype, $filter_val)
+{
+    switch ($datatype) {
+        case 'exchange_requests':
+            $exchange_requests = rcl_get_option('exchange_requests');
+            $exchange_content = '';
+            if (isset($exchange_requests) && !empty($exchange_requests))
+            {
+                foreach ($exchange_requests as $user => $requests) //Все пользователи с запросами на обмен, $user- id пользователя
+                {
+                    $user_verification = get_user_meta($user, 'verification', true);
+
+                    if (isset($user_verification) && !empty($user_verification))
+                    {
+                        $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+
+                        if (($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
+                            continue;
+                        elseif (empty($filter_val) ||
+                                ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
+                                 $filter_type == 'date')
+                        {
+                            foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
+                            {
+                                if ($filter_type == 'date')
+                                {
+                                    $time = strtotime($filter_val);
+
+                                    $newfilter = date('d.m.y',$time);
+//                                    $log = new Rcl_Log();
+//                                    $log->insert_log("new_filter:".$newfilter);
+//                                    $log->insert_log("date_value:".$request_value['date']);
+//                                    $log->insert_log("------------------------------");
+                                    //$date_value = str_replace('.', '/', $request_value['date']);
+                                    if ($request_value['date'] != $newfilter)
+                                        continue;
+                                }
+                                if ($request_value['status'] == 'no')
+                                {
+                                    $exchange_content .= '<div class="table-text w-100">
+                                                <div class="row">
+                                                    <div class="col-3 text-left" style="padding-left: 42px;">' .
+                                        $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                        '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                        get_user_meta($user, 'client_num', true) .
+                                        '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                        $request_value['output_currency'] .
+                                        '</div>
+                                                    
+                                                    <div class="col-2 text-left">' .
+                                        $request_value['output_sum'] .
+                                        '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                                    </div>
+                                                    
+                                                    <div class="col-3 text-center">
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                                } elseif ($request_value['status'] == 'yes')
+                                    continue;
+                            } //inner foreach
+                        } //filter comparison
+                    } //Если нет верификации
+                    else
+                        continue;
+                } //foreach внешний
+            } //if exchange requests
+
+            return $exchange_content;
+            //break;
+    }
+
 }

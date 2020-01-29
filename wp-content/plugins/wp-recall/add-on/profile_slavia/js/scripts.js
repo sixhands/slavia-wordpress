@@ -35,6 +35,16 @@ function rcl_check_profile_form(){
 
 }
 
+function search_ajax(el, search_data, callback, output_el)
+{
+    let data = {
+        search: search_data
+    };
+    jQuery.post( window.location, data, function(response) {
+        callback(response, output_el)
+    });
+}
+
 jQuery(document).ready(function(){
     tab_config();
 });
@@ -161,6 +171,28 @@ function tab_config()
         let video = jQuery(this).parents('.modal-content').find('video');
         if (video.length > 0)
             video.trigger('pause');
+    });
+
+    //Фильтрация
+
+    jQuery('#search-btn').click(function(){
+        let search_bar = jQuery(this).siblings('#search');
+        if (search_bar.css('display') === 'none')
+            search_bar.show();
+        else
+            search_bar.hide();
+    });
+
+    jQuery("#datepicker").datepicker({
+        onSelect: function(d,obj){
+            if(d !== obj.lastVal){
+                jQuery(this).change();
+            }
+        },
+        constrainInput: true,
+        showOn: 'button',
+        buttonText: '',
+        buttonImage: "/wp-content/uploads/2019/12/calendar.png"
     });
 
     // jQuery('#profile_verification').on('submit', function(e) {

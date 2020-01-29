@@ -5,9 +5,12 @@
                 <div class="col-12">
                     <h1 class="coop_maps-h1 ib">Заявки на обмен</h1>
                     <div class="ib" style="float:right">
-                        <h1 class="coop_maps-h1 ib" style="font-size: 16px;">08.11.19</h1>
-                        <img src="/wp-content/uploads/2019/12/calendar.png" class="ib" style="">
-                        <img src="/wp-content/uploads/2019/12/loop.png" class="ib" style="margin-top: 10px;">
+<!--                        <h1 class="coop_maps-h1 ib" style="font-size: 16px;">08.11.19</h1>-->
+<!--                        <img id="date-btn" src="/wp-content/uploads/2019/12/calendar.png" class="ib" style="">-->
+                        <input id="datepicker" disabled="disabled" />
+
+                        <input placeholder="Для поиска нажмите enter" name="filter" id="search" value="" />
+                        <img id="search-btn" src="/wp-content/uploads/2019/12/loop.png" class="ib" style="margin-top: 10px;">
                         <!-- <img src="/wp-content/uploads/2019/12/donw.png" class="ib" style=" "> -->
                     </div>
                 </div>
@@ -336,4 +339,50 @@
             }
         });
     });
+
+    //Фильтрация
+    // jQuery('#search').blur(function(){
+    //     let el = jQuery(this);
+    //     let search = {
+    //         type: 'word',
+    //         datatype: 'exchange_requests',
+    //         val: el.val()
+    //     };
+    //     let output_el = jQuery('.exchange_requests .table-title').parent();
+    //     search_ajax(el, search, search_callback, output_el);
+    // });
+    jQuery('#search').keyup(function(event){
+        var code = (event.keyCode ? event.keyCode : event.which);
+        if (code == 13) {
+            let el = jQuery(this);
+            let search = {
+                type: 'word',
+                datatype: 'exchange_requests',
+                val: el.val()
+            };
+            let output_el = jQuery('.exchange_requests .table-title').parent();
+            search_ajax(el, search, search_callback, output_el);
+        }
+        else {
+            event.preventDefault();
+            return false;
+        }
+    });
+    jQuery('input#datepicker').change(function(){
+        let el = jQuery(this);
+        let search = {
+            type: 'date',
+            datatype: 'exchange_requests',
+            val: el.val()
+        };
+        let output_el = jQuery('.exchange_requests .table-title').parent();
+        search_ajax(el, search, search_callback, output_el);
+    });
+
+    function search_callback(response, output_el)
+    {
+        output_el.children().not('.table-title').remove();
+        output_el.append(response);
+    }
+
 </script>

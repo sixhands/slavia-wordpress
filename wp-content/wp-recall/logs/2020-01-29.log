@@ -1,0 +1,66 @@
+search:Array
+(
+    [type] => date
+    [datatype] => exchange_requests
+    [val] => 01/22/2020
+)
+
+search:Array
+(
+    [type] => date
+    [datatype] => exchange_requests
+    [val] => 01/16/2020
+)
+
+search:Array
+(
+    [type] => date
+    [datatype] => exchange_requests
+    [val] => 01/13/2020
+)
+
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:25.01.20
+------------------------------
+new_filter:01.01.20
+date_value:28.01.20
+------------------------------
+new_filter:01.01.20
+date_value:29.01.20
+------------------------------
+new_filter:01.01.20
+date_value:29.01.20
+------------------------------
+new_filter:01.01.20
+date_value:29.01.20
+------------------------------
