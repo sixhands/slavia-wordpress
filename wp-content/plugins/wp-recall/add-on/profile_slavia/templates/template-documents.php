@@ -18,7 +18,25 @@
                         </div>
                     </div>
                 </div>
-                <?php echo $user_documents; ?>
+                <?php if (isset($user_documents) && !empty($user_documents))://echo print_r( $user_documents, true); ?>
+                    <?php foreach($user_documents as $key => $document): ?>
+                        <div class="table-text w-100">
+                            <div class="row">
+                                <div class="col-2 text-center"><?php echo $document['date'] ?></div>
+
+                                <div class="col-8 text-left"><?php echo $document['filename'] ?></div>
+
+                                <div class="col-2 text-center">
+                                    <a href="<?=$document['url']?>" download>
+                                        <img src="/wp-content/uploads/2019/12/don.png">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
 <!--                <div class="table-text w-100">-->
 <!--                    <div class="row">-->
 <!--                        <div class="col-2 text-center">-->

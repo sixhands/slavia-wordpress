@@ -143,11 +143,11 @@ function add_profile_fields($fields){
 }
 
 //Генерация документов пользователя
-function generate_user_documents()
+function generate_pdf($text)
 {
     // instantiate and use the dompdf class
     $dompdf = new Dompdf();
-    $dompdf->loadHtml('hello world');
+    $dompdf->loadHtml($text);
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'landscape');
@@ -156,9 +156,74 @@ function generate_user_documents()
     $dompdf->render();
 
 // Output the generated PDF to Browser
-//    $log = new Rcl_Log();
-//    $log->insert_log("pdf:".);
     return $dompdf->output();
+}
+function get_new_document_field($user_id)
+{
+    $text = current_time( 'm-d-H-i-s' );
+    $pdf = generate_pdf($text);
+    //Загружаем файлы
+    if ( ! function_exists( 'wp_handle_sideload' ) ) {
+        require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+    }
+    $temp_filename = @tempnam(get_temp_dir(), 'tmp');//tmpfile();
+
+    $temp_file =  fopen($temp_filename, "w");
+    fwrite($temp_file, $pdf);
+
+    // Array based on $_FILE as seen in PHP file uploads
+    $file_to_upload = array(
+        'name'     => 'payment_receipt-'.$user_id.'-'.current_time( 'm-d-H-i-s' ).'.pdf', // ex: wp-header-logo.png
+        'type'     => 'application/pdf',
+        'tmp_name' => $temp_filename,
+        'error'    => 0,
+        'size'     => filesize($temp_filename),
+    );
+
+    $overrides = array(
+        // Tells WordPress to not look for the POST form
+        // fields that would normally be present
+        'test_form' => false,
+    );
+    $log = new Rcl_Log();
+
+    $result_field = null;
+
+    $file = wp_handle_sideload( $file_to_upload, $overrides );
+
+    if ($file && !isset( $file['error'] )) {
+        if ($file['url']) {
+            $filepath = $file['file']; // Full path to the file
+            $local_url = $file['url'];  // URL to the file in the uploads dir
+            $type = $file['type']; // MIME type of the file
+
+            $attachment = array(
+                'post_mime_type' => $file['type'],
+                'post_title' => preg_replace('/\.[^.]+$/', '', basename($file['file'])),
+                'post_name' => 'payment_receipt' . '-' . $user_id . '-' . 0,
+                'post_content' => '',
+                'guid' => $file['url'],
+                'post_parent' => 0,
+                'post_author' => $user_id,
+                'post_status' => 'inherit'
+            );
+
+            $attach_id = wp_insert_attachment($attachment, $file['file'], 0);
+            $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
+
+            wp_update_attachment_metadata($attach_id, $attach_data);
+
+
+            $filename = pathinfo($filepath);
+            $filename = $filename['filename'].'.'.$filename['extension'];
+
+            $result_field = array('date' => date('d.m.y'), 'filename' => $filename, 'url' => $local_url);
+            //array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png');
+        }
+    }
+    fclose($temp_file);
+    return $result_field ? $result_field : false;
 }
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
@@ -268,12 +333,12 @@ function rcl_tab_template_content()
 
         $field_name = $slug;//$CF->get_slug($field);
         $field_value = null;
-        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos') {
+        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' && $field_name != 'user_documents') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
-            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified') {
+            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents') {
                 $field_value = $value;
             }
         }
@@ -319,6 +384,7 @@ function rcl_tab_profile(){
 function rcl_tab_profile_content($master_id)
 {
     global $user_ID;
+    //get_new_document_field($user_ID);
     //global $side_text, $video_files, $video_text;
     $profile_args = rcl_tab_template_content();
     $stats = rcl_get_option('user_stats');
@@ -677,7 +743,30 @@ function rcl_tab_documents(){
 }
 function rcl_tab_documents_content($master_id)
 {
+    global $user_ID;
     $profile_args = rcl_tab_template_content();
+
+    $profileFields = rcl_get_profile_fields(array('user_id' => $user_ID));
+    foreach ($profileFields as $field)
+    {
+        if ($field['slug'] == 'user_documents') {
+            $new_doc = get_new_document_field($user_ID);
+            if ($new_doc)
+            {
+                if (isset($field['value']))
+                {
+                    $field['value'] += array(count($field['value']) => $new_doc);
+                    var_dump($field['value']);
+                }
+//                    $field['value'] += ;//array(count($field['value']) => $new_doc) ;
+                else
+                    $field += array('value' => array('1' => $new_doc));
+
+                rcl_update_profile_fields($user_ID, array($field));
+            }
+            break;
+        }
+    }
 
 //    $fields[] = array(
 //        'type' => 'custom',
@@ -1494,6 +1583,24 @@ function rcl_edit_profile(){
                                 //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
                                 $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'completed';
                                 rcl_update_option('exchange_requests', $exchange_requests);
+                            }
+
+                            //Генерируем документ
+                            $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
+                            foreach ($profileFields as $field)
+                            {
+                                if ($field['slug'] == 'user_documents') {
+                                    $new_doc = get_new_document_field($_POST['request_user_id']);
+                                    if ($new_doc)
+                                    {
+                                        if (isset($field['value']))
+                                            $field['value'] += array(count($field['value']) => $new_doc) ;
+                                        else
+                                            $field += array('value' => array('1' => $new_doc));
+                                        rcl_update_profile_fields($_POST['request_user_id'], array($field));
+                                    }
+                                    break;
+                                }
                             }
 //                            echo print_r($stats, true).'\n'.
 //                                 print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
