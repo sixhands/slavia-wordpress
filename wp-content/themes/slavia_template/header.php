@@ -126,7 +126,7 @@
         <?php if ( !is_page( array( 147, 16, 14, 22, 20 ) ) ): ?> <!-- 20-партнеры, 147-главная, 16-документы, 14-корпоративные карты, 22-о нас-->
 
         <!--Кнопка чата fixed-->
-        <img src="/wp-content/uploads/2019/12/chat_ico.png" class="chat_ico-fixed d-lg-none">
+<!--        <img src="/wp-content/uploads/2019/12/chat_ico.png" class="chat_ico-fixed d-lg-none">-->
 
         <div class="d-lg-none col-md-12"  style="z-index: 4; margin-top: 10px;">
             <div class="row">
