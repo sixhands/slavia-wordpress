@@ -338,8 +338,33 @@ function rcl_tab_template_content()
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
-            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents') {
+            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents')
+            {
                 $field_value = $value;
+                if ($field_name == 'user_documents' && !empty($field_value))
+                {
+                    clearstatcache(); //Очищаем кэш операций с файлами
+                    //Если данного файла нет, удаляем поле
+                    foreach ($field_value as $key => $document)
+                    {
+                        $filepath = parse_url($document['url'], PHP_URL_PATH);
+                        $filepath = $_SERVER['DOCUMENT_ROOT'].$filepath;
+                        $log = new Rcl_Log();
+                        if (!file_exists($filepath))
+                        {
+                            $log->insert_log("filepath:".$filepath);
+                            $log->insert_log("url:".$document['url']."   doesnt exist");
+
+                            unset($field_value[$key]);
+
+                            $field += array('value' => $field_value);
+
+                            rcl_update_profile_fields($user_ID, array($field));
+                        }
+                        else
+                            $log->insert_log("url:".$document['url']."   exists!");
+                    }
+                }
             }
         }
         $profile_args += array($field_name => $field_value);
@@ -745,28 +770,6 @@ function rcl_tab_documents_content($master_id)
 {
     global $user_ID;
     $profile_args = rcl_tab_template_content();
-
-    $profileFields = rcl_get_profile_fields(array('user_id' => $user_ID));
-    foreach ($profileFields as $field)
-    {
-        if ($field['slug'] == 'user_documents') {
-            $new_doc = get_new_document_field($user_ID);
-            if ($new_doc)
-            {
-                if (isset($field['value']))
-                {
-                    $field['value'] += array(count($field['value']) => $new_doc);
-                    var_dump($field['value']);
-                }
-//                    $field['value'] += ;//array(count($field['value']) => $new_doc) ;
-                else
-                    $field += array('value' => array('1' => $new_doc));
-
-                rcl_update_profile_fields($user_ID, array($field));
-            }
-            break;
-        }
-    }
 
 //    $fields[] = array(
 //        'type' => 'custom',
@@ -1593,10 +1596,22 @@ function rcl_edit_profile(){
                                     $new_doc = get_new_document_field($_POST['request_user_id']);
                                     if ($new_doc)
                                     {
-                                        if (isset($field['value']))
-                                            $field['value'] += array(count($field['value']) => $new_doc) ;
-                                        else
-                                            $field += array('value' => array('1' => $new_doc));
+                                        if (!isset($field['value']))
+                                            $field += array('value' => array());
+                                        $log = new Rcl_Log();
+                                        $field_value = get_user_meta($_POST['request_user_id'], 'user_documents', true);
+
+                                        if (empty($field_value) || count($field_value) == 0)
+                                        {
+                                            $field['value'] = array('0' => $new_doc);
+                                        }
+                                        else //user documents not empty
+                                        {
+                                            $field['value'] = $field_value;
+                                            $field['value'] += array(count($field['value']) => $new_doc);
+                                        }
+                                        $log->insert_log("field:".print_r($field, true));
+
                                         rcl_update_profile_fields($_POST['request_user_id'], array($field));
                                     }
                                     break;
@@ -2090,6 +2105,39 @@ function filter_data($filter_type, $datatype, $filter_val)
                 } //foreach
             }
             return $stats_content;
+
+        case 'documents':
+            $docs = get_user_meta($user_ID, 'user_documents', true);
+            $document_content = '';
+            if (isset($docs) && !empty($docs))
+            {
+                foreach ($docs as $key => $document)
+                {
+                    if ($filter_type == 'date') {
+                        $time = strtotime($filter_val);
+
+                        $newfilter = date('d.m.y', $time);
+
+                        if (!isset($document['date']) || $document['date'] != $newfilter)
+                            continue;
+                    }
+                    $document_content .= '<div class="table-text w-100">
+                                            <div class="row">
+                                                <div class="col-2 text-center">'.$document['date'].'</div>
+                
+                                                <div class="col-8 text-left">'.$document['filename'].'</div>
+                                                
+                                                <div class="col-2 text-center">
+                                                    <a href="'. $document['url'] .'" download>
+                                                        <img src="/wp-content/uploads/2019/12/don.png">
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                          </div>';
+                } //foreach
+            }
+            return $document_content;
     }
 
 }
