@@ -352,8 +352,6 @@ function rcl_tab_template_content()
                         $log = new Rcl_Log();
                         if (!file_exists($filepath))
                         {
-                            $log->insert_log("filepath:".$filepath);
-                            $log->insert_log("url:".$document['url']."   doesnt exist");
 
                             unset($field_value[$key]);
 
@@ -361,8 +359,6 @@ function rcl_tab_template_content()
 
                             rcl_update_profile_fields($user_ID, array($field));
                         }
-                        else
-                            $log->insert_log("url:".$document['url']."   exists!");
                     }
                 }
             }
@@ -415,7 +411,9 @@ function rcl_tab_profile_content($master_id)
     $stats = rcl_get_option('user_stats');
     if (isset($stats) && !empty($stats))
     {
+        //var_dump($stats);
         $stats_content = '';
+        $currencies = array('RUB', 'PRIZM', 'WAVES');
         foreach ($stats as $user => $user_stats)
         {
             if (isset($user_stats) && !empty($user_stats))
@@ -424,21 +422,41 @@ function rcl_tab_profile_content($master_id)
 
                 if (isset($user_verification) && !empty($user_verification))
                 {
+                    //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
+                    foreach ($currencies as $currency)
+                    {
+                        if (!isset($user_stats[$currency]))
+                            $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+                    }
                     $stats_content .= '<div class="table-text w-100">
                                         <div class="row">
-                                            <div class="col-4 text-left" style="padding-left: 42px;">'.
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
                             $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
                                             '</div>
-                                            <div class="col-3 text-left">' .
+                                            <div class="col-2 text-center stats_col">' .
                                                 get_user_meta($user, 'client_num', true) .
+                                            '</div>'.
+                                            //RUB
+                                            '<div class="col-2 text-center stats_col">'.
+                                                $user_stats['RUB']['input_sum']. ' RUB'.
                                             '</div>
-                                            
-                                            <div class="col-2 text-left">'.
-                                                $user_stats['exchange_num'].
+                                            <div class="col-1 text-center stats_col">'.
+                                                $user_stats['RUB']['exchange_num'].
+                                            '</div>'.
+                                            //PRIZM
+                                            '<div class="col-2 text-center stats_col">'.
+                                                $user_stats['PRIZM']['input_sum'].' PRIZM'.
                                             '</div>
-                                            <div class="col-3 text-left">'.
-                                                $user_stats['exchange_sum'].' RUB'.
+                                            <div class="col-1 text-center stats_col">'.
+                                                $user_stats['PRIZM']['exchange_num'].
+                                            '</div>'.
+                                            //WAVES
+                                            '<div class="col-1 text-center stats_col">'.
+                                                $user_stats['WAVES']['input_sum']. ' WAVES'.
                                             '</div>
+                                            <div class="col-1 text-center stats_col">'.
+                                                $user_stats['WAVES']['exchange_num'].
+                                            '</div>'.'
                                         </div>
                                     </div>';
                 }
@@ -698,34 +716,42 @@ function rcl_tab_operations_content($master_id)
 //                                        <div class="col-2 text-center" style="visibility: hidden">
 //                                            0.9188 PZM
 //                                        </div>';
-            if ($value['status'] == 'no')
+            if ($value['status'] == 'paid')
                 $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
-                                       Ожидает проверки
+                                       Ожидает подтверждения
                                         </div>
                                     </div>
                                 </div>';
             //Одобренная менеджером заявка
-            elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
-                $exchange_content .= '<div class="col-4 text-center">'.
-//                                        <div class="col-12">
-//                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
-//                                        </div>
-//                                        <div class="col-12">
-                                            '<a onclick="ipayCheckout({
-                                                amount:' . $value['input_sum'] .',
-                                                currency:\'RUB\',
-                                                order_number:\'\',
-                                                description: \'\'
-                                                },
-                                                function(order) { successCallback(order, event, '. $user_ID . ', '. $key . ') },
-                                                function(order) { failureCallback(order, event, '. $user_ID . ', '. $key . ') })"
-                                                 
-                                            class="btn-custom-one" style="display: inline-block;">Оплатить
-                                            </a>'.
-//                                        </div>
-                                     '</div>
+            elseif ($value['status'] == 'awaiting_payment') {
+                if ($value['input_currency'] == 'RUB')
+                    $exchange_content .= '<div class="col-4 text-center">' .
+                        //                                        <div class="col-12">
+                        //                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
+                        //                                        </div>
+                        //                                        <div class="col-12">
+                        '<a onclick="ipayCheckout({
+                                                    amount:' . $value['input_sum'] . ',
+                                                    currency:\'RUB\',
+                                                    order_number:\'\',
+                                                    description: \'\'
+                                                    },
+                                                    function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
+                                                    function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
+                                                     
+                                                class="btn-custom-one" style="display: inline-block;">Оплатить
+                                                </a>' .
+                        //                                        </div>
+                        '</div>
+                                        </div>
+                                    </div>';
+                else
+                    $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает подтверждения
+                                        </div>
                                     </div>
                                 </div>';
+            }
 
             elseif ($value['status'] == 'completed')
                 $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
@@ -924,7 +950,7 @@ function rcl_tab_requests_content($master_id)
             {
                 foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
                 {
-                    if ($request_value['status'] == 'no') {
+                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid') {
                         $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
                                                     <div class="col-3 text-left" style="padding-left: 42px;">' .
@@ -951,7 +977,7 @@ function rcl_tab_requests_content($master_id)
                                                     </div>
                                                 </div>
                                             </div>';
-                    } elseif ($request_value['status'] == 'yes')
+                    } elseif ($request_value['status'] == 'completed')
                         continue;
                 }
             }
@@ -1132,7 +1158,7 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
 //    $exchange_fields += array('card_name' => $card_name);
 
     $exchange_fields += array('date' => date('d.m.y'));
-    $exchange_fields += array('status' => 'no'); //no - ожидает обработки, yes - одобрен и обработан
+    $exchange_fields += array('status' => 'awaiting_payment');
 
     if (isset($exchange_requests) && !empty($exchange_requests))
     {
@@ -1417,10 +1443,77 @@ function rcl_edit_profile(){
 
                 if (isset($exchange_requests) && !empty($exchange_requests))
                 {
-                    //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
-                    $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'yes';
-                    rcl_update_option('exchange_requests', $exchange_requests);
-                    echo 'true';
+                    if (isset($_POST['request_num']))
+                    {
+                        //Добавляем в статистику
+                        $stats = rcl_get_option('user_stats');
+
+                        $request_num = $_POST['request_num'];
+                        $userid = $_POST['request_user_id'];
+
+                        $input_currency = $exchange_requests[$userid][$request_num]['input_currency'];
+                        $output_currency = $exchange_requests[$userid][$request_num]['output_currency'];
+                        $input_sum = $exchange_requests[$userid][$request_num]['input_sum'];
+                        $output_sum = $exchange_requests[$userid][$request_num]['output_sum'];
+                        $log = new Rcl_Log();
+                        if (isset($stats) && !empty($stats)) {
+                            //Если статистика на этого пользователя есть, то прибавляем к ней
+                            if (isset($stats[$userid]) && !empty($stats[$userid])) {
+
+                                $user_stat = $stats[$userid];
+
+                                if (!isset($user_stat[$input_currency]))
+                                    $user_stat += array($input_currency =>
+                                                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+                                if (!isset($user_stat[$output_currency]))
+                                    $user_stat += array($output_currency =>
+                                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+
+                                //Прибавляем сумму по потраченной и получаемой валюте
+                                $user_stat[$input_currency]['input_sum'] += $input_sum;
+                                $user_stat[$output_currency]['output_sum'] += $output_sum;
+
+                                $user_stat[$input_currency]['exchange_num'] += 1;
+                                //$user_stat[$output_currency]['exchange_num'] += 1;
+
+//                                $user_stat['exchange_num'] += 1;
+//                                $user_stat['exchange_sum'] += $exchange_requests[$userid][$request_num]['input_sum'];
+
+                                $stats[$userid] = $user_stat;
+
+                                //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
+                            } else {
+                                $stats +=
+                                    array($userid =>
+                                            array(
+                                                $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
+                                                $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
+                                            )
+                                    );
+
+                            }
+                        } //Если статистика полностью пустая
+                        else {
+                            $stats =
+                                array($userid =>
+                                    array(
+                                        $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
+                                        $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
+                                )
+                            );
+                            $log->insert_log("user_id:".$userid);
+                            $log->insert_log("after stats:".print_r($stats, true));
+                        }
+                        //$stats = array();
+                        rcl_update_option('user_stats', $stats);
+
+
+                        $exchange_requests[$userid][$request_num]['status'] = 'completed';
+                        rcl_update_option('exchange_requests', $exchange_requests);
+                        echo 'true';
+                    }
+                    else
+                        echo 'false';
                     exit;
                 }
             }
@@ -1460,16 +1553,16 @@ function rcl_edit_profile(){
 //                                        <div class="col-2 text-center" style="visibility: hidden">
 //                                            0.9188 PZM
 //                                        </div>';
-                            if ($value['status'] == 'no')
+                            if ($value['status'] == 'awaiting_payment')
                                 $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
-                                       Ожидает проверки
+                                       Ожидает оплаты
                                         </div>
                                     </div>
                                 </div>';
-                            //Одобренная менеджером заявка
-                            elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
+                            //Оплаченная пользователем заявка
+                            elseif ($value['status'] == 'paid' && $value['input_currency'] == 'RUB')
                                 $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
-                                                        Ожидание оплаты
+                                                        Ожидает подтверждения
                                                     </div>
                                                 </div>
                                             </div>';
@@ -1552,39 +1645,13 @@ function rcl_edit_profile(){
                     if (true)//sberbank_generate_checksum($_POST['order_data']))
                     {
                         if (isset($_POST['request_num'])) {
-                            //Добавляем в статистику
-                            $stats = rcl_get_option('user_stats');
-                            if (isset($stats) && !empty($stats))
-                            {
-                                //Если статистика на этого пользователя есть, то прибавляем к ней
-                                if (isset($stats[$_POST['request_user_id']]) && !empty($stats[$_POST['request_user_id']])) {
-                                    $user_stat = $stats[$_POST['request_user_id']];
-                                    $user_stat['exchange_num'] += 1;
-                                    $user_stat['exchange_sum'] += (float)$order['formattedAmount'];
-
-                                    $stats[$_POST['request_user_id']] = $user_stat;
-
-                                //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
-                                } else {
-                                    $stats += array($_POST['request_user_id'] =>
-                                        array('exchange_num' => 1, 'exchange_sum' => (float)$order['formattedAmount']));
-
-                                }
-                            }
-                            //Если статистика полностью пустая
-                            else
-                            {
-                                $stats = array($_POST['request_user_id'] =>
-                                    array('exchange_num' => 1, 'exchange_sum' => (float)$order['formattedAmount']));
-                            }
-                            rcl_update_option('user_stats', $stats);
 
                             //Меняем статус данного запроса на обмен на completed
                             $exchange_requests = rcl_get_option('exchange_requests');
 
                             if (isset($exchange_requests) && !empty($exchange_requests)) {
                                 //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
-                                $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'completed';
+                                $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'paid';
                                 rcl_update_option('exchange_requests', $exchange_requests);
                             }
 
@@ -1894,7 +1961,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     if (!isset($request_value['date']) || $request_value['date'] != $newfilter)
                                         continue;
                                 }
-                                if ($request_value['status'] == 'no')
+                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid')
                                 {
                                     $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -1922,7 +1989,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                     </div>
                                                 </div>
                                             </div>';
-                                } elseif ($request_value['status'] == 'yes')
+                                } elseif ($request_value['status'] == 'completed')
                                     continue;
                             } //inner foreach
                         } //filter comparison
@@ -2020,14 +2087,14 @@ function filter_data($filter_type, $datatype, $filter_val)
 //                                        <div class="col-2 text-center" style="visibility: hidden">
 //                                            0.9188 PZM
 //                                        </div>';
-                    if ($value['status'] == 'no')
+                    if ($value['status'] == 'paid')
                         $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает проверки
                                         </div>
                                     </div>
                                 </div>';
                     //Одобренная менеджером заявка
-                    elseif ($value['status'] == 'yes' && $value['input_currency'] == 'RUB')
+                    elseif ($value['status'] == 'awaiting_payment' && $value['input_currency'] == 'RUB')
                         $exchange_content .= '<div class="col-4 text-center">' .
 //                                        <div class="col-12">
 //                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
@@ -2065,6 +2132,7 @@ function filter_data($filter_type, $datatype, $filter_val)
             $stats = rcl_get_option('user_stats');
             if (isset($stats) && !empty($stats)) {
                 $stats_content = '';
+                $currencies = array('RUB', 'PRIZM', 'WAVES');
                 foreach ($stats as $user => $user_stats)
                 {
                     if (isset($user_stats) && !empty($user_stats))
@@ -2081,24 +2149,43 @@ function filter_data($filter_type, $datatype, $filter_val)
                                 ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
                                 $filter_type == 'date')
                             {
-
+                                foreach ($currencies as $currency)
+                                {
+                                    if (!isset($user_stats[$currency]))
+                                        $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+                                }
                                 $stats_content .= '<div class="table-text w-100">
-                                        <div class="row">
-                                            <div class="col-4 text-left" style="padding-left: 42px;">' .
-                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                    '</div>
-                                            <div class="col-3 text-left">' .
-                                    get_user_meta($user, 'client_num', true) .
-                                    '</div>
-                                            
-                                            <div class="col-2 text-left">' .
-                                    $user_stats['exchange_num'] .
-                                    '</div>
-                                            <div class="col-3 text-left">' .
-                                    $user_stats['exchange_sum'] . ' RUB' .
-                                    '</div>
-                                        </div>
-                                    </div>';
+                                                    <div class="row">
+                                                        <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
+                                                $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                                        '</div>
+                                                        <div class="col-2 text-center stats_col">' .
+                                                            get_user_meta($user, 'client_num', true) .
+                                                        '</div>'.
+                                                        //RUB
+                                                        '<div class="col-2 text-center stats_col">'.
+                                                            $user_stats['RUB']['input_sum']. ' RUB'.
+                                                        '</div>
+                                                                <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['RUB']['exchange_num'].
+                                                        '</div>'.
+                                                        //PRIZM
+                                                        '<div class="col-2 text-center stats_col">'.
+                                                            $user_stats['PRIZM']['input_sum'].' PRIZM'.
+                                                        '</div>
+                                                                <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['PRIZM']['exchange_num'].
+                                                        '</div>'.
+                                                        //WAVES
+                                                        '<div class="col-1 text-center stats_col">'.
+                                                            $user_stats['WAVES']['input_sum']. ' WAVES'.
+                                                        '</div>
+                                                         <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['WAVES']['exchange_num'].
+                                                        '</div>'.'
+                                                    </div>
+                                                </div>';
+
                             }
                         }
                     }

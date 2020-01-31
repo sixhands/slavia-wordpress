@@ -82,8 +82,8 @@
                 let parent = jQuery(el).parent();
                 parent.empty();
                 parent.css('font-size', '15px');
-                parent.css('color', 'green');
-                parent.text('Завершена');
+                parent.css('color', '#EF701B');
+                parent.text('Ожидает подтверждения');
             }
             console.log("response:");
             console.log(response);

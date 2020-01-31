@@ -226,17 +226,29 @@
                 <div class="table-title w-100">
                     <div class="row">
 
-                        <div class="col-4 text-left" style="padding-left: 42px;">
-                            Имя клиента
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
                         </div>
-                        <div class="col-3 text-left">
+                        <div class="col-2 text-center stats_col">
                             Номер пайщика
                         </div>
-                        <div class="col-2 text-left">
-                            Обменов
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
                         </div>
-                        <div class="col-3 text-left">
-                            На сумму
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
                         </div>
                     </div>
                 </div>

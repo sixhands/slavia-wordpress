@@ -1,0 +1,191 @@
+example stats:Array
+(
+    [6] => Array
+        (
+            [PRIZM] => Array
+                (
+                    [input_sum] => 5
+                    [output_sum] => 0
+                    [exchange_num] => 1
+                )
+
+        )
+
+    [7] => Array
+        (
+            [RUB] => Array
+                (
+                    [input_sum] => 0
+                    [output_sum] => 48.13
+                    [exchange_num] => 1
+                )
+
+        )
+
+)
+
+user_id:6
+after stats:Array
+(
+    [6] => Array
+        (
+            [PRIZM] => Array
+                (
+                    [input_sum] => 5
+                    [output_sum] => 0
+                    [exchange_num] => 1
+                )
+
+        )
+
+    [7] => Array
+        (
+            [RUB] => Array
+                (
+                    [input_sum] => 0
+                    [output_sum] => 48.13
+                    [exchange_num] => 1
+                )
+
+        )
+
+)
+
+user_id:6
+after stats:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [PRIZM] => Array
+                        (
+                            [input_sum] => 5
+                            [output_sum] => 0
+                            [exchange_num] => 1
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [RUB] => Array
+                        (
+                            [input_sum] => 0
+                            [output_sum] => 47.95
+                            [exchange_num] => 1
+                        )
+
+                )
+
+        )
+
+)
+
+user_id:6
+after stats:Array
+(
+    [6] => Array
+        (
+            [PRIZM] => Array
+                (
+                    [input_sum] => 5
+                    [output_sum] => 0
+                    [exchange_num] => 1
+                )
+
+            [RUB] => Array
+                (
+                    [input_sum] => 0
+                    [output_sum] => 47.67
+                    [exchange_num] => 1
+                )
+
+        )
+
+)
+
+field:Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 30.01.20
+                    [filename] => payment_receipt-6-01-30-22-59-26.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-30-22-59-26.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 30.01.20
+                    [filename] => payment_receipt-6-01-30-23-14-05.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-30-23-14-05.pdf
+                )
+
+            [2] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-6-01-31-14-10-56.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-14-10-56.pdf
+                )
+
+            [3] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-6-01-31-14-55-23.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-14-55-23.pdf
+                )
+
+            [4] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-6-01-31-15-12-21.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-15-12-21.pdf
+                )
+
+            [5] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-6-01-31-15-13-26.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-15-13-26.pdf
+                )
+
+            [6] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-6-01-31-16-24-24.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-16-24-24.pdf
+                )
+
+        )
+
+)
+
+user_id:6
+after stats:Array
+(
+    [6] => Array
+        (
+            [PRIZM] => Array
+                (
+                    [input_sum] => 5
+                    [output_sum] => 0
+                    [exchange_num] => 1
+                )
+
+            [RUB] => Array
+                (
+                    [input_sum] => 0
+                    [output_sum] => 46.72
+                    [exchange_num] => 0
+                )
+
+        )
+
+)
+

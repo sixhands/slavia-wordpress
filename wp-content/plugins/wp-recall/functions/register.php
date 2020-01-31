@@ -126,6 +126,7 @@ function rcl_add_shake_error_codes( $codes ) {
 add_filter( 'registration_errors', 'rcl_get_register_user', 90 );
 function rcl_get_register_user( $errors ) {
     global $wp_errors;
+    
 
     $wp_errors = new WP_Error();
 
