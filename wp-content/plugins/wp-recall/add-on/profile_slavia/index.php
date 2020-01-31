@@ -158,9 +158,10 @@ function generate_pdf($text)
 // Output the generated PDF to Browser
     return $dompdf->output();
 }
-function get_new_document_field($user_id)
+function get_new_document_field($user_id, $text = null)
 {
-    $text = current_time( 'm-d-H-i-s' );
+    if (!$text)
+        $text = current_time( 'm-d-H-i-s' );
     $pdf = generate_pdf($text);
     //Загружаем файлы
     if ( ! function_exists( 'wp_handle_sideload' ) ) {
@@ -1501,8 +1502,8 @@ function rcl_edit_profile(){
                                         $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
                                 )
                             );
-                            $log->insert_log("user_id:".$userid);
-                            $log->insert_log("after stats:".print_r($stats, true));
+//                            $log->insert_log("user_id:".$userid);
+//                            $log->insert_log("after stats:".print_r($stats, true));
                         }
                         //$stats = array();
                         rcl_update_option('user_stats', $stats);
@@ -1510,6 +1511,38 @@ function rcl_edit_profile(){
 
                         $exchange_requests[$userid][$request_num]['status'] = 'completed';
                         rcl_update_option('exchange_requests', $exchange_requests);
+
+
+                        //Генерируем документ
+                        $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
+
+                        if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
+                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
+                            foreach ($profileFields as $field) {
+                                if ($field['slug'] == 'user_documents') {
+                                    $new_doc1 = get_new_document_field($userid, '1');
+                                    $new_doc2 = get_new_document_field($userid, '2');
+                                    if ($new_doc1 && $new_doc2) {
+                                        if (!isset($field['value']))
+                                            $field += array('value' => array());
+                                        $log = new Rcl_Log();
+                                        $field_value = get_user_meta($userid, 'user_documents', true);
+
+                                        if (empty($field_value) || count($field_value) == 0) {
+                                            $field['value'] = array('0' => $new_doc1, '1' => $new_doc2);
+                                        } else //user documents not empty
+                                        {
+                                            $field['value'] = $field_value;
+                                            $field['value'] += array(count($field['value']) => $new_doc1, (count($field['value']) + 1) => $new_doc2);
+                                        }
+                                        //$log->insert_log("field:" . print_r($field, true));
+
+                                        rcl_update_profile_fields($_POST['request_user_id'], array($field));
+                                    }
+                                    break;
+                                }
+                            }
+                        }
                         echo 'true';
                     }
                     else
@@ -1592,29 +1625,67 @@ function rcl_edit_profile(){
 
                     $stats = rcl_get_option('user_stats');
                     $stats_content = '';
+                    $currencies = array('RUB', 'PRIZM', 'WAVES');
                     if (isset($stats[$user_id]) && !empty($stats[$user_id]))
                     {
                         $user_verification = get_user_meta($user_id, 'verification', true);
 
                         if (isset($user_verification) && !empty($user_verification))
                         {
+                            $user_stats = $stats[$user_id];
+                            foreach ($currencies as $currency)
+                            {
+                                if (!isset($user_stats[$currency]))
+                                    $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+                            }
                             $stats_content .= '<div class="table-text w-100">
-                                                <div class="row">
-                                                        <div class="col-4 text-left" style="padding-left: 42px;">'.
-                                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                                    '</div>
-                                                        <div class="col-3 text-left">' .
-                                                    get_user_meta($user_id, 'client_num', true) .
-                                                    '</div>
-                                                        
-                                                        <div class="col-2 text-left">'.
-                                                    $stats[$user_id]['exchange_num'].
-                                                    '</div>
-                                                        <div class="col-3 text-left">'.
-                                                    $stats[$user_id]['exchange_sum'].' RUB'.
-                                                    '</div>
-                                                </div>
-                                            </div>';
+                                                    <div class="row">
+                                                        <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
+                                                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                                        '</div>
+                                                         <div class="col-2 text-center stats_col">' .
+                                                            get_user_meta($user_id, 'client_num', true) .
+                                                        '</div>'.
+                                                        //RUB
+                                                        '<div class="col-2 text-center stats_col">'.
+                                                            $user_stats['RUB']['input_sum']. ' RUB'.
+                                                        '</div>
+                                                        <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['RUB']['exchange_num'].
+                                                        '</div>'.
+                                                        //PRIZM
+                                                        '<div class="col-2 text-center stats_col">'.
+                                                            $user_stats['PRIZM']['input_sum'].' PRIZM'.
+                                                        '</div>
+                                                        <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['PRIZM']['exchange_num'].
+                                                        '</div>'.
+                                                        //WAVES
+                                                        '<div class="col-1 text-center stats_col">'.
+                                                            $user_stats['WAVES']['input_sum']. ' WAVES'.
+                                                        '</div>
+                                                        <div class="col-1 text-center stats_col">'.
+                                                            $user_stats['WAVES']['exchange_num'].
+                                                        '</div>'.'
+                                                    </div>
+                                               </div>';
+//                            $stats_content .= '<div class="table-text w-100">
+//                                                <div class="row">
+//                                                        <div class="col-4 text-left" style="padding-left: 42px;">'.
+//                                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+//                                                    '</div>
+//                                                        <div class="col-3 text-left">' .
+//                                                    get_user_meta($user_id, 'client_num', true) .
+//                                                    '</div>
+//
+//                                                        <div class="col-2 text-left">'.
+//                                                    $stats[$user_id]['exchange_num'].
+//                                                    '</div>
+//                                                        <div class="col-3 text-left">'.
+//                                                    $stats[$user_id]['exchange_sum'].' RUB'.
+//                                                    '</div>
+//                                                </div>
+//                                            </div>';
                         }
                     }
                     else
@@ -1660,7 +1731,7 @@ function rcl_edit_profile(){
                             foreach ($profileFields as $field)
                             {
                                 if ($field['slug'] == 'user_documents') {
-                                    $new_doc = get_new_document_field($_POST['request_user_id']);
+                                    $new_doc = get_new_document_field($_POST['request_user_id'], 'RUB');
                                     if ($new_doc)
                                     {
                                         if (!isset($field['value']))

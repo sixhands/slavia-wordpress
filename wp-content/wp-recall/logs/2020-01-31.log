@@ -189,3 +189,82 @@ after stats:Array
 
 )
 
+field:Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-04-36.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-04-36.pdf
+                )
+
+        )
+
+)
+
+17:40:16 Fatal Error: syntax error, unexpected 'if' (T_IF) in /home/a/a99953zd/slv/public_html/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php:1523
+field:Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-04-36.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-04-36.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-50-41.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-50-41.pdf
+                )
+
+            [2] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-50-42.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-50-42.pdf
+                )
+
+        )
+
+)
+
+field:Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-54-27.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-54-27.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 31.01.20
+                    [filename] => payment_receipt-7-01-31-20-54-28.pdf
+                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-54-28.pdf
+                )
+
+        )
+
+)
+
