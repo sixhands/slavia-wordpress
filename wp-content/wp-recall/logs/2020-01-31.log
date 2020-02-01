@@ -1,270 +1,388 @@
-example stats:Array
+sberbank_order:Array
 (
-    [6] => Array
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4018
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b9856c86-592d-7583-a5cf-a71a5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b9856c86-592d-7583-a5cf-a71a5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 31.01.2020 21:40:21
+    [digest] => C8805C876860C91F729D25BBEC1DE993FF94CD7E4D28712B33E93B21059CC13F
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b9856c86-592d-7583-a5cf-a71a5e2dc596&lang=ru
+    [processingErrorType] => Array
         (
-            [PRIZM] => Array
-                (
-                    [input_sum] => 5
-                    [output_sum] => 0
-                    [exchange_num] => 1
-                )
-
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
         )
 
-    [7] => Array
-        (
-            [RUB] => Array
-                (
-                    [input_sum] => 0
-                    [output_sum] => 48.13
-                    [exchange_num] => 1
-                )
-
-        )
-
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 324394770756
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 31.01.2020 21:40:26
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
 )
 
-user_id:6
-after stats:Array
+order_num:4018
+order:Array
 (
-    [6] => Array
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4019
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32a874d8-f521-70bd-9dc8-f36c5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32a874d8-f521-70bd-9dc8-f36c5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 31.01.2020 21:50:44
+    [digest] => 105DB8A0092D69C7203543463B166129246CD5388A66CC1FF82EFF984307FACC
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32a874d8-f521-70bd-9dc8-f36c5e2dc596&lang=ru
+    [processingErrorType] => Array
         (
-            [PRIZM] => Array
-                (
-                    [input_sum] => 5
-                    [output_sum] => 0
-                    [exchange_num] => 1
-                )
-
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
         )
 
-    [7] => Array
-        (
-            [RUB] => Array
-                (
-                    [input_sum] => 0
-                    [output_sum] => 48.13
-                    [exchange_num] => 1
-                )
-
-        )
-
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 693342964417
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 31.01.2020 21:50:50
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
 )
 
-user_id:6
-after stats:Array
+_________________________________
+sberbank_digest:105DB8A0092D69C7203543463B166129246CD5388A66CC1FF82EFF984307FACC
+checksum_before_hashing:DEPOSITED50.006431234564019411111**111169334296441731.01.2020 21:50:500.00c5fv4u1thn44fvba2u2jatuva2
+hmac_sha256 hash: 5279cb6c10cfd8be99f860176fba257b6be6935d7bceaeedfb79cd8f2a00726a
+usual sha256 hash: af87c68394bf2da2d379b16d2e377816984959f8328595d666f925a89ecafe68
+_________________________________
+order:Array
 (
-    [6] => Array
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4020
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9bcb8885-4ebb-7337-85ce-693d5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9bcb8885-4ebb-7337-85ce-693d5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 31.01.2020 22:29:00
+    [digest] => 5F391B5120603D0CDB493217FDF97AB07AB62B05D68C867DA4DF016C5823E5ED
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9bcb8885-4ebb-7337-85ce-693d5e2dc596&lang=ru
+    [processingErrorType] => Array
         (
-            [0] => Array
-                (
-                    [PRIZM] => Array
-                        (
-                            [input_sum] => 5
-                            [output_sum] => 0
-                            [exchange_num] => 1
-                        )
-
-                )
-
-            [1] => Array
-                (
-                    [RUB] => Array
-                        (
-                            [input_sum] => 0
-                            [output_sum] => 47.95
-                            [exchange_num] => 1
-                        )
-
-                )
-
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
         )
 
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 547400065121
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 31.01.2020 22:29:07
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
 )
 
-user_id:6
-after stats:Array
+_________________________________
+sberbank_digest:5F391B5120603D0CDB493217FDF97AB07AB62B05D68C867DA4DF016C5823E5ED
+checksum_before_hashing:DEPOSITED50.006431234564020411111**111154740006512131.01.2020 22:29:070.00C5FV4U1THN44FVBA2U2JATUVA2
+hmac_sha256 hash: e99df923d0d5abaf696c1b5d61a7c360fe30de8cdf45382d1e1930406d7876e0
+usual sha256 hash: 0c048d45849bcac3c3f871ce8996ccaf2238ccaeb2c29c5867e5824bccfa40d2
+_________________________________
+order:Array
 (
-    [6] => Array
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4021
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=cf994b53-22ab-799c-ae33-73865e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=cf994b53-22ab-799c-ae33-73865e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 31.01.2020 22:46:08
+    [digest] => E5AA64E6D65F315C8D9900A3D2F0A2E01F161B4B737F26579FD1C9F70CF0B32B
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=cf994b53-22ab-799c-ae33-73865e2dc596&lang=ru
+    [processingErrorType] => Array
         (
-            [PRIZM] => Array
-                (
-                    [input_sum] => 5
-                    [output_sum] => 0
-                    [exchange_num] => 1
-                )
-
-            [RUB] => Array
-                (
-                    [input_sum] => 0
-                    [output_sum] => 47.67
-                    [exchange_num] => 1
-                )
-
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
         )
 
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 275548669533
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 31.01.2020 22:46:14
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
 )
 
-field:Array
-(
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 30.01.20
-                    [filename] => payment_receipt-6-01-30-22-59-26.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-30-22-59-26.pdf
-                )
+_________________________________
+sberbank_digest:E5AA64E6D65F315C8D9900A3D2F0A2E01F161B4B737F26579FD1C9F70CF0B32B
+checksum_before_hashing:DEPOSITED50.006431234564021411111**111127554866953331.01.2020 22:46:140.00c5fv4u1thn44fvba2u2jatuva2
+hmac_sha256 hash: 868bfdefa10700e410b29f5dede3a05f1f8bc090aa5f0ae5b6357b908717f6aa
+usual sha256 hash: b5bf500020a0b6b972bbd7e04b6240d80931e5b1c2cd4b9c5d56ce5b99f54dae
+_________________________________
+file:
+file:
+stats_content:<html><head></head><body><div class="coop_maps question-bg col-lg-12"><div class="row stats">
+                <div class="table-title w-100">
+                    <div class="row">
 
-            [1] => Array
-                (
-                    [date] => 30.01.20
-                    [filename] => payment_receipt-6-01-30-23-14-05.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-30-23-14-05.pdf
-                )
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">dart1 dartttt dtfddgfhfgh</div>
+                                            <div class="col-2 text-center stats_col">456756</div><div class="col-2 text-center stats_col">0 RUB</div>
+                                            <div class="col-1 text-center stats_col">0</div><div class="col-2 text-center stats_col">5 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">gfdfgdfg gfdgdfhgfh rhjgjhgjhgh</div>
+                                            <div class="col-2 text-center stats_col">111</div><div class="col-2 text-center stats_col">50 RUB</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-2 text-center stats_col">12 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">3</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div></div></div></body></html>
+stats_content:<html><head><style>.stats_col {
+    border-right:1px solid;
+    width: 12.5% !important;
+    flex: 0 0 12.5% !important;
+    max-width: 12.5% !important;
 
-            [2] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-6-01-31-14-10-56.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-14-10-56.pdf
-                )
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row.stats > .table-title .stats_col:last-child, .row.stats > .table-text .stats_col:last-child {
+    border-right: none;
+}
+.row.stats > .table-title {
+    height: 55px;
+}
+.row.stats > .table-text {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.row.stats > .table-title > .row, .row.stats > .table-text > .row {
+    margin: 0 !important;
+}
+.row.stats > .table-title .stats_col {
+    height: 100%;
+}
+.row.stats > .table-text .stats_col {
+    border-bottom: 1px solid;
+}</style></head><body><div class="coop_maps question-bg col-lg-12"><div class="row stats">
+                <div class="table-title w-100">
+                    <div class="row">
 
-            [3] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-6-01-31-14-55-23.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-14-55-23.pdf
-                )
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">dart1 dartttt dtfddgfhfgh</div>
+                                            <div class="col-2 text-center stats_col">456756</div><div class="col-2 text-center stats_col">0 RUB</div>
+                                            <div class="col-1 text-center stats_col">0</div><div class="col-2 text-center stats_col">5 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">gfdfgdfg gfdgdfhgfh rhjgjhgjhgh</div>
+                                            <div class="col-2 text-center stats_col">111</div><div class="col-2 text-center stats_col">50 RUB</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-2 text-center stats_col">12 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">3</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div></div></div></body></html>
+stats_content:<html><head><style>.stats_col {
+    border-right:1px solid;
+    width: 12.5% !important;
+    flex: 0 0 12.5% !important;
+    max-width: 12.5% !important;
 
-            [4] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-6-01-31-15-12-21.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-15-12-21.pdf
-                )
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row.stats > .table-title .stats_col:last-child, .row.stats > .table-text .stats_col:last-child {
+    border-right: none;
+}
+.row.stats > .table-title {
+    height: 55px;
+}
+.row.stats > .table-text {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.row.stats > .table-title > .row, .row.stats > .table-text > .row {
+    margin: 0 !important;
+}
+.row.stats > .table-title .stats_col {
+    height: 100%;
+}
+.row.stats > .table-text .stats_col {
+    border-bottom: 1px solid;
+}</style></head><body><div class="coop_maps question-bg col-lg-12"><div class="row stats">
+                <div class="table-title w-100">
+                    <div class="row">
 
-            [5] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-6-01-31-15-13-26.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-15-13-26.pdf
-                )
-
-            [6] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-6-01-31-16-24-24.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-6-01-31-16-24-24.pdf
-                )
-
-        )
-
-)
-
-user_id:6
-after stats:Array
-(
-    [6] => Array
-        (
-            [PRIZM] => Array
-                (
-                    [input_sum] => 5
-                    [output_sum] => 0
-                    [exchange_num] => 1
-                )
-
-            [RUB] => Array
-                (
-                    [input_sum] => 0
-                    [output_sum] => 46.72
-                    [exchange_num] => 0
-                )
-
-        )
-
-)
-
-field:Array
-(
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-04-36.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-04-36.pdf
-                )
-
-        )
-
-)
-
-17:40:16 Fatal Error: syntax error, unexpected 'if' (T_IF) in /home/a/a99953zd/slv/public_html/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php:1523
-field:Array
-(
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-04-36.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-04-36.pdf
-                )
-
-            [1] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-50-41.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-50-41.pdf
-                )
-
-            [2] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-50-42.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-50-42.pdf
-                )
-
-        )
-
-)
-
-field:Array
-(
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-54-27.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-54-27.pdf
-                )
-
-            [1] => Array
-                (
-                    [date] => 31.01.20
-                    [filename] => payment_receipt-7-01-31-20-54-28.pdf
-                    [url] => http://slv.a99953zd.beget.tech/wp-content/uploads/2020/01/payment_receipt-7-01-31-20-54-28.pdf
-                )
-
-        )
-
-)
-
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">dart1 dartttt dtfddgfhfgh</div>
+                                            <div class="col-2 text-center stats_col">456756</div><div class="col-2 text-center stats_col">0 RUB</div>
+                                            <div class="col-1 text-center stats_col">0</div><div class="col-2 text-center stats_col">5 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">gfdfgdfg gfdgdfhgfh rhjgjhgjhgh</div>
+                                            <div class="col-2 text-center stats_col">111</div><div class="col-2 text-center stats_col">50 RUB</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-2 text-center stats_col">12 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">3</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div></div></div></body></html>
+ref_code:123asd

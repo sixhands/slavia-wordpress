@@ -1,4 +1,5 @@
 <?php global $side_text, $video_files, $video_text; ?>
+<?php var_dump($refs); ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
@@ -217,7 +218,7 @@
                         <input placeholder="Для поиска нажмите enter" name="filter" class="search" value="" style="margin-top: 0"/>
                         <img class="search-btn ib" src="/wp-content/uploads/2019/12/loop.png" style="margin-top: 10px;">
 
-                        <img src="/wp-content/uploads/2019/12/donw.png" class="ib" style=" ">
+                        <img src="/wp-content/uploads/2019/12/donw.png" class="ib download_btn" style="cursor: pointer">
                     </div>
                 </div>
             </div>
@@ -253,37 +254,6 @@
                     </div>
                 </div>
                 <?php if (isset($stats_content) && !empty($stats_content)) echo $stats_content; ?>
-<!--                <div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-4 text-left" style="padding-left: 42px;">-->
-<!--                            Имя Фамилия Отчество-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-left">-->
-<!--                            00002-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!--                            5-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-left">-->
-<!--                            15 600 RUB-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div><div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-4 text-left" style="padding-left: 42px;">-->
-<!--                            Имя Фамилия Отчество-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-left">-->
-<!--                            00002-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!--                            5-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-left">-->
-<!--                            15 600 RUB-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
         <?php endif; ?>
@@ -376,6 +346,10 @@
         }
     });
 
+    jQuery('.download_btn').click(function(event){
+        window.location.replace("/profile?f=download_stats");
+        //jQuery('.row.stats');
+    });
     function search_callback(response, output_el) {
         output_el.children().not('.table-title').remove();
         output_el.append(response);

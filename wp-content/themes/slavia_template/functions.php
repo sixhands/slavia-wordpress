@@ -431,3 +431,9 @@ remove_role( 'subscriber' );
 remove_role( 'editor' );
 remove_role( 'contributor' );
 remove_role( 'author' );
+
+add_action('register_form', 'rcl_add_ref_field', 10);
+function rcl_add_ref_field()
+{
+    echo '<input class="input-modal text-center" type="text" name="ref_code" value="" placeholder="Реферальный код">';
+}

@@ -11,6 +11,123 @@ if (!is_admin()):
     add_action('rcl_enqueue_scripts','rcl_profile_scripts',10);
 endif;
 
+function download_stats()
+{
+    global $user_ID;
+    $filename = "stats_user_".$user_ID;//.".pdf";
+    //$stat_file = fopen(get_temp_dir().$filename, 'w');
+    //$temp_filename = @tempnam(get_temp_dir(), 'tmp');//tmpfile();
+
+    //$stat_file = fopen($temp_filename, "w");
+    $stats = rcl_get_option('user_stats');
+    $stats_content = '<html><head></head><body>';
+    $stats_content .= '<div class="coop_maps question-bg col-lg-12">';
+    $stats_content .= '<div class="row stats">
+                <div class="table-title w-100">
+                    <div class="row">
+
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div>';
+    if (isset($stats) && !empty($stats)) {
+        $currencies = array('RUB', 'PRIZM', 'WAVES');
+        foreach ($stats as $user => $user_stats)
+        {
+            if (isset($user_stats) && !empty($user_stats)) {
+                $user_verification = get_user_meta($user, 'verification', true);
+
+                if (isset($user_verification) && !empty($user_verification)) {
+                    //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
+                    foreach ($currencies as $currency) {
+                        if (!isset($user_stats[$currency]))
+                            $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+                    }
+                    $stats_content .= '<div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">' .
+                        $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                        '</div>
+                                            <div class="col-2 text-center stats_col">' .
+                        get_user_meta($user, 'client_num', true) .
+                        '</div>' .
+                        //RUB
+                        '<div class="col-2 text-center stats_col">' .
+                        $user_stats['RUB']['input_sum'] . ' RUB' .
+                        '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                        $user_stats['RUB']['exchange_num'] .
+                        '</div>' .
+                        //PRIZM
+                        '<div class="col-2 text-center stats_col">' .
+                        $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
+                        '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                        $user_stats['PRIZM']['exchange_num'] .
+                        '</div>' .
+                        //WAVES
+                        '<div class="col-1 text-center stats_col">' .
+                        $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                        '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                        $user_stats['WAVES']['exchange_num'] .
+                        '</div>' . '
+                                        </div>
+                                    </div>';
+                }
+            }
+        }
+        $stats_content .= '</div></div></body></html>';
+    }
+    //$pdf = generate_pdf($stats_content);
+    $log = new Rcl_Log();
+    $log->insert_log("stats_content:".$stats_content);
+    //$log->insert_log("file:".print_r($stat_file, true));
+    //file_put_contents($filename, $pdf);
+    //fwrite($stat_file, $pdf);
+    //header("Content-disposition: attachment;filename=" . $filename);
+    //header("Content-type: " . mime_content_type($filename));
+    //readfile($filename);
+    //fclose($filename);
+    //unlink($filename);
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($stats_content);
+
+// (Optional) Setup the paper size and orientation
+    $dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+    $dompdf->render();
+
+// Output the generated PDF to Browser
+    $dompdf->stream($filename);
+    exit;
+}
+if (isset($_GET['f']) && $_GET['f'] == 'download_stats')
+    download_stats();
+
 function rcl_profile_scripts(){
     global $user_ID;
     if(rcl_is_office($user_ID)){
@@ -87,6 +204,19 @@ function add_profile_fields($fields){
         'type' => 'url',
         'slug' => 'user_ref_link',
         'title' => 'Реферальная ссылка',
+    );
+
+    $fields[] = array(
+        'type' => 'text',
+        'slug' => 'ref_host',
+        'title' => 'Пригласивший пользователь',
+    );
+
+    $fields[] = array(
+        'type' => 'custom',
+        'slug' => 'refs',
+        'title' => 'Приглашенные рефералы',
+        'content' => '',
     );
 
     $fields[] = array(
@@ -334,12 +464,12 @@ function rcl_tab_template_content()
 
         $field_name = $slug;//$CF->get_slug($field);
         $field_value = null;
-        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' && $field_name != 'user_documents') {
+        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' && $field_name != 'user_documents' && $field_name != 'refs') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
-            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents')
+            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents' || $field_name == 'refs')
             {
                 $field_value = $value;
                 if ($field_name == 'user_documents' && !empty($field_value))
@@ -1713,53 +1843,56 @@ function rcl_edit_profile(){
                 if (isset($_POST['order_data']) && !empty($_POST['order_data'])) {
                     $order = $_POST['order_data'];
                     //Если checksum совпадают
-                    if (true)//sberbank_generate_checksum($_POST['order_data']))
+                    if (sberbank_verify_checksum($order))
                     {
                         if (isset($_POST['request_num'])) {
 
                             //Меняем статус данного запроса на обмен на completed
                             $exchange_requests = rcl_get_option('exchange_requests');
 
-                            if (isset($exchange_requests) && !empty($exchange_requests)) {
-                                //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
-                                $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'paid';
-                                rcl_update_option('exchange_requests', $exchange_requests);
-                            }
-
-                            //Генерируем документ
-                            $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
-                            foreach ($profileFields as $field)
+                            if ($_POST['order_data']['formattedAmount'] ==
+                                $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['input_sum'])
                             {
-                                if ($field['slug'] == 'user_documents') {
-                                    $new_doc = get_new_document_field($_POST['request_user_id'], 'RUB');
-                                    if ($new_doc)
-                                    {
-                                        if (!isset($field['value']))
-                                            $field += array('value' => array());
-                                        $log = new Rcl_Log();
-                                        $field_value = get_user_meta($_POST['request_user_id'], 'user_documents', true);
 
-                                        if (empty($field_value) || count($field_value) == 0)
-                                        {
-                                            $field['value'] = array('0' => $new_doc);
-                                        }
-                                        else //user documents not empty
-                                        {
-                                            $field['value'] = $field_value;
-                                            $field['value'] += array(count($field['value']) => $new_doc);
-                                        }
-                                        $log->insert_log("field:".print_r($field, true));
-
-                                        rcl_update_profile_fields($_POST['request_user_id'], array($field));
-                                    }
-                                    break;
+                                if (isset($exchange_requests) && !empty($exchange_requests)) {
+                                    //echo print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
+                                    $exchange_requests[$_POST['request_user_id']][$_POST['request_num']]['status'] = 'paid';
+                                    rcl_update_option('exchange_requests', $exchange_requests);
                                 }
+
+                                //Генерируем документ
+                                $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
+                                foreach ($profileFields as $field) {
+                                    if ($field['slug'] == 'user_documents') {
+                                        $new_doc = get_new_document_field($_POST['request_user_id'], 'RUB');
+                                        if ($new_doc) {
+                                            if (!isset($field['value']))
+                                                $field += array('value' => array());
+                                            $log = new Rcl_Log();
+                                            $field_value = get_user_meta($_POST['request_user_id'], 'user_documents', true);
+
+                                            if (empty($field_value) || count($field_value) == 0) {
+                                                $field['value'] = array('0' => $new_doc);
+                                            } else //user documents not empty
+                                            {
+                                                $field['value'] = $field_value;
+                                                $field['value'] += array(count($field['value']) => $new_doc);
+                                            }
+                                            //$log->insert_log("field:".print_r($field, true));
+
+                                            rcl_update_profile_fields($_POST['request_user_id'], array($field));
+                                        }
+                                        break;
+                                    }
+                                }
+                                echo 'true';
+                                exit;
                             }
+                            else
+                                echo 'false';
 //                            echo print_r($stats, true).'\n'.
 //                                 print_r($exchange_requests[$_POST['request_user_id']][$_POST['request_num']], true);
                         }
-                        echo 'true';
-                        exit;
                     }
 //                    $exchange_requests = rcl_get_option('exchange_requests');
 //
@@ -1984,12 +2117,23 @@ function rcl_slavia_get_crypto_price($currency = 'PZM') {
 }
 
 //Генерация checksum для сбербанка
-function sberbank_generate_checksum($order)
+function sberbank_verify_checksum($order)
 {
-    $fields = json_decode($order);
-    $data = 'amount;123456;mdOrder;3ff6962a-7dcc-4283-ab50-a6d7dd3386fe;operation;deposited;orderNumber;10747;status;1;';
-    $key = 'yourSecretToken';
-    $hmac = hash_hmac ( 'sha256' , $data , $key);
+    $log = new Rcl_Log();
+    $log->insert_log("order:".print_r($order, true));
+    $log->insert_log("_________________________________");
+    $log->insert_log("sberbank_digest:".$order['digest']);
+
+    $key = 'uaihtrgiuira6q765uh71222j8';
+    $checksum = $order['status'].$order['formattedAmount'].$order['currency'].$order['approvalCode'].$order['orderNumber'].
+                $order['panMasked'].$order['refNum'].$order['paymentDate'].$order['formattedFeeAmount'].$key;
+    $log->insert_log("checksum_before_hashing:".$checksum);
+        //'amount;123456;mdOrder;3ff6962a-7dcc-4283-ab50-a6d7dd3386fe;operation;deposited;orderNumber;10747;status;1;';
+    $hmac = hash_hmac ( 'sha256' , $checksum , $key);
+    $hash = hash('sha256', $checksum);
+    $log->insert_log("hmac_sha256 hash: ".$hmac);
+    $log->insert_log("usual sha256 hash: ".$hash);
+    $log->insert_log("_________________________________");
 
     return "[$hmac]\n";
 }

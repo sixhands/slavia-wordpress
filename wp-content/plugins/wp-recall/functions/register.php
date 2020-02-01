@@ -140,6 +140,12 @@ function rcl_get_register_user( $errors ) {
     $login	 = sanitize_user( $_POST['user_login'] );
     $fio     = sanitize_text_field( $_POST['user_fio'] );
 
+    if (isset($_POST['ref_code']) && !empty($_POST['ref_code'])) {
+        $ref_code = sanitize_text_field($_POST['ref_code']); //Реферальный код
+        $host_id = base64_decode($ref_code);
+    }
+
+
     $ref = ($_POST['redirect_to']) ? apply_filters( 'url_after_register_rcl', $_POST['redirect_to'] ) : wp_registration_url();
 
     $get_fields	 = rcl_get_profile_fields();
@@ -148,6 +154,7 @@ function rcl_get_register_user( $errors ) {
         foreach ( ( array ) $get_fields as $field ) {
 
             $field = apply_filters( 'chek_custom_field_regform', $field );
+
             if ( ! $field )
                 continue;
 
@@ -198,12 +205,48 @@ function rcl_get_register_user( $errors ) {
         'user_pass'		 => $pass,
         'user_login'	 => $login,
         'user_email'	 => $email,
-        'display_name'	 => $fio
+        'display_name'	 => $fio,
     );
+
 
     $user_id = rcl_insert_user( $userdata );
 
     if ( $user_id ) {
+        //РЕФЕРАЛЬНАЯ ПРОГРАММА//////////////////
+        update_user_meta($user_id, 'user_ref_link', base64_encode($user_id));
+
+        if (isset($host_id) && !empty($host_id) && !empty(get_user_by( 'id', $host_id ))) {
+
+            update_user_meta($user_id, 'ref_host', $host_id);
+
+            $host_fields = rcl_get_profile_fields(array('user_id' => $host_id));
+            if (isset($host_fields) && !empty($host_fields)) {
+                foreach ($host_fields as $field)
+                {
+                    if ($field['slug'] == 'refs')
+                    {
+                        if (!isset($field['value']))
+                            $field += array('value' => array());
+
+                        $field_value = get_user_meta($host_id, 'refs', true);
+
+                        if (empty($field_value) || count($field_value) == 0) {
+                            $field['value'] = array(0 => $user_id);
+                        }
+
+                        else //refs not empty
+                        {
+                            $field['value'] = $field_value;
+                            $field['value'] += array(count($field['value']) => $user_id);
+                        }
+
+                        rcl_update_profile_fields($host_id, array($field));
+                        break;
+                    }
+                }
+            }
+        }
+        ////////////////////////////////////////////
 
         if ( rcl_get_option( 'login_form_recall' ) == 2 || false !== strpos( $ref, wp_login_url() ) ) {
             //если форма ВП, то возвращаем на login с нужными GET-параметрами
