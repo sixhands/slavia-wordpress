@@ -789,3 +789,101 @@ new_user: WP_User Object
     [site_id:WP_User:private] => 1
 )
 
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4023
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=f04a9e2a-a32f-7941-ba3c-403d5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=f04a9e2a-a32f-7941-ba3c-403d5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 01.02.2020 18:09:34
+    [digest] => 63AFEFAF57C36E2C6C460AF868C265D7ED1290FCD5AE44747CFF1C73BCA8BE28
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=f04a9e2a-a32f-7941-ba3c-403d5e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 862657507094
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 01.02.2020 18:09:40
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:63AFEFAF57C36E2C6C460AF868C265D7ED1290FCD5AE44747CFF1C73BCA8BE28
+checksum_before_hashing:DEPOSITED50.006431234564023411111**111186265750709401.02.2020 18:09:400.00uaihtrgiuira6q765uh71222j8
+hmac_sha256 hash: 5cb151604e0d04da780d5c7f850431374c88adf005b704360ddb756ee7b075e7
+usual sha256 hash: 926bad29158b1b7580137723937ea73840448043468d9227ee47db55eeb47c10
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4024
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=4752c2a5-6fd2-7db5-8e7d-d7265e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=4752c2a5-6fd2-7db5-8e7d-d7265e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 01.02.2020 18:19:12
+    [digest] => 662909F4F5D20526D7E84FFB5F53B56DED230535F2A1CCD94C11928FB68B2395
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lonan63988@hiwave.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=4752c2a5-6fd2-7db5-8e7d-d7265e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 680967725299
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 01.02.2020 18:19:18
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:662909F4F5D20526D7E84FFB5F53B56DED230535F2A1CCD94C11928FB68B2395
+checksum_before_hashing:DEPOSITED50.006431234564024411111**111168096772529901.02.2020 18:19:180.00uaihtrgiuira6q765uh71222j8
+hmac_sha256 hash: bf5cd154b8cb1113d137b1a2979a2cba1eb6255b4009d73a77bfa1761fb8e0ff
+usual sha256 hash: 209ec869a29fa71141bfff48e63e421a69db7d02ed0a05d50c84678b91bff4b7
+_________________________________

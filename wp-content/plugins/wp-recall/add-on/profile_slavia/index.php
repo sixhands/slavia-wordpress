@@ -1099,9 +1099,18 @@ function rcl_tab_requests_content($master_id)
                                                     <div class="col-2 text-left">' .
                                                         $request_value['output_sum'] .
                                                         '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                                    </div>';
+                        if ($request_value['status'] == 'paid')
+                            $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Оплачено пользователем</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
                                                     </div>
-                                                    
-                                                    <div class="col-3 text-center">
+                                                </div>
+                                            </div>';
+                        else
+                            $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
@@ -1581,6 +1590,7 @@ function rcl_edit_profile(){
 
                         $request_num = $_POST['request_num'];
                         $userid = $_POST['request_user_id'];
+                        $ref_host = get_user_meta($userid, 'ref_host', true);
 
                         $input_currency = $exchange_requests[$userid][$request_num]['input_currency'];
                         $output_currency = $exchange_requests[$userid][$request_num]['output_currency'];
@@ -1612,6 +1622,8 @@ function rcl_edit_profile(){
 
                                 $stats[$userid] = $user_stat;
 
+                                $stat_exists = true;
+
                                 //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
                             } else {
                                 $stats +=
@@ -1621,6 +1633,7 @@ function rcl_edit_profile(){
                                                 $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
                                             )
                                     );
+                                $stat_exists = false;
 
                             }
                         } //Если статистика полностью пустая
@@ -1632,6 +1645,8 @@ function rcl_edit_profile(){
                                         $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
                                 )
                             );
+                            $stat_exists = false;
+
 //                            $log->insert_log("user_id:".$userid);
 //                            $log->insert_log("after stats:".print_r($stats, true));
                         }
@@ -1645,6 +1660,30 @@ function rcl_edit_profile(){
 
                         //Генерируем документ
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
+
+                        //Если статистики для данного пользователя еще нет (1-я сделка) и есть пригласивший
+                        if (isset($stat_exists) && $stat_exists == false && !empty($ref_host))
+                        {
+                            $ref_host_name = get_user_meta($ref_host, 'display_name', true);
+                            $current_user_name = get_user_meta($userid, 'display_name', true);
+                            $ref_amount = rcl_get_option('ref_amount');
+                            if (!isset($ref_amount) || empty($ref_amount))
+                                $ref_amount = 0;
+                            $award = $exchange_requests[$userid][$request_num]['input_sum'] * $ref_amount;
+                            $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
+                            $managers = get_users( array( 'role' => 'manager' ) );
+                            foreach ($managers as $manager)
+                            {
+                                $subject = 'SLAVIA: Отправить пользователю '.$ref_host_name.' с ID '.$ref_host.' вознаграждение.';
+                                //Отправляем email всем менеджерам о необходимости отправить вознаграждение пригласившему
+                                $textmail = '<p>Пользователь '.$current_user_name.' с ID '.$userid.' только что совершил первую операцию.</p>'.
+                                    '<p>Необходимо выплатить пригласившему его пользователю '.$ref_host_name.' с ID '.$ref_host.' вознаграждение в размере '.$award.' '.$award_currency.' в соответствии с условиями реферальной программы)</p>';
+
+                                $user_email = $manager->user_email;
+
+                                rcl_mail( $user_email, $subject, $textmail );
+                            }
+                        }
 
                         if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
                             $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
@@ -2195,9 +2234,18 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                     <div class="col-2 text-left">' .
                                         $request_value['output_sum'] .
                                         '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
+                                                    </div>';
+                                    if ($request_value['status'] == 'paid')
+                                        $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Оплачено пользователем</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
                                                     </div>
-                                                    
-                                                    <div class="col-3 text-center">
+                                                </div>
+                                            </div>';
+                                    else
+                                        $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
                                                             Закрыть сделку
                                                         </div>
