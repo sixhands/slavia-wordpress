@@ -1100,11 +1100,16 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 						continue;
 				}
 			}
-			if ($slug == 'verification' || $slug == 'passport_photos' || $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs') {
+			if (isset($field['value']) && !empty($field['value']) &&
+                ($slug == 'verification' || $slug == 'passport_photos' ||
+                $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs'))
+			{
 			    $value = $field['value'];
                 update_user_meta($user_id, $slug, $value);
                 continue;
             }
+			elseif (!isset($field['value']) || empty($field['value']))
+                continue;
 
 			if ( in_array( $slug, $defaultFields ) ) {
 

@@ -1109,7 +1109,7 @@ function rcl_tab_requests_content($master_id)
                                                     </div>
                                                 </div>
                                             </div>';
-                        else
+                        elseif ($request_value['status'] == 'awaiting_payment')
                             $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
@@ -1960,7 +1960,9 @@ function rcl_edit_profile(){
                 strpos(array_key_first($_POST), 'get_waves') !== false)
         {
             //Обмен только для верифицированных
-            if (get_user_meta($user_ID, 'is_verified', true) == 'yes') {
+            if (get_user_meta($user_ID, 'is_verified', true) == 'yes' &&
+                !empty(get_user_meta($user_ID, 'verification', true) ) &&
+                count(get_user_meta($user_ID, 'verification', true)) > 0) {
                 if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
                     save_exchange_request('PRIZM', 'RUB',
                         $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
@@ -2244,7 +2246,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                     </div>
                                                 </div>
                                             </div>';
-                                    else
+                                    elseif ($request_value['status'] == 'awaiting_payment')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
                                                             Закрыть сделку
