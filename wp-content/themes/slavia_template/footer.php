@@ -38,22 +38,33 @@
 </div>
 
 <?php endif; ?>
-
-	<footer id="colophon" class="site-footer">
-<!--		<div class="site-info">-->
-<!--			<a href="--><?php //echo esc_url( __( 'https://wordpress.org/', 'slavia_template' ) ); ?><!--">-->
-<!--				--><?php
-//				/* translators: %s: CMS name, i.e. WordPress. */
-//				printf( esc_html__( 'Proudly powered by %s', 'slavia_template' ), 'WordPress' );
-//				?>
-<!--			</a>-->
-<!--			<span class="sep"> | </span>-->
-<!--				--><?php
-//				/* translators: 1: Theme name, 2: Theme author. */
-//				printf( esc_html__( 'Theme: %1$s by %2$s.', 'slavia_template' ), 'slavia_template', '<a href="http://underscores.me/">Underscores.me</a>' );
-//				?>
-<!--		</div> .site-info -->
-	</footer><!-- #colophon -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <footer id="colophon" class="site-footer">
+                    <?php
+                    wp_nav_menu( array(
+                        'theme_location' => 'footer-menu',
+                        'menu_class'        => 'desctop-menu text-right d-none d-lg-block',
+                    ) );
+                    ?>
+            <!--		<div class="site-info">-->
+            <!--			<a href="--><?php //echo esc_url( __( 'https://wordpress.org/', 'slavia_template' ) ); ?><!--">-->
+            <!--				--><?php
+            //				/* translators: %s: CMS name, i.e. WordPress. */
+            //				printf( esc_html__( 'Proudly powered by %s', 'slavia_template' ), 'WordPress' );
+            //				?>
+            <!--			</a>-->
+            <!--			<span class="sep"> | </span>-->
+            <!--				--><?php
+            //				/* translators: 1: Theme name, 2: Theme author. */
+            //				printf( esc_html__( 'Theme: %1$s by %2$s.', 'slavia_template' ), 'slavia_template', '<a href="http://underscores.me/">Underscores.me</a>' );
+            //				?>
+            <!--		</div> .site-info -->
+                </footer><!-- #colophon -->
+            </div>
+        </div>
+    </div>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

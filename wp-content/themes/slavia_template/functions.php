@@ -42,6 +42,7 @@ if ( ! function_exists( 'slavia_template_setup' ) ) :
         register_nav_menus( array(
             'menu-1' => esc_html__( 'Primary', 'slavia_template' ),
             'left-menu' => esc_html__( 'Left', 'slavia_template' ),
+            'footer-menu' => esc_html__( 'Footer', 'slavia_template' )
         ) );
         /*
          * Switch default core markup for search form, comment form, and comments

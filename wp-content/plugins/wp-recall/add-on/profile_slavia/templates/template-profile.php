@@ -217,7 +217,7 @@
                         <input placeholder="Для поиска нажмите enter" name="filter" class="search" value="" style="margin-top: 0"/>
                         <img class="search-btn ib" src="/wp-content/uploads/2019/12/loop.png" style="margin-top: 10px;">
 
-                        <img src="/wp-content/uploads/2019/12/donw.png" class="ib download_btn" style="cursor: pointer">
+<!--                        <img src="/wp-content/uploads/2019/12/donw.png" class="ib download_btn" style="cursor: pointer">-->
                     </div>
                 </div>
             </div>

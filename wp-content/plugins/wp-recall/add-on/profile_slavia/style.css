@@ -1,3 +1,6 @@
+.edit-link {
+    display: none;
+}
 .stats_col {
     border-right:1px solid;
     width: 12.5% !important;

@@ -5,6 +5,14 @@ body
 	background: transparent linear-gradient(to left, #F5F7FA 0%, #C3CFE2 100%) 0% 0% no-repeat padding-box;
 }
 
+.info-page-p {
+	text-align: left;
+	/*font: Regular 17px/20px Montserrat;*/
+	font-size: 17px;
+	letter-spacing: -0.65px;
+	color: #2E2A5C;
+}
+
 #left-menu {
 	list-style-type: none;
 	margin: 0;
