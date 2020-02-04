@@ -1,0 +1,393 @@
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4027
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9b15a7fe-33cb-7726-831d-c1ae5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9b15a7fe-33cb-7726-831d-c1ae5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:02:23
+    [digest] => D7D271D369C9556A622DE4FC98AF2CDE339641C27763EF386D3840D600221C09
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 56.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 5600
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=9b15a7fe-33cb-7726-831d-c1ae5e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 435528914010
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:02:32
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:D7D271D369C9556A622DE4FC98AF2CDE339641C27763EF386D3840D600221C09
+all permutations:
+checksum_before_hashing:DEPOSITED56.006431234564027411111**111143552891401004.02.2020 01:02:320.00uaihtrgiuira6q765uh71222j8
+hmac_sha256 hash: 022a183f11301e6b4d1d131dbd1f6a323e7a11e3fc46cbe7091b10e3535eb1d3
+usual sha256 hash: a3a76712c5caa72023d674a9a7a3458358747fb296352dcd9a6f9f0657d119af
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4028
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=fed57e4c-1edc-74ef-bde5-f7d15e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=fed57e4c-1edc-74ef-bde5-f7d15e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:20:43
+    [digest] => 4E147518D2370F04D202572B39A65C304CFC601B638F9469484F3241EF77EB25
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 55.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 5500
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=fed57e4c-1edc-74ef-bde5-f7d15e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 560669073867
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:20:49
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:4E147518D2370F04D202572B39A65C304CFC601B638F9469484F3241EF77EB25
+checksum_before_hashing:DEPOSITED55.006431234564028411111**111156066907386704.02.2020 01:20:490.00
+hmac_sha256 hash: 2ffc4863477f4df4d532682ef3445728c757cc8591fbc3c4feb0d23475e5efd0
+usual sha256 hash: 2b4a6ca938ba3e5159ae3ebcd76cafe66d7cc379899cda35a02f4629de0eaa5c
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4029
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=7351eba6-062c-792e-b6d6-a8755e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=7351eba6-062c-792e-b6d6-a8755e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:38:55
+    [digest] => 94FB4F68996987B4795A25209B1525E18352EAD22D712002DC47FE7C8EA64BDE
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 60.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 6000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=7351eba6-062c-792e-b6d6-a8755e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 830438203677
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:39:00
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:94FB4F68996987B4795A25209B1525E18352EAD22D712002DC47FE7C8EA64BDE
+checksum_before_hashing:DEPOSITED60.006431234564029411111**111183043820367704.02.2020 01:39:000.00
+hmac_sha256 hash: 6153575d819e0b5251d4ccd74dca834ef4de53e0145bd3c907b6f2719d61370b
+usual sha256 hash: 4d0d09ba28e156e2076899a52d06fe3c6c789580a1d9613370157d3bbdf7cbe0
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4030
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=155faa97-b51b-7a41-be73-ebb25e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=155faa97-b51b-7a41-be73-ebb25e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:51:56
+    [digest] => 3805C05FD6BC0F7C786BA2635954406F2D8B170017F51E99457D8B1BF4586ADC
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 60.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 6000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=155faa97-b51b-7a41-be73-ebb25e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 632483723832
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:52:05
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:3805C05FD6BC0F7C786BA2635954406F2D8B170017F51E99457D8B1BF4586ADC
+checksum_before_hashing:actionCodeDescription;;amount;6000;approvalCode;123456;cardholderName;CARD HOLDER;currency;643;email;lejeh78269@reptech.org;expiry;12/2024;feeAmount;0;finishPageLogin;sbersafe;formattedAmount;60.00;formattedFeeAmount;0.00;merchantCode;12345678;merchantFullName;SLV;merchantLogin;slv;merchantShortName;slv;orderDescription;;orderExpired;false;orderNumber;4030;panMasked;411111**1111;panMasked4digits;**** **** **** 1111;paymentDate;04.02.2020 01:52:05;paymentSystem;VISA;refNum;632483723832;status;DEPOSITED;terminalId;123456;transDate;04.02.2020 01:51:56;
+hmac_sha256 hash: 18c33c758e36ee4009702051b5efcd4566b01ff50a77d388ffa21372a0cc3553
+usual sha256 hash: c73ac413876d928da050413638cf10af27d6e601792af4dffdc0ab1b8c1d1edc
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4031
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:53:27
+    [digest] => 386B0B1D4CB448B2916D0A2561EA8C30D67330AA195419906D22456E8036ECE7
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 753063563226
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:53:33
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:386B0B1D4CB448B2916D0A2561EA8C30D67330AA195419906D22456E8036ECE7
+checksum_before_hashing:actionCodeDescription;;amount;5000;approvalCode;123456;backUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru;cardholderName;CARD HOLDER;currency;643;digest;386B0B1D4CB448B2916D0A2561EA8C30D67330AA195419906D22456E8036ECE7;email;lejeh78269@reptech.org;errorTypeName;SUCCESS;expiry;12/2024;failUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru;feeAmount;0;finishPageLogin;sbersafe;formattedAmount;50.00;formattedFeeAmount;0.00;ip;188.242.105.111;merchantCode;12345678;merchantFullName;SLV;merchantLogin;slv;merchantShortName;slv;merchantUrl;http://slv.a99953zd.beget.tech/;orderDescription;;orderExpired;false;orderNumber;4031;panMasked;411111**1111;panMasked4digits;**** **** **** 1111;paymentDate;04.02.2020 01:53:33;paymentSystem;VISA;processingErrorType;Array;refNum;753063563226;status;DEPOSITED;successUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=b1a5fb88-51e2-7777-8a49-b9025e2dc596&lang=ru;terminalId;123456;transDate;04.02.2020 01:53:27;
+hmac_sha256 hash: 0a5e8cbfbbdb8fa5bd68da9239484ab53ee137ec9014fa6a3c122d4a71ced82b
+usual sha256 hash: 28eb24371e175d159a32d9692b21f2cedd2e02a6f9aab52c201687b5b2391886
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4032
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:55:07
+    [digest] => 54A0DDE11F9B0EB986102033C09AE50953E0864FA6BF97B15B0490E8FD753786
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 45.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 4500
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 115857017000
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:55:13
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:54A0DDE11F9B0EB986102033C09AE50953E0864FA6BF97B15B0490E8FD753786
+checksum_before_hashing:actionCodeDescription;;amount;4500;approvalCode;123456;backUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru;cardholderName;CARD HOLDER;currency;643;email;lejeh78269@reptech.org;errorTypeName;SUCCESS;expiry;12/2024;failUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru;feeAmount;0;finishPageLogin;sbersafe;formattedAmount;45.00;formattedFeeAmount;0.00;ip;188.242.105.111;merchantCode;12345678;merchantFullName;SLV;merchantLogin;slv;merchantShortName;slv;merchantUrl;http://slv.a99953zd.beget.tech/;orderDescription;;orderExpired;false;orderNumber;4032;panMasked;411111**1111;panMasked4digits;**** **** **** 1111;paymentDate;04.02.2020 01:55:13;paymentSystem;VISA;processingErrorType;Array;refNum;115857017000;status;DEPOSITED;successUrl;https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=51590c53-a2bb-73ad-ba63-9b915e2dc596&lang=ru;terminalId;123456;transDate;04.02.2020 01:55:07;
+hmac_sha256 hash: 0d7795058d4dc16a7a9e42a7af7eb24d6d77a9b782f346a2ec4aab52d2725f2a
+usual sha256 hash: 1c7ea976efd8385f7a223dca1897d3e7a5165be8e6ed284549bb4f9b7d6eafb4
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4033
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=3fbbed6a-47a7-707b-b11d-55ca5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=3fbbed6a-47a7-707b-b11d-55ca5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 01:56:48
+    [digest] => A39F7E71C3E283F448B62A5BD3C601D9B40F1EEF612FD2E83F28068CD8C14948
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=3fbbed6a-47a7-707b-b11d-55ca5e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 102647206190
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 01:56:54
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:A39F7E71C3E283F448B62A5BD3C601D9B40F1EEF612FD2E83F28068CD8C14948
+checksum_before_hashing:DEPOSITED50.006431234564033411111**111110264720619004.02.2020 01:56:540.00
+hmac_sha256 hash: 02f1548fa88b2713f9daa7d831d68b9835ac8951c53da4041154aedbd22a5e79
+usual sha256 hash: a9e622368472377e5f7ee6fb53d4a4439be2101e9c457f7fbb47f3e52dc2656b
+_________________________________
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 4034
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32179218-9218-73eb-8256-54525e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32179218-9218-73eb-8256-54525e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 02:12:28
+    [digest] => B7F622CBF3848B5533F1E6CD0A3EC69CEE302A49F543E09E7886ED28C69C0CD8
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => lejeh78269@reptech.org
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=32179218-9218-73eb-8256-54525e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 822988460114
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 02:12:39
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:B7F622CBF3848B5533F1E6CD0A3EC69CEE302A49F543E09E7886ED28C69C0CD8
+checksum_before_hashing:DEPOSITED50.006431234564034411111**111182298846011404.02.2020 02:12:390.00
+hmac_sha256 hash: ac52609820959fe7e1bfbca9fd37c6e78125f90dfe19c1b02115e3083f6e33c2
+usual sha256 hash: 7bd93e0c9e0e1b32749c2387b9c515e62f9a58994abcf20b61e9636608905fcb
+_________________________________

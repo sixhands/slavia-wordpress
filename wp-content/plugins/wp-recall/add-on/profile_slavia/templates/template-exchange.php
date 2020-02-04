@@ -1,3 +1,4 @@
+<?php $exchange_address = get_field('exchange_address', 306); ?>
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_rubles">
@@ -5,8 +6,7 @@
 
             <div class="col-12 pryamougolnik">
                 <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
-                <h3><?php global $exchange_address;
-                        if (isset($exchange_address) && !empty($exchange_address))
+                <h3><?php if (isset($exchange_address) && !empty($exchange_address))
                             echo $exchange_address; ?>
                 </h3>
                 <button class="btn-custom-two  text-center">Отправить</button>

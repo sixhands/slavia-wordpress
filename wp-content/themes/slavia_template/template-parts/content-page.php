@@ -18,14 +18,14 @@
 
 	<div class="entry-content <?php if (is_page(array(306)) ) echo "container"; else {} ?>">
 		<?php
-        if (is_page(array(306)))
-        {
-            //var_dump(306);
-            $GLOBALS['side_text'] = get_field('verification_sidetext');
-            $GLOBALS['video_files'] = get_field('verification_video');
-            $GLOBALS['video_text'] = get_field('verification_modal_text');
-            $GLOBALS['exchange_address'] = get_field('exchange_address');
-        }
+//        if (is_page(array(306)))
+//        {
+//            //var_dump(306);
+//            $GLOBALS['side_text'] = get_field('verification_sidetext');
+//            $GLOBALS['video_files'] = get_field('verification_video');
+//            $GLOBALS['video_text'] = get_field('verification_modal_text');
+//            $GLOBALS['exchange_address'] = get_field('exchange_address');
+//        }
 		the_content();
 
 		wp_link_pages( array(

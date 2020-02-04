@@ -1,4 +1,6 @@
-<?php global $side_text, $video_files, $video_text; ?>
+<?php $side_text = get_field('verification_sidetext', 306);
+      $video_files = get_field('verification_video', 306);
+      $video_text = get_field('verification_modal_text', 306); ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
