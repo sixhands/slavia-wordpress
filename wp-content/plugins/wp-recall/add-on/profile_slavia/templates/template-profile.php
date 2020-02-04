@@ -34,8 +34,11 @@
                 <div class="row">
                     <div class="col-lg-4 input-exchange">
                         <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                            <span>Имя пользователя</span>
-                            <input id="username_input" value="<?php echo $username ?>" type="text" name="">
+                            <div style="width: 100%">
+                                <span>Имя пользователя</span>
+                                <input id="username_input" value="<?php echo $username ?>" type="text" name="">
+                                <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                            </div>
                         </form>
                     </div>
                     <div class="col-lg-4 input-exchange ">
@@ -44,16 +47,22 @@
                             <div class="select-exchange w-100">
 <!--                                <input value="example@gmail.com" class="verification-ok" type="email" name="">-->
                                 <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                                    <?php echo $user_email ?>
+                                    <div style="width: 100%">
+                                        <?php echo $user_email ?>
+                                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <form class="row" name="profile" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                            <span>Телефон</span>
+                            <div style="width: 100%">
+                                <span>Телефон</span>
 <!--                            <input value="8 (911) 718 25 22" class="verification-ok" type="text" name="">-->
                                 <?php echo $user_phone ?>
+                                <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                            </div>
                         </form>
                     </div>
 
@@ -68,7 +77,10 @@
             <h1 class="coop_maps-h1">Реферальная ссылка</h1>
             <div class="col-lg-4 input-exchange  input-custom-copy">
                 <form class="row" name="profile_link" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                    <?php echo $user_ref_link ?>
+                    <div style="width: 100%">
+                        <?php echo $user_ref_link ?>
+                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                    </div>
 <!--                    <input placeholder="" value="https://slavia.com/5467889" type="text" name="">-->
                 </form>
             </div>
@@ -77,7 +89,10 @@
             <h1 class="coop_maps-h1">Номер пайщика</h1>
             <div class="col-lg-4 input-exchange  input-custom-copy">
                 <form class="row" name="profile_client_num" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                    <?php echo $client_num ?>
+                    <div style="width: 100%">
+                        <?php echo $client_num ?>
+                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                    </div>
 <!--                    <input placeholder="" value="00073" type="text" name="">-->
                 </form>
             </div>
@@ -87,15 +102,21 @@
             <div class="row">
                 <div class="col-lg-6 input-exchange  custom-padding input-custom-copy">
                     <form class="row" name="profile_prizm_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                        <span>Адрес PRIZM</span>
-                        <?php echo $prizm_address ?>
+                        <div style="width: 100%">
+                            <span>Адрес PRIZM</span>
+                            <?php echo $prizm_address ?>
+                            <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                        </div>
 <!--                        <input placeholder="" value="00073" type="text" name="">-->
                     </form>
                 </div>
                 <div class="col-lg-6 input-exchange custom-padding  input-custom-copy">
                     <form class="row" name="profile_prizm_publickey" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                        <span>Публичный ключ</span>
-                        <?php echo $prizm_public_key ?>
+                        <div style="width: 100%">
+                            <span>Публичный ключ</span>
+                            <?php echo $prizm_public_key ?>
+                            <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                        </div>
 <!--                        <input placeholder="" value="00073" type="text" name="">-->
                     </form>
                 </div>
@@ -105,8 +126,11 @@
             <h1 class="coop_maps-h1">Ваш адрес Waves</h1>
             <div class="col-lg-12 input-exchange  input-custom-copy">
                 <form class="row" name="profile_waves_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                    <span>Адрес Waves</span>
-                    <?php echo $waves_address ?>
+                    <div style="width: 100%">
+                        <span>Адрес Waves</span>
+                        <?php echo $waves_address ?>
+                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                    </div>
 <!--                    <input placeholder="" value="00073" type="text" name="">-->
                 </form>
             </div>
@@ -310,9 +334,9 @@
                                     break;
                             }
                             if (strcmp($ext, "swf") !== 0): ?>
-                                <source src="<?php echo $url ?>" type="<?php echo $mime_type ?>">
+                                <source src="<?php echo $url ?>" type="<?php if (isset($mime_type) && !empty($mime_type)) echo $mime_type ?>">
                             <?php else: ?>
-                                <object data="<?php echo $url ?>" type="<?php echo $mime_type ?>"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+                                <object data="<?php echo $url ?>" type="<?php if (isset($mime_type) && !empty($mime_type)) echo $mime_type ?>"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
                                     <param name="movie" value="<?php echo $url ?>">
                                 </object>
                             <?php endif; ?>
@@ -345,6 +369,16 @@
             event.preventDefault();
             return false;
         }
+    });
+    jQuery('.search').blur(function(){
+        let el = jQuery(this);
+        let search = {
+            type: 'word',
+            datatype: 'stats',
+            val: el.val()
+        };
+        let output_el = jQuery('.row.stats');
+        search_ajax(el, search, search_callback, output_el);
     });
 
     jQuery('.download_btn').click(function(event){

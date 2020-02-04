@@ -341,6 +341,22 @@
             return false;
         }
     });
+    jQuery('.search').blur(function() {
+        let el = jQuery(this);
+        let request_type;
+        if (el.parents('.exchange_requests').length > 0)
+            request_type = 'exchange_requests';
+        else
+        if (el.parents('.verification_requests').length > 0)
+            request_type = 'verification_requests';
+        let search = {
+            type: 'word',
+            datatype: request_type,
+            val: el.val()
+        };
+        let output_el = jQuery('.' + request_type + ' .table-title').parent();
+        search_ajax(el, search, search_callback, output_el);
+    });
     jQuery('input.datepicker').change(function(){
         let el = jQuery(this);
         let request_type;

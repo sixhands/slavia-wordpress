@@ -35,6 +35,30 @@ function rcl_check_profile_form(){
 
 }
 
+var tooltip, // global variables oh my! Refactor when deploying!
+    hidetooltiptimer;
+
+function createtooltip(){ // call this function ONCE at the end of page to create tool tip object
+    tooltip = document.createElement('div')
+    tooltip.style.cssText =
+        'position:absolute; background:black; color:white; padding:4px;z-index:10000;'
+        + 'border-radius:2px; font-size:12px;box-shadow:3px 3px 3px rgba(0,0,0,.4);'
+        + 'opacity:0;transition:opacity 0.3s'
+    tooltip.innerHTML = 'Скопировано!'
+    document.body.appendChild(tooltip)
+}
+
+function showtooltip(e){
+    var evt = e || event
+    clearTimeout(hidetooltiptimer)
+    tooltip.style.left = evt.pageX - 10 + 'px'
+    tooltip.style.top = evt.pageY + 15 + 'px'
+    tooltip.style.opacity = 1
+    hidetooltiptimer = setTimeout(function(){
+        tooltip.style.opacity = 0
+    }, 500)
+}
+
 function search_ajax(el, search_data, callback, output_el)
 {
     let data = {
@@ -51,12 +75,15 @@ jQuery(document).ready(function(){
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
-    //submit формы по потере фокуса в профиле
-    jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone").blur(function() {
-        jQuery(this).parents("form").submit();
-    });
+    //jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #prizm_address, #prizm_public_key, #waves_address").blur(function() {
+        //     jQuery(this).parents("form").submit();
+        // });
+    // //submit формы по потере фокуса в профиле
+    // jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #prizm_address, #prizm_public_key, #waves_address").blur(function() {
+    //     jQuery(this).parents("form").submit();
+    // });
 
-    jQuery("#user_ref_link, #client_num, #prizm_address, #prizm_public_key, #waves_address").prop("disabled", true);
+    jQuery("#user_ref_link, #client_num").prop("disabled", true); //#prizm_address, #prizm_public_key, #waves_address
     //var bank_inputs = jQuery("#settings_form").find("input");
     //submit формы по потере фокуса в настройках
     // bank_inputs.blur(function() {
@@ -208,7 +235,7 @@ function tab_config()
         //Проверяем на допустимые символы
         var is_allowed = ( (code >= 48 && code <= 57) || ((code == 190) //numbers || period
             && !(code == 190 && jQuery(this).val().indexOf('.') != -1)) //уже есть точка
-            || code == 8);
+            || code == 8 || code == 13 || code == 9);
         //user_phone, verification inputs
         if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
         jQuery(this).attr('name') === 'verification[passport_number]' ||
@@ -219,6 +246,36 @@ function tab_config()
             return false;
         }
     });
+
+    jQuery('.copy-btn').click(function(e){
+        var inputCopy = jQuery(this).prev()[0];
+        console.log(inputCopy);
+        var disabled = inputCopy.disabled;
+        var type = inputCopy.type;
+        if (disabled)
+            inputCopy.disabled = false;
+        if (type === 'email' || type === 'url')
+            inputCopy.type = 'text';
+        inputCopy.focus();
+        inputCopy.select();
+        inputCopy.setSelectionRange(0, inputCopy.value.length);
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Copying text command was ' + msg);
+            if (disabled)
+                inputCopy.disabled = true;
+            if (type === 'email' || type === 'url')
+                inputCopy.type = type;
+            showtooltip(e);
+        }
+        catch (err) {
+            console.error('Oops, unable to copy', err);
+        }
+    });
+
+    createtooltip();
+
 
     // jQuery('#profile_verification').on('submit', function(e) {
     //     e.preventDefault();
