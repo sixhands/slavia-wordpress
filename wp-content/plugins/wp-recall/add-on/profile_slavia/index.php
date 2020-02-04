@@ -19,88 +19,15 @@ function download_stats()
     //$temp_filename = @tempnam(get_temp_dir(), 'tmp');//tmpfile();
 
     //$stat_file = fopen($temp_filename, "w");
-    $stats = rcl_get_option('user_stats');
+    //$stats = rcl_get_option('user_stats');
     $stats_content = '<html><head></head><body>';
-    $stats_content .= '<div class="coop_maps question-bg col-lg-12">';
-    $stats_content .= '<div class="row stats">
-                <div class="table-title w-100">
-                    <div class="row">
+    $stats_content .= '<div class="coop_maps question-bg col-lg-12"><div class="row stats">';
 
-                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
-                            <p>Имя клиента</p>
-                        </div>
-                        <div class="col-2 text-center stats_col">
-                            Номер пайщика
-                        </div>
-                        <div class="col-2 text-center stats_col">
-                            RUB сумма
-                        </div>
-                        <div class="col-1 text-center stats_col">
-                            RUB обменов
-                        </div>
-                        <div class="col-2 text-center stats_col">
-                            PRIZM сумма
-                        </div>
-                        <div class="col-1 text-center stats_col">
-                            PRIZM обменов
-                        </div>
-                        <div class="col-1 text-center stats_col">
-                            WAVES сумма
-                        </div>
-                        <div class="col-1 text-center stats_col">
-                            WAVES обменов
-                        </div>
-                    </div>
-                </div>';
-    if (isset($stats) && !empty($stats)) {
-        $currencies = array('RUB', 'PRIZM', 'WAVES');
-        foreach ($stats as $user => $user_stats)
-        {
-            if (isset($user_stats) && !empty($user_stats)) {
-                $user_verification = get_user_meta($user, 'verification', true);
+    $stats_content .= show_stats_header();
 
-                if (isset($user_verification) && !empty($user_verification)) {
-                    //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
-                    foreach ($currencies as $currency) {
-                        if (!isset($user_stats[$currency]))
-                            $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
-                    }
-                    $stats_content .= '<div class="table-text w-100">
-                                        <div class="row">
-                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">' .
-                        $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                        '</div>
-                                            <div class="col-2 text-center stats_col">' .
-                        get_user_meta($user, 'client_num', true) .
-                        '</div>' .
-                        //RUB
-                        '<div class="col-2 text-center stats_col">' .
-                        $user_stats['RUB']['input_sum'] . ' RUB' .
-                        '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                        $user_stats['RUB']['exchange_num'] .
-                        '</div>' .
-                        //PRIZM
-                        '<div class="col-2 text-center stats_col">' .
-                        $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
-                        '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                        $user_stats['PRIZM']['exchange_num'] .
-                        '</div>' .
-                        //WAVES
-                        '<div class="col-1 text-center stats_col">' .
-                        $user_stats['WAVES']['input_sum'] . ' WAVES' .
-                        '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                        $user_stats['WAVES']['exchange_num'] .
-                        '</div>' . '
-                                        </div>
-                                    </div>';
-                }
-            }
-        }
-        $stats_content .= '</div></div></body></html>';
-    }
+    $stats_content .= show_all_stats();
+
+    $stats_content .= '</div></div></body></html>';
     //$pdf = generate_pdf($stats_content);
     $log = new Rcl_Log();
     $log->insert_log("stats_content:".$stats_content);
@@ -539,63 +466,63 @@ function rcl_tab_profile_content($master_id)
     //get_new_document_field($user_ID);
     //global $side_text, $video_files, $video_text;
     $profile_args = rcl_tab_template_content();
-    $stats = rcl_get_option('user_stats');
-    if (isset($stats) && !empty($stats))
-    {
-        //var_dump($stats);
-        $stats_content = '';
-        $currencies = array('RUB', 'PRIZM', 'WAVES');
-        foreach ($stats as $user => $user_stats)
-        {
-            if (isset($user_stats) && !empty($user_stats))
-            {
-                $user_verification = get_user_meta($user, 'verification', true);
-
-                if (isset($user_verification) && !empty($user_verification))
-                {
-                    //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
-                    foreach ($currencies as $currency)
-                    {
-                        if (!isset($user_stats[$currency]))
-                            $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
-                    }
-                    $stats_content .= '<div class="table-text w-100">
-                                        <div class="row">
-                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
-                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                            '</div>
-                                            <div class="col-2 text-center stats_col">' .
-                                                get_user_meta($user, 'client_num', true) .
-                                            '</div>'.
-                                            //RUB
-                                            '<div class="col-2 text-center stats_col">'.
-                                                $user_stats['RUB']['input_sum']. ' RUB'.
-                                            '</div>
-                                            <div class="col-1 text-center stats_col">'.
-                                                $user_stats['RUB']['exchange_num'].
-                                            '</div>'.
-                                            //PRIZM
-                                            '<div class="col-2 text-center stats_col">'.
-                                                $user_stats['PRIZM']['input_sum'].' PRIZM'.
-                                            '</div>
-                                            <div class="col-1 text-center stats_col">'.
-                                                $user_stats['PRIZM']['exchange_num'].
-                                            '</div>'.
-                                            //WAVES
-                                            '<div class="col-1 text-center stats_col">'.
-                                                $user_stats['WAVES']['input_sum']. ' WAVES'.
-                                            '</div>
-                                            <div class="col-1 text-center stats_col">'.
-                                                $user_stats['WAVES']['exchange_num'].
-                                            '</div>'.'
-                                        </div>
-                                    </div>';
-                }
-            }
-        } //foreach
-        $profile_args += array("stats_content" => $stats_content);
-    } //if stats
-
+//    $stats = rcl_get_option('user_stats');
+//    if (isset($stats) && !empty($stats))
+//    {
+//        //var_dump($stats);
+//        $stats_content = '';
+//        $currencies = array('RUB', 'PRIZM', 'WAVES');
+//        foreach ($stats as $user => $user_stats)
+//        {
+//            if (isset($user_stats) && !empty($user_stats))
+//            {
+//                $user_verification = get_user_meta($user, 'verification', true);
+//
+//                if (isset($user_verification) && !empty($user_verification))
+//                {
+//                    //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
+//                    foreach ($currencies as $currency)
+//                    {
+//                        if (!isset($user_stats[$currency]))
+//                            $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+//                    }
+//                    $stats_content .= '<div class="table-text w-100">
+//                                        <div class="row">
+//                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
+//                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+//                                            '</div>
+//                                            <div class="col-2 text-center stats_col">' .
+//                                                get_user_meta($user, 'client_num', true) .
+//                                            '</div>'.
+//                                            //RUB
+//                                            '<div class="col-2 text-center stats_col">'.
+//                                                $user_stats['RUB']['input_sum']. ' RUB'.
+//                                            '</div>
+//                                            <div class="col-1 text-center stats_col">'.
+//                                                $user_stats['RUB']['exchange_num'].
+//                                            '</div>'.
+//                                            //PRIZM
+//                                            '<div class="col-2 text-center stats_col">'.
+//                                                $user_stats['PRIZM']['input_sum'].' PRIZM'.
+//                                            '</div>
+//                                            <div class="col-1 text-center stats_col">'.
+//                                                $user_stats['PRIZM']['exchange_num'].
+//                                            '</div>'.
+//                                            //WAVES
+//                                            '<div class="col-1 text-center stats_col">'.
+//                                                $user_stats['WAVES']['input_sum']. ' WAVES'.
+//                                            '</div>
+//                                            <div class="col-1 text-center stats_col">'.
+//                                                $user_stats['WAVES']['exchange_num'].
+//                                            '</div>'.'
+//                                        </div>
+//                                    </div>';
+//                }
+//            }
+//        } //foreach
+//        $profile_args += array("stats_content" => $stats_content);
+//    } //if stats
+    $profile_args += array("stats_content" => show_all_stats());
 //    $side_text = get_field('verification_sidetext');
 //    $video_files = get_field('verification_video');
 //    $video_text = get_field('verification_modal_text');
@@ -1792,53 +1719,53 @@ function rcl_edit_profile(){
                     }
                     $response += array('exchange_content' => $exchange_content);
 
-                    $stats = rcl_get_option('user_stats');
-                    $stats_content = '';
-                    $currencies = array('RUB', 'PRIZM', 'WAVES');
-                    if (isset($stats[$user_id]) && !empty($stats[$user_id]))
-                    {
-                        $user_verification = get_user_meta($user_id, 'verification', true);
-
-                        if (isset($user_verification) && !empty($user_verification))
-                        {
-                            $user_stats = $stats[$user_id];
-                            foreach ($currencies as $currency)
-                            {
-                                if (!isset($user_stats[$currency]))
-                                    $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
-                            }
-                            $stats_content .= '<div class="table-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
-                                                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                                        '</div>
-                                                         <div class="col-2 text-center stats_col">' .
-                                                            get_user_meta($user_id, 'client_num', true) .
-                                                        '</div>'.
-                                                        //RUB
-                                                        '<div class="col-2 text-center stats_col">'.
-                                                            $user_stats['RUB']['input_sum']. ' RUB'.
-                                                        '</div>
-                                                        <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['RUB']['exchange_num'].
-                                                        '</div>'.
-                                                        //PRIZM
-                                                        '<div class="col-2 text-center stats_col">'.
-                                                            $user_stats['PRIZM']['input_sum'].' PRIZM'.
-                                                        '</div>
-                                                        <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['PRIZM']['exchange_num'].
-                                                        '</div>'.
-                                                        //WAVES
-                                                        '<div class="col-1 text-center stats_col">'.
-                                                            $user_stats['WAVES']['input_sum']. ' WAVES'.
-                                                        '</div>
-                                                        <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['WAVES']['exchange_num'].
-                                                        '</div>'.'
-                                                    </div>
-                                               </div>';
+//                    $stats = rcl_get_option('user_stats');
+//                    $stats_content = '';
+//                    $currencies = array('RUB', 'PRIZM', 'WAVES');
+//                    if (isset($stats[$user_id]) && !empty($stats[$user_id]))
+//                    {
+//                        $user_verification = get_user_meta($user_id, 'verification', true);
+//
+//                        if (isset($user_verification) && !empty($user_verification))
+//                        {
+//                            $user_stats = $stats[$user_id];
+//                            foreach ($currencies as $currency)
+//                            {
+//                                if (!isset($user_stats[$currency]))
+//                                    $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+//                            }
 //                            $stats_content .= '<div class="table-text w-100">
+//                                                    <div class="row">
+//                                                        <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
+//                                                            $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+//                                                        '</div>
+//                                                         <div class="col-2 text-center stats_col">' .
+//                                                            get_user_meta($user_id, 'client_num', true) .
+//                                                        '</div>'.
+//                                                        //RUB
+//                                                        '<div class="col-2 text-center stats_col">'.
+//                                                            $user_stats['RUB']['input_sum']. ' RUB'.
+//                                                        '</div>
+//                                                        <div class="col-1 text-center stats_col">'.
+//                                                            $user_stats['RUB']['exchange_num'].
+//                                                        '</div>'.
+//                                                        //PRIZM
+//                                                        '<div class="col-2 text-center stats_col">'.
+//                                                            $user_stats['PRIZM']['input_sum'].' PRIZM'.
+//                                                        '</div>
+//                                                        <div class="col-1 text-center stats_col">'.
+//                                                            $user_stats['PRIZM']['exchange_num'].
+//                                                        '</div>'.
+//                                                        //WAVES
+//                                                        '<div class="col-1 text-center stats_col">'.
+//                                                            $user_stats['WAVES']['input_sum']. ' WAVES'.
+//                                                        '</div>
+//                                                        <div class="col-1 text-center stats_col">'.
+//                                                            $user_stats['WAVES']['exchange_num'].
+//                                                        '</div>'.'
+//                                                    </div>
+//                                               </div>';
+////                            $stats_content .= '<div class="table-text w-100">
 //                                                <div class="row">
 //                                                        <div class="col-4 text-left" style="padding-left: 42px;">'.
 //                                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
@@ -1855,19 +1782,20 @@ function rcl_edit_profile(){
 //                                                    '</div>
 //                                                </div>
 //                                            </div>';
-                        }
-                    }
-                    else
-                    {
-                        $stats_content .= '<div class="table-text w-100">
-                                                <div class="row">
-                                                    <div class="col-12 text-center">
-                                                        Статистика для данного пользователя не найдена.
-                                                    </div>
-                                                </div>
-                                              </div>';
-                    }
-                    $response += array('stats_content' => $stats_content);
+//                        }
+//                    }
+//                    else
+//                    {
+//                        $stats_content .= '<div class="table-text w-100">
+//                                                <div class="row">
+//                                                    <div class="col-12 text-center">
+//                                                        Статистика для данного пользователя не найдена.
+//                                                    </div>
+//                                                </div>
+//                                              </div>';
+//                    }
+                    //Статистика
+                    $response += array('stats_content' => show_user_stats($user_id));//$stats_content);
 
                     echo json_encode($response);
                     exit;
@@ -2404,69 +2332,7 @@ function filter_data($filter_type, $datatype, $filter_val)
             return $exchange_content;
 
         case 'stats':
-            $stats = rcl_get_option('user_stats');
-            if (isset($stats) && !empty($stats)) {
-                $stats_content = '';
-                $currencies = array('RUB', 'PRIZM', 'WAVES');
-                foreach ($stats as $user => $user_stats)
-                {
-                    if (isset($user_stats) && !empty($user_stats))
-                    {
-                        $user_verification = get_user_meta($user, 'verification', true);
-
-                        if (isset($user_verification) && !empty($user_verification))
-                        {
-                            $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
-
-                            if (($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
-                                continue;
-                            elseif (empty($filter_val) ||
-                                ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
-                                $filter_type == 'date')
-                            {
-                                foreach ($currencies as $currency)
-                                {
-                                    if (!isset($user_stats[$currency]))
-                                        $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
-                                }
-                                $stats_content .= '<div class="table-text w-100">
-                                                    <div class="row">
-                                                        <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
-                                                $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                                        '</div>
-                                                        <div class="col-2 text-center stats_col">' .
-                                                            get_user_meta($user, 'client_num', true) .
-                                                        '</div>'.
-                                                        //RUB
-                                                        '<div class="col-2 text-center stats_col">'.
-                                                            $user_stats['RUB']['input_sum']. ' RUB'.
-                                                        '</div>
-                                                                <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['RUB']['exchange_num'].
-                                                        '</div>'.
-                                                        //PRIZM
-                                                        '<div class="col-2 text-center stats_col">'.
-                                                            $user_stats['PRIZM']['input_sum'].' PRIZM'.
-                                                        '</div>
-                                                                <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['PRIZM']['exchange_num'].
-                                                        '</div>'.
-                                                        //WAVES
-                                                        '<div class="col-1 text-center stats_col">'.
-                                                            $user_stats['WAVES']['input_sum']. ' WAVES'.
-                                                        '</div>
-                                                         <div class="col-1 text-center stats_col">'.
-                                                            $user_stats['WAVES']['exchange_num'].
-                                                        '</div>'.'
-                                                    </div>
-                                                </div>';
-
-                            }
-                        }
-                    }
-                } //foreach
-            }
-            return $stats_content;
+            return show_all_stats(false, $filter_type, $filter_val);//$stats_content;
 
         case 'documents':
             $docs = get_user_meta($user_ID, 'user_documents', true);
@@ -2502,4 +2368,204 @@ function filter_data($filter_type, $datatype, $filter_val)
             return $document_content;
     }
 
+}
+
+function show_all_stats($is_table = false, $filter_type = null, $filter_val = null)
+{
+    $stats = rcl_get_option('user_stats');
+    $stats_content = '';
+    if (isset($stats) && !empty($stats))
+    {
+        //var_dump($stats);
+        $currencies = array('RUB', 'PRIZM', 'WAVES');
+        foreach ($stats as $user => $user_stats)
+        {
+            if (isset($user_stats) && !empty($user_stats))
+            {
+                $user_verification = get_user_meta($user, 'verification', true);
+
+                if (isset($user_verification) && !empty($user_verification))
+                {
+                    $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+                    if ((isset($filter_type) && isset($filter_val)) && ($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
+                        continue;
+                    elseif ( (!isset($filter_type) && !isset($filter_val) ) || (empty($filter_val) ||
+                            ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
+                            $filter_type == 'date'))
+                    {
+                        //Обнуляем значения для валюты, если статистика для данной валюты отсутствует
+                        foreach ($currencies as $currency) {
+                            if (!isset($user_stats[$currency]))
+                                $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+                        }
+                        if (!$is_table) {
+                            $stats_content .= '<div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">' .
+                                $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                '</div>
+                                            <div class="col-2 text-center stats_col">' .
+                                get_user_meta($user, 'client_num', true) .
+                                '</div>' .
+                                //RUB
+                                '<div class="col-2 text-center stats_col">' .
+                                $user_stats['RUB']['input_sum'] . ' RUB' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['RUB']['exchange_num'] .
+                                '</div>' .
+                                //PRIZM
+                                '<div class="col-2 text-center stats_col">' .
+                                $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['PRIZM']['exchange_num'] .
+                                '</div>' .
+                                //WAVES
+                                '<div class="col-1 text-center stats_col">' .
+                                $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['WAVES']['exchange_num'] .
+                                '</div>' . '
+                                        </div>
+                                    </div>';
+                        }
+                        else
+                        {
+                            $stats_content .= '<div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">' .
+                                $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                '</div>
+                                            <div class="col-2 text-center stats_col">' .
+                                get_user_meta($user, 'client_num', true) .
+                                '</div>' .
+                                //RUB
+                                '<div class="col-2 text-center stats_col">' .
+                                $user_stats['RUB']['input_sum'] . ' RUB' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['RUB']['exchange_num'] .
+                                '</div>' .
+                                //PRIZM
+                                '<div class="col-2 text-center stats_col">' .
+                                $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['PRIZM']['exchange_num'] .
+                                '</div>' .
+                                //WAVES
+                                '<div class="col-1 text-center stats_col">' .
+                                $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                                '</div>
+                                            <div class="col-1 text-center stats_col">' .
+                                $user_stats['WAVES']['exchange_num'] .
+                                '</div>' . '
+                                        </div>
+                                    </div>';
+                        }
+                    }
+                }
+            }
+        } //foreach
+    }
+    return $stats_content;
+}
+
+function show_user_stats($userID)
+{
+    $stats = rcl_get_option('user_stats');
+    $stats_content = '';
+    $currencies = array('RUB', 'PRIZM', 'WAVES');
+    if (isset($stats[$userID]) && !empty($stats[$userID]))
+    {
+        $user_verification = get_user_meta($userID, 'verification', true);
+
+        if (isset($user_verification) && !empty($user_verification))
+        {
+            $user_stats = $stats[$userID];
+            foreach ($currencies as $currency)
+            {
+                if (!isset($user_stats[$currency]))
+                    $user_stats += array($currency => array('input_sum' => 0, 'output_sum' => 0,'exchange_num' => 0));
+            }
+            $stats_content .= '<div class="table-text w-100">
+                                <div class="row">
+                                    <div class="col-2 text-center stats_col" style="padding-left: 25px;">'.
+                                    $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
+                                 '</div>
+                 <div class="col-2 text-center stats_col">' .
+                get_user_meta($userID, 'client_num', true) .
+                '</div>'.
+                //RUB
+                '<div class="col-2 text-center stats_col">'.
+                $user_stats['RUB']['input_sum']. ' RUB'.
+                '</div>
+                <div class="col-1 text-center stats_col">'.
+                $user_stats['RUB']['exchange_num'].
+                '</div>'.
+                //PRIZM
+                '<div class="col-2 text-center stats_col">'.
+                $user_stats['PRIZM']['input_sum'].' PRIZM'.
+                '</div>
+                <div class="col-1 text-center stats_col">'.
+                $user_stats['PRIZM']['exchange_num'].
+                '</div>'.
+                //WAVES
+                '<div class="col-1 text-center stats_col">'.
+                $user_stats['WAVES']['input_sum']. ' WAVES'.
+                '</div>
+                <div class="col-1 text-center stats_col">'.
+                $user_stats['WAVES']['exchange_num'].
+                '</div>'.'
+                </div>
+           </div>';
+        }
+    }
+    else
+    {
+        $stats_content .= '<div class="table-text w-100">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        Статистика для данного пользователя не найдена.
+                                    </div>
+                                </div>
+                              </div>';
+    }
+    return $stats_content;
+}
+
+function show_stats_header()
+{
+    $stats_header = '<div class="table-title w-100">
+                    <div class="row">
+
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div>';
+    return $stats_header;
 }

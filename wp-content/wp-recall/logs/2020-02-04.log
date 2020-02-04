@@ -1,0 +1,110 @@
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 6000
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=c595d9ab-fa6b-75ac-b1fe-e2ad5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=c595d9ab-fa6b-75ac-b1fe-e2ad5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 04.02.2020 18:36:49
+    [digest] => 1C3FD66AF4C51DBDFE692C9CAC256FE9EB6E60555BFBB78B369F665005CD8F9A
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => blabla@mail.ru
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=c595d9ab-fa6b-75ac-b1fe-e2ad5e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 920353093625
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 04.02.2020 18:36:54
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:1C3FD66AF4C51DBDFE692C9CAC256FE9EB6E60555BFBB78B369F665005CD8F9A
+checksum_before_hashing:DEPOSITED50.006431234566000411111**111192035309362504.02.2020 18:36:540.00
+hmac_sha256 hash: 40c0ae9f77db3c94b1f1252f2fe7eef7ae75800f1a9d89be0d5b07f3102eff0c
+usual sha256 hash: 08eca0d5cbe795729bfd05a99c6e5d1da013e394bef23e1023dcb05326ea3d17
+_________________________________
+stats_content:<html><head></head><body><div class="coop_maps question-bg col-lg-12"><div class="row stats"><div class="table-title w-100">
+                    <div class="row">
+
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            WAVES обменов
+                        </div>
+                    </div>
+                </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">dart` dart dart</div>
+                                            <div class="col-2 text-center stats_col">456756</div><div class="col-2 text-center stats_col">370 RUB</div>
+                                            <div class="col-1 text-center stats_col">8</div><div class="col-2 text-center stats_col">10 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">2</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">vasiliy vasiliy vasiliy</div>
+                                            <div class="col-2 text-center stats_col">111</div><div class="col-2 text-center stats_col">100 RUB</div>
+                                            <div class="col-1 text-center stats_col">2</div><div class="col-2 text-center stats_col">12 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">3</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">fhdghghfgh hgfhfhfgj hfdhdghfgh</div>
+                                            <div class="col-2 text-center stats_col"></div><div class="col-2 text-center stats_col">0 RUB</div>
+                                            <div class="col-1 text-center stats_col">0</div><div class="col-2 text-center stats_col">10 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">2</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div><div class="table-text w-100">
+                                        <div class="row">
+                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">ccccc cccccccc ccccccccccccc</div>
+                                            <div class="col-2 text-center stats_col"></div><div class="col-2 text-center stats_col">100 RUB</div>
+                                            <div class="col-1 text-center stats_col">2</div><div class="col-2 text-center stats_col">5 PRIZM</div>
+                                            <div class="col-1 text-center stats_col">1</div><div class="col-1 text-center stats_col">0 WAVES</div>
+                                            <div class="col-1 text-center stats_col">0</div>
+                                        </div>
+                                    </div></div></div></body></html>
