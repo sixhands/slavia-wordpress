@@ -13,24 +13,35 @@ endif;
 
 function download_stats()
 {
-    global $user_ID;
-    $filename = "stats_user_".$user_ID;//.".pdf";
+    if ( function_exists( 'wp_get_current_user' ) )
+        $userID = wp_get_current_user()->ID;
+    else
+        $userID = 0;
+    if (!empty($userID) && $userID != 0)
+        $filename = "stats_user_".$userID;//.".pdf";
+    else
+        $filename = "stats_user";
     //$stat_file = fopen(get_temp_dir().$filename, 'w');
     //$temp_filename = @tempnam(get_temp_dir(), 'tmp');//tmpfile();
 
     //$stat_file = fopen($temp_filename, "w");
     //$stats = rcl_get_option('user_stats');
-    $stats_content = '<html><head></head><body>';
-    $stats_content .= '<div class="coop_maps question-bg col-lg-12"><div class="row stats">';
+    $stats_content = '<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>';
+    $stats_content .= '<style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style>';
+    $stats_content .= '</head><body>';
+    //$stats_content .= '<div class="coop_maps question-bg col-lg-12"><div class="row stats">';
 
-    $stats_content .= show_stats_header();
+    $stats_content .= '<table style="table-layout:fixed; width: 800px">';
 
-    $stats_content .= show_all_stats();
+    $stats_content .= show_stats_header(true);
 
-    $stats_content .= '</div></div></body></html>';
+    $stats_content .= show_all_stats(true);
+
+    $stats_content .= '</table></body></html>';
     //$pdf = generate_pdf($stats_content);
-    $log = new Rcl_Log();
-    $log->insert_log("stats_content:".$stats_content);
     //$log->insert_log("file:".print_r($stat_file, true));
     //file_put_contents($filename, $pdf);
     //fwrite($stat_file, $pdf);
@@ -52,8 +63,12 @@ function download_stats()
     $dompdf->stream($filename);
     exit;
 }
-if (isset($_GET['f']) && $_GET['f'] == 'download_stats')
-    download_stats();
+function download_stats_call()
+{
+    if (isset($_GET['f']) && $_GET['f'] == 'download_stats')
+        download_stats();
+}
+add_action('init','download_stats_call');
 
 function rcl_profile_scripts(){
     global $user_ID;
@@ -2433,37 +2448,35 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
                         }
                         else
                         {
-                            $stats_content .= '<div class="table-text w-100">
-                                        <div class="row">
-                                            <div class="col-2 text-center stats_col" style="padding-left: 25px;">' .
+                            $stats_content .= '<tr>
+                                         <td>' .
                                 $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
-                                '</div>
-                                            <div class="col-2 text-center stats_col">' .
-                                get_user_meta($user, 'client_num', true) .
-                                '</div>' .
-                                //RUB
-                                '<div class="col-2 text-center stats_col">' .
-                                $user_stats['RUB']['input_sum'] . ' RUB' .
-                                '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                                $user_stats['RUB']['exchange_num'] .
-                                '</div>' .
-                                //PRIZM
-                                '<div class="col-2 text-center stats_col">' .
-                                $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
-                                '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                                $user_stats['PRIZM']['exchange_num'] .
-                                '</div>' .
-                                //WAVES
-                                '<div class="col-1 text-center stats_col">' .
-                                $user_stats['WAVES']['input_sum'] . ' WAVES' .
-                                '</div>
-                                            <div class="col-1 text-center stats_col">' .
-                                $user_stats['WAVES']['exchange_num'] .
-                                '</div>' . '
-                                        </div>
-                                    </div>';
+                                        '</td>
+                                        <td>' .
+                                            get_user_meta($user, 'client_num', true) .
+                                        '</td>' .
+                                        //RUB
+                                        '<td>' .
+                                            $user_stats['RUB']['input_sum'] . ' RUB' .
+                                        '</td>
+                                        <td>' .
+                                            $user_stats['RUB']['exchange_num'] .
+                                        '</td>' .
+                                        //PRIZM
+                                        '<td>' .
+                                            $user_stats['PRIZM']['input_sum'] . ' PRIZM' .
+                                        '</td>
+                                        <td>' .
+                                            $user_stats['PRIZM']['exchange_num'] .
+                                        '</td>' .
+                                        //WAVES
+                                        '<td>' .
+                                            $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                                        '</td>
+                                        <td>' .
+                                            $user_stats['WAVES']['exchange_num'] .
+                                        '</td>' . '
+                                                </tr>';
                         }
                     }
                 }
@@ -2536,9 +2549,10 @@ function show_user_stats($userID)
     return $stats_content;
 }
 
-function show_stats_header()
+function show_stats_header($is_table = false)
 {
-    $stats_header = '<div class="table-title w-100">
+    if (!$is_table) {
+        $stats_header = '<div class="table-title w-100">
                     <div class="row">
 
                         <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
@@ -2567,5 +2581,35 @@ function show_stats_header()
                         </div>
                     </div>
                 </div>';
+    }
+    else
+    {
+        $stats_header = '<tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr>';
+    }
     return $stats_header;
 }

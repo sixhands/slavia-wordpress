@@ -108,3 +108,1090 @@ stats_content:<html><head></head><body><div class="coop_maps question-bg col-lg-
                                             <div class="col-1 text-center stats_col">0</div>
                                         </div>
                                     </div></div></div></body></html>
+stats_content:<html><head></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:</head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:</head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        td {border: 1px solid black; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        table {width: 800px;}
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        table {width: 800px !important;}
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; width: 800px; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; width: 800px; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; width: 800px; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body style="width: 800px"><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body style="width: 500px"><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        td {max-width: 80px; }
+                    </style></head><body><table><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        td {max-width: 80px; }
+                    </style></head><body><table style="table-layout:fixed;"><tr>
+                        <th style="width: 12.5%">
+                            <p>Имя клиента</p>
+                        </th>
+                        <th style="width: 25%">
+                            Номер пайщика
+                        </th>
+                        <th style="width: 37.5%">
+                            RUB сумма
+                        </th>
+                        <th style="width: 50%">
+                            RUB обменов
+                        </th>
+                        <th style="width: 62.5%">
+                            PRIZM сумма
+                        </th>
+                        <th style="width: 75%">
+                            PRIZM обменов
+                        </th>
+                        <th style="width: 87.5%">
+                            WAVES сумма
+                        </th>
+                        <th style="width: 100%">
+                            WAVES обменов
+                        </th>
+                    </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        td {max-width: 80px; }
+                    </style></head><body><table style="table-layout:fixed;"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        td {max-width: 150px; }
+                    </style></head><body><table style="table-layout:fixed;"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                        th {width: 100px }
+                    </style></head><body><table style="table-layout:fixed;"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table style="/*table-layout:fixed;*/ width: 800px"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table style="/*table-layout:fixed;*/ width: 800px"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table style="table-layout:fixed; /*width: 800px*/"><tr>
+                        <th style="width: 100px">
+                            <p>Имя клиента</p>
+                        </th>
+                        <th style="width: 100px">
+                            Номер пайщика
+                        </th>
+                        <th style="width: 100px">
+                            RUB сумма
+                        </th>
+                        <th style="width: 100px">
+                            RUB обменов
+                        </th>
+                        <th style="width: 100px">
+                            PRIZM сумма
+                        </th>
+                        <th style="width: 100px">
+                            PRIZM обменов
+                        </th>
+                        <th style="width: 100px">
+                            WAVES сумма
+                        </th>
+                        <th style="width: 100px">
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
+stats_content:<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>
+                        body { font-family: DejaVu Sans, sans-serif; }
+                        table, th, td {border: 1px solid black; }
+                    </style></head><body><table style="table-layout:fixed; width: 800px"><tr>
+                        <th>
+                            <p>Имя клиента</p>
+                        </th>
+                        <th>
+                            Номер пайщика
+                        </th>
+                        <th>
+                            RUB сумма
+                        </th>
+                        <th>
+                            RUB обменов
+                        </th>
+                        <th>
+                            PRIZM сумма
+                        </th>
+                        <th>
+                            PRIZM обменов
+                        </th>
+                        <th>
+                            WAVES сумма
+                        </th>
+                        <th>
+                            WAVES обменов
+                        </th>
+                    </tr><tr>
+                                         <td>dart` dart dart</td>
+                                        <td>456756</td><td>370 RUB</td>
+                                        <td>8</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>vasiliy vasiliy vasiliy</td>
+                                        <td>111</td><td>100 RUB</td>
+                                        <td>2</td><td>12 PRIZM</td>
+                                        <td>3</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>fhdghghfgh hgfhfhfgj hfdhdghfgh</td>
+                                        <td></td><td>0 RUB</td>
+                                        <td>0</td><td>10 PRIZM</td>
+                                        <td>2</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr><tr>
+                                         <td>ccccc cccccccc ccccccccccccc</td>
+                                        <td></td><td>100 RUB</td>
+                                        <td>2</td><td>5 PRIZM</td>
+                                        <td>1</td><td>0 WAVES</td>
+                                        <td>0</td>
+                                                </tr></table></body></html>
