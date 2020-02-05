@@ -432,6 +432,17 @@ remove_role( 'subscriber' );
 remove_role( 'editor' );
 remove_role( 'contributor' );
 remove_role( 'author' );
+//delete_user_meta(15, 'verification');
+//delete_user_meta(15, 'is_verified');
+//
+//delete_user_meta(21, 'verification');
+//delete_user_meta(21, 'is_verified');
+//
+//delete_user_meta(22, 'verification');
+//delete_user_meta(22, 'is_verified');
+//
+//delete_user_meta(7, 'verification');
+//delete_user_meta(7, 'is_verified');
 
 add_action('register_form', 'rcl_add_ref_field', 10);
 function rcl_add_ref_field()

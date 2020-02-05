@@ -140,28 +140,30 @@
                 </div>
 
             </div>
-<!--            <div class="col-12">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-4 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <span>Имя</span>-->
-<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <span>Имя</span>-->
-<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-4 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <span>Имя</span>-->
-<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Адрес PRIZM</span>
+                            <input class="verification_prizm_address" placeholder="Адрес PRIZM" type="text" name="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Публичный ключ</span>
+                            <div class="select-exchange w-100">
+                                <input class="verification_prizm_public_key" placeholder="Публичный ключ" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Адрес Slav</span>
+                            <input class="verification_waves_address" placeholder="Адрес Slav" type="text" name="">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="col-12">
