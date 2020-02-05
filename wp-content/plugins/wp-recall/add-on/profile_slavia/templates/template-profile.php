@@ -123,11 +123,11 @@
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
-            <h1 class="coop_maps-h1">Ваш адрес Waves</h1>
+            <h1 class="coop_maps-h1">Ваш адрес Slav</h1>
             <div class="col-lg-12 input-exchange  input-custom-copy">
                 <form class="row" name="profile_waves_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
                     <div style="width: 100%">
-                        <span>Адрес Waves</span>
+                        <span>Адрес Slav</span>
                         <?php echo $waves_address ?>
                         <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
                     </div>
@@ -271,10 +271,10 @@
                             PRIZM обменов
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES сумма
+                            SLAV сумма
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES обменов
+                            SLAV обменов
                         </div>
                     </div>
                 </div>

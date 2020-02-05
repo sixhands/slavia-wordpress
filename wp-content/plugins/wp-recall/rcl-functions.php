@@ -1100,7 +1100,7 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 						continue;
 				}
 			}
-			if (isset($field['value']) && !empty($field['value']) &&
+			if ((isset($field['value']) && !empty($field['value'])) &&
                 ($slug == 'verification' || $slug == 'passport_photos' ||
                 $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs'))
 			{
@@ -1108,7 +1108,9 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
                 update_user_meta($user_id, $slug, $value);
                 continue;
             }
-			elseif (!isset($field['value']) || empty($field['value']))
+			elseif ((!isset($field['value']) || empty($field['value']))  &&
+                ($slug == 'verification' || $slug == 'passport_photos' ||
+                 $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs'))
                 continue;
 
 			if ( in_array( $slug, $defaultFields ) ) {

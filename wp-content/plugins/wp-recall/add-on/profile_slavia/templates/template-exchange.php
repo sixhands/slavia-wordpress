@@ -134,7 +134,7 @@
 
 
         <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_waves">
-            <h1 class="coop_maps-h1">Получить Waves</h1>
+            <h1 class="coop_maps-h1">Получить Slav</h1>
 
 
             <div class="col-12">
@@ -358,7 +358,7 @@
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
             <div class="click_ex" id="three-ex">
                 <div class="ex-header">
-                    <h1 class="coop_maps-h1 ib">Получить Waves</h1>
+                    <h1 class="coop_maps-h1 ib">Получить Slav</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
                 <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_waves_mob">

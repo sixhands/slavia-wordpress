@@ -132,10 +132,10 @@
                             PRIZM обменов
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES сумма
+                            SLAV сумма
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES обменов
+                            SLAV обменов
                         </div>
                     </div>
                 </div>

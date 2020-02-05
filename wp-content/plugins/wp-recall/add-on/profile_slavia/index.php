@@ -1923,7 +1923,7 @@ function rcl_edit_profile(){
 
                 if (strpos(array_key_first($_POST), 'get_waves') !== false) {
 
-                    save_exchange_request('RUB', 'WAVES',
+                    save_exchange_request('RUB', 'SLAV',
                         $_POST['get_waves']['rubles'], $_POST['get_waves']['waves'],
                         $_POST['get_waves']['bank']);//, $_POST['get_waves']['card_num'],
                         //$_POST['get_waves']['card_name']);
@@ -2392,7 +2392,7 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
     if (isset($stats) && !empty($stats))
     {
         //var_dump($stats);
-        $currencies = array('RUB', 'PRIZM', 'WAVES');
+        $currencies = array('RUB', 'PRIZM', 'SLAV');
         foreach ($stats as $user => $user_stats)
         {
             if (isset($user_stats) && !empty($user_stats))
@@ -2438,10 +2438,10 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
                                 '</div>' .
                                 //WAVES
                                 '<div class="col-1 text-center stats_col">' .
-                                $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                                $user_stats['SLAV']['input_sum'] . ' SLAV' .
                                 '</div>
                                             <div class="col-1 text-center stats_col">' .
-                                $user_stats['WAVES']['exchange_num'] .
+                                $user_stats['SLAV']['exchange_num'] .
                                 '</div>' . '
                                         </div>
                                     </div>';
@@ -2471,10 +2471,10 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
                                         '</td>' .
                                         //WAVES
                                         '<td>' .
-                                            $user_stats['WAVES']['input_sum'] . ' WAVES' .
+                                            $user_stats['SLAV']['input_sum'] . ' SLAV' .
                                         '</td>
                                         <td>' .
-                                            $user_stats['WAVES']['exchange_num'] .
+                                            $user_stats['SLAV']['exchange_num'] .
                                         '</td>' . '
                                                 </tr>';
                         }
@@ -2490,7 +2490,7 @@ function show_user_stats($userID)
 {
     $stats = rcl_get_option('user_stats');
     $stats_content = '';
-    $currencies = array('RUB', 'PRIZM', 'WAVES');
+    $currencies = array('RUB', 'PRIZM', 'SLAV');
     if (isset($stats[$userID]) && !empty($stats[$userID]))
     {
         $user_verification = get_user_meta($userID, 'verification', true);
@@ -2527,10 +2527,10 @@ function show_user_stats($userID)
                 '</div>'.
                 //WAVES
                 '<div class="col-1 text-center stats_col">'.
-                $user_stats['WAVES']['input_sum']. ' WAVES'.
+                $user_stats['SLAV']['input_sum']. ' SLAV'.
                 '</div>
                 <div class="col-1 text-center stats_col">'.
-                $user_stats['WAVES']['exchange_num'].
+                $user_stats['SLAV']['exchange_num'].
                 '</div>'.'
                 </div>
            </div>';
@@ -2574,10 +2574,10 @@ function show_stats_header($is_table = false)
                             PRIZM обменов
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES сумма
+                            SLAV сумма
                         </div>
                         <div class="col-1 text-center stats_col">
-                            WAVES обменов
+                            SLAV обменов
                         </div>
                     </div>
                 </div>';
@@ -2604,10 +2604,10 @@ function show_stats_header($is_table = false)
                             PRIZM обменов
                         </th>
                         <th>
-                            WAVES сумма
+                            SLAV сумма
                         </th>
                         <th>
-                            WAVES обменов
+                            SLAV обменов
                         </th>
                     </tr>';
     }
