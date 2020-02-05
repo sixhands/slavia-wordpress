@@ -167,23 +167,23 @@ function add_profile_fields($fields){
         'title' => 'Номер пайщика',
     );
 
-    $fields[] = array(
-        'type' => 'text',
-        'slug' => 'prizm_address',
-        'title' => 'Адрес PRIZM',
-    );
-
-    $fields[] = array(
-        'type' => 'text',
-        'slug' => 'prizm_public_key',
-        'title' => 'Публичный ключ',
-    );
-
-    $fields[] = array(
-        'type' => 'text',
-        'slug' => 'waves_address',
-        'title' => 'Адрес Waves',
-    );
+//    $fields[] = array(
+//        'type' => 'text',
+//        'slug' => 'prizm_address',
+//        'title' => 'Адрес PRIZM',
+//    );
+//
+//    $fields[] = array(
+//        'type' => 'text',
+//        'slug' => 'prizm_public_key',
+//        'title' => 'Публичный ключ',
+//    );
+//
+//    $fields[] = array(
+//        'type' => 'text',
+//        'slug' => 'waves_address',
+//        'title' => 'Адрес Waves',
+//    );
 
     $fields[] = array(
         'type' => 'text',
@@ -1483,7 +1483,9 @@ function rcl_edit_profile(){
                             }
                         }
                         //Меняем роль пользователя
-                        wp_update_user(array('ID' => $_POST['request_user_id'], 'role' => 'user'));
+                        $userRoles = get_userdata($_POST['request_user_id'])->roles;
+                        if (!in_array("manager", $userRoles) && !in_array("director", $userRoles) && !in_array("administrator", $userRoles))
+                            wp_update_user(array('ID' => $_POST['request_user_id'], 'role' => 'user'));
 
                         //Отправка письма об успешной верификации данному пользователю
                         $subject = 'Ваш профиль был верифицирован!';

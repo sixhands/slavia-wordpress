@@ -101,38 +101,47 @@
             <h1 class="coop_maps-h1">Ваш адрес Prizm</h1>
             <div class="row">
                 <div class="col-lg-6 input-exchange  custom-padding input-custom-copy">
-                    <form class="row" name="profile_prizm_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                    <div class="row">
+<!--                    <form class="row" name="profile_prizm_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">-->
                         <div style="width: 100%">
                             <span>Адрес PRIZM</span>
-                            <?php echo $prizm_address ?>
+                            <input id="prizm_address" form="profile_verification" class="text-field" type="text" required name="verification[prizm_address]"<?php if (isset($verification) && isset($verification['prizm_address'])): ?> value="<?=$verification['prizm_address']?>"<?php endif; ?>>
+                            <?php //echo $prizm_address ?>
                             <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
                         </div>
 <!--                        <input placeholder="" value="00073" type="text" name="">-->
-                    </form>
+<!--                    </form>-->
+                    </div>
                 </div>
                 <div class="col-lg-6 input-exchange custom-padding  input-custom-copy">
-                    <form class="row" name="profile_prizm_publickey" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                    <div class="row">
+<!--                    <form class="row" name="profile_prizm_publickey" id="your-profile" action="" method="post"  enctype="multipart/form-data">-->
                         <div style="width: 100%">
                             <span>Публичный ключ</span>
-                            <?php echo $prizm_public_key ?>
+                            <input id="prizm_public_key" form="profile_verification" class="text-field" type="text" required name="verification[prizm_public_key]"<?php if (isset($verification) && isset($verification['prizm_public_key'])): ?> value="<?=$verification['prizm_public_key']?>"<?php endif; ?>>
+                            <?php //echo $prizm_public_key ?>
                             <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
                         </div>
 <!--                        <input placeholder="" value="00073" type="text" name="">-->
-                    </form>
+<!--                    </form>-->
+                    </div>
                 </div>
             </div>
         </div>
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Ваш адрес Slav</h1>
             <div class="col-lg-12 input-exchange  input-custom-copy">
-                <form class="row" name="profile_waves_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                <div class="row">
+<!--                <form class="row" name="profile_waves_address" id="your-profile" action="" method="post"  enctype="multipart/form-data">-->
                     <div style="width: 100%">
                         <span>Адрес Slav</span>
-                        <?php echo $waves_address ?>
+                        <input id="waves_address" form="profile_verification" class="text-field" type="text" required name="verification[waves_address]"<?php if (isset($verification) && isset($verification['waves_address'])): ?> value="<?=$verification['waves_address']?>"<?php endif; ?>>
+                        <?php //echo $waves_address ?>
                         <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
                     </div>
 <!--                    <input placeholder="" value="00073" type="text" name="">-->
-                </form>
+<!--                </form>-->
+                </div>
             </div>
         </div>
 

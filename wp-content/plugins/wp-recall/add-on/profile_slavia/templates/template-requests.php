@@ -140,6 +140,30 @@
                 </div>
 
             </div>
+<!--            <div class="col-12">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <span>Имя</span>-->
+<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <span>Имя</span>-->
+<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-4 input-exchange">-->
+<!--                        <div class="row">-->
+<!--                            <span>Имя</span>-->
+<!--                            <input class="verification_name" placeholder="Имя" type="text" name="">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
             <div class="col-12">
                 <div class="row">
                     <div class="col-lg-4 input-exchange">
