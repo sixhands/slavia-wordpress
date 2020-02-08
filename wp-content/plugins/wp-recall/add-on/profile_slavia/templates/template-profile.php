@@ -156,21 +156,21 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
 
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['name']?>"<?php endif; ?>placeholder="Имя" required type="text" name="verification[name]">
+                            <input <?php if (isset($verification) && isset($verification['name'])): ?>value="<?=$verification['name']?>"<?php endif; ?>placeholder="Имя" required type="text" name="verification[name]">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
 
                             <div class="select-exchange w-100">
-                                <input <?php if (isset($verification)): ?>value="<?=$verification['surname']?>" <?php endif; ?>placeholder="Фамилия" required class="" type="text" name="verification[surname]">
+                                <input <?php if (isset($verification) && isset($verification['surname'])): ?>value="<?=$verification['surname']?>" <?php endif; ?>placeholder="Фамилия" required class="" type="text" name="verification[surname]">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
 
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['last_name']?>" <?php endif; ?>placeholder="Отчество" required class="" type="text" name="verification[last_name]">
+                            <input <?php if (isset($verification) && isset($verification['last_name'])): ?>value="<?=$verification['last_name']?>" <?php endif; ?>placeholder="Отчество" required class="" type="text" name="verification[last_name]">
                         </div>
                     </div>
                 </div>
@@ -180,27 +180,27 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>Серия и номер паспорта</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_number']?>" <?php endif; ?>placeholder="____-______" required  type="text" name="verification[passport_number]">
+                            <input <?php if (isset($verification) && isset($verification['passport_number'])): ?>value="<?=$verification['passport_number']?>" <?php endif; ?>placeholder="____-______" required  type="text" name="verification[passport_number]">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
                         <div class="row ">
                             <span>Дата выдачи</span>
                             <div class="select-exchange w-100">
-                                <input <?php if (isset($verification)): ?>value="<?=$verification['passport_date']?>" <?php endif; ?> placeholder="Дата выдачи" required class="" type="date" name="verification[passport_date]">
+                                <input <?php if (isset($verification) && isset($verification['passport_date'])): ?>value="<?=$verification['passport_date']?>" <?php endif; ?> placeholder="Дата выдачи" required class="" type="date" name="verification[passport_date]">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>&nbsp;</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_code']?>" <?php endif; ?> placeholder="Код подразделения" required class="" type="text" name="verification[passport_code]">
+                            <input <?php if (isset($verification) && isset($verification['passport_code'])): ?>value="<?=$verification['passport_code']?>" <?php endif; ?> placeholder="Код подразделения" required class="" type="text" name="verification[passport_code]">
                         </div>
                     </div>
                     <div class="col-lg-12 input-exchange">
                         <div class="row">
                             <span>&nbsp;</span>
-                            <input <?php if (isset($verification)): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
+                            <input <?php if (isset($verification) && isset($verification['passport_who'])): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
                         </div>
                     </div>
                     <?php if (isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>

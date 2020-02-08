@@ -813,7 +813,7 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 	$from_name	 = (isset( $from['name'] )) ? $from['name'] : get_bloginfo( 'name' );
 	$from_mail	 = (isset( $from['email'] )) ? $from['email'] : 'noreply@' . $_SERVER['HTTP_HOST'];
 
-	add_filter( 'wp_mail_content_type', create_function( '', 'return "text/html";' ) );
+	add_filter( 'wp_mail_content_type', function() {return "text/html";}/*, create_function( '', 'return "text/html";' )*/ );
 	$headers = 'From: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
 
 	$text .= '<p><small>-----------------------------------------------------<br/>
@@ -824,8 +824,10 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 
 function rcl_multisort_array( $array, $key, $type = SORT_ASC, $cmp_func = 'strcmp' ) {
 	$GLOBALS['ARRAY_MULTISORT_KEY_SORT_KEY'] = $key;
-	usort( $array, create_function( '$a, $b', '$k = &$GLOBALS["ARRAY_MULTISORT_KEY_SORT_KEY"];
-        return ' . $cmp_func . '($a[$k], $b[$k]) * ' . ($type == SORT_ASC ? 1 : -1) . ';' ) );
+	usort( $array, function($a, $b) use ($type, $cmp_func) {$k = &$GLOBALS["ARRAY_MULTISORT_KEY_SORT_KEY"];
+        return strcmp($a[$k], $b[$k]) * ($type == SORT_ASC ? 1 : -1) ; } );
+    /*create_function( '$a, $b', '$k = &$GLOBALS["ARRAY_MULTISORT_KEY_SORT_KEY"];
+        return ' . $cmp_func . '($a[$k], $b[$k]) * ' . ($type == SORT_ASC ? 1 : -1) . ';' )*/
 	return $array;
 }
 

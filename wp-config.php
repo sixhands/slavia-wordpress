@@ -20,9 +20,9 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'a99953zd_slv' );
+define( 'DB_NAME', 'slavia' );
 /** MySQL database username */
-define( 'DB_USER', 'a99953zd_slv' );
+define( 'DB_USER', 'root' );
 /** MySQL database password */
 define( 'DB_PASSWORD', 'Oa13Mdc9WY' );
 /** MySQL hostname */

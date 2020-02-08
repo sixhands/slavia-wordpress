@@ -2,7 +2,7 @@
 RewriteEngine On
 RewriteBase /
 #RewriteCond %{REQUEST_URI}%{QUERY_STRING} ^\/wp-login\.php?loggedout=true(.*)$
-#RewriteRule ^(.*)$ http://slv.a99953zd.beget.tech? [R=301,L]
+#RewriteRule ^(.*)$ http://vnuk2.ev88.fvds.ru? [R=301,L]
 </IfModule>
 php_value upload_max_filesize 7M
 php_value post_max_size 7M

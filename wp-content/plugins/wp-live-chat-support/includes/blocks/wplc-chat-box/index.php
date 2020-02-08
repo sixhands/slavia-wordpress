@@ -242,7 +242,7 @@ add_action( 'enqueue_block_assets', 'wplc_chat_box_block_block_assets' );
 
 function wplc_chat_box_block_block_assets() {
 	global $get_gutenberg_options;
-	if($get_gutenberg_options['wplc_gutenberg_enable']) {
+	if(isset($get_gutenberg_options['wplc_gutenberg_enable']) && !empty($get_gutenberg_options['wplc_gutenberg_enable'])) {
 		// Styles for front-end
 		wp_enqueue_style(
 			'wplc_chat_box-front-end',

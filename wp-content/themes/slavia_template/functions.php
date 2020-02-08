@@ -443,6 +443,16 @@ remove_role( 'author' );
 //
 //delete_user_meta(7, 'verification');
 //delete_user_meta(7, 'is_verified');
+//
+//delete_user_meta(6, 'verification');
+//delete_user_meta(6, 'is_verified');
+//
+//delete_user_meta(15, 'passport_photos');
+//delete_user_meta(21, 'passport_photos');
+//
+//delete_user_meta(22, 'passport_photos');
+//delete_user_meta(6, 'passport_photos');
+//delete_user_meta(7, 'passport_photos');
 
 add_action('register_form', 'rcl_add_ref_field', 10);
 function rcl_add_ref_field()

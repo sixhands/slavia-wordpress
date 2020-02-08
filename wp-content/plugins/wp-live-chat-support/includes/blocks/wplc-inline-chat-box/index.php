@@ -55,7 +55,7 @@ add_action( 'enqueue_block_assets', 'wplc_inline_chat_box_block_block_assets' );
 
 function wplc_inline_chat_box_block_block_assets() {
 	global $get_gutenberg_options;
-	if($get_gutenberg_options['wplc_gutenberg_enable']) {
+	if(isset($get_gutenberg_options['wplc_gutenberg_enable']) && !empty($get_gutenberg_options['wplc_gutenberg_enable'])) {
 		// Styles for front-end
 		wp_enqueue_style( 'wplc_inline_chat_box_front_end',
 			plugins_url( 'style.css', __FILE__ ),

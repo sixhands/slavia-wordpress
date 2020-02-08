@@ -1383,11 +1383,15 @@ function rcl_edit_profile(){
                     {
                         $filetype	 = wp_check_filetype_and_ext( $_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i] );
 
-                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP')))
-                            wp_die( __( 'Prohibited file type!', 'wp-recall' ) );
+                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP'))) {
+                            wp_die(__('Prohibited file type!', 'wp-recall'));
+                            exit;
+                        }
                         $maxsize = 2;
-                        if ( $_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024 )
-                            wp_die( __( 'File size exceedes maximum!', 'wp-recall' ) );
+                        if ( $_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024 ) {
+                            wp_die(__('File size exceedes maximum!', 'wp-recall'));
+                            exit;
+                        }
 
                         $info = pathinfo( $_FILES['passport_photos']['name'][$i] );
                         if( ! empty( $info['extension'] ) )
@@ -1423,6 +1427,11 @@ function rcl_edit_profile(){
                                 $field['value'][] = $file['url'];
                                 continue;
                             }
+                        else
+                        {
+                            wp_die($file['error']);
+                            exit;
+                        }
                     }
                     //Добавляем ссылки на файлы в verification_requests
                     $verification_requests = rcl_get_option('verification_requests');
