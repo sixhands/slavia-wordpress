@@ -11,6 +11,12 @@ if (!is_admin()):
     add_action('rcl_enqueue_scripts','rcl_profile_scripts',10);
 endif;
 
+function exchange_doc_template($args)
+{
+    return rcl_get_include_template('document-template.php', __FILE__, $args);
+    //$doc_num, $day, $month, $year, $client_num, $client_fio, $currency, $amount, $currency_rate, $sum, $public_key, $currency_address = null
+}
+
 function download_stats()
 {
     if ( function_exists( 'wp_get_current_user' ) )
@@ -51,7 +57,11 @@ function download_stats()
     //fclose($filename);
     //unlink($filename);
     $dompdf = new Dompdf();
-    $dompdf->loadHtml($stats_content);
+    //$dompdf->loadHtml($stats_content);
+
+    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 8, 'month' => 'февраля', 'year' => 2020, 'client_num' => 5,
+        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
+        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'landscape');
@@ -215,11 +225,14 @@ function add_profile_fields($fields){
 }
 
 //Генерация документов пользователя
-function generate_pdf($text)
+function generate_pdf($text, $load_from_file = false)
 {
     // instantiate and use the dompdf class
     $dompdf = new Dompdf();
-    $dompdf->loadHtml($text);
+    if (!$load_from_file)
+        $dompdf->loadHtml($text);
+    else
+        $dompdf->loadHtmlFile($text);
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'landscape');
@@ -298,40 +311,14 @@ function get_new_document_field($user_id, $text = null)
     fclose($temp_file);
     return $result_field ? $result_field : false;
 }
+
+function add_exchange_documents()
+{
+
+}
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
-function add_user_documents($fields)
-{
-//    $fields[] = array(
-//        'type' => 'custom',
-//        'slug' => 'user_documents',
-//        'title' => 'Документы пользователя',
-//        'values' => array(
-//            array('date' => '08.11.19', 'filename' => 'document1.docx', 'url' => '/wp-content/uploads/2019/12/don.png'),
-//            array('date' => '09.12.19', 'filename' => 'document2.docx', 'url' => '/wp-content/uploads/2019/12/operation_dis.png')
-//        ),
-//    );
-//    $content = '';
-//    foreach ($fields[count($fields) - 1]['values'] as $value)
-//    {
-//        $content .= '<div class="table-text w-100">' .
-//            '<div class="row">' .
-//            '<div class="col-2 text-center">' . $value['date'] . '</div>' .
-//            '<div class="col-8 text-left">' . $value['filename'] . '</div>' .
-//            '<div class="col-2 text-center">
-//                <a href="' . $value['url'] . '" download>
-//                    <img src="/wp-content/uploads/2019/12/don.png">
-//                </a>
-//            </div>
-//            </div>
-//            </div>';
-//    }
-//    $fields[count($fields) - 1] += array("content" => $content);
-//    //var_dump($fields[count($fields) - 1]);
-//
-//    return $fields;
-}
 
 //add_filter('rcl_profile_fields', 'add_user_verification', 10);
 ////Верификация
@@ -1610,8 +1597,6 @@ function rcl_edit_profile(){
                         $exchange_requests[$userid][$request_num]['status'] = 'completed';
                         rcl_update_option('exchange_requests', $exchange_requests);
 
-
-                        //Генерируем документ
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
 
                         //Если статистики для данного пользователя еще нет (1-я сделка) и есть пригласивший
@@ -1638,6 +1623,7 @@ function rcl_edit_profile(){
                             }
                         }
 
+                        //Генерируем документ
                         if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
                             $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
                             foreach ($profileFields as $field) {
