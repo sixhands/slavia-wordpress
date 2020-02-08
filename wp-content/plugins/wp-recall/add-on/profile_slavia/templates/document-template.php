@@ -1,12 +1,3 @@
-<?php
-function is_var($var)
-{
-    if (isset($var) && !empty($var))
-        return true;
-    else
-        return false;
-}
-?>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -81,7 +72,7 @@ function is_var($var)
         <tbody>
         <tr>
             <td><p>Председатель Совета МПК «СЛАВИЯ» _________________<br> Сергей Андреевич С. М.П. <br> 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt</p></td>
-            <td style="padding-left: 30px"><p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br> <?php if (is_var($currency_address) && $currency == 'PRIZM') echo $currency_address.'<br>'; ?><?php if (is_var($public_key)) echo $public_key; ?> <br>____________________________________________________________________________________________ <br>__________</p></td>
+            <td style="padding-left: 30px"><p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br> <?php if (isset($currency_address) && $currency == 'PRIZM') echo $currency_address.'<br>'; ?><?php if (is_var($public_key)) echo $public_key; ?> <br>____________________________________________________________________________________________ <br>__________</p></td>
         </tr>
         </tbody></table>
 

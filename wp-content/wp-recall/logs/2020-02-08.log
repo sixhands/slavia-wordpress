@@ -1,0 +1,118 @@
+doc_field:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-16-59.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-16-59.pdf
+)
+
+doc_field:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-24-33.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-24-33.pdf
+)
+
+new_doc1:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-37-11.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-11.pdf
+)
+
+new_doc2:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-37-12.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-12.pdf
+)
+
+new_doc1:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-37-11.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-11.pdf
+)
+
+new_doc2:Array
+(
+    [date] => 08.02.20
+    [filename] => payment_receipt-6-02-09-01-37-12.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-12.pdf
+)
+
+field:Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 08.02.20
+                    [filename] => payment_receipt-6-02-09-01-37-11.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-11.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 08.02.20
+                    [filename] => payment_receipt-6-02-09-01-37-12.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/payment_receipt-6-02-09-01-37-12.pdf
+                )
+
+        )
+
+)
+
+doc_num:
+order:Array
+(
+    [paymentSystem] => VISA
+    [merchantShortName] => slv
+    [merchantLogin] => slv
+    [approvalCode] => 123456
+    [orderNumber] => 8000
+    [backUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=43798117-bbdd-7592-b7b5-506d5e2dc596&lang=ru
+    [failUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=43798117-bbdd-7592-b7b5-506d5e2dc596&lang=ru
+    [terminalId] => 123456
+    [orderDescription] => 
+    [merchantFullName] => SLV
+    [transDate] => 09.02.2020 01:46:27
+    [digest] => 04DFADE31DEFB203251ACAACAE41D35B256053B24581F4CCA59D33C88CCBCC98
+    [currency] => 643
+    [expiry] => 12/2024
+    [formattedAmount] => 50.00
+    [actionCodeDescription] => 
+    [formattedFeeAmount] => 0.00
+    [email] => nefiy35636@bizcomail.com
+    [amount] => 5000
+    [merchantCode] => 12345678
+    [ip] => 188.242.105.111
+    [panMasked] => 411111**1111
+    [successUrl] => https://3dsec.sberbank.ru/payment/docsite/finish_modal.html?orderId=43798117-bbdd-7592-b7b5-506d5e2dc596&lang=ru
+    [processingErrorType] => Array
+        (
+            [value] => NO_ERROR
+            [messageCode] => payment.errors.no_error
+        )
+
+    [panMasked4digits] => **** **** **** 1111
+    [errorTypeName] => SUCCESS
+    [feeAmount] => 0
+    [orderExpired] => false
+    [refNum] => 212702959001
+    [finishPageLogin] => sbersafe
+    [cardholderName] => CARD HOLDER
+    [paymentDate] => 09.02.2020 01:46:35
+    [merchantUrl] => http://slv.a99953zd.beget.tech/
+    [status] => DEPOSITED
+)
+
+_________________________________
+sberbank_digest:04DFADE31DEFB203251ACAACAE41D35B256053B24581F4CCA59D33C88CCBCC98
+checksum_before_hashing:DEPOSITED50.006431234568000411111**111121270295900109.02.2020 01:46:350.00
+hmac_sha256 hash: d64f9217ad265fa474def044704d7f00ab453379b72d02c432f95050cf35bfe3
+usual sha256 hash: d7aa4d1d88231eac1507f2eabdeb73467a6eb73953083f97ca26870d0db2ba72
+_________________________________
