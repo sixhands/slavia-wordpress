@@ -57,11 +57,11 @@ function download_stats()
     //fclose($filename);
     //unlink($filename);
     $dompdf = new Dompdf();
-    //$dompdf->loadHtml($stats_content);
+    $dompdf->loadHtml($stats_content);
 
-    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 8, 'month' => 'февраля', 'year' => 2020, 'client_num' => 5,
-        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
-        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
+//    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 8, 'month' => 'февраля', 'year' => 2020, 'client_num' => 5,
+//        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
+//        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'landscape');
@@ -312,10 +312,6 @@ function get_new_document_field($user_id, $text = null)
     return $result_field ? $result_field : false;
 }
 
-function add_exchange_documents()
-{
-
-}
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
@@ -1251,6 +1247,36 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
     rcl_update_option('exchange_requests', $exchange_requests);
 }
 
+function get_russian_month($month_num)
+{
+    switch ($month_num) {
+        case 1:
+            return 'января';
+        case 2:
+            return 'февраля';
+        case 3:
+            return 'марта';
+        case 4:
+            return 'апреля';
+        case 5:
+            return 'мая';
+        case 6:
+            return 'июня';
+        case 7:
+            return 'июля';
+        case 8:
+            return 'августа';
+        case 9:
+            return 'сентября';
+        case 10:
+            return 'октября';
+        case 11:
+            return 'ноября';
+        case 12:
+            return 'декабря';
+    }
+}
+
 //Обновляем профиль пользователя
 add_action('wp', 'rcl_edit_profile', 10);
 function rcl_edit_profile(){
@@ -1624,33 +1650,64 @@ function rcl_edit_profile(){
                         }
 
                         //Генерируем документ
-                        if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
-                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
-                            foreach ($profileFields as $field) {
-                                if ($field['slug'] == 'user_documents') {
-                                    $new_doc1 = get_new_document_field($userid, '1');
-                                    $new_doc2 = get_new_document_field($userid, '2');
-                                    if ($new_doc1 && $new_doc2) {
-                                        if (!isset($field['value']))
-                                            $field += array('value' => array());
-                                        $log = new Rcl_Log();
-                                        $field_value = get_user_meta($userid, 'user_documents', true);
+//                        if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
+//                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
+                        foreach ($profileFields as $field) {
+                            if ($field['slug'] == 'user_documents') {
+                                $doc_num = count(get_user_meta($userid, 'user_documents', true));
+                                $day = date('j');
+                                $month = date('n');
+                                $month = get_russian_month($month);
+                                $year = date('Y');
+                                $client_num = get_user_meta($userid, 'client_num', true);
 
-                                        if (empty($field_value) || count($field_value) == 0) {
-                                            $field['value'] = array('0' => $new_doc1, '1' => $new_doc2);
-                                        } else //user documents not empty
-                                        {
-                                            $field['value'] = $field_value;
-                                            $field['value'] += array(count($field['value']) => $new_doc1, (count($field['value']) + 1) => $new_doc2);
-                                        }
-                                        //$log->insert_log("field:" . print_r($field, true));
-
-                                        rcl_update_profile_fields($_POST['request_user_id'], array($field));
-                                    }
-                                    break;
+                                $user_verification = get_user_meta($userid, 'verification', true);
+                                $user_full_name = '';
+                                if (isset($user_verification) && !empty($user_verification))
+                                {
+                                    $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
                                 }
+                                $input_doc_fields =
+                                    array(
+                                        'doc_num' => ($doc_num+1),
+                                        'day' => $day,
+                                        'month' => $month,
+                                        'year' => $year,
+                                        'client_num' => $client_num,
+                                        'client_fio' => $user_full_name,
+                                        'currency' => $exchange_requests[$userid][$request_num]['input_currency'],
+                                        'amount' => $exchange_requests[$userid][$request_num],
+                                        'currency_rate' => 16.7,
+                                        'sum' => 1000*16.7,
+                                        'public_key' => 'fgokdhodg363563higfjhiw43',
+                                        'currency_address' => 'PRIZMgisjfgsfjiw5i5w7',
+                                        'is_output' => false
+                                    );
+                                $output_doc_fields = array();
+                                //exchange_doc_template(
+                                $new_doc1 = get_new_document_field($userid, '1');
+                                $new_doc2 = get_new_document_field($userid, '2');
+                                if ($new_doc1 && $new_doc2) {
+                                    if (!isset($field['value']))
+                                        $field += array('value' => array());
+                                    $log = new Rcl_Log();
+                                    $field_value = get_user_meta($userid, 'user_documents', true);
+
+                                    if (empty($field_value) || count($field_value) == 0) {
+                                        $field['value'] = array('0' => $new_doc1, '1' => $new_doc2);
+                                    } else //user documents not empty
+                                    {
+                                        $field['value'] = $field_value;
+                                        $field['value'] += array(count($field['value']) => $new_doc1, (count($field['value']) + 1) => $new_doc2);
+                                    }
+                                    //$log->insert_log("field:" . print_r($field, true));
+
+                                    rcl_update_profile_fields($_POST['request_user_id'], array($field));
+                                }
+                                break;
                             }
                         }
+                        //}
                         echo 'true';
                     }
                     else
@@ -1840,30 +1897,30 @@ function rcl_edit_profile(){
                                 }
 
                                 //Генерируем документ
-                                $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
-                                foreach ($profileFields as $field) {
-                                    if ($field['slug'] == 'user_documents') {
-                                        $new_doc = get_new_document_field($_POST['request_user_id'], 'RUB');
-                                        if ($new_doc) {
-                                            if (!isset($field['value']))
-                                                $field += array('value' => array());
-                                            $log = new Rcl_Log();
-                                            $field_value = get_user_meta($_POST['request_user_id'], 'user_documents', true);
-
-                                            if (empty($field_value) || count($field_value) == 0) {
-                                                $field['value'] = array('0' => $new_doc);
-                                            } else //user documents not empty
-                                            {
-                                                $field['value'] = $field_value;
-                                                $field['value'] += array(count($field['value']) => $new_doc);
-                                            }
-                                            //$log->insert_log("field:".print_r($field, true));
-
-                                            rcl_update_profile_fields($_POST['request_user_id'], array($field));
-                                        }
-                                        break;
-                                    }
-                                }
+//                                $profileFields = rcl_get_profile_fields(array('user_id' => $_POST['request_user_id']));
+//                                foreach ($profileFields as $field) {
+//                                    if ($field['slug'] == 'user_documents') {
+//                                        $new_doc = get_new_document_field($_POST['request_user_id'], 'RUB');
+//                                        if ($new_doc) {
+//                                            if (!isset($field['value']))
+//                                                $field += array('value' => array());
+//                                            $log = new Rcl_Log();
+//                                            $field_value = get_user_meta($_POST['request_user_id'], 'user_documents', true);
+//
+//                                            if (empty($field_value) || count($field_value) == 0) {
+//                                                $field['value'] = array('0' => $new_doc);
+//                                            } else //user documents not empty
+//                                            {
+//                                                $field['value'] = $field_value;
+//                                                $field['value'] += array(count($field['value']) => $new_doc);
+//                                            }
+//                                            //$log->insert_log("field:".print_r($field, true));
+//
+//                                            rcl_update_profile_fields($_POST['request_user_id'], array($field));
+//                                        }
+//                                        break;
+//                                    }
+                                //}
                                 echo 'true';
                                 exit;
                             }
