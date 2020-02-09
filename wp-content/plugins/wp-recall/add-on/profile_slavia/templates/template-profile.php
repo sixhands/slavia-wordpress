@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-lg-2" style="margin-top: 5%">
                     <div class="btn-modal">
-                        <input type="button" class="btn-custom-two text-center" onclick="document.location.href='<?php echo wp_logout_url('http://slv.a99953zd.beget.tech'); ?>';" value="Выход">
+                        <input type="button" class="btn-custom-two text-center" onclick="document.location.href='<?php echo wp_logout_url('http://vnuk2.ev88.fvds.ru'); ?>';" value="Выход">
                     </div>
                 </div>
             </div>

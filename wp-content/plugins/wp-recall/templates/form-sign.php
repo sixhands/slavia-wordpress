@@ -28,19 +28,19 @@ if ( ! $typeform || $typeform == 'sign' )
             <i class="rcli fa-lock"></i>
             <span class="required">*</span>
         </div>
-        <div class="form-block-rcl">
-			<?php do_action( 'login_form' ); ?>
-
-            <div class="default-field rcl-field-input type-checkbox-input">
-                <div class="rcl-checkbox-box">
-                    <input type="checkbox" id="chck_remember" class="checkbox-custom" value="1" name="rememberme">
-                    <label class="block-label" for="chck_remember"><?php _e( 'Remember', 'wp-recall' ); ?></label>
-                </div>
-            </div>
-        </div>
+<!--        <div class="form-block-rcl">-->
+<!--			--><?php //do_action( 'login_form' ); ?>
+<!---->
+<!--            <div class="default-field rcl-field-input type-checkbox-input">-->
+<!--                <div class="rcl-checkbox-box">-->
+<!--                    <input type="checkbox" id="chck_remember" class="checkbox-custom" value="1" name="rememberme">-->
+<!--                    <label class="block-label" for="chck_remember">--><?php //_e( 'Remember', 'wp-recall' ); ?><!--</label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="form-block-rcl">
             <input type="submit" class="recall-button link-tab-form" name="submit-login" value="<?php _e( 'Entry', 'wp-recall' ); ?>">
-            <a href="#" class="link-remember-rcl link-tab-rcl "><?php _e( 'Lost your Password', 'wp-recall' ); // Забыли пароль   ?>?</a>
+<!--            <a href="#" class="link-remember-rcl link-tab-rcl ">--><?php //_e( 'Lost your Password', 'wp-recall' ); // Забыли пароль   ?><!--?</a>-->
 			<?php echo wp_nonce_field( 'login-key-rcl', 'login_wpnonce', true, false ); ?>
             <input type="hidden" name="redirect_to" value="<?php rcl_referer_url( 'login' ); ?>">
         </div>
