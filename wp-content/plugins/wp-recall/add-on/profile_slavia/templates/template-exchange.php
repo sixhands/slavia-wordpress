@@ -9,7 +9,7 @@
                 <h3><?php if (isset($exchange_address) && !empty($exchange_address))
                             echo $exchange_address; ?>
                 </h3>
-                <button class="btn-custom-two  text-center">Отправить</button>
+                <button type="submit" class="btn-custom-two  text-center">Отправить</button>
             </div>
             <div class="col-12">
                 <div class="row">
