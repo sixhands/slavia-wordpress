@@ -230,6 +230,9 @@ function tab_config()
         '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
         ];
 
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').attr('unselectable', 'on').on('selectstart', false);
+
+
     jQuery(number_fields.join(', ')).keydown(function(event) {
         var code = (event.keyCode ? event.keyCode : event.which);
         //Проверяем на допустимые символы

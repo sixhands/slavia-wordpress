@@ -758,6 +758,7 @@ function rcl_tab_operations_content($master_id)
 
     $exchange_requests = rcl_get_option('exchange_requests');
     $exchange_content = '';
+    $client_num = get_user_meta($user_ID, 'client_num', true);
     if (isset($exchange_requests) && !empty($exchange_requests) && isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
     {
         foreach ($exchange_requests[$user_ID] as $key => $value)
@@ -801,7 +802,7 @@ function rcl_tab_operations_content($master_id)
                                                     amount:' . $value['input_sum'] . ',
                                                     currency:\'RUB\',
                                                     order_number:\'\',
-                                                    description: \'\'
+                                                    description: \'Паевой взнос от пайщика №'.$client_num.'\'
                                                     },
                                                     function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
                                                     function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
@@ -2403,6 +2404,7 @@ function filter_data($filter_type, $datatype, $filter_val)
         case 'operations':
             $exchange_requests = rcl_get_option('exchange_requests');
             $exchange_content = '';
+            $client_num = get_user_meta($user_ID, 'client_num', true);
             if (isset($exchange_requests) && !empty($exchange_requests) &&
                 isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
             {
@@ -2453,7 +2455,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                 amount:' . $value['input_sum'] . ',
                                                 currency:\'RUB\',
                                                 order_number:\'\',
-                                                description: \'\'
+                                                description: \'Паевой взнос от пайщика №'.$client_num.'\'
                                                 },
                                                 function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
                                                 function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"

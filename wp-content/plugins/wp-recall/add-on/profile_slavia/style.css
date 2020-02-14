@@ -1,3 +1,11 @@
+/*Запретить выбирать текст на странице обмена*/
+.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
 .edit-link {
     display: none;
 }
