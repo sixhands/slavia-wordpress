@@ -2242,33 +2242,25 @@ function rcl_slavia_get_crypto_price($currency = 'PZM') {
 //Генерация checksum для сбербанка
 function sberbank_verify_checksum($order)
 {
-//    $sorted_order = $order;
-//    ksort($sorted_order);
-//    $checksum = '';
-//    foreach ($sorted_order as $key => $value)
-//    {
-//        if (/*$key != 'backUrl' && $key != 'failUrl' && */$key != 'digest')// && $key != 'ip' && $key != 'successUrl' &&
-//           $key != 'processingErrorType' && $key != 'errorTypeName' && $key != 'merchantUrl')
-//            $checksum.=$key.';'.$value.';';
-//    }
     $log = new Rcl_Log();
-    $log->insert_log("order:".print_r($order, true));
-    $log->insert_log("_________________________________");
     $log->insert_log("sberbank_digest:".$order['digest']);
 
     $key = 'uaihtrgiuira6q765uh71222j8';
     $checksum = $order['status'].$order['formattedAmount'].$order['currency'].$order['approvalCode'].$order['orderNumber'].
-                $order['panMasked'].$order['refNum'].$order['paymentDate'].$order['formattedFeeAmount'];
+                $order['panMasked'].$order['refNum'].$order['paymentDate'].$order['formattedFeeAmount'].$key.';';
 
-    $log->insert_log("checksum_before_hashing:".$checksum);
-        //'amount;123456;mdOrder;3ff6962a-7dcc-4283-ab50-a6d7dd3386fe;operation;deposited;orderNumber;10747;status;1;';
     $hmac = hash_hmac ( 'sha256' , $checksum , $key);
-    $hash = hash('sha256', $checksum);
+    $hmac = strtoupper($hmac);
+
     $log->insert_log("hmac_sha256 hash: ".$hmac);
-    $log->insert_log("usual sha256 hash: ".$hash);
+
+    if ($hmac == $order['digest'])
+        $log->insert_log("checksum is equal");
+    else
+        $log->insert_log("checksum is NOT equal");
     $log->insert_log("_________________________________");
 
-    return "[$hmac]\n";
+    return $hmac == $order['digest'];
 }
 
 function filter_data($filter_type, $datatype, $filter_val)

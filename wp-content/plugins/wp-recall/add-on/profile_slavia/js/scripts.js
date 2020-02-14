@@ -233,14 +233,20 @@ function tab_config()
     jQuery(number_fields.join(', ')).keydown(function(event) {
         var code = (event.keyCode ? event.keyCode : event.which);
         //Проверяем на допустимые символы
-        var is_allowed = ( (code >= 48 && code <= 57) || ((code == 190) //numbers || period
-            && !(code == 190 && jQuery(this).val().indexOf('.') != -1)) //уже есть точка
-            || code == 8 || code == 13 || code == 9);
+        var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
+            || ((code == 190 || code == 110) //numbers || period
+            && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
+            || code == 8 || code == 13 || code == 9 || code == 144); //144 - numlock
         //user_phone, verification inputs
         if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
         jQuery(this).attr('name') === 'verification[passport_number]' ||
-        jQuery(this).attr('name') === 'verification[passport_code]') && code == 190)
+        jQuery(this).attr('name') === 'verification[passport_code]') && (code == 190 || code == 110))
             is_allowed = false;
+        else
+            if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+                jQuery(this).attr('name') === 'verification[passport_number]' ||
+                jQuery(this).attr('name') === 'verification[passport_code]') && (code == 32 || code == 109 || code == 173) )
+                    is_allowed = true;
         if (!is_allowed) {
             event.preventDefault();
             return false;

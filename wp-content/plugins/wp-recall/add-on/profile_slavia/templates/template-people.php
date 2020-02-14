@@ -26,7 +26,7 @@
 
                     </div>
                 </div>
-                <?php echo do_shortcode("[userlist template='slavia' inpage='3' data='user_registered,profile_fields']"); ?>
+                <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields']"); ?>
 
 <!--                <div class="w-100 text-center">-->
 <!--                    <ul class="people-ul">-->

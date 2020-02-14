@@ -12,7 +12,13 @@
                 <div class="col-lg-8">
                     <!--Имя авторизированного пользователя -->
                     <h1 class="profil-user-h1">
-                        С возвращением, <?php echo $username ?>!
+                        С возвращением, <?php if (empty($verification) &&
+                                               ( !isset($verification['name']) &&
+                                                 !isset($verification['last_name'])
+                                               ) )
+                                                  echo $username;
+                                              else
+                                                  echo $verification['name'].' '.$verification['last_name'] ?>!
                     </h1>
                     <?php if (isset($is_verified) && $is_verified == 'yes'): ?>
                         <p class="profil-user-verification" style="color: #179F37;">

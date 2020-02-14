@@ -73,7 +73,7 @@
         <div class="col-md-12"  style="z-index: 5;">
             <div class="row">
                 <div class="col-lg-4 col-9">
-                    <a href="http://slv.a99953zd.beget.tech/">
+                    <a href="http://vnuk2.ev88.fvds.ru/">
                         <!--Логотип и название -->
 
                         <img src="<?php echo trailingslashit( $upload_dir['baseurl'] ) . '2019/12/hands_logo.png' //get_template_directory_uri() . '/assets/img/hands_logo.png' ?>" class="header-logo">

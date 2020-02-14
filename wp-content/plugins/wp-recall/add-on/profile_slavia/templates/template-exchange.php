@@ -2,7 +2,7 @@
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_rubles">
-            <h1 class="coop_maps-h1">Получить рубль</h1>
+            <h1 class="coop_maps-h1">Имущественный взнос SLAV</h1>
 
             <div class="col-12 pryamougolnik">
                 <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
@@ -215,7 +215,7 @@
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd" style="">
             <div class="click_ex" id="one-ex">
                 <div class="ex-header">
-                    <h1 class="coop_maps-h1 ib">Получить рубль</h1>
+                    <h1 class="coop_maps-h1 ib">Имущественный взнос SLAV</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
 
