@@ -209,6 +209,20 @@
                             <input <?php if (isset($verification) && isset($verification['passport_who'])): ?>value="<?=$verification['passport_who']?>" <?php endif; ?> placeholder="Кем выдан" required class="" type="text" name="verification[passport_who]">
                         </div>
                     </div>
+                    <div class="col-lg-8 input-exchange ">
+                        <div class="row ">
+                            <span>Место жительства по прописке</span>
+                            <div class="select-exchange w-100" style="padding-left: 0 !important;">
+                                <input <?php if (isset($verification) && isset($verification['passport_address'])): ?>value="<?=$verification['passport_address']?>" <?php endif; ?> placeholder="Место жительства по прописке" required class="" type="text" name="verification[passport_address]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Индекс</span>
+                            <input <?php if (isset($verification) && isset($verification['passport_index'])): ?>value="<?=$verification['passport_index']?>" <?php endif; ?> placeholder="Индекс" required class="" type="text" name="verification[passport_index]">
+                        </div>
+                    </div>
                     <?php if (isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">

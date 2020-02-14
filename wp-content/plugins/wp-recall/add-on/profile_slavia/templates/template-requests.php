@@ -209,13 +209,27 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>Код подразделения</span>
-                            <input class="verification_passport_code" placeholder="Код подразделения" class="" type="text" name="">
+                            <input class="verification_passport_code" placeholder="Код подразделения" type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-12 input-exchange">
                         <div class="row">
                             <span>Кем выдан</span>
-                            <input class="verification_passport_who" placeholder="Кем выдан" class="" type="text" name="">
+                            <input class="verification_passport_who" placeholder="Кем выдан" type="text" name="">
+                        </div>
+                    </div>
+                    <div class="col-lg-8 input-exchange ">
+                        <div class="row ">
+                            <span>Место жительства по прописке</span>
+                            <div class="select-exchange w-100" style="padding-left: 0 !important;">
+                                <input class="verification_passport_address" placeholder="Место жительства по прописке" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Индекс</span>
+                            <input class="verification_passport_index" placeholder="Индекс" type="text" name="">
                         </div>
                     </div>
                     <div class="col-lg-12 passport-photo">
