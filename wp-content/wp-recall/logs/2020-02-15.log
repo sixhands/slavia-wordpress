@@ -47,3 +47,131 @@ new exchange requests: Array
 
 )
 
+exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+new request: Array
+(
+    [0] => Array
+        (
+            [input_currency] => RUB
+            [output_currency] => PRIZM
+            [input_sum] => 50
+            [output_sum] => 1.45
+            [bank] => bank1
+            [date] => 15.02.20
+            [status] => awaiting_payment
+        )
+
+)
+
+exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+new request: Array
+(
+    [0] => Array
+        (
+            [input_currency] => RUB
+            [output_currency] => PRIZM
+            [input_sum] => 50
+            [output_sum] => 1.45
+            [bank] => bank1
+            [date] => 15.02.20
+            [status] => awaiting_payment
+        )
+
+)
+
+exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+new request: Array
+(
+    [0] => Array
+        (
+            [input_currency] => RUB
+            [output_currency] => PRIZM
+            [input_sum] => 50
+            [output_sum] => 1.51
+            [bank] => bank1
+            [date] => 15.02.20
+            [status] => awaiting_payment
+        )
+
+)
+
+exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+else1 exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+0 exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+else1 exchange requests: Array
+(
+    [6] => Array
+        (
+        )
+
+)
+
+exchange requests: Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 15
+                    [output_sum] => 236.99
+                    [bank] => bank1
+                    [date] => 15.02.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+

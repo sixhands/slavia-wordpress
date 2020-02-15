@@ -1251,9 +1251,15 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
             $new_request = array(count($exchange_requests[$user_ID]) => $exchange_fields);
             $exchange_requests[$user_ID] += $new_request;
         }
-        else {
+        elseif (!isset($exchange_requests[$user_ID]))
+        {
             $new_request = array(0 => $exchange_fields);
             $exchange_requests += array($user_ID => $new_request); //Если еще нет запросов для этого пользователя, добавляем ключ id этого пользователя
+        }
+        elseif (empty($exchange_requests[$user_ID]))
+        {
+            $new_request = array(0 => $exchange_fields);
+            $exchange_requests[$user_ID] += $new_request;
         }
     }
     //Если еще нету запросов на обмен

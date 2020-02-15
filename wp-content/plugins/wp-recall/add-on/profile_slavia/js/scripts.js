@@ -230,8 +230,31 @@ function tab_config()
         '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
         ];
 
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').attr('unselectable', 'on').on('selectstart', false);
+    //Защита от подделки данных на фронте*****************
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').prop('unselectable', 'on').on('selectstart', false);
 
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').prop('autocomplete', 'off');
+
+    //Выставляем атрибуты при каждом клике мыши, если не выставлены
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').mousedown(function(){
+        let unselectable = jQuery(this).prop('unselectable');
+        let autocomplete = jQuery(this).prop('autocomplete');
+
+       if (unselectable === 'undefined' || unselectable !== 'on')
+           jQuery(this).prop('unselectable', 'on');
+
+        if (autocomplete === 'undefined' || autocomplete !== 'off')
+            jQuery(this).prop('autocomplete', 'off');
+    });
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').bind('cut copy paste', function (e) {
+        e.preventDefault();
+    });
+
+    //Disable mouse right click
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').on("contextmenu",function(e){
+        return false;
+    });
+    /**********************************************************************************/
 
     jQuery(number_fields.join(', ')).keydown(function(event) {
         var code = (event.keyCode ? event.keyCode : event.which);
