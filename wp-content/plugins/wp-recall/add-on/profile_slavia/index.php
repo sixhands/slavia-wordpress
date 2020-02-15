@@ -221,6 +221,12 @@ function add_profile_fields($fields){
         'content' => '',
     );
 
+    $fields[] = array(
+        'type' => 'text',
+        'slug' => 'ref_percent',
+        'title' => 'Вознаграждение по реферальной программе',
+    );
+
     return $fields;
 }
 

@@ -95,14 +95,14 @@ function tab_config()
 
     //Добавить новый банк
     jQuery("#add_bank").click(function(){
-        var banks = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children(".row").children();
+        var banks = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row").children();
         let new_row_style;
         if (banks.length % 3 === 0)
             new_row_style = "text-align: left";
         else
             new_row_style = "";
 
-        jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children(".row")
+        jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
             .append("<div class='col-lg-4 input-exchange input-custom-rubl' style='" + new_row_style + "'>" +
                         "<div class='row '>" +
                             "<a class='settings_close'>&times;</a>" +
@@ -114,14 +114,15 @@ function tab_config()
                             "</div>" +
                         "</div>" +
                     "</div>");
-        jQuery("#settings_form .input-exchange:last-child").mouseover(function() {
-            jQuery(this).find(".settings_close").show();
+
+        jQuery("#settings_form_banks .input-exchange:last-child").mouseover(function() {
+            jQuery(this).find(".settings_close").css('visibility', 'visible');
         });
-        jQuery("#settings_form .input-exchange:last-child").mouseout(function() {
-            jQuery(this).find(".settings_close").hide();
+        jQuery("#settings_form_banks .input-exchange:last-child").mouseout(function() {
+            jQuery(this).find(".settings_close").css('visibility', 'hidden');
         });
 
-        jQuery('#settings_form .input-exchange:last-child .settings_close').click(function(){
+        jQuery('#settings_form_banks .input-exchange:last-child .settings_close').click(function(){
             jQuery(this).parents(".input-exchange").remove();
         });
     });
