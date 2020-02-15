@@ -29,6 +29,14 @@ a.settings_close {
 	cursor: pointer;
 }
 
+a.remove_operation {
+	font-size: 40px;
+	color: red !important;
+	cursor: pointer;
+	line-height: 30px;
+	display: inline-block;
+}
+
 a:focus
 {
 	text-decoration: none;

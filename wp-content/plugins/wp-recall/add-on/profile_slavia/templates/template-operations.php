@@ -30,8 +30,10 @@
 <!--                        <div class="col-2 text-center">-->
 <!--                            ОСТАЛОСЬ-->
 <!--                        </div>-->
-                        <div class="col-4 text-center">
+                        <div class="col-3 text-center">
                             СТАТУС
+                        </div>
+                        <div class="col-1 text-center">
                         </div>
                     </div>
                 </div>
@@ -97,6 +99,32 @@
         console.log(order);
     }
 
+    function init_btn_events()
+    {
+        jQuery('.remove_operation').click(function(){
+            if (confirm("Удалить данную операцию?") == true)
+            {
+                let request_num = jQuery(this).attr('data-request_num');
+                var data = {
+                    remove_exchange: 'true',
+                    request_num: request_num
+                };
+                var el = jQuery(this);
+                jQuery.post( window.location, data, function(response) {
+                    if (response == 'true') {
+                        el.parents('.table-text').remove();
+                    }
+                });
+            }
+            else
+            {
+                return;
+            }
+        });
+    }
+
+    init_btn_events();
+
     jQuery('input.datepicker').change(function(){
         let el = jQuery(this);
         let search = {
@@ -112,5 +140,7 @@
     {
         output_el.children().not('.table-title').remove();
         output_el.append(response);
+        init_btn_events();
     }
+
 </script>

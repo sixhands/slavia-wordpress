@@ -785,15 +785,15 @@ function rcl_tab_operations_content($master_id)
 //                                            0.9188 PZM
 //                                        </div>';
             if ($value['status'] == 'paid')
-                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает подтверждения
-                                        </div>
-                                    </div>
-                                </div>';
+                                        </div>';
+//                                    </div>
+//                                </div>';
             //Одобренная менеджером заявка
             elseif ($value['status'] == 'awaiting_payment') {
                 if ($value['input_currency'] == 'RUB')
-                    $exchange_content .= '<div class="col-4 text-center">' .
+                    $exchange_content .= '<div class="col-3 text-center">' .
                         //                                        <div class="col-12">
                         //                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
                         //                                        </div>
@@ -810,25 +810,32 @@ function rcl_tab_operations_content($master_id)
                                                 class="btn-custom-one" style="display: inline-block;">Оплатить
                                                 </a>' .
                         //                                        </div>
-                        '</div>
-                                        </div>
-                                    </div>';
+                        '</div>';
+//                                        </div>
+//                                    </div>';
                 else
-                    $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает подтверждения
-                                        </div>
-                                    </div>
-                                </div>';
+                                        </div>';
+//                                    </div>
+//                                </div>';
             }
 
             elseif ($value['status'] == 'completed')
-                $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
+                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: green">
                                        Завершена
-                                        </div>
-                                    </div>
-                                </div>';
-            else
-                $exchange_content .= '</div></div>';
+                                        </div>';
+//                                    </div>
+//                                </div>';
+//            else
+//                $exchange_content .= '</div></div>';
+
+            //Кнопка удаления
+            $exchange_content .= '<div class="col-1 text-left">
+                                       <a class="remove_operation" data-request_num="'.$key.'">&times;</a>
+                                  </div>
+                                </div>
+                            </div>';
         }
         $profile_args += array("exchange_content" => $exchange_content);
 
@@ -2030,6 +2037,25 @@ function rcl_edit_profile(){
 
         } //if request_user_id
 
+        elseif (isset($_POST['remove_exchange']) && $_POST['remove_exchange'] == 'true') {
+            $exchange_requests = rcl_get_option('exchange_requests');
+
+            if (isset($exchange_requests) && !empty($exchange_requests)) {
+                if (isset($_POST['request_num'])) {
+
+                    $request_num = $_POST['request_num'];
+                    unset($exchange_requests[$user_ID][$request_num]);
+
+                    rcl_update_option('exchange_requests', $exchange_requests);
+                    echo 'true';
+                }
+                else
+                    echo 'false';
+
+                exit;
+            }
+        }
+
         elseif (isset($_POST['search']) && !empty($_POST['search']))
         {
             $search_data = $_POST['search'];
@@ -2439,14 +2465,14 @@ function filter_data($filter_type, $datatype, $filter_val)
 //                                            0.9188 PZM
 //                                        </div>';
                     if ($value['status'] == 'paid')
-                        $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: #EF701B">
+                        $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает проверки
-                                        </div>
-                                    </div>
-                                </div>';
+                                        </div>';
+//                                    </div>
+//                                </div>';
                     //Одобренная менеджером заявка
                     elseif ($value['status'] == 'awaiting_payment' && $value['input_currency'] == 'RUB')
-                        $exchange_content .= '<div class="col-4 text-center">' .
+                        $exchange_content .= '<div class="col-3 text-center">' .
 //                                        <div class="col-12">
 //                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
 //                                        </div>
@@ -2463,18 +2489,25 @@ function filter_data($filter_type, $datatype, $filter_val)
                                             class="btn-custom-one" style="display: inline-block;">Оплатить
                                             </a>' .
 //                                        </div>
-                            '</div>
-                                    </div>
-                                </div>';
+                            '</div>';
+//                                    </div>
+//                                </div>';
 
                     elseif ($value['status'] == 'completed')
-                        $exchange_content .= '<div class="col-4 text-center" style="font-size: 15px; color: green">
+                        $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: green">
                                        Завершена
+                                        </div>';
+//                                    </div>
+//                                </div>';
+//                    else
+//                        $exchange_content .= '</div></div>';
+
+                    //Кнопка удаления
+                    $exchange_content .= '<div class="col-1 text-left">
+                                            <a class="remove_operation" data-request_num="'.$key.'">&times;</a>
                                         </div>
                                     </div>
-                                </div>';
-                    else
-                        $exchange_content .= '</div></div>';
+                            </div>';
                 }
             }
             return $exchange_content;
