@@ -357,7 +357,6 @@ class WP_User_Query {
 		if ( isset( $qv['role__in'] ) ) {
 			$role__in = (array) $qv['role__in'];
 		}
-
 		$role__not_in = array();
 		if ( isset( $qv['role__not_in'] ) ) {
 			$role__not_in = (array) $qv['role__not_in'];

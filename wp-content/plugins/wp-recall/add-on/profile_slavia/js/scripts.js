@@ -68,23 +68,23 @@ function search_ajax(el, search_data, callback, output_el)
         callback(response, output_el)
     });
 }
-function get_users()
-{
-    let data = {
-        get_users: 'true'
-    };
-    jQuery.post( window.location, data, function(response) {
-        console.log(response);
-        if (response) {
-            let users = JSON.parse(response);
-            for (var key in users)
-            {
-                console.log(users[key]);
-            }
-            window.users = users;
-        }
-    });
-}
+// function get_users()
+// {
+//     let data = {
+//         get_users: 'true'
+//     };
+//     jQuery.post( window.location, data, function(response) {
+//         console.log(response);
+//         if (response) {
+//             let users = JSON.parse(response);
+//             for (var key in users)
+//             {
+//                 console.log(users[key]);
+//             }
+//             window.users = users;
+//         }
+//     });
+// }
 
 jQuery(document).ready(function(){
     tab_config();
@@ -153,7 +153,8 @@ function tab_config()
             new_row_style = "text-align: left";
         else
             new_row_style = "";
-
+        jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
+             .append(jQuery('#user_dropdown_template').find('select')[0].outerHTML);
         // jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
         //     .append("<div class='col-lg-4 input-exchange input-custom-rubl' style='" + new_row_style + "'>" +
         //         "<div class='row '>" +
@@ -166,8 +167,6 @@ function tab_config()
         //         "</div>" +
         //         "</div>" +
         //         "</div>");
-
-        get_users();
 
         jQuery("#settings_form_ref .input-exchange:last-child").mouseover(function() {
             jQuery(this).find(".settings_close").css('visibility', 'visible');

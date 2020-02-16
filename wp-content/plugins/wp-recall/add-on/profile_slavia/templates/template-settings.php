@@ -44,8 +44,8 @@
             <div class="col-12">
                 <form class="row" name="settings_ref" id="settings_form_ref" action="" method="post"  enctype="multipart/form-data">
 
-                    <?php if (isset($ref_amount) && !empty($ref_amount)): echo $ref_amount;
-                          else: ?>
+                    <?php //if (isset($ref_amount) && !empty($ref_amount)): echo $ref_amount;
+                         // else: ?>
 <!---->
 <!--                    <div class="col-lg-4 input-exchange input-custom-procent">-->
 <!--                        <div class="row">-->
@@ -59,13 +59,14 @@
                               <a class="settings_close">&times;</a>
                               <div class="select-exchange w-100">
                                   <span class="select-exchange">Пользователь</span>
-                                  <select value="" type="text" name="user1[name]" style="background: #fff">
+                                 <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm') )); ?>
+<!--                                  <select value="" type="text" name="user1[name]" style="background: #fff">-->
                                   <input class="bank_value" value="0.5" type="text" name="bank1[value]">
                               </div>
                           </div>
                       </div>
 
-                    <?php endif; ?>
+                    <?php //endif; ?>
 
 <!--                    <div class="col-lg-3 text-center" style="padding-top: 8%; margin-left: 8%;">-->
 <!--                        <div class="row">-->
@@ -93,4 +94,7 @@
 
         </div>
     </div>
+</div>
+<div id="user_dropdown_template" style="display: none">
+    <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm') )); ?>
 </div>
