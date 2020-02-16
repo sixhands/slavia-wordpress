@@ -68,6 +68,23 @@ function search_ajax(el, search_data, callback, output_el)
         callback(response, output_el)
     });
 }
+function get_users()
+{
+    let data = {
+        get_users: 'true'
+    };
+    jQuery.post( window.location, data, function(response) {
+        console.log(response);
+        if (response) {
+            let users = JSON.parse(response);
+            for (var key in users)
+            {
+                console.log(users[key]);
+            }
+            window.users = users;
+        }
+    });
+}
 
 jQuery(document).ready(function(){
     tab_config();
@@ -123,6 +140,43 @@ function tab_config()
         });
 
         jQuery('#settings_form_banks .input-exchange:last-child .settings_close').click(function(){
+            jQuery(this).parents(".input-exchange").remove();
+        });
+    });
+
+    //Добавить процент по рефералке для нового пользователя
+    //Добавить новый банк
+    jQuery("#add_ref_user").click(function(){
+        var users = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row").children();
+        let new_row_style;
+        if (users.length % 3 === 0)
+            new_row_style = "text-align: left";
+        else
+            new_row_style = "";
+
+        // jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
+        //     .append("<div class='col-lg-4 input-exchange input-custom-rubl' style='" + new_row_style + "'>" +
+        //         "<div class='row '>" +
+        //         "<a class='settings_close'>&times;</a>" +
+        //         //"<span class='select-exchange'>Название банка " + (banks.length + 1) + "</span>" +
+        //         //"<input type='hidden' name='bank" + (banks.length + 1) + "[name]' value=''>" +
+        //         "<div class='select-exchange w-100'>" +
+        //         "<input value='Название банка " + (banks.length + 1) + "' type='text' name='bank" + (banks.length + 1) + "[name]' style='background: #fff'>" +
+        //         "<input value='0.25' type='text' name='bank" + (banks.length + 1) + "[value]'>" +
+        //         "</div>" +
+        //         "</div>" +
+        //         "</div>");
+
+        get_users();
+
+        jQuery("#settings_form_ref .input-exchange:last-child").mouseover(function() {
+            jQuery(this).find(".settings_close").css('visibility', 'visible');
+        });
+        jQuery("#settings_form_ref .input-exchange:last-child").mouseout(function() {
+            jQuery(this).find(".settings_close").css('visibility', 'hidden');
+        });
+
+        jQuery('#settings_form_ref .input-exchange:last-child .settings_close').click(function(){
             jQuery(this).parents(".input-exchange").remove();
         });
     });

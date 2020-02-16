@@ -46,25 +46,49 @@
 
                     <?php if (isset($ref_amount) && !empty($ref_amount)): echo $ref_amount;
                           else: ?>
+<!---->
+<!--                    <div class="col-lg-4 input-exchange input-custom-procent">-->
+<!--                        <div class="row">-->
+<!--                            <span>За каждого реферала</span>-->
+<!--                            <input value="0.5" type="text" name="ref_amount">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-4 input-exchange input-custom-procent">
-                        <div class="row">
-                            <span>За каждого реферала</span>
-                            <input value="0.5" type="text" name="ref_amount">
-                        </div>
-                    </div>
+                      <div class="col-lg-4 input-exchange input-custom-procent">
+                          <div class="row">
+                              <a class="settings_close">&times;</a>
+                              <div class="select-exchange w-100">
+                                  <span class="select-exchange">Пользователь</span>
+                                  <select value="" type="text" name="user1[name]" style="background: #fff">
+                                  <input class="bank_value" value="0.5" type="text" name="bank1[value]">
+                              </div>
+                          </div>
+                      </div>
 
                     <?php endif; ?>
 
-                    <div class="col-lg-3 text-center" style="padding-top: 8%; margin-left: 8%;">
-                        <div class="row">
-                            <input form="settings_form_ref" type="submit" class="btn-custom-one" value="Сохранить" name="submit_settings_ref" />
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-3 text-center" style="padding-top: 8%; margin-left: 8%;">-->
+<!--                        <div class="row">-->
+<!--                            <input form="settings_form_ref" type="submit" class="btn-custom-one" value="Сохранить" name="submit_settings_ref" />-->
+<!--                        </div>-->
+<!--                    </div>-->
 
 
                 </form>
-            </div> <br>
+            </div>
+            <br>
+            <div class="col-lg-8 text-center">
+                <div class="row">
+                    <div class="col-6">
+                        <div id="add_ref_user" class="btn-custom-one" style="width: 100%">
+                            <span>Добавить пользователя</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input style="width: 100%" form="settings_form_ref" type="submit" class="btn-custom-one" value="Сохранить" name="submit_settings_ref" />
+                    </div>
+                </div>
+            </div>
 
 
         </div>

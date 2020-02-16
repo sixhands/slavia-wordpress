@@ -2068,6 +2068,32 @@ function rcl_edit_profile(){
             }
         }
 
+        elseif (isset($_POST['get_users']) && $_POST['get_users'] == 'true')
+        {
+            $users = get_users( array( 'role__not_in' => array('director', 'administrator') ) );
+
+            if (!empty($users))
+            {
+                $response = array();
+                foreach ($users as $user) {
+                    $user_verification = get_user_meta($user->ID, 'verification', true);
+
+                    if (isset($user_verification) && !empty($user_verification)) {
+                        $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+                    }
+                    else
+                        $user_full_name = $user->display_name;
+
+                    $response += array($user->ID => $user_full_name);
+                }
+
+                echo json_encode($response, JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            else
+                echo 'false';
+        }
+
         elseif (isset($_POST['search']) && !empty($_POST['search']))
         {
             $search_data = $_POST['search'];
