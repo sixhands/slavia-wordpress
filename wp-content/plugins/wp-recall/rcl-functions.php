@@ -815,6 +815,8 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 
 	add_filter( 'wp_mail_content_type', function() {return "text/html";}/*, create_function( '', 'return "text/html";' )*/ );
 	$headers = 'From: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
+	$headers .= 'Reply-To: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
+	$headers .= 'Return-Path: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
 
 	$text .= '<p><small>-----------------------------------------------------<br/>
     ' . __( 'This letter was created automatically, no need to answer it.', 'wp-recall' ) . '<br/>

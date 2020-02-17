@@ -406,6 +406,11 @@ function rcl_tab_template_content()
 
         $field_name = $slug;//$CF->get_slug($field);
         $field_value = null;
+        if ($field_name == 'user_ref_link' && (empty($value) || $value == false))
+        {
+            $value = base64_encode($user_ID);
+            update_user_meta($user_ID, 'user_ref_link', $value);
+        }
         if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' && $field_name != 'user_documents' && $field_name != 'refs') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
@@ -1736,9 +1741,11 @@ function rcl_edit_profile(){
                         //Если статистики для данного пользователя еще нет (1-я сделка) и есть пригласивший
                         if (isset($stat_exists) && $stat_exists == false && !empty($ref_host))
                         {
-                            $ref_host_name = get_user_meta($ref_host, 'display_name', true);
-                            $current_user_name = get_user_meta($userid, 'display_name', true);
-                            $ref_amount = rcl_get_option('ref_amount');
+                            $ref_host_name = get_userdata($ref_host);
+                            $ref_host_name = $ref_host_name->display_name;
+                            $current_user_name = get_userdata($userid);
+                            $current_user_name = $current_user_name->display_name;
+                            $ref_amount = get_user_meta($ref_host, 'ref_percent', true);//rcl_get_option('ref_amount');
                             if (!isset($ref_amount) || empty($ref_amount))
                                 $ref_amount = 0;
                             $award = $exchange_requests[$userid][$request_num]['input_sum'] * $ref_amount;
