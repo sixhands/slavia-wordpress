@@ -68,6 +68,58 @@ function search_ajax(el, search_data, callback, output_el)
         callback(response, output_el)
     });
 }
+function remove_ref_user(element)
+{
+    var parent = element.parents('.select-exchange');
+    var el = element.parents(".input-exchange");
+    var nextSiblings = el.nextAll();
+    //Разрешаем во всех последующих select выбор опции из удаляемого select
+    var allow_value = el.find('select').val();
+    var allow_option = el.find('select').find('option').filter(function(){return this.value==allow_value});
+    if (nextSiblings.length > 0)
+    {
+        //при удалении пользователя смещаем все индексы на 1 влево
+        jQuery.each(nextSiblings, function(){
+            var item = jQuery(this);
+            let select = item.find('select');
+            let input = item.find('input.ref_value');
+
+            //Получаем индекс данного элемента
+            let split_id = select.attr('id').split("_");
+            let ref_index = split_id[split_id.length - 1];
+
+            split_id[split_id.length - 1] = ref_index - 1;
+            let new_id = split_id.join('_');
+
+            select.attr('id', new_id);
+
+            var select_name = select.attr('name');
+            var arr = select_name.split('');
+            var removed = arr.splice(
+                select_name.indexOf('[') + 1,
+                select_name.indexOf(']') - select_name.indexOf('[') - 1,
+                ref_index - 1); // arr is modified
+            select_name = arr.join('');
+
+            select.attr('name', select_name);
+
+            var input_name = input.attr('name');
+            arr = input_name.split('');
+            removed = arr.splice(
+                input_name.indexOf('[') + 1,
+                input_name.indexOf(']') - input_name.indexOf('[') - 1,
+                ref_index - 1); // arr is modified
+            input_name = arr.join('');
+
+            input.attr('name', input_name);
+
+            //Добавляем в каждый из последующих select выбранную опцию из удаляемого select
+            select.append('<option value="' + allow_value + '">' + allow_option.text() + '</option>');
+
+        });
+    }
+    el.remove();
+}
 // function get_users()
 // {
 //     let data = {
@@ -153,11 +205,25 @@ function tab_config()
         // else
         //     new_row_style = "";
         var user_dropdown = jQuery('#user_dropdown_template').find('select');
+        var user_dropdown_innerHTML = jQuery('#user_dropdown_template')[0].innerHTML;
+
         var ref_count = jQuery('#settings_form_ref').children().length;
         var user_dropdown_name = 'ref_user[' + ref_count + '][id]';
         var input_name = 'ref_user[' + ref_count + '][value]';
-        user_dropdown.attr('name', user_dropdown_name);
-        user_dropdown.attr('id', 'ref_user_' + ref_count);
+        //user_dropdown.attr('name', user_dropdown_name);
+        //user_dropdown.attr('id', 'ref_user_' + ref_count);
+
+        //Назначаем всех разрешенных для добавления пользователей
+        var dropdown_banned_users = jQuery(user_dropdown_innerHTML);
+        jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row").children().each(function(index, el){
+            let banned_value = jQuery(el).find('select').val();
+            dropdown_banned_users.find('option').filter(function(){return this.value==banned_value}).remove();
+            //dropdown_banned_users.find('option[value="' + banned_value + '"]').remove();
+        });
+
+        dropdown_banned_users.attr('id', 'ref_user_' + ref_count);
+        dropdown_banned_users.attr('name', user_dropdown_name);
+
 
         jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
              .append("<div class='col-lg-4 input-exchange input-custom-procent'>" +
@@ -171,7 +237,7 @@ function tab_config()
                                         "<a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>" +
                                     "</div>" +
                                 "</div>" +
-                                user_dropdown[0].outerHTML +
+                                dropdown_banned_users[0].outerHTML + //user_dropdown[0].outerHTML +
                                 "<input class='ref_value' value='0.5' type='text' name='" + input_name + "'>" +
                             "</div>" +
                         "</div>" +
@@ -185,50 +251,7 @@ function tab_config()
         });
 
         jQuery('#settings_form_ref .input-exchange:last-child .settings_close').click(function(){
-            var parent = jQuery(this).parents('.select-exchange');
-            var el = jQuery(this).parents(".input-exchange");
-            var nextSiblings = el.nextAll();
-            if (nextSiblings.length > 0)
-            {
-                //при удалении пользователя смещаем все индексы на 1 влево
-                jQuery.each(nextSiblings, function(){
-                    var item = jQuery(this);
-                    let select = item.find('select');
-                    let input = item.find('input.ref_value');
-
-                    //Получаем индекс данного элемента
-                    let split_id = select.attr('id').split("_");
-                    let ref_index = split_id[split_id.length - 1];
-
-                    split_id[split_id.length - 1] = ref_index - 1;
-                    let new_id = split_id.join('_');
-
-                    select.attr('id', new_id);
-
-                    var select_name = select.attr('name');
-                    var arr = select_name.split('');
-                    var removed = arr.splice(
-                        select_name.indexOf('[') + 1,
-                        select_name.indexOf(']') - select_name.indexOf('[') - 1,
-                        ref_index - 1); // arr is modified
-                    select_name = arr.join('');
-
-                    select.attr('name', select_name);
-
-                    var input_name = input.attr('name');
-                    arr = input_name.split('');
-                    removed = arr.splice(
-                        input_name.indexOf('[') + 1,
-                        input_name.indexOf(']') - input_name.indexOf('[') - 1,
-                        ref_index - 1); // arr is modified
-                    input_name = arr.join('');
-
-                    input.attr('name', input_name);
-
-
-                });
-            }
-            el.remove();
+            remove_ref_user(jQuery(this));
         });
     });
 
@@ -241,8 +264,12 @@ function tab_config()
         jQuery(this).find(".settings_close").css('visibility', 'hidden');
     });
 
-    jQuery('.settings_close').click(function(){
+    jQuery('#settings_form_banks .settings_close').click(function(){
         jQuery(this).parents(".input-exchange").remove();
+    });
+
+    jQuery('#settings_form_ref .settings_close').click(function(){
+        remove_ref_user(jQuery(this));
     });
 
     //exchange
