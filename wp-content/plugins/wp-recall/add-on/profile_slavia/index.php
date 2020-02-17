@@ -1148,18 +1148,50 @@ function rcl_tab_settings_content($master_id)
         $profile_args += array("banks" => $bank_content);
     }
 
-    $ref_amount = rcl_get_option('ref_amount');
+    //$ref_amount = rcl_get_option('ref_amount');
+    $all_users = get_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'fields' => array( 'ID', 'display_name' ) ) );
+
     $ref_content = '';
 
-    if (isset($ref_amount) && !empty($ref_amount))
+    if (isset($all_users) && !empty($all_users))
     {
-        $ref_content .= '<div class="col-lg-4 input-exchange input-custom-procent">' .
-                        '<div class="row">' .
-                            '<span>За каждого реферала</span>' .
-                            '<input value="' . $ref_amount . '" type="text" name="ref_amount">' .
-                        '</div>' .
-                    '</div>';
-        $profile_args += array('ref_amount' => $ref_content);
+        $index = 0;
+        foreach ($all_users as $user)
+        {
+            $ref_percent = get_user_meta($user->ID, 'ref_percent', true);
+
+            if (isset($ref_percent) && !empty($ref_percent))
+            {
+                $ref_content .= "<div class='col-lg-4 input-exchange input-custom-procent'>
+                                    <div class='row' style='height: 100%; padding-top: 30px'>
+                                        <div class='select-exchange w-100'>
+                                            <div class='row'>
+                                                <div class='col-8'>
+                                                    <span class='select-exchange' style='display: inline-block'>Пользователь</span>
+                                                </div>
+                                                <div class='col-4'>
+                                                    <a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>
+                                                </div>
+                                            </div>
+                                            <select name='ref_user[".$index."][id]' id='ref_user_".$index."' class='user_dropdown'>
+	                                            <option value='". $user->ID ."'>". $user->display_name . "</option>
+	                                        </select>
+                                            <input class='ref_value' value='". $ref_percent . "' type='text' name='ref_user[". $index . "][value]'>
+                                        </div>
+                                    </div>
+                                </div>";
+
+                ++$index;
+            }
+        }
+//        $ref_content .= '<div class="col-lg-4 input-exchange input-custom-procent">' .
+//                        '<div class="row">' .
+//                            '<span>За каждого реферала</span>' .
+//                            '<input value="' . $ref_amount . '" type="text" name="ref_amount">' .
+//                        '</div>' .
+//                    '</div>';
+
+        $profile_args += array('ref_content' => $ref_content);
     }
 
     $content = rcl_get_include_template('template-settings.php', __FILE__, $profile_args);
@@ -1363,12 +1395,44 @@ function rcl_edit_profile(){
 //                    continue;
 //            }
 //            rcl_update_option('ref_amount', $ref_amount);
+//            if (!empty($_POST['ref_user']))
+//            {
+            $all_users = get_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'fields' => array( 'ID' ) ) );
 
-            var_dump($_POST);
+            foreach ($all_users as $user)
+            {
+                $user_found = false;
+                $ref_percent = get_user_meta($user->ID, 'ref_percent', true);
 
-//            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
-//
-//            wp_redirect($redirect_url);
+                foreach ($_POST['ref_user'] as $index => $userdata)
+                {
+                    if ($user->ID == $userdata['id'])
+                    {
+                        $user_found = true;
+                        $profileFields = rcl_get_profile_fields(array('user_id' => $userdata['id']));
+                        foreach ($profileFields as $field)
+                            if ($field['slug'] == 'ref_percent') {
+                                if (isset($field['value']))
+                                    $field['value'] = $userdata['value'];
+                                else
+                                    $field += array('value' => $userdata['value']);
+
+                                rcl_update_profile_fields($userdata['id'], array($field));
+                                break;
+                            }
+                    }
+                } //foreach POST['ref_user']
+                //Если пользователя нету в POST, то зануляем у него реферальный процент
+                if (!$user_found && !empty($ref_percent))
+                    update_user_meta($user->ID, 'ref_percent', '');
+
+            }
+            //}
+            //var_dump($_POST);
+
+            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
+
+            wp_redirect($redirect_url);
 
             exit;
         }
@@ -2195,7 +2259,8 @@ function rcl_add_office_profile_fields($fields){
 
     $profileFields = array();
 
-    if(isset($userdata) && $userdata->user_level >= rcl_get_option('consol_access_rcl',7)){
+    if(isset($userdata) && !empty($userdata) &&
+        isset($userdata->user_level) && $userdata->user_level >= rcl_get_option('consol_access_rcl',7)){
         $profileFields[] = array(
             'slug' => 'show_admin_bar_front',
             'title' => __('Admin toolbar','wp-recall'),

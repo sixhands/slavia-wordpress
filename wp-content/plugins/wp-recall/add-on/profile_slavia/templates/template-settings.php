@@ -44,8 +44,8 @@
             <div class="col-12">
                 <form class="row" name="settings_ref" id="settings_form_ref" action="" method="post"  enctype="multipart/form-data">
 
-                    <?php //if (isset($ref_amount) && !empty($ref_amount)): echo $ref_amount;
-                         // else: ?>
+                    <?php if (isset($ref_content) && !empty($ref_content)): echo $ref_content;
+                          else: ?>
 <!---->
 <!--                    <div class="col-lg-4 input-exchange input-custom-procent">-->
 <!--                        <div class="row">-->
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    <?php //endif; ?>
+                    <?php endif; ?>
 
 <!--                    <div class="col-lg-3 text-center" style="padding-top: 8%; margin-left: 8%;">-->
 <!--                        <div class="row">-->
