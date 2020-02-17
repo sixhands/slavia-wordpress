@@ -1352,21 +1352,23 @@ function rcl_edit_profile(){
 
             exit;
         }
-        elseif (strpos(array_key_first($_POST), 'ref_amount') !== false)
+        elseif (strpos(array_key_first($_POST), 'ref_user') !== false)
         {
-            $ref_amount = 0;
-            foreach ($_POST as $key => $value)
-            {
-                if (strpos($key, 'ref_amount') !== false)
-                    $ref_amount = $value;
-                else
-                    continue;
-            }
-            rcl_update_option('ref_amount', $ref_amount);
+//            $ref_amount = 0;
+//            foreach ($_POST as $key => $value)
+//            {
+//                if (strpos($key, 'ref_amount') !== false)
+//                    $ref_amount = $value;
+//                else
+//                    continue;
+//            }
+//            rcl_update_option('ref_amount', $ref_amount);
 
-            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
+            var_dump($_POST);
 
-            wp_redirect($redirect_url);
+//            $redirect_url = rcl_get_tab_permalink($user_ID, 'settings') . '&updated=true';
+//
+//            wp_redirect($redirect_url);
 
             exit;
         }

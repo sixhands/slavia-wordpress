@@ -145,28 +145,37 @@ function tab_config()
     });
 
     //Добавить процент по рефералке для нового пользователя
-    //Добавить новый банк
     jQuery("#add_ref_user").click(function(){
         var users = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row").children();
-        let new_row_style;
-        if (users.length % 3 === 0)
-            new_row_style = "text-align: left";
-        else
-            new_row_style = "";
+        // let new_row_style;
+        // if (users.length % 3 === 0)
+        //     new_row_style = "text-align: left";
+        // else
+        //     new_row_style = "";
+        var user_dropdown = jQuery('#user_dropdown_template').find('select');
+        var ref_count = jQuery('#settings_form_ref').children().length;
+        var user_dropdown_name = 'ref_user[' + ref_count + '][id]';
+        var input_name = 'ref_user[' + ref_count + '][value]';
+        user_dropdown.attr('name', user_dropdown_name);
+        user_dropdown.attr('id', 'ref_user_' + ref_count);
+
         jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
-             .append(jQuery('#user_dropdown_template').find('select')[0].outerHTML);
-        // jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row")
-        //     .append("<div class='col-lg-4 input-exchange input-custom-rubl' style='" + new_row_style + "'>" +
-        //         "<div class='row '>" +
-        //         "<a class='settings_close'>&times;</a>" +
-        //         //"<span class='select-exchange'>Название банка " + (banks.length + 1) + "</span>" +
-        //         //"<input type='hidden' name='bank" + (banks.length + 1) + "[name]' value=''>" +
-        //         "<div class='select-exchange w-100'>" +
-        //         "<input value='Название банка " + (banks.length + 1) + "' type='text' name='bank" + (banks.length + 1) + "[name]' style='background: #fff'>" +
-        //         "<input value='0.25' type='text' name='bank" + (banks.length + 1) + "[value]'>" +
-        //         "</div>" +
-        //         "</div>" +
-        //         "</div>");
+             .append("<div class='col-lg-4 input-exchange input-custom-procent'>" +
+                        "<div class='row' style='height: 100%; padding-top: 30px'>" +
+                            "<div class='select-exchange w-100'>" +
+                                "<div class='row'>" +
+                                    "<div class='col-8'>" +
+                                        "<span class='select-exchange' style='display: inline-block'>Пользователь</span>" +
+                                    "</div>" +
+                                    "<div class='col-4'>" +
+                                        "<a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>" +
+                                    "</div>" +
+                                "</div>" +
+                                user_dropdown[0].outerHTML +
+                                "<input class='ref_value' value='0.5' type='text' name='" + input_name + "'>" +
+                            "</div>" +
+                        "</div>" +
+                      "</div>");   //jQuery('#user_dropdown_template').find('select')[0].outerHTML);
 
         jQuery("#settings_form_ref .input-exchange:last-child").mouseover(function() {
             jQuery(this).find(".settings_close").css('visibility', 'visible');
@@ -176,7 +185,50 @@ function tab_config()
         });
 
         jQuery('#settings_form_ref .input-exchange:last-child .settings_close').click(function(){
-            jQuery(this).parents(".input-exchange").remove();
+            var parent = jQuery(this).parents('.select-exchange');
+            var el = jQuery(this).parents(".input-exchange");
+            var nextSiblings = el.nextAll();
+            if (nextSiblings.length > 0)
+            {
+                //при удалении пользователя смещаем все индексы на 1 влево
+                jQuery.each(nextSiblings, function(){
+                    var item = jQuery(this);
+                    let select = item.find('select');
+                    let input = item.find('input.ref_value');
+
+                    //Получаем индекс данного элемента
+                    let split_id = select.attr('id').split("_");
+                    let ref_index = split_id[split_id.length - 1];
+
+                    split_id[split_id.length - 1] = ref_index - 1;
+                    let new_id = split_id.join('_');
+
+                    select.attr('id', new_id);
+
+                    var select_name = select.attr('name');
+                    var arr = select_name.split('');
+                    var removed = arr.splice(
+                        select_name.indexOf('[') + 1,
+                        select_name.indexOf(']') - select_name.indexOf('[') - 1,
+                        ref_index - 1); // arr is modified
+                    select_name = arr.join('');
+
+                    select.attr('name', select_name);
+
+                    var input_name = input.attr('name');
+                    arr = input_name.split('');
+                    removed = arr.splice(
+                        input_name.indexOf('[') + 1,
+                        input_name.indexOf(']') - input_name.indexOf('[') - 1,
+                        ref_index - 1); // arr is modified
+                    input_name = arr.join('');
+
+                    input.attr('name', input_name);
+
+
+                });
+            }
+            el.remove();
         });
     });
 
@@ -280,7 +332,7 @@ function tab_config()
     //Где блокировать все кроме цифр
     var number_fields =
         [ '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', //Поля страницы обмена
-        '.bank_value', 'input[name="ref_amount"]', //Поля страницы настроек
+        '.bank_value', '.ref_value', //Поля страницы настроек
         '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
         ];
 
