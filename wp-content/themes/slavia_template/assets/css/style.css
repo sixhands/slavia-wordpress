@@ -694,7 +694,7 @@ a:hover
 	/*background: url(/wp-content/uploads/2019/12/custom-copy.png) no-repeat 99% 50% !important;*/
 	/*background-color: Transparent;*/
 	/*border: none;*/
-	margin-left: -24px;
+	margin-left: -24px !important;
 	/*margin-top: 11px;*/
 	cursor:pointer;
 	overflow: hidden;
@@ -843,6 +843,9 @@ a:hover
 		/*	margin-left: -0 !important;*/
 		/*	margin-right: 25px;*/
 		/*}*/
+		#your-profile input, #prizm_address, #prizm_public_key, #waves_address {
+			width: 80%;
+		}
 		.container div.desctop-menu {
 			display: none;
 		}

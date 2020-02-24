@@ -1509,7 +1509,7 @@ function rcl_edit_profile(){
                     {
                         $filetype	 = wp_check_filetype_and_ext( $_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i] );
 
-                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP'))) {
+                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP', 'jpg', 'JPG'))) {
                             wp_die(__('Prohibited file type!', 'wp-recall'));
                             exit;
                         }

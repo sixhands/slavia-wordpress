@@ -418,4 +418,5 @@
         output_el.children().not('.table-title').remove();
         output_el.append(response);
     }
+
 </script>
