@@ -45,7 +45,7 @@
                     <?php
                     wp_nav_menu( array(
                         'theme_location' => 'footer-menu',
-                        'menu_class'        => 'desctop-menu text-right d-none d-lg-block',
+                        'menu_class'        => 'desctop-menu text-right d-lg-block',
                     ) );
                     ?>
             <!--		<div class="site-info">-->

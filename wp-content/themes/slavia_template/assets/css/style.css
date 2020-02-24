@@ -839,6 +839,10 @@ a:hover
 	}
 	@media screen and (max-width: 500px)
 	{
+		/*.copy-btn {*/
+		/*	margin-left: -0 !important;*/
+		/*	margin-right: 25px;*/
+		/*}*/
 		.container div.desctop-menu {
 			display: none;
 		}
