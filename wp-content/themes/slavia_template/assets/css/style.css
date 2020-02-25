@@ -607,6 +607,13 @@ a:hover
 	border-right: none !important;
 	background: #ffff url(/wp-content/uploads/2019/12/prizm.png) no-repeat 100% 50%;
 }
+.input-custom-ruble input
+{
+	border-right: none !important;
+	background: #ffff url(/wp-content/uploads/2020/02/ruble2.png) no-repeat 103% 55%;
+	background-size: 80px 43px;
+
+}
 .input-custom-waws input
 {
 	border-right: none !important;
