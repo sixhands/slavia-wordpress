@@ -20,7 +20,7 @@ $slav_text = get_field('slav_text', 306); ?>
                         <div class="row input-exchange" style="margin-top: 0px">
                             <span>Количество монет SLAV</span>
                             <input type="hidden" value="SLAV" name="exchange[input_currency]">
-                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                            <input required placeholder="0" type="text" class="" name="exchange[input_sum]">
                         </div>
 
                         <div class="row">
@@ -252,14 +252,14 @@ $slav_text = get_field('slav_text', 306); ?>
                     <div class="col-lg-3 input-exchange">
                         <div class="row">
                             <span>Количество монет SLAV</span>
-                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                            <input required placeholder="0" type="text" class="waves_to_rubles" name="exchange[input_sum]">
                         </div>
                     </div>
                     <div class="col-lg-6 input-exchange ">
                         <div class="row ">
                             <span class="select-exchange">Выбрать банк</span>
                             <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="prizm_to_rubles" name="exchange[bank]">
+                                <select required id="bank_list_desktop" class="waves_to_rubles" name="exchange[bank]">
                                     <!--                                    <option>Название выбранного банка</option>-->
                                     <?php if (isset($banks) && !empty($banks)): ?>
                                         <?php foreach ($banks as $key => $value): ?>
@@ -330,7 +330,7 @@ $slav_text = get_field('slav_text', 306); ?>
 
                                     <input type="hidden" value="SLAV" name="exchange[input_currency]">
 
-                                    <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                                    <input required placeholder="0" type="text" class="" name="exchange[input_sum]">
                                 </div>
 
                                 <div class="row">
@@ -527,7 +527,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                     <input type="hidden" value="RUB" name="exchange[output_currency]">
 
                                     <div class="select-exchange w-100">
-                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
+                                        <input required class="prizm_to_rubles" placeholder="0" type="text" name="exchange[input_sum]">
                                     </div>
                                 </div>
                             </div>
@@ -536,7 +536,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
+                                        <select required id="bank_list_mobile" class="prizm_to_rubles" name="exchange[bank]">
                                             <!--                                            <option>Название выбранного банка</option>-->
                                             <?php if (isset($banks) && !empty($banks)): ?>
                                                 <?php foreach ($banks as $key => $value): ?>
@@ -606,7 +606,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                     <input type="hidden" value="RUB" name="exchange[output_currency]">
 
                                     <div class="select-exchange w-100">
-                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
+                                        <input required class="waves_to_rubles" placeholder="0" type="text" name="exchange[input_sum]">
                                     </div>
                                 </div>
                             </div>
@@ -615,7 +615,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
+                                        <select required id="bank_list_mobile" class="waves_to_rubles" name="exchange[bank]">
                                             <!--                                            <option>Название выбранного банка</option>-->
                                             <?php if (isset($banks) && !empty($banks)): ?>
                                                 <?php foreach ($banks as $key => $value): ?>
@@ -720,6 +720,18 @@ $slav_text = get_field('slav_text', 306); ?>
                     output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
             }
 
+            if (el.hasClass("waves_to_rubles") || el.parents(".input-exchange").siblings().find(".waves_to_rubles").length > 0) {
+                is_commission = true;
+                //Если ввели количество рублей
+                if (el.attr("id") === "exp")
+                {
+                    is_reverse = true;
+                    output_el = el.parents(".input-exchange").siblings().find(".waves_to_rubles");
+                }
+                else
+                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+            }
+
             //Если рубли в призму, то считаем наоборот и без комиссии
             if (el.hasClass("rubles_to_prizm") || el.parents(".input-exchange").siblings().find(".rubles_to_prizm").length > 0) {
                 //Рубли в призму, ввод призмы
@@ -763,14 +775,14 @@ $slav_text = get_field('slav_text', 306); ?>
             if (siblings.find(".prizm_to_rubles").length > 0 || siblings.find(".rubles_to_prizm").length > 0)
                 currency = prizm_price;
             else
-            if (siblings.find(".rubles_to_waves").length > 0)
+            if (siblings.find(".rubles_to_waves").length > 0 || siblings.find(".waves_to_rubles").length > 0)
                 currency = waves_price;
         }
         else {
             if (el.hasClass("rubles_to_prizm") || el.hasClass("prizm_to_rubles"))
                 currency = prizm_price;
             else
-            if (el.hasClass("rubles_to_waves"))
+            if (el.hasClass("rubles_to_waves") || el.hasClass("waves_to_rubles"))
                 currency = waves_price;
         }
         return currency === null ? false : currency;
@@ -790,7 +802,8 @@ $slav_text = get_field('slav_text', 306); ?>
         else
             if (input_el.attr('class') === 'prizm_to_rubles' ||
                 input_el.attr('class') === 'rubles_to_prizm' ||
-                input_el.attr('class') === 'rubles_to_waves')
+                input_el.attr('class') === 'rubles_to_waves' ||
+                input_el.attr('class') === 'waves_to_rubles')
             {
                 active_select = input_el.parents(".input-exchange").next().find('select');
             }
@@ -821,7 +834,7 @@ $slav_text = get_field('slav_text', 306); ?>
     var waves_price = <?php echo rcl_slavia_get_crypto_price('WAVES'); ?>; //Курс waves
 
     //При вводе значения
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keyup(function(event) {
+    jQuery('.prizm_to_rubles, .waves_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keyup(function(event) {
         let currency = get_currency(jQuery(this), prizm_price, waves_price);
         window.active_input_class = jQuery(this).attr('class');
         let active_bank_val = get_active_bank_val(jQuery(this), vals);
@@ -841,12 +854,12 @@ $slav_text = get_field('slav_text', 306); ?>
         var active_class;
         if (typeof window.active_input_class !== 'undefined')
             active_class = window.active_input_class;
-
         var active_currency;
        if (typeof active_class !== 'undefined' &&
            (active_class === 'prizm_to_rubles' ||
            active_class === 'rubles_to_prizm' ||
-           active_class === 'rubles_to_waves'))
+           active_class === 'rubles_to_waves' ||
+           active_class === 'waves_to_rubles'))
        {
            active_el = jQuery(this).parents(".input-exchange").prev().find("." + active_class);
            //Определяем валюту
@@ -868,7 +881,7 @@ $slav_text = get_field('slav_text', 306); ?>
                    }
                });
                var is_reverse;
-               if (active_class === 'prizm_to_rubles')
+               if (active_class === 'prizm_to_rubles' || active_class === 'waves_to_rubles')
                    is_reverse = false;
                else
                    is_reverse = true;
@@ -882,11 +895,11 @@ $slav_text = get_field('slav_text', 306); ?>
            if (active_el.val() !== '') {
                var el = jQuery(this);
 
-               var input_el = el.parents(".input-exchange").prev().find('input');
+               var input_el = el.parents(".input-exchange").prev().find('input').not('input[type="hidden"]');
                if (input_el.hasClass('prizm_to_rubles') || input_el.hasClass('rubles_to_prizm'))
                    active_currency = 'prizm';
                else
-                   if (input_el.hasClass('rubles_to_waves'))
+                   if (input_el.hasClass('rubles_to_waves') || input_el.hasClass('waves_to_rubles'))
                        active_currency = 'waves';
                //Находим активный банк
                var active_bank_val;
@@ -899,7 +912,7 @@ $slav_text = get_field('slav_text', 306); ?>
                var is_reverse;
                var output_el;
                var input_amount;
-               if (input_el.attr('class') === 'prizm_to_rubles') {
+               if (input_el.attr('class') === 'prizm_to_rubles' || input_el.attr('class') === 'waves_to_rubles') {
                    is_reverse = true;
                    //Выводим в левый input
                    output_el = input_el;
@@ -913,7 +926,8 @@ $slav_text = get_field('slav_text', 306); ?>
                    input_amount = input_el.val();
                    input_amount = parseFloat(input_amount);
                }
-               console.log(is_reverse);
+               console.log(input_el);
+
                output_el.val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
            }
        }
