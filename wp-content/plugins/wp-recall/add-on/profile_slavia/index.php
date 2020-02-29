@@ -1026,6 +1026,7 @@ function rcl_tab_requests_content($master_id)
 
     $exchange_requests = rcl_get_option('exchange_requests');
     $exchange_content = '';
+
     if (isset($exchange_requests) && !empty($exchange_requests))
     {
         foreach ($exchange_requests as $user => $requests) //Все пользователи с запросами на обмен, $user- id пользователя
@@ -1036,7 +1037,10 @@ function rcl_tab_requests_content($master_id)
             {
                 foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
                 {
-                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid') {
+                    $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
+                    $sum_to_print = empty($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
+
+                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit') {
                         $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
                                                     <div class="col-3 text-left" style="padding-left: 42px;">' .
@@ -1048,11 +1052,11 @@ function rcl_tab_requests_content($master_id)
                                                     '</div>
                                                     
                                                     <div class="col-2 text-left">' .
-                                                        $request_value['output_currency'] .
+                                                        $currency_to_print .
                                                     '</div>
                                                     
                                                     <div class="col-2 text-left">' .
-                                                        $request_value['output_sum'] .
+                                                        $sum_to_print .
                                                         '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
                                                     </div>';
                         if ($request_value['status'] == 'paid')
@@ -1066,6 +1070,15 @@ function rcl_tab_requests_content($master_id)
                                             </div>';
                         elseif ($request_value['status'] == 'awaiting_payment')
                             $exchange_content .= '<div class="col-3 text-center">
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                        elseif ($request_value['status'] == 'deposit')
+                            $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Имущественный взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
@@ -1269,7 +1282,7 @@ if (!function_exists('array_key_first')) {
     }
 }
 
-function save_exchange_request($input_currency, $output_currency, $input_sum, $output_sum, $bank = false, $card_num = false, $card_name = false)
+function save_exchange_request($input_currency, $input_sum, $output_currency = false, $output_sum = false, $bank = false, $card_num = false, $card_name = false)
 {
     global $user_ID;
     $exchange_requests = rcl_get_option('exchange_requests');
@@ -1285,7 +1298,11 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
 //    $exchange_fields += array('card_name' => $card_name);
 
     $exchange_fields += array('date' => date('d.m.y'));
-    $exchange_fields += array('status' => 'awaiting_payment');
+
+    if ($output_currency == false && $output_sum == false && $bank == false)
+        $exchange_fields += array('status' => 'deposit');
+    else
+        $exchange_fields += array('status' => 'awaiting_payment');
 
     if (isset($exchange_requests) && !empty($exchange_requests))
     {
@@ -1311,6 +1328,9 @@ function save_exchange_request($input_currency, $output_currency, $input_sum, $o
         $new_request = array(0 => $exchange_fields);
         $exchange_requests = array($user_ID => $new_request);
     }
+
+//    $log = new Rcl_Log();
+//    $log->insert_log("exchange:".print_r($exchange_fields, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
 }
@@ -1360,7 +1380,6 @@ function get_bank_commission($bank)
 add_action('wp', 'rcl_edit_profile', 10);
 function rcl_edit_profile(){
     global $user_ID, $userdata;
-    //var_dump($_POST);
 
     //if( !wp_verify_nonce( $_POST['_wpnonce'], 'update-profile_' . $user_ID ) ) return false;
 //    if ( isset( $_POST['submit_user_profile']))
@@ -2180,36 +2199,46 @@ function rcl_edit_profile(){
         }
 
         /*****************Сохраняем в запросы на обмен******************/
-        elseif (strpos(array_key_first($_POST), 'get_rubles') !== false ||
+        elseif (isset($_POST['exchange']) && !empty($_POST['exchange']) )
+            /*strpos(array_key_first($_POST), 'get_rubles') !== false ||
                 strpos(array_key_first($_POST), 'get_prizm') !== false ||
-                strpos(array_key_first($_POST), 'get_waves') !== false)
+                strpos(array_key_first($_POST), 'get_waves') !== false)*/
         {
             //Обмен только для верифицированных
             if (get_user_meta($user_ID, 'is_verified', true) == 'yes' &&
                 !empty(get_user_meta($user_ID, 'verification', true) ) &&
-                count(get_user_meta($user_ID, 'verification', true)) > 0) {
-                if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
-                    save_exchange_request('PRIZM', 'RUB',
-                        $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
-                        $_POST['get_rubles']['bank']);//, $_POST['get_rubles']['card_num'],
-                        //$_POST['get_rubles']['card_name']);
-                }
+                count(get_user_meta($user_ID, 'verification', true)) > 0)
+            {
+                $exchange = $_POST['exchange'];
 
-                if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
-
-                    save_exchange_request('RUB', 'PRIZM',
-                        $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm'],
-                        $_POST['get_prizm']['bank']);//, $_POST['get_prizm']['card_num'],
-                        //$_POST['get_prizm']['card_name']);
-                }
-
-                if (strpos(array_key_first($_POST), 'get_waves') !== false) {
-
-                    save_exchange_request('RUB', 'SLAV',
-                        $_POST['get_waves']['rubles'], $_POST['get_waves']['waves'],
-                        $_POST['get_waves']['bank']);//, $_POST['get_waves']['card_num'],
-                        //$_POST['get_waves']['card_name']);
-                }
+                if (!isset($exchange['output_currency']) && !isset($exchange['output_sum']) && !isset($exchange['bank']))
+                    save_exchange_request($exchange['input_currency'], $exchange['input_sum']);
+                else
+                    save_exchange_request($exchange['input_currency'], $exchange['input_sum'],
+                        $exchange['output_currency'], $exchange['output_sum'],
+                        $exchange['bank']);
+//                if (strpos(array_key_first($_POST), 'get_rubles') !== false) {
+//                    save_exchange_request('PRIZM', 'RUB',
+//                        $_POST['get_rubles']['prizm'], $_POST['get_rubles']['rubles'],
+//                        $_POST['get_rubles']['bank']);//, $_POST['get_rubles']['card_num'],
+//                        //$_POST['get_rubles']['card_name']);
+//                }
+//
+//                if (strpos(array_key_first($_POST), 'get_prizm') !== false) {
+//
+//                    save_exchange_request('RUB', 'PRIZM',
+//                        $_POST['get_prizm']['rubles'], $_POST['get_prizm']['prizm'],
+//                        $_POST['get_prizm']['bank']);//, $_POST['get_prizm']['card_num'],
+//                        //$_POST['get_prizm']['card_name']);
+//                }
+//
+//                if (strpos(array_key_first($_POST), 'get_waves') !== false) {
+//
+//                    save_exchange_request('RUB', 'SLAV',
+//                        $_POST['get_waves']['rubles'], $_POST['get_waves']['waves'],
+//                        $_POST['get_waves']['bank']);//, $_POST['get_waves']['card_num'],
+//                        //$_POST['get_waves']['card_name']);
+//                }
 
                 $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
 
@@ -2432,6 +2461,8 @@ function filter_data($filter_type, $datatype, $filter_val)
                         {
                             foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
                             {
+                                $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
+                                $sum_to_print = isset($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
                                 if ($filter_type == 'date')
                                 {
                                     $time = strtotime($filter_val);
@@ -2445,7 +2476,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     if (!isset($request_value['date']) || $request_value['date'] != $newfilter)
                                         continue;
                                 }
-                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid')
+                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit')
                                 {
                                     $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -2458,16 +2489,25 @@ function filter_data($filter_type, $datatype, $filter_val)
                                         '</div>
                                                     
                                                     <div class="col-2 text-left">' .
-                                        $request_value['output_currency'] .
+                                        $currency_to_print .
                                         '</div>
                                                     
                                                     <div class="col-2 text-left">' .
-                                        $request_value['output_sum'] .
+                                        $sum_to_print .
                                         '<img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">
                                                     </div>';
                                     if ($request_value['status'] == 'paid')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <p>Оплачено пользователем</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
+                                    elseif ($request_value['status'] == 'deposit')
+                                        $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Имущественный взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>

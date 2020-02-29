@@ -1,0 +1,203 @@
+exchange_requests: Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 267.02
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 5
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 4
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [3] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 5
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [4] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 50
+                    [output_sum] => 2.55
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [5] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 371.81
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [6] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 6
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [7] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 9
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+        )
+
+)
+
+exchange_requests: Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 267.02
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 5
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 4
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [3] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 5
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [4] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 50
+                    [output_sum] => 2.55
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [5] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 371.81
+                    [bank] => bank1
+                    [date] => 29.02.20
+                    [status] => awaiting_payment
+                )
+
+            [6] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 6
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [7] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 9
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+            [8] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => 
+                    [input_sum] => 5
+                    [output_sum] => 
+                    [bank] => 
+                    [date] => 29.02.20
+                    [status] => deposit
+                )
+
+        )
+
+)
+
