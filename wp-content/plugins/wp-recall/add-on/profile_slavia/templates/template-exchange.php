@@ -3,72 +3,42 @@ $exchange_address = get_field('exchange_address', 306);
 $slav_text = get_field('slav_text', 306); ?>
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
-        <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_rubles">
+        <form id="deposit_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Имущественный взнос SLAV</h1>
 
             <div class="col-12 pryamougolnik">
-                <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
+                <p>Внесите имущественный взнос на адрес</p>
                 <h3><?php if (isset($exchange_address) && !empty($exchange_address))
                             echo $exchange_address; ?>
                 </h3>
                 <button type="submit" class="btn-custom-two  text-center">Отправить</button>
-<!--                <p>--><?php //if (isset($slav_text) && !empty($slav_text))
-//                        echo $slav_text; ?><!--</p>-->
             </div>
-<!--            <div class="col-12">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-3 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <span>Количество монет PRIZM</span>-->
-<!--                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="get_rubles[prizm]">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-6 input-exchange ">-->
-<!--                        <div class="row ">-->
-<!--                            <span class="select-exchange">Выбрать банк</span>-->
-<!--                            <div class="select-exchange w-100">-->
-<!--                                <select required id="bank_list_desktop" class="prizm_to_rubles" name="get_rubles[bank]">-->
-<!--                                    <option>Название выбранного банка</option>-->
-<!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
-<!--                                        --><?php //foreach ($banks as $key => $value): ?>
-<!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
-<!--                                        --><?php //endforeach;?>
-<!--                                    --><?php //endif; ?>
-<!--                                </select>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-3 input-exchange orange-input">-->
-<!--                        <div class="row">-->
-<!--                            <span>Вы получите</span>-->
-<!--                            <input required placeholder="0" id="exp" type="text" name="get_rubles[rubles]">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-12">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-lg-6 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-lg-6 input-exchange">-->
-<!--                        <div class="row">-->
-<!--                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-12">-->
-<!--                        <div class="row">-->
-<!--                            <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-4" style="margin-top:20px;">
+                        <div class="row input-exchange" style="margin-top: 0px">
+                            <span>Количество монет SLAV</span>
+                            <input type="hidden" value="SLAV" name="exchange[input_currency]">
+                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                        </div>
+
+                        <div class="row">
+                            <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <?php if (isset($slav_text) && !empty($slav_text))
+                            echo '<p class="exchange_deposit_text">'.$slav_text.'</p>'; ?>
+                    </div>
+                </div>
+            </div>
+
         </form>
 
 
-        <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_prizm">
+        <form id="get_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Получить PRIZM</h1>
 
             <div class="col-12">
@@ -81,11 +51,14 @@ $slav_text = get_field('slav_text', 306); ?>
 <!--                            </select>-->
 <!--                        </div>-->
 <!--                    </div>-->
+                    <input type="hidden" value="RUB" name="exchange[input_currency]">
+                    <input type="hidden" value="PRIZM" name="exchange[output_currency]">
+
                     <div class="col-lg-3 input-exchange  input-custom-rub">
                         <div class="row ">
                             <span class="">Количество</span> <!--select-exchange-->
                             <div class="w-100"> <!--select-exchange -->
-                                <input required class="rubles_to_prizm" placeholder="0" type="text" name="get_prizm[rubles]">
+                                <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
                             </div>
                         </div>
                     </div>
@@ -94,7 +67,7 @@ $slav_text = get_field('slav_text', 306); ?>
                         <div class="row ">
                             <span class="select-exchange">Выбрать банк</span>
                             <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="rubles_to_prizm" name="get_prizm[bank]">
+                                <select required id="bank_list_desktop" class="rubles_to_prizm" name="exchange[bank]">
                                     <!--                                    <option>Название выбранного банка</option>-->
                                     <?php if (isset($banks) && !empty($banks)): ?>
                                         <?php foreach ($banks as $key => $value): ?>
@@ -109,7 +82,7 @@ $slav_text = get_field('slav_text', 306); ?>
                     <div class="col-lg-3 input-exchange orange-input input-custom-prizm">
                         <div class="row">
                             <span>Вы получите</span>
-                            <input required placeholder="0" id="exp" type="text" name="get_prizm[prizm]">
+                            <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
                         </div>
                     </div>
                 </div>
@@ -137,9 +110,11 @@ $slav_text = get_field('slav_text', 306); ?>
         </form>
 
 
-        <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_waves">
+        <form id="get_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Получить Slav</h1>
 
+            <input type="hidden" value="RUB" name="exchange[input_currency]">
+            <input type="hidden" value="SLAV" name="exchange[output_currency]">
 
             <div class="col-12">
                 <div class="row">
@@ -155,7 +130,7 @@ $slav_text = get_field('slav_text', 306); ?>
                         <div class="row ">
                             <span class="">Количество</span>
                             <div class="w-100">
-                                <input required class="rubles_to_waves" placeholder="0" type="text" name="get_waves[rubles]">
+                                <input required class="rubles_to_waves" placeholder="0" type="text" name="exchange[input_sum]">
                             </div>
                         </div>
                     </div>
@@ -164,7 +139,7 @@ $slav_text = get_field('slav_text', 306); ?>
                         <div class="row ">
                             <span class="select-exchange">Выбрать банк</span>
                             <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="rubles_to_waves" name="get_waves[bank]">
+                                <select required id="bank_list_desktop" class="rubles_to_waves" name="exchange[bank]">
                                     <!--                                    <option>Название выбранного банка</option>-->
                                     <?php if (isset($banks) && !empty($banks)): ?>
                                         <?php foreach ($banks as $key => $value): ?>
@@ -179,7 +154,7 @@ $slav_text = get_field('slav_text', 306); ?>
                     <div class="col-lg-3 input-exchange orange-input input-custom-waws">
                         <div class="row">
                             <span>Вы получите</span>
-                            <input required placeholder="0" id="exp" type="text" name="get_waves[waves]">
+                            <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
                         </div>
                     </div>
                 </div>
@@ -208,21 +183,25 @@ $slav_text = get_field('slav_text', 306); ?>
 
         </form>
 
-        <form class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="get_waves">
+        <form id="get_ruble_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Получить Рубль</h1>
+
+            <input type="hidden" value="PRIZM" name="exchange[input_currency]">
+            <input type="hidden" value="RUB" name="exchange[output_currency]">
+
             <div class="col-12">
                 <div class="row">
                     <div class="col-lg-3 input-exchange">
                         <div class="row">
                             <span>Количество монет PRIZM</span>
-                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="get_rubles[prizm]">
+                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
                         </div>
                     </div>
                     <div class="col-lg-6 input-exchange ">
                         <div class="row ">
                             <span class="select-exchange">Выбрать банк</span>
                             <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="prizm_to_rubles" name="get_rubles[bank]">
+                                <select required id="bank_list_desktop" class="prizm_to_rubles" name="exchange[bank]">
                                     <!--                                    <option>Название выбранного банка</option>-->
                                     <?php if (isset($banks) && !empty($banks)): ?>
                                         <?php foreach ($banks as $key => $value): ?>
@@ -233,10 +212,68 @@ $slav_text = get_field('slav_text', 306); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 input-exchange orange-input input-custom-ruble">
+                    <div class="col-lg-3 input-exchange orange-input input-custom-rub">
                         <div class="row">
                             <span>Вы получите</span>
-                            <input required placeholder="0" id="exp" type="text" name="get_rubles[rubles]">
+                            <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <!--                    <div class="col-lg-6 input-exchange">-->
+                    <!--                        <div class="row">-->
+                    <!--                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="col-lg-6 input-exchange">-->
+                    <!--                        <div class="row">-->
+                    <!--                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <div class="col-12">
+                        <div class="row">
+                            <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form id="get_ruble_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+            <h1 class="coop_maps-h1">Получить Рубль</h1>
+
+            <input type="hidden" value="SLAV" name="exchange[input_currency]">
+            <input type="hidden" value="RUB" name="exchange[output_currency]">
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-3 input-exchange">
+                        <div class="row">
+                            <span>Количество монет SLAV</span>
+                            <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 input-exchange ">
+                        <div class="row ">
+                            <span class="select-exchange">Выбрать банк</span>
+                            <div class="select-exchange w-100">
+                                <select required id="bank_list_desktop" class="prizm_to_rubles" name="exchange[bank]">
+                                    <!--                                    <option>Название выбранного банка</option>-->
+                                    <?php if (isset($banks) && !empty($banks)): ?>
+                                        <?php foreach ($banks as $key => $value): ?>
+                                            <option value="<?=$key?>"><?=$value['name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 input-exchange orange-input input-custom-rub">
+                        <div class="row">
+                            <span>Вы получите</span>
+                            <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
                         </div>
                     </div>
                 </div>
@@ -275,56 +312,27 @@ $slav_text = get_field('slav_text', 306); ?>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
 
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_rubles_mob">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
                     <div class="col-12 pryamougolnik">
                         <p>Для получения рубля необходимо отправить монеты на следующий адрес:</p>
                         <h3>PRIZM-AWTX-HDBX-ADDH-7SMM7</h3>
                         <button class="btn-custom-two  text-center">Отправить</button>
                     </div>
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-lg-3 input-exchange">
-                                <div class="row">
-                                    <span>Количество монет PRIZM</span>
-                                    <input required placeholder="0" type="text" class="prizm_to_rubles" name="get_rubles[prizm]">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 input-exchange ">
-                                <div class="row ">
-                                    <span class="select-exchange">Выбрать банк</span>
-                                    <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="prizm_to_rubles" name="get_rubles[bank]">
-<!--                                            <option>Название выбранного банка</option>-->
-                                            <?php if (isset($banks) && !empty($banks)): ?>
-                                                <?php foreach ($banks as $key => $value): ?>
-                                                    <option value="<?=$key?>"><?=$value['name']?></option>
-                                                <?php endforeach;?>
-                                            <?php endif; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 input-exchange orange-input">
-                                <div class="row">
-                                    <span>Вы получите</span>
-                                    <input required placeholder="0" id="exp" type="text" name="get_rubles[rubles]">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-12">
+                        <?php if (isset($slav_text) && !empty($slav_text))
+                            echo '<p class="exchange_deposit_text">'.$slav_text.'</p>'; ?>
                     </div>
                     <div class="col-12">
                         <div class="row">
-<!--                            <div class="col-lg-6 input-exchange">-->
-<!--                                <div class="row">-->
-<!--                                    <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-6 input-exchange">-->
-<!--                                <div class="row">-->
-<!--                                    <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
-<!--                                </div>-->
-<!--                            </div>-->
-                            <div class="col-12">
+                            <div class="col-lg-12" style="margin-top:20px;">
+                                <div class="row input-exchange" style="margin-top: 0px">
+                                    <span>Количество монет SLAV</span>
+
+                                    <input type="hidden" value="SLAV" name="exchange[input_currency]">
+
+                                    <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
+                                </div>
+
                                 <div class="row">
                                     <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
                                 </div>
@@ -341,7 +349,7 @@ $slav_text = get_field('slav_text', 306); ?>
                     <h1 class="coop_maps-h1 ib">Получить PRIZM</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_prizm_mob">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -355,8 +363,12 @@ $slav_text = get_field('slav_text', 306); ?>
                             <div class="col-lg-3 input-exchange  input-custom-rub">
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
+
+                                    <input type="hidden" value="RUB" name="exchange[input_currency]">
+                                    <input type="hidden" value="PRIZM" name="exchange[output_currency]">
+
                                     <div class="select-exchange w-100">
-                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="get_prizm[rubles]">
+                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
                                     </div>
                                 </div>
                             </div>
@@ -365,7 +377,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="get_prizm[bank]">
+                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
                                             <!--                                            <option>Название выбранного банка</option>-->
                                             <?php if (isset($banks) && !empty($banks)): ?>
                                                 <?php foreach ($banks as $key => $value): ?>
@@ -380,7 +392,7 @@ $slav_text = get_field('slav_text', 306); ?>
                             <div class="col-lg-3 input-exchange orange-input input-custom-prizm">
                                 <div class="row">
                                     <span>Вы получите</span>
-                                    <input required placeholder="0" id="exp" type="text" name="get_prizm[prizm]">
+                                    <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
                                 </div>
                             </div>
                         </div>
@@ -408,16 +420,15 @@ $slav_text = get_field('slav_text', 306); ?>
                     </div>
                 </form>
             </div>
-
-
         </div>
+
         <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
             <div class="click_ex" id="three-ex">
                 <div class="ex-header">
                     <h1 class="coop_maps-h1 ib">Получить Slav</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_waves_mob">
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -431,8 +442,12 @@ $slav_text = get_field('slav_text', 306); ?>
                             <div class="col-lg-3 input-exchange  input-custom-rub">
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
+
+                                    <input type="hidden" value="RUB" name="exchange[input_currency]">
+                                    <input type="hidden" value="SLAV" name="exchange[output_currency]">
+
                                     <div class="select-exchange w-100">
-                                        <input required class="rubles_to_waves" placeholder="0" type="text" name="get_waves[rubles]">
+                                        <input required class="rubles_to_waves" placeholder="0" type="text" name="exchange[input_sum]">
                                     </div>
                                 </div>
                             </div>
@@ -441,7 +456,7 @@ $slav_text = get_field('slav_text', 306); ?>
                                 <div class="row ">
                                     <span class="select-exchange">Выбрать банк</span>
                                     <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_waves" name="get_waves[bank]">
+                                        <select required id="bank_list_mobile" class="rubles_to_waves" name="exchange[bank]">
                                             <!--                                            <option>Название выбранного банка</option>-->
                                             <?php if (isset($banks) && !empty($banks)): ?>
                                                 <?php foreach ($banks as $key => $value): ?>
@@ -456,7 +471,7 @@ $slav_text = get_field('slav_text', 306); ?>
                             <div class="col-lg-3 input-exchange orange-input input-custom-waws">
                                 <div class="row">
                                     <span>Вы получите</span>
-                                    <input required placeholder="0" id="exp" type="text" name="get_waves[waves]">
+                                    <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
                                 </div>
                             </div>
                         </div>
@@ -485,8 +500,164 @@ $slav_text = get_field('slav_text', 306); ?>
                 </form>
             </div>
 
+        </div>
 
+        <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
+            <div class="click_ex" id="four-ex">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Получить рубль (внести PRIZM)</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_prizm">
+                    <div class="col-12">
+                        <div class="row">
+                            <!--                            <div class="col-lg-3 input-exchange select-custom">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <span>&nbsp;</span>-->
+                            <!--                                    <select class="">-->
+                            <!--                                        <option>ОТПРАВИТЬ</option>-->
+                            <!--                                    </select>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="col-lg-3 input-exchange  input-custom-prizm">
+                                <div class="row ">
+                                    <span class="select-exchange">Количество</span>
 
+                                    <input type="hidden" value="PRIZM" name="exchange[input_currency]">
+                                    <input type="hidden" value="RUB" name="exchange[output_currency]">
+
+                                    <div class="select-exchange w-100">
+                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 input-exchange ">
+                                <div class="row ">
+                                    <span class="select-exchange">Выбрать банк</span>
+                                    <div class="select-exchange w-100">
+                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
+                                            <!--                                            <option>Название выбранного банка</option>-->
+                                            <?php if (isset($banks) && !empty($banks)): ?>
+                                                <?php foreach ($banks as $key => $value): ?>
+                                                    <option value="<?=$key?>"><?=$value['name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 input-exchange orange-input input-custom-rub">
+                                <div class="row">
+                                    <span>Вы получите</span>
+                                    <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+
+                            <!--                            <div class="col-lg-6 input-exchange">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-lg-6 input-exchange">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <input class="btn-custom-one exchange-pd get-prizm text-center" type="submit" name="" value="Отправить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
+            <div class="click_ex" id="five-ex">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Получить рубль (внести SLAV)</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_waves">
+                    <div class="col-12">
+                        <div class="row">
+                            <!--                            <div class="col-lg-3 input-exchange select-custom">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <span>&nbsp;</span>-->
+                            <!--                                    <select class="">-->
+                            <!--                                        <option>ОТПРАВИТЬ</option>-->
+                            <!--                                    </select>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div class="col-lg-3 input-exchange  input-custom-waws">
+                                <div class="row ">
+                                    <span class="select-exchange">Количество</span>
+
+                                    <input type="hidden" value="SLAV" name="exchange[input_currency]">
+                                    <input type="hidden" value="RUB" name="exchange[output_currency]">
+
+                                    <div class="select-exchange w-100">
+                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 input-exchange ">
+                                <div class="row ">
+                                    <span class="select-exchange">Выбрать банк</span>
+                                    <div class="select-exchange w-100">
+                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
+                                            <!--                                            <option>Название выбранного банка</option>-->
+                                            <?php if (isset($banks) && !empty($banks)): ?>
+                                                <?php foreach ($banks as $key => $value): ?>
+                                                    <option value="<?=$key?>"><?=$value['name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 input-exchange orange-input input-custom-rub">
+                                <div class="row">
+                                    <span>Вы получите</span>
+                                    <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+
+                            <!--                            <div class="col-lg-6 input-exchange">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="col-lg-6 input-exchange">-->
+                            <!--                                <div class="row">-->
+                            <!--                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <input class="btn-custom-one exchange-pd get-prizm text-center" type="submit" name="" value="Отправить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

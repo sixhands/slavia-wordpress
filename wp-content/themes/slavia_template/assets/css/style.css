@@ -580,7 +580,8 @@ a:hover
 .input-custom-rub input
 {
 	border-right: none;
-	background: #ffff url(/wp-content/uploads/2019/12/rub.png) no-repeat 100% 50%;
+	/*background: #ffff url(/wp-content/uploads/2019/12/rub.png) no-repeat 100% 50%;*/
+	background: #ffff url(/wp-content/uploads/2020/02/rub_orange.png) no-repeat 100% 50%;
 }
 .input-custom-procent input
 {
@@ -607,13 +608,13 @@ a:hover
 	border-right: none !important;
 	background: #ffff url(/wp-content/uploads/2019/12/prizm.png) no-repeat 100% 50%;
 }
-.input-custom-ruble input
-{
-	border-right: none !important;
-	background: #ffff url(/wp-content/uploads/2020/02/ruble2.png) no-repeat 103% 55%;
-	background-size: 80px 43px;
+/*.input-custom-ruble input*/
+/*{*/
+/*	border-right: none !important;*/
+/*	background: #ffff url(/wp-content/uploads/2020/02/ruble2.png) no-repeat 103% 55%;*/
+/*	background-size: 80px 43px;*/
 
-}
+/*}*/
 .input-custom-waws input
 {
 	border-right: none !important;
@@ -924,4 +925,7 @@ a:hover
 
 #primary.content-area {
 	width: 100%;
+}
+.exchange_deposit_text {
+	margin-top: 30px;
 }
