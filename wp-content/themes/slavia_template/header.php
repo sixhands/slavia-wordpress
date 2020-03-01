@@ -19,7 +19,7 @@
 
 	<?php wp_head(); ?>
     <script>
-        var ipay = new IPAY({api_token: 'c5fv4u1thn44fvba2u2jatuva2'});
+        var ipay = new IPAY({api_token: 'ncrga09jcvm6fdago0cn9j92gh'/*'c5fv4u1thn44fvba2u2jatuva2'*/});
     </script>
 </head>
 
