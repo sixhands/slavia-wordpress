@@ -1330,7 +1330,7 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
     }
 
 //    $log = new Rcl_Log();
-//    $log->insert_log("exchange:".print_r($exchange_fields, true));
+//    $log->insert_log("exchange:".print_r($exchange_requests, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
 }
@@ -2063,6 +2063,44 @@ function rcl_edit_profile(){
                     //Статистика
                     $response += array('stats_content' => show_user_stats($user_id));//$stats_content);
 
+                    //Данные верификации
+                    $user_verification = get_user_meta($user_id, 'verification', true);
+                    $user_passport_photos = get_user_meta($user_id, 'passport_photos', true);
+                    if (!empty($user_passport_photos))
+                        $user_verification += array('passport_photos' => $user_passport_photos);
+                    if (!empty($user_verification))
+                        $response += array('verification_content' => $user_verification);
+                    else //Если данный пользователь не верифицирован
+                    {
+                        $response += array('verification_content' => 'false'/*'<div class="table-text w-100">
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        Для данного пользователя не найдены верификационные данные.
+                                                    </div>
+                                                </div>
+                                              </div>'*/);
+                    }
+
+                    //Данные самого пользователя (email, логин и тп)
+                    $user = get_userdata($user_id);
+                    $username = $user->display_name;
+                    $user_email = $user->user_email;
+                    $user_phone = get_user_meta($user_id, 'user_phone', true);
+                    $client_num = get_user_meta($user_id, 'client_num', true);
+                    $is_verified = get_user_meta($user_id, 'is_verified', true);
+                    $user_ref_link = get_user_meta($user_id, 'user_ref_link', true);
+
+                    $user_data = array(
+                        'username' => $username,
+                        'user_email' => $user_email,
+                        'user_phone' => $user_phone,
+                        'client_num' => $client_num,
+                        'is_verified' => $is_verified,
+                        'user_ref_link' => $user_ref_link
+                    );
+
+                    $response += array('userdata' => $user_data);
+
                     echo json_encode($response);
                     exit;
 
@@ -2418,7 +2456,7 @@ function sberbank_verify_checksum($order)
     $log = new Rcl_Log();
     $log->insert_log("sberbank_digest:".$order['digest']);
 
-    $key = 'uaihtrgiuira6q765uh71222j8';
+    $key = 'r88jh7s9cecbt9o6af6813ojdb';//'uaihtrgiuira6q765uh71222j8';
     $checksum = $order['status'].$order['formattedAmount'].$order['currency'].$order['approvalCode'].$order['orderNumber'].
                 $order['panMasked'].$order['refNum'].$order['paymentDate'].$order['formattedFeeAmount'].$key.';';
 

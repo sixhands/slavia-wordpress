@@ -26,7 +26,7 @@
 
                     </div>
                 </div>
-                <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields']"); ?>
+                <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
 
 <!--                <div class="w-100 text-center">-->
 <!--                    <ul class="people-ul">-->
@@ -46,11 +46,11 @@
 </a>
 <!--Модальное окно регистрации -->
 <div class="modal fade" id="modal-container-54506521" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 700px; ">
-        <div class="modal-content text-left" style="padding: 20px;">
+    <div class="modal-dialog" role="document" style="max-width: 800px; ">
+        <div class="modal-content text-left" style="padding: 40px;">
             <div class="row">
                 <div class="col-10">
-                    <h1 class="coop_maps-h1 ib">Операции пользователя:</h1>
+                    <h1 class="coop_maps-h1 ib">Верификация пользователя:</h1>
                 </div>
 
                 <div class="col-2">
@@ -59,6 +59,118 @@
                     </button>
                 </div>
 
+            </div>
+
+            <div class="row" id="verification_content">
+
+                <div class="col-12" id="no_verification">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            Для данного пользователя не найдены верификационные данные.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Адрес PRIZM</span>
+                                <input class="verification_prizm_address" placeholder="Адрес PRIZM" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Публичный ключ</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_prizm_public_key" placeholder="Публичный ключ" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Адрес Slav</span>
+                                <input class="verification_waves_address" placeholder="Адрес Slav" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Имя</span>
+                                <input class="verification_name" placeholder="Имя" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Фамилия</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_surname" placeholder="Фамилия" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Отчество</span>
+                                <input class="verification_last_name" placeholder="Отчество" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Серия и номер паспорта</span>
+                                <input class="verification_passport_number" placeholder="____-______"  type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Дата выдачи</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_passport_date" placeholder="Дата выдачи" type="date" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Код подразделения</span>
+                                <input class="verification_passport_code" placeholder="Код подразделения" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 input-exchange">
+                            <div class="row">
+                                <span>Кем выдан</span>
+                                <input class="verification_passport_who" placeholder="Кем выдан" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-8 input-exchange ">
+                            <div class="row ">
+                                <span>Место жительства по прописке</span>
+                                <div class="select-exchange w-100" style="padding-left: 0 !important;">
+                                    <input class="verification_passport_address" placeholder="Место жительства по прописке" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Индекс</span>
+                                <input class="verification_passport_index" placeholder="Индекс" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 passport-photo">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h1 class="coop_maps-h1 ib">Операции пользователя:</h1>
             </div>
 
             <div class="row" id="exchange_content">
@@ -81,28 +193,7 @@
                         </div>
                     </div>
                 </div>
-<!--                <div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            08.11.19-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            RUB-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            PRIZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            0.788 PZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            0.9188 PZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center" style="font-size: 15px; color: #EF701B">-->
-<!--                            Ожидает проверки-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+
             </div>
 
             <div class="col-12">
@@ -169,6 +260,39 @@
                 if (response.stats_content !== '') {
                     modal.find('.modal-content > #stats_content .table-text').remove();
                     modal.find('.modal-content > #stats_content').append(user_data.stats_content);
+                }
+                if (response.verification_content !== '')
+                {
+                    if (user_data.verification_content !== 'false') {
+                        modal.find('.modal-content > #verification_content').children().not('#no_verification').css('display', 'block');
+                        modal.find('.modal-content > #verification_content #no_verification').css('display', 'none');
+                        let verification_data = user_data.verification_content;
+
+                        jQuery.each(verification_data, function (item) {
+                            if (item !== 'passport_photos')
+                                if (modal.find('.verification_' + item).length > 0)
+                                    modal.find('.verification_' + item).val(verification_data[item]);
+                        });
+                        //Очищаем место для фотографий
+                        modal.find('.passport-photo').children('.row').empty();
+
+                        jQuery.each(verification_data['passport_photos'], function (photo) {
+                            modal.find('.passport-photo').children('.row')
+                                .append('<div class="col-lg-4">' +
+                                    '<div class="row">' +
+                                    '<img src="' + verification_data['passport_photos'][photo] + '">' +
+                                    '</div>' +
+                                    '</div>');
+                            //console.log(verification_data['passport_photos'][photo]);
+                        });
+                        //jQuery('#modal-54506521').trigger('click');
+                    }
+                    else
+                    {
+                        modal.find('.modal-content > #verification_content').children().css('display', 'none');
+                        modal.find('.modal-content > #verification_content #no_verification').css('display', 'block');
+                    }
+                        //console.log('Нет верификации для этого пользователя');
                 }
                 jQuery('#modal-54506521').trigger('click');
 

