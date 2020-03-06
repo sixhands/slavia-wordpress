@@ -348,8 +348,16 @@
                     let userdataContent = user_data.userdata_content;
                     let userdata_inputs = modal.find('#userdata_content input');
                     jQuery.each(userdataContent, function (item) {
-                        if (modal.find('#userdata_content input.' + item).length > 0)
-                            modal.find('#userdata_content input.' + item).val(userdataContent[item]);
+                        if (modal.find('#userdata_content input.' + item).length > 0) {
+                            if (item === 'is_verified') {
+                                if (userdataContent[item] === '')
+                                    modal.find('#userdata_content input.' + item).val('Нет');
+                                else
+                                    modal.find('#userdata_content input.' + item).val('Да');
+                            }
+                            else
+                                modal.find('#userdata_content input.' + item).val(userdataContent[item]);
+                        }
                     });
                 }
                 jQuery('#modal-54506521').trigger('click');
