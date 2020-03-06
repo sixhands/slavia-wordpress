@@ -50,7 +50,7 @@
         <div class="modal-content text-left" style="padding: 40px;">
             <div class="row">
                 <div class="col-10">
-                    <h1 class="coop_maps-h1 ib">Верификация пользователя:</h1>
+                    <h1 class="coop_maps-h1 ib">Данные пользователя:</h1>
                 </div>
 
                 <div class="col-2">
@@ -59,6 +59,55 @@
                     </button>
                 </div>
 
+            </div>
+
+            <div class="row" id="userdata_content">
+                <div class="col-12 input-exchange">
+                    <div class="row">
+                        <span>Имя пользователя</span>
+                        <input class="username" placeholder="Имя пользователя" type="text" name="">
+                    </div>
+                </div>
+                <div class="col-lg-12 input-exchange ">
+                    <div class="row ">
+                        <span>Email</span>
+                        <input class="user_email" placeholder="Email" type="text" name="">
+                    </div>
+                </div>
+
+                <div class="col-lg-12 input-exchange">
+                    <div class="row">
+                        <span>Телефон</span>
+                        <input class="user_phone" placeholder="Телефон" type="text" name="">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Номер пайщика</span>
+                                <input class="client_num" placeholder="Номер пайщика" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Верифицирован</span>
+                                <input class="is_verified" placeholder="Верифицирован" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Реферальная ссылка</span>
+                                <input class="user_ref_link" placeholder="Реферальная ссылка" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h1 class="coop_maps-h1 ib">Верификация пользователя:</h1>
             </div>
 
             <div class="row" id="verification_content">
@@ -293,6 +342,15 @@
                         modal.find('.modal-content > #verification_content #no_verification').css('display', 'block');
                     }
                         //console.log('Нет верификации для этого пользователя');
+                }
+                if (response.userdata_content !== '')
+                {
+                    let userdataContent = user_data.userdata_content;
+                    let userdata_inputs = modal.find('#userdata_content input');
+                    jQuery.each(userdataContent, function (item) {
+                        if (modal.find('#userdata_content input.' + item).length > 0)
+                            modal.find('#userdata_content input.' + item).val(userdataContent[item]);
+                    });
                 }
                 jQuery('#modal-54506521').trigger('click');
 

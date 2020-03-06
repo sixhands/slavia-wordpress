@@ -2099,7 +2099,7 @@ function rcl_edit_profile(){
                         'user_ref_link' => $user_ref_link
                     );
 
-                    $response += array('userdata' => $user_data);
+                    $response += array('userdata_content' => $user_data);
 
                     echo json_encode($response);
                     exit;
