@@ -811,7 +811,8 @@ function rcl_get_smiles( $id_area ) {
 function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 
 	$from_name	 = (isset( $from['name'] )) ? $from['name'] : get_bloginfo( 'name' );
-	$from_mail	 = (isset( $from['email'] )) ? $from['email'] : 'noreply@' . $_SERVER['HTTP_HOST'];
+    $from_mail = 'cms.pkslav@gmail.com';
+	//$from_mail	 = (isset( $from['email'] )) ? $from['email'] : 'noreply@' . $_SERVER['HTTP_HOST'];
 
 	add_filter( 'wp_mail_content_type', function() {return "text/html";}/*, create_function( '', 'return "text/html";' )*/ );
 	$headers = 'From: ' . $from_name . ' <' . $from_mail . '>' . "\r\n";
@@ -821,6 +822,10 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
 	$text .= '<p><small>-----------------------------------------------------<br/>
     ' . __( 'This letter was created automatically, no need to answer it.', 'wp-recall' ) . '<br/>
     "' . get_bloginfo( 'name' ) . '"</small></p>';
+
+	$log = new Rcl_Log();
+	$log->insert_log("email: $email; text: $text; headers: $headers");
+	
 	wp_mail( $email, $title, $text, $headers, $attach );
 }
 

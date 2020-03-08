@@ -244,6 +244,8 @@
                             </div>
 
                             <input type="submit" class="btn-custom-one w-100 text-center" id="submit_verification" value="Завершить регистрацию" name="submit_verification" style="margin-top: 30px; height: 42px"/>
+
+                            <figure style="margin-top: 50px" class="wp-block-image size-large"><img src="http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/passportcash-1.jpg" alt="" class="wp-image-722"/><figcaption>пример фото с паспортом, для прохождения верификации</figcaption></figure>
                         </div>
                     </div>
                     <div class="col-lg-8">
