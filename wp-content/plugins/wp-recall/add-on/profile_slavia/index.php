@@ -1307,7 +1307,9 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
 //    $exchange_fields += array('card_num' => $card_num);
 //    $exchange_fields += array('card_name' => $card_name);
 
-    $exchange_fields += array('date' => date('d.m.y'));
+    date_default_timezone_set('Europe/Moscow');
+
+    $exchange_fields += array('date' => date('d.m.y H:i:s'));
 
     if ($output_currency == false && $output_sum == false && $bank == false)
         $exchange_fields += array('status' => 'deposit');

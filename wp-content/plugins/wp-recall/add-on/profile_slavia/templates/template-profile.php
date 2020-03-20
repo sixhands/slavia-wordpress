@@ -276,9 +276,9 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="row">
-                            <p class="passport-text">
+                            <div class="passport-text">
                                 <?php if (isset($side_text) && !empty($side_text)) echo $side_text; ?>
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <?php endif; ?>
