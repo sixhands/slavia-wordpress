@@ -1,6 +1,10 @@
 <?php $side_text = get_field('verification_sidetext', 306);
       $video_files = get_field('verification_video', 306);
-      $video_text = get_field('verification_modal_text', 306); ?>
+      $video_text = get_field('verification_modal_text', 306);
+      $unverified_img = get_field('unverified_image', 306);
+      $unverified_text = get_field('unverified_text', 306);
+      $profile_urgent_info = get_field('profile_urgent_info', 306);
+      ?>
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
@@ -24,7 +28,7 @@
                         <p class="profil-user-verification" style="color: #179F37;">
                             Профиль верифицирован
                         </p>
-                    <?php else: ?>
+                    <?php elseif ((isset($is_verified) && $is_verified == 'no') || !isset($is_verified)): ?>
                         <p class="profil-user-verification" style="color: red;">
                             Профиль не верифицирован
                         </p>
@@ -79,6 +83,20 @@
                 <?php //if (isset($_POST)) var_dump($_POST); ?>
             </div>
         </div>
+
+        <?php if (isset($profile_urgent_info) && !empty($profile_urgent_info)): ?>
+        <div class="coop_maps question-bg col-lg-12">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <span class="urgent-info-header">Информация</span>
+                    <div class="urgent-info-content">
+                        <?php echo $profile_urgent_info; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Реферальная ссылка</h1>
             <div class="col-lg-4 input-exchange  input-custom-copy">
@@ -245,7 +263,15 @@
 
                             <input type="submit" class="btn-custom-one w-100 text-center" id="submit_verification" value="Завершить регистрацию" name="submit_verification" style="margin-top: 30px; height: 42px"/>
 
-                            <figure style="margin-top: 50px" class="wp-block-image size-large"><img src="http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/02/passportcash-1.jpg" alt="" class="wp-image-722"/><figcaption>пример фото с паспортом, для прохождения верификации</figcaption></figure>
+                            <figure style="margin-top: 50px" class="wp-block-image size-large">
+                                <?php if (isset($unverified_img) && !empty($unverified_img)): ?>
+                                    <img src="<?=$unverified_img?>" alt="" class="wp-image-722"/>
+                                <?php endif; ?>
+
+                                <?php if (isset($unverified_text) && !empty($unverified_text)): ?>
+                                <figcaption><?php echo $unverified_text; ?></figcaption>
+                                <?php endif; ?>
+                            </figure>
                         </div>
                     </div>
                     <div class="col-lg-8">

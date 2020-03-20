@@ -9,6 +9,13 @@
 .edit-link {
     display: none;
 }
+span.urgent-info-header {
+    color: red;
+}
+div.urgent-info-content {
+    background-color: white;
+    border: 1px solid blue;
+}
 .stats_col {
     border-right:1px solid;
     width: 12.5% !important;

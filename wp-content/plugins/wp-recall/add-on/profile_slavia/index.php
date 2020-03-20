@@ -1318,29 +1318,39 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
     {
         if (isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
         {
-            $new_request = array(count($exchange_requests[$user_ID]) => $exchange_fields);
-            $exchange_requests[$user_ID] += $new_request;
+            /*$new_request = array();*///array(count($exchange_requests[$user_ID]) => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
         }
         elseif (!isset($exchange_requests[$user_ID]))
         {
             $new_request = array(0 => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
             $exchange_requests += array($user_ID => $new_request); //Если еще нет запросов для этого пользователя, добавляем ключ id этого пользователя
         }
         elseif (empty($exchange_requests[$user_ID]))
         {
-            $new_request = array(0 => $exchange_fields);
-            $exchange_requests[$user_ID] += $new_request;
+            //$new_request = array(0 => $exchange_fields);
+
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
         }
     }
     //Если еще нету запросов на обмен
     else
     {
         $new_request = array(0 => $exchange_fields);
+
         $exchange_requests = array($user_ID => $new_request);
     }
 
 //    $log = new Rcl_Log();
-//    $log->insert_log("exchange:".print_r($exchange_requests, true));
+//    $log->insert_log("exchange 1:".print_r($exchange_requests, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
 }

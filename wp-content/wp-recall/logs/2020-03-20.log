@@ -1,29 +1,402 @@
-verification_requests:Array
+exchange 1:Array
 (
-)
-
-verification_requests old:Array
-(
-    [1] => Array
+    [6] => Array
         (
-            [prizm_address] => fgrtdggfdg
-            [prizm_public_key] => gdfgdfdfgdf
-            [waves_address] => fgdgdfhdgdfg
-            [name] => dhgdhdgdfgdf
-            [surname] => gfdgdfgdfg
-            [last_name] => fhgghdfg
-            [passport_number] => 6574674
-            [passport_date] => 4654-06-05
-            [passport_code] => 3564654
-            [passport_who] => syhjghdfg
-            [passport_address] => hgjdgfhf
-            [passport_index] => 46454
-            [date] => 24.02.20
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 16.74
+                    [output_sum] => 1.68
+                    [bank] => bank2
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [0] => Array
+                        (
+                            [input_currency] => PRIZM
+                            [output_currency] => RUB
+                            [input_sum] => 5
+                            [output_sum] => 27.79
+                            [bank] => bank1
+                            [date] => 20.03.20
+                            [status] => awaiting_payment
+                        )
+
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 5
+                    [output_sum] => 0.44
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
         )
 
 )
 
-verification_requests new:Array
+exchange 1:Array
 (
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 27.61
+                    [output_sum] => 2.8
+                    [bank] => bank2
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 27.61
+                    [output_sum] => 2.8
+                    [bank] => bank2
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 38.71
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [1] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 38.71
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 284.2
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [1] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 38.71
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 284.2
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+    [31] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => SLAV
+                    [input_sum] => 55
+                    [output_sum] => 0.47
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [1] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 38.71
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [2] => Array
+                (
+                    [input_currency] => SLAV
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 284.2
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+    [31] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => SLAV
+                    [input_sum] => 55
+                    [output_sum] => 0.47
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 5
+                    [output_sum] => 0.44
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [0] => Array
+                        (
+                            [input_currency] => RUB
+                            [output_currency] => PRIZM
+                            [input_sum] => 27.76
+                            [output_sum] => 2.8
+                            [bank] => bank2
+                            [date] => 20.03.20
+                            [status] => awaiting_payment
+                        )
+
+                )
+
+        )
+
+    [31] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => SLAV
+                    [input_sum] => 55
+                    [output_sum] => 0.47
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 5
+                    [output_sum] => 0.44
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [0] => Array
+                        (
+                            [input_currency] => RUB
+                            [output_currency] => PRIZM
+                            [input_sum] => 27.76
+                            [output_sum] => 2.8
+                            [bank] => bank2
+                            [date] => 20.03.20
+                            [status] => awaiting_payment
+                        )
+
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 5
+                    [output_sum] => 0.44
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+    [31] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => SLAV
+                    [input_sum] => 55
+                    [output_sum] => 0.47
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 5
+                    [output_sum] => 0.44
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 7
+                    [output_sum] => 38.76
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 27.68
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
+)
+
+exchange 1:Array
+(
+    [6] => Array
+        (
+            [0] => Array
+                (
+                    [input_currency] => PRIZM
+                    [output_currency] => RUB
+                    [input_sum] => 5
+                    [output_sum] => 27.68
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+            [1] => Array
+                (
+                    [input_currency] => RUB
+                    [output_currency] => PRIZM
+                    [input_sum] => 55
+                    [output_sum] => 4.87
+                    [bank] => bank1
+                    [date] => 20.03.20
+                    [status] => awaiting_payment
+                )
+
+        )
+
 )
 
