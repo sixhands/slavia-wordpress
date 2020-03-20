@@ -843,7 +843,7 @@ function rcl_tab_operations_content($master_id)
 
             //Кнопка удаления
             $exchange_content .= '<div class="col-1 text-left">
-                                       <a class="remove_operation" data-request_num="'.$key.'">&times;</a>
+                                       <a class="remove_operation" data-user_id="'.$user_ID.'" data-request_num="'.$key.'">&times;</a>
                                   </div>
                                 </div>
                             </div>';
@@ -1001,7 +1001,7 @@ function rcl_tab_requests_content($master_id)
             $i++;
             $verification_content .= '<div class="table-text w-100">'.
                                         '<div class="row">'.
-                                            '<div class="col-3 text-left" style="padding-left: 42px;">'.
+                                            '<div class="col-2 text-left" style="padding-left: 42px;">'.
                                                $value['name'].' '.$value['surname'].' '.$value['last_name'].
                                             '</div>'.
                                             '<div class="col-2 text-left">'.
@@ -1016,6 +1016,9 @@ function rcl_tab_requests_content($master_id)
                                                 <div class="btn-custom-one btn-zayavki" id="request_approve_'.$key.'">
                             Одобрить
                                                 </div>
+                                            </div>
+                                            <div class="col-1 text-left">
+                                               <a class="remove_operation" data-user_id="'.$key.'">&times;</a>
                                             </div>
                                         </div>
                                     </div>';
@@ -1040,10 +1043,11 @@ function rcl_tab_requests_content($master_id)
                     $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
                     $sum_to_print = empty($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
 
-                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit') {
+                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit')
+                    {
                         $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
-                                                    <div class="col-3 text-left" style="padding-left: 42px;">' .
+                                                    <div class="col-2 text-left" style="padding-left: 42px;">' .
                                                         $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
                                                     '</div>
                                                     
@@ -1065,26 +1069,32 @@ function rcl_tab_requests_content($master_id)
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
                         elseif ($request_value['status'] == 'awaiting_payment')
                             $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
                         elseif ($request_value['status'] == 'deposit')
                             $exchange_content .= '<div class="col-3 text-center">
                                                         <p>Имущественный взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
+                        $exchange_content .= '<div class="col-1 text-left">
+                                                   <a class="remove_operation" data-user_id="'.$user.'" data-request_num="'.$request_num.'">&times;</a>
+                                              </div>
+                                            </div>
+                                         </div>';
+
                     } elseif ($request_value['status'] == 'completed')
                         continue;
                 }
@@ -2179,22 +2189,45 @@ function rcl_edit_profile(){
 
         } //if request_user_id
 
-        elseif (isset($_POST['remove_exchange']) && $_POST['remove_exchange'] == 'true') {
-            $exchange_requests = rcl_get_option('exchange_requests');
+        elseif (isset($_POST['remove_request']) && $_POST['remove_request'] == 'true') {
+            if ($_POST['request_type'] == 'exchange_request')
+            {
+                $exchange_requests = rcl_get_option('exchange_requests');
 
-            if (isset($exchange_requests) && !empty($exchange_requests)) {
-                if (isset($_POST['request_num'])) {
+                if (isset($exchange_requests) && !empty($exchange_requests)) {
+                    if (isset($_POST['request_num']) && isset($_POST['user_id']))
+                    {
+                        $request_num = $_POST['request_num'];
+                        $userid = $_POST['user_id'];
+                        unset($exchange_requests[$userid][$request_num]);
 
-                    $request_num = $_POST['request_num'];
-                    unset($exchange_requests[$user_ID][$request_num]);
+                        rcl_update_option('exchange_requests', $exchange_requests);
+                        echo 'true';
+                    } else
+                        echo 'false';
 
-                    rcl_update_option('exchange_requests', $exchange_requests);
-                    echo 'true';
+                    exit;
                 }
-                else
-                    echo 'false';
+            }
+            elseif ($_POST['request_type'] == 'verification_request')
+            {
+                $verification_requests = rcl_get_option('verification_requests');
+                if (isset($verification_requests) && !empty($verification_requests))
+                {
+                    if (isset($_POST['user_id']))
+                    {
+                        $userid = $_POST['user_id'];
+//                        $log = new Rcl_Log();
+//                        $log->insert_log('verification_requests old:'.print_r($verification_requests, true));
+                        unset($verification_requests[$userid]);
 
-                exit;
+//                        $log->insert_log('verification_requests new:'.print_r($verification_requests, true));
+                        rcl_update_option('verification_requests', $verification_requests);
+                        echo 'true';
+                    } else
+                        echo 'false';
+                    exit;
+                }
             }
         }
 
@@ -2500,7 +2533,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                             foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
                             {
                                 $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
-                                $sum_to_print = isset($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
+                                $sum_to_print = empty($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
                                 if ($filter_type == 'date')
                                 {
                                     $time = strtotime($filter_val);
@@ -2518,7 +2551,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                 {
                                     $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
-                                                    <div class="col-3 text-left" style="padding-left: 42px;">' .
+                                                    <div class="col-2 text-left" style="padding-left: 42px;">' .
                                         $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'] .
                                         '</div>
                                                     
@@ -2540,26 +2573,31 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
                                     elseif ($request_value['status'] == 'deposit')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <p>Имущественный взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
                                     elseif ($request_value['status'] == 'awaiting_payment')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
                                                             Закрыть сделку
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>';
+                                                    </div>';
+//                                                </div>
+//                                            </div>';
+                                    $exchange_content .= '<div class="col-1 text-left">
+                                                            <a class="remove_operation" data-user_id="'.$user.'" data-request_num="'.$request_num.'">&times;</a>
+                                                        </div>
+                                            </div>
+                                         </div>';
                                 } elseif ($request_value['status'] == 'completed')
                                     continue;
                             } //inner foreach
@@ -2599,7 +2637,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                         }
                         $verification_content .= '<div class="table-text w-100">' .
                             '<div class="row">' .
-                            '<div class="col-3 text-left" style="padding-left: 42px;">' .
+                            '<div class="col-2 text-left" style="padding-left: 42px;">' .
                             $value['name'] . ' ' . $value['surname'] . ' ' . $value['last_name'] .
                             '</div>' .
                             '<div class="col-2 text-left">' .
@@ -2614,6 +2652,9 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                 <div class="btn-custom-one btn-zayavki" id="request_approve_' . $key . '">
                             Одобрить
                                                 </div>
+                                            </div>
+                                            <div class="col-1 text-left">
+                                               <a class="remove_operation" data-user_id="'.$key.'">&times;</a>
                                             </div>
                                         </div>
                                     </div>';

@@ -17,10 +17,10 @@
             </div>
 
             <div class="row">
-                <div class="table-title w-100">
+                <div class="table-title w-100" style="height: 55px">
                     <div class="row">
 
-                        <div class="col-3 text-left" style="padding-left: 42px;">
+                        <div class="col-2 text-left" style="padding-left: 42px;">
                             Имя клиента
                         </div>
                         <div class="col-2 text-left">
@@ -56,10 +56,10 @@
             </div>
 
             <div class="row">
-                <div class="table-title w-100">
+                <div class="table-title w-100" style="height: 55px">
                     <div class="row">
 
-                        <div class="col-3 text-left" style="padding-left: 42px;">
+                        <div class="col-2 text-left" style="padding-left: 42px;">
                             Имя клиента
                         </div>
                         <div class="col-2 text-left">
@@ -74,48 +74,7 @@
                     </div>
                 </div>
                 <?php if(isset($verification_content) && !empty($verification_content)) echo $verification_content; ?>
-<!--                <div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
-<!--                            Имя Фамилия Отчество-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!--                            00002-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!---->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-right">-->
-<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-center">-->
-<!--                            <div class="btn-custom-one btn-zayavki">-->
-<!--                                Одобрить-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-3 text-left" style="padding-left: 42px;">-->
-<!--                            Имя Фамилия Отчество-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!--                            00002-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-left">-->
-<!---->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-right">-->
-<!--                            <img src="/wp-content/uploads/2019/12/info.png" class="info-zayavki">-->
-<!--                        </div>-->
-<!--                        <div class="col-3 text-center">-->
-<!--                            <div class="btn-custom-one btn-zayavki">-->
-<!--                                Одобрить-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+
             </div>
         </div>
 
@@ -343,6 +302,44 @@
                     el.parents('.table-text').remove();
                 }
             });
+        });
+
+        jQuery('.remove_operation').click(function(){
+            let el = jQuery(this);
+            let request_type;
+            if (el.parents('.exchange_requests').length > 0)
+                request_type = 'exchange_request';
+            else
+                if (el.parents('.verification_requests').length > 0)
+                    request_type = 'verification_request';
+
+            if (confirm("Удалить данный запрос?") == true)
+            {
+                if (request_type === 'exchange_request')
+                    var data = {
+                        remove_request: 'true',
+                        request_type: request_type,
+                        request_num: jQuery(this).data('request_num'),
+                        user_id: jQuery(this).data('user_id')
+                    };
+                //If verification request, there's no request_num
+                else
+                    if (request_type === 'verification_request')
+                        var data = {
+                            remove_request: 'true',
+                            request_type: request_type,
+                            user_id: jQuery(this).data('user_id')
+                        };
+                jQuery.post( window.location, data, function(response) {
+                    if (response == 'true') {
+                        el.parents('.table-text').remove();
+                    }
+                });
+            }
+            else
+            {
+                return;
+            }
         });
     }
 

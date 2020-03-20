@@ -1,0 +1,29 @@
+verification_requests:Array
+(
+)
+
+verification_requests old:Array
+(
+    [1] => Array
+        (
+            [prizm_address] => fgrtdggfdg
+            [prizm_public_key] => gdfgdfdfgdf
+            [waves_address] => fgdgdfhdgdfg
+            [name] => dhgdhdgdfgdf
+            [surname] => gfdgdfgdfg
+            [last_name] => fhgghdfg
+            [passport_number] => 6574674
+            [passport_date] => 4654-06-05
+            [passport_code] => 3564654
+            [passport_who] => syhjghdfg
+            [passport_address] => hgjdgfhf
+            [passport_index] => 46454
+            [date] => 24.02.20
+        )
+
+)
+
+verification_requests new:Array
+(
+)
+

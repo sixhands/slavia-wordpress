@@ -104,10 +104,13 @@
         jQuery('.remove_operation').click(function(){
             if (confirm("Удалить данную операцию?") == true)
             {
-                let request_num = jQuery(this).attr('data-request_num');
+                let request_num = jQuery(this).data('request_num');
+                let user_id = jQuery(this).data('user_id');
                 var data = {
-                    remove_exchange: 'true',
-                    request_num: request_num
+                    remove_request: 'true',
+                    request_type: 'exchange_request',
+                    request_num: request_num,
+                    user_id: user_id
                 };
                 var el = jQuery(this);
                 jQuery.post( window.location, data, function(response) {
