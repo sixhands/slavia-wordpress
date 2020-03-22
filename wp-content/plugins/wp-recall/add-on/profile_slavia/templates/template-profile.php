@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <?php if (isset($profile_urgent_info) && !empty($profile_urgent_info)): ?>
+        <?php if (isset($profile_urgent_info) && !empty($profile_urgent_info) && isset($is_verified) && $is_verified == 'yes'): ?>
         <div class="coop_maps question-bg col-lg-12">
             <div class="row">
                 <div class="col-lg-12 text-center">
