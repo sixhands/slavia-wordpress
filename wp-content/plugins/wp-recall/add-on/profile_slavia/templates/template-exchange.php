@@ -280,20 +280,89 @@ $slav_text = get_field('slav_text', 306); ?>
             </div>
             <div class="col-12">
                 <div class="row">
-                    <!--                    <div class="col-lg-6 input-exchange">-->
-                    <!--                        <div class="row">-->
-                    <!--                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="col-lg-6 input-exchange">-->
-                    <!--                        <div class="row">-->
-                    <!--                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
                     <div class="col-12">
                         <div class="row">
                             <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!--ADDITIONAL PAYMENT OPTIONS ***************************************************************** -->
+
+        <form id="other_payments" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+            <h1 class="coop_maps-h1">Иной паевой взнос</h1>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-7 input-exchange">
+                        <div class="row">
+                            <div class="select-exchange w-100">
+<!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
+                                <select required class="other_payments input_currency" name="exchange[input_currency]">
+                                    <option>Вид вносимого имущества</option>
+                                    <?php /*if (isset($banks) && !empty($banks)): ?>
+                                        <?php foreach ($banks as $key => $value): ?>
+                                            <option value="<?=$key?>"><?=$value['name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif;*/ ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 input-exchange">
+                        <div class="row">
+                            <span>Количество</span>
+                            <input required placeholder="0" type="text" class="other_payments" name="exchange[input_sum]">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 input-exchange">
+                        <div class="row">
+                            <div class="select-exchange w-100">
+<!--                                <span class="select-exchange">Вид желаемого имущества</span>-->
+                                <select class="other_payments output_currency" name="exchange[output_currency]">
+                                    <option>Вид желаемого имущества</option>
+                                    <?php /*if (isset($banks) && !empty($banks)): ?>
+                                        <?php foreach ($banks as $key => $value): ?>
+                                            <option value="<?=$key?>"><?=$value['name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif;*/ ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 input-exchange orange-input">
+                        <div class="row">
+                            <span>Вы получите</span>
+                            <input placeholder="0" id="exp" type="text" name="exchange[output_sum]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4">
+                        <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
+                    </div>
+                    <div class="col-8 input-exchange">
+                        <div class="row">
+                            <div class="select-exchange w-100" style="margin-top: 30px">
+    <!--                            <span class="select-exchange">Наши реквизиты</span>-->
+                                <select required class="other_payments requisites" name="exchange[requisites]">
+                                    <option>Наши реквизиты</option>
+                                    <?php /*if (isset($banks) && !empty($banks)): ?>
+                                    <?php foreach ($banks as $key => $value): ?>
+                                        <option value="<?=$key?>"><?=$value['name']?></option>
+                                    <?php endforeach;?>
+                                <?php endif;*/ ?>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

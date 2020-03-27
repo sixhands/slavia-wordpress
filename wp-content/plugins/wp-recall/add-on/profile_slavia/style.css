@@ -1,3 +1,7 @@
+.modal-content .input-exchange span {
+    margin-left: auto;
+    margin-right: auto;
+}
 /*Запретить выбирать текст на странице обмена*/
 .prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp {
     -moz-user-select: none;

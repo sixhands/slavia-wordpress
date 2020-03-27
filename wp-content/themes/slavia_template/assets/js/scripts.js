@@ -26,6 +26,7 @@ jQuery("#profil_user_btn")
     jQuery('#profil_user_btn img').attr('src', '/wp-content/uploads/2019/12/profil.png');
   });
 
+jQuery('div.question-text a').attr('target', '_blank');
 //открытие текста вопроса
 jQuery('.question').click(function (){
         var id = this.id;

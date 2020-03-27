@@ -124,6 +124,31 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Продает</span>
+                            <input class="verification_input_sum" placeholder="Продает" type="text" name="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange ">
+                        <div class="row ">
+                            <span>Покупает</span>
+                            <div class="select-exchange w-100">
+                                <input class="verification_output_sum" placeholder="Покупает" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 input-exchange">
+                        <div class="row">
+                            <span>Время подачи заявки</span>
+                            <input class="verification_exchange_date" placeholder="Дата" type="text" name="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="col-12">
                 <div class="row">
@@ -192,20 +217,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 passport-photo">
-                        <div class="row">
-<!--                            <div class="col-lg-4">-->
-<!--                                <div class="row">-->
-<!--                                    <img src="/wp-content/uploads/2019/12/zg.png">-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="col-lg-4 ">-->
-<!--                                <div class="row">-->
-<!--                                    <img class="" src="/wp-content/uploads/2019/12/zg.png">-->
-<!--                                </div>-->
-<!--                            </div>-->
-
-
-                        </div>
+                        <div class="row"></div>
                     </div>
                 </div>
             </div>
@@ -222,6 +234,60 @@
         request_user_id = request_user_id[request_user_id.length - 1];
         request_user_id = parseInt(request_user_id);
         return request_user_id;
+    }
+
+    function fill_modal(modal_type, data)
+    {
+        //console.log(data);
+        var modal_el = jQuery('#modal-container-54506521');
+        let header = jQuery('.modal-content h1');
+
+        if (modal_type === 'exchange')
+        {
+            header.text('Детали запроса');
+            let fields_to_fill = jQuery(
+                '.verification_prizm_address, .verification_prizm_public_key, .verification_waves_address' +
+                ', .verification_input_sum, .verification_output_sum, .verification_exchange_date');
+            let fields_to_hide = jQuery('.modal-content input').not(fields_to_fill);
+
+            fields_to_fill.parents('.input-exchange').css('display', 'block');
+            fields_to_hide.parents('.input-exchange').css('display', 'none');
+            jQuery('.passport-photo').css('display', 'none');
+        }
+        else
+            if (modal_type === 'verification')
+            {
+                header.text('Заявка на верификацию');
+                let fields_to_hide = jQuery('.verification_error, .verification_input_sum, .verification_output_sum, .verification_exchange_date');
+                let fields_to_fill = jQuery('.modal-content input').not(fields_to_hide);
+                fields_to_fill.parents('.input-exchange').css('display', 'block');
+                fields_to_hide.parents('.input-exchange').css('display', 'none');
+
+                jQuery('.passport-photo').css('display', 'block');
+            }
+
+        //Заполняем данными нужные поля
+        jQuery.each(data, function (item) {
+            if (item !== 'passport_photos')
+                if (modal_el.find('.verification_' + item).length > 0)
+                    modal_el.find('.verification_' + item).val(data[item]);
+        });
+
+        if (modal_type === 'verification') {
+            //Очищаем место для фотографий
+            modal_el.find('.passport-photo').children('.row').empty();
+
+            jQuery.each(data['passport_photos'], function (photo) {
+                modal_el.find('.passport-photo').children('.row')
+                    .append('<div class="col-lg-4">' +
+                        '<div class="row">' +
+                        '<img src="' + data['passport_photos'][photo] + '">' +
+                        '</div>' +
+                        '</div>');
+
+            });
+        }
+        jQuery('#modal-54506521').trigger('click');
     }
 
     function init_btn_events()
@@ -241,35 +307,23 @@
                 request_user_id: request_user_id,
                 is_exchange: is_exchange
             };
+            if (is_exchange === 'true')
+            {
+                let request_num = jQuery(this).parents('div.table-text').find('.btn-zayavki').attr('data-request_num');
+                data['request_num'] = request_num;
+            }
             //console.log(myajax.url);
             // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
             jQuery.post( window.location, data, function(response) {
                 if (response && response !== 'false') {
-                    let verification_data = JSON.parse(response);
-                    let modal = jQuery('#modal-container-54506521');
-                    jQuery.each(verification_data, function (item) {
-                        if (item !== 'passport_photos')
-                            if (modal.find('.verification_' + item).length > 0)
-                                modal.find('.verification_' + item).val(verification_data[item]);
-                    });
-                    //Очищаем место для фотографий
-                    modal.find('.passport-photo').children('.row').empty();
+                    let data = JSON.parse(response);
+                    let modal_type = is_exchange === 'true' ? 'exchange' : 'verification';
 
-                    jQuery.each(verification_data['passport_photos'], function (photo) {
-                        modal.find('.passport-photo').children('.row')
-                            .append('<div class="col-lg-4">' +
-                                '<div class="row">' +
-                                '<img src="' + verification_data['passport_photos'][photo] + '">' +
-                                '</div>' +
-                                '</div>');
-                        //console.log(verification_data['passport_photos'][photo]);
-                    });
-                    jQuery('#modal-54506521').trigger('click');
+                    fill_modal(modal_type, data);
                 }
                 else
                 if (response === 'false')
-                    console.log('Нет верификации для этого пользователя');
-
+                    fill_modal('error', 'Данные этого пользователя не найдены');
             });
         });
         //Нажатие кнопки "одобрить"

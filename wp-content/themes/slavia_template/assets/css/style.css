@@ -929,3 +929,12 @@ a:hover
 .exchange_deposit_text {
 	margin-top: 30px;
 }
+#other_payments .input-exchange {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-top: 0;
+}
+#other_payments .select-exchange {
+	padding-left: 0;
+}

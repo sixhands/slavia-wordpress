@@ -162,6 +162,9 @@ function tab_config()
     //     jQuery(this).parents("#settings_form").submit();
     // });
 
+    //Открывать ссылки в новой вкладке
+    jQuery('div.passport-text a').attr('target', '_blank');
+
     //Добавить новый банк
     jQuery("#add_bank").click(function(){
         var banks = jQuery(this).parents(".coop_maps.question-bg").children(".col-12").children("form.row").children();

@@ -98,10 +98,11 @@ function rcl_init_js_profile_variables($data){
 //Получить текущую роль
 function rcl_get_current_role()
 {
-    if (!isset(wp_get_current_user()->roles) || !wp_get_current_user()->roles) //Если не назначена роль, не фильтруем табы
+    if (!isset(wp_get_current_user()->roles) || empty(wp_get_current_user()->roles)) //Если не назначена роль, не фильтруем табы
         return false;
     $roles = wp_get_current_user()->roles;
     $current_role = array_shift($roles);
+    //var_dump($current_role);
     return $current_role;
 }
 
@@ -109,16 +110,16 @@ function rcl_get_current_role()
 function rcl_block_profile_pages_by_role($tab)
 {
     if (parse_url($_SERVER['REQUEST_URI'])['path'] == '/profile/') {
-        if (!rcl_get_current_role()) //Если не назначена роль, не фильтруем табы
-            return $tab;
         $current_role = rcl_get_current_role();
+        if (!isset($current_role) || empty($current_role)) //Если не назначена роль, не фильтруем табы
+            return $tab;
 
         if ($current_role == 'manager') {
             if ($tab['id'] == 'settings') {
                 $tab = array();
             }
         }
-        if ($current_role == 'user' || $current_role == 'need-confirm')
+        if ($current_role == 'user' || $current_role == 'need-confirm' || $current_role == 'not_verified')
         {
             if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings') {
                 $tab = array();
@@ -127,7 +128,7 @@ function rcl_block_profile_pages_by_role($tab)
     }
     return $tab;
 }
-add_filter('rcl_tab', 'rcl_block_profile_pages_by_role', 10, 1);
+add_filter('rcl_tab', 'rcl_block_profile_pages_by_role', 5, 1);
 
 //Фильтр дефолтных полей профиля
 add_filter('rcl_default_profile_fields', 'change_default_profile_fields', 10, 1);
@@ -1673,7 +1674,9 @@ function rcl_edit_profile(){
                         rcl_mail( $user_email, $subject, $textmail );
                         echo 'true';
                         exit;
-                    } else {
+                    }
+                    else //Получаем верификационные данные для вкладки "заявки"
+                        {
                         foreach ($verification_requests as $key => $value) {
                             if ($key == $_POST['request_user_id']) {
                                 echo json_encode($value);
@@ -1687,9 +1690,34 @@ function rcl_edit_profile(){
             elseif (isset($_POST['is_exchange']) && $_POST['is_exchange'] == 'true')
             {
                 $user_verification = get_user_meta($_POST['request_user_id'], 'verification', true);
-                $user_passport_photos = get_user_meta($_POST['request_user_id'], 'passport_photos', true);
-                if (!empty($user_passport_photos))
-                    $user_verification += array('passport_photos' => $user_passport_photos);
+                //$user_passport_photos = get_user_meta($_POST['request_user_id'], 'passport_photos', true);
+//                if (!empty($user_passport_photos))
+//                    $user_verification += array('passport_photos' => $user_passport_photos);
+                $exchange_requests = rcl_get_option('exchange_requests');
+
+                if (isset($exchange_requests) && !empty($exchange_requests))
+                {
+                    if (isset($_POST['request_num'])) {
+                        $request_num = $_POST['request_num'];
+                        $userid = $_POST['request_user_id'];
+                        $request = $exchange_requests[$userid][$request_num];
+
+                        $input_currency = $request['input_currency'];
+                        $output_currency = $request['output_currency'];
+                        $input_sum = $request['input_sum'];
+                        $output_sum = $request['output_sum'];
+                        $date = $request['date'];
+
+                        if (isset($input_currency))
+                            $user_verification += array('input_sum' => $input_sum.' '.$input_currency);
+                        if (isset($output_currency))
+                            $user_verification += array('output_sum' => $output_sum.' '.$output_currency);
+                        if (isset($date))
+                            $user_verification += array('exchange_date' => $date);
+//                        $log = new Rcl_Log();
+//                        $log->insert_log("date: ".print_r($user_verification, true));
+                    }
+                }
                 if (!empty($user_verification))
                     echo json_encode($user_verification);
                 else
