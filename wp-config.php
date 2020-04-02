@@ -78,6 +78,9 @@ $table_prefix = 'wp_';
 define('WP_TEMP_DIR','/wp-content/wp-recall/temp');
 
 define( 'WP_DEBUG', true );
+
+//define('FS_METHOD', 'DIRECT');
+
 //define( 'WP_DEBUG_LOG', true );
 
 
