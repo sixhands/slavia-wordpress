@@ -2,32 +2,38 @@
 $exchange_address = get_field('exchange_address', 306);
 $slav_text = get_field('slav_text', 306);
 $asset_inputs = array();
-$i = 0;
-while (!empty(get_field('asset_input_'.($i+1))) && count(get_field('asset_input_'.($i+1))) > 0)
+
+for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
+     !empty($asset_input) && count($asset_input) > 0;
+     $i++, $asset_input = get_field('asset_input_'.$i, 306)
+    )
 {
-    $asset_inputs[] = get_field('asset_input_'.($i+1));
-    $i++;
+    if (!empty($asset_input['asset_name']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_rate_rubles']))
+        $asset_inputs[] = $asset_input;
 }
 
 $asset_outputs = array();
-$i = 0;
-while (!empty(get_field('asset_output_'.($i+1))) && count(get_field('asset_output_'.($i+1))) > 0)
+
+for ($i = 1, $asset_output = get_field('asset_output_'.$i, 306);
+     !empty($asset_output) && count($asset_output) > 0;
+     $i++, $asset_output = get_field('asset_output_'.$i, 306)
+    )
 {
-    $asset_outputs[] = get_field('asset_output_'.($i+1));
-    $i++;
+    if (!empty($asset_output['asset_name']) && !empty($asset_output['asset_rate_rubles']))
+        $asset_outputs[] = $asset_output;
 }
+
 $deposit_types = array();
-$i = 0;
-while (get_field('deposit_type_'.($i+1)) !== null )
+
+for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
+     $deposit_type !== null;
+     $i++, $deposit_type = get_field('deposit_type_'.$i, 306)
+    )
 {
-    if (empty(get_field('deposit_type_'.($i+1))) )
-        continue;
-    else {
-        $deposit_types[] = get_field('deposit_type_' . ($i + 1));
-        $i++;
-    }
+    if (!empty($deposit_type) )
+        $deposit_types[] = $deposit_type;
 }
-var_dump($deposit_types);
+
 ?>
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
@@ -332,9 +338,7 @@ var_dump($deposit_types);
                                     <option disabled selected>Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <?php if (!empty($asset_input) && !empty($asset_input['asset_rate_rubles']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_name'])): ?>
-                                                <option data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_rate_rubles']?>"><?=$asset_input['asset_name']?></option>
-                                            <?php endif; ?>
+                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -357,9 +361,7 @@ var_dump($deposit_types);
                                     <option disabled selected>Вид желаемого имущества</option>
                                     <?php if (isset($asset_outputs) && !empty($asset_outputs)): ?>
                                         <?php foreach ($asset_outputs as $asset_output): ?>
-                                            <?php if (!empty($asset_output) && !empty($asset_output['asset_rate_rubles']) && !empty($asset_output['asset_name'])): ?>
-                                                <option value="<?=$asset_output['asset_rate_rubles']?>"><?=$asset_output['asset_name']?></option>
-                                            <?php endif; ?>
+                                            <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=$asset_output['asset_name']?>"><?=$asset_output['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -386,11 +388,6 @@ var_dump($deposit_types);
     <!--                            <span class="select-exchange">Наши реквизиты</span>-->
                                 <select required class="other_payments requisites" name="exchange[requisites]">
                                     <option disabled selected>Наши реквизиты</option>
-                                    <?php /*if (isset($banks) && !empty($banks)): ?>
-                                    <?php foreach ($banks as $key => $value): ?>
-                                        <option value="<?=$key?>"><?=$value['name']?></option>
-                                    <?php endforeach;?>
-                                <?php endif;*/ ?>
                                 </select>
                             </div>
                         </div>
@@ -419,9 +416,7 @@ var_dump($deposit_types);
                                     <option disabled selected>Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <?php if (!empty($asset_input) && !empty($asset_input['asset_rate_rubles']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_name'])): ?>
-                                                <option data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_rate_rubles']?>"><?=$asset_input['asset_name']?></option>
-                                            <?php endif; ?>
+                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -434,11 +429,9 @@ var_dump($deposit_types);
                             <div class="select-exchange w-100" style="margin-top: 0px; padding-left: 0; padding-right: 0">
                                 <select required class="other_deposit deposit_type" name="exchange[deposit_type]">
                                     <option disabled selected>Вид целевой программы</option>
-                                    <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
-                                        <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <?php if (!empty($asset_input) && !empty($asset_input['asset_rate_rubles']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_name'])): ?>
-                                                <option data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_rate_rubles']?>"><?=$asset_input['asset_name']?></option>
-                                            <?php endif; ?>
+                                    <?php if (isset($deposit_types) && !empty($deposit_types)): ?>
+                                        <?php foreach ($deposit_types as $deposit_type): ?>
+                                            <option value="<?=$deposit_type?>"><?=$deposit_type?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -452,11 +445,6 @@ var_dump($deposit_types);
                                 <!--                            <span class="select-exchange">Наши реквизиты</span>-->
                                 <select required class="other_deposit requisites" name="exchange[requisites]">
                                     <option disabled selected>Наши реквизиты</option>
-                                    <?php /*if (isset($banks) && !empty($banks)): ?>
-                                    <?php foreach ($banks as $key => $value): ?>
-                                        <option value="<?=$key?>"><?=$value['name']?></option>
-                                    <?php endforeach;?>
-                                <?php endif;*/ ?>
                                 </select>
                             </div>
                         </div>
@@ -1128,8 +1116,8 @@ var_dump($deposit_types);
             return false;
         else
         {
-            input_rate = input_rate.val();
-            output_rate = output_rate.val();
+            input_rate = input_rate.attr('data-rate');
+            output_rate = output_rate.attr('data-rate');
             return {input_rate: input_rate, output_rate: output_rate};
         }
     }
@@ -1138,16 +1126,20 @@ var_dump($deposit_types);
         let currency_rates = get_currency_rates();
         if (!currency_rates)
             return false;
-        else
-            return (output_sum * currency_rates.output_rate) / currency_rates.input_rate;
+        else {
+            let result = (output_sum * currency_rates.output_rate) / currency_rates.input_rate;
+            return Math.round(result * 100) / 100;
+        }
     }
     function calc_other_payments_output_sum(input_sum)
     {
         let currency_rates = get_currency_rates();
         if (!currency_rates)
             return false;
-        else
-            return (input_sum * currency_rates.input_rate) / currency_rates.output_rate;
+        else {
+            let result = (input_sum * currency_rates.input_rate) / currency_rates.output_rate;
+            return Math.round(result * 100) / 100;
+        }
     }
     //Задаем элемент, в котором был произведен ввод и функция делает вывод в соседний input
     function other_payments_print_result(input_el)

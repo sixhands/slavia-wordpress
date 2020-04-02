@@ -775,6 +775,8 @@ function rcl_tab_operations_content($master_id)
     {
         foreach ($exchange_requests[$user_ID] as $key => $value)
         {
+            $output_sum_to_print = !empty($value['output_sum']) ? $value['output_sum'] : $value['input_sum'];
+            $output_currency_to_print = !empty($value['output_currency']) ? $value['output_currency'] : $value['input_currency'];
             $exchange_content .= '<div class="table-text w-100">
                                     <div class="row">
                                         <div class="col-2 text-center">'.
@@ -790,7 +792,7 @@ function rcl_tab_operations_content($master_id)
                                         '</div>
                                         
                                         <div class="col-2 text-center">'.
-                                            $value['output_sum'].' '.$value['output_currency'].
+                                            $output_sum_to_print.' '.$output_currency_to_print.
                                         '</div>';
                                         
 //                                        <div class="col-2 text-center" style="visibility: hidden">
@@ -831,6 +833,28 @@ function rcl_tab_operations_content($master_id)
                                         </div>';
 //                                    </div>
 //                                </div>';
+            }
+            //Целевой взнос
+            elseif ($value['status'] == 'deposit_other')
+            {
+                if ($value['input_currency'] == 'RUB')
+                    $exchange_content .= '<div class="col-3 text-center">' .
+                        '<a onclick="ipayCheckout({
+                            amount:' . $value['input_sum'] . ',
+                            currency:\'RUB\',
+                            order_number:\'\',
+                            description: \'Целевой взнос ' . $value['deposit_type'] . ' от пайщика №'.$client_num.'\'
+                            },
+                            function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
+                            function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
+                             
+                            class="btn-custom-one" style="display: inline-block;">Оплатить
+                        </a>' .
+                        '</div>';
+                else
+                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает подтверждения
+                                        </div>';
             }
 
             elseif ($value['status'] == 'completed')
@@ -1044,7 +1068,7 @@ function rcl_tab_requests_content($master_id)
                     $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
                     $sum_to_print = empty($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
 
-                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit')
+                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other')
                     {
                         $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -1084,6 +1108,13 @@ function rcl_tab_requests_content($master_id)
                         elseif ($request_value['status'] == 'deposit')
                             $exchange_content .= '<div class="col-3 text-center">
                                                         <p>Имущественный взнос</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>';
+                        elseif ($request_value['status'] == 'deposit_other')
+                            $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Целевой взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
@@ -1353,7 +1384,72 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
     }
 
 //    $log = new Rcl_Log();
-//    $log->insert_log("exchange 1:".print_r($exchange_requests, true));
+//    $log->insert_log("exchange normal:".print_r($exchange_fields, true));
+
+    rcl_update_option('exchange_requests', $exchange_requests);
+}
+function save_exchange_request_other($input_currency, $input_sum, $requisites, $deposit_type = false, $output_sum = false, $output_currency = false)
+{
+
+    global $user_ID;
+    $exchange_requests = rcl_get_option('exchange_requests');
+
+    $exchange_fields = array();
+    $exchange_fields += array('input_sum' => $input_sum);
+    $exchange_fields += array('input_currency' => $input_currency);
+    $exchange_fields += array('output_sum' => $output_sum);
+    $exchange_fields += array('output_currency' => $output_currency);
+
+    $exchange_fields += array('requisites' => $requisites);
+
+    date_default_timezone_set('Europe/Moscow');
+
+    $exchange_fields += array('date' => date('d.m.y H:i:s'));
+
+    if ($deposit_type === false)
+        $exchange_fields += array('status' => 'awaiting_payment');
+    else {
+        $exchange_fields += array('deposit_type' => $deposit_type);
+        $exchange_fields += array('status' => 'deposit_other');
+    }
+
+    if (isset($exchange_requests) && !empty($exchange_requests))
+    {
+        if (isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
+        {
+            /*$new_request = array();*///array(count($exchange_requests[$user_ID]) => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
+        }
+        elseif (!isset($exchange_requests[$user_ID]))
+        {
+            $new_request = array(0 => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
+            $exchange_requests += array($user_ID => $new_request); //Если еще нет запросов для этого пользователя, добавляем ключ id этого пользователя
+        }
+        elseif (empty($exchange_requests[$user_ID]))
+        {
+            //$new_request = array(0 => $exchange_fields);
+
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
+        }
+    }
+    //Если еще нету запросов на обмен
+    else
+    {
+        $new_request = array(0 => $exchange_fields);
+
+        $exchange_requests = array($user_ID => $new_request);
+    }
+
+//    $log = new Rcl_Log();
+//    $log->insert_log("exchange other:".print_r($exchange_fields, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
 }
@@ -2322,7 +2418,21 @@ function rcl_edit_profile(){
             {
                 $exchange = $_POST['exchange'];
 
-                if (!isset($exchange['output_currency']) && !isset($exchange['output_sum']) && !isset($exchange['bank']))
+                if (isset($exchange['requisites'])) {
+                    //other deposit
+                    if (isset($exchange['deposit_type']))
+                        save_exchange_request_other($exchange['input_currency'], $exchange['input_sum'], $exchange['requisites'],
+                            $exchange['deposit_type']);
+                    //other payment with output sum
+                    elseif (isset($exchange['output_sum']) && isset($exchange['output_currency']))
+                        save_exchange_request_other($exchange['input_currency'], $exchange['input_sum'], $exchange['requisites'],
+                            false, $exchange['output_sum'], $exchange['output_currency']);
+                    //other payment without output sum
+                    else
+                        save_exchange_request_other($exchange['input_currency'], $exchange['input_sum'], $exchange['requisites']);
+                }
+
+                elseif (!isset($exchange['output_currency']) && !isset($exchange['output_sum']) && !isset($exchange['bank']))
                     save_exchange_request($exchange['input_currency'], $exchange['input_sum']);
                 else
                     save_exchange_request($exchange['input_currency'], $exchange['input_sum'],
@@ -2579,12 +2689,22 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     $time = strtotime($filter_val);
 
                                     $newfilter = date('d.m.y',$time);
+
+                                    //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
+                                    $current_date = explode(' ', $request_value['date']);
+                                    $current_date = explode('.', $current_date[0]);
+                                    $day = $current_date[0];
+                                    $month = $current_date[1];
+                                    $year = $current_date[2];
+                                    //$current_date[0] = str_replace('.', '-', $current_date[0]);
+                                    $current_time = strtotime($month.'/'.$day.'/'.$year);
+                                    $new_date = date('d.m.y', $current_time);
 //                                    $log = new Rcl_Log();
 //                                    $log->insert_log("new_filter:".$newfilter);
 //                                    $log->insert_log("date_value:".$request_value['date']);
 //                                    $log->insert_log("------------------------------");
                                     //$date_value = str_replace('.', '/', $request_value['date']);
-                                    if (!isset($request_value['date']) || $request_value['date'] != $newfilter)
+                                    if (!isset($request_value['date']) || !isset($new_date) || $new_date != $newfilter)
                                         continue;
                                 }
                                 if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit')
@@ -2716,9 +2836,21 @@ function filter_data($filter_type, $datatype, $filter_val)
 
                         $newfilter = date('d.m.y', $time);
 
-                        if (!isset($value['date']) || $value['date'] != $newfilter)
+                        //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
+                        $current_date = explode(' ', $value['date']);
+                        $current_date = explode('.', $current_date[0]);
+                        $day = $current_date[0];
+                        $month = $current_date[1];
+                        $year = $current_date[2];
+                        //$current_date[0] = str_replace('.', '-', $current_date[0]);
+                        $current_time = strtotime($month.'/'.$day.'/'.$year);
+                        $new_date = date('d.m.y', $current_time);
+
+                        if (!isset($value['date']) || !isset($new_date) || $new_date != $newfilter)
                             continue;
                     }
+                    $output_sum_to_print = !empty($value['output_sum']) ? $value['output_sum'] : $value['input_sum'];
+                    $output_currency_to_print = !empty($value['output_currency']) ? $value['output_currency'] : $value['input_currency'];
                     $exchange_content .= '<div class="table-text w-100">
                                     <div class="row">
                                         <div class="col-2 text-center">' .
@@ -2734,7 +2866,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                         '</div>
                                         
                                         <div class="col-2 text-center">' .
-                        $value['output_sum'] . ' ' . $value['output_currency'] .
+                        $output_sum_to_print . ' ' . $output_currency_to_print .
                         '</div>';
 
 //                                        <div class="col-2 text-center" style="visibility: hidden">
@@ -2769,6 +2901,28 @@ function filter_data($filter_type, $datatype, $filter_val)
 //                                    </div>
 //                                </div>';
 
+                    //Целевой взнос
+                    elseif ($value['status'] == 'deposit_other')
+                    {
+                        if ($value['input_currency'] == 'RUB')
+                            $exchange_content .= '<div class="col-3 text-center">' .
+                                                    '<a onclick="ipayCheckout({
+                                                        amount:' . $value['input_sum'] . ',
+                                                        currency:\'RUB\',
+                                                        order_number:\'\',
+                                                        description: \'Целевой взнос ' . $value['deposit_type'] . ' от пайщика №'.$client_num.'\'
+                                                        },
+                                                        function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
+                                                        function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
+                                                         
+                                                        class="btn-custom-one" style="display: inline-block;">Оплатить
+                                                    </a>' .
+                                                '</div>';
+                        else
+                            $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
+                                       Ожидает подтверждения
+                                        </div>';
+                    }
                     elseif ($value['status'] == 'completed')
                         $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: green">
                                        Завершена

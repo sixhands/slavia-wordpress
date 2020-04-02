@@ -361,18 +361,18 @@ function tab_config()
     //Блокируем ненужные символы
     //Где блокировать все кроме цифр
     var number_fields =
-        [ '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', '.other_payments_input', '.exp_custom', //Поля страницы обмена
+        [ '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', '.other_payments_input', '.exp_custom', 'input.other_deposit', //Поля страницы обмена
         '.bank_value', '.ref_value', //Поля страницы настроек
         '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
         ];
 
     //Защита от подделки данных на фронте*****************
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom').prop('unselectable', 'on').on('selectstart', false);
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').prop('unselectable', 'on').on('selectstart', false);
 
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom').prop('autocomplete', 'off');
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').prop('autocomplete', 'off');
 
     //Выставляем атрибуты при каждом клике мыши, если не выставлены
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom').mousedown(function(){
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').mousedown(function(){
         let unselectable = jQuery(this).prop('unselectable');
         let autocomplete = jQuery(this).prop('autocomplete');
 
@@ -382,12 +382,12 @@ function tab_config()
         if (autocomplete === 'undefined' || autocomplete !== 'off')
             jQuery(this).prop('autocomplete', 'off');
     });
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom').bind('cut copy paste', function (e) {
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').bind('cut copy paste', function (e) {
         e.preventDefault();
     });
 
     //Disable mouse right click
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom').on("contextmenu",function(e){
+    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').on("contextmenu",function(e){
         return false;
     });
     /**********************************************************************************/
