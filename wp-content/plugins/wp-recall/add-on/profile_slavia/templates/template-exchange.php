@@ -325,7 +325,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 
         <!--ADDITIONAL PAYMENT OPTIONS ***************************************************************** -->
 
-        <form id="other_payments" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="other_payments" class="coop_maps question-bg col-lg-12 other_payments" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Иной паевой взнос</h1>
 
             <div class="col-12">
@@ -397,7 +397,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             </div>
         </form>
 
-        <form id="other_deposit" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="other_deposit" class="coop_maps question-bg col-lg-12 other_deposit" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Целевой взнос</h1>
 
             <div class="col-12">
@@ -459,6 +459,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 </div>
             </div>
         </form>
+
     </div>
 </div>
 
@@ -820,6 +821,164 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 </form>
             </div>
         </div>
+
+        <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
+            <div class="click_ex" id="six-ex">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Иной паевой взнос</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex other_payments" action="" method="post" enctype="multipart/form-data" name="other_payments">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100">
+                                        <select required class="other_payments input_currency" name="exchange[input_currency]">
+                                            <option disabled selected>Вид вносимого имущества</option>
+                                            <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
+                                                <?php foreach ($asset_inputs as $asset_input): ?>
+                                                    <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 input-exchange">
+                                <div class="row">
+                                    <span class="select-exchange">Количество</span>
+
+                                    <div class="select-exchange w-100">
+                                        <input required class="other_payments_input" placeholder="0" type="text" name="exchange[input_sum]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100">
+                                        <!--                                <span class="select-exchange">Вид желаемого имущества</span>-->
+                                        <select class="other_payments output_currency" name="exchange[output_currency]">
+                                            <option disabled selected>Вид желаемого имущества</option>
+                                            <?php if (isset($asset_outputs) && !empty($asset_outputs)): ?>
+                                                <?php foreach ($asset_outputs as $asset_output): ?>
+                                                    <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=$asset_output['asset_name']?>"><?=$asset_output['asset_name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 input-exchange orange-input">
+                                <div class="row">
+                                    <span>Вы получите</span>
+                                    <input placeholder="0" class="exp_custom" type="text" name="exchange[output_sum]">
+                                </div>
+                            </div>
+                            <div class="col-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100" style="margin-top: 30px">
+                                        <!--                            <span class="select-exchange">Наши реквизиты</span>-->
+                                        <select required class="other_payments requisites" name="exchange[requisites]">
+                                            <option disabled selected>Наши реквизиты</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <input class="btn-custom-one exchange-pd text-center" type="submit" name="" value="Отправить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="coop_maps question-bg col-lg-12 ex-mob-pd">
+            <div class="click_ex" id="seven-ex">
+                <div class="ex-header">
+                    <h1 class="coop_maps-h1 ib">Целевой взнос</h1>
+                    <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
+                </div>
+                <form class="tab-ex other_deposit" action="" method="post" enctype="multipart/form-data" name="other_deposit">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100">
+                                        <select required class="other_deposit input_currency" name="exchange[input_currency]">
+                                            <option disabled selected>Вид вносимого имущества</option>
+                                            <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
+                                                <?php foreach ($asset_inputs as $asset_input): ?>
+                                                    <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 input-exchange">
+                                <div class="row">
+                                    <span class="select-exchange">Количество</span>
+
+                                    <div class="select-exchange w-100">
+                                        <input required class="other_deposit" placeholder="0" type="text" name="exchange[input_sum]">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100">
+                                        <!--                                <span class="select-exchange">Вид желаемого имущества</span>-->
+                                        <select required class="other_deposit deposit_type" name="exchange[deposit_type]">
+                                            <option disabled selected>Вид целевой программы</option>
+                                            <?php if (isset($deposit_types) && !empty($deposit_types)): ?>
+                                                <?php foreach ($deposit_types as $deposit_type): ?>
+                                                    <option value="<?=$deposit_type?>"><?=$deposit_type?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 input-exchange">
+                                <div class="row">
+                                    <div class="select-exchange w-100" style="margin-top: 30px">
+                                        <!--                            <span class="select-exchange">Наши реквизиты</span>-->
+                                        <select required class="other_deposit requisites" name="exchange[requisites]">
+                                            <option disabled selected>Наши реквизиты</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="row">
+                                    <input class="btn-custom-one exchange-pd text-center" type="submit" name="" value="Отправить">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -992,7 +1151,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         } ?>};
 
     var prizm_price = <?php echo rcl_slavia_get_crypto_price('PZM'); ?>; //Курс призма
-    var waves_price = <?php echo rcl_slavia_get_crypto_price('WAVES'); ?>; //Курс waves
+    var waves_price = <?php echo '1';//echo rcl_slavia_get_crypto_price('WAVES'); ?>; //Курс waves
 
     //При вводе значения
     jQuery('.prizm_to_rubles, .waves_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keyup(function(event) {
@@ -1110,9 +1269,10 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
     //Other payments
     function get_currency_rates()
     {
-        let input_rate = jQuery('#other_payments').find('select.other_payments.input_currency option:selected');
-        let output_rate = jQuery('#other_payments').find('select.other_payments.output_currency option:selected');
-        if (input_rate.is(':disabled') || output_rate.is(':disabled'))
+        let input_rate = jQuery('form.other_payments').find('select.other_payments.input_currency option:selected').not(':first-child');
+        let output_rate = jQuery('form.other_payments').find('select.other_payments.output_currency option:selected').not(':first-child');
+
+        if (input_rate.is(':disabled') || output_rate.is(':disabled') || input_rate.length <= 0 || output_rate.length <= 0)
             return false;
         else
         {
@@ -1128,6 +1288,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             return false;
         else {
             let result = (output_sum * currency_rates.output_rate) / currency_rates.input_rate;
+            console.log("result: " + result);
             return Math.round(result * 100) / 100;
         }
     }
@@ -1138,6 +1299,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             return false;
         else {
             let result = (input_sum * currency_rates.input_rate) / currency_rates.output_rate;
+            console.log("result: " + result);
             return Math.round(result * 100) / 100;
         }
     }
@@ -1146,6 +1308,8 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
     {
         let output_el;
         let input_sum = input_el.val();
+
+        console.log(input_sum);
 
         if (input_el.hasClass('other_payments_input')) //Введена вносимая сумма
         {
@@ -1172,18 +1336,20 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
     jQuery('.other_payments_input, .exp_custom').keyup(function(event) {
         other_payments_print_result(jQuery(this));
     });
-    jQuery('form#other_payments select.other_payments.input_currency').change(function(){
-        other_payments_print_result(jQuery('form#other_payments .other_payments_input'));
-        let requisites = jQuery('form#other_payments select.other_payments.requisites');
+    jQuery('form.other_payments select.other_payments.input_currency').change(function(){
+        other_payments_print_result(jQuery(this).parents('form.other_payments').find('.other_payments_input'));
+
+        let requisites = jQuery('form.other_payments select.other_payments.requisites');
         requisites.find('option').not(':first-child').remove();
         requisites.append('<option selected>' + jQuery(this).find('option:selected').attr('data-requisites') + '</option>');
     });
-    jQuery('form#other_payments select.other_payments.output_currency').change(function(){
-        other_payments_print_result(jQuery('form#other_payments .other_payments_input'));
+    jQuery('form.other_payments select.other_payments.output_currency').change(function(){
+
+        other_payments_print_result(jQuery(this).parents('form.other_payments').find('.other_payments_input'));
     });
     //other_deposit
-    jQuery('form#other_deposit select.other_deposit.input_currency').change(function(){
-        let requisites = jQuery('form#other_deposit select.other_deposit.requisites');
+    jQuery('form.other_deposit select.other_deposit.input_currency').change(function(){
+        let requisites = jQuery('form.other_deposit select.other_deposit.requisites');
         requisites.find('option').not(':first-child').remove();
         requisites.append('<option selected>' + jQuery(this).find('option:selected').attr('data-requisites') + '</option>');
     });

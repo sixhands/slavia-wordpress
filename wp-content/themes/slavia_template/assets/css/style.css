@@ -938,3 +938,6 @@ a:hover
 #other_payments .select-exchange {
 	padding-left: 0;
 }
+.click_ex .ex-header h1 {
+	width: 80%;
+}

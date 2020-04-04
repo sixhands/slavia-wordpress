@@ -1713,6 +1713,18 @@ function rcl_edit_profile(){
                     $field_found = true;
                     continue;
                 }
+
+                if ($field['slug'] == 'is_verified') {
+                    if (isset($field['value']))
+                        $field['value'] = 'waiting';
+                    else
+                        $field += array('value' => 'waiting');
+
+                    rcl_update_profile_fields($user_ID, array($field));
+                    //$field_found = true;
+                    continue;
+                    //break;
+                }
             }
 //            $log = new Rcl_Log();
 //            $log->insert_log(print_r(rcl_get_profile_fields(array('user_id' => $user_ID)), true));
@@ -2353,8 +2365,32 @@ function rcl_edit_profile(){
                     if (isset($_POST['user_id']))
                     {
                         $userid = $_POST['user_id'];
-//                        $log = new Rcl_Log();
-//                        $log->insert_log('verification_requests old:'.print_r($verification_requests, true));
+
+                        /*****Отправляем уведомление пользователю о неуспешной верификации**********/
+                        $user = get_user_by('id', $userid);
+                        $user_email = $user->user_email;
+                        $username = $user->display_name;
+
+                        $subject = 'SLAVIA: Ваш запрос на верификацию был отклонен.';
+                        $textmail = "<p>Здравствуйте, $username. К сожалению, ваш запрос на верификацию был отклонен. " .
+                            "Вы можете попробовать отправить новый запрос на верификацию в любой момент, либо связаться с " .
+                            "нашим менеджером с помощью контактных данных, указанных на сайте " . $_SERVER['HTTP_HOST'] . ".</p>";
+                        rcl_mail( $user_email, $subject, $textmail );
+                        /****************************************************************************/
+
+                        /****************Обновляем поле пользователя is_verified*********************/
+                        $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
+                        foreach ($profileFields as $field)
+                            if ($field['slug'] == 'is_verified') {
+                                if (isset($field['value']))
+                                    $field['value'] = 'no';
+                                else
+                                    $field += array('value' => 'no');
+                                rcl_update_profile_fields($userid, array($field));
+                                break;
+                            }
+                        /*************************************************************************/
+
                         unset($verification_requests[$userid]);
 
 //                        $log->insert_log('verification_requests new:'.print_r($verification_requests, true));

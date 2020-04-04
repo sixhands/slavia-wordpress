@@ -32,6 +32,10 @@
                         <p class="profil-user-verification" style="color: red;">
                             Профиль не верифицирован
                         </p>
+                    <?php elseif (isset($is_verified) && $is_verified == 'waiting'): ?>
+                        <p class="profil-user-verification" style="color: orange;">
+                            Ваша заявка на верификацию проверяется администрацией
+                        </p>
                     <?php endif ?>
                 </div>
                 <div class="col-lg-2" style="margin-top: 5%">
@@ -241,7 +245,7 @@
                             <input <?php if (isset($verification) && isset($verification['passport_index'])): ?>value="<?=$verification['passport_index']?>" <?php endif; ?> placeholder="Индекс" required class="" type="text" name="verification[passport_index]">
                         </div>
                     </div>
-                    <?php if (isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
+                    <?php if (isset($is_verified) && ($is_verified == 'waiting' || $is_verified == 'yes') && isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
                     <div class="col-lg-12 passport-photo">
                         <div class="row">
                             <?php foreach($passport_photos as $key => $value): ?>
@@ -251,7 +255,7 @@
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <?php else: ?>
+                    <?php elseif ( (isset($is_verified) && $is_verified == 'no') || !isset($is_verified)): ?>
                     <!--PHOTO -->
                     <div class="col-lg-4">
                         <div class="row">
