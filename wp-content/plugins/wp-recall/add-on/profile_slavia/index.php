@@ -97,16 +97,16 @@ function rcl_confirm_user_registration() {
 //            if ( ! rcl_is_user_role( $user->ID, 'need-confirm' ) )
 //                return false;
 
-            $defaultRole = get_option( 'default_role' );
-            if ( $defaultRole == 'need-confirm' ) {
-                update_option( 'default_role', 'author' );
-                $defaultRole = 'author';
-            }
+//            $defaultRole = get_option( 'default_role' );
+//            if ( $defaultRole == 'need-confirm' ) {
+//                update_option( 'default_role', 'author' );
+//                $defaultRole = 'author';
+//            }
 
-            wp_update_user( array( 'ID' => $user->ID, 'role' => $defaultRole ) );
+            //wp_update_user( array( 'ID' => $user->ID, 'role' => $defaultRole ) );
 
-            $log = new Rcl_Log();
-            $log->insert_log("user_id: ".$user->ID);
+//            $log = new Rcl_Log();
+//            $log->insert_log("user_id: ".$user->ID);
             //Обновляем поле профиля
             $profile_fields = rcl_get_profile_fields(array('user_id' => $user->ID));
             if (isset($profile_fields) && !empty($profile_fields)) {
@@ -190,15 +190,16 @@ function rcl_block_profile_pages_by_role($tab)
 {
     if (parse_url($_SERVER['REQUEST_URI'])['path'] == '/profile/') {
         $current_role = rcl_get_current_role();
-        if (!isset($current_role) || empty($current_role)) //Если не назначена роль, не фильтруем табы
-            return $tab;
+        //if (!isset($current_role) || empty($current_role)) //Если не назначена роль, не фильтруем табы
+            //return $tab;
 
         if ($current_role == 'manager') {
             if ($tab['id'] == 'settings') {
                 $tab = array();
             }
         }
-        if ($current_role == 'user' || $current_role == 'need-confirm' || $current_role == 'not_verified')
+        if ($current_role == 'user' || $current_role == 'need-confirm' || $current_role == 'not_verified' ||
+            !isset($current_role) || empty($current_role) )
         {
             if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings') {
                 $tab = array();
