@@ -77,3 +77,4 @@ Stack trace:
 [20-Jan-2020 16:30:09 UTC] PHP Notice:  Undefined index: sizefile in /home/a/a99953zd/slv/public_html/wp-content/plugins/wp-recall/classes/class-rcl-custom-fields.php on line 200
 [20-Jan-2020 16:30:09 UTC] PHP Notice:  Undefined index: sizefile in /home/a/a99953zd/slv/public_html/wp-content/plugins/wp-recall/classes/class-rcl-custom-fields.php on line 200
 [20-Jan-2020 16:30:09 UTC] PHP Notice:  Undefined index: sizefile in /home/a/a99953zd/slv/public_html/wp-content/plugins/wp-recall/classes/class-rcl-custom-fields.php on line 200
+[04-Apr-2020 14:48:09 UTC] PHP Warning:  unlink(/wp-content/wp-recall/temp/tidio-live-chat.4.2.1-LyG0zv.tmp): No such file or directory in /var/www/html/wp-admin/includes/file.php on line 1020

@@ -28,7 +28,7 @@
                         <p class="profil-user-verification" style="color: #179F37;">
                             Профиль верифицирован
                         </p>
-                    <?php elseif ((isset($is_verified) && $is_verified == 'no') || !isset($is_verified)): ?>
+                    <?php elseif ((isset($is_verified) && $is_verified == 'no') || !isset($is_verified) || empty($is_verified)): ?>
                         <p class="profil-user-verification" style="color: red;">
                             Профиль не верифицирован
                         </p>
@@ -37,6 +37,16 @@
                             Ваша заявка на верификацию проверяется администрацией
                         </p>
                     <?php endif ?>
+
+                    <?php if (isset($is_email_verified) && $is_email_verified == 'yes'): ?>
+                        <p class="profil-email-verification" style="color: #179F37;">
+                            Email подтвержден
+                        </p>
+                    <?php elseif (!isset($is_email_verified) || empty($is_email_verified)): ?>
+                        <p class="profil-user-verification" style="color: red;">
+                            Email не подтвержден
+                        </p>
+                    <?php endif; ?>
                 </div>
                 <div class="col-lg-2" style="margin-top: 5%">
                     <div class="btn-modal">
@@ -255,7 +265,7 @@
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <?php elseif ( (isset($is_verified) && $is_verified == 'no') || !isset($is_verified)): ?>
+                    <?php elseif ( (isset($is_verified) && $is_verified == 'no') || !isset($is_verified) || empty($is_verified)): ?>
                     <!--PHOTO -->
                     <div class="col-lg-4">
                         <div class="row">

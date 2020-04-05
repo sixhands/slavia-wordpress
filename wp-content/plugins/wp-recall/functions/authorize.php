@@ -11,7 +11,7 @@ function rcl_edit_default_login_redirect( $redirect_to, $requested_redirect_to, 
         return;
 }
 
-add_filter( 'wp_authenticate_user', 'rcl_chek_user_authenticate', 10 );
+//add_filter( 'wp_authenticate_user', 'rcl_chek_user_authenticate', 10 );
 /**
  * проверяем подтверждение емейла, если такая настройка включена
  */

@@ -1111,7 +1111,8 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
 			}
 			if ((isset($field['value']) && !empty($field['value'])) &&
                 ($slug == 'verification' || $slug == 'passport_photos' ||
-                $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs' || $slug == 'ref_percent') )
+                $slug == 'is_verified' || $slug =='is_email_verified' || $slug == 'user_documents' ||
+                $slug == 'refs' || $slug == 'ref_percent') )
 			{
 			    $value = $field['value'];
                 update_user_meta($user_id, $slug, $value);
@@ -1119,7 +1120,8 @@ function rcl_update_profile_fields( $user_id, $profileFields = false ) {
             }
 			elseif ((!isset($field['value']) || empty($field['value']))  &&
                 ($slug == 'verification' || $slug == 'passport_photos' ||
-                 $slug == 'is_verified' || $slug == 'user_documents' || $slug == 'refs' || $slug == 'ref_percent')) {
+                 $slug == 'is_verified' || $slug == 'is_email_verified' ||
+                 $slug == 'user_documents' || $slug == 'refs' || $slug == 'ref_percent')) {
 			    if ($slug == 'user_documents' && empty($field['value']))
 			        update_user_meta($user_id, $slug, $field['value']);
 			    else

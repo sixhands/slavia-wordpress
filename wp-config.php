@@ -77,7 +77,12 @@ $table_prefix = 'wp_';
  */
 define('WP_TEMP_DIR','/wp-content/wp-recall/temp');
 
+//define('FTP_USER', 'ftp');
+//define('FTP_PASS', 'Z{?w67/a6a!dRktJ');
+//define('FTP_HOST', 'localhost:21');
+
 define( 'WP_DEBUG', true );
+//define('WP_DEBUG_LOG', true);
 
 //define('FS_METHOD', 'DIRECT');
 

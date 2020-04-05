@@ -54,61 +54,81 @@ function rcl_insert_user( $data ) {
 }
 
 //подтверждаем регистрацию пользователя по ссылке
-function rcl_confirm_user_registration() {
-    global $wpdb;
-
-    if ( $confirmdata = urldecode( $_GET['rcl-confirmdata'] ) ) {
-
-        $confirmdata = json_decode( base64_decode( $confirmdata ) );
-
-        if ( $user = get_user_by( 'login', $confirmdata[0] ) ) {
-
-            if ( md5( $user->ID ) != $confirmdata[1] )
-                return false;
-
-            if ( ! rcl_is_user_role( $user->ID, 'need-confirm' ) )
-                return false;
-
-            $defaultRole = get_option( 'default_role' );
-            if ( $defaultRole == 'need-confirm' ) {
-                update_option( 'default_role', 'author' );
-                $defaultRole = 'author';
-            }
-
-            wp_update_user( array( 'ID' => $user->ID, 'role' => $defaultRole ) );
-
-            if ( ! rcl_get_time_user_action( $user->ID ) )
-                $wpdb->insert( RCL_PREF . 'user_action', array( 'user' => $user->ID, 'time_action' => current_time( 'mysql' ) ) );
-
-            do_action( 'rcl_confirm_registration', $user->ID );
-
-            if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
-                wp_safe_redirect( wp_login_url() . '?success=checkemail' );
-            } else {
-                wp_redirect( get_bloginfo( 'wpurl' ) . '?action-rcl=login&success=checkemail' );
-            }
-            exit;
-        }
-    }
-
-    if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
-        wp_safe_redirect( wp_login_url() . '?checkemail=confirm' );
-    } else {
-        wp_redirect( get_bloginfo( 'wpurl' ) . '?action-rcl=login&login=checkemail' );
-    }
-    exit;
-}
-
-//принимаем данные для подтверждения регистрации
-add_action( 'init', 'rcl_confirm_user_resistration_activate' );
-function rcl_confirm_user_resistration_activate() {
-
-    if ( ! isset( $_GET['rcl-confirmdata'] ) )
-        return false;
-
-    if ( rcl_get_option( 'confirm_register_recall' ) )
-        add_action( 'wp', 'rcl_confirm_user_registration' );
-}
+//function rcl_confirm_user_registration() {
+//    global $wpdb;
+//
+//    if ( $confirmdata = urldecode( $_GET['rcl-confirmdata'] ) ) {
+//
+//        $confirmdata = json_decode( base64_decode( $confirmdata ) );
+//
+//        if ( $user = get_user_by( 'login', $confirmdata[0] ) ) {
+//
+//            if ( md5( $user->ID ) != $confirmdata[1] )
+//                return false;
+//
+//            if ( ! rcl_is_user_role( $user->ID, 'need-confirm' ) )
+//                return false;
+//
+//            $defaultRole = get_option( 'default_role' );
+//            if ( $defaultRole == 'need-confirm' ) {
+//                update_option( 'default_role', 'author' );
+//                $defaultRole = 'author';
+//            }
+//
+//            wp_update_user( array( 'ID' => $user->ID, 'role' => $defaultRole ) );
+//
+//            $log = new Rcl_Log();
+//            $log->insert_log("user_id: ".$user->ID);
+//            //Обновляем поле профиля
+//            $profile_fields = rcl_get_profile_fields(array('user_id' => $user->ID));
+//            if (isset($profile_fields) && !empty($profile_fields)) {
+//                foreach ($profile_fields as $field) {
+//                    if ($field['slug'] == 'is_email_verified') {
+//                        if (isset($field['value']))
+//                            $field['value'] = 'yes';
+//                        else
+//                            $field += array('value' => 'yes');
+//
+//                        rcl_update_profile_fields($user->ID, array($field));
+//                        break;
+//                    }
+//                }
+//            }
+//            /*********************************************/
+//
+//            if ( ! rcl_get_time_user_action( $user->ID ) )
+//                $wpdb->insert( RCL_PREF . 'user_action', array( 'user' => $user->ID, 'time_action' => current_time( 'mysql' ) ) );
+//
+//            do_action( 'rcl_confirm_registration', $user->ID );
+//
+//            if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
+//                wp_safe_redirect( wp_login_url() . '?success=checkemail' );
+//            } else {
+//                wp_redirect( get_bloginfo( 'wpurl' ) . '?action-rcl=login&success=checkemail' );
+//            }
+//            exit;
+//        }
+//    }
+//
+//    if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
+//        wp_safe_redirect( wp_login_url() . '?checkemail=confirm' );
+//    } else {
+//        wp_redirect( get_bloginfo( 'wpurl' ) . '?action-rcl=login&login=checkemail' );
+//    }
+//    exit;
+//}
+//
+////принимаем данные для подтверждения регистрации
+//add_action( 'init', 'rcl_confirm_user_resistration_activate' );
+//function rcl_confirm_user_resistration_activate() {
+//
+//    if ( ! isset( $_GET['rcl-confirmdata'] ) )
+//        return false;
+//
+//    if ( rcl_get_option( 'confirm_register_recall' ) )
+//        //add_action( 'wp', 'rcl_confirm_user_registration' );
+//        add_action('init', 'rcl_confirm_user_registration');
+//}
 
 //добавляем коды ошибок для тряски формы ВП
 add_filter( 'shake_error_codes', 'rcl_add_shake_error_codes' );
@@ -305,7 +325,7 @@ function rcl_register_mail( $userdata ) {
             )
         );
 
-        $url = get_bloginfo( 'wpurl' ) . '/?rcl-confirmdata=' . urlencode( $confirmstr );
+        $url = get_bloginfo( 'wpurl' ) . '/profile/?rcl-confirmdata=' . urlencode( $confirmstr );
 
         $textmail .= '<p>' . __( 'If it was you, then confirm your registration by clicking on the link below', 'wp-recall' ) . ':</p>
         <p><a href="' . $url . '">' . $url . '</a></p>

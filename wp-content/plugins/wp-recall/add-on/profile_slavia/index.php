@@ -80,6 +80,85 @@ function download_stats_call()
 }
 add_action('init','download_stats_call');
 
+/**************ПОДТВЕРЖДЕНИЕ ПОЧТЫ*************************************/
+//подтверждаем регистрацию пользователя по ссылке
+function rcl_confirm_user_registration() {
+    global $wpdb;
+
+    if ( $confirmdata = urldecode( $_GET['rcl-confirmdata'] ) ) {
+
+        $confirmdata = json_decode( base64_decode( $confirmdata ) );
+
+        if ( $user = get_user_by( 'login', $confirmdata[0] ) ) {
+
+            if ( md5( $user->ID ) != $confirmdata[1] )
+                return false;
+
+//            if ( ! rcl_is_user_role( $user->ID, 'need-confirm' ) )
+//                return false;
+
+            $defaultRole = get_option( 'default_role' );
+            if ( $defaultRole == 'need-confirm' ) {
+                update_option( 'default_role', 'author' );
+                $defaultRole = 'author';
+            }
+
+            wp_update_user( array( 'ID' => $user->ID, 'role' => $defaultRole ) );
+
+            $log = new Rcl_Log();
+            $log->insert_log("user_id: ".$user->ID);
+            //Обновляем поле профиля
+            $profile_fields = rcl_get_profile_fields(array('user_id' => $user->ID));
+            if (isset($profile_fields) && !empty($profile_fields)) {
+                foreach ($profile_fields as $field) {
+                    if ($field['slug'] == 'is_email_verified') {
+                        if (isset($field['value']))
+                            $field['value'] = 'yes';
+                        else
+                            $field += array('value' => 'yes');
+
+                        rcl_update_profile_fields($user->ID, array($field));
+                        break;
+                    }
+                }
+            }
+            /*********************************************/
+
+            if ( ! rcl_get_time_user_action( $user->ID ) )
+                $wpdb->insert( RCL_PREF . 'user_action', array( 'user' => $user->ID, 'time_action' => current_time( 'mysql' ) ) );
+
+            do_action( 'rcl_confirm_registration', $user->ID );
+
+            if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
+                wp_safe_redirect( /*wp_login_url()*/'/profile/' . '?success=checkemail' );
+            } else {
+                wp_redirect( get_bloginfo( 'wpurl' ) . '/profile/' . '?action-rcl=login&success=checkemail' );
+            }
+            exit;
+        }
+    }
+
+    if ( rcl_get_option( 'login_form_recall' ) == 2 ) {
+        wp_safe_redirect( /*wp_login_url()*/'/profile/' . '?checkemail=confirm' );
+    } else {
+        wp_redirect( get_bloginfo( 'wpurl' ) . '/profile/' . '?action-rcl=login&login=checkemail' );
+    }
+    exit;
+}
+
+//принимаем данные для подтверждения регистрации
+add_action( 'init', 'rcl_confirm_user_resistration_activate' );
+function rcl_confirm_user_resistration_activate() {
+
+    if ( ! isset( $_GET['rcl-confirmdata'] ) )
+        return false;
+
+    if ( rcl_get_option( 'confirm_register_recall' ) )
+        //add_action( 'wp', 'rcl_confirm_user_registration' );
+        add_action('wp', 'rcl_confirm_user_registration');
+}
+/******************************************************************/
+
 function rcl_profile_scripts(){
     global $user_ID;
     if(rcl_is_office($user_ID)){
@@ -226,6 +305,11 @@ function add_profile_fields($fields){
         'type' => 'text',
         'slug' => 'ref_percent',
         'title' => 'Вознаграждение по реферальной программе',
+    );
+    $fields[] = array(
+        'type' => 'text',
+        'slug' => 'is_email_verified',
+        'title' => 'Подтверждение email',
     );
 
     return $fields;
@@ -412,12 +496,14 @@ function rcl_tab_template_content()
             $value = base64_encode($user_ID);
             update_user_meta($user_ID, 'user_ref_link', $value);
         }
-        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' && $field_name != 'user_documents' && $field_name != 'refs') {
+        if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' &&
+            $field_name != 'user_documents' && $field_name != 'refs' && $field_name != 'is_email_verified') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
-            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' || $field_name == 'user_documents' || $field_name == 'refs')
+            if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' ||
+                $field_name == 'user_documents' || $field_name == 'refs' || $field_name == 'is_email_verified')
             {
                 $field_value = $value;
                 if ($field_name == 'user_documents' && !empty($field_value))
