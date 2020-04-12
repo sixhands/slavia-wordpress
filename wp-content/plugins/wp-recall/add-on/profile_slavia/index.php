@@ -448,6 +448,7 @@ add_action('init','rcl_tab_documents');
 add_action('init','rcl_tab_people');
 add_action('init','rcl_tab_requests');
 add_action('init','rcl_tab_settings');
+add_action('init', 'rcl_tab_referral');
 
 function rcl_tab_template_content()
 {
@@ -1345,6 +1346,39 @@ function rcl_tab_settings_content($master_id)
     return $content;
 }
 /******************************/
+
+//REFERRAL SYSTEM TAB
+//PEOPLE LIST TAB
+function rcl_tab_referral(){
+
+    rcl_tab(
+        array(
+            'id'=>'referral',
+            'name'=>'Реферальная система',
+            'supports'=>array('ajax'),
+            'public'=>0,
+            'icon'=> '/wp-content/uploads/2020/04/refer_dis.png',//'/wp-content/uploads/2019/12/people_dis.png',
+            'content'=>array(
+                array(
+                    'callback' => array(
+                        'name'=>'rcl_tab_referral_content'
+                    )
+                )
+            )
+        )
+    );
+
+}
+function rcl_tab_referral_content($master_id)
+{
+    global $userdata, $user_ID;
+
+    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+
+    $content = rcl_get_include_template('template-referral.php', __FILE__);
+    return $content;
+}
+/************************************/
 
 
 add_action('rcl_bar_setup','rcl_bar_add_profile_link',10);
