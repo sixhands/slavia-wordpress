@@ -1,6 +1,7 @@
 <?php
 
 require_once 'classes/class-rcl-profile-fields.php';
+require_once 'classes/class-slavia-ref-awards.php';
 
 use Dompdf\Dompdf;
 
@@ -2036,8 +2037,8 @@ function rcl_edit_profile(){
 
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
 
-                        //Если статистики для данного пользователя еще нет (1-я сделка) и есть пригласивший
-                        if (isset($stat_exists) && $stat_exists == false && !empty($ref_host))
+                        //Если есть пригласивший
+                        if (/*isset($stat_exists) && $stat_exists == false && */!empty($ref_host))
                         {
                             $ref_host_name = get_userdata($ref_host);
                             $ref_host_name = $ref_host_name->display_name;

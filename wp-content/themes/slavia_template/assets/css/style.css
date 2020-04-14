@@ -941,3 +941,30 @@ a:hover
 .click_ex .ex-header h1 {
 	width: 80%;
 }
+/******REFERRAL PAGE****************/
+.referral-tabs {
+	margin-top: 10px;
+}
+.referral-tabs__items {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+.referral-tabs__item {
+	border-radius: 0;
+	width: calc(100% / 3);
+	text-align: center;
+	/*background: #FDC501 !important;*/
+	background: linear-gradient(90deg, #FDC501 0%, #EF7F1B 100%);
+}
+.referral-tabs__item.active {
+	/*background: #EF7F1B !important;*/
+	background: linear-gradient(90deg, rgba(236,96,15,1) 0%, rgba(239,69,27,1) 100%);
+}
+.referral-tabs__link {
+	font-size: 18px;
+	font-weight: bold;
+}
+.ref-tab__content {
+	display: none;
+}

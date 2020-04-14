@@ -144,6 +144,15 @@ jQuery(document).ready(function(){
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    jQuery('.ref-tab__content.' + jQuery('.referral-tabs__item.active').attr('id') ).css('display', 'block');
+    jQuery('.referral-tabs__item').click(function() {
+        jQuery('.referral-tabs__item').removeClass('active');
+        jQuery(this).addClass('active');
+
+        let cur_id = jQuery(this).attr('id');
+        jQuery('.ref-tab__content').css('display', 'none');
+        jQuery('.ref-tab__content.' + cur_id).css('display', 'block');
+    });
     //jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #prizm_address, #prizm_public_key, #waves_address").blur(function() {
         //     jQuery(this).parents("form").submit();
         // });

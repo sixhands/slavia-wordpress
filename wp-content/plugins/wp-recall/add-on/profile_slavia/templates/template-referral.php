@@ -1,42 +1,40 @@
 <div class="col-lg-12 col-md-12"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
-            <h1 class="coop_maps-h1 ib">Список пользователей</h1>
-            <div class="row">
-                <div class="table-title w-100">
-                    <div class="row">
-                        <div class="col-lg-1">
+            <h1 class="coop_maps-h1 ib">Реферальная программа</h1>
 
-                        </div>
-                        <div class="col-3 text-left">
-                            Имя клиента
-                        </div>
-                        <div class="col-2 text-left">
-                            № Пайщика
-                        </div>
-                        <div class="col-3 text-left">
-                            Дата регистрации
-                        </div>
-                        <div class="col-2 text-left">
-                            Рефереалов
-                        </div>
-                        <div class="col-2 text-left">
+            <div class="referral-tabs row">
+                <ul class="referral-tabs__items col-12">
+                    <li id="ref_paid" class="referral-tabs__item active btn-custom-one">
+                        <a class="referral-tabs__link">Выплачено</a>
+                    </li>
 
-                        </div>
+                    <li id="ref_unpaid" class="referral-tabs__item btn-custom-one">
+                        <a class="referral-tabs__link">Не выплачено</a>
+                    </li>
 
-                    </div>
-                </div>
-                <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
+                    <li id="ref_stats" class="referral-tabs__item btn-custom-one">
+                        <a class="referral-tabs__link">Статистика</a>
+                    </li>
+                </ul>
+            </div>
 
-                <!--                <div class="w-100 text-center">-->
-                <!--                    <ul class="people-ul">-->
-                <!--                        <li status="active">1</li>-->
-                <!--                        <li>2</li>-->
-                <!--                        <li>3</li>-->
-                <!--                        <li>...</li>-->
-                <!--                        <li>50</li>-->
-                <!--                    </ul>-->
-                <!--                </div>-->
+            <div class="ref-tab__content ref_paid row">
+                <?php
+                    echo rcl_get_include_template('template-referral__paid.php', __FILE__);
+                ?>
+            </div>
+
+            <div class="ref-tab__content ref_unpaid row">
+                <?php
+                    echo rcl_get_include_template('template-referral__unpaid.php', __FILE__);
+                ?>
+            </div>
+
+            <div class="ref-tab__content ref_stats row">
+            <?php
+                echo rcl_get_include_template('template-referral__stats.php', __FILE__);
+            ?>
             </div>
         </div>
     </div>
