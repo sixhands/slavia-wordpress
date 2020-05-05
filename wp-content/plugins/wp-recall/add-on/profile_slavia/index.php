@@ -1505,10 +1505,13 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
         $exchange_requests = array($user_ID => $new_request);
     }
 
-//    $log = new Rcl_Log();
+    //$log = new Rcl_Log();
 //    $log->insert_log("exchange normal:".print_r($exchange_fields, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
+
+    //$log->insert_log("host:".$_SERVER['HTTP_HOST']);
+    //var_dump($_SERVER['HTTP_HOST']);
 }
 function save_exchange_request_other($input_currency, $input_sum, $requisites, $deposit_type = false, $output_sum = false, $output_currency = false)
 {
@@ -1773,7 +1776,7 @@ function rcl_edit_profile(){
                             wp_die(__('Prohibited file type!', 'wp-recall'));
                             exit;
                         }
-                        $maxsize = 2;
+                        $maxsize = 5;
                         if ( $_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024 ) {
                             wp_die(__('File size exceedes maximum!', 'wp-recall'));
                             exit;
@@ -1963,8 +1966,6 @@ function rcl_edit_profile(){
                 {
                     if (isset($_POST['request_num']))
                     {
-                        //Добавляем в статистику
-                        $stats = rcl_get_option('user_stats');
 
                         $request_num = $_POST['request_num'];
                         $userid = $_POST['request_user_id'];
@@ -1974,63 +1975,11 @@ function rcl_edit_profile(){
                         $output_currency = $exchange_requests[$userid][$request_num]['output_currency'];
                         $input_sum = $exchange_requests[$userid][$request_num]['input_sum'];
                         $output_sum = $exchange_requests[$userid][$request_num]['output_sum'];
-                        $log = new Rcl_Log();
-                        if (isset($stats) && !empty($stats)) {
-                            //Если статистика на этого пользователя есть, то прибавляем к ней
-                            if (isset($stats[$userid]) && !empty($stats[$userid])) {
+                        //$log = new Rcl_Log();
 
-                                $user_stat = $stats[$userid];
-
-                                if (!isset($user_stat[$input_currency]))
-                                    $user_stat += array($input_currency =>
-                                                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
-                                if (!isset($user_stat[$output_currency]))
-                                    $user_stat += array($output_currency =>
-                                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
-
-                                //Прибавляем сумму по потраченной и получаемой валюте
-                                $user_stat[$input_currency]['input_sum'] += $input_sum;
-                                $user_stat[$output_currency]['output_sum'] += $output_sum;
-
-                                $user_stat[$input_currency]['exchange_num'] += 1;
-                                //$user_stat[$output_currency]['exchange_num'] += 1;
-
-//                                $user_stat['exchange_num'] += 1;
-//                                $user_stat['exchange_sum'] += $exchange_requests[$userid][$request_num]['input_sum'];
-
-                                $stats[$userid] = $user_stat;
-
-                                $stat_exists = true;
-
-                                //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
-                            } else {
-                                $stats +=
-                                    array($userid =>
-                                            array(
-                                                $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
-                                                $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
-                                            )
-                                    );
-                                $stat_exists = false;
-
-                            }
-                        } //Если статистика полностью пустая
-                        else {
-                            $stats =
-                                array($userid =>
-                                    array(
-                                        $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
-                                        $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
-                                )
-                            );
-                            $stat_exists = false;
-
-//                            $log->insert_log("user_id:".$userid);
-//                            $log->insert_log("after stats:".print_r($stats, true));
-                        }
-                        //$stats = array();
-                        rcl_update_option('user_stats', $stats);
-
+                        //Добавляем в статистику
+                        add_stats($userid, $input_currency, $input_sum, $output_currency, $output_sum);
+                        /*****************/
 
                         $exchange_requests[$userid][$request_num]['status'] = 'completed';
                         rcl_update_option('exchange_requests', $exchange_requests);
@@ -2049,18 +1998,27 @@ function rcl_edit_profile(){
                                 $ref_amount = 0;
                             $award = $exchange_requests[$userid][$request_num]['input_sum'] * $ref_amount;
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
-                            $managers = get_users( array( 'role' => 'manager' ) );
-                            foreach ($managers as $manager)
-                            {
-                                $subject = 'SLAVIA: Отправить пользователю '.$ref_host_name.' с ID '.$ref_host.' вознаграждение.';
-                                //Отправляем email всем менеджерам о необходимости отправить вознаграждение пригласившему
-                                $textmail = '<p>Пользователь '.$current_user_name.' с ID '.$userid.' только что совершил первую операцию.</p>'.
-                                    '<p>Необходимо выплатить пригласившему его пользователю '.$ref_host_name.' с ID '.$ref_host.' вознаграждение в размере '.$award.' '.$award_currency.' в соответствии с условиями реферальной программы)</p>';
 
-                                $user_email = $manager->user_email;
+                            $ref_awards = new Ref_Awards();
+                            $ref_data = array(
+                                "date" => date('d.m.y H:i:s'),
+                                "host_name" => $ref_host_name,
+                                "ref_name" => $current_user_name,
+                                "award_sum" => $award,
+                                "award_currency" => $award_currency,
+                                "status" => "processing");
 
-                                rcl_mail( $user_email, $subject, $textmail );
-                            }
+                            $ref_awards->add($ref_host, $ref_data);
+
+                            //Меняем массив данных для передачи в функцию operation_notify
+                            $ref_data += array(
+                                "host_id" => $ref_host,
+                                "ref_id" => $userid,
+                            );
+                            unset($ref_data['date']);
+                            unset($ref_data['status']);
+
+                            $ref_awards->operation_notify($ref_data, true, true);
                         }
 
                         //Генерируем документ
@@ -2619,7 +2577,7 @@ function rcl_edit_profile(){
 //                        //$_POST['get_waves']['card_name']);
 //                }
 
-                $redirect_url = rcl_get_tab_permalink($user_ID, 'exchange') . '&updated=true';
+                $redirect_url = rcl_get_tab_permalink($user_ID, 'operations') . '&updated=true';
 
                 wp_redirect($redirect_url);
 
@@ -3374,4 +3332,63 @@ function is_var($var)
         return true;
     else
         return false;
+}
+
+function add_stats($userid, $input_currency, $input_sum, $output_currency, $output_sum) {
+    //Добавляем в статистику
+    $stats = rcl_get_option('user_stats');
+
+    if (isset($stats) && !empty($stats)) {
+        //Если статистика на этого пользователя есть, то прибавляем к ней
+        if (isset($stats[$userid]) && !empty($stats[$userid])) {
+
+            $user_stat = $stats[$userid];
+
+            if (!isset($user_stat[$input_currency]))
+                $user_stat += array($input_currency =>
+                    array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+            if (!isset($user_stat[$output_currency]))
+                $user_stat += array($output_currency =>
+                    array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+
+            //Прибавляем сумму по потраченной и получаемой валюте
+            $user_stat[$input_currency]['input_sum'] += $input_sum;
+            $user_stat[$output_currency]['output_sum'] += $output_sum;
+
+            $user_stat[$input_currency]['exchange_num'] += 1;
+            //$user_stat[$output_currency]['exchange_num'] += 1;
+
+//                                $user_stat['exchange_num'] += 1;
+//                                $user_stat['exchange_sum'] += $exchange_requests[$userid][$request_num]['input_sum'];
+
+            $stats[$userid] = $user_stat;
+
+            $stat_exists = true;
+
+            //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
+        } else {
+            $stats +=
+                array($userid =>
+                    array(
+                        $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
+                        $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
+                    )
+                );
+            $stat_exists = false;
+
+        }
+    } //Если статистика полностью пустая
+    else {
+        $stats =
+            array($userid =>
+                array(
+                    $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
+                    $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
+                )
+            );
+        $stat_exists = false;
+
+    }
+    //$stats = array();
+    rcl_update_option('user_stats', $stats);
 }

@@ -21,4 +21,22 @@
 
     </div>
 </div>
-<?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
+<?php
+//$current_role = rcl_get_current_role();
+////if (!isset($current_role) || empty($current_role)) //Если не назначена роль, не фильтруем табы
+////return $tab;
+//
+//if ($current_role == 'manager') {
+//    if ($tab['id'] == 'settings') {
+//        $tab = array();
+//    }
+//}
+//if ($current_role == 'user' || $current_role == 'need-confirm' || $current_role == 'not_verified' ||
+//    !isset($current_role) || empty($current_role) )
+//{
+//    if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings') {
+//        $tab = array();
+//    }
+//}
+?>
+<?php //echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
