@@ -4,6 +4,7 @@ require_once 'classes/class-rcl-profile-fields.php';
 require_once 'classes/class-slavia-ref-awards.php';
 
 use Dompdf\Dompdf;
+use Ref_Awards;
 
 if (is_admin())
     require_once 'admin/index.php';
@@ -1986,6 +1987,8 @@ function rcl_edit_profile(){
 
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
 
+                        $log = new Rcl_Log();
+
                         //Если есть пригласивший
                         if (/*isset($stat_exists) && $stat_exists == false && */!empty($ref_host))
                         {
@@ -2000,6 +2003,7 @@ function rcl_edit_profile(){
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
 
                             $ref_awards = new Ref_Awards();
+                            $log->insert_log("Im here! ");
                             $ref_data = array(
                                 "date" => date('d.m.y H:i:s'),
                                 "host_name" => $ref_host_name,
@@ -2008,6 +2012,8 @@ function rcl_edit_profile(){
                                 "award_currency" => $award_currency,
                                 "status" => "processing");
 
+                            //$log = new Rcl_Log();
+                            $log->insert_log("ref_awards: " . print_r($ref_awards, true));
                             $ref_awards->add($ref_host, $ref_data);
 
                             //Меняем массив данных для передачи в функцию operation_notify

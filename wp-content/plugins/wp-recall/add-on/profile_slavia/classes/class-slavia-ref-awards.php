@@ -2,7 +2,7 @@
     class Ref_Awards
     {
 
-        public function __construct($args)
+        public function __construct()
         {
 
         }
@@ -47,7 +47,7 @@
             }
             if ($notify_cur_user)
             {
-                $subject = 'SLAVIA: Вознаграждение по реферальной программе: приглашенный вами пользователь ' . $notification_data['ref_name'] . ' совершил новюу операцию.';
+                $subject = 'SLAVIA: Вознаграждение по реферальной программе: приглашенный вами пользователь ' . $notification_data['ref_name'] . ' совершил новую операцию.';
 
                 //Отправляем email всем менеджерам о необходимости отправить вознаграждение пригласившему
 
