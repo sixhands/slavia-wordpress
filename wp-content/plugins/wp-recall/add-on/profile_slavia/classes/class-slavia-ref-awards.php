@@ -13,7 +13,7 @@
         }
 
         /*host_id - для какого человека получить операции (если 0, то для всех)*/
-        public function get_operations_by($fields, $change_operation = false, $new_status = '')
+        public function get_operations_by($fields, $change_operation = false, $new_status = '', $remove_operation = false)
         {
             $items = $this->get_all();
 
@@ -25,14 +25,18 @@
             if (in_array("host_id", array_keys($fields))) {
                 if (isset($items[$fields["host_id"]]) && !empty($items[$fields["host_id"]]))
                 {
-                    $index = 0;
-                    foreach ($items[$fields["host_id"]] as $operation)
+                    //$index = 0;
+                    foreach ($items[$fields["host_id"]] as $index => $operation)
                     {
                         $is_match = false;
                         foreach ($fields as $key => $value) {
                             if ($key != 'host_id')
                             {
-                                if ($operation[$key] == $value)
+                                if ($key == 'award_currency')
+                                    $tmp = stripslashes($value);
+                                else
+                                    $tmp = $value;
+                                if ($operation[$key] == $tmp)
                                     $is_match = true;
                                 else {
                                     $is_match = false;
@@ -52,9 +56,15 @@
                                 $this->update_all($items);
                                 return true;
                             }
+                            elseif ($remove_operation == true)
+                            {
+                                unset($items[$fields["host_id"]][$index]);
+                                $this->update_all($items);
+                                return true;
+                            }
 
                         }
-                        $index++;
+                        //$index++;
                     }
                 }
                 else
@@ -67,12 +77,17 @@
                     //$log->insert_log("items: ".print_r($items, true));
                     foreach ($items as $host_id => $operations)
                     {
-                        $index = 0;
-                        foreach ($operations as $operation)
+                        //$index = 0;
+                        foreach ($operations as $index => $operation)
                         {
                             $is_match = false;
                             foreach ($fields as $key => $value) {
-                                if ($operation[$key] == $value)
+                                if ($key == 'award_currency')
+                                    $tmp = stripslashes($value);
+                                else
+                                    $tmp = $value;
+                                //$log->insert_log($operation[$key].'=='.$tmp);
+                                if ($operation[$key] == $tmp)
                                     $is_match = true;
                                 else {
                                     $is_match = false;
@@ -91,8 +106,16 @@
                                     $this->update_all($items);
                                     return true;
                                 }
+                                elseif ($remove_operation == true)
+                                {
+                                    //$log->insert_log("old: ".print_r($items[$host_id], true));
+                                    unset($items[$host_id][$index]);
+                                    //$log->insert_log("new: ".print_r($items[$host_id][$index], true));
+                                    $this->update_all($items);
+                                    return true;
+                                }
                             }
-                            $index++;
+                            //$index++;
                         }
                     }
                 }
@@ -111,9 +134,15 @@
         {
             if (in_array($type, array('paid', 'unpaid', 'full') ) )
             {
+                $status = '';
+                if ($type == 'unpaid')
+                    $status = 'processing';
+                elseif ($type == 'paid')
+                    $status = $type;
+
                 $operations = $this->get_operations_by(array(
                     "host_id" => $host_id,
-                    "status" => $type
+                    "status" => $status
                 ));
                 $log = new Rcl_Log();
 
@@ -128,7 +157,7 @@
                     else
                         $sum[$ref_currency] += $ref_sum;
                 }
-                $log->insert_log("sum: ".$sum);
+                $log->insert_log("sum: ".print_r($sum, true));
                 return $sum;
 
             }

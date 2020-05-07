@@ -4,7 +4,7 @@
             <div class="col-2 text-left">
                 Дата
             </div>
-            <div class="col-3 text-left">
+            <div class="col-2 text-left">
                 Имя пригласившего
             </div>
             <div class="col-2 text-left">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-2 text-left ref_date"><?=$item["date"] ?></div>
 
-                    <div class="col-3 text-left host_name"><?=$item["host_name"] ?></div>
+                    <div class="col-2 text-left host_name"><?=$item["host_name"] ?></div>
 
                     <div class="col-2 text-left ref_name"><?=$item["ref_name"] ?></div>
 
@@ -52,9 +52,9 @@
                         <?php endif; ?>
                     </div>
 
-                    <!--                        <div class="col-1 text-left">-->
-                    <!--                            <a class="remove_operation" data-user_id="6" data-request_num="3">?</a>-->
-                    <!--                        </div>-->
+                    <div class="col-1 text-left">
+                        <a class="remove_operation">×</a>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -68,8 +68,13 @@
         let host_name = jQuery(this).parent().siblings('.host_name').text();
         let ref_name = jQuery(this).parent().siblings('.ref_name').text();
         let award_sum = jQuery(this).parent().siblings('.ref_sum').text();
-        let sum = award_sum.split(' ')[0];
-        let currency = award_sum.split(' ')[1];
+        let split_sum = award_sum.split(' ');
+        //Сумма - все перед первым пробелом
+        let sum = split_sum.shift();
+        //console.log("sum: ",sum);
+        let currency = split_sum.join(' ');
+        //console.log("currency: ", currency);
+        //console.log('sum: ', 0);
         var data = {
             ref_approve: 'true',
             ref_data: {
@@ -92,4 +97,6 @@
             }
         });
     });
+
+
 </script>

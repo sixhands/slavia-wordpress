@@ -4,7 +4,7 @@
             <div class="col-2 text-left">
                 Дата
             </div>
-            <div class="col-3 text-left">
+            <div class="col-2 text-left">
                 Имя пригласившего
             </div>
             <div class="col-2 text-left">
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-2 text-left ref_date"><?=$item["date"] ?></div>
 
-                    <div class="col-3 text-left host_name"><?=$item["host_name"] ?></div>
+                    <div class="col-2 text-left host_name"><?=$item["host_name"] ?></div>
 
                     <div class="col-2 text-left ref_name"><?=$item["ref_name"] ?></div>
 
@@ -50,14 +50,9 @@
 <!--                        </div>-->
                     </div>
 
-                    <!--                    <div class="col-2 text-center">-->
-                    <!--                        <div class="btn-custom-one btn-zayavki" data-request_num="3" id="request_approve_6">-->
-                    <!--                            Закрыть сделку-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                        <div class="col-1 text-left">-->
-                    <!--                            <a class="remove_operation" data-user_id="6" data-request_num="3">?</a>-->
-                    <!--                        </div>-->
+                    <div class="col-1 text-left">
+                        <a class="remove_operation">×</a>
+                    </div>
                 </div>
             </div>
         <?php endforeach; ?>

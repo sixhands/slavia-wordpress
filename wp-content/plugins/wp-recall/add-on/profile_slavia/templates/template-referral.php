@@ -71,12 +71,20 @@
                 <div class="col-12 text-left">
                     Выплаченная сумма:
                 </div>
-                <div class="col-12 paid_sum text-left">1000</div>
+                <div class="col-12 paid_sum text-left">
+                    <div class="row">
+
+                    </div>
+                </div>
 
                 <div class="col-12 text-left">
                     Невыплаченная сумма:
                 </div>
-                <div class="col-12 unpaid_sum text-left">9000</div>
+                <div class="col-12 unpaid_sum text-left">
+                    <div class="row">
+
+                    </div>
+                </div>
 
             </div>
 
@@ -98,39 +106,75 @@
 
         jQuery.post( window.location, data, function(response) {
             if (response) {
-                console.log(response);
-                let user_data = JSON.parse(response);
-                // if (response.exchange_content !== '') {
-                //     modal.find('.modal-content > #exchange_content .table-text').remove();
-                //     modal.find('.modal-content > #exchange_content').append(user_data.exchange_content);
-                // }
-                // if (response.stats_content !== '') {
-                //     modal.find('.modal-content > #stats_content .table-text').remove();
-                //     modal.find('.modal-content > #stats_content').append(user_data.stats_content);
-                // }
-                //
-                // if (response.userdata_content !== '')
-                // {
-                //     let userdataContent = user_data.userdata_content;
-                //     let userdata_inputs = modal.find('#userdata_content input');
-                //     jQuery.each(userdataContent, function (item) {
-                //         if (modal.find('#userdata_content input.' + item).length > 0) {
-                //             if (item === 'is_verified') {
-                //                 if (userdataContent[item] === '')
-                //                     modal.find('#userdata_content input.' + item).val('Нет');
-                //                 else
-                //                     modal.find('#userdata_content input.' + item).val('Да');
-                //             }
-                //             else
-                //                 modal.find('#userdata_content input.' + item).val(userdataContent[item]);
-                //         }
-                //     });
-                // }
+                //console.log(response);
+                let sum_data = JSON.parse(response);
+                String.prototype.stripSlashes = function(){
+                    return this.replace(/\\(.)/mg, "$1");
+                };
+
+                let unpaid_sum = sum_data.unpaid_sum;
+                let paid_sum = sum_data.paid_sum;
+
+                let unpaid_sum_content = jQuery('.modal-content #stats_content > .unpaid_sum > .row');
+                let paid_sum_content = jQuery('.modal-content #stats_content > .paid_sum > .row');
+
+                unpaid_sum_content.empty();
+                paid_sum_content.empty();
+
+                for (var key in unpaid_sum) {
+                    unpaid_sum_content.append(
+                        '<div class="col-12">' + '<span>' + unpaid_sum[key] + ' ' + key.stripSlashes() + '</span></div>'
+                    );
+                }
+
+                for (var key in paid_sum) {
+                    console.log(key);
+                    paid_sum_content.append(
+                        '<div class="col-12">' + '<span>' + paid_sum[key] + ' ' + key.stripSlashes() + '</span></div>'
+                    );
+                }
+
                 jQuery('#modal-54506521').trigger('click');
             }
         });
-        //jQuery('#modal-54506521').trigger('click');
     });
 
+    //Удалить операцию
+    jQuery('.ref_unpaid .remove_operation, .ref_paid .remove_operation').click(function(){
+        let date = jQuery(this).parent().siblings('.ref_date').text();
+        let host_name = jQuery(this).parent().siblings('.host_name').text();
+        let ref_name = jQuery(this).parent().siblings('.ref_name').text();
+        let award_sum = jQuery(this).parent().siblings('.ref_sum').text();
+        let split_sum = award_sum.split(' ');
+        //Сумма - все перед первым пробелом
+        let sum = split_sum.shift();
+        //console.log("sum: ",sum);
+        let currency = split_sum.join(' ');
+        //console.log("currency: ", currency);
+        //console.log('sum: ', 0);
+        var data = {
+            ref_remove: 'true',
+            ref_data: {
+                date: date,
+                host_name: host_name,
+                ref_name: ref_name,
+                award_sum: sum,
+                award_currency: currency
+            }
+        };
+        // console.log("data:");
+        // console.log(data);
+        var el = jQuery(this);
 
+        if (confirm("Удалить данную операцию?") == true) {
+            jQuery.post(window.location, data, function (response) {
+                console.log(response);
+                if (response == 'true') {
+                    el.parents('.table-text').remove();
+                }
+            });
+        }
+        else
+            return;
+    });
 </script>

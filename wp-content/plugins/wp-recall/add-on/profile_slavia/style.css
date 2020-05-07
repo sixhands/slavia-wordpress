@@ -1,3 +1,6 @@
+#subtab-settings input[type="submit"] {
+    padding-bottom: 5px;
+}
 .ref-tab__content .table-title > .row > div {
     word-break: break-word;
     hyphens: auto;

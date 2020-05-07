@@ -1664,8 +1664,6 @@ function rcl_edit_profile(){
     if (isset($_POST) && count($_POST) > 0)
     {
         $log = new Rcl_Log();
-        $log->insert_log("HEY");
-        $log->insert_log("post: ", print_r($_POST, true));
         //var_dump($_POST);
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
@@ -1688,7 +1686,7 @@ function rcl_edit_profile(){
 
             exit;
         }
-        elseif (strpos(array_key_first($_POST), 'ref_user') !== false)
+        elseif (strpos(array_key_first($_POST), 'ref_user') !== false && !in_array('ref_user_id', array_keys($_POST) ))
         {
 //            $ref_amount = 0;
 //            foreach ($_POST as $key => $value)
@@ -1887,7 +1885,7 @@ function rcl_edit_profile(){
                     //break;
                 }
             }
-//            $log = new Rcl_Log();
+
 //            $log->insert_log(print_r(rcl_get_profile_fields(array('user_id' => $user_ID)), true));
             if (!$field_found)
                 return false;
@@ -1983,7 +1981,7 @@ function rcl_edit_profile(){
                             $user_verification += array('output_sum' => $output_sum.' '.$output_currency);
                         if (isset($date))
                             $user_verification += array('exchange_date' => $date);
-//                        $log = new Rcl_Log();
+
 //                        $log->insert_log("date: ".print_r($user_verification, true));
                     }
                 }
@@ -2011,7 +2009,6 @@ function rcl_edit_profile(){
                         $output_currency = $exchange_requests[$userid][$request_num]['output_currency'];
                         $input_sum = $exchange_requests[$userid][$request_num]['input_sum'];
                         $output_sum = $exchange_requests[$userid][$request_num]['output_sum'];
-                        //$log = new Rcl_Log();
 
                         //Добавляем в статистику
                         add_stats($userid, $input_currency, $input_sum, $output_currency, $output_sum);
@@ -2022,7 +2019,6 @@ function rcl_edit_profile(){
 
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
 
-                        //$log = new Rcl_Log();
 
                         //Если есть пригласивший
                         if (/*isset($stat_exists) && $stat_exists == false && */!empty($ref_host))
@@ -2036,6 +2032,7 @@ function rcl_edit_profile(){
                                 $ref_amount = 0;
                             $award = $exchange_requests[$userid][$request_num]['input_sum'] * $ref_amount;
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
+                            $award_currency = stripslashes($award_currency);
 
                             $ref_awards = new Ref_Awards();
 
@@ -2048,7 +2045,6 @@ function rcl_edit_profile(){
                                 "award_currency" => $award_currency,
                                 "status" => "processing");
 
-                            //$log = new Rcl_Log();
                             //$log->insert_log("ref_awards: " . print_r($ref_awards, true));
                             $ref_awards->add($ref_host, $ref_data);
 
@@ -2068,7 +2064,7 @@ function rcl_edit_profile(){
 //                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
                         foreach ($profileFields as $field) {
                             if ($field['slug'] == 'user_documents') {
-                                //$log = new Rcl_Log();
+
                                 $doc_num = get_user_meta($userid, 'user_documents', true);
                                 //$log->insert_log("doc_num:".print_r($doc_num, true));
                                 if (!isset($doc_num) || empty($doc_num))
@@ -2467,7 +2463,7 @@ function rcl_edit_profile(){
                 $fields = $_POST['ref_data'];
 
                 //Изменяем статус операции с полями fields
-                $result = $ref_awards->get_operations_by($fields, true, "paid");
+                $result = $ref_awards->get_operations_by($fields, true, "paid", false);
                 if ($result == true)
                     echo "true";
                 else
@@ -2475,9 +2471,23 @@ function rcl_edit_profile(){
                 exit;
             }
         }
+
+        elseif (isset($_POST['ref_remove']) && $_POST['ref_remove'] == 'true')
+        {
+            $ref_awards = new Ref_Awards();
+            $fields = $_POST['ref_data'];
+
+            //Удаляем операцию
+            $result = $ref_awards->get_operations_by($fields, false, "", true);
+            if ($result == true)
+                echo "true";
+            else
+                echo "false";
+            exit;
+        }
+
         elseif (isset($_POST['get_ref_stats']) && $_POST['get_ref_stats'] == 'true')
         {
-            $log->insert_log("I'm here!");
             if (isset($_POST['ref_user_id']) && !empty($_POST['ref_user_id']))
             {
                 $ref_awards = new Ref_Awards();
@@ -2485,12 +2495,15 @@ function rcl_edit_profile(){
                     "paid_sum" => $ref_awards->get_sum("paid", $_POST['ref_user_id']),
                     "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id'])
                 );
-                $log->insert_log("result_arr: ".print_r($result_arr, true));
+                //$log->insert_log("result_arr: ".print_r($result_arr, true));
                 echo json_encode($result_arr);
+                exit;
             }
-            else
+            else {
                 echo 'false';
-            exit;
+                exit;
+            }
+
         }
 
         elseif (isset($_POST['remove_request']) && $_POST['remove_request'] == 'true') {
