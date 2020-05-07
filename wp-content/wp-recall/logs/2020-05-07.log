@@ -362,3 +362,494 @@ sum: Array
     [Нефть] => 0
 )
 
+post: Array
+(
+    [ref_normal_users] => Array
+        (
+            [value] => 0.5
+        )
+
+    [ref_user] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 63
+                    [value] => 0.5
+                )
+
+            [1] => Array
+                (
+                    [id] => 74
+                    [value] => 0.6
+                )
+
+        )
+
+)
+
+post: Array
+(
+    [ref_normal_users] => Array
+        (
+            [value] => 0.3
+        )
+
+    [ref_user] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 63
+                    [value] => 0.5
+                )
+
+            [1] => Array
+                (
+                    [id] => 74
+                    [value] => 0.6
+                )
+
+        )
+
+)
+
+post: Array
+(
+    [ref_normal_users] => Array
+        (
+            [value] => 0.3
+        )
+
+    [ref_user] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 63
+                    [value] => 0.5
+                )
+
+        )
+
+)
+
+post: Array
+(
+    [ref_normal_users] => Array
+        (
+            [value] => 0.3
+        )
+
+    [ref_user] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 63
+                    [value] => 0.5
+                )
+
+            [2] => Array
+                (
+                    [id] => 74
+                    [value] => 0.6
+                )
+
+        )
+
+)
+
+post: Array
+(
+    [user_login] => ggg
+    [user_pass] => ggg
+    [submit-login] => Вход
+    [login_wpnonce] => 4d27b57a3f
+    [_wp_http_referer] => /
+    [redirect_to] => /profile
+)
+
+post: Array
+(
+    [exchange] => Array
+        (
+            [input_currency] => PRIZM
+            [output_currency] => RUB
+            [input_sum] => 5
+            [bank] => bank1
+            [output_sum] => 12.92
+        )
+
+)
+
+post: Array
+(
+    [request_user_id] => 78
+    [approve_exchange] => true
+    [request_num] => 5
+)
+
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 1.5 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 1.5 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 1.5 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: behoyo5566@tgres24.com; text: <p>Приглашенный вами пользователь ggg только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 1.5 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+filename:Акт приема PRIZM-78-05-07-21-51.pdf
+filename:Акт возврата паевого взноса RUB-78-05-07-21-51.pdf
+post: Array
+(
+    [ref_user_id] => 63
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+)
+
+sum: Array
+(
+    [SLAV] => 0
+    [Нефть] => 0
+)
+
+post: Array
+(
+    [ref_user_id] => 76
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 0
+)
+
+sum: Array
+(
+    [PRIZM] => 1.5
+)
+
+post: Array
+(
+    [exchange] => Array
+        (
+            [input_currency] => PRIZM
+            [output_currency] => RUB
+            [input_sum] => 3
+            [bank] => bank2
+            [output_sum] => 6.84
+        )
+
+)
+
+post: Array
+(
+    [request_user_id] => 78
+    [approve_exchange] => true
+    [request_num] => 6
+)
+
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 0.9 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 0.9 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь ggg с ID 78 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 76 вознаграждение в размере 0.9 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: behoyo5566@tgres24.com; text: <p>Приглашенный вами пользователь ggg только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 0.9 PRIZM в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+filename:Акт приема PRIZM-78-05-07-21-52.pdf
+filename:Акт возврата паевого взноса RUB-78-05-07-21-52.pdf
+post: Array
+(
+    [ref_user_id] => 76
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 0
+)
+
+sum: Array
+(
+    [PRIZM] => 2.4
+)
+
+post: Array
+(
+    [user_login] => ccc
+    [user_pass] => ccc
+    [submit-login] => Вход
+    [login_wpnonce] => 4d27b57a3f
+    [_wp_http_referer] => /
+    [redirect_to] => /profile
+)
+
+post: Array
+(
+    [ref_user_id] => 76
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 0
+)
+
+sum: Array
+(
+    [PRIZM] => 2.4
+)
+
+post: Array
+(
+    [exchange] => Array
+        (
+            [input_currency] => SLAV
+            [output_currency] => RUB
+            [input_sum] => 10
+            [bank] => bank1
+            [output_sum] => 9
+        )
+
+)
+
+post: Array
+(
+    [exchange] => Array
+        (
+            [input_currency] => SLAV
+            [output_currency] => RUB
+            [input_sum] => 5
+            [bank] => bank1
+            [output_sum] => 4.5
+        )
+
+)
+
+post: Array
+(
+    [request_user_id] => 76
+    [is_exchange] => true
+    [request_num] => 16
+)
+
+post: Array
+(
+    [request_user_id] => 76
+    [is_exchange] => true
+    [request_num] => 17
+)
+
+post: Array
+(
+    [request_user_id] => 76
+    [approve_exchange] => true
+    [request_num] => 17
+)
+
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 2.5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 2.5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 2.5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: aleksandr-zemyan@rambler.ru; text: <p>Приглашенный вами пользователь ccc только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 2.5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+filename:Акт приема SLAV-76-05-07-21-54.pdf
+filename:Акт возврата паевого взноса RUB-76-05-07-21-54.pdf
+post: Array
+(
+    [request_user_id] => 76
+    [approve_exchange] => true
+    [request_num] => 16
+)
+
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь ccc с ID 76 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю aaa с ID 63 вознаграждение в размере 5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: aleksandr-zemyan@rambler.ru; text: <p>Приглашенный вами пользователь ccc только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 5 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+filename:Акт приема SLAV-76-05-07-21-55.pdf
+filename:Акт возврата паевого взноса RUB-76-05-07-21-55.pdf
+post: Array
+(
+    [ref_remove] => true
+    [ref_data] => Array
+        (
+            [date] => 07.05.20 20:12:39
+            [host_name] => aaa
+            [ref_name] => ccc
+            [award_sum] => 0
+            [award_currency] => SLAV
+        )
+
+)
+
+post: Array
+(
+    [ref_approve] => true
+    [ref_data] => Array
+        (
+            [date] => 07.05.20 21:54:55
+            [host_name] => aaa
+            [ref_name] => ccc
+            [award_sum] => 2.5
+            [award_currency] => SLAV
+        )
+
+)
+
+post: Array
+(
+    [ref_approve] => true
+    [ref_data] => Array
+        (
+            [date] => 07.05.20 21:55:01
+            [host_name] => aaa
+            [ref_name] => ccc
+            [award_sum] => 5
+            [award_currency] => SLAV
+        )
+
+)
+
+post: Array
+(
+    [ref_user_id] => 63
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 7.5
+)
+
+sum: Array
+(
+    [Нефть] => 0
+)
+
+post: Array
+(
+    [ref_user_id] => 76
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 0
+)
+
+sum: Array
+(
+    [PRIZM] => 2.4
+)
+
+post: Array
+(
+    [ref_normal_users] => Array
+        (
+            [value] => 0.03
+        )
+
+    [ref_user] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 63
+                    [value] => 0.5
+                )
+
+            [1] => Array
+                (
+                    [id] => 74
+                    [value] => 0.6
+                )
+
+        )
+
+)
+
+post: Array
+(
+    [ref_user_id] => 63
+    [get_ref_stats] => true
+)
+
+sum: Array
+(
+    [SLAV] => 7.5
+)
+
+sum: Array
+(
+    [Нефть] => 0
+)
+

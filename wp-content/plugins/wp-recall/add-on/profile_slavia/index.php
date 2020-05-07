@@ -314,6 +314,11 @@ function add_profile_fields($fields){
         'slug' => 'is_email_verified',
         'title' => 'Подтверждение email',
     );
+    $fields[] = array(
+        'type' => 'text',
+        'slug' => 'is_privileged',
+        'title' => 'Привелигированный пользователь',
+    );
 
     return $fields;
 }
@@ -501,13 +506,15 @@ function rcl_tab_template_content()
             update_user_meta($user_ID, 'user_ref_link', $value);
         }
         if ($field_name != 'is_verified' && $field_name != 'verification' && $field_name != 'passport_photos' &&
-            $field_name != 'user_documents' && $field_name != 'refs' && $field_name != 'is_email_verified') {
+            $field_name != 'user_documents' && $field_name != 'refs' && $field_name != 'is_email_verified' &&
+            $field_name != 'is_privileged') {
             $field_value = /*$label . */$CF->get_input($field, $value);
             $field_value = apply_filters('profile_options_rcl', $field_value, $userdata);
         }
         else {
             if ($field_name == 'verification' || $field_name == 'passport_photos' || $field_name == 'is_verified' ||
-                $field_name == 'user_documents' || $field_name == 'refs' || $field_name == 'is_email_verified')
+                $field_name == 'user_documents' || $field_name == 'refs' || $field_name == 'is_email_verified' ||
+                $field_name == 'is_privileged')
             {
                 $field_value = $value;
                 if ($field_name == 'user_documents' && !empty($field_value))
@@ -1308,9 +1315,10 @@ function rcl_tab_settings_content($master_id)
         $index = 0;
         foreach ($all_users as $user)
         {
+            $is_privileged = get_user_meta($user->ID, 'is_privileged', true);
             $ref_percent = get_user_meta($user->ID, 'ref_percent', true);
 
-            if (isset($ref_percent) && !empty($ref_percent))
+            if (isset($is_privileged) && $is_privileged == 'yes' && isset($ref_percent) && !empty($ref_percent))
             {
                 $ref_content .= "<div class='col-lg-4 input-exchange input-custom-procent'>
                                     <div class='row' style='height: 100%; padding-top: 30px'>
@@ -1665,6 +1673,7 @@ function rcl_edit_profile(){
     {
         $log = new Rcl_Log();
         //var_dump($_POST);
+        $log->insert_log("post: ".print_r($_POST, true));
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
         {
@@ -1686,7 +1695,7 @@ function rcl_edit_profile(){
 
             exit;
         }
-        elseif (strpos(array_key_first($_POST), 'ref_user') !== false && !in_array('ref_user_id', array_keys($_POST) ))
+        elseif (in_array('ref_normal_users', array_keys($_POST) ) && !in_array('ref_user_id', array_keys($_POST) ))
         {
 //            $ref_amount = 0;
 //            foreach ($_POST as $key => $value)
@@ -1699,6 +1708,8 @@ function rcl_edit_profile(){
 //            rcl_update_option('ref_amount', $ref_amount);
 //            if (!empty($_POST['ref_user']))
 //            {
+            rcl_update_option('ref_percent_normal', $_POST['ref_normal_users']['value']);
+
             $all_users = get_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'fields' => array( 'ID' ) ) );
 
             foreach ($all_users as $user)
@@ -1712,7 +1723,7 @@ function rcl_edit_profile(){
                     {
                         $user_found = true;
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userdata['id']));
-                        foreach ($profileFields as $field)
+                        foreach ($profileFields as $field) {
                             if ($field['slug'] == 'ref_percent') {
                                 if (isset($field['value']))
                                     $field['value'] = $userdata['value'];
@@ -1720,13 +1731,27 @@ function rcl_edit_profile(){
                                     $field += array('value' => $userdata['value']);
 
                                 rcl_update_profile_fields($userdata['id'], array($field));
+                                continue;
+                            }
+                            if ($field['slug'] == 'is_privileged')
+                            {
+                                if (isset($field['value']))
+                                    $field['value'] = 'yes';
+                                else
+                                    $field += array('value' => 'yes');
+
+                                rcl_update_profile_fields($userdata['id'], array($field));
                                 break;
                             }
+                        }
+
                     }
                 } //foreach POST['ref_user']
                 //Если пользователя нету в POST, то зануляем у него реферальный процент
-                if (!$user_found && !empty($ref_percent))
-                    update_user_meta($user->ID, 'ref_percent', '');
+                if (!$user_found/* && !empty($ref_percent)*/) {
+                    update_user_meta($user->ID, 'ref_percent', $_POST['ref_normal_users']['value']);
+                    update_user_meta($user->ID, 'is_privileged', 'no');
+                }
 
             }
             //}

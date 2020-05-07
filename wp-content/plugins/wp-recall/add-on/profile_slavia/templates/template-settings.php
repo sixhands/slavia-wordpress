@@ -44,6 +44,22 @@
             <div class="col-12">
                 <form class="row" name="settings_ref" id="settings_form_ref" action="" method="post"  enctype="multipart/form-data">
 
+                    <div class='col-lg-4 input-exchange input-custom-procent'>
+                        <div class='row' style='height: 100%; padding-top: 30px'>
+                            <div class='select-exchange w-100'>
+                                <div class='row'>
+                                    <div class='col-12'>
+                                        <span class='select-exchange' style='display: inline-block'>Обычные пользователи</span></div>
+<!--                                    <div class='col-4'>-->
+<!--                                        <a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>-->
+<!--                                    </div>-->
+                                </div>
+                                <?php //wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'name' => 'ref_user[0][id]', 'id' => 'ref_user_0', 'class' => 'user_dropdown' )); ?>
+                                <?php $normal_percent = rcl_get_option('ref_percent_normal'); ?>
+                                <input class='ref_value' value='<?=$normal_percent ?>' type='text' name='ref_normal_users[value]'>
+                            </div>
+                        </div>
+                    </div>
                     <?php if (isset($ref_content) && !empty($ref_content)): echo $ref_content;
                           else: ?>
 <!---->
@@ -54,20 +70,20 @@
 <!--                        </div>-->
 <!--                    </div>-->
 
-                    <div class='col-lg-4 input-exchange input-custom-procent'>
-                        <div class='row' style='height: 100%; padding-top: 30px'>
-                            <div class='select-exchange w-100'>
-                                <div class='row'><div class='col-8'>
-                                        <span class='select-exchange' style='display: inline-block'>Пользователь</span></div>
-                                    <div class='col-4'>
-                                        <a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>
+                        <div class='col-lg-4 input-exchange input-custom-procent'>
+                            <div class='row' style='height: 100%; padding-top: 30px'>
+                                <div class='select-exchange w-100'>
+                                    <div class='row'><div class='col-8'>
+                                            <span class='select-exchange' style='display: inline-block'>Пользователь</span></div>
+                                        <div class='col-4'>
+                                            <a class='settings_close' style='display: inline-block; margin-left: -20px; margin-top: -5px'>&times;</a>
+                                        </div>
                                     </div>
+                                    <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'name' => 'ref_user[0][id]', 'id' => 'ref_user_0', 'class' => 'user_dropdown' )); ?>
+                                    <input class='ref_value' value='0.5' type='text' name='ref_user[0][value]'>
                                 </div>
-                                <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'name' => 'ref_user[0][id]', 'id' => 'ref_user_0', 'class' => 'user_dropdown' )); ?>
-                                <input class='ref_value' value='0.5' type='text' name='ref_user[0][value]'>
                             </div>
                         </div>
-                    </div>
 
                     <?php endif; ?>
 
