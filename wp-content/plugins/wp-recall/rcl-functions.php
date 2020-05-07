@@ -824,7 +824,7 @@ function rcl_mail( $email, $title, $text, $from = false, $attach = false ) {
     "' . get_bloginfo( 'name' ) . '"</small></p>';
 
 	$log = new Rcl_Log();
-	$log->insert_log("email: $email; text: $text; headers: $headers");
+	//$log->insert_log("email: $email; text: $text; headers: $headers");
 	
 	wp_mail( $email, $title, $text, $headers, $attach );
 }

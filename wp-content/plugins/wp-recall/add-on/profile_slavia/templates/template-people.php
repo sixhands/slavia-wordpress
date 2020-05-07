@@ -17,9 +17,9 @@
                         <div class="col-3 text-left">
                             Дата регистрации
                         </div>
-                        <div class="col-2 text-left">
-                            Рефереалов
-                        </div>
+<!--                        <div class="col-2 text-left">-->
+<!--                            Рефереалов-->
+<!--                        </div>-->
                         <div class="col-2 text-left">
 
                         </div>

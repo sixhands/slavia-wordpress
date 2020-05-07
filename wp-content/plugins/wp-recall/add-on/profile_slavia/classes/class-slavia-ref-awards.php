@@ -12,14 +12,150 @@
             return rcl_get_option('ref_awards');
         }
 
+        /*host_id - для какого человека получить операции (если 0, то для всех)*/
+        public function get_operations_by($fields, $change_operation = false, $new_status = '')
+        {
+            $items = $this->get_all();
+
+            $result_items = array();
+
+            $log = new Rcl_Log();
+
+            //Если передан host_id, проходимся только по операциям для этого пользователя
+            if (in_array("host_id", array_keys($fields))) {
+                if (isset($items[$fields["host_id"]]) && !empty($items[$fields["host_id"]]))
+                {
+                    $index = 0;
+                    foreach ($items[$fields["host_id"]] as $operation)
+                    {
+                        $is_match = false;
+                        foreach ($fields as $key => $value) {
+                            if ($key != 'host_id')
+                            {
+                                if ($operation[$key] == $value)
+                                    $is_match = true;
+                                else {
+                                    $is_match = false;
+                                    break;
+                                }
+                            }
+                            else
+                                continue;
+                        }
+                        if ($is_match) {
+                            array_push($result_items, $operation);
+                            if ($change_operation == true && !empty($new_status))
+                            {
+                                //$log->insert_log("operation: ". print_r($operation, true));
+                                $operation["status"] = $new_status;
+                                $items[$fields["host_id"]][$index] = $operation;
+                                $this->update_all($items);
+                                return true;
+                            }
+
+                        }
+                        $index++;
+                    }
+                }
+                else
+                    return false;
+            }
+            else
+            {
+                if (isset($items) && !empty($items))
+                {
+                    //$log->insert_log("items: ".print_r($items, true));
+                    foreach ($items as $host_id => $operations)
+                    {
+                        $index = 0;
+                        foreach ($operations as $operation)
+                        {
+                            $is_match = false;
+                            foreach ($fields as $key => $value) {
+                                if ($operation[$key] == $value)
+                                    $is_match = true;
+                                else {
+                                    $is_match = false;
+                                    break;
+                                }
+                            }
+                            if ($is_match) {
+                                array_push($result_items, $operation);
+                                if ($change_operation == true && !empty($new_status))
+                                {
+                                    //$log->insert_log("operation: ". print_r($operation, true));
+                                    $operation["status"] = $new_status;
+                                    $items[$host_id][$index] = $operation;
+                                    //$log->insert_log("items[host_id][index]: ". print_r($items[$host_id][$index], true));
+                                    //$log->insert_log("index: ".$index);
+                                    $this->update_all($items);
+                                    return true;
+                                }
+                            }
+                            $index++;
+                        }
+                    }
+                }
+            }
+//            $log = new Rcl_Log();
+//            $log->insert_log("result_items: ".print_r($result_items, true));
+            return $result_items;
+        }
+
+        public function update_all($new_items)
+        {
+            rcl_update_option('ref_awards', $new_items);
+        }
+
+        public function get_sum($type, $host_id)
+        {
+            if (in_array($type, array('paid', 'unpaid', 'full') ) )
+            {
+                $operations = $this->get_operations_by(array(
+                    "host_id" => $host_id,
+                    "status" => $type
+                ));
+                $log = new Rcl_Log();
+
+                $sum = array(); //array("prizm" => 1050, "slav" => 500, "rub" => 100)
+                foreach ($operations as $operation)
+                {
+                    $ref_sum = $operation["award_sum"];
+                    $ref_currency = $operation["award_currency"];
+
+                    if (!isset($sum[$ref_currency] ) )
+                        $sum += array($ref_currency => $ref_sum);
+                    else
+                        $sum[$ref_currency] += $ref_sum;
+                }
+                $log->insert_log("sum: ".$sum);
+                return $sum;
+
+            }
+            else
+                return false;
+        }
+
+        public function get_all_ref_users()
+        {
+            $items = $this->get_all();
+            $user_ids = array();
+            foreach ($items as $host_id => $operations)
+            {
+                array_push($user_ids, $host_id);
+            }
+            return $user_ids;
+        }
+
+
         /*Функция уведомления выбранных пользователей по email о реферальной операции
         (на вход подается host_id, host_name - id и имя пригласившего (хоста),
         ref_id, ref_name - id и имя приглашенного (пользователь, совершивший операцию),
         $notify_managers - уведомление всех менеджеров, $notify_cur_user - уведомить текущего пользователя)*/
         public function operation_notify($notification_data, $notify_managers = true, $notify_cur_user = true)
         {
-            $log = new Rcl_Log();
-            $log->insert_log("notification_data: ".print_r($notification_data, true));
+//            $log = new Rcl_Log();
+//            $log->insert_log("notification_data: ".print_r($notification_data, true));
             if ($notify_managers)
             {
                 $managers = get_users(array('role' => 'manager'));
@@ -77,7 +213,8 @@
                 elseif (!isset($items[$host_id]))
                 {
                     //Добавляем массив данных для данного пользователя
-                    array_push($items, array($host_id => array()));
+                    $items += array($host_id => array());
+
                     array_push($items[$host_id], $award_item);
                 }
             }
@@ -88,16 +225,11 @@
                 array_push($items[$host_id], $award_item);
             }
 
+            //log = new Rcl_Log();
+            //$log->insert_log("award_item: ".print_r($award_item, true));
+
             rcl_update_option('ref_awards', $items);
 
-            $log = new Rcl_Log();
-            $log->insert_log("ref_awards: ".print_r(rcl_get_option('ref_awards'), true));
-
-            //ref_awards[host_user_id][award_id] => data = array("date", "award_sum", "ref_user_id", "status")
-        }
-
-        public function change_item_status($new_status)
-        {
 
         }
 

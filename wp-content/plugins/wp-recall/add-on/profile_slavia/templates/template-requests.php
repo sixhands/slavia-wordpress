@@ -352,7 +352,6 @@
             };
             var el = jQuery(this);
             jQuery.post( window.location, data, function(response) {
-                console.log(response);
                 if (response == 'true') {
                     el.parents('.table-text').remove();
                 }

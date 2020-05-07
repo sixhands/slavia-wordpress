@@ -338,7 +338,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                     <option disabled selected>Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
+                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -361,7 +361,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                     <option disabled selected>Вид желаемого имущества</option>
                                     <?php if (isset($asset_outputs) && !empty($asset_outputs)): ?>
                                         <?php foreach ($asset_outputs as $asset_output): ?>
-                                            <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=$asset_output['asset_name']?>"><?=$asset_output['asset_name']?></option>
+                                            <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=htmlspecialchars($asset_output['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_output['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -416,7 +416,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                     <option disabled selected>Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=$asset_input['asset_name']?>"><?=$asset_input['asset_name']?></option>
+                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>

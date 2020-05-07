@@ -4,7 +4,7 @@ require_once 'classes/class-rcl-profile-fields.php';
 require_once 'classes/class-slavia-ref-awards.php';
 
 use Dompdf\Dompdf;
-use Ref_Awards;
+//use Ref_Awards;
 
 if (is_admin())
     require_once 'admin/index.php';
@@ -1375,9 +1375,40 @@ function rcl_tab_referral_content($master_id)
 {
     global $userdata, $user_ID;
 
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+    $profile_args = rcl_tab_template_content();
 
-    $content = rcl_get_include_template('template-referral.php', __FILE__);
+    $ref_awards = new Ref_Awards();
+
+    if (rcl_get_current_role() == 'manager' || rcl_get_current_role() == 'administrator' || rcl_get_current_role() == 'director')
+    {
+        $ref_all = array(
+            "unpaid" => $ref_awards->get_operations_by(array("status" => "processing")),
+            "paid" => $ref_awards->get_operations_by(array("status" => "paid")),
+            "user_ids" => $ref_awards->get_all_ref_users()
+        );
+
+        $profile_args += array("ref_all" => $ref_all);
+    }
+    else
+    {
+        $ref_cur_user = array(
+            "unpaid" => $ref_awards->get_operations_by(array(
+                "status" => "processing",
+                "host_id" => $user_ID
+            )),
+            "paid" => $ref_awards->get_operations_by(array(
+                "status" => "paid",
+                "host_id" => $user_ID
+            )),
+            "user_ids" => array($user_ID)
+        );
+        //$log = new Rcl_Log();
+        //$log->insert_log("cur_user_ref: ".print_r($ref_cur_user, true));
+
+        $profile_args += array("ref_cur_user" => $ref_cur_user);
+    }
+
+    $content = rcl_get_include_template('template-referral.php', __FILE__, $profile_args);
     return $content;
 }
 /************************************/
@@ -1574,7 +1605,8 @@ function save_exchange_request_other($input_currency, $input_sum, $requisites, $
         $exchange_requests = array($user_ID => $new_request);
     }
 
-//    $log = new Rcl_Log();
+    $log = new Rcl_Log();
+    //$log->insert_log("currency: ".$input_currency);
 //    $log->insert_log("exchange other:".print_r($exchange_fields, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
@@ -1631,6 +1663,9 @@ function rcl_edit_profile(){
 //        rcl_update_profile_fields($user_ID);
     if (isset($_POST) && count($_POST) > 0)
     {
+        $log = new Rcl_Log();
+        $log->insert_log("HEY");
+        $log->insert_log("post: ", print_r($_POST, true));
         //var_dump($_POST);
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
@@ -1987,7 +2022,7 @@ function rcl_edit_profile(){
 
                         $profileFields = rcl_get_profile_fields(array('user_id' => $userid));
 
-                        $log = new Rcl_Log();
+                        //$log = new Rcl_Log();
 
                         //Если есть пригласивший
                         if (/*isset($stat_exists) && $stat_exists == false && */!empty($ref_host))
@@ -2003,7 +2038,8 @@ function rcl_edit_profile(){
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
 
                             $ref_awards = new Ref_Awards();
-                            $log->insert_log("Im here! ");
+
+                            date_default_timezone_set('Europe/Moscow');
                             $ref_data = array(
                                 "date" => date('d.m.y H:i:s'),
                                 "host_name" => $ref_host_name,
@@ -2013,7 +2049,7 @@ function rcl_edit_profile(){
                                 "status" => "processing");
 
                             //$log = new Rcl_Log();
-                            $log->insert_log("ref_awards: " . print_r($ref_awards, true));
+                            //$log->insert_log("ref_awards: " . print_r($ref_awards, true));
                             $ref_awards->add($ref_host, $ref_data);
 
                             //Меняем массив данных для передачи в функцию operation_notify
@@ -2032,7 +2068,7 @@ function rcl_edit_profile(){
 //                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
                         foreach ($profileFields as $field) {
                             if ($field['slug'] == 'user_documents') {
-                                $log = new Rcl_Log();
+                                //$log = new Rcl_Log();
                                 $doc_num = get_user_meta($userid, 'user_documents', true);
                                 //$log->insert_log("doc_num:".print_r($doc_num, true));
                                 if (!isset($doc_num) || empty($doc_num))
@@ -2422,6 +2458,40 @@ function rcl_edit_profile(){
             }
 
         } //if request_user_id
+
+        //Выплата реферального вознаграждения
+        elseif (isset($_POST['ref_approve']) && $_POST['ref_approve'] == 'true') {
+            if (isset($_POST['ref_data']) && !empty($_POST['ref_data']))
+            {
+                $ref_awards = new Ref_Awards();
+                $fields = $_POST['ref_data'];
+
+                //Изменяем статус операции с полями fields
+                $result = $ref_awards->get_operations_by($fields, true, "paid");
+                if ($result == true)
+                    echo "true";
+                else
+                    echo "false";
+                exit;
+            }
+        }
+        elseif (isset($_POST['get_ref_stats']) && $_POST['get_ref_stats'] == 'true')
+        {
+            $log->insert_log("I'm here!");
+            if (isset($_POST['ref_user_id']) && !empty($_POST['ref_user_id']))
+            {
+                $ref_awards = new Ref_Awards();
+                $result_arr = array(
+                    "paid_sum" => $ref_awards->get_sum("paid", $_POST['ref_user_id']),
+                    "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id'])
+                );
+                $log->insert_log("result_arr: ".print_r($result_arr, true));
+                echo json_encode($result_arr);
+            }
+            else
+                echo 'false';
+            exit;
+        }
 
         elseif (isset($_POST['remove_request']) && $_POST['remove_request'] == 'true') {
             if ($_POST['request_type'] == 'exchange_request')

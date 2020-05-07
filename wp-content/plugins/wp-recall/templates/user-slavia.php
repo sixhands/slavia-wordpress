@@ -19,10 +19,10 @@
         <div class="col-3 text-left">
             <?php echo $rcl_user->user_registered; ?>
         </div>
-        <div class="col-2 text-left">
-            0
-        </div>
-        <div class="col-1 text-center show_user_operations">
+<!--        <div class="col-2 text-left">-->
+<!--            0-->
+<!--        </div>-->
+        <div class="col-3 text-center show_user_operations">
             <img src="/wp-content/uploads/2019/12/people_href.png">
         </div>
     </div>

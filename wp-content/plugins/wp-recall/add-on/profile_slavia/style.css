@@ -1,3 +1,23 @@
+.ref-tab__content .table-title > .row > div {
+    word-break: break-word;
+    hyphens: auto;
+}
+.ref-tab__content .table-title > .row > div:first-child,
+.ref-tab__content .table-text > .row > div:first-child {
+    padding-left: 42px;
+}
+.ref-tab__content > div {
+    padding: 0 !important;
+}
+.ref_unpaid .btn-ref {
+    margin-right: 20px;
+}
+.ref_stats .show_ref_stats > img {
+    cursor: pointer;
+}
+.ref-modal {
+    top: 10%;
+}
 #tab-button-referral img {
     scale: 1.2;
 }
