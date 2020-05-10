@@ -20,7 +20,7 @@
 
     <?php if(isset($ref_data) && !empty($ref_data)): ?>
         <?php foreach($ref_data as $user_id): ?>
-            <div class="table-text w-100">
+            <div class="table-text w-100" data-user-id="<?=$user_id ?>">
                 <div class="row">
                     <?php $user_data = get_userdata($user_id); ?>
                     <div class="col-1 text-left">
@@ -32,7 +32,7 @@
                             <img src="/wp-content/uploads/2019/12/verification_bad.png">
                         <?php endif; ?>
                     </div>
-                    <div class="col-4 text-left">
+                    <div class="col-4 text-left host_name">
                         <?=$user_data->display_name ?>
                     </div>
                     <div class="col-3 text-left">

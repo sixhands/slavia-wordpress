@@ -17,9 +17,11 @@
         {
             $items = $this->get_all();
 
-            $result_items = array();
-
             $log = new Rcl_Log();
+
+            //$log->insert_log("items: ".print_r($items, true));
+            //$log->insert_log("fields: ".print_r($fields, true));
+            $result_items = array();
 
             //Если передан host_id, проходимся только по операциям для этого пользователя
             if (in_array("host_id", array_keys($fields))) {
@@ -36,6 +38,10 @@
                                     $tmp = stripslashes($value);
                                 else
                                     $tmp = $value;
+                                if ($key == 'award_sum') {
+                                    $operation[$key] = round($operation[$key], 2);
+                                    $tmp = round($tmp, 2);
+                                }
                                 if ($operation[$key] == $tmp)
                                     $is_match = true;
                                 else {
@@ -47,6 +53,8 @@
                                 continue;
                         }
                         if ($is_match) {
+                            if (!$change_operation)
+                                $operation += array("host_id" => $fields["host_id"]);
                             array_push($result_items, $operation);
                             if ($change_operation == true && !empty($new_status))
                             {
@@ -86,7 +94,12 @@
                                     $tmp = stripslashes($value);
                                 else
                                     $tmp = $value;
-                                //$log->insert_log($operation[$key].'=='.$tmp);
+                                
+                                if ($key == 'award_sum') {
+                                    $operation[$key] = round($operation[$key], 2);
+                                    $tmp = round($tmp, 2);
+                                }
+                                $log->insert_log($operation[$key].'=='.$tmp);
                                 if ($operation[$key] == $tmp)
                                     $is_match = true;
                                 else {
@@ -95,6 +108,8 @@
                                 }
                             }
                             if ($is_match) {
+                                if (!$change_operation)
+                                    $operation += array("host_id" => $host_id);
                                 array_push($result_items, $operation);
                                 if ($change_operation == true && !empty($new_status))
                                 {
@@ -121,7 +136,7 @@
                 }
             }
 //            $log = new Rcl_Log();
-//            $log->insert_log("result_items: ".print_r($result_items, true));
+            //$log->insert_log("result_items: ".print_r($result_items, true));
             return $result_items;
         }
 

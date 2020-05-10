@@ -59,14 +59,14 @@ function download_stats()
     //fclose($filename);
     //unlink($filename);
     $dompdf = new Dompdf();
-    $dompdf->loadHtml($stats_content);
+    //$dompdf->loadHtml($stats_content);
 
-//    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 8, 'month' => 'февраля', 'year' => 2020, 'client_num' => 5,
-//        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
-//        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
+    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 9, 'month' => 'мая', 'year' => 2020, 'client_num' => 5,
+        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
+        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
 
 // (Optional) Setup the paper size and orientation
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper('A4', 'portrait');
 
 // Render the HTML as PDF
     $dompdf->render();
@@ -334,7 +334,7 @@ function generate_pdf($text, $load_from_file = false)
         $dompdf->loadHtmlFile($text);
 
 // (Optional) Setup the paper size and orientation
-    $dompdf->setPaper('A4', 'landscape');
+    $dompdf->setPaper('A4', 'portrait');
 
 // Render the HTML as PDF
     $dompdf->render();
@@ -425,28 +425,6 @@ function get_new_document_field($user_id, $text = null, $filename = null)
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
-
-//add_filter('rcl_profile_fields', 'add_user_verification', 10);
-////Верификация
-//function add_user_verification($fields)
-//{
-//    $fields[] = array(
-//        'type' => 'custom',
-//        'slug' => 'verification',
-//        'title' => 'Данные верификации',
-//        'values' =>
-//            array('name' => '', 'surname' => '', 'last_name' => '', 'passport_number' => '',
-//                'passport_date' => '', 'passport_code' => '', 'passport_who' => '', 'passport-photos' => array('', ''))
-//    );
-//    $content = '';
-//    foreach ($fields[count($fields) - 1]['values'] as $value)
-//    {
-//    }
-//    $fields[count($fields) - 1] += array("content" => $content);
-//    //var_dump($fields[count($fields) - 1]);
-//
-//    return $fields;
-//}
 
 add_action('init','rcl_tab_profile');
 add_action('init','rcl_tab_exchange');
@@ -1673,7 +1651,7 @@ function rcl_edit_profile(){
     {
         $log = new Rcl_Log();
         //var_dump($_POST);
-        $log->insert_log("post: ".print_r($_POST, true));
+        //$log->insert_log("post: ".print_r($_POST, true));
         //Если добавление банков
         if (strpos(array_key_first($_POST), 'bank') !== false )
         {
@@ -2055,7 +2033,7 @@ function rcl_edit_profile(){
                             $ref_amount = get_user_meta($ref_host, 'ref_percent', true);//rcl_get_option('ref_amount');
                             if (!isset($ref_amount) || empty($ref_amount))
                                 $ref_amount = 0;
-                            $award = $exchange_requests[$userid][$request_num]['input_sum'] * $ref_amount;
+                            $award = $exchange_requests[$userid][$request_num]['input_sum'] * ($ref_amount /100);
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
                             $award_currency = stripslashes($award_currency);
 
@@ -2489,6 +2467,7 @@ function rcl_edit_profile(){
 
                 //Изменяем статус операции с полями fields
                 $result = $ref_awards->get_operations_by($fields, true, "paid", false);
+                //$log->insert_log("result: ".print_r($result, true));
                 if ($result == true)
                     echo "true";
                 else
@@ -2529,6 +2508,38 @@ function rcl_edit_profile(){
                 exit;
             }
 
+        }
+
+        elseif (isset($_POST['get_ref_operations']) && $_POST['get_ref_operations'] == 'true')
+        {
+            if (isset($_POST['operation_type']) && !empty($_POST['operation_type']) &&
+                isset($_POST['ref_user_id']) && !empty($_POST['ref_user_id']))
+            {
+                $operation_type = $_POST['operation_type'];
+                $ref_user_id = $_POST['ref_user_id'];
+                $status = $operation_type == 'unpaid' ? 'processing' : 'paid';
+
+                $ref_awards = new Ref_Awards();
+                $options_array = array();
+                $options_array += array("status" => $status);
+                if ($ref_user_id != 'all')
+                    $options_array += array("host_id" => $ref_user_id);
+                $result_arr = array("operations" => $ref_awards->get_operations_by($options_array));
+
+                if (rcl_get_current_role() == 'manager' || rcl_get_current_role() == 'administrator' || rcl_get_current_role() == 'director')
+                    $is_manager = true;
+                else
+                    $is_manager = false;
+
+                $result_arr += array("is_manager" => $is_manager);
+                echo json_encode($result_arr);
+                exit;
+            }
+            else
+            {
+                echo 'false';
+                exit;
+            }
         }
 
         elseif (isset($_POST['remove_request']) && $_POST['remove_request'] == 'true') {

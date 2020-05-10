@@ -990,7 +990,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         else
             result = (input_value * rate);
         //if (is_commision)
-        result *= (1 - bank_rate);
+        result *= (1 - (bank_rate / 100) );
         result = Math.round(result * 100) / 100;
         return result;
     }

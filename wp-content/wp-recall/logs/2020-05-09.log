@@ -1,0 +1,85 @@
+filename:Акт приема PRIZM-6-05-09-15-01.pdf
+filename:Акт возврата паевого взноса RUB-6-05-09-15-01.pdf
+filename:Акт приема SLAV-6-05-09-15-41.pdf
+filename:Акт возврата паевого взноса RUB-6-05-09-15-41.pdf
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+paid==processing
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+paid==processing
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+sum: Array
+(
+    [SLAV] => 5
+    [PRIZM] => 10.57
+)
+
+sum: Array
+(
+    [SLAV] => 3.57
+)
+
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+paid==processing
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+paid==paid
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+paid==processing

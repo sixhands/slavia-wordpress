@@ -22,7 +22,7 @@
 
     <?php if(isset($ref_data) && !empty($ref_data)): ?>
         <?php foreach($ref_data as $item): ?>
-            <div class="table-text w-100">
+            <div class="table-text w-100" data-user-id="<?=$item["host_id"] ?>">
                 <div class="row">
                     <div class="col-2 text-left ref_date"><?=$item["date"] ?></div>
 

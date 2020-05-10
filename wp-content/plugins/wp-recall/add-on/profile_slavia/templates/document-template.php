@@ -5,16 +5,60 @@
         body { font-family: DejaVu Sans, sans-serif !important; }
         table.doc_table, table.doc_table th, table.doc_table td {border: 1px solid black; }
         table {border-collapse:collapse}
+        table.doc_table th {
+            font-weight: normal;
+            text-align: center;
+        }
+        table.doc_table td {
+            text-align: center;
+        }
+        div.header_text {width: 100%;}
+
+        /*div.header_text > div {  }*/
+        div.header_text > div.header_city {text-align: left; float: left; width: 48%}
+        div.header_text > div.header_date {text-align: right; float: right; width: 48%}
+        /*div.header_text > p.header_date::after {*/
+        /*    clear: both;*/
+        /*}*/
+        div.clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        div.header_text_container {
+            display: inline-block;
+            text-align: left;
+            width: auto;
+        }
+
+        div.header, div.doc_body {
+            width: 90%;
+            margin: 0 5%;
+        }
+        br {
+            line-height: 5px;
+        }
+        p {
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
-<div class="header">
-    <p style="text-align: center;">АКТ № <?php if (is_var($doc_num)) echo $doc_num; ?><br>
+<div class="header" style="width: 100%">
+    <p style="text-align: center; font-weight: bold">АКТ № <?php if (is_var($doc_num)) echo $doc_num; ?><br>
         <?php if (is_var($is_output) && $is_output): ?>возврата паевого взноса<?php elseif(!$is_output): ?>приема паевого взноса<?php endif;?>
     </p>
     <br>
-    <p style="text-align: center">г. Электросталь “_<?php if (is_var($day)) echo $day; ?>_”___<?php if (is_var($month)) echo $month; ?>__ <?php if (is_var($year)) echo $year; ?>_г.
-    </p>
+    <div class="header_text clearfix" style="width: 100%">
+        <div class="header_city">г. Электросталь </div>
+        <div class="header_date">
+            <div class="header_text_container">
+                <span>“_<?php if (is_var($day)) echo $day; ?>_”___<?php if (is_var($month)) echo $month; ?>__ <?php if (is_var($year)) echo $year; ?>_г.</span>
+                <br>
+                <span>ч.___.___</span>
+            </div>
+        </div>
+    </div>
     <br>
 </div>
 <div class="doc_body">
@@ -23,7 +67,7 @@
         «Славия»  передал из Паевого Фонда паевой взнос <?php elseif (!$is_output): ?> внёс паевой взнос, а Совет принял в Паевой Фонд паевой взнос <?php endif; ?>в виде следующего
         имущества:
     </p>
-    <table class="doc_table" style="margin-left: auto; margin-right: auto;">
+    <table class="doc_table" style="width: 100%">
         <thead>
         <tr>
             <th><p>№ п/п</p></th>
@@ -66,7 +110,7 @@
         </tbody>
     </table>
     <br>
-    <p style="margin-left: auto; margin-right: auto; width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> руб. </p>
+    <p style="width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> руб. </p>
     <br>
     <table class="signatures" style="margin-left: auto; margin-right: auto;">
         <tbody>

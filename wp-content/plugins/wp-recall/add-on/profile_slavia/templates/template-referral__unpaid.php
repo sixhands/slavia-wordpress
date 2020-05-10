@@ -22,7 +22,7 @@
 
     <?php if(isset($ref_data) && !empty($ref_data)): ?>
         <?php foreach($ref_data as $item): ?>
-            <div class="table-text w-100">
+            <div class="table-text w-100" data-user-id="<?=$item["host_id"] ?>">
                 <div class="row">
                     <div class="col-2 text-left ref_date"><?=$item["date"] ?></div>
 
@@ -63,40 +63,40 @@
 </div>
 
 <script type="text/javascript">
-    jQuery('.ref_unpaid .btn-ref').click(function(){
-        let date = jQuery(this).parent().siblings('.ref_date').text();
-        let host_name = jQuery(this).parent().siblings('.host_name').text();
-        let ref_name = jQuery(this).parent().siblings('.ref_name').text();
-        let award_sum = jQuery(this).parent().siblings('.ref_sum').text();
-        let split_sum = award_sum.split(' ');
-        //Сумма - все перед первым пробелом
-        let sum = split_sum.shift();
-        //console.log("sum: ",sum);
-        let currency = split_sum.join(' ');
-        //console.log("currency: ", currency);
-        //console.log('sum: ', 0);
-        var data = {
-            ref_approve: 'true',
-            ref_data: {
-                date: date,
-                host_name: host_name,
-                ref_name: ref_name,
-                award_sum: sum,
-                award_currency: currency
-            }
-        };
-        // console.log("data:");
-        // console.log(data);
-        var el = jQuery(this);
-
-        jQuery.post( window.location, data, function(response) {
-            // console.log("response: ");
-            // console.log(response);
-            if (response == 'true') {
-                el.parents('.table-text').remove();
-            }
-        });
-    });
+    // jQuery('.ref_unpaid .btn-ref').click(function(){
+    //     let date = jQuery(this).parent().siblings('.ref_date').text();
+    //     let host_name = jQuery(this).parent().siblings('.host_name').text();
+    //     let ref_name = jQuery(this).parent().siblings('.ref_name').text();
+    //     let award_sum = jQuery(this).parent().siblings('.ref_sum').text();
+    //     let split_sum = award_sum.split(' ');
+    //     //Сумма - все перед первым пробелом
+    //     let sum = split_sum.shift();
+    //     //console.log("sum: ",sum);
+    //     let currency = split_sum.join(' ');
+    //     //console.log("currency: ", currency);
+    //     //console.log('sum: ', 0);
+    //     var data = {
+    //         ref_approve: 'true',
+    //         ref_data: {
+    //             date: date,
+    //             host_name: host_name,
+    //             ref_name: ref_name,
+    //             award_sum: sum,
+    //             award_currency: currency
+    //         }
+    //     };
+    //     // console.log("data:");
+    //     // console.log(data);
+    //     var el = jQuery(this);
+    //
+    //     jQuery.post( window.location, data, function(response) {
+    //         // console.log("response: ");
+    //         // console.log(response);
+    //         if (response == 'true') {
+    //             el.parents('.table-text').remove();
+    //         }
+    //     });
+    // });
 
 
 </script>

@@ -24,21 +24,26 @@
                     $arg_to_pass = $ref_all;
                 else
                     $arg_to_pass = $ref_cur_user;
+
+                if (count($arg_to_pass["user_ids"]) != 1)
+                    $data_user_id = 'all';
+                else
+                    $data_user_id = $arg_to_pass["user_ids"][0];
             ?>
 
-            <div class="ref-tab__content ref_unpaid row">
+            <div class="ref-tab__content ref_unpaid row" data-user_id="<?=$data_user_id ?>">
                 <?php
                     echo rcl_get_include_template('template-referral__unpaid.php', __FILE__, array("ref_data" => $arg_to_pass["unpaid"], "is_manager" => $is_manager));
                 ?>
             </div>
 
-            <div class="ref-tab__content ref_paid row">
+            <div class="ref-tab__content ref_paid row" data-user_id="<?=$data_user_id ?>">
                 <?php
                 echo rcl_get_include_template('template-referral__paid.php', __FILE__, array("ref_data" => $arg_to_pass["paid"]));
                 ?>
             </div>
 
-            <div class="ref-tab__content ref_stats row">
+            <div class="ref-tab__content ref_stats row" data-user_id="<?=$data_user_id ?>">
             <?php
                 echo rcl_get_include_template('template-referral__stats.php', __FILE__, array("ref_data" => $arg_to_pass["user_ids"]));
             ?>
@@ -68,21 +73,286 @@
             </div>
 
             <div class="row ref_stats" id="stats_content">
-                <div class="col-12 text-left">
-                    Выплаченная сумма:
+                <div class="col-12 text-center" style="text-transform: uppercase">
+                    Выплаченная сумма
                 </div>
                 <div class="col-12 paid_sum text-left">
-                    <div class="row">
+                    <div class="table-title w-100">
+                        <div class="row">
+                            <div class="col-6 text-left ref_currency">
+                                Валюта
+                            </div>
+                            <div class="col-6 text-left ref_sum">
+                                Сумма
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="table-text w-100">-->
+<!--                        <div class="row">-->
+<!---->
+<!--                        </div>-->
+<!--                    </div>-->
+                </div>
 
+                <div class="col-12 text-center" style="text-transform: uppercase">
+                    Невыплаченная сумма
+                </div>
+                <div class="col-12 unpaid_sum text-left">
+                    <div class="table-title w-100">
+                        <div class="row">
+                            <div class="col-6 text-left">
+                                Валюта
+                            </div>
+                            <div class="col-6 text-left">
+                                Сумма
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<a style="display: none;" id="modal-54506522" href="#modal-container-54506522" role="button" class="" data-toggle="modal">
+</a>
+<!--Модальное окно регистрации -->
+<div class="modal fade" id="modal-container-54506522" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 800px; ">
+        <div class="modal-content text-left" style="padding: 40px;">
+            <div class="row">
+                <div class="col-10">
+                    <h1 class="coop_maps-h1 ib">Данные пользователя:</h1>
+                </div>
+
+                <div class="col-2">
+                    <button type="button" class="close ib " data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="row" id="userdata_content">
+                <div class="col-12 input-exchange">
+                    <div class="row">
+                        <span>Имя пользователя</span>
+                        <input class="username" placeholder="Имя пользователя" type="text" name="">
+                    </div>
+                </div>
+                <div class="col-lg-12 input-exchange ">
+                    <div class="row ">
+                        <span>Email</span>
+                        <input class="user_email" placeholder="Email" type="text" name="">
                     </div>
                 </div>
 
-                <div class="col-12 text-left">
-                    Невыплаченная сумма:
+                <div class="col-lg-12 input-exchange">
+                    <div class="row">
+                        <span>Телефон</span>
+                        <input class="user_phone" placeholder="Телефон" type="text" name="">
+                    </div>
                 </div>
-                <div class="col-12 unpaid_sum text-left">
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Номер пайщика</span>
+                                <input class="client_num" placeholder="Номер пайщика" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Верифицирован</span>
+                                <input class="is_verified" placeholder="Верифицирован" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Реферальная ссылка</span>
+                                <input class="user_ref_link" placeholder="Реферальная ссылка" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h1 class="coop_maps-h1 ib">Верификация пользователя:</h1>
+            </div>
+
+            <div class="row" id="verification_content">
+
+                <div class="col-12" id="no_verification">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            Для данного пользователя не найдены верификационные данные.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Адрес PRIZM</span>
+                                <input class="verification_prizm_address" placeholder="Адрес PRIZM" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Публичный ключ</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_prizm_public_key" placeholder="Публичный ключ" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Адрес Slav</span>
+                                <input class="verification_waves_address" placeholder="Адрес Slav" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Имя</span>
+                                <input class="verification_name" placeholder="Имя" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Фамилия</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_surname" placeholder="Фамилия" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Отчество</span>
+                                <input class="verification_last_name" placeholder="Отчество" type="text" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Серия и номер паспорта</span>
+                                <input class="verification_passport_number" placeholder="____-______"  type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange ">
+                            <div class="row ">
+                                <span>Дата выдачи</span>
+                                <div class="select-exchange w-100">
+                                    <input class="verification_passport_date" placeholder="Дата выдачи" type="date" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Код подразделения</span>
+                                <input class="verification_passport_code" placeholder="Код подразделения" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 input-exchange">
+                            <div class="row">
+                                <span>Кем выдан</span>
+                                <input class="verification_passport_who" placeholder="Кем выдан" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-8 input-exchange ">
+                            <div class="row ">
+                                <span>Место жительства по прописке</span>
+                                <div class="select-exchange w-100" style="padding-left: 0 !important;">
+                                    <input class="verification_passport_address" placeholder="Место жительства по прописке" type="text" name="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 input-exchange">
+                            <div class="row">
+                                <span>Индекс</span>
+                                <input class="verification_passport_index" placeholder="Индекс" type="text" name="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 passport-photo">
+                            <div class="row">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <h1 class="coop_maps-h1 ib">Операции пользователя:</h1>
+            </div>
+
+            <div class="row" id="exchange_content">
+                <div class="table-title w-100">
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            Дата
+                        </div>
+                        <div class="col-2 text-center">
+                            Отдаю
+                        </div>
+                        <div class="col-2 text-center">
+                            Получаю
+                        </div>
+                        <div class="col-2 text-center">
+                            КОЛИЧЕСТВО
+                        </div>
+                        <div class="col-4 text-center">
+                            СТАТУС
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12">
+                <h1 class="coop_maps-h1 ib">Статистика пользователя:</h1>
+            </div>
+
+            <div class="row stats" id="stats_content">
+                <div class="table-title w-100">
                     <div class="row">
 
+                        <div class="col-2 text-center stats_col" style="/*padding-left: 42px;*/">
+                            <p>Имя клиента</p>
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            Номер пайщика
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            RUB сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            RUB обменов
+                        </div>
+                        <div class="col-2 text-center stats_col">
+                            PRIZM сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            PRIZM обменов
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            SLAV сумма
+                        </div>
+                        <div class="col-1 text-center stats_col">
+                            SLAV обменов
+                        </div>
                     </div>
                 </div>
 
@@ -115,22 +385,40 @@
                 let unpaid_sum = sum_data.unpaid_sum;
                 let paid_sum = sum_data.paid_sum;
 
-                let unpaid_sum_content = jQuery('.modal-content #stats_content > .unpaid_sum > .row');
-                let paid_sum_content = jQuery('.modal-content #stats_content > .paid_sum > .row');
+                let unpaid_sum_content = jQuery('.modal-content #stats_content > .unpaid_sum');
+                let paid_sum_content = jQuery('.modal-content #stats_content > .paid_sum');
 
-                unpaid_sum_content.empty();
-                paid_sum_content.empty();
+                unpaid_sum_content.find('.table-title ~ .table-text').remove();
+                paid_sum_content.find('.table-title ~ .table-text').remove();
 
                 for (var key in unpaid_sum) {
                     unpaid_sum_content.append(
-                        '<div class="col-12">' + '<span>' + unpaid_sum[key] + ' ' + key.stripSlashes() + '</span></div>'
+                    '<div class="table-text w-100"> ' +
+                        '<div class="row"> ' +
+                            '<div class="col-6 text-left">' +
+                                '<span>' + key.stripSlashes() + '</span>' +
+                            '</div>' +
+                            '<div class="col-6 text-left">' +
+                                '<span>' + (+unpaid_sum[key].toFixed(2)) + '</span>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>'
                     );
                 }
 
                 for (var key in paid_sum) {
-                    console.log(key);
+                    //console.log(key);
                     paid_sum_content.append(
-                        '<div class="col-12">' + '<span>' + paid_sum[key] + ' ' + key.stripSlashes() + '</span></div>'
+                        '<div class="table-text w-100"> ' +
+                            '<div class="row"> ' +
+                                '<div class="col-6 text-left">' +
+                                    '<span>' + key.stripSlashes() + '</span>' +
+                                '</div>' +
+                                '<div class="col-6 text-left">' +
+                                    '<span>' + (+paid_sum[key].toFixed(2)) + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
                     );
                 }
 
@@ -139,42 +427,7 @@
         });
     });
 
-    //Удалить операцию
-    jQuery('.ref_unpaid .remove_operation, .ref_paid .remove_operation').click(function(){
-        let date = jQuery(this).parent().siblings('.ref_date').text();
-        let host_name = jQuery(this).parent().siblings('.host_name').text();
-        let ref_name = jQuery(this).parent().siblings('.ref_name').text();
-        let award_sum = jQuery(this).parent().siblings('.ref_sum').text();
-        let split_sum = award_sum.split(' ');
-        //Сумма - все перед первым пробелом
-        let sum = split_sum.shift();
-        //console.log("sum: ",sum);
-        let currency = split_sum.join(' ');
-        //console.log("currency: ", currency);
-        //console.log('sum: ', 0);
-        var data = {
-            ref_remove: 'true',
-            ref_data: {
-                date: date,
-                host_name: host_name,
-                ref_name: ref_name,
-                award_sum: sum,
-                award_currency: currency
-            }
-        };
-        // console.log("data:");
-        // console.log(data);
-        var el = jQuery(this);
-
-        if (confirm("Удалить данную операцию?") == true) {
-            jQuery.post(window.location, data, function (response) {
-                console.log(response);
-                if (response == 'true') {
-                    el.parents('.table-text').remove();
-                }
-            });
-        }
-        else
-            return;
+    jQuery(document).ready(function() {
+        init_ref_buttons();
     });
 </script>
