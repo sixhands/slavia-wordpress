@@ -96,7 +96,7 @@
             <div class="header_text_container">
                 <span>“_<?php if (is_var($day)) echo $day; ?>_”___<?php if (is_var($month)) echo $month; ?>__ <?php if (is_var($year)) echo $year; ?>_г.</span>
                 <br>
-                <span>ч.___.___</span>
+                <span>ч.<?php if (is_var($hour)) echo $hour ?>_.<?php if (is_var($minute)) echo $minute ?>_</span>
             </div>
         </div>
     </div>
@@ -121,12 +121,11 @@
             <td><p>1</p></td>
             <td><p><?php
                     if (is_var($currency)) {
-                        if ($currency == 'PRIZM')
-                            echo 'Учетная Единица PRIZM';
-                        elseif ($currency == 'SLAV')
-                            echo 'Учетная Единица Slav';
-                        elseif ($currency == 'RUB')
+                        if ($currency == 'RUB')
                             echo 'Билеты Банка России';
+                        else
+                            echo 'Учетная Единица '.$currency;
+
                     } ?></p></td>
             <td><p><?php if (is_var($amount)) echo $amount; ?></p></td>
             <td><p><?php if (is_var($currency_rate)) echo $currency_rate; ?> руб.</p></td>

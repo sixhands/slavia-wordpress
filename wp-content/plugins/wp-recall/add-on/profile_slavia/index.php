@@ -43,7 +43,7 @@ function download_stats()
     $stats_content .= '</head><body>';
     //$stats_content .= '<div class="coop_maps question-bg col-lg-12"><div class="row stats">';
 
-    $stats_content .= '<table style="table-layout:fixed; width: 800px">';
+    $stats_content .= '<table style="table-layout:fixed; width: 700px">';
 
     $stats_content .= show_stats_header(true);
 
@@ -60,12 +60,13 @@ function download_stats()
     //fclose($filename);
     //unlink($filename);
     $dompdf = new Dompdf();
-    //$dompdf->loadHtml($stats_content);
+    $dompdf->loadHtml($stats_content);
 
-    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 9, 'month' => 'мая', 'year' => 2020, 'client_num' => 5,
-        'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
-        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'doc_type' => 'output'
-        /*'deposit_type' => 'Имущество на паях'*/)));
+//    $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 9, 'month' => 'мая', 'year' => 2020, 'hour' => 16,
+//        'minute' => 53, 'client_num' => 5, 'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000,
+//        'currency_rate' => 16.7, 'sum' => 1000*16.7, 'public_key' => 'fgokdhodg363563higfjhiw43',
+//        'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'doc_type' => 'output'
+//        /*'deposit_type' => 'Имущество на паях'*/)));
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'portrait');
@@ -344,6 +345,7 @@ function generate_pdf($text, $load_from_file = false)
 // Output the generated PDF to Browser
     return $dompdf->output();
 }
+//Создание документов
 function get_new_document_field($user_id, $text = null, $filename = null)
 {
     if (!$text)
@@ -422,6 +424,165 @@ function get_new_document_field($user_id, $text = null, $filename = null)
     }
     fclose($temp_file);
     return !empty($result_field) ? $result_field : false;
+}
+
+function get_alternate_currency_rate($currency_name, $type = 'in')
+{
+    $i = 0;
+    if ($type == 'in')
+        $field_name = 'asset_input_';
+    elseif ($type == 'out')
+        $field_name = 'asset_output_';
+
+    while (!empty(get_field($field_name.($i+1), 306)) && count(get_field($field_name.($i+1), 306)) > 0)
+    {
+        $cur_field = get_field($field_name . ($i + 1), 306);
+        if ($cur_field['asset_name'] == $currency_name) {
+            $log = new Rcl_Log();
+            $log->insert_log("asset_rate: ".$cur_field['asset_rate_rubles']);
+            return $cur_field['asset_rate_rubles'];
+        }
+        ++$i;
+    }
+    return false;
+
+}
+function get_doc_fields($data)
+{
+    $request = $data["request"];
+    $userid = $data["user_id"];
+
+    $doc_num = get_user_meta($userid, 'user_documents', true);
+    //$log->insert_log("doc_num:".print_r($doc_num, true));
+    if (!isset($doc_num) || empty($doc_num))
+        $doc_num = 0;
+    else
+        $doc_num = count($doc_num);
+    /***********************ПОЛЯ***********************/
+    $day = date('j');
+    $month = date('n');
+    $month = get_russian_month($month);
+    $year = date('Y');
+    $hour = date('H');
+    $minute = date('i');
+
+    $client_num = get_user_meta($userid, 'client_num', true);
+
+    //Если обычный обмен
+    if (!is_var($request['requisites']))
+        $bank_commission = get_bank_commission($request['bank']);
+    $prizm_price = rcl_slavia_get_crypto_price('PZM'); //Курс призма
+    $waves_price = rcl_slavia_get_crypto_price('WAVES'); //Курс waves
+
+    $user_verification = get_user_meta($userid, 'verification', true);
+    $user_full_name = '';
+    if (isset($user_verification) && !empty($user_verification))
+    {
+        $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+    }
+
+    if (isset($request['deposit_type']))
+        $is_deposit = true;
+    else
+        $is_deposit = false;
+
+    $input_doc_fields =
+        array(
+            'doc_num' => ($doc_num+1),
+            'day' => $day,
+            'month' => $month,
+            'year' => $year,
+            'hour' => $hour,
+            'minute' => $minute,
+            'client_num' => $client_num,
+            'client_fio' => $user_full_name,
+            'currency' => $request['input_currency'],
+            'amount' => $request['input_sum'],
+            'currency_rate' => 0,
+            'sum' => 0,
+            'public_key' => $user_verification['prizm_public_key'],
+            'doc_type' => $is_deposit ? 'deposit' : 'input'
+        );
+    //Если целевой взнос, добавляем тип целевой программы
+    if ($is_deposit)
+        $input_doc_fields += array('deposit_type' => $request['deposit_type']);
+    ////////////////////////////////////
+
+    if ($input_doc_fields['currency'] == 'PRIZM')
+    {
+        $input_doc_fields += array('currency_address' => $user_verification['prizm_address']);
+
+        $input_doc_fields['currency_rate'] = $prizm_price * ($bank_commission / 100);
+
+        $input_doc_fields['sum'] = $request['output_sum'];
+    }
+    elseif ($input_doc_fields['currency'] == 'SLAV')
+    {
+        $input_doc_fields['currency_rate'] = /*$waves_price*/ 1 * ($bank_commission / 100);
+
+        $input_doc_fields['sum'] = $request['output_sum'];
+    }
+    elseif ($input_doc_fields['currency'] == 'RUB')
+    {
+        $input_doc_fields['currency_rate'] = 1;//(1-$bank_commission);
+
+        $input_doc_fields['sum'] = $request['input_sum'];
+    }
+    //Другие валюты
+    elseif (is_var($request['requisites']))
+    {
+        $input_doc_fields['currency_rate'] = get_alternate_currency_rate($input_doc_fields['currency'], 'in');
+        $input_doc_fields['sum'] = $request['output_sum'];
+    }
+
+    if (!$is_deposit)
+    {
+        $output_doc_fields =
+            array(
+                'doc_num' => ($doc_num + 2),
+                'day' => $day,
+                'month' => $month,
+                'year' => $year,
+                'hour' => $hour,
+                'minute' => $minute,
+                'client_num' => $client_num,
+                'client_fio' => $user_full_name,
+                'currency' => $request['output_currency'],
+                'amount' => $request['output_sum'],
+                'currency_rate' => 0,
+                'sum' => 0,
+                'public_key' => $user_verification['prizm_public_key'],
+                'doc_type' => 'output'
+            );
+        //Т.к. получаем криптовалюту и отдаем рубли, за сумму берем input_sum (сумма в рублях)
+        if ($output_doc_fields['currency'] == 'PRIZM') {
+            $output_doc_fields += array('currency_address' => $user_verification['prizm_address']);
+
+            $output_doc_fields['currency_rate'] = $prizm_price * ($bank_commission / 100);
+            $output_doc_fields['sum'] = $request['input_sum'];
+        }
+        elseif ($output_doc_fields['currency'] == 'SLAV') {
+            $output_doc_fields['currency_rate'] = $waves_price * ($bank_commission / 100);
+            $output_doc_fields['sum'] = $request['input_sum'];
+        }
+        elseif ($output_doc_fields['currency'] == 'RUB') {
+            $output_doc_fields['currency_rate'] = ($bank_commission / 100);
+            $output_doc_fields['sum'] = $request['output_sum'];
+        }
+        //Другие валюты
+        elseif (is_var($request['requisites']))
+        {
+            $output_doc_fields['currency_rate'] = get_alternate_currency_rate($output_doc_fields['currency'], 'out');
+            $output_doc_fields['sum'] = $request['input_sum'];
+        }
+    }
+    $result = array("input_fields" => $input_doc_fields);
+    if (!$is_deposit)
+        $result += array("output_fields" => $output_doc_fields, "is_deposit" => false);
+    else
+        $result += array("is_deposit" => true);
+
+    return $result;
 }
 
 //Добавление документов для данного пользователя
@@ -2065,119 +2226,52 @@ function rcl_edit_profile(){
                         }
 
                         //Генерируем документ
-//                        if ($exchange_requests[$userid][$request_num]['input_currency'] == 'PRIZM' ||
-//                            $exchange_requests[$userid][$request_num]['input_currency'] == 'WAVES') {
                         foreach ($profileFields as $field) {
                             if ($field['slug'] == 'user_documents') {
 
-                                $doc_num = get_user_meta($userid, 'user_documents', true);
-                                //$log->insert_log("doc_num:".print_r($doc_num, true));
-                                if (!isset($doc_num) || empty($doc_num))
-                                    $doc_num = 0;
-                                else
-                                    $doc_num = count($doc_num);
-                                $day = date('j');
-                                $month = date('n');
-                                $month = get_russian_month($month);
-                                $year = date('Y');
-                                $client_num = get_user_meta($userid, 'client_num', true);
+                                $doc_fields = get_doc_fields(array(
+                                    "request" => $exchange_requests[$userid][$request_num],
+                                    "user_id" => $userid
+                                    )
+                                );
+                                $is_deposit = $doc_fields['is_deposit'];
+                                $input_doc_fields = $doc_fields['input_fields'];
 
-                                $bank_commission = get_bank_commission($exchange_requests[$userid][$request_num]['bank']);
-                                $prizm_price = rcl_slavia_get_crypto_price('PZM'); //Курс призма
-                                $waves_price = rcl_slavia_get_crypto_price('WAVES'); //Курс waves
+                                if (!$is_deposit)
+                                    $output_doc_fields = $doc_fields['output_fields'];
 
-                                $user_verification = get_user_meta($userid, 'verification', true);
-                                $user_full_name = '';
-                                if (isset($user_verification) && !empty($user_verification))
-                                {
-                                    $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+                                $log->insert_log("input_doc_fields: ".print_r($input_doc_fields, true));
+                                $log->insert_log("output_doc_fields: ".print_r($output_doc_fields, true));
+                                $log->insert_log("is_deposit: ".$is_deposit);
+                                if ($is_deposit) {
+                                    $filename1 = 'Акт внесение целевого взноса'.$input_doc_fields['currency'];
+                                    $new_doc1 = get_new_document_field($userid, exchange_doc_template($input_doc_fields), $filename1);
                                 }
-                                $input_doc_fields =
-                                    array(
-                                        'doc_num' => ($doc_num+1),
-                                        'day' => $day,
-                                        'month' => $month,
-                                        'year' => $year,
-                                        'client_num' => $client_num,
-                                        'client_fio' => $user_full_name,
-                                        'currency' => $exchange_requests[$userid][$request_num]['input_currency'],
-                                        'amount' => $exchange_requests[$userid][$request_num]['input_sum'],
-                                        'currency_rate' => 0,
-                                        'sum' => 0,
-                                        'public_key' => $user_verification['prizm_public_key'],
-                                        'is_output' => false
-                                    );
-                                if ($input_doc_fields['currency'] == 'PRIZM')
-                                {
-                                    $input_doc_fields += array('currency_address' => $user_verification['prizm_address']);
-
-                                    $input_doc_fields['currency_rate'] = $prizm_price * (1-$bank_commission);
-
-                                    $input_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['output_sum'];
-                                }
-                                if ($input_doc_fields['currency'] == 'SLAV')
-                                {
-                                    $input_doc_fields['currency_rate'] = $waves_price * (1-$bank_commission);
-
-                                    $input_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['output_sum'];
-                                }
-                                if ($input_doc_fields['currency'] == 'RUB')
-                                {
-                                    $input_doc_fields['currency_rate'] = 1;//(1-$bank_commission);
-
-                                    $input_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['input_sum'];
-                                }
-                                $output_doc_fields =
-                                    array(
-                                        'doc_num' => ($doc_num+2),
-                                        'day' => $day,
-                                        'month' => $month,
-                                        'year' => $year,
-                                        'client_num' => $client_num,
-                                        'client_fio' => $user_full_name,
-                                        'currency' => $exchange_requests[$userid][$request_num]['output_currency'],
-                                        'amount' => $exchange_requests[$userid][$request_num]['output_sum'],
-                                        'currency_rate' => 0,
-                                        'sum' => 0,
-                                        'public_key' => $user_verification['prizm_public_key'],
-                                        'is_output' => true
-                                    );
-                                //Т.к. получаем криптовалюту и отдаем рубли, за сумму берем input_sum (сумма в рублях)
-                                if ($output_doc_fields['currency'] == 'PRIZM')
-                                {
-                                    $output_doc_fields += array('currency_address' => $user_verification['prizm_address']);
-
-                                    $output_doc_fields['currency_rate'] = $prizm_price * (1-$bank_commission);
-                                    $output_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['input_sum'];
-                                }
-                                if ($output_doc_fields['currency'] == 'SLAV')
-                                {
-                                    $output_doc_fields['currency_rate'] = $waves_price * (1-$bank_commission);
-                                    $output_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['input_sum'];
-                                }
-                                if ($output_doc_fields['currency'] == 'RUB')
-                                {
-                                    $output_doc_fields['currency_rate'] = (1-$bank_commission);
-                                    $output_doc_fields['sum'] = $exchange_requests[$userid][$request_num]['output_sum'];
+                                else {
+                                    $filename1 = 'Акт приема ' . $input_doc_fields['currency'];
+                                    $filename2 = 'Акт возврата паевого взноса ' . $output_doc_fields['currency'];
+                                    $new_doc1 = get_new_document_field($userid, exchange_doc_template($input_doc_fields), $filename1);
+                                    $new_doc2 = get_new_document_field($userid, exchange_doc_template($output_doc_fields), $filename2);
                                 }
 
-                                $filename1 = 'Акт приема '.$input_doc_fields['currency'];
-                                $filename2 = 'Акт возврата паевого взноса '.$output_doc_fields['currency'];
-                                $new_doc1 = get_new_document_field($userid, exchange_doc_template($input_doc_fields), $filename1);
-                                $new_doc2 = get_new_document_field($userid, exchange_doc_template($output_doc_fields), $filename2);
-
-                                if (!empty($new_doc1) && !empty($new_doc2)) {
+                                if (($is_deposit && !empty($new_doc1)) || (!$is_deposit && !empty($new_doc1) && !empty($new_doc2))) {
 
                                     if (!isset($field['value']))
                                         $field += array('value' => array());
                                     $field_value = get_user_meta($userid, 'user_documents', true);
 
                                     if (empty($field_value) || count($field_value) == 0) {
-                                        $field['value'] = array('0' => $new_doc1, '1' => $new_doc2);
+                                        if ($is_deposit)
+                                            $field['value'] = array('0' => $new_doc1);
+                                        else
+                                            $field['value'] = array('0' => $new_doc1, '1' => $new_doc2);
                                     } else //user documents not empty
                                     {
                                         $field['value'] = $field_value;
-                                        $field['value'] += array(count($field['value']) => $new_doc1, (count($field['value']) + 1) => $new_doc2);
+                                        if ($is_deposit)
+                                            $field['value'] += array(count($field['value']) => $new_doc1);
+                                        else
+                                            $field['value'] += array(count($field['value']) => $new_doc1, (count($field['value']) + 1) => $new_doc2);
                                     }
 
                                     rcl_update_profile_fields($_POST['request_user_id'], array($field));
