@@ -1,4 +1,25 @@
 <html>
+<?php
+    $doc_title = '';
+    $doc_text = '';
+    if (is_var($doc_type))
+        switch ($doc_type) {
+            case 'output':
+                $doc_title = 'возврата паевого взноса';
+                $doc_text = 'получил паевой взнос, а Совет МПК «Славия» передал из Паевого Фонда паевой взнос';
+                break;
+            case 'input':
+                $doc_title = 'приема паевого взноса';
+                $doc_text = 'внёс паевой взнос, а Совет принял в Паевой Фонд паевой взнос';
+                break;
+            case 'deposit':
+                $doc_title = 'внесение целевого взноса';
+                $doc_text = 'внёс целевой взнос на Целевую Программу: '.(is_var($deposit_type) ? $deposit_type : '').
+                    ', а Совет принял взнос в Целевой Фонд';
+                break;
+        };
+
+?>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <style>
@@ -41,12 +62,32 @@
         p {
             font-size: 14px;
         }
+        table.signatures td.signature_cell {
+            position: relative;
+        }
+        table.signatures .signature_cell img.podpis {
+            position: absolute;
+            top: 2%;
+            width: 20%;
+            /*opacity: 90%;*/
+            z-index: 3;
+        }
+        table.signatures .signature_cell img.pechat {
+            position: absolute;
+            top: 6%;
+        }
+        table.signatures .signature_cell p {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 </head>
 <body>
 <div class="header" style="width: 100%">
     <p style="text-align: center; font-weight: bold">АКТ № <?php if (is_var($doc_num)) echo $doc_num; ?><br>
-        <?php if (is_var($is_output) && $is_output): ?>возврата паевого взноса<?php elseif(!$is_output): ?>приема паевого взноса<?php endif;?>
+        <?php
+            echo $doc_title;
+        ?>
     </p>
     <br>
     <div class="header_text clearfix" style="width: 100%">
@@ -63,9 +104,7 @@
 </div>
 <div class="doc_body">
     <p>Совет МПК «СЛАВИЯ» (в дальнейшем Совет) в лице председателя Сергея Андреевича С. и пайщик №<?php if (is_var($client_num)) echo $client_num; ?>_______<?php if (is_var($client_fio)) echo $client_fio; ?>_(в дальнейшем Пайщик), составили
-        настоящий акт в том, что Пайщик <?php if (is_var($is_output) && $is_output): ?> получил паевой взнос, а Совет МПК
-        «Славия»  передал из Паевого Фонда паевой взнос <?php elseif (!$is_output): ?> внёс паевой взнос, а Совет принял в Паевой Фонд паевой взнос <?php endif; ?>в виде следующего
-        имущества:
+        настоящий акт о том, что Пайщик <?php echo $doc_text; ?> в виде следующего имущества:
     </p>
     <table class="doc_table" style="width: 100%">
         <thead>
@@ -115,7 +154,11 @@
     <table class="signatures" style="margin-left: auto; margin-right: auto;">
         <tbody>
         <tr>
-            <td><p>Председатель Совета МПК «СЛАВИЯ» _________________<br> Сергей Андреевич С. М.П. <br> 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt</p></td>
+            <td class="signature_cell">
+                <p>Председатель Совета МПК «СЛАВИЯ» _________________<br> Сергей Андреевич С. М.П. <br> PRIZM-AWTX-HDBX-ADDH-7SMM7 <br> 8490fffdd6d9ac3433ca007cf71f137f9951 <br> e23e731453d36ab10fd4c9c4ce5b <br> 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt</p>
+                <img class="podpis" src="/var/www/html/wp-content/uploads/2020/05/podpis_1.png">
+                <img class="pechat" src="/var/www/html/wp-content/uploads/2020/05/pechat_1.png">
+            </td>
             <td style="padding-left: 30px"><p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br> <?php if (isset($currency_address) && $currency == 'PRIZM') echo $currency_address.'<br>'; ?><?php if (is_var($public_key)) echo $public_key; ?> <br>____________________________________________________________________________________________ <br>__________</p></td>
         </tr>
         </tbody></table>

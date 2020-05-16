@@ -6,8 +6,9 @@ require_once 'classes/class-slavia-ref-awards.php';
 use Dompdf\Dompdf;
 //use Ref_Awards;
 
-if (is_admin())
+if (is_admin()) {
     require_once 'admin/index.php';
+}
 
 if (!is_admin()):
     add_action('rcl_enqueue_scripts','rcl_profile_scripts',10);
@@ -63,7 +64,8 @@ function download_stats()
 
     $dompdf->loadHtml(exchange_doc_template(array('doc_num' => 1, 'day' => 9, 'month' => 'мая', 'year' => 2020, 'client_num' => 5,
         'client_fio' => 'Петров Иван Иваныч', 'currency' => 'PRIZM', 'amount' => 1000, 'currency_rate' => 16.7, 'sum' => 1000*16.7,
-        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'is_output' => false)));
+        'public_key' => 'fgokdhodg363563higfjhiw43', 'currency_address' => 'PRIZMgisjfgsfjiw5i5w7', 'doc_type' => 'output'
+        /*'deposit_type' => 'Имущество на паях'*/)));
 
 // (Optional) Setup the paper size and orientation
     $dompdf->setPaper('A4', 'portrait');

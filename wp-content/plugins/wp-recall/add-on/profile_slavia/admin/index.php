@@ -7,6 +7,17 @@ function rcl_profile_admin_menu() {
 	add_submenu_page( 'manage-wprecall', __( 'Profile fields', 'wp-recall' ), __( 'Profile fields', 'wp-recall' ), 'manage_options', 'manage-userfield', 'rcl_profile_fields_manager' );
 }
 
+
+function enqueue_admin_scripts($hook) {
+    // Only add to the edit.php admin page.
+    if ('user-edit.php' !== $hook) {
+        return;
+    }
+    wp_enqueue_script('rcl_admin_script', plugin_dir_url(__DIR__) . 'js/admin.js');
+}
+add_action('admin_enqueue_scripts', 'enqueue_admin_scripts', 10);
+
+
 add_action( 'rcl_update_custom_fields', 'rcl_update_page_users', 10 );
 function rcl_update_page_users() {
 
