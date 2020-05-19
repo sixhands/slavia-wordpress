@@ -20,9 +20,12 @@
 
     <?php if(isset($ref_data) && !empty($ref_data)): ?>
         <?php foreach($ref_data as $user_id): ?>
+            <?php $user_data = get_userdata($user_id); ?>
+            <?php if (!isset($user_data) || empty($user_data))
+                continue;
+            ?>
             <div class="table-text w-100" data-user-id="<?=$user_id ?>">
                 <div class="row">
-                    <?php $user_data = get_userdata($user_id); ?>
                     <div class="col-1 text-left">
                         <?php $is_verified = get_user_meta($user_id, 'is_verified', true); ?>
 

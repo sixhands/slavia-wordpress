@@ -502,8 +502,8 @@ function get_doc_fields($data)
             'minute' => $minute,
             'client_num' => $client_num,
             'client_fio' => $user_full_name,
-            'currency' => $request['input_currency'],
-            'other_currency' => $request['output_currency'], //Противоположная валюта, для вывода стоимости данной валюты в других валютах (иной паевой взнос)
+            'currency' => stripslashes($request['input_currency']),
+            'other_currency' => stripslashes($request['output_currency']), //Противоположная валюта, для вывода стоимости данной валюты в других валютах (иной паевой взнос)
             'amount' => $request['input_sum'],
             'currency_rate' => 0,
             'sum' => 0,
@@ -512,7 +512,7 @@ function get_doc_fields($data)
         );
     //Если целевой взнос, добавляем тип целевой программы
     if ($is_deposit && isset($request['deposit_type']))
-        $input_doc_fields += array('deposit_type' => $request['deposit_type']);
+        $input_doc_fields += array('deposit_type' => stripslashes($request['deposit_type']));
     ////////////////////////////////////
 
     if ($input_doc_fields['currency'] == 'PRIZM')
@@ -569,8 +569,8 @@ function get_doc_fields($data)
                 'minute' => $minute,
                 'client_num' => $client_num,
                 'client_fio' => $user_full_name,
-                'currency' => $request['output_currency'],
-                'other_currency' => $request['input_currency'],
+                'currency' => stripslashes($request['output_currency']),
+                'other_currency' => stripslashes($request['input_currency']),
                 'amount' => $request['output_sum'],
                 'currency_rate' => 0,
                 'sum' => 0,
@@ -610,6 +610,8 @@ function get_doc_fields($data)
     else
         $result += array("is_deposit" => true);
 
+//    $log = new Rcl_Log();
+//    $log->insert_log("result: ".print_r($result, true));
     return $result;
 }
 
@@ -1663,15 +1665,15 @@ function save_exchange_request($input_currency, $input_sum, $output_currency = f
     $exchange_requests = rcl_get_option('exchange_requests');
     //var_dump($exchange_requests);
     $exchange_fields = array();
-    $exchange_fields += array('input_currency' => $input_currency);
-    $exchange_fields += array('output_currency' => $output_currency);
+    $exchange_fields += array('input_currency' => stripslashes($input_currency));
+    $exchange_fields += array('output_currency' => stripslashes($output_currency));
     $exchange_fields += array('input_sum' => $input_sum);
     $exchange_fields += array('output_sum' => $output_sum);
 
     $exchange_fields += array('bank' => $bank);
 
-    $exchange_fields += array('card_num' => $card_num);
-    $exchange_fields += array('card_name' => $card_name);
+    $exchange_fields += array('card_num' => stripslashes($card_num));
+    $exchange_fields += array('card_name' => stripslashes($card_name));
 
     date_default_timezone_set('Europe/Moscow');
 
@@ -1735,13 +1737,13 @@ function save_exchange_request_other(
 
     $exchange_fields = array();
     $exchange_fields += array('input_sum' => $input_sum);
-    $exchange_fields += array('input_currency' => $input_currency);
+    $exchange_fields += array('input_currency' => stripslashes($input_currency));
     $exchange_fields += array('output_sum' => $output_sum);
-    $exchange_fields += array('output_currency' => $output_currency);
+    $exchange_fields += array('output_currency' => stripslashes($output_currency));
 
     $exchange_fields += array('bank' => $bank);
     $exchange_fields += array('card_num' => $card_num);
-    $exchange_fields += array('card_name' => $card_name);
+    $exchange_fields += array('card_name' => stripslashes($card_name));
 
     $exchange_fields += array('requisites' => $requisites);
 
@@ -2294,13 +2296,15 @@ function rcl_edit_profile(){
                                 $is_deposit = $doc_fields['is_deposit'];
                                 $input_doc_fields = $doc_fields['input_fields'];
 
+                                //$log->insert_log("doc_fields: ".print_r($doc_fields, true));
+
                                 //$log->insert_log("request: ".print_r($request, true));
                                 if (!$is_deposit)
                                     $output_doc_fields = $doc_fields['output_fields'];
 
 //                                $log->insert_log("input_doc_fields: ".print_r($input_doc_fields, true));
 //                                $log->insert_log("output_doc_fields: ".print_r($output_doc_fields, true));
-                                $log->insert_log("is_deposit: ".$is_deposit);
+                                //$log->insert_log("is_deposit: ".$is_deposit);
                                 //Взнос на целевую программу
                                 if ($is_deposit && isset($request['deposit_type']) && !empty($request['deposit_type'])) {
                                     $filename1 = 'Акт внесение целевого взноса'.$input_doc_fields['currency'];
@@ -2351,7 +2355,7 @@ function rcl_edit_profile(){
                                         }
                                     }
 
-                                    $log->insert_log("field: ".print_r($field, true));
+                                    //$log->insert_log("field: ".print_r($field, true));
                                     rcl_update_profile_fields($_POST['request_user_id'], array($field));
                                 }
                                 break;

@@ -1,165 +1,74 @@
-paid==processing
-paid==processing
-paid==processing
-paid==processing
-paid==processing
-processing==processing
-paid==processing
-processing==processing
-processing==processing
-processing==processing
-paid==paid
-paid==paid
-paid==paid
-paid==paid
-paid==paid
-processing==paid
-paid==paid
-processing==paid
-processing==paid
-processing==paid
-paid==processing
-paid==processing
-paid==processing
-paid==processing
-paid==processing
-processing==processing
-paid==processing
-processing==processing
-processing==processing
-processing==processing
-paid==paid
-paid==paid
-paid==paid
-paid==paid
-paid==paid
-processing==paid
-paid==paid
-processing==paid
-processing==paid
-processing==paid
-banks: Array
+asset_rate: 569889231401
+asset_rate: 4600
+asset_rate: 4600
+asset_rate: 569889231401
+result: Array
 (
-    [bank1] => Array
+    [input_fields] => Array
         (
-            [name] => Восточный Банк
-            [value] => 5
+            [doc_num] => 11
+            [day] => 19
+            [month] => мая
+            [year] => 2020
+            [hour] => 17
+            [minute] => 58
+            [client_num] => 551
+            [client_fio] => dhgdhdgdfgdf gfdgdfgdfg fhgghdfg
+            [currency] => Космическая станция "Яркий" класса "Планетарный Потрошитель" К/С. "Яркий" 559-889-222/77
+            [other_currency] => "Бетон-м450"_[м³] 
+            [amount] => 1
+            [currency_rate] => 123888963.35
+            [sum] => 123888963.35
+            [public_key] => gdfgdfdfgdf
+            [doc_type] => input
         )
 
-    [bank2] => Array
+    [output_fields] => Array
         (
-            [name] => Сбербанк
-            [value] => 10
+            [doc_num] => 12
+            [day] => 19
+            [month] => мая
+            [year] => 2020
+            [hour] => 17
+            [minute] => 58
+            [client_num] => 551
+            [client_fio] => dhgdhdgdfgdf gfdgdfgdfg fhgghdfg
+            [currency] => "Бетон-м450"_[м³] 
+            [other_currency] => Космическая станция "Яркий" класса "Планетарный Потрошитель" К/С. "Яркий" 559-889-222/77
+            [amount] => 123888963.35
+            [currency_rate] => 0
+            [sum] => 1
+            [public_key] => gdfgdfdfgdf
+            [doc_type] => output
         )
 
-    [bank3] => Array
-        (
-            [name] => Тинькофф
-            [value] => 10
-        )
-
-    [bank4] => Array
-        (
-            [name] => Райффайзен
-            [value] => 15
-        )
-
-    [bank5] => Array
-        (
-            [name] => Газпром
-            [value] => 20
-        )
-
+    [is_deposit] => 
 )
 
-cur_bank: Тинькофф
-asset_rate: 150
-is_deposit: 1
 doc_1: Array
 (
-    [date] => 19.05.20 17:41:15
-    [filename] => -приема-Сталь-1-05-19-17-41.pdf
-    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
+    [date] => 19.05.20 17:58:17
+    [filename] => -приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-58.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-58.pdf
 )
 
-field: Array
+sum: Array
 (
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 06.05.20
-                    [filename] => -приема-RUB-1-05-06-14-22.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-RUB-1-05-06-14-22.pdf
-                )
-
-            [1] => Array
-                (
-                    [date] => 06.05.20
-                    [filename] => -возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
-                )
-
-            [2] => Array
-                (
-                    [date] => 19.05.20 17:41:15
-                    [filename] => -приема-Сталь-1-05-19-17-41.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
-                )
-
-        )
-
+    [SLAV] => 8.57
+    [PRIZM] => 10.57
 )
 
-is_deposit: 1
-doc_1: Array
+sum: Array
 (
-    [date] => 19.05.20 17:42:32
-    [filename] => -приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
-    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
 )
 
-field: Array
+sum: Array
 (
-    [type] => custom
-    [slug] => user_documents
-    [title] => Документы пользователя
-    [content] => 
-    [value] => Array
-        (
-            [0] => Array
-                (
-                    [date] => 06.05.20
-                    [filename] => -приема-RUB-1-05-06-14-22.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-RUB-1-05-06-14-22.pdf
-                )
+    [SLAV] => 15
+)
 
-            [1] => Array
-                (
-                    [date] => 06.05.20
-                    [filename] => -возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
-                )
-
-            [2] => Array
-                (
-                    [date] => 19.05.20 17:41:15
-                    [filename] => -приема-Сталь-1-05-19-17-41.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
-                )
-
-            [3] => Array
-                (
-                    [date] => 19.05.20 17:42:32
-                    [filename] => -приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
-                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
-                )
-
-        )
-
+sum: Array
+(
+    [PRIZM] => 0.9
 )
 
