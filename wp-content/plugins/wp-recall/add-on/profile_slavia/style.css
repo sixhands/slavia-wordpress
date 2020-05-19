@@ -1,6 +1,12 @@
 /*#tawkchat-chat-bubble-close + img {*/
 /*    display: none;*/
 /*}*/
+.modal-content .verification_bank {
+    margin-right: 30px;
+}
+.modal-content .verification_card_num {
+    margin-left: 30px;
+}
 .modal-content #stats_content .paid_sum,
 .modal-content #stats_content .unpaid_sum {
     margin-top: 25px;

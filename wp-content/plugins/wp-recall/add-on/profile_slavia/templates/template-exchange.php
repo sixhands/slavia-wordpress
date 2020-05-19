@@ -256,16 +256,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             </div>
             <div class="col-12">
                 <div class="row">
-                    <!--                    <div class="col-lg-6 input-exchange">-->
-                    <!--                        <div class="row">-->
-                    <!--                            <input required type="text" name="get_rubles[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="col-lg-6 input-exchange">-->
-                    <!--                        <div class="row">-->
-                    <!--                            <input required type="text" name="get_rubles[card_name]" placeholder="Имя получателя (как на карте)">-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                    <div class="col-6 input-exchange">
+                        <div class="row">
+                            <input required type="text" name="exchange[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">
+                        </div>
+                    </div>
+                    <div class="col-6 input-exchange">
+                        <div class="row">
+                            <input required type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="row">
                             <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
@@ -314,6 +314,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             </div>
             <div class="col-12">
                 <div class="row">
+                    <div class="col-6 input-exchange">
+                        <div class="row">
+                            <input required type="text" name="exchange[card_num]" class="input-pd-right" placeholder="Номер банковской карты для получения">
+                        </div>
+                    </div>
+                    <div class="col-6 input-exchange">
+                        <div class="row">
+                            <input required type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="row">
                             <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
@@ -375,6 +385,34 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                             <input placeholder="0" class="exp_custom" type="text" name="exchange[output_sum]">
                         </div>
                     </div>
+
+                    <div id="other_payments_bank" class="col-lg-7 input-exchange">
+                        <div class="row ">
+                            <span class="select-exchange">Выбрать банк</span>
+                            <div class="select-exchange w-100">
+                                <select id="bank_list_desktop" class="other_payments" name="exchange[bank]">
+                                    <option disabled selected="selected">Выбрать банк</option>
+                                    <?php if (isset($banks) && !empty($banks)): ?>
+                                        <?php foreach ($banks as $key => $value): ?>
+                                            <option value="<?=$key?>"><?=$value['name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="other_payments_card_num" class="col-5 input-exchange">
+                        <div class="row">
+                            <input type="text" name="exchange[card_num]" placeholder="Номер банковской карты для получения">
+                        </div>
+                    </div>
+                    <div id="other_payments_card_name" class="col-8 input-exchange">
+                        <div class="row">
+                            <input type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="col-12">
@@ -721,16 +759,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                     <div class="col-12">
                         <div class="row">
 
-                            <!--                            <div class="col-lg-6 input-exchange">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-lg-6 input-exchange">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
+                            <div class="col-lg-6 input-exchange">
+                                <div class="row">
+                                    <input required type="text" name="exchange[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 input-exchange">
+                                <div class="row">
+                                    <input required type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                                </div>
+                            </div>
 
                             <div class="col-12">
                                 <div class="row">
@@ -800,16 +838,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                     <div class="col-12">
                         <div class="row">
 
-                            <!--                            <div class="col-lg-6 input-exchange">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <input required type="text" name="get_prizm[card_num]" class="input-pd-right" placeholder="Номер банковской карты">-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="col-lg-6 input-exchange">-->
-                            <!--                                <div class="row">-->
-                            <!--                                    <input required type="text" name="get_prizm[card_name]" placeholder="Имя получателя (как на карте)">-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
+                            <div class="col-lg-6 input-exchange">
+                                <div class="row">
+                                    <input required type="text" name="exchange[card_num]" class="input-pd-right" placeholder="Номер банковской карты">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 input-exchange">
+                                <div class="row">
+                                    <input required type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                                </div>
+                            </div>
 
                             <div class="col-12">
                                 <div class="row">
@@ -888,6 +926,34 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="other_payments_bank" class="col-12 input-exchange">
+                                <div class="row ">
+                                    <span class="select-exchange">Выбрать банк</span>
+                                    <div class="select-exchange w-100">
+                                        <select id="bank_list_mobile" class="other_payments" name="exchange[bank]">
+                                            <option disabled selected="selected">Выбрать банк</option>
+                                            <?php if (isset($banks) && !empty($banks)): ?>
+                                                <?php foreach ($banks as $key => $value): ?>
+                                                    <option value="<?=$key?>"><?=$value['name']?></option>
+                                                <?php endforeach;?>
+                                            <?php endif; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="other_payments_card_num" class="col-12 input-exchange">
+                                <div class="row">
+                                    <input type="text" name="exchange[card_num]" placeholder="Номер банковской карты">
+                                </div>
+                            </div>
+                            <div id="other_payments_card_name" class="col-12 input-exchange">
+                                <div class="row">
+                                    <input type="text" name="exchange[card_name]" placeholder="Имя получателя (как на карте)">
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     <div class="col-12">
@@ -1345,8 +1411,20 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
     });
     jQuery('form.other_payments select.other_payments.output_currency').change(function(){
 
+        let possible_rub_names = ["RUB", "rub", "Rub", "рубль", "Рубль"]; //Возможные названия рубля, учитывая регистр
+
+        let fields_to_show = jQuery(this).parents('.input-exchange')
+            .siblings('#other_payments_card_name, #other_payments_card_num, #other_payments_bank');
+
+        if (possible_rub_names.includes(jQuery(this).val() ) )
+            fields_to_show.css('display', 'block');
+        else
+            fields_to_show.css('display', 'none');
+
         other_payments_print_result(jQuery(this).parents('form.other_payments').find('.other_payments_input'));
     });
+
+    //jQuery('#other_payments_bank select')
     //other_deposit
     jQuery('form.other_deposit select.other_deposit.input_currency').change(function(){
         let requisites = jQuery('form.other_deposit select.other_deposit.requisites');

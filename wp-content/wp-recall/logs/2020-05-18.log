@@ -1,0 +1,437 @@
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+asset_rate: 9600
+asset_rate: 9600
+is_deposit: 
+doc_1: Array
+(
+    [date] => 18.05.20 14:46:58
+    [filename] => -приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+)
+
+field: Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 18.05.20 14:46:58
+                    [filename] => -приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 18.05.20 14:46:58
+                    [filename] => -возврата-паевого-взноса-Bitcoin-53-05-18-14-46.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-Bitcoin-53-05-18-14-46.pdf
+                )
+
+        )
+
+)
+
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+is_deposit: 1
+doc_1: Array
+(
+    [date] => 18.05.20 20:52:43
+    [filename] => -приема-Бетон-м450_м³-53-05-18-20-52.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Бетон-м450_м³-53-05-18-20-52.pdf
+)
+
+field: Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 18.05.20 14:46:58
+                    [filename] => -приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-нефть-Urals-1барель-53-05-18-14-46.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 18.05.20 14:46:58
+                    [filename] => -возврата-паевого-взноса-Bitcoin-53-05-18-14-46.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-Bitcoin-53-05-18-14-46.pdf
+                )
+
+            [2] => Array
+                (
+                    [date] => 18.05.20 20:52:43
+                    [filename] => -приема-Бетон-м450_м³-53-05-18-20-52.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Бетон-м450_м³-53-05-18-20-52.pdf
+                )
+
+        )
+
+)
+
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid

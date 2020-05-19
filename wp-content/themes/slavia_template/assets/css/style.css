@@ -929,17 +929,28 @@ a:hover
 .exchange_deposit_text {
 	margin-top: 30px;
 }
-#other_payments .input-exchange {
+form.other_payments .input-exchange {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	margin-top: 0;
 }
-#other_payments .select-exchange {
+form.other_payments .select-exchange {
 	padding-left: 0;
 }
 .click_ex .ex-header h1 {
 	width: 80%;
+}
+
+
+#other_payments_bank, #other_payments_card_num {
+	margin-top: 10px !important;
+}
+#other_payments_card_name {
+	margin-top: 20px !important;
+}
+#other_payments_bank, #other_payments_card_name, #other_payments_card_num {
+	display: none;
 }
 /******REFERRAL PAGE****************/
 .referral-tabs {

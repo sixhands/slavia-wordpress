@@ -128,8 +128,8 @@
 
                     } ?></p></td>
             <td><p><?php if (is_var($amount)) echo $amount; ?></p></td>
-            <td><p><?php if (is_var($currency_rate)) echo $currency_rate; ?> руб.</p></td>
-            <td><p><?php if (is_var($sum)) echo $sum; ?> руб.</p></td>
+            <td><p><?php if (is_var($currency_rate)) echo $currency_rate; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?></p></td>
+            <td><p><?php if (is_var($sum)) echo $sum; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?></p></td>
         </tr>
         <tr>
             <td><p>&nbsp;</p></td>
@@ -148,7 +148,7 @@
         </tbody>
     </table>
     <br>
-    <p style="width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> руб. </p>
+    <p style="width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?> </p>
     <br>
     <table class="signatures" style="margin-left: auto; margin-right: auto;">
         <tbody>

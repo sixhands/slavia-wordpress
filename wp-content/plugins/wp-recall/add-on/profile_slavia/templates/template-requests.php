@@ -149,6 +149,31 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-6 input-exchange">
+                        <div class="row">
+                            <span>Выбранный банк</span>
+                            <input class="verification_bank" placeholder="Выбранный банк" type="text" name="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 input-exchange">
+                        <div class="row">
+                            <span>Номер карты</span>
+                            <input class="verification_card_num" placeholder="Номер карты" type="text" name="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-9 input-exchange">
+                        <div class="row">
+                            <span>ФИО держателя карты</span>
+                            <input class="verification_card_name" placeholder="ФИО держателя карты" type="text" name="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="col-12">
                 <div class="row">
@@ -247,7 +272,8 @@
             header.text('Детали запроса');
             let fields_to_fill = jQuery(
                 '.verification_prizm_address, .verification_prizm_public_key, .verification_waves_address' +
-                ', .verification_input_sum, .verification_output_sum, .verification_exchange_date');
+                ', .verification_input_sum, .verification_output_sum, .verification_exchange_date' +
+                ', .verification_bank, .verification_card_num, .verification_card_name');
             let fields_to_hide = jQuery('.modal-content input').not(fields_to_fill);
 
             fields_to_fill.parents('.input-exchange').css('display', 'block');
@@ -315,6 +341,7 @@
             //console.log(myajax.url);
             // 'ajaxurl' не определена во фронте, поэтому мы добавили её аналог с помощью wp_localize_script()
             jQuery.post( window.location, data, function(response) {
+                //console.log(response);
                 if (response && response !== 'false') {
                     let data = JSON.parse(response);
                     let modal_type = is_exchange === 'true' ? 'exchange' : 'verification';

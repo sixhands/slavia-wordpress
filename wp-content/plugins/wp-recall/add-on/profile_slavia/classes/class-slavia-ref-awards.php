@@ -99,7 +99,7 @@
                                     $operation[$key] = round($operation[$key], 2);
                                     $tmp = round($tmp, 2);
                                 }
-                                $log->insert_log($operation[$key].'=='.$tmp);
+                                //$log->insert_log($operation[$key].'=='.$tmp);
                                 if ($operation[$key] == $tmp)
                                     $is_match = true;
                                 else {

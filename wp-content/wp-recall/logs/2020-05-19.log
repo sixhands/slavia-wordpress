@@ -1,0 +1,75 @@
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+paid==processing
+processing==processing
+paid==processing
+processing==processing
+processing==processing
+processing==processing
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+paid==paid
+processing==paid
+paid==paid
+processing==paid
+processing==paid
+processing==paid
+banks: Array
+(
+    [bank1] => Array
+        (
+            [name] => Восточный Банк
+            [value] => 5
+        )
+
+    [bank2] => Array
+        (
+            [name] => Сбербанк
+            [value] => 10
+        )
+
+    [bank3] => Array
+        (
+            [name] => Тинькофф
+            [value] => 10
+        )
+
+    [bank4] => Array
+        (
+            [name] => Райффайзен
+            [value] => 15
+        )
+
+    [bank5] => Array
+        (
+            [name] => Газпром
+            [value] => 20
+        )
+
+)
+
+cur_bank: Тинькофф
