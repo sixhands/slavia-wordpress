@@ -88,7 +88,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                     <input type="hidden" value="RUB" name="exchange[input_currency]">
                     <input type="hidden" value="PRIZM" name="exchange[output_currency]">
 
-                    <div class="col-lg-3 input-exchange  input-custom-rub">
+                    <div class="col-lg-6 input-exchange  input-custom-rub">
                         <div class="row ">
                             <span class="">Количество</span> <!--select-exchange-->
                             <div class="w-100"> <!--select-exchange -->
@@ -97,23 +97,23 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                         </div>
                     </div>
 
-                    <div class="col-lg-6 input-exchange ">
-                        <div class="row ">
-                            <span class="select-exchange">Выбрать банк</span>
-                            <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="rubles_to_prizm" name="exchange[bank]">
-                                    <!--                                    <option>Название выбранного банка</option>-->
-                                    <?php if (isset($banks) && !empty($banks)): ?>
-                                        <?php foreach ($banks as $key => $value): ?>
-                                            <option value="<?=$key?>"><?=$value['name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6 input-exchange ">-->
+<!--                        <div class="row ">-->
+<!--                            <span class="select-exchange">Выбрать банк</span>-->
+<!--                            <div class="select-exchange w-100">-->
+<!--                                <select required id="bank_list_desktop" class="rubles_to_prizm" name="exchange[bank]">-->
+<!--                                                        <option>Название выбранного банка</option>-->
+<!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
+<!--                                        --><?php //foreach ($banks as $key => $value): ?>
+<!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-3 input-exchange orange-input input-custom-prizm">
+                    <div class="col-lg-6 input-exchange orange-input input-custom-prizm">
                         <div class="row">
                             <span>Вы получите</span>
                             <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -160,7 +160,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 <!--                            </select>-->
 <!--                        </div>-->
 <!--                    </div>-->
-                    <div class="col-lg-3 input-exchange  input-custom-rub">
+                    <div class="col-lg-6 input-exchange  input-custom-rub">
                         <div class="row ">
                             <span class="">Количество</span>
                             <div class="w-100">
@@ -169,23 +169,23 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                         </div>
                     </div>
 
-                    <div class="col-lg-6 input-exchange ">
-                        <div class="row ">
-                            <span class="select-exchange">Выбрать банк</span>
-                            <div class="select-exchange w-100">
-                                <select required id="bank_list_desktop" class="rubles_to_waves" name="exchange[bank]">
-                                    <!--                                    <option>Название выбранного банка</option>-->
-                                    <?php if (isset($banks) && !empty($banks)): ?>
-                                        <?php foreach ($banks as $key => $value): ?>
-                                            <option value="<?=$key?>"><?=$value['name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="col-lg-6 input-exchange ">-->
+<!--                        <div class="row ">-->
+<!--                            <span class="select-exchange">Выбрать банк</span>-->
+<!--                            <div class="select-exchange w-100">-->
+<!--                                <select required id="bank_list_desktop" class="rubles_to_waves" name="exchange[bank]">-->
+<!--                                                                        <option>Название выбранного банка</option>-->
+<!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
+<!--                                        --><?php //foreach ($banks as $key => $value): ?>
+<!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="col-lg-3 input-exchange orange-input input-custom-waws">
+                    <div class="col-lg-6 input-exchange orange-input input-custom-waws">
                         <div class="row">
                             <span>Вы получите</span>
                             <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -560,7 +560,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 <!--                                    </select>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <div class="col-lg-3 input-exchange  input-custom-rub">
+                            <div class="col-lg-6 input-exchange  input-custom-rub">
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
 
@@ -573,23 +573,23 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 input-exchange ">
-                                <div class="row ">
-                                    <span class="select-exchange">Выбрать банк</span>
-                                    <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">
-                                            <!--                                            <option>Название выбранного банка</option>-->
-                                            <?php if (isset($banks) && !empty($banks)): ?>
-                                                <?php foreach ($banks as $key => $value): ?>
-                                                    <option value="<?=$key?>"><?=$value['name']?></option>
-                                                <?php endforeach;?>
-                                            <?php endif; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-6 input-exchange ">-->
+<!--                                <div class="row ">-->
+<!--                                    <span class="select-exchange">Выбрать банк</span>-->
+<!--                                    <div class="select-exchange w-100">-->
+<!--                                        <select required id="bank_list_mobile" class="rubles_to_prizm" name="exchange[bank]">-->
+<!--                                                                                        <option>Название выбранного банка</option>-->
+<!--                                            --><?php //if (isset($banks) && !empty($banks)): ?>
+<!--                                                --><?php //foreach ($banks as $key => $value): ?>
+<!--                                                    <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+<!--                                                --><?php //endforeach;?>
+<!--                                            --><?php //endif; ?>
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
-                            <div class="col-lg-3 input-exchange orange-input input-custom-prizm">
+                            <div class="col-lg-6 input-exchange orange-input input-custom-prizm">
                                 <div class="row">
                                     <span>Вы получите</span>
                                     <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -639,7 +639,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 <!--                                    </select>-->
 <!--                                </div>-->
 <!--                            </div>-->
-                            <div class="col-lg-3 input-exchange  input-custom-rub">
+                            <div class="col-lg-6 input-exchange  input-custom-rub">
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
 
@@ -652,23 +652,23 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 input-exchange ">
-                                <div class="row ">
-                                    <span class="select-exchange">Выбрать банк</span>
-                                    <div class="select-exchange w-100">
-                                        <select required id="bank_list_mobile" class="rubles_to_waves" name="exchange[bank]">
-                                            <!--                                            <option>Название выбранного банка</option>-->
-                                            <?php if (isset($banks) && !empty($banks)): ?>
-                                                <?php foreach ($banks as $key => $value): ?>
-                                                    <option value="<?=$key?>"><?=$value['name']?></option>
-                                                <?php endforeach;?>
-                                            <?php endif; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="col-lg-6 input-exchange ">-->
+<!--                                <div class="row ">-->
+<!--                                    <span class="select-exchange">Выбрать банк</span>-->
+<!--                                    <div class="select-exchange w-100">-->
+<!--                                        <select required id="bank_list_mobile" class="rubles_to_waves" name="exchange[bank]">-->
+<!--                                                                  -->
+<!--                                            --><?php //if (isset($banks) && !empty($banks)): ?>
+<!--                                                --><?php //foreach ($banks as $key => $value): ?>
+<!--                                                    <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+<!--                                                --><?php //endforeach;?>
+<!--                                            --><?php //endif; ?>
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
-                            <div class="col-lg-3 input-exchange orange-input input-custom-waws">
+                            <div class="col-lg-6 input-exchange orange-input input-custom-waws">
                                 <div class="row">
                                     <span>Вы получите</span>
                                     <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -1055,14 +1055,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             result = (input_value / rate);
         else
             result = (input_value * rate);
-        //if (is_commision)
-        result *= (1 - (bank_rate / 100) );
+
+        if (bank_rate !== false)
+            result *= (1 - (bank_rate / 100) );
+        //Округляем до 2 знаков после запятой
         result = Math.round(result * 100) / 100;
         return result;
     }
 
     //Калькулятор
-    function keyup_calc(/*event, */el, crypto_price, active_bank_val)//, is_backspace = false)
+    function keyup_calc(/*event, */el, crypto_price, active_bank_val = false)//, is_backspace = false)
     {
         // var code = (event.keyCode ? event.keyCode : event.which);
         // var is_symbol = (!is_backspace && (
@@ -1100,10 +1102,10 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 if (el.attr("id") === "exp")
                 {
                     is_reverse = true;
-                    output_el = el.parents(".input-exchange").siblings().find(".prizm_to_rubles");
+                    output_el = el.parents(".input-exchange").siblings().find("input.prizm_to_rubles");
                 }
                 else
-                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("input#exp");
             }
 
             if (el.hasClass("waves_to_rubles") || el.parents(".input-exchange").siblings().find(".waves_to_rubles").length > 0) {
@@ -1112,10 +1114,10 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 if (el.attr("id") === "exp")
                 {
                     is_reverse = true;
-                    output_el = el.parents(".input-exchange").siblings().find(".waves_to_rubles");
+                    output_el = el.parents(".input-exchange").siblings().find("input.waves_to_rubles");
                 }
                 else
-                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("input#exp");
             }
 
             //Если рубли в призму, то считаем наоборот и без комиссии
@@ -1124,12 +1126,12 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 if (el.attr("id") === "exp")
                 {
                     is_reverse = false;
-                    output_el = el.parents(".input-exchange").siblings().find(".rubles_to_prizm");
+                    output_el = el.parents(".input-exchange").siblings().find("input.rubles_to_prizm");
                 }
                 //Рубли в призму, ввод рублей
                 else {
                     is_reverse = true;
-                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                    output_el = el.parents(".input-exchange").siblings(".orange-input").find("input#exp");
                 }
             }
 
@@ -1140,16 +1142,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                     if (el.attr("id") === "exp")
                     {
                         is_reverse = false;
-                        output_el = el.parents(".input-exchange").siblings().find(".rubles_to_waves");
+                        output_el = el.parents(".input-exchange").siblings().find("input.rubles_to_waves");
                     }
                     //Рубли в waves, ввод рублей
                     else {
                         is_reverse = true;
-                        output_el = el.parents(".input-exchange").siblings(".orange-input").find("#exp");
+                        output_el = el.parents(".input-exchange").siblings(".orange-input").find("input#exp");
                     }
                 }
             }
-
+            //console.log(output_el);
             output_el.val(calc_exchange(input_amount, crypto_price, active_bank_val, is_reverse, is_commission));
         }
     }
@@ -1201,6 +1203,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                 return false;
             }
         });
+        //console.log(active_bank_val);
         return active_bank_val ? active_bank_val : false;
     }
 
@@ -1221,10 +1224,22 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 
     //При вводе значения
     jQuery('.prizm_to_rubles, .waves_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keyup(function(event) {
+        if (event.keyCode === 37 || event.keyCode === 39) {
+            event.preventDefault();
+            return false;
+        }
+
         let currency = get_currency(jQuery(this), prizm_price, waves_price);
         window.active_input_class = jQuery(this).attr('class');
-        let active_bank_val = get_active_bank_val(jQuery(this), vals);
-        keyup_calc(/*event, */jQuery(this), currency, active_bank_val);
+
+        //Если получение prizm|slav, то банк не нужен
+        if (jQuery(this).parents('#get_prizm').length > 0 || jQuery(this).parents('#get_waves').length > 0) {
+            keyup_calc(/*event, */jQuery(this), currency);
+        }
+        else {
+            let active_bank_val = get_active_bank_val(jQuery(this), vals);
+            keyup_calc(/*event, */jQuery(this), currency, active_bank_val);
+        }
     });
     // //При нажатии backspace
     // jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp').keydown(function(event) {
@@ -1242,9 +1257,9 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             active_class = window.active_input_class;
         var active_currency;
        if (typeof active_class !== 'undefined' &&
-           (active_class === 'prizm_to_rubles' ||
+           (active_class === 'prizm_to_rubles' ||/*
            active_class === 'rubles_to_prizm' ||
-           active_class === 'rubles_to_waves' ||
+           active_class === 'rubles_to_waves' ||*/
            active_class === 'waves_to_rubles'))
        {
            active_el = jQuery(this).parents(".input-exchange").prev().find("." + active_class);
@@ -1312,7 +1327,6 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                    input_amount = input_el.val();
                    input_amount = parseFloat(input_amount);
                }
-               console.log(input_el);
 
                output_el.val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
            }

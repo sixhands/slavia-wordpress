@@ -627,7 +627,8 @@ function tab_config()
         var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
             || ((code == 190 || code == 110) //numbers || period
             && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
-            || code == 8 || code == 13 || code == 9 || code == 144); //144 - numlock
+            || code == 8 || code == 13 || code == 9 || code == 144 //144 - numlock
+            || code == 37 || code == 39); //37-left arrow, 39 - right arrow
         //user_phone, verification inputs
         if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
         jQuery(this).attr('name') === 'verification[passport_number]' ||

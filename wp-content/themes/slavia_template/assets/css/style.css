@@ -952,7 +952,12 @@ form.other_payments .select-exchange {
 #other_payments_bank, #other_payments_card_name, #other_payments_card_num {
 	display: none;
 }
-/******REFERRAL PAGE****************/
+
+form#get_prizm input[name="exchange[input_sum]"], form#get_prizm input[name="exchange[output_sum]"],
+form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exchange[output_sum]"] {
+	width: 95%;
+}
+	/******REFERRAL PAGE****************/
 .referral-tabs {
 	margin-top: 10px;
 }

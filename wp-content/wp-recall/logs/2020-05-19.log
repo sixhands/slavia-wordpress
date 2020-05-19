@@ -73,3 +73,93 @@ banks: Array
 )
 
 cur_bank: Тинькофф
+asset_rate: 150
+is_deposit: 1
+doc_1: Array
+(
+    [date] => 19.05.20 17:41:15
+    [filename] => -приема-Сталь-1-05-19-17-41.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
+)
+
+field: Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 06.05.20
+                    [filename] => -приема-RUB-1-05-06-14-22.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-RUB-1-05-06-14-22.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 06.05.20
+                    [filename] => -возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
+                )
+
+            [2] => Array
+                (
+                    [date] => 19.05.20 17:41:15
+                    [filename] => -приема-Сталь-1-05-19-17-41.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
+                )
+
+        )
+
+)
+
+is_deposit: 1
+doc_1: Array
+(
+    [date] => 19.05.20 17:42:32
+    [filename] => -приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
+)
+
+field: Array
+(
+    [type] => custom
+    [slug] => user_documents
+    [title] => Документы пользователя
+    [content] => 
+    [value] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 06.05.20
+                    [filename] => -приема-RUB-1-05-06-14-22.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-RUB-1-05-06-14-22.pdf
+                )
+
+            [1] => Array
+                (
+                    [date] => 06.05.20
+                    [filename] => -возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-возврата-паевого-взноса-SLAV-1-05-06-14-22.pdf
+                )
+
+            [2] => Array
+                (
+                    [date] => 19.05.20 17:41:15
+                    [filename] => -приема-Сталь-1-05-19-17-41.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Сталь-1-05-19-17-41.pdf
+                )
+
+            [3] => Array
+                (
+                    [date] => 19.05.20 17:42:32
+                    [filename] => -приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
+                    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Космическая-станция-Яркий-класса-Планетарный-Потрошитель-КС.-Яркий-559-889-22277-1-05-19-17-42.pdf
+                )
+
+        )
+
+)
+
