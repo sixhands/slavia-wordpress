@@ -1054,7 +1054,7 @@ function rcl_tab_operations_content($master_id)
                                         '</div>
                                         
                                         <div class="col-2 text-center">'.
-                                            $value['input_currency'].
+                                            $value['input_sum'].' '.$value['input_currency'].
                                         '</div>
                                         
                                         <div class="col-2 text-center">'.
@@ -2816,6 +2816,35 @@ function rcl_edit_profile(){
 //            else
 //                echo 'false';
 //        }
+        elseif (isset($_POST['people_sort']) && !empty($_POST['people_sort']) &&
+                isset($_POST['sort_field']) && !empty($_POST['sort_field']))
+        {
+            $is_sort = $_POST['people_sort'];
+
+            if ($is_sort == 'true') {
+                //Кэширование ответа для уменьшения нагрузки на сервер и на бд
+                if (get_transient('people_sorted_data'))
+                    $response = get_transient('people_sorted_data');
+                else {
+                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
+                        $_POST['sort_field'] . "' order='DESC' exclude='30']");
+
+                    set_transient('people_sorted_data', $response, 10 * MINUTE_IN_SECONDS);
+                }
+            }
+            elseif ($is_sort == 'false') {
+                if (get_transient('people_unsorted_data'))
+                    $response = get_transient('people_unsorted_data');
+                else {
+                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
+                        'user_registered' . "' order='DESC' exclude='30']");
+
+                    set_transient('people_unsorted_data', $response, 10 * MINUTE_IN_SECONDS);
+                }
+            }
+            echo $response;
+            exit;
+        }
 
         elseif (isset($_POST['search']) && !empty($_POST['search']))
         {
@@ -3292,7 +3321,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                         '</div>
                                         
                                         <div class="col-2 text-center">' .
-                        $value['input_currency'] .
+                        $value['input_sum'].' '.$value['input_currency'] .
                         '</div>
                                         
                                         <div class="col-2 text-center">' .

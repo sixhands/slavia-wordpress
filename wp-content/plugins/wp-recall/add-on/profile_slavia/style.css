@@ -1,6 +1,21 @@
 /*#tawkchat-chat-bubble-close + img {*/
 /*    display: none;*/
 /*}*/
+.people_list div.client_num_sort {
+    padding-left: 0;
+    padding-right: 0;
+}
+.people_list img.client_num_sort_icon {
+    height: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+.people_list img.client_num_sort_icon.complete {
+    mix-blend-mode: difference;
+}
+/*.people_list > .table-title + .rcl-pager {*/
+/*    display: none;*/
+/*}*/
 .modal-content .verification_bank {
     margin-right: 30px;
 }

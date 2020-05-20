@@ -73,6 +73,10 @@ class Rcl_Users_List extends Rcl_Users_Query {
 		else if ( $this->data( 'posts_count' ) )
 			add_filter( 'rcl_users', array( $this, 'add_posts_count' ) );
 
+		//Добавляем сортировку по номеру пайщика
+        if ( $this->orderby == 'client_num' )
+            add_filter( 'rcl_users_query', array( $this, 'add_query_client_num' ) );
+
 		//считаем комментарии
 		if ( $this->orderby == 'comments_count' )
 			add_filter( 'rcl_users_query', array( $this, 'add_query_comments_count' ) );
@@ -150,6 +154,31 @@ class Rcl_Users_List extends Rcl_Users_Query {
 
 		return $rqst;
 	}
+
+    function add_query_client_num( $query ) {
+        global $wpdb;
+        $query['select'][] = "meta.client_num";
+        if ( $this->orderby )
+            $query['orderby'] = "-cast(meta.client_num as unsigned)";
+
+        $query['join'][] = "LEFT JOIN (SELECT meta_value AS client_num, user_id "
+            . "FROM $wpdb->usermeta WHERE meta_key='client_num' GROUP BY user_id) meta "
+            . "ON wp_users.ID = meta.user_id";
+
+//        $query['join'][] = "INNER JOIN $wpdb->usermeta WHERE meta_key='client_num') AS meta "
+//            . "ON wp_users.ID = meta.user_id";
+
+//        $log = new Rcl_Log();
+//        $log->insert_log("query: ".print_r($query, true));
+
+        return $query;
+
+        //$query['select'][]	 = "actions.time_action";
+
+        //$query['join'][] = "RIGHT JOIN " . RCL_PREF . "user_action AS actions ON wp_users.ID = actions.user";
+
+        //return $query;
+    }
 
 	function add_query_only_actions_users( $query ) {
 

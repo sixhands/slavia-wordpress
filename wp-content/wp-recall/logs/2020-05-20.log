@@ -1,0 +1,978 @@
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => wp_usermeta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => wp_usermeta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => wp_usermeta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_key AS client_num FROM  AS meta WHERE meta_key='client_num') ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_key AS client_num FROM  AS meta WHERE meta_key='client_num') ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_key AS client_num FROM wp_usermeta AS meta WHERE meta_key='client_num') ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_key, user_id AS client_num FROM wp_usermeta WHERE meta_key='client_num') AS meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_key, user_id AS client_num FROM wp_usermeta WHERE meta_key='client_num') meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => usermeta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => usermeta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => wp_usermeta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => wp_usermeta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => INNER JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => ASC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => ASC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => ASC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num') meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => meta.client_num
+    [order] => DESC
+)
+
+query: Array
+(
+    [table] => Array
+        (
+            [name] => wp_users
+            [as] => wp_users
+            [cols] => Array
+                (
+                    [0] => ID
+                    [1] => user_login
+                    [2] => user_email
+                    [3] => user_registered
+                    [4] => display_name
+                    [5] => user_nicename
+                )
+
+        )
+
+    [select] => Array
+        (
+            [0] => wp_users.ID
+            [1] => wp_users.display_name
+            [2] => wp_users.user_nicename
+            [3] => wp_users.user_registered
+            [4] => meta.client_num
+        )
+
+    [where] => Array
+        (
+            [0] => wp_users.ID NOT IN (30)
+        )
+
+    [join] => Array
+        (
+            [0] => LEFT JOIN (SELECT meta_value AS client_num, user_id FROM wp_usermeta WHERE meta_key='client_num' GROUP BY user_id) meta ON wp_users.ID = meta.user_id
+        )
+
+    [offset] => 0
+    [number] => 10
+    [orderby] => cast(meta.client_num as unsigned)
+    [order] => DESC
+)
+

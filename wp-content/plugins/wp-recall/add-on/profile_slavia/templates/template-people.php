@@ -2,7 +2,7 @@
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1 ib">Список пользователей</h1>
-            <div class="row">
+            <div class="row people_list">
                 <div class="table-title w-100">
                     <div class="row">
                         <div class="col-lg-1">
@@ -11,8 +11,8 @@
                         <div class="col-3 text-left">
                             Имя клиента
                         </div>
-                        <div class="col-2 text-left">
-                            № Пайщика
+                        <div class="col-2 text-left client_num_sort">
+                            <span>№ Пайщика</span><img class="client_num_sort_icon" src="/wp-content/uploads/2020/05/sort_icon.png">
                         </div>
                         <div class="col-3 text-left">
                             Дата регистрации
@@ -26,7 +26,11 @@
 
                     </div>
                 </div>
+
                 <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
+<!--                <div style="display: none">-->
+                <?php //echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='client_num' order='DESC' exclude='30']"); //user_registered ?>
+<!--                </div>-->
 
 <!--                <div class="w-100 text-center">-->
 <!--                    <ul class="people-ul">-->
@@ -288,6 +292,35 @@
 </div>
 
 <script type="text/javascript">
+    //Сортировка по номеру пайщика
+    jQuery('.table-title img.client_num_sort_icon').click(function(){
+        let el = jQuery(this);
+        let is_complete = el.hasClass('complete');
+        if (!is_complete) {
+            var data = {
+                people_sort: true,
+                sort_field: 'client_num'
+            };
+        }
+        else {
+            var data = {
+                people_sort: false,
+                sort_field: 'client_num'
+            };
+        }
+        jQuery.post( window.location, data, function(response) {
+            if (response) {
+                //Очищаем поле для списка людей
+                jQuery('.people_list > .table-title ~ .table-text, .people_list > .table-title ~ .rcl-pager').remove();
+                jQuery('.people_list').append(response);
+
+                if (!is_complete)
+                    el.addClass('complete');
+                else
+                    el.removeClass('complete');
+            }
+        });
+    });
     //По клику получить exchange_requests и stats для этого пользователя
     jQuery('.user-single .show_user_operations').click(function(){
          let el = jQuery(this);

@@ -72,3 +72,22 @@ sum: Array
     [PRIZM] => 0.9
 )
 
+asset_rate: 4600
+asset_rate: 4040.41
+asset_rate: 4040.41
+asset_rate: 4600
+doc_1: Array
+(
+    [date] => 19.05.20 18:19:32
+    [filename] => -приема-Бетон-м450_м³-53-05-19-18-19.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Бетон-м450_м³-53-05-19-18-19.pdf
+)
+
+asset_rate: 350
+doc_1: Array
+(
+    [date] => 19.05.20 18:22:55
+    [filename] => -приема-Блоки-Bonolit-d500-53-05-19-18-22.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Блоки-Bonolit-d500-53-05-19-18-22.pdf
+)
+
