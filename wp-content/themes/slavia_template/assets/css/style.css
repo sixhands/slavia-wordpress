@@ -553,7 +553,7 @@ a:hover
 {
 	margin-top: 40px;
 }
-.input-exchange input
+.input-exchange input:not([type=submit])
 {
 	width: 100%;
 	height: 42px;

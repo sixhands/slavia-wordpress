@@ -26,6 +26,27 @@
 .modal-content #stats_content .unpaid_sum {
     margin-top: 25px;
 }
+
+.modal-content #save_client_num_btn {
+    display: none;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding-top: 4px;
+}
+.modal-content .client_num_success_text, .modal-content .client_num_fail_text {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: center;
+    display: none;
+}
+.modal-content .client_num_success_text {
+    color: green;
+}
+.modal-content .client_num_fail_text {
+    color: red;
+}
 #subtab-settings input[type="submit"] {
     padding-bottom: 5px;
 }

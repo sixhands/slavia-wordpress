@@ -2586,6 +2586,22 @@ function rcl_edit_profile(){
                 } //if get_user_stats
             }
 
+            elseif (isset($_POST['save_client_num']) && $_POST['save_client_num'] == 'true')
+            {
+                if (isset($_POST['client_num']) && !empty($_POST['client_num']))
+                {
+                    $user_id = $_POST['request_user_id'];
+                    $client_num = explode('=', $_POST['client_num'])[1];
+
+                    $is_success = update_user_meta($user_id, 'client_num', $client_num);
+                    if ($is_success)
+                        echo $client_num;
+                    else
+                        echo 'false';
+                }
+                //$log->insert_log('client_num: '.print_r($_POST['client_num'], true));
+                exit;
+            }
             //Сбербанк
             elseif (isset($_POST['is_sberbank']) && $_POST['is_sberbank'] == 'true')
             {

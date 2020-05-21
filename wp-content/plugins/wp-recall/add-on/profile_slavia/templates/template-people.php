@@ -69,41 +69,46 @@
                 <div class="col-12 input-exchange">
                     <div class="row">
                         <span>Имя пользователя</span>
-                        <input class="username" placeholder="Имя пользователя" type="text" name="">
+                        <input disabled class="username" placeholder="Имя пользователя" type="text" name="">
                     </div>
                 </div>
                 <div class="col-lg-12 input-exchange ">
                     <div class="row ">
                         <span>Email</span>
-                        <input class="user_email" placeholder="Email" type="text" name="">
+                        <input disabled class="user_email" placeholder="Email" type="text" name="">
                     </div>
                 </div>
 
                 <div class="col-lg-12 input-exchange">
                     <div class="row">
                         <span>Телефон</span>
-                        <input class="user_phone" placeholder="Телефон" type="text" name="">
+                        <input disabled class="user_phone" placeholder="Телефон" type="text" name="">
                     </div>
+                </div>
+
+                <div class="col-lg-12 input-exchange">
+                    <form class="row" name="client_num" id="form_client_num" action="" method="post" enctype="multipart/form-data">
+                        <span>Номер пайщика</span>
+                        <input disabled class="client_num" placeholder="Номер пайщика" type="text" name="client_num">
+                        <input type="submit" class="btn-custom-one text-center" id="save_client_num_btn" value="Сохранить номер пайщика" name="submit" style=""/>
+                        <span class="client_num_success_text">Успешно сохранено!</span>
+                        <span class="client_num_fail_text">При сохранении произошла ошибка!</span>
+                    </form>
                 </div>
 
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-lg-4 input-exchange">
-                            <div class="row">
-                                <span>Номер пайщика</span>
-                                <input class="client_num" placeholder="Номер пайщика" type="text" name="">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 input-exchange ">
+
+                        <div class="col-lg-6 input-exchange ">
                             <div class="row ">
                                 <span>Верифицирован</span>
-                                <input class="is_verified" placeholder="Верифицирован" type="text" name="">
+                                <input disabled class="is_verified" placeholder="Верифицирован" type="text" name="">
                             </div>
                         </div>
-                        <div class="col-lg-4 input-exchange">
+                        <div class="col-lg-6 input-exchange">
                             <div class="row">
                                 <span>Реферальная ссылка</span>
-                                <input class="user_ref_link" placeholder="Реферальная ссылка" type="text" name="">
+                                <input disabled class="user_ref_link" placeholder="Реферальная ссылка" type="text" name="">
                             </div>
                         </div>
                     </div>
@@ -128,21 +133,21 @@
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Адрес PRIZM</span>
-                                <input class="verification_prizm_address" placeholder="Адрес PRIZM" type="text" name="">
+                                <input disabled class="verification_prizm_address" placeholder="Адрес PRIZM" type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Публичный ключ</span>
                                 <div class="select-exchange w-100">
-                                    <input class="verification_prizm_public_key" placeholder="Публичный ключ" type="text" name="">
+                                    <input disabled class="verification_prizm_public_key" placeholder="Публичный ключ" type="text" name="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Адрес Slav</span>
-                                <input class="verification_waves_address" placeholder="Адрес Slav" type="text" name="">
+                                <input disabled class="verification_waves_address" placeholder="Адрес Slav" type="text" name="">
                             </div>
                         </div>
                     </div>
@@ -153,21 +158,21 @@
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Имя</span>
-                                <input class="verification_name" placeholder="Имя" type="text" name="">
+                                <input disabled class="verification_name" placeholder="Имя" type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange ">
                             <div class="row ">
                                 <span>Фамилия</span>
                                 <div class="select-exchange w-100">
-                                    <input class="verification_surname" placeholder="Фамилия" type="text" name="">
+                                    <input disabled class="verification_surname" placeholder="Фамилия" type="text" name="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Отчество</span>
-                                <input class="verification_last_name" placeholder="Отчество" type="text" name="">
+                                <input disabled class="verification_last_name" placeholder="Отчество" type="text" name="">
                             </div>
                         </div>
                     </div>
@@ -177,41 +182,41 @@
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Серия и номер паспорта</span>
-                                <input class="verification_passport_number" placeholder="____-______"  type="text" name="">
+                                <input disabled class="verification_passport_number" placeholder="____-______"  type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange ">
                             <div class="row ">
                                 <span>Дата выдачи</span>
                                 <div class="select-exchange w-100">
-                                    <input class="verification_passport_date" placeholder="Дата выдачи" type="date" name="">
+                                    <input disabled class="verification_passport_date" placeholder="Дата выдачи" type="date" name="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Код подразделения</span>
-                                <input class="verification_passport_code" placeholder="Код подразделения" type="text" name="">
+                                <input disabled class="verification_passport_code" placeholder="Код подразделения" type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-12 input-exchange">
                             <div class="row">
                                 <span>Кем выдан</span>
-                                <input class="verification_passport_who" placeholder="Кем выдан" type="text" name="">
+                                <input disabled class="verification_passport_who" placeholder="Кем выдан" type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-8 input-exchange ">
                             <div class="row ">
                                 <span>Место жительства по прописке</span>
                                 <div class="select-exchange w-100" style="padding-left: 0 !important;">
-                                    <input class="verification_passport_address" placeholder="Место жительства по прописке" type="text" name="">
+                                    <input disabled class="verification_passport_address" placeholder="Место жительства по прописке" type="text" name="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 input-exchange">
                             <div class="row">
                                 <span>Индекс</span>
-                                <input class="verification_passport_index" placeholder="Индекс" type="text" name="">
+                                <input disabled class="verification_passport_index" placeholder="Индекс" type="text" name="">
                             </div>
                         </div>
                         <div class="col-lg-12 passport-photo">
@@ -321,6 +326,41 @@
             }
         });
     });
+
+    //Сохранение номера пайщика
+    //jQuery(document).ready(function() {
+        jQuery('#form_client_num').on("submit", function(event) {
+            var $this = jQuery(this);
+
+            var frmValues = $this.serialize();
+
+            let request_user_id = $this.attr('data-user-id');
+
+            data = {
+                save_client_num: true,
+                client_num: frmValues,
+                request_user_id: request_user_id
+            };
+
+            jQuery.post(window.location, data, function(response)
+            {
+                let message_selector = response === 'false' ? '.client_num_fail_text' : '.client_num_success_text';
+                jQuery(message_selector)
+                    .fadeToggle(1000, 'swing', function(){
+                        jQuery(this).fadeToggle(1000, 'swing');
+                    });
+
+                let client_num_input =  $this.find('input.client_num');
+
+                if (response !== 'false') {
+                    client_num_input.val(response);
+                    client_num_input.attr('disabled', 'disabled');
+                    jQuery('#save_client_num_btn').css('display', 'none');
+                }
+            });
+            event.preventDefault();
+        });
+    //});
     //По клику получить exchange_requests и stats для этого пользователя
     jQuery('.user-single .show_user_operations').click(function(){
          let el = jQuery(this);
@@ -332,9 +372,12 @@
             get_user_operations: 'true',
             get_user_stats: 'true'
         };
+        //Стираем предыдущий юзер id в форме номера пайщика
+        modal.find('.modal-content #form_client_num').attr('data-user-id', '');
         jQuery.post( window.location, data, function(response) {
             if (response) {
                 let user_data = JSON.parse(response);
+
                 if (response.exchange_content !== '') {
                     modal.find('.modal-content > #exchange_content .table-text').remove();
                     modal.find('.modal-content > #exchange_content').append(user_data.exchange_content);
@@ -381,15 +424,39 @@
                     let userdataContent = user_data.userdata_content;
                     let userdata_inputs = modal.find('#userdata_content input');
                     jQuery.each(userdataContent, function (item) {
-                        if (modal.find('#userdata_content input.' + item).length > 0) {
-                            if (item === 'is_verified') {
-                                if (userdataContent[item] === '')
-                                    modal.find('#userdata_content input.' + item).val('Нет');
-                                else
-                                    modal.find('#userdata_content input.' + item).val('Да');
+                        if (modal.find('#userdata_content input.' + item).length > 0)
+                        {
+                            let cur_input = modal.find('#userdata_content input.' + item);
+                            switch (item)
+                            {
+                                case 'is_verified':
+                                    if (userdataContent[item] === '')
+                                        cur_input.val('Нет');
+                                    else
+                                        cur_input.val('Да');
+                                    break;
+                                case 'client_num':
+                                    cur_input.val(userdataContent[item]);
+
+                                    //Присваиваем форме сохранения номера пайщика текущий id юзера
+                                    modal.find('.modal-content #form_client_num').attr('data-user-id', request_user_id);
+
+                                    //Если пустой номер пайщика, добавляем возможность задать его
+                                    if (userdataContent[item] === '')
+                                    {
+                                        cur_input.removeAttr('disabled');
+                                        cur_input.next('#save_client_num_btn').css('display', 'block');
+                                    }
+                                    else
+                                    {
+                                        cur_input.attr('disabled', 'disabled');
+                                        cur_input.next('#save_client_num_btn').css('display', 'none');
+                                    }
+                                    break;
+                                default:
+                                    cur_input.val(userdataContent[item]);
+                                    break;
                             }
-                            else
-                                modal.find('#userdata_content input.' + item).val(userdataContent[item]);
                         }
                     });
                 }

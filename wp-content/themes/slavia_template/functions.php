@@ -110,11 +110,11 @@ add_action( 'widgets_init', 'slavia_template_widgets_init' );
 
 function make_script_async( $tag, $handle, $src )
 {
-    if ( 'tether' != $handle ) {
+    if ( 'tether' != $handle && 'bootstrap.min' != $handle ) {
         return $tag;
     }
 
-    return str_replace( '<script', '<script async', $tag );
+    return str_replace( '<script', '<script defer', $tag );
 }
 add_filter( 'script_loader_tag', 'make_script_async', 10, 3 );
 /**
