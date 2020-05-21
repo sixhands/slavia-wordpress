@@ -26,7 +26,7 @@
 
                     </div>
                 </div>
-
+<!--filters='1' search_form = '0'-->
                 <?php echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"); ?>
 <!--                <div style="display: none">-->
                 <?php //echo do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='client_num' order='DESC' exclude='30']"); //user_registered ?>

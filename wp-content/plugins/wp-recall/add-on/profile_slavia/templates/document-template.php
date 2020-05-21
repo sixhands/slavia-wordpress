@@ -123,13 +123,15 @@
                     if (is_var($currency)) {
                         if ($currency == 'RUB')
                             echo 'Билеты Банка России';
-                        else
+                        elseif ($currency == 'SLAV')
                             echo 'Учетная Единица '.$currency;
+                        else
+                            echo $currency;
 
                     } ?></p></td>
             <td><p><?php if (is_var($amount)) echo $amount; ?></p></td>
-            <td><p><?php if (is_var($currency_rate)) echo $currency_rate; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?></p></td>
-            <td><p><?php if (is_var($sum)) echo $sum; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?></p></td>
+            <td><p><?php if (is_var($currency_rate)) echo $currency_rate; ?> <?php /*if (is_var($other_currency)) echo $other_currency; else */echo 'руб.' ?></p></td>
+            <td><p><?php if (is_var($sum)) echo $sum; ?> <?php /*if (is_var($other_currency)) echo $other_currency; else */echo 'руб.' ?></p></td>
         </tr>
         <tr>
             <td><p>&nbsp;</p></td>
@@ -148,7 +150,7 @@
         </tbody>
     </table>
     <br>
-    <p style="width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> <?php if (is_var($other_currency)) echo $other_currency; else echo 'руб.' ?> </p>
+    <p style="width: 50%;">Итого на сумму <?php if (is_var($sum)) echo $sum; ?> <?php /*if (is_var($other_currency)) echo $other_currency; else */echo 'руб.' ?> </p>
     <br>
     <table class="signatures" style="margin-left: auto; margin-right: auto;">
         <tbody>
@@ -158,7 +160,14 @@
                 <img class="podpis" src="/var/www/html/wp-content/uploads/2020/05/podpis_1.png">
                 <img class="pechat" src="/var/www/html/wp-content/uploads/2020/05/pechat_1.png">
             </td>
-            <td style="padding-left: 30px"><p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br> <?php if (isset($currency_address) && $currency == 'PRIZM') echo $currency_address.'<br>'; ?><?php if (is_var($public_key)) echo $public_key; ?> <br>____________________________________________________________________________________________ <br>__________</p></td>
+            <td style="padding-left: 30px">
+                <p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br>
+                    <?php if (is_var($client_fio)) echo $client_fio;?>___________________________________________________________<br>
+                    <?php if (isset($prizm_address)) echo $prizm_address.'<br>'; ?>
+                    <?php if (isset($slav_address)) echo $slav_address.'<br>'; ?>
+                    <?php //if (is_var($public_key)) echo $public_key.'<br>'; ?>
+                </p>
+            </td>
         </tr>
         </tbody></table>
 

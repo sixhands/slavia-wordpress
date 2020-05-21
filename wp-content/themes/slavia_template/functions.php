@@ -107,6 +107,16 @@ function slavia_template_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'slavia_template_widgets_init' );
+
+function make_script_async( $tag, $handle, $src )
+{
+    if ( 'tether' != $handle ) {
+        return $tag;
+    }
+
+    return str_replace( '<script', '<script async', $tag );
+}
+add_filter( 'script_loader_tag', 'make_script_async', 10, 3 );
 /**
  * Enqueue scripts and styles.
  */

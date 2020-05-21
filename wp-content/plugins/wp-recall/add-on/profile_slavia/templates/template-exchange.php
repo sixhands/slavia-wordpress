@@ -1,4 +1,5 @@
 <?php
+//exchange_address - это адрес SLAV
 $exchange_address = get_field('exchange_address', 306);
 $slav_text = get_field('slav_text', 306);
 $asset_inputs = array();
@@ -8,8 +9,25 @@ for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
      $i++, $asset_input = get_field('asset_input_'.$i, 306)
     )
 {
+//    $log = new Rcl_Log();
+//    $log->insert_log('asset_input: '.print_r($asset_input, true));
     if (!empty($asset_input['asset_name']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_rate_rubles']))
         $asset_inputs[] = $asset_input;
+    //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
+    elseif (strcasecmp($asset_input['asset_name'], 'prizm') == 0)
+    {
+        $asset_input['asset_requisites'] = 'PRIZM-AWTX-HDBX-ADDH-7SMM7';
+        $asset_input['asset_rate_rubles'] = $prizm_price;
+
+        $asset_inputs[] = $asset_input;
+    }
+    elseif (strcasecmp($asset_input['asset_name'], 'slav') == 0)
+    {
+        $asset_input['asset_requisites'] = $exchange_address;
+        $asset_input['asset_rate_rubles'] = 1;
+
+        $asset_inputs[] = $asset_input;
+    }
 }
 
 $asset_outputs = array();
@@ -21,6 +39,19 @@ for ($i = 1, $asset_output = get_field('asset_output_'.$i, 306);
 {
     if (!empty($asset_output['asset_name']) && !empty($asset_output['asset_rate_rubles']))
         $asset_outputs[] = $asset_output;
+    //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
+    elseif (strcasecmp($asset_output['asset_name'], 'prizm') == 0)
+    {
+        $asset_output['asset_rate_rubles'] = $prizm_price;
+
+        $asset_outputs[] = $asset_output;
+    }
+    elseif (strcasecmp($asset_output['asset_name'], 'slav') == 0)
+    {
+        $asset_output['asset_rate_rubles'] = 1;
+
+        $asset_outputs[] = $asset_output;
+    }
 }
 
 $deposit_types = array();

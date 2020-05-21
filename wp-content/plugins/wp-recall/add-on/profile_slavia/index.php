@@ -513,49 +513,58 @@ function get_doc_fields($data)
     //Если целевой взнос, добавляем тип целевой программы
     if ($is_deposit && isset($request['deposit_type']))
         $input_doc_fields += array('deposit_type' => stripslashes($request['deposit_type']));
+
+    if (isset($user_verification['prizm_address']) && !empty($user_verification['prizm_address']))
+        $input_doc_fields += array('prizm_address' => $user_verification['prizm_address']);
+
+    if (isset($user_verification['waves_address']) && !empty($user_verification['waves_address']))
+        $input_doc_fields += array('slav_address' => $user_verification['waves_address']);
     ////////////////////////////////////
 
     if ($input_doc_fields['currency'] == 'PRIZM')
     {
-        $input_doc_fields += array('currency_address' => $user_verification['prizm_address']);
+        //$input_doc_fields += array('currency_address' => $user_verification['prizm_address']);
 
         $input_doc_fields['currency_rate'] = $prizm_price * (1 - ($bank_commission / 100));
 
-        $input_doc_fields['sum'] = $request['output_sum'];
+        //$input_doc_fields['sum'] = $request['output_sum'];
     }
     elseif ($input_doc_fields['currency'] == 'SLAV')
     {
         $input_doc_fields['currency_rate'] = /*$waves_price*/ 1 * (1 - ($bank_commission / 100));
 
-        $input_doc_fields['sum'] = $request['output_sum'];
+        //$input_doc_fields['sum'] = $request['output_sum'];
     }
     elseif ($input_doc_fields['currency'] == 'RUB')
     {
         $input_doc_fields['currency_rate'] = 1;//(1-$bank_commission);
 
-        $input_doc_fields['sum'] = $request['input_sum'];
+        //$input_doc_fields['sum'] = $request['input_sum'];
     }
     //Другие валюты
     elseif (isset($request['requisites']) && !empty($request['requisites']))
     {
         $this_currency_rate = get_alternate_currency_rate($input_doc_fields['currency'], 'in');
-        if (isset($input_doc_fields['other_currency']) && !empty($input_doc_fields['other_currency'])) {
-            $other_currency_rate = get_alternate_currency_rate($input_doc_fields['other_currency'], 'out');
+        //if (isset($input_doc_fields['other_currency']) && !empty($input_doc_fields['other_currency']))
+        //{
+            //$other_currency_rate = get_alternate_currency_rate($input_doc_fields['other_currency'], 'out');
 
-            $rate = $this_currency_rate / $other_currency_rate;
+            $rate = $this_currency_rate;// / $other_currency_rate;
 
-            $input_doc_fields['sum'] = $request['output_sum'];
-        }
-        else {
-            $rate = $this_currency_rate;
-            $input_doc_fields['sum'] = $input_doc_fields['amount'] * $rate;
-        }
+            //$input_doc_fields['sum'] = $request['output_sum'];
+       // }
+        //else {
+          //  $rate = $this_currency_rate;
+          //  $input_doc_fields['sum'] = $input_doc_fields['amount'] * $rate;
+        //}
 
         $input_doc_fields['currency_rate'] = round($rate, 2);
 
 //        $log = new Rcl_Log();
 //        $log->insert_log("input_doc_fields: ".print_r($input_doc_fields, true));
     }
+
+    $input_doc_fields['sum'] = $input_doc_fields['amount'] * $input_doc_fields['currency_rate'];
 
     if (!$is_deposit)
     {
@@ -577,32 +586,40 @@ function get_doc_fields($data)
                 'public_key' => $user_verification['prizm_public_key'],
                 'doc_type' => 'output'
             );
+
+        if (isset($user_verification['prizm_address']) && !empty($user_verification['prizm_address']))
+            $output_doc_fields += array('prizm_address' => $user_verification['prizm_address']);
+
+        if (isset($user_verification['waves_address']) && !empty($user_verification['waves_address']))
+            $output_doc_fields += array('slav_address' => $user_verification['waves_address']);
+
         //Т.к. получаем криптовалюту и отдаем рубли, за сумму берем input_sum (сумма в рублях)
         if ($output_doc_fields['currency'] == 'PRIZM') {
-            $output_doc_fields += array('currency_address' => $user_verification['prizm_address']);
 
-            $output_doc_fields['currency_rate'] = $prizm_price * (1 - ($bank_commission / 100));
-            $output_doc_fields['sum'] = $request['input_sum'];
+            $output_doc_fields['currency_rate'] = $prizm_price * (1);// - ($bank_commission / 100));
+            //$output_doc_fields['sum'] = $request['input_sum'];
         }
         elseif ($output_doc_fields['currency'] == 'SLAV') {
-            $output_doc_fields['currency_rate'] = $waves_price * (1 - ($bank_commission / 100));
-            $output_doc_fields['sum'] = $request['input_sum'];
+            $output_doc_fields['currency_rate'] = /*$waves_price * (*/1;// - ($bank_commission / 100));
+            //$output_doc_fields['sum'] = $request['input_sum'];
         }
         elseif ($output_doc_fields['currency'] == 'RUB') {
-            $output_doc_fields['currency_rate'] = (1 - ($bank_commission / 100));
-            $output_doc_fields['sum'] = $request['output_sum'];
+            $output_doc_fields['currency_rate'] = (1);// - ($bank_commission / 100));
+            //$output_doc_fields['sum'] = $request['output_sum'];
         }
         //Другие валюты
         elseif (isset($request['requisites']) && !empty($request['requisites']))
         {
             $this_currency_rate = get_alternate_currency_rate($output_doc_fields['currency'], 'out');
-            $other_currency_rate = get_alternate_currency_rate($output_doc_fields['other_currency'], 'in');
+            //$other_currency_rate = get_alternate_currency_rate($output_doc_fields['other_currency'], 'in');
 
-            $rate = $this_currency_rate / $other_currency_rate;
+            $rate = $this_currency_rate;// / $other_currency_rate;
 
             $output_doc_fields['currency_rate'] = round($rate, 2);
-            $output_doc_fields['sum'] = $request['input_sum'];
+            //$output_doc_fields['sum'] = $request['input_sum'];
         }
+
+        $output_doc_fields['sum'] = $output_doc_fields['amount'] * $output_doc_fields['currency_rate'];
     }
     $result = array("input_fields" => $input_doc_fields);
     if (!$is_deposit)
@@ -931,6 +948,10 @@ function rcl_tab_exchange_content($master_id)
     {
         $profile_args += array('banks' => $bank_options);
     }
+
+    $prizm_price = rcl_slavia_get_crypto_price();
+    if (isset($prizm_price) && !empty($prizm_price))
+        $profile_args += array('prizm_price' => $prizm_price);
 
     $content = rcl_get_include_template('template-exchange.php', __FILE__, $profile_args);
 
@@ -3061,39 +3082,50 @@ function rcl_delete_user_account(){
 }
 
 //Подгрузка курса prizm
-function rcl_slavia_get_crypto_price($currency = 'PZM') {
+function rcl_slavia_get_crypto_price($currency = 'PZM')
+{
 
-    $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';
-    $parameters = [
-        'symbol' => $currency,
-        'amount' => '1',
-        'convert' => 'RUB'
-    ];
+    if ($currency == 'PZM' && get_transient('prizm_price'))
+        return get_transient('prizm_price');
+    else
+    {
+        $url = 'https://pro-api.coinmarketcap.com/v1/tools/price-conversion';
+        $parameters = [
+            'symbol' => $currency,
+            'amount' => '1',
+            'convert' => 'RUB'
+        ];
 
-    $headers = [
-        'Accepts: application/json',
-        'X-CMC_PRO_API_KEY: 8225d03d-6029-4dad-8c1f-ca029644b3da'
-    ];
-    $qs = http_build_query($parameters); // query string encode the parameters
-    $request = "{$url}?{$qs}"; // create the request URL
+        $headers = [
+            'Accepts: application/json',
+            'X-CMC_PRO_API_KEY: 8225d03d-6029-4dad-8c1f-ca029644b3da'
+        ];
+        $qs = http_build_query($parameters); // query string encode the parameters
+        $request = "{$url}?{$qs}"; // create the request URL
 
 
-    $curl = curl_init(); // Get cURL resource
+        $curl = curl_init(); // Get cURL resource
 // Set cURL options
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => $request,            // set the request URL
-        CURLOPT_HTTPHEADER => $headers,     // set the headers
-        CURLOPT_RETURNTRANSFER => 1         // ask for raw response instead of bool
-    ));
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $request,            // set the request URL
+            CURLOPT_HTTPHEADER => $headers,     // set the headers
+            CURLOPT_RETURNTRANSFER => 1         // ask for raw response instead of bool
+        ));
 
-    $response = curl_exec($curl); // Send the request, save the response
-    curl_close($curl); // Close request
+        $response = curl_exec($curl); // Send the request, save the response
+        curl_close($curl); // Close request
 
-    $rub_price = json_decode($response);
-    $rounded_price = round($rub_price->data->quote->RUB->price, 2);
+        $rub_price = json_decode($response);
+        $rounded_price = round($rub_price->data->quote->RUB->price, 2);
+
+        if ($currency == 'PZM') {
+            set_transient('prizm_price', $rounded_price, 5 * MINUTE_IN_SECONDS);
+        }
+
+        return $rounded_price; // print json decoded response
+    }
 //    $log = new Rcl_Log();
 //    $log->insert_log(print_r(json_decode($response), true));
-    return $rounded_price; // print json decoded response
 }
 
 //Генерация checksum для сбербанка
