@@ -145,7 +145,7 @@
             rcl_update_option('ref_awards', $new_items);
         }
 
-        public function get_sum($type, $host_id)
+        public function get_sum($type, $host_id, $ref_id = false) //Если задан ref_id, то сумма высчитывается выплаченная от реферала хосту, а не общая по хосту
         {
             if (in_array($type, array('paid', 'unpaid', 'full') ) )
             {
@@ -155,25 +155,28 @@
                 elseif ($type == 'paid')
                     $status = $type;
 
-                $operations = $this->get_operations_by(array(
-                    "host_id" => $host_id,
-                    "status" => $status
-                ));
-                $log = new Rcl_Log();
+                $search_data = array("host_id" => $host_id, "status" => $status);
+                if ($ref_id != false)
+                    $search_data += array("ref_id" => $ref_id);
+                $operations = $this->get_operations_by($search_data);
+                //$log = new Rcl_Log();
 
                 $sum = array(); //array("prizm" => 1050, "slav" => 500, "rub" => 100)
-                foreach ($operations as $operation)
-                {
-                    $ref_sum = $operation["award_sum"];
-                    $ref_currency = $operation["award_currency"];
+                if (!empty($operations)) {
+                    foreach ($operations as $operation) {
+                        $ref_sum = $operation["award_sum"];
+                        $ref_currency = $operation["award_currency"];
 
-                    if (!isset($sum[$ref_currency] ) )
-                        $sum += array($ref_currency => $ref_sum);
-                    else
-                        $sum[$ref_currency] += $ref_sum;
+                        if (!isset($sum[$ref_currency]))
+                            $sum += array($ref_currency => $ref_sum);
+                        else
+                            $sum[$ref_currency] += $ref_sum;
+                    }
+                    return $sum;
                 }
-                $log->insert_log("sum: ".print_r($sum, true));
-                return $sum;
+                else
+                    return false;
+                //$log->insert_log("sum: ".print_r($sum, true));
 
             }
             else
@@ -191,6 +194,10 @@
             return $user_ids;
         }
 
+        public function get_user_refs($user_id)
+        {
+            return get_user_meta($user_id, 'refs', true);
+        }
 
         /*Функция уведомления выбранных пользователей по email о реферальной операции
         (на вход подается host_id, host_name - id и имя пригласившего (хоста),
@@ -275,6 +282,11 @@
             rcl_update_option('ref_awards', $items);
 
 
+        }
+
+        public function clear_all()
+        {
+            rcl_update_option('ref_awards', array());
         }
 
     }

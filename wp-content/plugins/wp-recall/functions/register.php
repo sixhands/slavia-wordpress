@@ -257,7 +257,8 @@ function rcl_get_register_user( $errors ) {
                         else //refs not empty
                         {
                             $field['value'] = $field_value;
-                            $field['value'] += array(count($field['value']) => $user_id);
+                            array_push($field['value'], $user_id);
+                            //$field['value'] += array(count($field['value']) => $user_id);
                         }
 
                         rcl_update_profile_fields($host_id, array($field));

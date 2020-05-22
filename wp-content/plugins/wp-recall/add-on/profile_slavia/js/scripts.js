@@ -330,41 +330,43 @@ function tab_config()
                     let operations_container = new_content_tab.children(':first');
                     operations_container.children('.table-title ~ .table-text').remove();
 
-                    operations.forEach(function (operation) {
-                        let operation_status = '';
-                        switch (operation["status"]) {
-                            case "processing":
-                                operation_status = 'В обработке';
-                                break;
-                            case "paid":
-                                operation_status = 'Выплачено';
-                                break;
-                        }
-                        let template = '<div class="table-text w-100" data-user-id="' + operation['host_id'] + '">' +
-                            '<div class="row">' +
-                            '<div class="col-2 text-left ref_date">' + operation['date'] + '</div>' +
-                            '<div class="col-2 text-left host_name">' + operation['host_name'] + '</div>' +
-                            '<div class="col-2 text-left ref_name">' + operation['ref_name'] + '</div>' +
-                            '<div class="col-2 text-left ref_sum">' + (+operation["award_sum"].toFixed(2)) + ' ' + operation["award_currency"] + '</div>' +
-                            '<div class="col-3 text-center">' +
-                            '<p>' + operation_status + '</p>';
+                    if (operations !== false) {
+                        operations.forEach(function (operation) {
+                            let operation_status = '';
+                            switch (operation["status"]) {
+                                case "processing":
+                                    operation_status = 'В обработке';
+                                    break;
+                                case "paid":
+                                    operation_status = 'Выплачено';
+                                    break;
+                            }
+                            let template = '<div class="table-text w-100" data-user-id="' + operation['host_id'] + '">' +
+                                '<div class="row">' +
+                                '<div class="col-2 text-left ref_date">' + operation['date'] + '</div>' +
+                                '<div class="col-2 text-left host_name">' + operation['host_name'] + '</div>' +
+                                '<div class="col-2 text-left ref_name">' + operation['ref_name'] + '</div>' +
+                                '<div class="col-2 text-left ref_sum">' + (+operation["award_sum"].toFixed(2)) + ' ' + operation["award_currency"] + '</div>' +
+                                '<div class="col-3 text-center">' +
+                                '<p>' + operation_status + '</p>';
 
-                        if (is_manager == true && operation['status'] == 'processing')
-                            template += '<div class="btn-custom-one btn-ref">' +
-                                'Выплатить' +
+                            if (is_manager == true && operation['status'] == 'processing')
+                                template += '<div class="btn-custom-one btn-ref">' +
+                                    'Выплатить' +
+                                    '</div>';
+
+                            template += '</div>' +
+                                '<div class="col-1 text-left">' +
+                                '<a class="remove_operation">×</a>' +
+                                '</div>' +
+                                '</div>' +
                                 '</div>';
 
-                        template += '</div>' +
-                            '<div class="col-1 text-left">' +
-                            '<a class="remove_operation">×</a>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-
-                        operations_container.append(template);
-                    });
-                    init_ref_buttons();
-                    new_content_tab.css('display', 'block');
+                            operations_container.append(template);
+                        });
+                        init_ref_buttons();
+                        new_content_tab.css('display', 'block');
+                    }
                 }
 
             });

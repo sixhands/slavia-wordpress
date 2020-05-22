@@ -112,29 +112,45 @@
         <?php endif; ?>
 
         <div class="coop_maps question-bg col-lg-12">
-            <h1 class="coop_maps-h1">Реферальная ссылка</h1>
-            <div class="col-lg-4 input-exchange  input-custom-copy">
-                <form class="row" name="profile_link" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                    <div style="width: 100%">
-                        <?php echo $user_ref_link ?>
-                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h1 class="coop_maps-h1">Реферальная ссылка</h1>
+                    <div class="col-lg-12 input-exchange  input-custom-copy">
+                        <form class="row" name="profile_link" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                            <div style="width: 100%">
+                                <?php echo $user_ref_link ?>
+                                <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                            </div>
+        <!--                    <input placeholder="" value="https://slavia.com/5467889" type="text" name="">-->
+                        </form>
                     </div>
-<!--                    <input placeholder="" value="https://slavia.com/5467889" type="text" name="">-->
-                </form>
+                </div>
+                <div class="col-lg-8">
+                    <h1 class="coop_maps-h1">Номер пайщика</h1>
+                    <div class="col-lg-12 input-exchange  input-custom-copy">
+                        <form class="row" name="profile_client_num" id="your-profile" action="" method="post"  enctype="multipart/form-data">
+                            <div style="width: 100%">
+                                <?php echo $client_num ?>
+                                <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
+                            </div>
+                            <!--                    <input placeholder="" value="00073" type="text" name="">-->
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="coop_maps question-bg col-lg-12">
-            <h1 class="coop_maps-h1">Номер пайщика</h1>
-            <div class="col-lg-4 input-exchange  input-custom-copy">
-                <form class="row" name="profile_client_num" id="your-profile" action="" method="post"  enctype="multipart/form-data">
-                    <div style="width: 100%">
-                        <?php echo $client_num ?>
-                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">
-                    </div>
-<!--                    <input placeholder="" value="00073" type="text" name="">-->
-                </form>
-            </div>
-        </div>
+<!--        <div class="coop_maps question-bg col-lg-12">-->
+<!--            <h1 class="coop_maps-h1">Номер пайщика</h1>-->
+<!--            <div class="col-lg-4 input-exchange  input-custom-copy">-->
+<!--                <form class="row" name="profile_client_num" id="your-profile" action="" method="post"  enctype="multipart/form-data">-->
+<!--                    <div style="width: 100%">-->
+<!--                        --><?php //echo $client_num ?>
+<!--                        <img src="/wp-content/uploads/2019/12/custom-copy.png" class="copy-btn">-->
+<!--                    </div>-->
+<!---->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1">Ваш адрес Prizm</h1>
             <div class="row">

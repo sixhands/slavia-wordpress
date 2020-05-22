@@ -364,10 +364,20 @@ function get_new_document_field($user_id, $text = null, $filename = null)
     $log = new Rcl_Log();
 
     $filename_to_upload = '';
+
+    $client_num = get_user_meta($user_id, 'client_num', true);
+    $user_verification = get_user_meta($user_id, 'verification', true);
+    $user_full_name = '';
+    if (isset($user_verification) && !empty($user_verification))
+    {
+        $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+    }
+    //$display_name = get_userdata($user_id)->display_name;
+
     if (!isset($filename) || empty($filename))
-        $filename_to_upload = 'payment_receipt-'.$user_id.'-'.current_time( 'm-d-H-i' ).'.pdf';
+        $filename_to_upload = 'payment_receipt-'.'Пайщик №'.$client_num.' '.$user_full_name.'-'.current_time( 'd-m-H-i' ).'.pdf';
     else
-        $filename_to_upload = $filename.'-'.$user_id.'-'.current_time( 'm-d-H-i' ).'.pdf';
+        $filename_to_upload = $filename.'- '.'Пайщик №'.$client_num.' '.$user_full_name.'-'.current_time( 'd-m-H-i' ).'.pdf';
     //$log->insert_log("filename:".$filename_to_upload);
     // Array based on $_FILE as seen in PHP file uploads
     $file_to_upload = array(
@@ -521,7 +531,7 @@ function get_doc_fields($data)
         $input_doc_fields += array('slav_address' => $user_verification['waves_address']);
     ////////////////////////////////////
 
-    if ($input_doc_fields['currency'] == 'PRIZM')
+    if (strcasecmp($input_doc_fields['currency'], 'prizm') == 0)
     {
         //$input_doc_fields += array('currency_address' => $user_verification['prizm_address']);
 
@@ -529,13 +539,13 @@ function get_doc_fields($data)
 
         //$input_doc_fields['sum'] = $request['output_sum'];
     }
-    elseif ($input_doc_fields['currency'] == 'SLAV')
+    elseif (strcasecmp($input_doc_fields['currency'], 'slav') == 0)
     {
         $input_doc_fields['currency_rate'] = /*$waves_price*/ 1 * (1 - ($bank_commission / 100));
 
         //$input_doc_fields['sum'] = $request['output_sum'];
     }
-    elseif ($input_doc_fields['currency'] == 'RUB')
+    elseif (strcasecmp($input_doc_fields['currency'], 'RUB') == 0)
     {
         $input_doc_fields['currency_rate'] = 1;//(1-$bank_commission);
 
@@ -594,16 +604,16 @@ function get_doc_fields($data)
             $output_doc_fields += array('slav_address' => $user_verification['waves_address']);
 
         //Т.к. получаем криптовалюту и отдаем рубли, за сумму берем input_sum (сумма в рублях)
-        if ($output_doc_fields['currency'] == 'PRIZM') {
+        if (strcasecmp($output_doc_fields['currency'], 'prizm') == 0) {
 
             $output_doc_fields['currency_rate'] = $prizm_price * (1);// - ($bank_commission / 100));
             //$output_doc_fields['sum'] = $request['input_sum'];
         }
-        elseif ($output_doc_fields['currency'] == 'SLAV') {
+        elseif (strcasecmp($output_doc_fields['currency'], 'slav') == 0) {
             $output_doc_fields['currency_rate'] = /*$waves_price * (*/1;// - ($bank_commission / 100));
             //$output_doc_fields['sum'] = $request['input_sum'];
         }
-        elseif ($output_doc_fields['currency'] == 'RUB') {
+        elseif (strcasecmp($output_doc_fields['currency'], 'RUB') == 0) {
             $output_doc_fields['currency_rate'] = (1);// - ($bank_commission / 100));
             //$output_doc_fields['sum'] = $request['output_sum'];
         }
@@ -705,6 +715,21 @@ function rcl_tab_template_content()
                 $field_name == 'is_privileged')
             {
                 $field_value = $value;
+                if ($field_name == 'refs' && !empty($field_value))
+                {
+                    foreach ($field_value as $key => $value)
+                    {
+                        //Если такого пользователя нет, то удаляем его из поля рефералов
+                        if (!get_user_by('ID', $value))
+                        {
+                            unset($field_value[$key]);
+
+                            $field += array('value' => $field_value);
+
+                            rcl_update_profile_fields($user_ID, array($field));
+                        }
+                    }
+                }
                 if ($field_name == 'user_documents' && !empty($field_value))
                 {
                     clearstatcache(); //Очищаем кэш операций с файлами
@@ -1581,6 +1606,8 @@ function rcl_tab_referral_content($master_id)
 
     $ref_awards = new Ref_Awards();
 
+    //$ref_awards->clear_all();
+
     if (rcl_get_current_role() == 'manager' || rcl_get_current_role() == 'administrator' || rcl_get_current_role() == 'director')
     {
         $ref_all = array(
@@ -1602,7 +1629,9 @@ function rcl_tab_referral_content($master_id)
                 "status" => "paid",
                 "host_id" => $user_ID
             )),
-            "user_ids" => array($user_ID)
+            "user_ids" => array($user_ID), //id пользователей для статистики
+            "ref_ids" => $ref_awards->get_user_refs($user_ID) //id рефералов данного пользователя
+
         );
         //$log = new Rcl_Log();
         //$log->insert_log("cur_user_ref: ".print_r($ref_cur_user, true));
@@ -2269,6 +2298,7 @@ function rcl_edit_profile(){
                         {
                             $ref_host_name = get_userdata($ref_host);
                             $ref_host_name = $ref_host_name->display_name;
+                            $current_user_id = $userid;
                             $current_user_name = get_userdata($userid);
                             $current_user_name = $current_user_name->display_name;
                             $ref_amount = get_user_meta($ref_host, 'ref_percent', true);//rcl_get_option('ref_amount');
@@ -2284,7 +2314,9 @@ function rcl_edit_profile(){
                             $ref_data = array(
                                 "date" => date('d.m.y H:i:s'),
                                 "host_name" => $ref_host_name,
+                                "host_id" => $ref_host,
                                 "ref_name" => $current_user_name,
+                                "ref_id" => $current_user_id,
                                 "award_sum" => $award,
                                 "award_currency" => $award_currency,
                                 "status" => "processing");
@@ -2293,10 +2325,7 @@ function rcl_edit_profile(){
                             $ref_awards->add($ref_host, $ref_data);
 
                             //Меняем массив данных для передачи в функцию operation_notify
-                            $ref_data += array(
-                                "host_id" => $ref_host,
-                                "ref_id" => $userid,
-                            );
+
                             unset($ref_data['date']);
                             unset($ref_data['status']);
 
@@ -2710,10 +2739,21 @@ function rcl_edit_profile(){
             if (isset($_POST['ref_user_id']) && !empty($_POST['ref_user_id']))
             {
                 $ref_awards = new Ref_Awards();
-                $result_arr = array(
-                    "paid_sum" => $ref_awards->get_sum("paid", $_POST['ref_user_id']),
-                    "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id'])
-                );
+                if (isset($_POST['is_ref_list']) && $_POST['is_ref_list'] == 'true')
+                {
+                    $result_arr = array(
+                        "paid_sum" => $ref_awards->get_sum("paid", $user_ID, $_POST['ref_user_id']),
+                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $user_ID, $_POST['ref_user_id'])
+                    );
+                    //$log->insert_log("result_arr: ".print_r($result_arr, true));
+                }
+                else
+                {
+                    $result_arr = array(
+                        "paid_sum" => $ref_awards->get_sum("paid", $_POST['ref_user_id']),
+                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id'])
+                    );
+                }
                 //$log->insert_log("result_arr: ".print_r($result_arr, true));
                 echo json_encode($result_arr);
                 exit;
