@@ -3113,17 +3113,23 @@ function rcl_edit_profile(){
 
         elseif (isset($_POST['ref_sort']) && !empty($_POST['ref_sort'])) {
             $is_sort = $_POST['ref_sort'];
+            $is_paid = $_POST['is_paid'];
             $ref_awards = new Ref_Awards();
+            if (rcl_get_current_role() == 'manager' || rcl_get_current_role() == 'administrator' || rcl_get_current_role() == 'director')
+                $is_manager = true;
+            else
+                $is_manager = false;
 
-            $ref_awards->sort_all('', '');
-//            if ($is_sort == 'true') {
-//                $response = $ref_awards->sort_all('client_num', 'ASC');
-//            }
-//            elseif ($is_sort == 'false') {
-//                $response = $ref_awards->sort_all('date', 'DESC');
-//            }
-            //echo json_encode($response);
-            //exit;
+            if ($is_sort == 'true') {
+                $response = $ref_awards->sort_all('host_client_num', 'ASC', $is_manager, $is_paid);
+            }
+            elseif ($is_sort == 'false') {
+                $response = $ref_awards->sort_all('date', 'DESC', $is_manager, $is_paid);
+            }
+            array_push($response, array("is_manager" => $is_manager));
+            //$response += array("is_manager" => $is_manager);
+            echo json_encode($response);
+            exit;
         }
 
         elseif (isset($_POST['search']) && !empty($_POST['search']))

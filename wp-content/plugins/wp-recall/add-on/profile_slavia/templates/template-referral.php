@@ -492,46 +492,78 @@
     jQuery('.ref-tab__content .table-title img.client_num_sort_icon').click(function(){
         let el = jQuery(this);
         let is_complete = el.hasClass('complete');
+
+        let container_el = el.parents('.ref-tab__content');
+        let container_class = '';
+        let is_paid;
+        if (container_el.hasClass('ref_unpaid')) {
+            container_class = '.ref_unpaid';
+            is_paid = false;
+        }
+        if (container_el.hasClass('ref_paid')) {
+            container_class = '.ref_paid';
+            is_paid = true;
+        }
+
         if (!is_complete) {
             var data = {
+                is_paid: is_paid,
                 ref_sort: true,
                 sort_field: 'client_num'
             };
         }
         else {
             var data = {
+                is_paid: is_paid,
                 ref_sort: false,
                 sort_field: 'client_num'
             };
         }
         jQuery.post( window.location, data, function(response) {
-            console.log(response);
+            //console.log(response);
             if (response) {
-                var people_data = JSON.parse(response);
+                var ref_data = JSON.parse(response);
+                var is_manager = ref_data[ref_data.length - 1].is_manager;
+
+                //console.log(ref_data);
                 //Очищаем поле для списка людей
-                // jQuery('.people_list > .table-title ~ .table-text, .people_list > .table-title ~ .rcl-pager').remove();
-                //
-                // people_data.forEach((user) => {
-                //     jQuery('.people_list').append(
-                //         '<div class="table-text w-100 user-single" data-user-id="' + user.id + '">' +
-                //         '<div class="row">' +
-                //         '<div class="col-lg-1 text-center">' +
-                //         (user.is_verified === 'yes' ?
-                //             '<img src="/wp-content/uploads/2019/12/verification_ok.png">' :
-                //             '<img src="/wp-content/uploads/2019/12/verification_bad.png">') +
-                //         '</div>' +
-                //         '<div class="col-3 text-left">' + user.display_name + '</div>' +
-                //         '<div class="col-2 text-left">' + user.client_num + '</div>' +
-                //         '<div class="col-3 text-left">' + user.user_registered + '</div>' +
-                //         '<div class="col-3 text-center show_user_operations">' +
-                //         '<img src="/wp-content/uploads/2019/12/people_href.png">' +
-                //         '</div>' +
-                //         '</div>' +
-                //         '</div>'
-                //     );
-                // });
-                // init_events();
-                //console.log(people_data);
+                jQuery(container_class + ' .table-title ~ .table-text, ' + container_class + ' .table-title ~ .rcl-pager').remove();
+
+                ref_data.forEach((item) => {
+                    if (typeof item.is_manager !== 'undefined')
+                        return;
+                    //console.log(item);
+                    let status;
+                    switch (item.status) {
+                        case "processing":
+                            status = "В обработке";
+                            break;
+                        case "paid":
+                            status = "Выплачено";
+                            break;
+                    }
+                    jQuery(container_class + ' > div').append(
+                        '<div class="table-text w-100" data-user-id="' + item.host_id + '">' +
+                            '<div class="row">' +
+                                '<div class="col-2 text-left ref_date">' + item.date + '</div>' +
+                                '<div class="col-2 text-left host_name">' +
+                                    (typeof item.host_client_num !== 'undefined' ? item.host_client_num : item.host_name) +
+                                '</div>' +
+                                '<div class="col-2 text-left ref_name">' + item.ref_name + '</div>' +
+                                '<div class="col-2 text-left ref_sum">' + (item.award_sum.toFixed(2)) + ' ' + item.award_currency + '</div>' +
+                                '<div class="col-3 text-center">' +
+                                    '<p>' + status + '</p>' +
+                                    ((is_manager && !is_paid) ? '<div class="btn-custom-one btn-ref">Выплатить</div>' : '') +
+                                '</div>' +
+                                '<div class="col-1 text-left">' +
+                                    '<a class="remove_operation">×</a>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
+                    );
+                });
+                init_ref_buttons();
+
                 //jQuery('.people_list').append(response);
 
                 if (!is_complete)

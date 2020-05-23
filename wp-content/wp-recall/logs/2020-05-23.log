@@ -1266,3 +1266,1664 @@ items: Array
 
 )
 
+email: test2@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: uuu</p>
+    <p>Пароль: uuu</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ1dXUiLCI1NDIyOWFiZmNmYTU2NDllNzAwM2I4M2RkNDc1NTI5NCJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ1dXUiLCI1NDIyOWFiZmNmYTU2NDllNzAwM2I4M2RkNDc1NTI5NCJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: test2@mail.ru; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь uuu с ID 91 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 87 вознаграждение в размере 0 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь uuu с ID 91 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю ccc с ID 87 вознаграждение в размере 0 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: lacipe8930@aprimail.com; text: <p>Приглашенный вами пользователь uuu только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 0 SLAV в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+doc_1: Array
+(
+    [date] => 23.05.20 19:47:27
+    [filename] => -приема-SLAV-Пайщик-№-uuuuu-uuuuuuu-uuuuuuuu-23-05-19-47.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-SLAV-Пайщик-№-uuuuu-uuuuuuu-uuuuuuuu-23-05-19-47.pdf
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [5] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [6] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [7] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [8] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [9] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 11
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 23.05.20 19:47:24
+            [host_name] => ccc
+            [host_id] => 87
+            [host_client_num] => 10
+            [ref_name] => uuu
+            [ref_id] => 91
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+

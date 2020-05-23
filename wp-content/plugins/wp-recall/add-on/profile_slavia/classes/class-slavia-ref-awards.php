@@ -213,11 +213,36 @@
             return get_user_meta($user_id, 'refs', true);
         }
 
-        public function sort_all($sort_field, $order) {
-            $items = $this->get_all(true);
+        public function sort_all($sort_field, $order, $is_manager, $is_paid) {
+            global $user_ID;
+            if ($is_paid == 'true')
+                $status = 'paid';
+            elseif ($is_paid == 'false')
+                $status = 'processing';
+            if ($is_manager)
+                $items = $this->get_operations_by(array(
+                    "status" => $status,
+                ));
+            else
+                $items = $this->get_operations_by(array(
+                    "status" => $status,
+                    "host_id" => $user_ID
+                ));
+
+            if ($sort_field == 'host_client_num' && !isset($items[0]['host_client_num'])) {
+                foreach ($items as $index => $item)
+                {
+                    $client_num = get_user_meta($item['host_id'], 'client_num', true);
+                    $items[$index] += array('host_client_num' => $client_num);
+                }
+            }
+
+            sort_assoc($items, $sort_field, $order);
 
             $log = new Rcl_Log();
             $log->insert_log("items: ".print_r($items, true));
+
+            return $items;
         }
 
         /*Функция уведомления выбранных пользователей по email о реферальной операции
