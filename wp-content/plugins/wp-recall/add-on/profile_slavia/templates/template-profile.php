@@ -440,6 +440,9 @@
 </div>
 
 <script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery('form#your-profile input#client_num').removeAttr('disabled');
+    });
     jQuery('.search').keyup(function(event){
         var code = (event.keyCode ? event.keyCode : event.which);
         if (code == 13) {

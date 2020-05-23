@@ -2425,7 +2425,8 @@ function rcl_edit_profile(){
 
 
                         //Если есть пригласивший
-                        if (/*isset($stat_exists) && $stat_exists == false && */!empty($ref_host))
+                        if (!empty($ref_host) && !isset($exchange_requests[$userid][$request_num]['deposit_type']) &&
+                            !empty($exchange_requests[$userid][$request_num]['output_sum']) && !empty($exchange_requests[$userid][$request_num]['output_currency']))
                         {
                             $ref_host_name = get_userdata($ref_host);
                             $ref_host_name = $ref_host_name->display_name;

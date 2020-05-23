@@ -152,9 +152,11 @@ function init_ref_buttons()
         let currency = split_sum.join(' ');
         //console.log("currency: ", currency);
         //console.log('sum: ', 0);
+        //let host_id = jQuery(this).parents('.table-text').attr('data-user-id');
         var data = {
             ref_remove: 'true',
             ref_data: {
+                //host_id: host_id,
                 date: date,
                 host_name: host_name,
                 ref_name: ref_name,
