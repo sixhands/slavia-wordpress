@@ -5,13 +5,17 @@
     padding-left: 0;
     padding-right: 0;
 }
-.people_list img.client_num_sort_icon {
+img.client_num_sort_icon {
     height: 25px;
     margin-left: 5px;
     cursor: pointer;
 }
-.people_list img.client_num_sort_icon.complete {
+img.client_num_sort_icon.complete {
     mix-blend-mode: difference;
+}
+.ref-tab__content img.client_num_sort_icon {
+    height: 30px;
+    margin-top: 15%;
 }
 /*.people_list > .table-title + .rcl-pager {*/
 /*    display: none;*/

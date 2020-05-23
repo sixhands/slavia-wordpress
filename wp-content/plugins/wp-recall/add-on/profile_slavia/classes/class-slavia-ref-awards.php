@@ -7,9 +7,23 @@
 
         }
 
-        public function get_all()
+        public function get_all($is_array = false)
         {
-            return rcl_get_option('ref_awards');
+            $items = rcl_get_option('ref_awards');
+            if ($is_array)
+            {
+                $result_items = array();
+                foreach ($items as $host_id => $operations)
+                {
+                    foreach ($operations as $index => $operation)
+                    {
+                        array_push($result_items, $operation);
+                    }
+                }
+                return $result_items;
+            }
+            else
+                return $items;
         }
 
         /*host_id - для какого человека получить операции (если 0, то для всех)*/
@@ -197,6 +211,13 @@
         public function get_user_refs($user_id)
         {
             return get_user_meta($user_id, 'refs', true);
+        }
+
+        public function sort_all($sort_field, $order) {
+            $items = $this->get_all(true);
+
+            $log = new Rcl_Log();
+            $log->insert_log("items: ".print_r($items, true));
         }
 
         /*Функция уведомления выбранных пользователей по email о реферальной операции

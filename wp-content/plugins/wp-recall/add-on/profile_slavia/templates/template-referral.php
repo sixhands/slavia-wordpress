@@ -488,6 +488,60 @@
         });
     });
 
+    //Сортировка по номеру пайщика
+    jQuery('.ref-tab__content .table-title img.client_num_sort_icon').click(function(){
+        let el = jQuery(this);
+        let is_complete = el.hasClass('complete');
+        if (!is_complete) {
+            var data = {
+                ref_sort: true,
+                sort_field: 'client_num'
+            };
+        }
+        else {
+            var data = {
+                ref_sort: false,
+                sort_field: 'client_num'
+            };
+        }
+        jQuery.post( window.location, data, function(response) {
+            console.log(response);
+            if (response) {
+                var people_data = JSON.parse(response);
+                //Очищаем поле для списка людей
+                // jQuery('.people_list > .table-title ~ .table-text, .people_list > .table-title ~ .rcl-pager').remove();
+                //
+                // people_data.forEach((user) => {
+                //     jQuery('.people_list').append(
+                //         '<div class="table-text w-100 user-single" data-user-id="' + user.id + '">' +
+                //         '<div class="row">' +
+                //         '<div class="col-lg-1 text-center">' +
+                //         (user.is_verified === 'yes' ?
+                //             '<img src="/wp-content/uploads/2019/12/verification_ok.png">' :
+                //             '<img src="/wp-content/uploads/2019/12/verification_bad.png">') +
+                //         '</div>' +
+                //         '<div class="col-3 text-left">' + user.display_name + '</div>' +
+                //         '<div class="col-2 text-left">' + user.client_num + '</div>' +
+                //         '<div class="col-3 text-left">' + user.user_registered + '</div>' +
+                //         '<div class="col-3 text-center show_user_operations">' +
+                //         '<img src="/wp-content/uploads/2019/12/people_href.png">' +
+                //         '</div>' +
+                //         '</div>' +
+                //         '</div>'
+                //     );
+                // });
+                // init_events();
+                //console.log(people_data);
+                //jQuery('.people_list').append(response);
+
+                if (!is_complete)
+                    el.addClass('complete');
+                else
+                    el.removeClass('complete');
+            }
+        });
+    });
+
     jQuery(document).ready(function() {
         init_ref_buttons();
     });

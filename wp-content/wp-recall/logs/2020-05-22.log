@@ -512,3 +512,536 @@ doc_1: Array
     [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-PRIZM-Пайщик-№134-dhgdhdgdfgdf-gfdgdfgdfg-fhgghdfg-22-05-21-10.pdf
 )
 
+email: shar.leto88@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: zima</p>
+    <p>Пароль: dead9816</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ6aW1hIiwiODYxMzk4NWVjNDllYjhmNzU3YWU2NDM5ZTg3OWJiMmEiXQ%3D%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ6aW1hIiwiODYxMzk4NWVjNDllYjhmNzU3YWU2NDM5ZTg3OWJiMmEiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+18:47:10 Fatal Error: Uncaught ArgumentCountError: Too few arguments to function sort_people_tab_data(), 1 passed in /var/www/html/wp-includes/class-wp-hook.php on line 288 and exactly 3 expected in /var/www/html/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php:1888
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(288): sort_people_tab_data()
+#1 /var/www/html/wp-includes/plugin.php(206): WP_Hook->apply_filters()
+#2 /var/www/html/wp-content/plugins/wp-recall/rcl-functions.php(44): apply_filters()
+#3 /var/www/html/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php(778): rcl_tab()
+#4 /var/www/html/wp-includes/class-wp-hook.php(288): rcl_tab_profile()
+#5 /var/www/html/wp-includes/class-wp-hook.php(312): WP_Hook->apply_filters()
+#6 /var/www/html/wp-includes/plugin.php(478): WP_Hook->do_action()
+#7 /var/www/html/wp-settings.php(523): do_action()
+#8 /var/www/html/wp-config.php(100): require_once('/var/www/html/w...')
+#9 /var/www/html/wp-load.php(37): require_once('/var/www/html/w...')
+#10 /var/www/html/wp in /var/www/html/wp-content/plugins/wp-recall/add-on/profile_slavia/index.php:1888
+email: shar.leto88@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+tabs: Array
+(
+    [profile] => Array
+        (
+            [id] => profile
+            [name] => Профиль
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/home_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_profile_content
+                                )
+
+                            [id] => profile
+                            [name] => Профиль
+                            [icon] => /wp-content/uploads/2019/12/home_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 1
+        )
+
+    [exchange] => Array
+        (
+            [id] => exchange
+            [name] => Обмен паями
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2020/01/exchange_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_exchange_content
+                                )
+
+                            [id] => exchange
+                            [name] => Обмен паями
+                            [icon] => /wp-content/uploads/2020/01/exchange_dis.png
+                        )
+
+                )
+
+        )
+
+    [operations] => Array
+        (
+            [id] => operations
+            [name] => Операции
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/operation_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_operations_content
+                                )
+
+                            [id] => operations
+                            [name] => Операции
+                            [icon] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 2
+        )
+
+    [documents] => Array
+        (
+            [id] => documents
+            [name] => Документы
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/document_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_documents_content
+                                )
+
+                            [id] => documents
+                            [name] => Документы
+                            [icon] => /wp-content/uploads/2019/12/document_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 3
+        )
+
+    [people] => Array
+        (
+            [id] => people
+            [name] => Люди
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/people_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_people_content
+                                )
+
+                            [id] => people
+                            [name] => Люди
+                            [icon] => /wp-content/uploads/2019/12/people_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 4
+        )
+
+    [requests] => Array
+        (
+            [id] => requests
+            [name] => Заявки
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/zayavki_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_requests_content
+                                )
+
+                            [id] => requests
+                            [name] => Заявки
+                            [icon] => /wp-content/uploads/2019/12/zayavki_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 5
+        )
+
+    [settings] => Array
+        (
+            [id] => settings
+            [name] => Настройки
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/settings_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_settings_content
+                                )
+
+                            [id] => settings
+                            [name] => Настройки
+                            [icon] => /wp-content/uploads/2019/12/settings_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 6
+        )
+
+    [referral] => Array
+        (
+            [id] => referral
+            [name] => Реферальная система
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2020/04/refer_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_referral_content
+                                )
+
+                            [id] => referral
+                            [name] => Реферальная система
+                            [icon] => /wp-content/uploads/2020/04/refer_dis.png
+                        )
+
+                )
+
+        )
+
+)
+
+tabs: Array
+(
+    [profile] => Array
+        (
+            [id] => profile
+            [name] => Профиль
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/home_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_profile_content
+                                )
+
+                            [id] => profile
+                            [name] => Профиль
+                            [icon] => /wp-content/uploads/2019/12/home_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 1
+        )
+
+    [exchange] => Array
+        (
+            [id] => exchange
+            [name] => Обмен паями
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2020/01/exchange_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_exchange_content
+                                )
+
+                            [id] => exchange
+                            [name] => Обмен паями
+                            [icon] => /wp-content/uploads/2020/01/exchange_dis.png
+                        )
+
+                )
+
+        )
+
+    [operations] => Array
+        (
+            [id] => operations
+            [name] => Операции
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/operation_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_operations_content
+                                )
+
+                            [id] => operations
+                            [name] => Операции
+                            [icon] => /wp-content/uploads/2019/12/operation_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 2
+        )
+
+    [documents] => Array
+        (
+            [id] => documents
+            [name] => Документы
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/document_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_documents_content
+                                )
+
+                            [id] => documents
+                            [name] => Документы
+                            [icon] => /wp-content/uploads/2019/12/document_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 3
+        )
+
+    [people] => Array
+        (
+            [id] => people
+            [name] => Люди
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/people_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => sort_people
+                                    [args] => Array
+                                        (
+                                            [0] => 1
+                                            [1] => client_num
+                                        )
+
+                                )
+
+                            [id] => people
+                            [name] => Люди
+                            [icon] => /wp-content/uploads/2019/12/people_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 4
+        )
+
+    [requests] => Array
+        (
+            [id] => requests
+            [name] => Заявки
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/zayavki_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_requests_content
+                                )
+
+                            [id] => requests
+                            [name] => Заявки
+                            [icon] => /wp-content/uploads/2019/12/zayavki_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 5
+        )
+
+    [settings] => Array
+        (
+            [id] => settings
+            [name] => Настройки
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2019/12/settings_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_settings_content
+                                )
+
+                            [id] => settings
+                            [name] => Настройки
+                            [icon] => /wp-content/uploads/2019/12/settings_dis.png
+                        )
+
+                )
+
+            [hidden] => 0
+            [order] => 6
+        )
+
+    [referral] => Array
+        (
+            [id] => referral
+            [name] => Реферальная система
+            [supports] => Array
+                (
+                    [0] => ajax
+                )
+
+            [public] => 0
+            [icon] => /wp-content/uploads/2020/04/refer_dis.png
+            [content] => Array
+                (
+                    [0] => Array
+                        (
+                            [callback] => Array
+                                (
+                                    [name] => rcl_tab_referral_content
+                                )
+
+                            [id] => referral
+                            [name] => Реферальная система
+                            [icon] => /wp-content/uploads/2020/04/refer_dis.png
+                        )
+
+                )
+
+        )
+
+)
+

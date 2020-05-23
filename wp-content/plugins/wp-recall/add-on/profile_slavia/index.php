@@ -1283,22 +1283,17 @@ function rcl_tab_people_content($master_id)
 {
     global $userdata, $user_ID;
 
-    $profileFields = rcl_get_profile_fields(array('user_id'=>$master_id));
+//    $args = array(
+//        'shortcode' => do_shortcode(
+//            "[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"
+//        ),
+//        'is_sort' => false
+//    );
+    $args = array(
+        'people' => get_people('user_registered', 'DESC')
+    );
 
-    $Table = new Rcl_Table(array(
-        'cols' => array(
-            array(
-                'width' => 30
-            ),
-            array(
-                'width' => 70
-            )
-        ),
-        'zebra' => true,
-        //'border' => array('table', 'rows')
-    ));
-
-    $content = rcl_get_include_template('template-people.php', __FILE__);
+    $content = rcl_get_include_template('template-people.php', __FILE__, $args);
     return $content;
 }
 /******************************/
@@ -1709,6 +1704,96 @@ if (!function_exists('array_key_first')) {
     }
 }
 
+function sort_assoc(&$arr, $sort_field, $order)
+{
+    $arg_array = array("sort_field" => $sort_field, "order" => $order);
+    //uasort
+    usort($arr, function($a, $b) use ($arg_array) {
+        $sort_field = $arg_array["sort_field"];
+        $order = $arg_array["order"];
+
+        //$log = new Rcl_Log();
+
+        $var1 = $a[$sort_field];
+        $var2 = $b[$sort_field];
+
+        if ($order == 'ASC')
+            $multiplicator = 1;
+        elseif ($order == 'DESC')
+            $multiplicator = -1;
+
+//        if ($sort_field == 'client_num')
+//        {
+        //Сравнение с пустыми, чтобы незаполненные оказались в конце сортировки
+        if ($order == 'ASC') {
+            //assume var1>var2 (var1 to the end)
+            if (empty($var1) && !empty($var2))
+                return $multiplicator * 1;
+            //assume var2>va1
+            if (!empty($var1) && empty($var2))
+                return $multiplicator * (-1);
+        }
+        if ($order == 'DESC') {
+            //assume var1<var2
+            if (empty($var1) && !empty($var2))
+                return $multiplicator * (-1);
+            //assume var2<var1
+            if (!empty($var1) && empty($var2))
+                return $multiplicator * 1;
+        }
+        if (empty($var1) && empty($var2))
+            return 0;
+        //}
+
+        //$log->insert_log("var1=".$var1."; var2=".$var2);
+
+        if ($var1 == $var2) {
+            return 0;
+        }
+
+        return ($var1 < $var2) ? ($multiplicator * (-1)) : $multiplicator * 1;
+    });
+}
+
+function get_people($sort_field, $order = 'DESC')
+{
+    $users = get_users(
+        array(
+            'fields' => array('ID', 'display_name', 'user_registered'),
+            'exclude' => 30,
+            //'order_by' => 'user_registered',
+            //'order' => 'DESC'
+        )
+    );
+    $user_arr = array();
+    foreach ($users as $user)
+    {
+        $client_num = get_user_meta($user->ID, 'client_num', true);
+        $is_verified = get_user_meta($user->ID, 'is_verified', true);
+
+        array_push($user_arr, array(
+            'id' => $user->ID,
+            'display_name' => $user->display_name,
+            'user_registered' => $user->user_registered,
+            'client_num' => $client_num,
+            'is_verified' => $is_verified
+        ));
+//        $user_arr += array(
+//            $user->ID =>
+//            )
+//        );
+    }
+
+    $log = new Rcl_Log();
+    //$log->insert_log("sort_field: ".$sort_field);
+
+    sort_assoc($user_arr, $sort_field, $order);
+
+    //$log->insert_log("arr: ".print_r($user_arr, true));
+    return $user_arr;
+
+}
+
 function save_exchange_request($input_currency, $input_sum, $output_currency = false, $output_sum = false, $bank = false, $card_num = false, $card_name = false)
 {
     global $user_ID;
@@ -1890,6 +1975,52 @@ function get_bank_commission($bank)
     else
         return false;
 }
+
+/////////////////////////
+function sort_people_tab_data($data){
+    if($data['id']!='people') return $data;
+    $data['content'][0]['callback'] = array(
+        'name' => 'sort_people',
+        'args' => array(true, 'client_num')
+    );
+    $log = new Rcl_Log();
+    $log->insert_log("data: ".print_r($data, true));
+    return $data;
+}
+
+function unsort_people_tab_data($data){
+    if($data['id']!='people') return $data;
+    $data['content'][0]['callback'] = array(
+        'name' => 'sort_people',
+        'args' => array(false, 'client_num')
+    );
+    $log = new Rcl_Log();
+    $log->insert_log("data: ".print_r($data, true));
+    return $data;
+}
+
+function sort_people($is_sort, $sort_field){
+    $args = array();
+    if ($is_sort) {
+        $args += array(
+            'shortcode' => do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='" .
+                $sort_field . "' order='DESC' exclude='30']"),
+            'is_sort' => true
+        );
+    }
+    else
+    {
+        $args += array(
+            'shortcode' => do_shortcode(
+                "[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='user_registered' exclude='30']"
+            ),
+            'is_sort' => false
+        );
+    }
+    $content = rcl_get_include_template('template-people.php', __FILE__, $args);
+    return $content;
+}
+///////////////////////////////////
 
 //Обновляем профиль пользователя
 add_action('wp', 'rcl_edit_profile', 10);
@@ -2308,6 +2439,8 @@ function rcl_edit_profile(){
                             $award_currency = $exchange_requests[$userid][$request_num]['input_currency'];
                             $award_currency = stripslashes($award_currency);
 
+                            $host_client_num = get_user_meta($ref_host, 'client_num', true);
+
                             $ref_awards = new Ref_Awards();
 
                             date_default_timezone_set('Europe/Moscow');
@@ -2315,6 +2448,7 @@ function rcl_edit_profile(){
                                 "date" => date('d.m.y H:i:s'),
                                 "host_name" => $ref_host_name,
                                 "host_id" => $ref_host,
+                                'host_client_num' => $host_client_num,
                                 "ref_name" => $current_user_name,
                                 "ref_id" => $current_user_id,
                                 "award_sum" => $award,
@@ -2899,28 +3033,97 @@ function rcl_edit_profile(){
             $is_sort = $_POST['people_sort'];
 
             if ($is_sort == 'true') {
+           // elseif (isset($_POST['get_users']) && $_POST['get_users'] == 'true')
+//        {
+//            $users = get_users(
+//                    array(
+//                        'fields' => array('ID', 'display_name'),
+//                        'role__not_in' => array('director', 'administrator')
+//                    )
+//            );
+//
+//            if (!empty($users))
+//            {
+//                $response = array();
+//                foreach ($users as $user) {
+//                    $user_verification = get_user_meta($user->ID, 'verification', true);
+//
+//                    if (isset($user_verification) && !empty($user_verification)) {
+//                        $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
+//                    }
+//                    else
+//                        $user_full_name = $user->display_name;
+//
+//                    $response += array($user->ID => $user_full_name);
+//                }
+//*****************************************************
+//                global $rcl_tabs;
+//                $rcl_tabs['people']['content'][0]['callback']['name'] = 'sort_people';
+//                $rcl_tabs['people']['content'][0]['callback']['args'] = array(true, 'client_num');
+                //add_filter('rcl_tab','sort_people_tab_data', 10, 1);
+
+//                $redirect_url = rcl_get_tab_permalink($user_ID, 'people') . '&updated=true';
+//
+//                wp_redirect($redirect_url);
+
+                //apply_filters('rcl_tab');
+                //$log->insert_log("tabs: ".print_r($rcl_tabs, true));
+                //apply_filters('rcl_tab');//, true, $_POST['sort_field']);
+
                 //Кэширование ответа для уменьшения нагрузки на сервер и на бд
                 if (get_transient('people_sorted_data'))
                     $response = get_transient('people_sorted_data');
                 else {
-                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
-                        $_POST['sort_field'] . "' order='DESC' exclude='30']");
-
+                    $response =  get_people('client_num', 'ASC');
                     set_transient('people_sorted_data', $response, 10 * MINUTE_IN_SECONDS);
+//                    $response = array();
+//                    foreach ($people as $user)
+//                    {
+//                        array_push($response, $user);
+//                    }
+//                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
+//                        $_POST['sort_field'] . "' order='DESC' exclude='30']");
+
+                    //set_transient('people_sorted_data', $response, 10 * MINUTE_IN_SECONDS);
                 }
             }
             elseif ($is_sort == 'false') {
                 if (get_transient('people_unsorted_data'))
                     $response = get_transient('people_unsorted_data');
                 else {
-                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
-                        'user_registered' . "' order='DESC' exclude='30']");
-
+                    $response =  get_people('user_registered', 'DESC');
                     set_transient('people_unsorted_data', $response, 10 * MINUTE_IN_SECONDS);
+//                    $response = array();
+//                    foreach ($people as $user)
+//                    {
+//                        array_push($response, $user);
+//                    }
                 }
+//                    $response = do_shortcode("[userlist template='slavia' inpage='10' data='user_registered,profile_fields' orderby='".
+//                        'user_registered' . "' order='DESC' exclude='30']");
+//
+//
+//                }
             }
-            echo $response;
+            //$log->insert_log(json_encode($response));
+
+            echo json_encode($response);
             exit;
+        }
+
+        elseif (isset($_POST['ref_sort']) && !empty($_POST['ref_sort'])) {
+            $is_sort = $_POST['ref_sort'];
+            $ref_awards = new Ref_Awards();
+
+            $ref_awards->sort_all('', '');
+//            if ($is_sort == 'true') {
+//                $response = $ref_awards->sort_all('client_num', 'ASC');
+//            }
+//            elseif ($is_sort == 'false') {
+//                $response = $ref_awards->sort_all('date', 'DESC');
+//            }
+            //echo json_encode($response);
+            //exit;
         }
 
         elseif (isset($_POST['search']) && !empty($_POST['search']))

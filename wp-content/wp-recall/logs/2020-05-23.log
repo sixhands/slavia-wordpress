@@ -1,0 +1,1268 @@
+arr: Array
+(
+    [0] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [8] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [5] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [11] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [12] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [15] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [7] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [1] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [9] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [14] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [7] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [11] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [1] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [14] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+    [9] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [0] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [5] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [8] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [12] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [15] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [0] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [8] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [5] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [11] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [12] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [15] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [7] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [1] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [9] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [14] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [0] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [8] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [5] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [11] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [12] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [15] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [7] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [1] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [9] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [14] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [7] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [11] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [1] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [14] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+    [9] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [0] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [3] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [5] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [8] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [12] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [15] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [15] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [7] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [5] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [4] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [11] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [3] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [2] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [9] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [0] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [8] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [13] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [12] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [14] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [6] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+)
+
+arr: Array
+(
+    [8] => Array
+        (
+            [id] => 24
+            [display_name] => Директор
+            [user_registered] => 2020-02-09 00:15:41
+            [client_num] => 3
+            [is_verified] => yes
+        )
+
+    [11] => Array
+        (
+            [id] => 79
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-05-10 09:06:15
+            [client_num] => 4
+            [is_verified] => yes
+        )
+
+    [9] => Array
+        (
+            [id] => 72
+            [display_name] => Купавская Светлана Николаевна
+            [user_registered] => 2020-04-14 11:50:38
+            [client_num] => 7
+            [is_verified] => yes
+        )
+
+    [4] => Array
+        (
+            [id] => 84
+            [display_name] => Бодункова Ирина Ярославовна
+            [user_registered] => 2020-05-22 08:58:25
+            [client_num] => 42
+            [is_verified] => yes
+        )
+
+    [14] => Array
+        (
+            [id] => 7
+            [display_name] => Василек Василий Васильевич
+            [user_registered] => 2020-01-10 05:32:21
+            [client_num] => 111
+            [is_verified] => 
+        )
+
+    [1] => Array
+        (
+            [id] => 1
+            [display_name] => admin
+            [user_registered] => 2019-12-23 16:51:45
+            [client_num] => 134
+            [is_verified] => yes
+        )
+
+    [6] => Array
+        (
+            [id] => 6
+            [display_name] => Петров Петр Петрович
+            [user_registered] => 2020-01-07 15:01:01
+            [client_num] => 456756
+            [is_verified] => yes
+        )
+
+    [0] => Array
+        (
+            [id] => 63
+            [display_name] => aaa
+            [user_registered] => 2020-03-27 10:26:32
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [2] => Array
+        (
+            [id] => 73
+            [display_name] => Купавский Антон Александрович
+            [user_registered] => 2020-04-14 16:32:14
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [3] => Array
+        (
+            [id] => 74
+            [display_name] => bbb
+            [user_registered] => 2020-04-16 12:54:36
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [5] => Array
+        (
+            [id] => 87
+            [display_name] => ccc
+            [user_registered] => 2020-05-22 12:01:19
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [7] => Array
+        (
+            [id] => 88
+            [display_name] => ddd
+            [user_registered] => 2020-05-22 12:33:04
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+    [10] => Array
+        (
+            [id] => 85
+            [display_name] => maverick
+            [user_registered] => 2020-05-22 10:14:34
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [12] => Array
+        (
+            [id] => 12
+            [display_name] => Петрова Татьяна Ивановна
+            [user_registered] => 2020-01-12 08:53:00
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [13] => Array
+        (
+            [id] => 13
+            [display_name] => Sixhands Development
+            [user_registered] => 2020-01-21 10:34:59
+            [client_num] => 
+            [is_verified] => 
+        )
+
+    [15] => Array
+        (
+            [id] => 90
+            [display_name] => zima zima zima
+            [user_registered] => 2020-05-22 18:45:13
+            [client_num] => 
+            [is_verified] => yes
+        )
+
+)
+
+items: Array
+(
+    [63] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 22.05.20 15:06:08
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ccc
+                    [ref_id] => 87
+                    [award_sum] => 0.07
+                    [award_currency] => Стандарт плутониевого металла
+                    [status] => processing
+                )
+
+            [1] => Array
+                (
+                    [date] => 22.05.20 15:06:13
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ccc
+                    [ref_id] => 87
+                    [award_sum] => 0.35
+                    [award_currency] => PRIZM
+                    [status] => paid
+                )
+
+            [2] => Array
+                (
+                    [date] => 22.05.20 15:06:24
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ccc
+                    [ref_id] => 87
+                    [award_sum] => 0.07
+                    [award_currency] => "Бетон-м450"_[м³]
+                    [status] => processing
+                )
+
+            [3] => Array
+                (
+                    [date] => 22.05.20 15:06:28
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ccc
+                    [ref_id] => 87
+                    [award_sum] => 0.42
+                    [award_currency] => PRIZM
+                    [status] => paid
+                )
+
+            [4] => Array
+                (
+                    [date] => 22.05.20 15:58:29
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ddd
+                    [ref_id] => 88
+                    [award_sum] => 0.42
+                    [award_currency] => PRIZM
+                    [status] => paid
+                )
+
+            [5] => Array
+                (
+                    [date] => 22.05.20 15:58:33
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ddd
+                    [ref_id] => 88
+                    [award_sum] => 0.7
+                    [award_currency] => PRIZM
+                    [status] => paid
+                )
+
+            [6] => Array
+                (
+                    [date] => 22.05.20 15:58:48
+                    [host_name] => aaa
+                    [host_id] => 63
+                    [ref_name] => ddd
+                    [ref_id] => 88
+                    [award_sum] => 0.35
+                    [award_currency] => Сталь
+                    [status] => processing
+                )
+
+        )
+
+    [84] => Array
+        (
+            [0] => Array
+                (
+                    [date] => 22.05.20 17:41:54
+                    [host_name] => Бодункова Ирина Ярославовна
+                    [host_id] => 84
+                    [ref_name] => zima zima zima
+                    [ref_id] => 89
+                    [award_sum] => 0
+                    [award_currency] => PRIZM
+                    [status] => paid
+                )
+
+            [1] => Array
+                (
+                    [date] => 22.05.20 17:48:36
+                    [host_name] => Бодункова Ирина Ярославовна
+                    [host_id] => 84
+                    [ref_name] => zima zima zima
+                    [ref_id] => 89
+                    [award_sum] => 0
+                    [award_currency] => Prizm
+                    [status] => processing
+                )
+
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:13
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.35
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:28
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:58:29
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.42
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [5] => Array
+        (
+            [date] => 22.05.20 15:58:33
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.7
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [6] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [7] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+    [8] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+)
+

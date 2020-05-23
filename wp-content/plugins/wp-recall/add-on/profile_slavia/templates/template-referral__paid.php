@@ -4,8 +4,15 @@
             <div class="col-2 text-left">
                 Дата
             </div>
-            <div class="col-2 text-left">
-                Имя пригласившего
+            <div class="col-2 text-left client_num_sort">
+                <div class="row no-gutters">
+                    <div class="col-9">
+                        <span>Пригласивший</span>
+                    </div>
+                    <div class="col-3">
+                        <img class="client_num_sort_icon" src="/wp-content/uploads/2020/05/sort_icon.png">
+                    </div>
+                </div>
             </div>
             <div class="col-2 text-left">
                 Имя приглашенного
@@ -22,11 +29,15 @@
 
     <?php if(isset($ref_data) && !empty($ref_data)): ?>
         <?php foreach($ref_data as $item): ?>
+            <?php $client_num = get_user_meta($item['host_id'], 'client_num', true); ?>
             <div class="table-text w-100" data-user-id="<?=$item["host_id"] ?>">
                 <div class="row">
                     <div class="col-2 text-left ref_date"><?=$item["date"] ?></div>
 
-                    <div class="col-2 text-left host_name"><?=$item["host_name"] ?></div>
+                    <div class="col-2 text-left host_name">
+                        <?php if (!empty($client_num)) echo $client_num;
+                            else echo $item["host_name"]; ?>
+                    </div>
 
                     <div class="col-2 text-left ref_name"><?=$item["ref_name"] ?></div>
 
