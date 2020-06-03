@@ -1,6 +1,19 @@
-/*#tawkchat-chat-bubble-close + img {*/
-/*    display: none;*/
-/*}*/
+#prizm_requisites, #slav_requisites {
+    margin-top: 23px;
+}
+/*****ИНСТРУКЦИЯ НА СТРАНИЦЕ ОБМЕНА****/
+#instruction_header {
+    width: 80%;
+    margin: 25px auto;
+    text-align: center;
+}
+#instruction_text_left > .text_left_content, #instruction_text_right > .text_right_content {
+    height: 90%;
+}
+#instruction_text_left > .btn-custom-two {
+    margin-left: 33%;
+}
+/******************************************/
 .people_list div.client_num_sort {
     padding-left: 0;
     padding-right: 0;

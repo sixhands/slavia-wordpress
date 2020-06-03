@@ -15,12 +15,28 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content='Александр Земянский' />
+    <meta name="copyright" lang="ru" content='ООО "Высокотехнологичные Розничные Решения"' />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
     <script>
         var ipay = new IPAY({api_token: 'ncrga09jcvm6fdago0cn9j92gh'/*'c5fv4u1thn44fvba2u2jatuva2'*/});
     </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5e88b7b169e9320caac03eff/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 </head>
 
 <body <?php body_class(); ?>>

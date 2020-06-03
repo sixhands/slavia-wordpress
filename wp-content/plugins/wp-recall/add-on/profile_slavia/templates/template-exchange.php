@@ -1,7 +1,13 @@
 <?php
 //exchange_address - это адрес SLAV
-$exchange_address = get_field('exchange_address', 306);
-$slav_text = get_field('slav_text', 306);
+$slav_address = get_field('slav_address', 306);
+$prizm_address = get_field('prizm_address', 306);
+//$slav_text = get_field('slav_text', 306);
+$instruction_header = get_field('instruction_header', 306);
+$instruction_text_left = get_field('instruction_text_left', 306);
+$instruction_text_right = get_field('instruction_text_right', 306);
+
+
 $asset_inputs = array();
 
 for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
@@ -16,14 +22,14 @@ for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
     //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
     elseif (strcasecmp($asset_input['asset_name'], 'prizm') == 0)
     {
-        $asset_input['asset_requisites'] = 'PRIZM-AWTX-HDBX-ADDH-7SMM7';
+        $asset_input['asset_requisites'] = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
         $asset_input['asset_rate_rubles'] = $prizm_price;
 
         $asset_inputs[] = $asset_input;
     }
     elseif (strcasecmp($asset_input['asset_name'], 'slav') == 0)
     {
-        $asset_input['asset_requisites'] = $exchange_address;
+        $asset_input['asset_requisites'] = $slav_address;
         $asset_input['asset_rate_rubles'] = 1;
 
         $asset_inputs[] = $asset_input;
@@ -68,39 +74,66 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 ?>
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
-        <form id="deposit_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
-            <h1 class="coop_maps-h1">Имущественный взнос SLAV</h1>
+<!--        <form id="deposit_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">-->
+<!--            <h1 class="coop_maps-h1">Имущественный взнос SLAV</h1>-->
+<!---->
+<!--            <div class="col-12 pryamougolnik">-->
+<!--                <p>Внесите имущественный взнос на адрес</p>-->
+<!--                <h3>--><?php //if (isset($exchange_address) && !empty($exchange_address))
+//                            echo $exchange_address; ?>
+<!--                </h3>-->
+<!--                <button type="submit" class="btn-custom-two  text-center">Отправить</button>-->
+<!--            </div>-->
 
-            <div class="col-12 pryamougolnik">
-                <p>Внесите имущественный взнос на адрес</p>
-                <h3><?php if (isset($exchange_address) && !empty($exchange_address))
-                            echo $exchange_address; ?>
-                </h3>
-                <button type="submit" class="btn-custom-two  text-center">Отправить</button>
-            </div>
+<!--            <div class="col-12">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-lg-4" style="margin-top:20px;">-->
+<!--                        <div class="row input-exchange" style="margin-top: 0px">-->
+<!--                            <span>Количество монет SLAV</span>-->
+<!--                            <input type="hidden" value="SLAV" name="exchange[input_currency]">-->
+<!--                            <input required placeholder="0" type="text" class="" name="exchange[input_sum]">-->
+<!--                        </div>-->
+<!---->
+<!--                        <div class="row">-->
+<!--                            <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="col-lg-8">-->
+<!--                        --><?php //if (isset($slav_text) && !empty($slav_text))
+//                            echo '<p class="exchange_deposit_text">'.$slav_text.'</p>'; ?>
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </form>-->
+
+        <div id="exchange_instruction_container" class="coop_maps question-bg col-lg-12">
+            <h1 id="instruction_header" class="coop_maps-h1">
+                <?php if (isset($instruction_header) && !empty($instruction_header))
+                    echo $instruction_header; ?>
+            </h1>
 
             <div class="col-12">
                 <div class="row">
-                    <div class="col-lg-4" style="margin-top:20px;">
-                        <div class="row input-exchange" style="margin-top: 0px">
-                            <span>Количество монет SLAV</span>
-                            <input type="hidden" value="SLAV" name="exchange[input_currency]">
-                            <input required placeholder="0" type="text" class="" name="exchange[input_sum]">
+                    <div id="instruction_text_left" class="col-7">
+                        <div class="text_left_content">
+                            <?php if (isset($instruction_text_left) && !empty($instruction_text_left))
+                                echo $instruction_text_left; ?>
                         </div>
-
-                        <div class="row">
-                            <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
-                        </div>
+                        <button id="exchange_waves_btn" class="btn-custom-two  text-center">Отправить</button>
                     </div>
 
-                    <div class="col-lg-8">
-                        <?php if (isset($slav_text) && !empty($slav_text))
-                            echo '<p class="exchange_deposit_text">'.$slav_text.'</p>'; ?>
+                    <div id="instruction_text_right" class="col-5">
+                        <div class="text_right_content">
+                            <?php if (isset($instruction_text_right) && !empty($instruction_text_right))
+                                echo $instruction_text_right; ?>
+                        </div>
+                        <button id="exchange_chat_btn" class="btn-custom-two  text-center">Чат с менеджером</button>
                     </div>
                 </div>
             </div>
-
-        </form>
+        </div>
 
 
         <form id="get_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
@@ -249,7 +282,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         </form>
 
         <form id="get_ruble_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
-            <h1 class="coop_maps-h1">Получить Рубль</h1>
+            <div class="row headers">
+                <div class="col-6">
+                    <h1 class="coop_maps-h1">Получить Рубль</h1>
+                </div>
+
+                <div class="col-6">
+                    <p id="prizm_requisites">Наши реквизиты для перевода PRIZM:</p>
+                    <p><?php if (is_var($prizm_address)) echo $prizm_address ?></p>
+                </div>
+            </div>
 
             <input type="hidden" value="PRIZM" name="exchange[input_currency]">
             <input type="hidden" value="RUB" name="exchange[output_currency]">
@@ -307,7 +349,16 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         </form>
 
         <form id="get_ruble_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
-            <h1 class="coop_maps-h1">Получить Рубль</h1>
+            <div class="row headers">
+                <div class="col-6">
+                    <h1 class="coop_maps-h1">Получить Рубль</h1>
+                </div>
+
+                <div class="col-6">
+                    <p id="slav_requisites">Наши реквизиты для перевода SLAV:</p>
+                    <p><?php if (is_var($slav_address)) echo $slav_address ?></p>
+                </div>
+            </div>
 
             <input type="hidden" value="SLAV" name="exchange[input_currency]">
             <input type="hidden" value="RUB" name="exchange[output_currency]">

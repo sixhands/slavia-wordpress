@@ -300,6 +300,14 @@ jQuery(document).ready(function(){
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    jQuery('#exchange_waves_btn').click(() => {
+        window.open('https://waves.exchange/', '_blank');
+    });
+
+    jQuery('#exchange_chat_btn').click(() => {
+        Tawk_API.toggle();
+    });
+
     jQuery('.ref-tab__content.' + jQuery('.referral-tabs__item.active').attr('id') ).css('display', 'block');
 
     jQuery('.referral-tabs__item').click(function() {

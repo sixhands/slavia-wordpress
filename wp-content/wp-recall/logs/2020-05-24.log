@@ -1,0 +1,215 @@
+asset_rate: 350
+doc_1: Array
+(
+    [date] => 24.05.20 12:37:46
+    [filename] => -приема-Блоки-Bonolit-d500-Пайщик-№42-Ирина-Бодункова-Ярославна-24-05-12-37.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Блоки-Bonolit-d500-Пайщик-№42-Ирина-Бодункова-Ярославна-24-05-12-37.pdf
+)
+
+asset_rate: 350
+asset_rate: 532
+doc_1: Array
+(
+    [date] => 24.05.20 14:33:38
+    [filename] => -приема-Блоки-Bonolit-d500-Пайщик-№888-Вова-вар-Вова-24-05-14-33.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/05/Акт-приема-Блоки-Bonolit-d500-Пайщик-№888-Вова-вар-Вова-24-05-14-33.pdf
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:41:54
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => PRIZM
+            [status] => paid
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+)
+
