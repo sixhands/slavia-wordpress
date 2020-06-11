@@ -38,6 +38,86 @@ function rcl_check_profile_form(){
 var tooltip, // global variables oh my! Refactor when deploying!
     hidetooltiptimer;
 
+function save_verification_form()
+{
+    let prizm_address = jQuery('input#prizm_address').val();
+    let prizm_key = jQuery('input#prizm_public_key').val();
+    let waves_address = jQuery('input#waves_address').val();
+    let form = jQuery('form#profile_verification');
+
+    let form_obj = {};
+
+    form.find('input:not("#submit_verification")').each((index, val) => {
+        let el = jQuery(val);
+        if (el.attr('id') !== 'passport_photos')
+            form_obj[el.attr('name')] = el.val();
+        else
+        {
+            return true;//continue loop //form_obj[el.attr('name')] = /*JSON.stringify(*/el.prop('files')/*)*/;
+            //console.log(el.prop('files'));
+        }
+    });
+
+    //console.log(form_obj);
+    sessionStorage.setItem("prizm_address", prizm_address);
+    sessionStorage.setItem("prizm_key", prizm_key);
+    sessionStorage.setItem("waves_address", waves_address);
+    sessionStorage.setItem("form", JSON.stringify(form_obj));
+
+    //sessionStorage.setItem("passport_photos", JSON.stringify(jQuery('input#passport_photos').prop('files')));
+
+
+    //console.log(jQuery('input#passport_photos'));
+}
+
+function get_verification_form()
+{
+    // If values are not blank, restore them to the fields
+    var prizm_address = sessionStorage.getItem('prizm_address');
+    if (prizm_address !== null) jQuery('#prizm_address').val(prizm_address);
+
+    var prizm_key = sessionStorage.getItem('prizm_key');
+    if (prizm_key !== null) jQuery('#prizm_public_key').val(prizm_key);
+
+    var waves_address= sessionStorage.getItem('waves_address');
+    if (waves_address!== null) jQuery('#waves_address').val(waves_address);
+
+    var form= sessionStorage.getItem('form');
+    if (form!== null && form !== 'undefined')
+    {
+        let form_el = jQuery('form#profile_verification');
+        let form_data = JSON.parse(form);
+        Object.keys(form_data).forEach(function(property)
+        {
+            if (form_data[property] !== '') {
+                if (property.indexOf('passport_photos') === -1)
+                    form_el.find('input[name="' + property + '"]').val(form_data[property]);
+                else {
+                    return true; //continue loop
+                    // let files = form_data[property];
+                    // console.log(files);
+                    // try {
+                    //     var o = JSON.parse(files);
+                    //     if (o && typeof o === "object") {
+                    //         form_el.find('input[name="' + property + '"]').prop('files', o);
+                    //     }
+                    // }
+                    // catch (e) {
+                    //
+                    // }
+                }
+            }
+        });
+    }
+
+    // var photos = sessionStorage.getItem('passport_photos');
+    // if (photos!== null && photos !== 'undefined' && typeof photos === 'object')
+    // {
+    //     jQuery('input#passport_photos')[0].files = photos;
+    // }
+    // console.log(photos);
+}
+
 function createtooltip(){ // call this function ONCE at the end of page to create tool tip object
     tooltip = document.createElement('div')
     tooltip.style.cssText =
@@ -297,9 +377,47 @@ function init_ref_buttons()
 jQuery(document).ready(function(){
     tab_config();
 });
+
+window.onload = function() {
+    //Если вкладка профиля
+    if (jQuery('form#profile_verification').length > 0 && jQuery('div#tab-profile').length > 0)
+        get_verification_form();
+};
+window.addEventListener('beforeunload', function (e) {
+    //Если вкладка профиля
+    if (jQuery('form#profile_verification').length > 0 && jQuery('div#tab-profile').length > 0)
+        save_verification_form();
+    delete e['returnValue'];
+});
+
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    // jQuery('.verification_title .verification_video_link').click((e) => {
+    //     jQuery(this).trigger('click');
+    // });
+
+    jQuery('.verification_title').click(function(event) {
+
+        if (jQuery(event.target).hasClass('info-href') || jQuery(event.target).hasClass('verification_video_link')) {
+            jQuery(event.target).trigger('click');
+            return false;
+        }
+        let form = jQuery(this).siblings('form#profile_verification');
+        let img = jQuery(this).find('img.verification_close-btn');
+        let display = form.css('display');
+        if (display === 'none')
+        {
+            form.slideDown("slow");
+            img.attr('src', '/wp-content/uploads/2019/12/open.png');
+        }
+        else
+        {
+            form.slideUp("slow");
+            img.attr('src', '/wp-content/uploads/2019/12/close.png');
+        }
+    });
+
     jQuery('#exchange_waves_btn').click(() => {
         window.open('https://waves.exchange/', '_blank');
     });

@@ -11,12 +11,13 @@ $instruction_text_right = get_field('instruction_text_right', 306);
 $asset_inputs = array();
 
 for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
-     !empty($asset_input) && count($asset_input) > 0;
+     $i <= 10;
      $i++, $asset_input = get_field('asset_input_'.$i, 306)
     )
 {
-//    $log = new Rcl_Log();
-//    $log->insert_log('asset_input: '.print_r($asset_input, true));
+    if (empty($asset_input) || count($asset_input) == 0)
+        continue;
+
     if (!empty($asset_input['asset_name']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_rate_rubles']))
         $asset_inputs[] = $asset_input;
     //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
@@ -39,10 +40,12 @@ for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
 $asset_outputs = array();
 
 for ($i = 1, $asset_output = get_field('asset_output_'.$i, 306);
-     !empty($asset_output) && count($asset_output) > 0;
+     $i <= 10;
      $i++, $asset_output = get_field('asset_output_'.$i, 306)
     )
 {
+    if (empty($asset_output) || count($asset_output) == 0)
+        continue;
     if (!empty($asset_output['asset_name']) && !empty($asset_output['asset_rate_rubles']))
         $asset_outputs[] = $asset_output;
     //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос

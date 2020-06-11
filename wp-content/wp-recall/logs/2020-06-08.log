@@ -1,0 +1,47 @@
+sberbank_digest:32A960927463D9E1BE8CD972EC3F6D327B12375F59DD358F9816712F093538CE
+hmac_sha256 hash: 32A960927463D9E1BE8CD972EC3F6D327B12375F59DD358F9816712F093538CE
+checksum is equal
+_________________________________
+doc_1: Array
+(
+    [date] => 08.06.20 14:44:42
+    [filename] => -приема-RUB-Пайщик-№134-dhgdhdgdfgdf-gfdgdfgdfg-fhgghdfg-08-06-14-44.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-приема-RUB-Пайщик-№134-dhgdhdgdfgdf-gfdgdfgdfg-fhgghdfg-08-06-14-44.pdf
+)
+
+doc_1: Array
+(
+    [date] => 08.06.20 14:44:53
+    [filename] => -приема-RUB-Пайщик-№134-dhgdhdgdfgdf-gfdgdfgdfg-fhgghdfg-08-06-14-44-1.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-приема-RUB-Пайщик-№134-dhgdhdgdfgdf-gfdgdfgdfg-fhgghdfg-08-06-14-44-1.pdf
+)
+
+email: dafa@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: fff</p>
+    <p>Пароль: fff</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJmZmYiLCJmNGI5ZWMzMGFkOWY2OGY4OWIyOTYzOTc4NmNiNjJlZiJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJmZmYiLCJmNGI5ZWMzMGFkOWY2OGY4OWIyOTYzOTc4NmNiNjJlZiJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+)
+

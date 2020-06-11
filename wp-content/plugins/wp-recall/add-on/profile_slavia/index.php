@@ -203,12 +203,17 @@ function rcl_block_profile_pages_by_role($tab)
                 $tab = array();
             }
         }
-        if ($current_role == 'user' || $current_role == 'need-confirm' || $current_role == 'not_verified' ||
-            !isset($current_role) || empty($current_role) )
+        if ($current_role == 'user' || !isset($current_role) || empty($current_role) )
         {
-            if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings') {
+            if ($tab['id'] == 'requests' || $tab['id'] == 'people' || $tab['id'] == 'settings')
+            {
                 $tab = array();
             }
+        }
+        if ($current_role == 'need-confirm' || $current_role == 'not_verified')
+        {
+            if ($tab['id'] != 'profile')
+                $tab = array();
         }
     }
     return $tab;
@@ -645,6 +650,15 @@ function get_doc_fields($data)
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
+function hide_nav_menu_items()
+{
+    $current_role = rcl_get_current_role();
+    if ($current_role == 'need-confirm' || $current_role == 'not_verified')
+        echo "<style>#menu-header-menu-1 a[href='/coop-cards'], #menu-header-menu-1 a[href='/docs'] {display: none;} " .
+            ".mobile-menu-ul a[href='/coop-cards'], .mobile-menu-ul a[href='/docs'] {display: none;}</style>";
+}
+add_action('init','hide_nav_menu_items');
+
 
 add_action('init','rcl_tab_profile');
 add_action('init','rcl_tab_exchange');

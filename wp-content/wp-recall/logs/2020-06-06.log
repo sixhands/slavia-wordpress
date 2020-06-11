@@ -1,0 +1,42 @@
+doc_1: Array
+(
+    [date] => 06.06.20 11:48:35
+    [filename] => -приема-SLAV-lt.-Пайщик-№7-Светлана-Купавская-Николаевна-06-06-11-48.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-приема-SLAV-lt.-Пайщик-№7-Светлана-Купавская-Николаевна-06-06-11-48.pdf
+)
+
+email: hr26@gmx.de; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: heiny</p>
+    <p>Пароль: hr261056</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJoZWlueSIsIjk4ZGNlODNkYTU3YjAzOTVlMTYzNDY3YzlkYWU1MjFiIl0%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJoZWlueSIsIjk4ZGNlODNkYTU3YjAzOTVlMTYzNDY3YzlkYWU1MjFiIl0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+sberbank_digest:BF1290D1C6D39ACF7A8F7C1C0800274830F97D3451976C2C5961477CB51C7C68
+hmac_sha256 hash: BF1290D1C6D39ACF7A8F7C1C0800274830F97D3451976C2C5961477CB51C7C68
+checksum is equal
+_________________________________
+asset_rate: 1
+doc_1: Array
+(
+    [date] => 06.06.20 12:35:46
+    [filename] => -приема-RUB-Пайщик-№3-Сергей-Сергеев-Андреевич-06-06-12-35.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-приема-RUB-Пайщик-№3-Сергей-Сергеев-Андреевич-06-06-12-35.pdf
+)
+
+sberbank_digest:647913CF0F13D90DD6D8311EEF9EB70376300712273D42D4AB9E297C36E67970
+hmac_sha256 hash: 647913CF0F13D90DD6D8311EEF9EB70376300712273D42D4AB9E297C36E67970
+checksum is equal
+_________________________________
+doc_1: Array
+(
+    [date] => 06.06.20 16:11:06
+    [filename] => -приема-RUB-Пайщик-№3-Сергей-Сергеев-Андреевич-06-06-16-11.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-приема-RUB-Пайщик-№3-Сергей-Сергеев-Андреевич-06-06-16-11.pdf
+)
+

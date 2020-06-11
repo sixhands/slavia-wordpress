@@ -164,8 +164,8 @@
                 <p>Пайщик: <br> №<?php if (is_var($client_num)) echo $client_num; ?> <br>
                     <?php if (is_var($client_fio)) echo $client_fio;?>___________________________________________________________<br>
                     <?php if (isset($prizm_address)) echo $prizm_address.'<br>'; ?>
-                    <?php if (isset($slav_address)) echo $slav_address.'<br>'; ?>
                     <?php if (isset($public_key)) echo $public_key.'<br>'; ?>
+                    <?php if (isset($slav_address)) echo $slav_address.'<br>'; ?>
                 </p>
             </td>
         </tr>

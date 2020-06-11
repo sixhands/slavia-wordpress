@@ -28,8 +28,8 @@ jQuery("#profil_user_btn")
 
 jQuery('div.question-text a').attr('target', '_blank');
 //открытие текста вопроса
-jQuery('.question').click(function (){
-        var id = this.id;
+jQuery('.question-title').click(function (){
+        var id = jQuery(this).parents('.question').attr('id');
         var block = jQuery('#'+id+ ' .question-text').css('display');
         if (block == 'none')
         {
