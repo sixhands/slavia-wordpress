@@ -1,0 +1,1364 @@
+doc_date: 06.05.20
+filter_date: 13.06.20
+doc_date: 06.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 22.05.20
+filter_date: 13.06.20
+doc_date: 08.06.20
+filter_date: 13.06.20
+doc_date: 08.06.20
+filter_date: 13.06.20
+doc_date: 08.06.20
+filter_date: 13.06.20
+doc_date: 08.06.20
+filter_date: 13.06.20
+doc_date: 06.05.20
+filter_date: 22.05.20
+doc_date: 06.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 22.05.20
+filter_date: 22.05.20
+doc_date: 08.06.20
+filter_date: 22.05.20
+doc_date: 08.06.20
+filter_date: 22.05.20
+doc_date: 08.06.20
+filter_date: 22.05.20
+doc_date: 08.06.20
+filter_date: 22.05.20
+doc_date: 06.05.20
+filter_date: 08.06.20
+doc_date: 06.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 06.05.20
+filter_date: 08.06.20
+doc_date: 06.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 22.05.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 08.06.20
+filter_date: 08.06.20
+doc_date: 06.05.20
+filter_date: 22.05.20
+06.05.20==22.05.20: 
+doc_date: 06.05.20
+filter_date: 22.05.20
+06.05.20==22.05.20: 
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 22.05.20
+filter_date: 22.05.20
+22.05.20==22.05.20: 1
+doc_date: 08.06.20
+filter_date: 22.05.20
+08.06.20==22.05.20: 
+doc_date: 08.06.20
+filter_date: 22.05.20
+08.06.20==22.05.20: 
+doc_date: 08.06.20
+filter_date: 22.05.20
+08.06.20==22.05.20: 
+doc_date: 08.06.20
+filter_date: 22.05.20
+08.06.20==22.05.20: 
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5.1
+    [output_sum] => 22.13
+    [bank] => bank1
+    [date] => 27.03.20 15:13:22
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 2
+    [input_currency] => RUB
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 987654
+    [date] => 02.04.20 18:17:50
+    [deposit_type] => Целевая программа 3
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => Плутоний
+    [output_sum] => 19.69
+    [output_currency] => Медь
+    [requisites] => 07645934
+    [date] => 04.04.20 14:06:11
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 10
+    [output_sum] => 21.15
+    [bank] => bank1
+    [date] => 05.05.20 15:23:17
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => RUB
+    [output_currency] => PRIZM
+    [input_sum] => 5
+    [output_sum] => 1.91
+    [bank] => bank1
+    [date] => 05.05.20 16:58:36
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 12.24
+    [bank] => bank1
+    [date] => 09.05.20 15:00:42
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => SLAV
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 4.5
+    [bank] => bank1
+    [date] => 09.05.20 15:41:09
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => RUB
+    [output_sum] => 1
+    [output_currency] => Баня 6,5х5,5 сруб
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 07645934
+    [date] => 06.06.20 12:26:33
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 31500
+    [input_currency] => RUB
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 07645934
+    [date] => 06.06.20 16:05:28
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => RUB
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 987654
+    [date] => 04.04.20 16:13:55
+    [deposit_type] => Целевая программа 5
+    [status] => paid
+)
+
+
+request: Array
+(
+    [input_currency] => RUB
+    [output_currency] => SLAV
+    [input_sum] => 12
+    [output_sum] => 10.8
+    [bank] => bank1
+    [date] => 05.05.20 16:07:42
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => BTC
+    [output_sum] => 2.2
+    [output_currency] => Золото
+    [requisites] => ooooooooooooooooooooooooooo1
+    [date] => 17.05.20 13:49:33
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => Стандарт плутониевого металла
+    [output_sum] => 199.92
+    [output_currency] => Золото 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 19.05.20 15:23:14
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => RUB
+    [output_currency] => SLAV
+    [input_sum] => 5
+    [output_sum] => 5
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [date] => 19.05.20 16:20:15
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Сталь
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 19.05.20 17:40:47
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 0.08
+    [input_currency] => Космическая станция "Яркий" класса "Планетарный Потрошитель" К/С. "Яркий" 559-889-222/77
+    [output_sum] => 10000000
+    [output_currency] => "Бетон-м450"_[м³] 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 19.05.20 18:02:20
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 6.39
+    [bank] => bank3
+    [card_num] => 15464
+    [card_name] => fghfdtsgdffhgj
+    [date] => 21.05.20 14:48:50
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 1.26
+    [output_currency] => Bitcoin
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 21.05.20 14:52:31
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => Стандарт плутониевого металла
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 21.05.20 14:55:19
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 0.6
+    [output_currency] => Золото 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 21.05.20 15:13:30
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 0.6
+    [output_currency] => Золото 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 22.05.20 20:27:25
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => RUB
+    [output_currency] => PRIZM
+    [input_sum] => 10
+    [output_sum] => 8
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [date] => 22.05.20 20:46:46
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 5.94
+    [bank] => bank1
+    [card_num] => 678
+    [card_name] => admim
+    [date] => 22.05.20 20:49:18
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Сталь
+    [output_sum] => 600
+    [output_currency] => Prizm
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 20:51:27
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => Стандарт плутониевого металла
+    [output_sum] => 651423.39
+    [output_currency] => Prizm
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 21:05:19
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 500
+    [output_sum] => 589
+    [bank] => bank1
+    [card_num] => 4567456
+    [card_name] => fgfhsf
+    [date] => 22.05.20 21:09:57
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => RUB
+    [output_currency] => SLAV
+    [input_sum] => 1
+    [output_sum] => 1
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [date] => 08.06.20 14:39:56
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 50
+    [output_sum] => 93.6
+    [bank] => bank2
+    [date] => 05.05.20 20:43:03
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 7.38
+    [bank] => bank2
+    [date] => 16.05.20 21:20:50
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 7.7
+    [bank] => bank1
+    [date] => 16.05.20 21:23:48
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Нефть
+    [output_sum] => 0.58
+    [output_currency] => Медь
+    [requisites] => 56475456
+    [date] => 16.05.20 22:43:17
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => BTC
+    [output_sum] => 83.65
+    [output_currency] => Серебро
+    [requisites] => ooooooooooooooooooooooooooo1
+    [date] => 17.05.20 13:22:15
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Нефть
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 56475456
+    [date] => 17.05.20 15:08:41
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Нефть
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 56475456
+    [date] => 17.05.20 15:28:06
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Блоки Bonolit d500
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 17.05.20 15:39:57
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Блоки Bonolit d500
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 17.05.20 15:46:49
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => BTC
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => ooooooooooooooooooooooooooo1
+    [date] => 17.05.20 16:15:10
+    [deposit_type] => Кооперативные Карты
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 7.47
+    [bank] => bank3
+    [card_num] => 89004564756
+    [card_name] => Андрей Андреевич
+    [date] => 19.05.20 15:06:10
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => RUB
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 07645934
+    [date] => 19.05.20 15:26:53
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 1.26
+    [output_currency] => Bitcoin
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 21.05.20 15:17:48
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 7
+    [output_sum] => 7.2
+    [bank] => bank4
+    [card_num] => 14634
+    [card_name] => hgfjfhfgf
+    [date] => 22.05.20 15:54:04
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Bitcoin
+    [output_sum] => 83.65
+    [output_currency] => Серебро 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 15:54:22
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 311
+    [input_currency] => Блоки Bonolit d500
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 05.06.20 14:25:08
+    [deposit_type] => Целевая программа 3
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 05.06.20 14:26:44
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 05.06.20 14:28:06
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 1
+    [output_sum] => 1.28
+    [bank] => bank4
+    [card_num] => hgjdgh
+    [card_name] => thfjjhdfhg
+    [date] => 11.06.20 16:16:17
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 11.06.20 16:57:51
+    [deposit_type] => Кооперативные Карты
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 11.06.20 16:59:02
+    [status] => awaiting_payment
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 13.06.20 16:43:13
+    [deposit_type] => Целевая программа 3
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 0
+    [input_currency] => Сталь
+    [output_sum] => 
+    [output_currency] => Медь
+    [requisites] => 4565433456
+    [date] => 14.05.20 19:06:17
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => Бетон
+    [output_sum] => 
+    [output_currency] => 
+    [requisites] => 11111111111
+    [date] => 14.05.20 19:28:04
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 1000
+    [output_sum] => 1521
+    [bank] => bank1
+    [card_num] => 4685-8889-8879-5969
+    [card_name] => Andrey Andreev
+    [date] => 04.06.20 13:42:55
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => "Бетон-м450"_[м³]
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 05.06.20 12:26:09
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 05.06.20 15:02:45
+    [deposit_type] => Кооперативные Карты
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 456
+    [input_currency] => Блоки Bonolit d500
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 05.06.20 15:04:06
+    [deposit_type] => Целевая программа 5
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 10
+    [output_sum] => 13.04
+    [bank] => bank5
+    [card_num] => 4444-5555-6666-2222
+    [card_name] => Адрей Адреев Адреевич
+    [date] => 07.06.20 12:32:27
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1000
+    [input_currency] => Стандарт плутониевого металла
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.06.20 17:40:05
+    [deposit_type] => Имущество на паях
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => Стандарт плутониевого металла
+    [output_sum] => 1518.36
+    [output_currency] => Серебро 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 15:05:20
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 5.54
+    [bank] => bank3
+    [card_num] => 545665
+    [card_name] => hghfhfgg
+    [date] => 22.05.20 15:05:31
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 6
+    [output_sum] => 7.01
+    [bank] => bank1
+    [card_num] => 654564
+    [card_name] => ghghfdgfdg
+    [date] => 22.05.20 15:05:41
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => "Бетон-м450"_[м³]
+    [output_sum] => 0.48
+    [output_currency] => Bitcoin
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 15:05:54
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 6
+    [output_sum] => 6.59
+    [bank] => bank3
+    [card_num] => 543534
+    [card_name] => yhghcvg
+    [date] => 22.05.20 15:57:07
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 10
+    [output_sum] => 11.59
+    [bank] => bank1
+    [card_num] => 574657
+    [card_name] => hhhdgf
+    [date] => 22.05.20 15:57:18
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => Сталь
+    [output_sum] => 614.75
+    [output_currency] => Prizm
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 22.05.20 15:58:17
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => SLAV
+    [output_currency] => RUB
+    [input_sum] => 5
+    [output_sum] => 4.25
+    [bank] => bank4
+    [card_num] => 65765
+    [card_name] => hhgfhfgd
+    [date] => 23.05.20 19:47:16
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 5
+    [input_currency] => "Бетон-м450"_[м³]
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 23.05.20 20:49:16
+    [deposit_type] => Целевая программа 5
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 10
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 23.05.20 20:50:04
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 1
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 23.05.20 20:51:43
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => нефть Urals 1"барель"
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 56475456
+    [date] => 24.05.20 12:19:25
+    [deposit_type] => Имущество на паях
+    [status] => deposit_other
+)
+
+
+request: Array
+(
+    [input_sum] => 100
+    [input_currency] => Блоки Bonolit d500
+    [output_sum] => 65.79
+    [output_currency] => Серебро 1_г.
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 24.05.20 14:33:26
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_currency] => PRIZM
+    [output_currency] => RUB
+    [input_sum] => 10
+    [output_sum] => 15.66
+    [bank] => bank2
+    [card_num] => 4276400037875656
+    [card_name] => anton kupavsky
+    [date] => 05.06.20 18:28:16
+    [status] => completed
+)
+
+
+request: Array
+(
+    [input_sum] => 3
+    [input_currency] => SLAV &lt;.
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 06.06.20 11:46:35
+    [status] => completed
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+asset_rate: 2425.5
+doc_1: Array
+(
+    [date] => 13.06.20 17:40:20
+    [filename] => -внесение-целевого-взносанефть-Urals-1барель-Пайщик-№-hdhfgdfg-ghghdfgfdg-hgdjfgdfg-13-06-17-40.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/06/Акт-внесение-целевого-взносанефть-Urals-1барель-Пайщик-№-hdhfgdfg-ghghdfgfdg-hgdjfgdfg-13-06-17-40.pdf
+)
+

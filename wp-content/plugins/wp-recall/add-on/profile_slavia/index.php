@@ -3451,9 +3451,8 @@ function filter_data($filter_type, $datatype, $filter_val)
 
                         if (($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
                             continue;
-                        elseif (empty($filter_val) ||
-                                ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
-                                 $filter_type == 'date')
+                        elseif ((empty($filter_val)) ||
+                                ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) || ($filter_type == 'date') )
                         {
                             foreach ($requests as $request_num => $request_value) //Все запросы на обмен данного пользователя
                             {
@@ -3474,6 +3473,10 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     //$current_date[0] = str_replace('.', '-', $current_date[0]);
                                     $current_time = strtotime($month.'/'.$day.'/'.$year);
                                     $new_date = date('d.m.y', $current_time);
+
+                                    //$log = new Rcl_Log();
+                                    //$log->insert_log("request: ".print_r($request_value, true));
+                                    //$log->insert_log("$new_date==$newfilter: ".$new_date == $newfilter);
 //                                    $log = new Rcl_Log();
 //                                    $log->insert_log("new_filter:".$newfilter);
 //                                    $log->insert_log("date_value:".$request_value['date']);
@@ -3482,7 +3485,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     if (!isset($request_value['date']) || !isset($new_date) || $new_date != $newfilter)
                                         continue;
                                 }
-                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit')
+                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other')
                                 {
                                     $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -3520,6 +3523,14 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                     </div>';
 //                                                </div>
 //                                            </div>';
+                                    elseif ($request_value['status'] == 'deposit_other')
+                                        $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Целевой взнос</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>';
+
                                     elseif ($request_value['status'] == 'awaiting_payment')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
@@ -3728,11 +3739,28 @@ function filter_data($filter_type, $datatype, $filter_val)
                 foreach ($docs as $key => $document)
                 {
                     if ($filter_type == 'date') {
-                        $time = strtotime($filter_val);
+                        /*$time = strtotime($filter_val);
 
                         $newfilter = date('d.m.y', $time);
 
                         if (!isset($document['date']) || $document['date'] != $newfilter)
+                            continue;*/
+                        $time = strtotime($filter_val);
+
+                        $newfilter = date('d.m.y', $time);
+
+                        //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
+                        $current_date = explode(' ', $document['date']);
+                        $current_date = explode('.', $current_date[0]);
+                        $day = $current_date[0];
+                        $month = $current_date[1];
+                        $year = $current_date[2];
+                        //$current_date[0] = str_replace('.', '-', $current_date[0]);
+                        $current_time = strtotime($month.'/'.$day.'/'.$year);
+                        $new_date = date('d.m.y', $current_time);
+
+
+                        if (!isset($document['date']) || !isset($new_date) || $new_date != $newfilter)
                             continue;
                     }
                     $document_content .= '<div class="table-text w-100">
