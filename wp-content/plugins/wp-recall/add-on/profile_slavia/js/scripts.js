@@ -666,16 +666,31 @@ function tab_config()
     {
         var $input	 = jQuery( this ),
             $label	 = $input.next( 'label' ),
-            labelVal = $label.html();
+            labelVal = $label.html(),
+            photo_container = jQuery(this).parents('.skrepka').siblings('.passport_photos_container');
 
         $input.on( 'change', function( e )
         {
             var fileName = '';
 
-            if( this.files && this.files.length > 1 )
-                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-            else if( e.target.value )
-                fileName = e.target.value.split( '\\' ).pop();
+            if( this.files && this.files.length > 1 ) {
+                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+            }
+            else if( e.target.value ) {
+                fileName = e.target.value.split('\\').pop();
+            }
+
+            photo_container.empty();
+
+            for (let i = 0; i < this.files.length; i++) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(this.files[i]);
+
+                fileReader.onload = function (e) {
+                    let img_url = e.target.result;
+                    photo_container.append('<img src="' + img_url + '">');
+                };
+            }
 
             if( fileName )
                 $label.html( fileName );

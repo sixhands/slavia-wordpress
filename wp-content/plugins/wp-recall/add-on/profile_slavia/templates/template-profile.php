@@ -195,18 +195,8 @@
                                     <input form="profile_verification" required accept="image/*" data-multiple-caption="{count} файлов выбрано" multiple type="file" name="passport_photos[]" id="passport_photos" class="upload" />
                                     <label for="passport_photos">Прикрепить фото</label>
                                 </div>
-                            <?php endif; ?>
 
-                            <?php if (isset($is_verified) && ($is_verified == 'waiting' || $is_verified == 'yes') && isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
-                            <div class="col-lg-12 passport-photo">
-                                <div class="row">
-                                    <?php foreach($passport_photos as $key => $value): ?>
-                                        <div class="col-lg-12 passport-img">
-                                            <img src="<?=$value?>">
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
+                                <div class="passport_photos_container w-100 text-center"></div>
                             <?php endif; ?>
 
                         </div>
@@ -368,6 +358,18 @@
 
                 </div>
             </div>
+
+                <?php if (isset($is_verified) && ($is_verified == 'waiting' || $is_verified == 'yes') && isset($verification) && isset($passport_photos) && !empty($passport_photos) && !empty($verification)): ?>
+                    <div class="col-lg-12 passport-photo">
+                        <div class="row">
+                            <?php foreach($passport_photos as $key => $value): ?>
+                                <div class="col-lg-4 passport-img">
+                                    <img src="<?=$value?>">
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
                 <?php if ((isset($is_verified) && $is_verified == 'no') || !isset($is_verified) || empty($is_verified)): ?>
                 <div class="col-12">

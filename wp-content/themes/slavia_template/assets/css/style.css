@@ -599,17 +599,17 @@ a:hover
 {
 	border-right: none;
 	/*background: #ffff url(/wp-content/uploads/2019/12/rub.png) no-repeat 100% 50%;*/
-	background: #ffff url(/wp-content/uploads/2020/02/rub_orange.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2020/02/rub_orange.png) no-repeat 100% 50% !important;
 }
 .input-custom-procent input
 {
 	border-right: none;
-	background: #fff url(/wp-content/uploads/2019/12/custom-procent.png) no-repeat 100% 50%;
+	background: #fff url(/wp-content/uploads/2019/12/custom-procent.png) no-repeat 100% 50% !important;
 }
 .input-custom-rubl input
 {
 	border-right: none;
-	background: #fff url(/wp-content/uploads/2019/12/custom-rub.png) no-repeat 100% 50%;
+	background: #fff url(/wp-content/uploads/2019/12/custom-rub.png) no-repeat 100% 50% !important;
 }
 .orange-input input
 {
@@ -624,7 +624,7 @@ a:hover
 .input-custom-prizm input
 {
 	border-right: none !important;
-	background: #ffff url(/wp-content/uploads/2019/12/prizm.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/prizm.png) no-repeat 100% 50% !important;
 }
 /*.input-custom-ruble input*/
 /*{*/
@@ -636,7 +636,7 @@ a:hover
 .input-custom-waws input
 {
 	border-right: none !important;
-	background: #ffff url(/wp-content/uploads/2019/12/waws.png) no-repeat 100% 50%;
+	background: #ffff url(/wp-content/uploads/2019/12/waws.png) no-repeat 100% 50% !important;
 }
 .input-exchange input,
 .input-exchange select
@@ -837,6 +837,11 @@ a:hover
 }
 .passport-img {
 	height: 200px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+.passport-img > img {
+	width: 80%;
 }
 /*.passport-photo .passport-img
 {

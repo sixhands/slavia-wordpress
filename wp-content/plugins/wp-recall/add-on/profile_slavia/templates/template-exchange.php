@@ -252,7 +252,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 <!--                        </div>-->
 <!--                    </div>-->
 
-                    <div class="col-lg-6 input-exchange orange-input input-custom-waws">
+                    <div class="col-lg-6 input-exchange orange-input">
                         <div class="row">
                             <span>Вы получите</span>
                             <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -301,7 +301,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 
             <div class="col-12">
                 <div class="row">
-                    <div class="col-lg-3 input-exchange">
+                    <div class="col-lg-3 input-exchange input-custom-prizm">
                         <div class="row">
                             <span>Количество монет PRIZM</span>
                             <input required placeholder="0" type="text" class="prizm_to_rubles" name="exchange[input_sum]">
@@ -753,7 +753,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 <!--                                </div>-->
 <!--                            </div>-->
 
-                            <div class="col-lg-6 input-exchange orange-input input-custom-waws">
+                            <div class="col-lg-6 input-exchange orange-input">
                                 <div class="row">
                                     <span>Вы получите</span>
                                     <input required placeholder="0" id="exp" type="text" name="exchange[output_sum]">
@@ -883,7 +883,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                             <!--                                    </select>-->
                             <!--                                </div>-->
                             <!--                            </div>-->
-                            <div class="col-lg-3 input-exchange  input-custom-waws">
+                            <div class="col-lg-3 input-exchange">
                                 <div class="row ">
                                     <span class="select-exchange">Количество</span>
 

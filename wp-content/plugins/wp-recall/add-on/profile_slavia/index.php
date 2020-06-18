@@ -3797,14 +3797,18 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
             if (isset($user_stats) && !empty($user_stats))
             {
                 $user_verification = get_user_meta($user, 'verification', true);
+                $client_num = get_user_meta($user, 'client_num', true);
+
+//                $log = new Rcl_Log();
+//                $log->insert_log("client_num: ".$client_num);
 
                 if (isset($user_verification) && !empty($user_verification))
                 {
                     $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
-                    if ((isset($filter_type) && isset($filter_val)) && ($filter_type == 'word') && (!empty($filter_val) && strpos($user_full_name, $filter_val) === false))
+                    if ((isset($filter_type) && isset($filter_val)) && ($filter_type == 'word') && (!empty($client_num) && !empty($filter_val) && strpos($client_num/*$user_full_name*/, $filter_val) === false))
                         continue;
                     elseif ( (!isset($filter_type) && !isset($filter_val) ) || (empty($filter_val) ||
-                            ($filter_type == 'word' && !empty($filter_val) && strpos($user_full_name, $filter_val) !== false) ||
+                            ($filter_type == 'word' && !empty($filter_val) && strpos($client_num/*$user_full_name*/, $filter_val) !== false) ||
                             $filter_type == 'date'))
                     {
                         //Обнуляем значения для валюты, если статистика для данной валюты отсутствует

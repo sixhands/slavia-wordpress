@@ -112,6 +112,71 @@
 
 
         </div>
+
+        <div class="coop_maps question-bg col-lg-12 settings-commission">
+            <h1 class="coop_maps-h1 ib" style="color: red">В РАЗРАБОТКЕ</h1><br>
+            <h1 class="coop_maps-h1 ib">Настройка процентов по обмену</h1>
+
+            <div class="col-12">
+                <form class="row" name="settings_commission" id="settings_form_commission" action="" method="post"  enctype="multipart/form-data">
+                    <div class="col-12 commission_container">
+                        <div class="row no-gutters">
+                            <div class="col-2">
+                                <p сlass="product_name">Обычные товары</p>
+                                <p class="acquiring-percent">комиссия эквайринга</p>
+                            </div>
+                            <div class="col-2">
+                                <p class="ruble-sign">₽</p>
+                                <div class='col-12 input-exchange input-custom-procent'>
+                                    <input class='commission' value='2.5' type='text' name='percent[normal][acquiring]'>
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <p class="commission_header">комиссия сайта</p>
+                                <div class='col-12 input-exchange input-custom-procent'>
+                                    <input class='commission' value='' placeholder="" type='text' name='percent[normal][site]'>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <p class="commission_header">SLAV</p>
+                                <div class='col-12 input-exchange input-custom-procent'>
+                                    <input class='commission' value='2' placeholder="" type='text' name='percent[normal][slav]'>
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <p class="commission_header">PZM</p>
+                                <div class='col-12 input-exchange input-custom-procent'>
+                                    <input class='commission' value='3' placeholder="" type='text' name='percent[normal][prizm]'>
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <p class="commission_header">ALT</p>
+                                <div class='col-12 input-exchange input-custom-procent'>
+                                    <input class='commission' value='5' placeholder="" type='text' name='percent[normal][alt]'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <div class="col-6">
+                                <button id="add_currency" class="btn-custom-one" style="width: 100%">
+                                    <span>Добавить товар</span>
+                                </button>
+                            </div>
+                            <div class="col-6" style="display: none">
+                                <input style="width: 100%" form="settings_form_commission" type="submit" class="btn-custom-one" value="Сохранить" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div id="user_dropdown_template" style="display: none">

@@ -1,3 +1,48 @@
+/************Настройки процентов по обмену****************/
+.settings-commission > h1.coop_maps-h1 + .col-12 {
+    margin-top: 30px;
+}
+.commission_container > .row > div:not(:first-child) p {
+    text-align: center;
+}
+.commission_container > .row > div:nth-child(3) p {
+    margin-top: -18%;
+}
+.commission_container > .row > div:not(:first-child):not(:last-child) .input-exchange::after {
+    content: '+';
+    position: absolute;
+    right: -8%;
+    bottom: -16%;
+    font-size: 40px;
+    color: purple;
+    font-weight: bold;
+}
+
+.commission_container .commission_header,
+.commission_container .ruble-sign {
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: bold;
+    color: purple;
+}
+.commission_container .ruble-sign {
+    font-size: 24px;
+    margin-top: -3%;
+}
+.settings-commission button#add_currency {
+    padding-top: 0;
+}
+/*********************************************/
+
+.passport_photos_container {
+    margin-top: 50px;
+}
+.passport_photos_container > img {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 30px;
+}
+
 input#submit_verification {
     padding-top: 5px;
     padding-left: 10px;
