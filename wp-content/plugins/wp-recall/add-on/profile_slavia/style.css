@@ -1,17 +1,61 @@
 /************Настройки процентов по обмену****************/
+form#settings_form_commission-operations .operation_item {
+    margin-top: 5%;
+}
+form#settings_form_commission-all .commission_header select.currencies {
+    width: 90%;
+}
+form#settings_form_commission-all {
+    margin-bottom: 30px;
+}
+form#settings_form_commission-operations {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.commission_container .operation_name {
+    font-weight: bold;
+}
+.commission_container .row div.operation_header p {
+    line-height: 1.3;
+    /*font-size: 0.9rem;*/
+}
+.commission_container #operations, .commission_container #all-operations {
+    margin-top: 5%;
+}
+#all-operations .operation_header p {
+    margin-top: 30%;
+}
+.commission_container .operation_header p.operation_name select {
+    width: 90%;
+}
+.commission_container .operation_header p.operation_name select.operation_type {
+    margin-bottom: 5%;
+}
 .settings-commission > h1.coop_maps-h1 + .col-12 {
     margin-top: 30px;
 }
-.commission_container > .row > div:not(:first-child) p {
+.commission_container > .row .row.operation_currencies > div {
+    margin-bottom: 2%;
+}
+.commission_container > .row .row.operation_currencies > div p {
     text-align: center;
 }
-.commission_container > .row > div:nth-child(3) p {
-    margin-top: -18%;
+.commission_container > .row .row.operation_currencies > div:nth-child(-n+2) p {
+    margin-top: -21%;
 }
-.commission_container > .row > div:not(:first-child):not(:last-child) .input-exchange::after {
+.commission_container > .row .row.operation_currencies > div:not(:last-child) .input-exchange::after {
     content: '+';
     position: absolute;
     right: -8%;
+    bottom: -16%;
+    font-size: 40px;
+    color: purple;
+    font-weight: bold;
+}
+form#settings_form_commission-operations .operation_currencies > div:last-child .input-exchange::after {
+    content: '=';
+    position: absolute;
+    right: -10%;
     bottom: -16%;
     font-size: 40px;
     color: purple;
@@ -26,10 +70,10 @@
     color: purple;
 }
 .commission_container .ruble-sign {
-    font-size: 24px;
-    margin-top: -3%;
+    /*font-size: 24px;*/
+    /*margin-top: -3%;*/
 }
-.settings-commission button#add_currency {
+.settings-commission button#add_currency, .settings-commission button#add_operation {
     padding-top: 0;
 }
 /*********************************************/

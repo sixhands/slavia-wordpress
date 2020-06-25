@@ -117,60 +117,215 @@
             <h1 class="coop_maps-h1 ib" style="color: red">В РАЗРАБОТКЕ</h1><br>
             <h1 class="coop_maps-h1 ib">Настройка процентов по обмену</h1>
 
+            <div class="currency-template" style="display: none;">
+                <select class="currencies">
+                    <?php
+                        $asset_inputs = get_input_currencies();
+                        $asset_outputs = get_output_currencies();
+                        $currencies = $asset_inputs;
+                        foreach ($asset_outputs as $asset_output)
+                        {
+                            $is_same = false;
+                            foreach ($currencies as $currency)
+                            {
+                                if ( (strtolower($asset_output['asset_name']) == strtolower($currency['asset_name'])) ||
+                                    (strtolower($asset_output['asset_name']) == 'rub' && strtolower($currency['asset_name']) == 'рубль') ||
+                                    (strtolower($asset_output['asset_name']) == 'рубль' && strtolower($currency['asset_name']) == 'rub')
+                                   )
+                                {
+                                    $is_same = true;
+                                    break;
+                                }
+                            }
+                            if ($is_same)
+                                continue;
+                            else
+                                array_push($currencies, $asset_output);
+                        }
+
+                        foreach ($currencies as $currency): ?>
+
+                            <option value="<?=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?>">
+                                <?=$currency['asset_name']?>
+                            </option>
+
+                        <?php endforeach;
+                            //print '<pre>'.print_r($asset_output, true).'</pre>';
+                    ?>
+                </select>
+            </div>
+
             <div class="col-12">
-                <form class="row" name="settings_commission" id="settings_form_commission" action="" method="post"  enctype="multipart/form-data">
+                <!--ЕДИНИЦЫ ИЗМЕРЕНИЯ-->
+                <form class="row" name="settings_commission-all" id="settings_form_commission-all" action="" method="post"  enctype="multipart/form-data">
                     <div class="col-12 commission_container">
-                        <div class="row no-gutters">
-                            <div class="col-2">
-                                <p сlass="product_name">Обычные товары</p>
-                                <p class="acquiring-percent">комиссия эквайринга</p>
+                        <div id="all-operations_header" class="row">
+                            <div class="col-6">
+                                <p class="operation_name">Обычные операции</p>
                             </div>
-                            <div class="col-2">
-                                <p class="ruble-sign">₽</p>
-                                <div class='col-12 input-exchange input-custom-procent'>
-                                    <input class='commission' value='2.5' type='text' name='percent[normal][acquiring]'>
+                        </div>
+                        <div id="all-operations" class="row no-gutters">
+                            <div class="col-2 operation_header">
+<!--                                <p class="operation_name">Обычные операции</p>-->
+<!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->
+                            </div>
+
+                            <div class="col-10">
+                                <div class="row no-gutters operation_currencies">
+                                    <div class="col-2">
+                                        <p class="ruble-sign">комиссия эквайринга</p>
+                                        <div class='col-12 input-exchange input-custom-procent'>
+                                            <input class='commission' value='2.5' type='text' name='percent[all][acquiring]'>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <p class="commission_header">комиссия сайта</p>
+                                        <div class='col-12 input-exchange input-custom-procent'>
+                                            <input class='commission' value='' placeholder="" type='text' name='percent[all][site]'>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <p class="commission_header">SLAV</p>
+                                        <div class='col-12 input-exchange input-custom-procent'>
+                                            <input class='commission' value='2' placeholder="" type='text' name='percent[all][slav]'>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <p class="commission_header">PZM</p>
+                                        <div class='col-12 input-exchange input-custom-procent'>
+                                            <input class='commission' value='3' placeholder="" type='text' name='percent[all][prizm]'>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-2">
+                                        <p class="commission_header">ALT</p>
+                                        <div class='col-12 input-exchange input-custom-procent'>
+                                            <input class='commission' value='5' placeholder="" type='text' name='percent[all][alt]'>
+                                        </div>
+                                    </div>
+
+<!--                                    <div class="col-2">-->
+<!--                                        <p class="commission_header">ALT</p>-->
+<!--                                        <div class='col-12 input-exchange input-custom-procent'>-->
+<!--                                            <input class='commission' value='5' placeholder="" type='text' name='percent[all][alt]'>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
 
-                            <div class="col-2">
-                                <p class="commission_header">комиссия сайта</p>
-                                <div class='col-12 input-exchange input-custom-procent'>
-                                    <input class='commission' value='' placeholder="" type='text' name='percent[normal][site]'>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <p class="commission_header">SLAV</p>
-                                <div class='col-12 input-exchange input-custom-procent'>
-                                    <input class='commission' value='2' placeholder="" type='text' name='percent[normal][slav]'>
-                                </div>
-                            </div>
 
-                            <div class="col-2">
-                                <p class="commission_header">PZM</p>
-                                <div class='col-12 input-exchange input-custom-procent'>
-                                    <input class='commission' value='3' placeholder="" type='text' name='percent[normal][prizm]'>
-                                </div>
-                            </div>
-
-                            <div class="col-2">
-                                <p class="commission_header">ALT</p>
-                                <div class='col-12 input-exchange input-custom-procent'>
-                                    <input class='commission' value='5' placeholder="" type='text' name='percent[normal][alt]'>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </form>
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-10">
                         <div class="row">
                             <div class="col-6">
                                 <button id="add_currency" class="btn-custom-one" style="width: 100%">
-                                    <span>Добавить товар</span>
+                                    <span>Добавить единицу измерения</span>
                                 </button>
                             </div>
-                            <div class="col-6" style="display: none">
-                                <input style="width: 100%" form="settings_form_commission" type="submit" class="btn-custom-one" value="Сохранить" name="">
+                            <div class="col-6" style="">
+                                <input disabled style="width: 100%" form="settings_form_commission" type="submit" class="btn-custom-one" value="Сохранить" name="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------->
+                <!--НАСТРОЙКА ОПЕРАЦИЙ-->
+                <form class="row" name="settings_commission-operations" id="settings_form_commission-operations" action="" method="post"  enctype="multipart/form-data">
+                    <div class="col-12 commission_container">
+                        <div id="operations_header" class="row">
+                            <div class="col-6">
+                                <p class="operation_name">Управление операциями</p>
+                            </div>
+                        </div>
+                        <div id="operations" class="row no-gutters">
+                            <div class="col-12 operation_item">
+                                <div class="row no-gutters">
+                                    <div class="col-2 operation_header">
+                                        <p class="operation_name">
+                                            <select class="operation_type" name="percent[PZM][type]">
+                                                <option value="buy">Покупка</option>
+                                                <option value="sell">Продажа</option>
+                                            </select>
+                                            <select class="operation_currency">
+                                                <option value="PZM">PZM</option>
+                                            </select>
+                                        </p>
+        <!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->
+                                    </div>
+
+                                    <div class="col-10">
+                                        <div class="row no-gutters operation_currencies">
+                                            <div class="col-2">
+                                                <p class="ruble-sign">комиссия эквайринга</p><!--₽-->
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input class='commission' value='2.5' type='text' name='percent[normal][acquiring]'>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-2">
+                                                <p class="commission_header">комиссия сайта</p>
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input class='commission' value='' placeholder="" type='text' name='percent[normal][site]'>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <p class="commission_header">SLAV</p>
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input class='commission' value='2' placeholder="" type='text' name='percent[normal][slav]'>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-2">
+                                                <p class="commission_header">PZM</p>
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input class='commission' value='3' placeholder="" type='text' name='percent[normal][prizm]'>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-2">
+                                                <p class="commission_header">ALT</p>
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input class='commission' value='5' placeholder="" type='text' name='percent[PZM][alt]'>
+                                                </div>
+                                            </div>
+
+        <!--                                    <div class="col-2">-->
+        <!--                                        <p class="commission_header">ALT</p>-->
+        <!--                                        <div class='col-12 input-exchange input-custom-procent'>-->
+        <!--                                            <input class='commission' value='5' placeholder="" type='text' name='percent[PZM][alt]'>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+
+                                            <div class="col-3 currency_rate">
+                                                <p class="commission_header">курс pzm</p>
+                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                    <input disabled class='commission' value='<?=rcl_slavia_get_crypto_price('PZM') . " RUB"; ?>' placeholder="" type='text'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-6">
+                                <button id="add_operation" class="btn-custom-one" style="width: 100%">
+                                    <span>Добавить операцию</span>
+                                </button>
+                            </div>
+                            <div class="col-6" style="">
+                                <input disabled style="width: 100%" form="settings_form_commission-operations" type="submit" class="btn-custom-one" value="Сохранить" name="">
                             </div>
                         </div>
                     </div>

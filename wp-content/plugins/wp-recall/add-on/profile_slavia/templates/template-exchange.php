@@ -8,60 +8,9 @@ $instruction_text_left = get_field('instruction_text_left', 306);
 $instruction_text_right = get_field('instruction_text_right', 306);
 
 
-$asset_inputs = array();
+$asset_inputs = get_input_currencies();
 
-for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
-     $i <= 10;
-     $i++, $asset_input = get_field('asset_input_'.$i, 306)
-    )
-{
-    if (empty($asset_input) || count($asset_input) == 0)
-        continue;
-
-    if (!empty($asset_input['asset_name']) && !empty($asset_input['asset_requisites']) && !empty($asset_input['asset_rate_rubles']))
-        $asset_inputs[] = $asset_input;
-    //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
-    elseif (strcasecmp($asset_input['asset_name'], 'prizm') == 0)
-    {
-        $asset_input['asset_requisites'] = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
-        $asset_input['asset_rate_rubles'] = $prizm_price;
-
-        $asset_inputs[] = $asset_input;
-    }
-    elseif (strcasecmp($asset_input['asset_name'], 'slav') == 0)
-    {
-        $asset_input['asset_requisites'] = $slav_address;
-        $asset_input['asset_rate_rubles'] = 1;
-
-        $asset_inputs[] = $asset_input;
-    }
-}
-
-$asset_outputs = array();
-
-for ($i = 1, $asset_output = get_field('asset_output_'.$i, 306);
-     $i <= 10;
-     $i++, $asset_output = get_field('asset_output_'.$i, 306)
-    )
-{
-    if (empty($asset_output) || count($asset_output) == 0)
-        continue;
-    if (!empty($asset_output['asset_name']) && !empty($asset_output['asset_rate_rubles']))
-        $asset_outputs[] = $asset_output;
-    //Условия для добавления prizm и slav в иной паевой взнос/целевой взнос
-    elseif (strcasecmp($asset_output['asset_name'], 'prizm') == 0)
-    {
-        $asset_output['asset_rate_rubles'] = $prizm_price;
-
-        $asset_outputs[] = $asset_output;
-    }
-    elseif (strcasecmp($asset_output['asset_name'], 'slav') == 0)
-    {
-        $asset_output['asset_rate_rubles'] = 1;
-
-        $asset_outputs[] = $asset_output;
-    }
-}
+$asset_outputs = get_output_currencies();
 
 $deposit_types = array();
 

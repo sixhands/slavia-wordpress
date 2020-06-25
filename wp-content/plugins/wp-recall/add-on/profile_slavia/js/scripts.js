@@ -35,6 +35,92 @@ function rcl_check_profile_form(){
 
 }
 
+function settings_add_currency_percent()
+{
+    let currency_name_template = jQuery('div.settings-commission .currency-template select');
+    jQuery('#all-operations .operation_currencies').append(
+        '<div class="col-2">' +
+            '<p class="commission_header" style="margin-top: -8%;">' + currency_name_template.clone().prop('outerHTML') + '</p>' +
+            '<div class="col-12 input-exchange input-custom-procent">' +
+                '<input class="commission" value="5" placeholder="" type="text" name="percent[all][alt]">' +
+            '</div>' +
+        '</div>');
+
+    jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header select').change(function() {
+        //console.log(jQuery(this));
+        let select_val = jQuery(this).val();
+        let input = jQuery(this).parents('.commission_header').siblings('.input-exchange').children('input.commission');
+        let input_name = input.attr('name');
+
+        let name_split_right = input_name.split(']');
+        let name_split_left = name_split_right[name_split_right.length - 2].split('[');
+        name_split_left[name_split_left.length - 1] = select_val;
+        name_split_right[name_split_right.length - 2] = name_split_left.join('[');
+        input.attr('name', name_split_right.join(']'));
+        //input.attr('name', input_name.replace(/\[(.*?)\]/g, '[' + select_val + ']'));
+    });
+}
+function settings_add_operation()
+{
+    let currency_name_template = jQuery('div.settings-commission .currency-template select');
+    jQuery('form#settings_form_commission-operations #operations').append(
+       '<div class="col-12 operation_item">' +
+        '<div class="row no-gutters">' +
+            '<div class="col-2 operation_header">' +
+                '<p class="operation_name">' +
+                    '<select class="operation_type" name="percent[PZM][type]">' +
+                        '<option value="buy">Покупка</option>' +
+                        '<option value="sell">Продажа</option>' +
+                    '</select>' +
+                    currency_name_template.clone().prop('outerHTML') +
+                '</p>' +
+        '<!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->' +
+            '</div>' +
+        
+            '<div class="col-10">' +
+                '<div class="row no-gutters operation_currencies">' +
+                    '<div class="col-2">' +
+                        '<p class="ruble-sign">комиссия эквайринга</p><!--₽-->' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input class="commission" value="2.5" type="text" name="percent[normal][acquiring]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-2">' +
+                        '<p class="commission_header">комиссия сайта</p>' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input class="commission" value="" placeholder="" type="text" name="percent[normal][site]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-2">' +
+                        '<p class="commission_header">SLAV</p>' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input class="commission" value="2" placeholder="" type="text" name="percent[normal][slav]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-2">' +
+                        '<p class="commission_header">PZM</p>' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input class="commission" value="3" placeholder="" type="text" name="percent[normal][prizm]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-2">' +
+                        '<p class="commission_header">ALT</p>' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input class="commission" value="5" placeholder="" type="text" name="percent[PZM][alt]">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-3 currency_rate">' +
+                        '<p class="commission_header">курс pzm</p>' +
+                        '<div class="col-12 input-exchange input-custom-procent">' +
+                            '<input disabled class="commission" value="" placeholder="" type="text">' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+        '</div>');
+}
+
 var tooltip, // global variables oh my! Refactor when deploying!
     hidetooltiptimer;
 
@@ -393,6 +479,14 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    jQuery('form#settings_form_commission-all + div #add_currency').click(function() {
+        settings_add_currency_percent();
+    });
+
+    jQuery('form#settings_form_commission-operations + div #add_operation').click(() => {
+        settings_add_operation();
+    });
+
     // jQuery('.verification_title .verification_video_link').click((e) => {
     //     jQuery(this).trigger('click');
     // });
