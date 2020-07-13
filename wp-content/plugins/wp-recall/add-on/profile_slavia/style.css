@@ -1,4 +1,27 @@
 /************Настройки процентов по обмену****************/
+.commission_header, .ruble-sign {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: -25% !important;
+}
+.commission_header {
+    margin: 0 5px;
+}
+.ruble-sign {
+    margin-bottom: 0;
+}
+.commission_header > span, .ruble-sign > span, .commission_header > select {
+    /*vertical-align: bottom;*/
+    align-self: flex-end;
+}
+.currency_rate .input-exchange {
+    margin-top: 8%;
+}
+.commission_header select.currencies {
+    width: 100%;
+    margin-bottom: 10px;
+}
 form#settings_form_commission-operations .operation_item {
     margin-top: 5%;
 }
@@ -41,7 +64,7 @@ form#settings_form_commission-operations {
     text-align: center;
 }
 .commission_container > .row .row.operation_currencies > div:nth-child(-n+2) p {
-    margin-top: -21%;
+    /*margin-top: -21%;*/
 }
 .commission_container > .row .row.operation_currencies > div:not(:last-child) .input-exchange::after {
     content: '+';

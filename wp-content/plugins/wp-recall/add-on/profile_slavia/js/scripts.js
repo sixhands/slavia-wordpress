@@ -38,13 +38,33 @@ function rcl_check_profile_form(){
 function settings_add_currency_percent()
 {
     let currency_name_template = jQuery('div.settings-commission .currency-template select');
+    let currency_first_name = currency_name_template.find('option:first-child').val();
+
     jQuery('#all-operations .operation_currencies').append(
         '<div class="col-2">' +
             '<p class="commission_header" style="margin-top: -8%;">' + currency_name_template.clone().prop('outerHTML') + '</p>' +
             '<div class="col-12 input-exchange input-custom-procent">' +
-                '<input class="commission" value="5" placeholder="" type="text" name="percent[all][alt]">' +
+                '<input class="commission" value="0" placeholder="" type="text" name="currency_percent[' + currency_first_name + ']">' +
             '</div>' +
         '</div>');
+
+    let last_select = jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header select');
+    let all_currencies =
+        jQuery('form#settings_form_commission-all .operation_currencies > div:not(:last-child) .commission_header select, ' +
+                'form#settings_form_commission-all .operation_currencies > div .commission_header');
+    all_currencies.each(function() {
+        let cur_val;
+        if (jQuery(this).hasClass('currencies'))
+            cur_val = jQuery(this).val();
+        else
+            cur_val = jQuery(this).text();
+        last_select.find('option').each(function() {
+            //console.log(jQuery(this));
+           if (jQuery(this).val().toLowerCase() === cur_val.toLowerCase()) {
+               jQuery(this).remove();
+           }
+        });
+    });
 
     jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header select').change(function() {
         //console.log(jQuery(this));
@@ -62,63 +82,162 @@ function settings_add_currency_percent()
 }
 function settings_add_operation()
 {
-    let currency_name_template = jQuery('div.settings-commission .currency-template select');
+    //let currency_name_template = jQuery('div.settings-commission .currency-template select');
+    let currency_input_template = jQuery('.input_currency_template select.input_currencies');
+    let currency_first_name = currency_input_template.find('option:first-child').val();
+
+    let operation_item_content = jQuery('.operation_item:first-child .operation_currencies');
+
     jQuery('form#settings_form_commission-operations #operations').append(
        '<div class="col-12 operation_item">' +
         '<div class="row no-gutters">' +
             '<div class="col-2 operation_header">' +
                 '<p class="operation_name">' +
-                    '<select class="operation_type" name="percent[PZM][type]">' +
+                    '<select class="operation_type" name="percent[' + currency_first_name + '][type]">' +
                         '<option value="buy">Покупка</option>' +
-                        '<option value="sell">Продажа</option>' +
+                        '<option selected value="sell">Продажа</option>' +
                     '</select>' +
-                    currency_name_template.clone().prop('outerHTML') +
+                    '<select class="operation_currency">' +
+                        currency_input_template.clone().prop('innerHTML') +
+                    '</select>' +
+                    //currency_name_template.clone().prop('outerHTML') +
                 '</p>' +
         '<!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->' +
             '</div>' +
         
             '<div class="col-10">' +
-                '<div class="row no-gutters operation_currencies">' +
-                    '<div class="col-2">' +
-                        '<p class="ruble-sign">комиссия эквайринга</p><!--₽-->' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input class="commission" value="2.5" type="text" name="percent[normal][acquiring]">' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-2">' +
-                        '<p class="commission_header">комиссия сайта</p>' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input class="commission" value="" placeholder="" type="text" name="percent[normal][site]">' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-2">' +
-                        '<p class="commission_header">SLAV</p>' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input class="commission" value="2" placeholder="" type="text" name="percent[normal][slav]">' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-2">' +
-                        '<p class="commission_header">PZM</p>' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input class="commission" value="3" placeholder="" type="text" name="percent[normal][prizm]">' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-2">' +
-                        '<p class="commission_header">ALT</p>' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input class="commission" value="5" placeholder="" type="text" name="percent[PZM][alt]">' +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="col-3 currency_rate">' +
-                        '<p class="commission_header">курс pzm</p>' +
-                        '<div class="col-12 input-exchange input-custom-procent">' +
-                            '<input disabled class="commission" value="" placeholder="" type="text">' +
-                        '</div>' +
-                    '</div>' +
-                '</div>' +
+
+                 '<div class="row no-gutters operation_currencies">' +
+                    operation_item_content.clone().prop('innerHTML') +
+                //     '<div class="col-2">' +
+                //         '<p class="ruble-sign">комиссия эквайринга</p><!--₽-->' +
+                //         '<div class="col-12 input-exchange input-custom-procent">' +
+                //             '<input class="commission" value="2.5" type="text" name="percent[normal][acquiring]">' +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="col-2">' +
+                //         '<p class="commission_header">комиссия сайта</p>' +
+                //         '<div class="col-12 input-exchange input-custom-procent">' +
+                //             '<input class="commission" value="" placeholder="" type="text" name="percent[normal][site]">' +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="col-2">' +
+                //         '<p class="commission_header">SLAV</p>' +
+                //         '<div class="col-12 input-exchange input-custom-procent">' +
+                //             '<input class="commission" value="2" placeholder="" type="text" name="percent[normal][slav]">' +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="col-2">' +
+                //         '<p class="commission_header">PZM</p>' +
+                //         '<div class="col-12 input-exchange input-custom-procent">' +
+                //             '<input class="commission" value="3" placeholder="" type="text" name="percent[normal][prizm]">' +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="col-2">' +
+                //         '<p class="commission_header">ALT</p>' +
+                //         '<div class="col-12 input-exchange input-custom-procent">' +
+                //             '<input class="commission" value="5" placeholder="" type="text" name="percent[PZM][alt]">' +
+                //         '</div>' +
+                //     '</div>' +
+                //     '<div class="col-3 currency_rate">' +
+                //         '<p class="commission_header">курс</p>' +
+                //         '<div class="col-12 input-exchange input-custom-rub">' +
+                //             '<input disabled class="commission" value="" placeholder="" type="text">' +
+                //         '</div>' +
+                //     '</div>' +
+                 '</div>' +
             '</div>' +
         '</div>' +
         '</div>');
+    jQuery('form#settings_form_commission-operations .operation_item:last-child select.operation_type').change(function() {
+        settings_change_operation_type(jQuery(this));
+
+        let currency_input = jQuery(this).siblings('select.operation_currency');
+        let rate = currency_input.find('option:first-child').attr('data-rate');
+        currency_input.parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
+
+        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
+            .find('.operation_currencies > div:not(.currency_rate) input');
+        // console.log(currency_inputs);
+        // console.log(currency_input.find('option:first-child'));
+        change_currency_input_names(currency_inputs, currency_input.find('option:first-child').val());
+
+        change_input_single_name(jQuery(this), currency_input.find('option:first-child').val());
+    });
+
+    jQuery('form#settings_form_commission-operations .operation_item:last-child select.operation_currency').change(function() {
+        let rate = jQuery(this).find('option:selected').attr('data-rate');
+        jQuery(this).parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
+
+        //Меняем name у каждого input currency
+
+        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
+            .find('.operation_currencies > div:not(.currency_rate) input');
+
+        change_currency_input_names(currency_inputs, jQuery(this).val());
+
+        let type_input = jQuery(this).siblings('select.operation_type');
+        let type_name = type_input.attr('name');
+
+        change_input_single_name(type_input, jQuery(this).val());
+
+        //console.log(currency_inputs);
+    });
+}
+function change_input_single_name(input, name)
+{
+    let cur_name = input.attr('name');
+    let name_split_right_bracket = cur_name.split(']');
+    let name_split_left_bracket = name_split_right_bracket[0].split('[');
+
+    name_split_left_bracket[name_split_left_bracket.length - 1] = name;
+
+    name_split_right_bracket[0] = name_split_left_bracket.join('[');
+
+    let new_name = name_split_right_bracket.join(']');
+
+    input.attr('name', new_name);
+}
+
+function change_currency_input_names(inputs, new_currency)
+{
+    inputs.each(function(index, item) {
+        let input_name = jQuery(this).attr('name');
+
+        let name_split_right_bracket = input_name.split(']');
+        let name_split_left_bracket = name_split_right_bracket[0].split('[');
+
+        name_split_left_bracket[name_split_left_bracket.length - 1] = new_currency;
+
+        name_split_right_bracket[0] = name_split_left_bracket.join('[');
+
+        let new_name = name_split_right_bracket.join(']');
+
+        jQuery(this).attr('name', new_name);
+
+         //let name_split_left = name_split_right_bracket[name_split_right_bracket.length - 2].split('[');
+        // name_split_left[name_split_left.length - 1] = select_val;
+        // name_split_right[name_split_right.length - 2] = name_split_left.join('[');
+        // input.attr('name', name_split_right.join(']'));
+        console.log(new_name);
+    });
+}
+
+function settings_change_operation_type(el)
+{
+    let operation_type = el.val();
+    let operation_currency_input = el.siblings('select.operation_currency');
+    operation_currency_input.empty();
+    switch (operation_type) {
+        case 'buy':
+            jQuery('.output_currency_template .output_currencies option').clone().appendTo(operation_currency_input);
+            break;
+        case 'sell':
+            jQuery('.input_currency_template .input_currencies option').clone().appendTo(operation_currency_input);
+            break;
+    }
+    //currency_name_template.clone().prop('outerHTML')
+    //console.log(operation_currency_input);
 }
 
 var tooltip, // global variables oh my! Refactor when deploying!
@@ -485,6 +604,41 @@ function tab_config()
 
     jQuery('form#settings_form_commission-operations + div #add_operation').click(() => {
         settings_add_operation();
+    });
+
+    jQuery('form#settings_form_commission-operations select.operation_type').change(function() {
+        settings_change_operation_type(jQuery(this));
+        //console.log("yes");
+        let currency_input = jQuery(this).siblings('select.operation_currency');
+        let rate = currency_input.find('option:first-child').attr('data-rate');
+        currency_input.parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
+
+        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
+            .find('.operation_currencies > div:not(.currency_rate) input');
+        // console.log(currency_inputs);
+        // console.log(currency_input.find('option:first-child'));
+        change_currency_input_names(currency_inputs, currency_input.find('option:first-child').val());
+
+        change_input_single_name(jQuery(this), currency_input.find('option:first-child').val());
+    });
+
+    jQuery('form#settings_form_commission-operations select.operation_currency').change(function() {
+        let rate = jQuery(this).find('option:selected').attr('data-rate');
+        jQuery(this).parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
+
+        //Меняем name у каждого input currency
+
+        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
+            .find('.operation_currencies > div:not(.currency_rate) input');
+        change_currency_input_names(currency_inputs, jQuery(this).val());
+
+        let type_input = jQuery(this).siblings('select.operation_type');
+        //let type_name = type_input.attr('name');
+
+        change_input_single_name(type_input, jQuery(this).val());
+
+
+        //console.log(currency_inputs);
     });
 
     // jQuery('.verification_title .verification_video_link').click((e) => {

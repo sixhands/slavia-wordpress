@@ -3154,6 +3154,28 @@ function rcl_edit_profile(){
             exit;
         }
 
+        elseif (isset($_POST['currency_percent']) && $_POST['currency_percent'])
+        {
+            $currency_percent = $_POST['currency_percent'];
+            $result = array();
+            foreach($currency_percent as $currency => $percent)
+                if (!empty($currency) && !empty($percent))
+                    $result += array($currency => $percent);
+                    //array_push($result, array($currency => $percent));
+
+            rcl_update_option('currency_percent', $result);
+
+            //$log->insert_log('post: '.print_r($result, true));
+        }
+        elseif (isset($_POST['operation_percent']) && $_POST['operation_percent'])
+        {
+            $operation_percents = $_POST['percent'];
+
+            rcl_update_option('operation_percent', $operation_percents);
+
+            $log->insert_log('post: '.print_r(rcl_get_option('operation_percent'), true));
+        }
+
         /*****************Сохраняем в запросы на обмен******************/
         elseif (isset($_POST['exchange']) && !empty($_POST['exchange']) )
             /*strpos(array_key_first($_POST), 'get_rubles') !== false ||

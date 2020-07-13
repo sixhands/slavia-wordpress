@@ -145,7 +145,7 @@
 
                         foreach ($currencies as $currency): ?>
 
-                            <option value="<?=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?>">
+                            <option data-rate="<?=$currency['asset_rate_rubles']?>" value="<?=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?>">
                                 <?=$currency['asset_name']?>
                             </option>
 
@@ -155,9 +155,30 @@
                 </select>
             </div>
 
+            <div class="input_currency_template" style="display: none;">
+                <select class="input_currencies">
+                    <?php foreach($asset_inputs as $input): ?>
+                        <option data-rate="<?=$input['asset_rate_rubles']?>" value="<?=htmlspecialchars($input['asset_name'], ENT_QUOTES, 'UTF-8')?>">
+                            <?=$input['asset_name']?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="output_currency_template" style="display: none">
+                <select class="output_currencies">
+                    <?php foreach($asset_outputs as $output): ?>
+                        <option data-rate="<?=$output['asset_rate_rubles']?>" value="<?=htmlspecialchars($output['asset_name'], ENT_QUOTES, 'UTF-8')?>">
+                            <?=$output['asset_name']?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
             <div class="col-12">
                 <!--ЕДИНИЦЫ ИЗМЕРЕНИЯ-->
                 <form class="row" name="settings_commission-all" id="settings_form_commission-all" action="" method="post"  enctype="multipart/form-data">
+                    <input type="hidden" name="currency_percent" value="true">
                     <div class="col-12 commission_container">
                         <div id="all-operations_header" class="row">
                             <div class="col-6">
@@ -165,6 +186,10 @@
                             </div>
                         </div>
                         <div id="all-operations" class="row no-gutters">
+                            <?php
+                            $currency_percents = rcl_get_option('currency_percent');
+                            //print '<pre>'.print_r($currency_percents, true).'</pre>';
+                            ?>
                             <div class="col-2 operation_header">
 <!--                                <p class="operation_name">Обычные операции</p>-->
 <!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->
@@ -173,39 +198,57 @@
                             <div class="col-10">
                                 <div class="row no-gutters operation_currencies">
                                     <div class="col-2">
-                                        <p class="ruble-sign">комиссия эквайринга</p>
+                                        <p class="ruble-sign"><span>комиссия эквайринга</span></p>
                                         <div class='col-12 input-exchange input-custom-procent'>
-                                            <input class='commission' value='2.5' type='text' name='percent[all][acquiring]'>
+                                            <input class='commission' value='<?php if (isset($currency_percents['acquiring'])) echo $currency_percents['acquiring']?>' type='text' name='currency_percent[acquiring]'>
                                         </div>
                                     </div>
 
                                     <div class="col-2">
-                                        <p class="commission_header">комиссия сайта</p>
+                                        <p class="commission_header"><span>комиссия сайта</span></p>
                                         <div class='col-12 input-exchange input-custom-procent'>
-                                            <input class='commission' value='' placeholder="" type='text' name='percent[all][site]'>
+                                            <input class='commission' value='<?php if (isset($currency_percents['site'])) echo $currency_percents['site']?>' placeholder="" type='text' name='currency_percent[site]'>
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <p class="commission_header">SLAV</p>
+                                        <p class="commission_header"><span>SLAV</span></p>
                                         <div class='col-12 input-exchange input-custom-procent'>
-                                            <input class='commission' value='2' placeholder="" type='text' name='percent[all][slav]'>
+                                            <input class='commission' value='<?php if (isset($currency_percents['slav'])) echo $currency_percents['slav']?>' placeholder="" type='text' name='currency_percent[slav]'>
                                         </div>
                                     </div>
 
                                     <div class="col-2">
-                                        <p class="commission_header">PZM</p>
+                                        <p class="commission_header"><span>PZM</span></p>
                                         <div class='col-12 input-exchange input-custom-procent'>
-                                            <input class='commission' value='3' placeholder="" type='text' name='percent[all][prizm]'>
+                                            <input class='commission' value='<?php if (isset($currency_percents['prizm'])) echo $currency_percents['prizm']?>' placeholder="" type='text' name='currency_percent[prizm]'>
                                         </div>
                                     </div>
 
                                     <div class="col-2">
-                                        <p class="commission_header">ALT</p>
+                                        <p class="commission_header"><span>ALT</span></p>
                                         <div class='col-12 input-exchange input-custom-procent'>
-                                            <input class='commission' value='5' placeholder="" type='text' name='percent[all][alt]'>
+                                            <input class='commission' value='<?php if (isset($currency_percents['alt'])) echo $currency_percents['alt']?>' placeholder="" type='text' name='currency_percent[alt]'>
                                         </div>
                                     </div>
 
+                                    <?php if (isset($currency_percents) && !empty($currency_percents)): ?>
+                                        <?php foreach($currency_percents as $currency => $percent): ?>
+                                            <?php if ($currency != 'acquiring' && $currency != 'site' &&
+                                                    $currency != 'slav' && $currency != 'prizm' && $currency != 'alt'): ?>
+                                                <div class="col-2">
+                                                    <p class="commission_header">
+                                                        <?//=$currency?>
+                                                        <select class="currencies">
+                                                            <option value="<?=htmlspecialchars($currency, ENT_QUOTES, 'UTF-8')?>"><?=$currency?></option>
+                                                        </select>
+                                                    </p>
+                                                    <div class='col-12 input-exchange input-custom-procent'>
+                                                        <input class='commission' value='<?=$percent?>' placeholder="" type='text' name='currency_percent[<?=htmlspecialchars($currency, ENT_QUOTES, 'UTF-8')?>]'>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif;?>
 <!--                                    <div class="col-2">-->
 <!--                                        <p class="commission_header">ALT</p>-->
 <!--                                        <div class='col-12 input-exchange input-custom-procent'>-->
@@ -228,7 +271,7 @@
                                 </button>
                             </div>
                             <div class="col-6" style="">
-                                <input disabled style="width: 100%" form="settings_form_commission" type="submit" class="btn-custom-one" value="Сохранить" name="">
+                                <input style="width: 100%" form="settings_form_commission-all" type="submit" class="btn-custom-one" value="Сохранить" name="">
                             </div>
                         </div>
                     </div>
@@ -236,6 +279,10 @@
                 <!--------------------------------------->
                 <!--НАСТРОЙКА ОПЕРАЦИЙ-->
                 <form class="row" name="settings_commission-operations" id="settings_form_commission-operations" action="" method="post"  enctype="multipart/form-data">
+                    <input type="hidden" name="operation_percent" value="true">
+                    <?php
+                        $operation_percents = rcl_get_option('operation_percent');
+                    ?>
                     <div class="col-12 commission_container">
                         <div id="operations_header" class="row">
                             <div class="col-6">
@@ -243,74 +290,76 @@
                             </div>
                         </div>
                         <div id="operations" class="row no-gutters">
-                            <div class="col-12 operation_item">
-                                <div class="row no-gutters">
-                                    <div class="col-2 operation_header">
-                                        <p class="operation_name">
-                                            <select class="operation_type" name="percent[PZM][type]">
-                                                <option value="buy">Покупка</option>
-                                                <option value="sell">Продажа</option>
-                                            </select>
-                                            <select class="operation_currency">
-                                                <option value="PZM">PZM</option>
-                                            </select>
-                                        </p>
-        <!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->
-                                    </div>
-
-                                    <div class="col-10">
-                                        <div class="row no-gutters operation_currencies">
-                                            <div class="col-2">
-                                                <p class="ruble-sign">комиссия эквайринга</p><!--₽-->
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input class='commission' value='2.5' type='text' name='percent[normal][acquiring]'>
-                                                </div>
+                            <?php if (isset($operation_percents) && !empty($operation_percents)):?>
+                                <?php foreach($operation_percents as $name => $percent): ?>
+                                    <div class="col-12 operation_item">
+                                        <div class="row no-gutters">
+                                            <div class="col-2 operation_header">
+                                                <p class="operation_name">
+                                                    <?php //$first_asset_name = htmlspecialchars($asset_inputs[0]['asset_name'], ENT_QUOTES, 'UTF-8'); ?>
+                                                    <select class="operation_type" name="percent[<?=$name//$first_asset_name?>][type]">
+                                                        <?php if ($percent['type'] == 'buy'): ?>
+                                                            <option selected value="buy">Покупка</option>
+                                                            <option value="sell">Продажа</option>
+                                                        <?php elseif ($percent['type'] == 'sell'): ?>
+                                                            <option value="buy">Покупка</option>
+                                                            <option selected value="sell">Продажа</option>
+                                                        <?php endif; ?>
+                                                    </select>
+                                                    <select class="operation_currency">
+                                                        <?php $rate = ''; ?>
+        <!--                                                <option value="PZM">PZM</option>-->
+                                                        <?php
+                                                            foreach($asset_inputs as $input)
+                                                                if ($input['asset_name'] == $name)
+                                                                    $rate = $input['asset_rate_rubles'];
+                                                            ?>
+                                                            <option data-rate="<?=$rate?>" value="<?=htmlspecialchars($name, ENT_QUOTES, 'UTF-8')?>">
+                                                                <?=$name?>
+                                                            </option>
+                                                        <?php //endforeach; ?>
+                                                    </select>
+                                                </p>
+                <!--                                <p class="acquiring-percent">комиссия эквайринга</p>-->
                                             </div>
 
-                                            <div class="col-2">
-                                                <p class="commission_header">комиссия сайта</p>
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input class='commission' value='' placeholder="" type='text' name='percent[normal][site]'>
-                                                </div>
-                                            </div>
-                                            <div class="col-2">
-                                                <p class="commission_header">SLAV</p>
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input class='commission' value='2' placeholder="" type='text' name='percent[normal][slav]'>
-                                                </div>
-                                            </div>
+                                            <div class="col-10">
+                                                <div class="row no-gutters operation_currencies">
+                                                    <?php foreach ($percent as $currency => $value): ?>
+                                                        <?php if ($currency !== 'type'): ?>
+                                                            <div class="col-2">
+                                                                <?php if ($currency == 'acquiring'): ?>
+                                                                    <p class="ruble-sign"><span>комиссия эквайринга</span></p>
+                                                                <?php elseif ($currency == 'site'): ?>
+                                                                    <p class="commission_header"><span>комиссия сайта</span></p>
+                                                                <?php elseif ($currency !== 'slav' || $currency !== 'prizm' || $currency !== 'alt'): ?>
+                                                                    <p class="commission_header"><span><?=strtoupper($currency)?></span></p>
+                                                                <?php else: ?>
+                                                                    <p class="commission_header"><span><?=$currency?></span></p>
+                                                                <?php endif; ?>
 
-                                            <div class="col-2">
-                                                <p class="commission_header">PZM</p>
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input class='commission' value='3' placeholder="" type='text' name='percent[normal][prizm]'>
-                                                </div>
-                                            </div>
+                                                                <div class='col-12 input-exchange input-custom-procent'>
+                                                                    <input class='commission' value='<?=$value?>' type='text' name='percent[<?=$name?>][<?=$currency?>]'>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
 
-                                            <div class="col-2">
-                                                <p class="commission_header">ALT</p>
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input class='commission' value='5' placeholder="" type='text' name='percent[PZM][alt]'>
-                                                </div>
-                                            </div>
+                                                    <?php endforeach; ?>
 
-        <!--                                    <div class="col-2">-->
-        <!--                                        <p class="commission_header">ALT</p>-->
-        <!--                                        <div class='col-12 input-exchange input-custom-procent'>-->
-        <!--                                            <input class='commission' value='5' placeholder="" type='text' name='percent[PZM][alt]'>-->
-        <!--                                        </div>-->
-        <!--                                    </div>-->
 
-                                            <div class="col-3 currency_rate">
-                                                <p class="commission_header">курс pzm</p>
-                                                <div class='col-12 input-exchange input-custom-procent'>
-                                                    <input disabled class='commission' value='<?=rcl_slavia_get_crypto_price('PZM') . " RUB"; ?>' placeholder="" type='text'>
+
+                                                        <div class="col-3 currency_rate">
+                                                            <p class="commission_header"><span>курс</span></p>
+                                                            <div class='col-12 input-exchange input-custom-rub'>
+                                                                <input disabled class='commission' value='<?=/*rcl_slavia_get_crypto_price('PZM')*/$rate . " RUB"; ?>' placeholder="" type='text'>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
 
                         </div>
                     </div>
@@ -325,7 +374,7 @@
                                 </button>
                             </div>
                             <div class="col-6" style="">
-                                <input disabled style="width: 100%" form="settings_form_commission-operations" type="submit" class="btn-custom-one" value="Сохранить" name="">
+                                <input style="width: 100%" form="settings_form_commission-operations" type="submit" class="btn-custom-one" value="Сохранить" name="">
                             </div>
                         </div>
                     </div>
