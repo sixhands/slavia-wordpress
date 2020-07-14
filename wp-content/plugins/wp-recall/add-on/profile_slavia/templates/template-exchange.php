@@ -442,7 +442,7 @@ if ($slav_to_rub == 0)
                                     <option disabled selected>Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
+                                            <option data-percent="" data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -643,7 +643,7 @@ if ($slav_to_rub == 0)
                     <h1 class="coop_maps-h1 ib">Получить PRIZM</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
+                <form data-percent="<?=$rub_to_prizm?>" class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -722,7 +722,7 @@ if ($slav_to_rub == 0)
                     <h1 class="coop_maps-h1 ib">Получить Slav</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
+                <form data-percent="<?=$rub_to_slav?>" class="tab-ex" action="" method="post" enctype="multipart/form-data" name="exchange_mob">
                     <div class="col-12">
                         <div class="row">
 <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -802,7 +802,7 @@ if ($slav_to_rub == 0)
                     <h1 class="coop_maps-h1 ib">Получить рубль (внести PRIZM)</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_prizm">
+                <form data-percent="<?=$prizm_to_rub?>" class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_prizm">
                     <div class="col-12">
                         <div class="row">
                             <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -881,7 +881,7 @@ if ($slav_to_rub == 0)
                     <h1 class="coop_maps-h1 ib">Получить рубль (внести SLAV)</h1>
                     <img src="/wp-content/uploads/2019/12/close.png" class="close_ex ib">
                 </div>
-                <form class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_waves">
+                <form data-percent="<?=$slav_to_rub?>" class="tab-ex" action="" method="post" enctype="multipart/form-data" name="get_ruble_waves">
                     <div class="col-12">
                         <div class="row">
                             <!--                            <div class="col-lg-3 input-exchange select-custom">-->
@@ -1497,25 +1497,37 @@ if ($slav_to_rub == 0)
             return {input_rate: input_rate, output_rate: output_rate};
         }
     }
-    function calc_other_payments_input_sum(output_sum)
+    function calc_other_payments_input_sum(output_sum, percent = false)
     {
         let currency_rates = get_currency_rates();
         if (!currency_rates)
             return false;
         else {
             let result = (output_sum * currency_rates.output_rate) / currency_rates.input_rate;
-            console.log("result: " + result);
+
+            console.log("result before: " + result);
+
+            if (percent !== false && percent !== undefined)
+                result *= (1 - (percent / 100));
+
+            console.log("result after: " + result);
             return Math.round(result * 100) / 100;
         }
     }
-    function calc_other_payments_output_sum(input_sum)
+    function calc_other_payments_output_sum(input_sum, percent = false)
     {
         let currency_rates = get_currency_rates();
         if (!currency_rates)
             return false;
         else {
             let result = (input_sum * currency_rates.input_rate) / currency_rates.output_rate;
-            console.log("result: " + result);
+
+            console.log("result before: " + result);
+
+            if (percent !== false && percent !== undefined)
+                result *= (1 - (percent / 100));
+
+            console.log("result after: " + result);
             return Math.round(result * 100) / 100;
         }
     }
@@ -1524,13 +1536,26 @@ if ($slav_to_rub == 0)
     {
         let output_el;
         let input_sum = input_el.val();
+        let percent;
+        let output_percent = jQuery('select.other_payments.output_currency option:selected').attr('data-percent');
+        let input_percent = jQuery('select.other_payments.input_currency option:selected').attr('data-percent');
+        if (output_percent !== '' && output_percent !== undefined)
+            percent = output_percent;
+        else
+            if (input_percent !== '' && input_percent !== undefined)
+                percent = input_percent;
+            else
+                percent = false;
 
-        console.log(input_sum);
+            console.log(percent);
+        //console.log(input_sum);
 
         if (input_el.hasClass('other_payments_input')) //Введена вносимая сумма
         {
             output_el = input_el.parents('.input-exchange').siblings('.input-exchange.orange-input').find('input.exp_custom');
-            let output_sum = calc_other_payments_output_sum(input_sum);
+
+
+            let output_sum = calc_other_payments_output_sum(input_sum, percent);
             if (output_sum === false)
                 return;
             else
@@ -1541,7 +1566,8 @@ if ($slav_to_rub == 0)
             if (input_el.hasClass('exp_custom')) //Внесена желаемая сумма
             {
                 output_el = input_el.parents('.input-exchange.orange-input').siblings('.input-exchange.col-lg-5').find('input.other_payments_input');
-                let output_sum = calc_other_payments_input_sum(input_sum);
+
+                let output_sum = calc_other_payments_input_sum(input_sum, percent);
                 if (output_sum === false)
                     return;
                 else
@@ -1553,6 +1579,45 @@ if ($slav_to_rub == 0)
         other_payments_print_result(jQuery(this));
     });
     jQuery('form.other_payments select.other_payments.input_currency').change(function(){
+
+        var el = jQuery(this);
+        let data = {
+            get_currency_percent: true,
+            type: 'sell',
+            currency: jQuery(this).find('option:selected').val()
+        };
+        jQuery.post( window.location, data, function(response)
+        {
+            let response_data = JSON.parse(response);
+            let currency_options = jQuery('.other_payments.output_currency option');//el.find('option');//el.find('option');
+            let acquiring = (response_data['acquiring'] !== '' && typeof response_data['acquiring'] !== 'undefined') ? parseFloat(response_data['acquiring']) : 0;
+            let site = (response_data['site'] !== '' && typeof response_data['site'] !== 'undefined') ? parseFloat(response_data['site']) : 0;
+            jQuery.each(currency_options, function(index, el)
+            {
+                var value = jQuery(this).val();
+                var percent = parseFloat(0);
+                for (let key in response_data)
+                    if (key.toLowerCase() === value.toLowerCase()) {
+                        percent += parseFloat(response_data[key]);
+                        //jQuery(this).attr('data-percent', response_data[key]);
+                    }
+                percent += acquiring;
+                percent += site;
+                console.log(percent);
+                jQuery(this).attr('data-percent', percent);
+
+                //console.log(value);
+                // jQuery.each(response_data, function() {
+                //     var currency = jQuery(this);
+                //     console.log(currency);
+                // });
+            });
+            jQuery.each(el.find('option'), function() {
+                jQuery(this).attr('data-percent', '');
+            });
+            //console.log(currency_options);
+        });
+
         other_payments_print_result(jQuery(this).parents('form.other_payments').find('.other_payments_input'));
 
         let requisites = jQuery('form.other_payments select.other_payments.requisites');
@@ -1565,6 +1630,44 @@ if ($slav_to_rub == 0)
 
         let fields_to_show = jQuery(this).parents('.input-exchange')
             .siblings('#other_payments_card_name, #other_payments_card_num, #other_payments_bank');
+
+        var el = jQuery(this);
+        let data = {
+            get_currency_percent: true,
+            type: 'buy',
+            currency: jQuery(this).find('option:selected').val()
+        };
+        jQuery.post( window.location, data, function(response) {
+            let response_data = JSON.parse(response);
+            let currency_options = jQuery('.other_payments.input_currency option');//el.find('option');//el.find('option');
+            let acquiring = (response_data['acquiring'] !== '' && typeof response_data['acquiring'] !== 'undefined') ? parseFloat(response_data['acquiring']) : 0;
+            let site = (response_data['site'] !== '' && typeof response_data['site'] !== 'undefined') ? parseFloat(response_data['site']) : 0;
+            jQuery.each(currency_options, function(index, el) {
+                var value = jQuery(this).val();
+                var percent = parseFloat(0);
+                for (let key in response_data)
+                    if (key.toLowerCase() === value.toLowerCase()) {
+                        percent += parseFloat(response_data[key]);
+                        //jQuery(this).attr('data-percent', response_data[key]);
+                    }
+
+                percent += acquiring;
+                percent += site;
+                console.log(percent);
+                jQuery(this).attr('data-percent', percent);
+
+
+                //console.log(value);
+                // jQuery.each(response_data, function() {
+                //     var currency = jQuery(this);
+                //     console.log(currency);
+                // });
+            });
+            jQuery.each(el.find('option'), function() {
+               jQuery(this).attr('data-percent', '');
+            });
+            //console.log(currency_options);
+        });
 
         if (possible_rub_names.includes(jQuery(this).val() ) )
             fields_to_show.css('display', 'block');

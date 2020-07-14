@@ -3173,7 +3173,32 @@ function rcl_edit_profile(){
 
             rcl_update_option('operation_percent', $operation_percents);
 
-            $log->insert_log('post: '.print_r(rcl_get_option('operation_percent'), true));
+            //$log->insert_log('post: '.print_r(rcl_get_option('operation_percent'), true));
+        }
+
+        elseif (isset($_POST['get_currency_percent']) && $_POST['get_currency_percent'])
+        {
+            $currency_percents = rcl_get_option('currency_percent');
+            $operation_percents = rcl_get_option('operation_percent');
+            if (isset($_POST['currency']) && !empty($_POST['currency']) &&
+                isset($_POST['type']) && !empty($_POST['type']))
+            {
+                $post_currency = urldecode($_POST['currency']);
+                $post_type = urldecode($_POST['type']);
+                $result = array();
+                foreach ($operation_percents as $currency => $operation)
+                {
+                    if (strtolower($currency) == strtolower($post_currency) && $operation['type'] = $post_type)
+                        foreach ($operation as $key => $value)
+                            if ($key != 'type')
+                                $result += array($key => $value);
+                }
+                if (empty($result))
+                    $result = $currency_percents;
+                $log->insert_log("result: ".print_r($result, true));
+                echo json_encode($result);
+                exit;
+            }
         }
 
         /*****************Сохраняем в запросы на обмен******************/
