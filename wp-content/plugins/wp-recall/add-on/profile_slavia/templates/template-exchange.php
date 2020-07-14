@@ -23,6 +23,66 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         $deposit_types[] = $deposit_type;
 }
 
+$normal_percents = rcl_get_option('currency_percent');
+$operation_percents = rcl_get_option('operation_percent');
+//print '<pre>'.print_r($normal_percents, true).'</pre>';
+
+$rub_to_prizm = 0;
+$rub_to_slav = 0;
+$prizm_to_rub = 0;
+$slav_to_rub = 0;
+
+$prizm_normal_percent = $normal_percents['prizm'];
+$slav_normal_percent = $normal_percents['slav'];
+
+foreach ($operation_percents as $key => $operation) {
+    $acquiring = !empty($operation['acquiring']) ? $operation['acquiring'] : 0;
+    $site = !empty($operation['site']) ? $operation['site'] : 0;
+
+
+    if (strtolower($key) == 'prizm' || strtolower($key) == 'pzm') {
+        switch ($operation['type']) {
+            case 'buy': //output_currency
+                $rub_to_prizm = $acquiring + $site + $prizm_normal_percent;
+                break;
+            case 'sell': //input_currency
+                $prizm_to_rub = $acquiring + $site + $prizm_normal_percent;
+                break;
+        }
+    }
+    elseif (strtolower($key) == 'slav' || strtolower($key) == 'slv') {
+        switch ($operation['type']) {
+            case 'buy': //output_currency
+                $rub_to_slav = $acquiring + $site + $slav_normal_percent;
+                break;
+            case 'sell': //input_currency
+                $slav_to_rub = $acquiring + $site + $slav_normal_percent;
+                break;
+        }
+    }
+}
+$acquiring = !empty($normal_percents['acquiring']) ? $normal_percents['acquiring'] : 0;
+$site = !empty($normal_percents['site']) ? $normal_percents['site'] : 0;
+$prizm = !empty($prizm_normal_percent) ? $prizm_normal_percent : 0;
+$slav = !empty($slav_normal_percent) ? $slav_normal_percent : 0;
+
+if ($rub_to_prizm == 0)
+{
+    $rub_to_prizm = $acquiring + $site + $prizm;
+}
+if ($rub_to_slav == 0)
+{
+    $rub_to_slav = $acquiring + $site + $slav;
+}
+if ($prizm_to_rub == 0)
+{
+    $prizm_to_rub = $acquiring + $site + $prizm;
+}
+if ($slav_to_rub == 0)
+{
+    $slav_to_rub = $acquiring + $site + $slav;
+}
+
 ?>
 <div class="col-lg-12 d-none d-lg-block"  style="z-index: 4; /*margin-top: 10px;*/">
     <div class="row">
@@ -88,7 +148,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         </div>
 
 
-        <form id="get_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="get_prizm" data-percent="<?=$rub_to_prizm?>" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Получить PRIZM</h1>
 
             <div class="col-12">
@@ -160,7 +220,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         </form>
 
 
-        <form id="get_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="get_waves" data-percent="<?=$slav_to_rub?>" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Получить Slav</h1>
 
             <input type="hidden" value="RUB" name="exchange[input_currency]">
@@ -233,7 +293,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
 
         </form>
 
-        <form id="get_ruble_prizm" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="get_ruble_prizm" data-percent="<?=$prizm_to_rub?>" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <div class="row headers">
                 <div class="col-6">
                     <h1 class="coop_maps-h1">Получить Рубль</h1>
@@ -300,7 +360,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
             </div>
         </form>
 
-        <form id="get_ruble_waves" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
+        <form id="get_ruble_waves" data-percent="<?=$slav_to_rub?>" class="coop_maps question-bg col-lg-12" action="" method="post" enctype="multipart/form-data" name="exchange">
             <div class="row headers">
                 <div class="col-6">
                     <h1 class="coop_maps-h1">Получить Рубль</h1>
@@ -602,7 +662,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                                     <input type="hidden" value="PRIZM" name="exchange[output_currency]">
 
                                     <div class="select-exchange w-100">
-                                        <input required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
+                                        <input  required class="rubles_to_prizm" placeholder="0" type="text" name="exchange[input_sum]">
                                     </div>
                                 </div>
                             </div>
@@ -1082,7 +1142,7 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
     </div>
 </div>
 <script type="text/javascript">
-    function calc_exchange(input_value, rate, bank_rate, is_reverse = false, is_commision = true)
+    function calc_exchange(input_value, rate, bank_rate, is_reverse = false, is_commision = true, additional_percent = false)
     {
         let result;
         if (is_reverse)
@@ -1090,10 +1150,36 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
         else
             result = (input_value * rate);
 
+        let percent;
+
         if (bank_rate !== false)
-            result *= (1 - (bank_rate / 100) );
+        {
+            percent = parseFloat(bank_rate);
+            if (additional_percent !== false && additional_percent > 0)
+                percent += parseFloat(additional_percent);
+            //console.log(percent);
+            //console.log(bank_rate);
+            //console.log(additional_percent);
+            result *= (1 - (percent / 100) );
+        }
+        else {
+            if (bank_rate === false && additional_percent !== false && additional_percent > 0) {
+                percent = additional_percent;
+                //console.log(percent);
+                result *= (1 - (percent / 100));
+            }
+        }
+
         //Округляем до 2 знаков после запятой
         result = Math.round(result * 100) / 100;
+
+        // if (additional_percent !== false && additional_percent > 0)
+        // {
+        //     result *= (1 - (additional_percent / 100));
+        //     //Округляем до 2 знаков после запятой
+        //     result = Math.round(result * 100) / 100;
+        // }
+
         return result;
     }
 
@@ -1185,8 +1271,13 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                     }
                 }
             }
+            let percent = el.parents('form').attr('data-percent');
+            if (percent === undefined || percent === '')
+                percent = false;
+            //console.log(el.parents('form'));
+            //console.log(percent);
             //console.log(output_el);
-            output_el.val(calc_exchange(input_amount, crypto_price, active_bank_val, is_reverse, is_commission));
+            output_el.val(calc_exchange(input_amount, crypto_price, active_bank_val, is_reverse, is_commission, percent));
         }
     }
     function get_currency(el, prizm_price, waves_price) {
@@ -1320,8 +1411,14 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                    is_reverse = false;
                else
                    is_reverse = true;
+
+               let percent = el.parents('form').attr('data-percent');
+               if (percent === undefined || percent === '')
+                   percent = false;
+               //console.log(percent);
+
                el.parents(".input-exchange").next().find("#exp")
-                   .val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
+                   .val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse, true, percent));
            }
        }
        else
@@ -1362,7 +1459,12 @@ for ($i = 1, $deposit_type = get_field('deposit_type_'.$i, 306);
                    input_amount = parseFloat(input_amount);
                }
 
-               output_el.val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse));
+               let percent = output_el.parents('form').attr('data-percent');
+               if (percent === undefined || percent === '')
+                   percent = false;
+               //console.log(percent);
+
+               output_el.val(calc_exchange(input_amount, active_currency === 'prizm' ? prizm_price : waves_price, active_bank_val, is_reverse, true, percent));
            }
        }
     });
