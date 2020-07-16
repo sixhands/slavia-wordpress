@@ -1,0 +1,6 @@
+#menu-header-menu-1 a[href='/coop-cards'], #menu-header-menu-1 a[href='/docs'] {
+    display: none;
+}
+.mobile-menu-ul a[href='/coop-cards'], .mobile-menu-ul a[href='/docs'] {
+    display: none;
+}

@@ -650,14 +650,18 @@ function get_doc_fields($data)
 //Добавление документов для данного пользователя
 //add_filter('rcl_profile_fields', 'add_user_documents', 10);
 //Добавить все параметры документа из сгенерированного документа (название, число и ссылку на загрузку)
+
 function hide_nav_menu_items()
 {
     $current_role = rcl_get_current_role();
-    if ($current_role == 'need-confirm' || $current_role == 'not_verified')
-        echo "<style>#menu-header-menu-1 a[href='/coop-cards'], #menu-header-menu-1 a[href='/docs'] {display: none;} " .
-            ".mobile-menu-ul a[href='/coop-cards'], .mobile-menu-ul a[href='/docs'] {display: none;}</style>";
+    if (!is_user_logged_in() || $current_role == 'need-confirm' || $current_role == 'not_verified')
+        rcl_enqueue_style( 'hide_menu', rcl_addon_url('hide_menu.css', __FILE__) );
+    else
+        wp_dequeue_style('hide_menu');
 }
 add_action('init','hide_nav_menu_items');
+add_action('wp_logout', 'hide_nav_menu_items');
+add_action('wp_login','hide_nav_menu_items');
 
 
 add_action('init','rcl_tab_profile');

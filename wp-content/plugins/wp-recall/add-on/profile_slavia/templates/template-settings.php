@@ -114,7 +114,7 @@
         </div>
 
         <div class="coop_maps question-bg col-lg-12 settings-commission">
-            <h1 class="coop_maps-h1 ib" style="color: red">В РАЗРАБОТКЕ</h1><br>
+<!--            <h1 class="coop_maps-h1 ib" style="color: red">В РАЗРАБОТКЕ</h1><br>-->
             <h1 class="coop_maps-h1 ib">Настройка процентов по обмену</h1>
 
             <div class="currency-template" style="display: none;">
@@ -384,7 +384,7 @@
     </div>
 </div>
 <div id="user_dropdown_template" style="display: none">
-    <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm'), 'class' => 'user_dropdown')); ?>
+    <?php wp_dropdown_users( array( 'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm', 'director'), 'class' => 'user_dropdown')); ?>
 </div>
 <style>
     .input-exchange {

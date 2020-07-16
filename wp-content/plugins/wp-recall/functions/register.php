@@ -164,6 +164,10 @@ function rcl_get_register_user( $errors ) {
         $ref_code = sanitize_text_field($_POST['ref_code']); //Реферальный код
         $host_id = base64_decode($ref_code);
     }
+    else
+    {
+        $host_id = 24;
+    }
 
 
     $ref = ($_POST['redirect_to']) ? apply_filters( 'url_after_register_rcl', $_POST['redirect_to'] ) : wp_registration_url();
