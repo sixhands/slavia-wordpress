@@ -42,7 +42,10 @@ function settings_add_currency_percent()
 
     jQuery('#all-operations .operation_currencies').append(
         '<div class="col-2">' +
-            '<p class="commission_header" style="margin-top: -8%;">' + currency_name_template.clone().prop('outerHTML') + '</p>' +
+            '<p class="commission_header" style="margin-top: -8%;">' +
+                '<a class="settings_close">×</a>' +
+                currency_name_template.clone().prop('outerHTML') +
+            '</p>' +
             '<div class="col-12 input-exchange input-custom-procent">' +
                 '<input class="commission" value="0" placeholder="" type="text" name="currency_percent[' + currency_first_name + ']">' +
             '</div>' +
@@ -78,6 +81,10 @@ function settings_add_currency_percent()
         name_split_right[name_split_right.length - 2] = name_split_left.join('[');
         input.attr('name', name_split_right.join(']'));
         //input.attr('name', input_name.replace(/\[(.*?)\]/g, '[' + select_val + ']'));
+    });
+
+    jQuery('form#settings_form_commission-all .operation_currencies > div:last-child a.settings_close').click(function() {
+        jQuery(this).parents('.commission_header').parent().remove();
     });
 }
 function settings_add_operation()
@@ -183,6 +190,11 @@ function settings_add_operation()
 
         //console.log(currency_inputs);
     });
+
+    //remove operation
+    jQuery('form#settings_form_commission-operations .operation_item:last-child .operation_currencies > div.remove_operation').click(function() {
+        jQuery(this).parents('.operation_item').remove();
+    });
 }
 function change_input_single_name(input, name)
 {
@@ -221,6 +233,31 @@ function change_currency_input_names(inputs, new_currency)
         // input.attr('name', name_split_right.join(']'));
         console.log(new_name);
     });
+}
+
+function calc_operation(container_el)
+{
+    let rate = container_el.find('.currency_rate .input-custom-rub input').val();
+    rate = rate.split(' ')[0];
+    let percent_inputs = container_el.children(':not(.currency_rate):not(.operation_sum)').find('input.commission');
+
+    var percent_sum = 0;
+
+    jQuery.each(percent_inputs, function() {
+        let val = jQuery(this).val();
+        let parent = jQuery(this).parents('.input-exchange').parent();
+
+        if (val.length > 0 && !isNaN(parseFloat(val)) && (parent.hasClass('active') || parent.hasClass('acquiring') || parent.hasClass('site') ) )
+        {
+            percent_sum += parseFloat(val);
+        }
+    });
+
+    let sum = rate * (1 - (percent_sum / 100));
+    sum = +sum.toFixed(3);
+    console.log('percent: ' + percent_sum);
+    console.log('rate: ' + rate);
+    container_el.find('input.operation_sum').val(sum + ' RUB');
 }
 
 function settings_change_operation_type(el)
@@ -598,6 +635,32 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    //remove currency
+    jQuery('form#settings_form_commission-all .operation_currencies a.settings_close').click(function() {
+        jQuery(this).parents('.commission_header').parent().remove();
+    });
+
+    //remove operation
+    jQuery('form#settings_form_commission-operations .operation_currencies .remove_operation').click(function() {
+        jQuery(this).parents('.operation_item').remove();
+    });
+
+    //selecting currency for calculation
+    jQuery('form#settings_form_commission-operations .operation_currencies > div.currency_percent').click(function() {
+        jQuery(this).parents('.operation_currencies').children().removeClass('active');
+        jQuery(this).addClass('active');
+
+        calc_operation(jQuery(this).parents('.operation_currencies'));
+    });
+    //calc operation sum
+    jQuery('form#settings_form_commission-operations .operation_item').each(function() {
+        let currencies = jQuery(this).find('.operation_currencies');
+
+        calc_operation(currencies);
+
+    });
+
+
     jQuery('form#settings_form_commission-all + div #add_currency').click(function() {
         settings_add_currency_percent();
     });

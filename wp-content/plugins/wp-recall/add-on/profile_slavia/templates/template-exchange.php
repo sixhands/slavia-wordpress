@@ -592,6 +592,127 @@ if ($slav_to_rub == 0)
             </div>
         </form>
 
+        <form id="personal_deposit" class="coop_maps question-bg col-lg-12 personal_deposit" action="" method="post" enctype="multipart/form-data" name="exchange">
+            <h1 class="coop_maps-h1">Внести личный паевой взнос</h1>
+
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-7 input-exchange">
+                        <div class="row">
+                            <div class="select-exchange w-100">
+                                <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
+                                <select required class="personal_deposit input_currency" name="exchange[input_currency]">
+                                    <option disabled selected>Выберите раздел</option>
+                                    <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
+                                        <?php foreach ($asset_inputs as $asset_input): ?>
+                                            <option data-percent="" data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
+                                        <?php endforeach;?>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 input-exchange">
+                        <div class="row">
+                            <span>Количество</span>
+                            <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_sum]">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 input-exchange">
+                        <div class="row">
+                            <span>Короткое описание</span>
+                            <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_sum]">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 input-exchange orange-input">
+                        <div class="row">
+                            <span>Цена за 1 ед.</span>
+                            <input placeholder="0" class="exp_custom" type="text" name="exchange[output_sum]">
+                        </div>
+                    </div>
+
+                    <div id="other_payments_is_public" class="col-lg-4 input-exchange">
+                        <div class="row ">
+                            <span class="select-exchange">Публичное или нет?</span>
+                            <div class="select-exchange w-100">
+                                <select id="personal_deposit_desktop" class="personal_deposit" name="exchange[bank]">
+                                    <option disabled selected="selected">Выбрать банк</option>
+<!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
+<!--                                        --><?php //foreach ($banks as $key => $value): ?>
+<!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="other_payments_is_reserve" class="col-lg-3 input-exchange">
+                        <div class="row ">
+                            <span class="select-exchange">Резерв за пайщиком?</span>
+                            <div class="select-exchange w-100">
+                                <select id="personal_deposit_desktop" class="personal_deposit" name="exchange[bank]">
+                                    <option disabled selected="selected">Выбрать банк</option>
+                                    <!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
+                                    <!--                                        --><?php //foreach ($banks as $key => $value): ?>
+                                    <!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+                                    <!--                                        --><?php //endforeach;?>
+                                    <!--                                    --><?php //endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 input-exchange">
+                        <div class="row">
+                            <span>Общая цена</span>
+                            <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_sum]">
+                        </div>
+                    </div>
+
+                    <div id="other_payments_is_save" class="col-lg-7 input-exchange">
+                        <div class="row ">
+                            <span class="select-exchange">Спасти имущество да нет?</span>
+                            <div class="select-exchange w-100">
+                                <select id="personal_deposit_desktop" class="personal_deposit" name="exchange[bank]">
+                                    <option disabled selected="selected">Выбрать банк</option>
+                                    <!--                                    --><?php //if (isset($banks) && !empty($banks)): ?>
+                                    <!--                                        --><?php //foreach ($banks as $key => $value): ?>
+                                    <!--                                            <option value="--><?//=$key?><!--">--><?//=$value['name']?><!--</option>-->
+                                    <!--                                        --><?php //endforeach;?>
+                                    <!--                                    --><?php //endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4">
+                        <input class="btn-custom-one exchange-pd get-rubles text-center" type="submit" name="" value="Отправить">
+                    </div>
+                    <div class="col-8 input-exchange">
+                        <div class="row">
+                            <div class="select-exchange w-100" style="margin-top: 30px">
+                                <!--                            <span class="select-exchange">Наши реквизиты</span>-->
+                                <select required class="other_payments requisites" name="exchange[requisites]">
+                                    <option disabled selected>Наши реквизиты</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </div>
 </div>
 

@@ -28,6 +28,33 @@ a.settings_close {
 	color: red !important;
 	cursor: pointer;
 }
+.remove_operation {
+	padding: 10px !important;
+	margin-bottom: 0;
+	border: solid 1px transparent;
+	border-radius: 20px;
+}
+.remove_operation:hover {
+	border: solid 1px red;
+	cursor: pointer;
+}
+.remove_operation:hover a.remove_operation_link {
+	visibility: visible;
+}
+a.remove_operation_link {
+	visibility: hidden;
+	color: red !important;
+	cursor: pointer;
+	font-size: 40px;
+	float: right;
+}
+/*a.settings_close:hover {*/
+/*	visibility: visible;*/
+/*}*/
+.remove_operation_text {
+	font-size: 40px;
+	color: red !important;
+}
 
 a.remove_operation {
 	font-size: 40px;

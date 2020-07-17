@@ -1,4 +1,26 @@
 /************Настройки процентов по обмену****************/
+form#settings_form_commission-operations .operation_currencies > div.currency_percent:hover,
+form#settings_form_commission-operations .operation_currencies > div.currency_percent.active
+{
+    background: transparent linear-gradient(90deg, #EF7F1B 0%, #FDC501 100%) 0% 0% no-repeat padding-box;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.operation_sum .commission_header {
+    margin-top: -12.8% !important;
+}
+.operation_currencies > div {
+    padding-bottom: 20px;
+}
+.operation_currencies > div a.settings_close {
+    left: 25%;
+    margin-top: 0;
+    align-self: center;
+    bottom: 15%;
+}
+.operation_currencies > div:hover a.settings_close {
+    visibility: visible !important;
+}
 .commission_header, .ruble-sign {
     height: 100px;
     display: flex;
@@ -66,7 +88,7 @@ form#settings_form_commission-operations {
 .commission_container > .row .row.operation_currencies > div:nth-child(-n+2) p {
     /*margin-top: -21%;*/
 }
-.commission_container > .row .row.operation_currencies > div:not(:last-child) .input-exchange::after {
+.commission_container > .row .row.operation_currencies > div:not(:nth-last-child(2)):not(:last-child) .input-exchange::after {
     content: '+';
     position: absolute;
     right: -8%;
@@ -75,10 +97,10 @@ form#settings_form_commission-operations {
     color: purple;
     font-weight: bold;
 }
-form#settings_form_commission-operations .operation_currencies > div:last-child .input-exchange::after {
+form#settings_form_commission-operations .operation_currencies > div:nth-last-child(2) .input-exchange::after {
     content: '=';
     position: absolute;
-    right: -10%;
+    right: -7%;
     bottom: -16%;
     font-size: 40px;
     color: purple;

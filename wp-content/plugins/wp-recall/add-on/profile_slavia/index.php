@@ -3308,11 +3308,15 @@ function rcl_edit_profile(){
 
     do_action('personal_options_update', $user_ID);
 
-    $redirect_url = rcl_get_tab_permalink($user_ID, 'profile') . '&updated=true';
+    if (!(isset($_POST['currency_percent']) && $_POST['currency_percent']) &&
+        !(isset($_POST['operation_percent']) && $_POST['operation_percent'])
+        )
+    {
+        $redirect_url = rcl_get_tab_permalink($user_ID, 'profile') . '&updated=true';
+        wp_redirect($redirect_url);
+        exit;
+    }
 
-    wp_redirect($redirect_url);
-
-    exit;
 }
 
 //function rcl_custom_edit_profile(){
