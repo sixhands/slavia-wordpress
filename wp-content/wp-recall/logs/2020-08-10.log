@@ -1,0 +1,388 @@
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 
+        )
+
+)
+
+email: noepinephrine@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: noepinephrine@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+result: Array
+(
+    [acquiring] => 2.5
+    [site] => 2
+    [alt] => 5
+    [Бетон-м450_м³] => 2
+    [нефть Urals 1 барель] => 3
+    [Bitcoin] => 1
+)
+
+asset_rate: 
+doc_1: Array
+(
+    [date] => 10.08.20 11:46:53
+    [filename] => -приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-46.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/08/Акт-приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-46.pdf
+)
+
+asset_rate: 
+doc_1: Array
+(
+    [date] => 10.08.20 11:47:09
+    [filename] => -приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/08/Акт-приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47.pdf
+)
+
+asset_rate: 
+doc_1: Array
+(
+    [date] => 10.08.20 11:47:10
+    [filename] => -приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47-1.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/08/Акт-приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47-1.pdf
+)
+
+asset_rate: 
+doc_1: Array
+(
+    [date] => 10.08.20 11:47:11
+    [filename] => -приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47-2.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/08/Акт-приема-Бетон-м450_м³-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-47-2.pdf
+)
+
+result: Array
+(
+    [acquiring] => 2.5
+    [site] => 2
+    [alt] => 5
+    [Бетон-м450_м³] => 2
+    [нефть Urals 1 барель] => 3
+    [Bitcoin] => 1
+)
+
+asset_rate: 
+doc_1: Array
+(
+    [date] => 10.08.20 11:48:36
+    [filename] => -приема-Блоки-Bonolit-d500-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-48.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/08/Акт-приема-Блоки-Bonolit-d500-Пайщик-№3-Сергей-Сергеев-Андреевич-10-08-11-48.pdf
+)
+
+result: Array
+(
+    [acquiring] => 2.5
+    [site] => 2
+    [alt] => 5
+    [Бетон-м450_м³] => 2
+    [нефть Urals 1 барель] => 3
+    [Bitcoin] => 1
+)
+
+result: Array
+(
+    [acquiring] => 2.5
+    [site] => 2
+    [alt] => 5
+    [Бетон-м450_м³] => 2
+    [нефть Urals 1 барель] => 3
+    [Bitcoin] => 1
+)
+
+email: jen31111@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: test</p>
+    <p>Пароль: 121212</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ0ZXN0IiwiNWY5M2Y5ODM1MjRkZWYzZGNhNDY0NDY5ZDJjZjlmM2UiXQ%3D%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ0ZXN0IiwiNWY5M2Y5ODM1MjRkZWYzZGNhNDY0NDY5ZDJjZjlmM2UiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: st068074@student.spbu.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: test1</p>
+    <p>Пароль: 121212</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ0ZXN0MSIsIjY5OGQ1MWExOWQ4YTEyMWNlNTgxNDk5ZDdiNzAxNjY4Il0%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJ0ZXN0MSIsIjY5OGQ1MWExOWQ4YTEyMWNlNTgxNDk5ZDdiNzAxNjY4Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

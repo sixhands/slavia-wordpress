@@ -169,6 +169,8 @@ function rcl_profile_scripts(){
     if(rcl_is_office($user_ID)){
         rcl_enqueue_style( 'rcl-profile', rcl_addon_url('style.css', __FILE__) );
         rcl_enqueue_script( 'rcl-profile-scripts', rcl_addon_url('js/scripts.js', __FILE__) );
+
+        //rcl_enqueue_style( 'selectize.min.js');
         //wp_enqueue_script( 'rcl-profile-scripts', rcl_addon_url('js/scripts.js', __FILE__), array('my_jquery'), '1.0', true );
     }
 }
@@ -1111,6 +1113,11 @@ function rcl_tab_operations_content($master_id)
         {
             $output_sum_to_print = !empty($value['output_sum']) ? $value['output_sum'] : $value['input_sum'];
             $output_currency_to_print = !empty($value['output_currency']) ? $value['output_currency'] : $value['input_currency'];
+
+            $deposit_type = !empty($value['deposit_type']) ? $value['deposit_type'] : '';
+            if (strlen($deposit_type) > 0)
+                $deposit_type = '<p>'. $deposit_type.'</p>'; //
+
             $exchange_content .= '<div class="table-text w-100">
                                     <div class="row">
                                         <div class="col-2 text-center">'.
@@ -1133,7 +1140,7 @@ function rcl_tab_operations_content($master_id)
 //                                            0.9188 PZM
 //                                        </div>';
             if ($value['status'] == 'paid')
-                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
+                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">'.$deposit_type.'
                                        Ожидает подтверждения
                                         </div>';
 //                                    </div>
@@ -1141,7 +1148,7 @@ function rcl_tab_operations_content($master_id)
             //Одобренная менеджером заявка
             elseif ($value['status'] == 'awaiting_payment') {
                 if ($value['input_currency'] == 'RUB')
-                    $exchange_content .= '<div class="col-3 text-center">' .
+                    $exchange_content .= '<div class="col-3 text-center">' . $deposit_type .
                         //                                        <div class="col-12">
                         //                                            <p style="font-size: 15px; color: green">Операция одобрена. Произвести оплату:</p>
                         //                                        </div>
@@ -1162,7 +1169,7 @@ function rcl_tab_operations_content($master_id)
 //                                        </div>
 //                                    </div>';
                 else
-                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
+                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">'.$deposit_type.'
                                        Ожидает подтверждения
                                         </div>';
 //                                    </div>
@@ -1172,7 +1179,7 @@ function rcl_tab_operations_content($master_id)
             elseif ($value['status'] == 'deposit_other')
             {
                 if ($value['input_currency'] == 'RUB')
-                    $exchange_content .= '<div class="col-3 text-center">' .
+                    $exchange_content .= '<div class="col-3 text-center">' . $deposit_type .
                         '<a onclick="ipayCheckout({
                             amount:' . $value['input_sum'] . ',
                             currency:\'RUB\',
@@ -1186,13 +1193,13 @@ function rcl_tab_operations_content($master_id)
                         </a>' .
                         '</div>';
                 else
-                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
+                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">'.$deposit_type.'
                                        Ожидает подтверждения
                                         </div>';
             }
 
             elseif ($value['status'] == 'completed')
-                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: green">
+                $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: green">'.$deposit_type.'
                                        Завершена
                                         </div>';
 //                                    </div>
@@ -2403,6 +2410,9 @@ function rcl_edit_profile(){
                             $user_verification += array('card_num' => $request['card_num']);
                         if (isset($request['card_name']))
                             $user_verification += array('card_name' => $request['card_name']);
+
+                        if (isset($request['deposit_type']))
+                            $user_verification += array('deposit_type' => $request['deposit_type']);
 
 //                        $log->insert_log("date: ".print_r($user_verification, true));
                     }

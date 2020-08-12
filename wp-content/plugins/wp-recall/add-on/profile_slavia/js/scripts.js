@@ -163,8 +163,9 @@ function settings_add_operation()
         let rate = currency_input.find('option:first-child').attr('data-rate');
         currency_input.parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
 
-        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
-            .find('.operation_currencies > div:not(.currency_rate) input');
+
+        let currency_inputs = jQuery(this).parents('.operation_item')
+            .find('.operation_currencies > div:not(.currency_rate):not(.operation_sum) input');
         // console.log(currency_inputs);
         // console.log(currency_input.find('option:first-child'));
         change_currency_input_names(currency_inputs, currency_input.find('option:first-child').val());
@@ -178,8 +179,8 @@ function settings_add_operation()
 
         //Меняем name у каждого input currency
 
-        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
-            .find('.operation_currencies > div:not(.currency_rate) input');
+        let currency_inputs = jQuery(this).parents('.operation_item')
+            .find('.operation_currencies > div:not(.currency_rate):not(.operation_sum) input');
 
         change_currency_input_names(currency_inputs, jQuery(this).val());
 
@@ -216,22 +217,26 @@ function change_currency_input_names(inputs, new_currency)
     inputs.each(function(index, item) {
         let input_name = jQuery(this).attr('name');
 
-        let name_split_right_bracket = input_name.split(']');
-        let name_split_left_bracket = name_split_right_bracket[0].split('[');
+        if (typeof input_name !== "undefined" && input_name.length > 0)
+        {
 
-        name_split_left_bracket[name_split_left_bracket.length - 1] = new_currency;
+            let name_split_right_bracket = input_name.split(']');
+            let name_split_left_bracket = name_split_right_bracket[0].split('[');
 
-        name_split_right_bracket[0] = name_split_left_bracket.join('[');
+            name_split_left_bracket[name_split_left_bracket.length - 1] = new_currency;
 
-        let new_name = name_split_right_bracket.join(']');
+            name_split_right_bracket[0] = name_split_left_bracket.join('[');
 
-        jQuery(this).attr('name', new_name);
+            let new_name = name_split_right_bracket.join(']');
 
-         //let name_split_left = name_split_right_bracket[name_split_right_bracket.length - 2].split('[');
-        // name_split_left[name_split_left.length - 1] = select_val;
-        // name_split_right[name_split_right.length - 2] = name_split_left.join('[');
-        // input.attr('name', name_split_right.join(']'));
-        console.log(new_name);
+            jQuery(this).attr('name', new_name);
+
+            //let name_split_left = name_split_right_bracket[name_split_right_bracket.length - 2].split('[');
+            // name_split_left[name_split_left.length - 1] = select_val;
+            // name_split_right[name_split_right.length - 2] = name_split_left.join('[');
+            // input.attr('name', name_split_right.join(']'));
+            console.log(new_name);
+        }
     });
 }
 
@@ -635,6 +640,57 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    //selectize for search in assets in exchange
+    jQuery('.other_payments.input_currency').selectize({
+        onInitialize: function () {
+            var s = this;
+            this.revertSettings.$children.each(function () {
+                jQuery.extend(s.options[this.value], jQuery(this).data());
+            });
+        },
+        onChange: function (value) {
+            var option = this.options[value];
+            jQuery('select.other_payments.input_currency option:selected').attr('data-requisites', option.requisites).attr('data-rate', option.rate);
+            //console.log(this);
+            //alert('requisites: ' + option.rate);
+            //jQuery(this).attr('data-rate', option.rate).attr('data-requisites', option.requisites);
+        },
+        sortField: 'text'
+    });
+    jQuery('.other_payments.output_currency').selectize({
+        onInitialize: function () {
+            var s = this;
+            this.revertSettings.$children.each(function () {
+                jQuery.extend(s.options[this.value], jQuery(this).data());
+            });
+        },
+        onChange: function (value) {
+            var option = this.options[value];
+            jQuery('select.other_payments.output_currency option:selected').attr('data-requisites', option.requisites).attr('data-rate', option.rate);
+            //console.log(this);
+            //alert('requisites: ' + option.rate);
+            //jQuery(this).attr('data-rate', option.rate).attr('data-requisites', option.requisites);
+        },
+        sortField: 'text'
+    });
+
+    jQuery('.other_deposit.input_currency').selectize({
+        onInitialize: function () {
+            var s = this;
+            this.revertSettings.$children.each(function () {
+                jQuery.extend(s.options[this.value], jQuery(this).data());
+            });
+        },
+        onChange: function (value) {
+            var option = this.options[value];
+            jQuery('select.other_deposit.input_currency option:selected').attr('data-requisites', option.requisites).attr('data-rate', option.rate);
+            //console.log(this);
+            //alert('requisites: ' + option.rate);
+            //jQuery(this).attr('data-rate', option.rate).attr('data-requisites', option.requisites);
+        },
+        sortField: 'text'
+    });
+
     //remove currency
     jQuery('form#settings_form_commission-all .operation_currencies a.settings_close').click(function() {
         jQuery(this).parents('.commission_header').parent().remove();
@@ -676,13 +732,15 @@ function tab_config()
         let rate = currency_input.find('option:first-child').attr('data-rate');
         currency_input.parents('.operation_header').next('div').find('div.currency_rate input.commission').val(rate);
 
-        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
-            .find('.operation_currencies > div:not(.currency_rate) input');
+        let currency_inputs = jQuery(this).parents('.operation_item')
+            .find('.operation_currencies > div:not(.currency_rate):not(.operation_sum) input');
         // console.log(currency_inputs);
         // console.log(currency_input.find('option:first-child'));
         change_currency_input_names(currency_inputs, currency_input.find('option:first-child').val());
 
         change_input_single_name(jQuery(this), currency_input.find('option:first-child').val());
+
+        calc_operation(jQuery(this).parents('.operation_item').find('.operation_currencies'));
     });
 
     jQuery('form#settings_form_commission-operations select.operation_currency').change(function() {
@@ -691,8 +749,8 @@ function tab_config()
 
         //Меняем name у каждого input currency
 
-        let currency_inputs = jQuery(this).parents('.operation_header').next('div')
-            .find('.operation_currencies > div:not(.currency_rate) input');
+        let currency_inputs = jQuery(this).parents('.operation_item')
+            .find('.operation_currencies > div:not(.currency_rate):not(.operation_sum) input');
         change_currency_input_names(currency_inputs, jQuery(this).val());
 
         let type_input = jQuery(this).siblings('select.operation_type');
@@ -700,7 +758,8 @@ function tab_config()
 
         change_input_single_name(type_input, jQuery(this).val());
 
-
+        //console.log(jQuery(this).parents('.operation_item').find('.operation_currencies'));
+        calc_operation(jQuery(this).parents('.operation_item').find('.operation_currencies'));
         //console.log(currency_inputs);
     });
 
@@ -817,6 +876,9 @@ function tab_config()
     //jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #prizm_address, #prizm_public_key, #waves_address").blur(function() {
         //     jQuery(this).parents("form").submit();
         // });
+        jQuery("#rcl-field-user_phone").change(function() {
+                 jQuery(this).parents("form").submit();
+             });
     // //submit формы по потере фокуса в профиле
     // jQuery("#username_input, #rcl-field-user_email, #rcl-field-user_phone, #prizm_address, #prizm_public_key, #waves_address").blur(function() {
     //     jQuery(this).parents("form").submit();
@@ -1077,29 +1139,55 @@ function tab_config()
     });
     /**********************************************************************************/
 
-    jQuery(number_fields.join(', ')).keydown(function(event) {
-        var code = (event.keyCode ? event.keyCode : event.which);
-        //Проверяем на допустимые символы
-        var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
-            || ((code == 190 || code == 110) //numbers || period
-            && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
-            || code == 8 || code == 13 || code == 9 || code == 144 //144 - numlock
-            || code == 37 || code == 39); //37-left arrow, 39 - right arrow
-        //user_phone, verification inputs
-        if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
-        jQuery(this).attr('name') === 'verification[passport_number]' ||
-        jQuery(this).attr('name') === 'verification[passport_code]') && (code == 190 || code == 110))
-            is_allowed = false;
-        else
-            if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
-                jQuery(this).attr('name') === 'verification[passport_number]' ||
-                jQuery(this).attr('name') === 'verification[passport_code]') && (code == 32 || code == 109 || code == 173) )
-                    is_allowed = true;
-        if (!is_allowed) {
-            event.preventDefault();
-            return false;
+    // jQuery(number_fields.join(', ')).keydown(function(event) {
+    //     var code = (event.keyCode ? event.keyCode : event.which);
+    //     //Проверяем на допустимые символы
+    //     var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
+    //         || ((code == 190 || code == 110) //numbers || period
+    //         && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
+    //         || code == 8 || code == 13 || code == 9 || code == 144 //144 - numlock
+    //         || code == 37 || code == 39); //37-left arrow, 39 - right arrow
+    //     //user_phone, verification inputs
+    //     if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+    //     jQuery(this).attr('name') === 'verification[passport_number]' ||
+    //     jQuery(this).attr('name') === 'verification[passport_code]') && (code == 190 || code == 110))
+    //         is_allowed = false;
+    //     else
+    //         if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+    //             jQuery(this).attr('name') === 'verification[passport_number]' ||
+    //             jQuery(this).attr('name') === 'verification[passport_code]') && (code == 32 || code == 109 || code == 173) )
+    //                 is_allowed = true;
+    //     if (!is_allowed) {
+    //         event.preventDefault();
+    //         return false;
+    //     }
+    // });
+    jQuery(number_fields.join(', ')).on('input',function(event) {
+        let value = jQuery(this);
+        // if(parseFloat(value.val()) == ''){
+        //     value.val('');
+        // }
+        // if(value.val().match(/./g).length > 1){
+        //     console.log('yep');
+        // }
+        value.val(parseFloat(value.val()));
+        if(!parseFloat(value.val())){
+            value.val('0');
+        }else {
+            
         }
-    });
+
+
+        // if(!value.val()){
+        //     value.val('0');
+        // } else {
+        //     value.val(parseInt(value.val()));
+        // }
+        // if (!is_allowed) {
+        //     event.preventDefault();
+        //     return false;
+        // }
+    })
 
     jQuery('.copy-btn').click(function(e){
         var inputCopy = jQuery(this).prev()[0];

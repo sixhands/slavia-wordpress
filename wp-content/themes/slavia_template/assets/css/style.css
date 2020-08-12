@@ -1037,3 +1037,31 @@ form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exc
 .ref-tab__content {
 	display: none;
 }
+
+.deposit_type_page .coop_maps-img img {
+	height: 160px;
+	object-fit: contain;
+}
+.deposit_type_page ol.carousel-indicators {
+	bottom: -15%;
+}
+.deposit_type_page ol.carousel-indicators > li {
+	background-color: rgba(0,0, 0, 0.2);
+}
+.deposit_type_page ol.carousel-indicators > li.active {
+	background: transparent linear-gradient(90deg, #EF7F1B 0%, #FDC501 100%) 0% 0% no-repeat padding-box;
+}
+.deposit_type_page .carousel-control-next > .carousel-control-next-icon,
+.deposit_type_page .carousel-control-prev > .carousel-control-prev-icon {
+	background-image: none;
+	background-color: transparent;
+	font-size: 32px;
+	color: gray;
+	position: relative;
+}
+.deposit_type_page .carousel-control-prev > .carousel-control-prev-icon {
+	left: -50%;
+}
+.deposit_type_page .carousel-control-next > .carousel-control-next-icon {
+	right: -50%;
+}

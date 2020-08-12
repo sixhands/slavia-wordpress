@@ -32,8 +32,15 @@ $rub_to_slav = 0;
 $prizm_to_rub = 0;
 $slav_to_rub = 0;
 
-$prizm_normal_percent = $normal_percents['prizm'];
-$slav_normal_percent = $normal_percents['slav'];
+if (isset($normal_percents['prizm']))
+    $prizm_normal_percent = $normal_percents['prizm'];
+else
+    $prizm_normal_percent = 0;
+
+if (isset($normal_percents['slav']))
+    $slav_normal_percent = $normal_percents['slav'];
+else
+    $slav_normal_percent = 0;
 
 foreach ($operation_percents as $key => $operation) {
     $acquiring = !empty($operation['acquiring']) ? $operation['acquiring'] : 0;
@@ -438,8 +445,8 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
 <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
-                                <select required class="other_payments input_currency" name="exchange[input_currency]">
-                                    <option disabled selected>Вид вносимого имущества</option>
+                                <select required class="other_payments input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">
+                                    <option value="">Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
                                             <option data-percent="" data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
@@ -461,8 +468,8 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
 <!--                                <span class="select-exchange">Вид желаемого имущества</span>-->
-                                <select class="other_payments output_currency" name="exchange[output_currency]">
-                                    <option disabled selected>Вид желаемого имущества</option>
+                                <select class="other_payments output_currency" name="exchange[output_currency]" placeholder="Вид желаемого имущества">
+                                    <option value="">Вид желаемого имущества</option>
                                     <?php if (isset($asset_outputs) && !empty($asset_outputs)): ?>
                                         <?php foreach ($asset_outputs as $asset_output): ?>
                                             <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=htmlspecialchars($asset_output['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_output['asset_name']?></option>
@@ -544,8 +551,8 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
                                 <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
-                                <select required class="other_deposit input_currency" name="exchange[input_currency]">
-                                    <option disabled selected>Вид вносимого имущества</option>
+                                <select required class="other_deposit input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">
+                                    <option value="">Вид вносимого имущества</option>
                                     <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
                                         <?php foreach ($asset_inputs as $asset_input): ?>
                                             <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
@@ -1606,8 +1613,11 @@ if ($slav_to_rub == 0)
     //Other payments
     function get_currency_rates()
     {
-        let input_rate = jQuery('form.other_payments').find('select.other_payments.input_currency option:selected').not(':first-child');
-        let output_rate = jQuery('form.other_payments').find('select.other_payments.output_currency option:selected').not(':first-child');
+        let input_rate = jQuery('form#other_payments').find('select.other_payments.input_currency option:selected');//.not(':first-child');
+        let output_rate = jQuery('form#other_payments').find('select.other_payments.output_currency option:selected');//.not(':first-child');
+
+        //console.log(input_rate);
+        //console.log(output_rate);
 
         if (input_rate.is(':disabled') || output_rate.is(':disabled') || input_rate.length <= 0 || output_rate.length <= 0)
             return false;
@@ -1624,14 +1634,16 @@ if ($slav_to_rub == 0)
         if (!currency_rates)
             return false;
         else {
+            //console.log(currency_rates);
+
             let result = (output_sum * currency_rates.output_rate) / currency_rates.input_rate;
 
-            console.log("result before: " + result);
+            //console.log("result before: " + result);
 
-            if (percent !== false && percent !== undefined)
+            if (percent !== false && typeof percent !== undefined)
                 result *= (1 - (percent / 100));
 
-            console.log("result after: " + result);
+            //console.log("result after: " + result);
             return Math.round(result * 100) / 100;
         }
     }
@@ -1643,12 +1655,12 @@ if ($slav_to_rub == 0)
         else {
             let result = (input_sum * currency_rates.input_rate) / currency_rates.output_rate;
 
-            console.log("result before: " + result);
+            //console.log("result before: " + result);
 
-            if (percent !== false && percent !== undefined)
+            if (percent !== false && typeof percent !== undefined)
                 result *= (1 - (percent / 100));
 
-            console.log("result after: " + result);
+            //console.log("result after: " + result);
             return Math.round(result * 100) / 100;
         }
     }
@@ -1668,13 +1680,15 @@ if ($slav_to_rub == 0)
             else
                 percent = false;
 
-            console.log(percent);
+            //console.log(percent);
         //console.log(input_sum);
 
         if (input_el.hasClass('other_payments_input')) //Введена вносимая сумма
         {
             output_el = input_el.parents('.input-exchange').siblings('.input-exchange.orange-input').find('input.exp_custom');
 
+            // console.log('input_sum: ' + input_sum);
+            // console.log(output_el);
 
             let output_sum = calc_other_payments_output_sum(input_sum, percent);
             if (output_sum === false)
@@ -1687,6 +1701,9 @@ if ($slav_to_rub == 0)
             if (input_el.hasClass('exp_custom')) //Внесена желаемая сумма
             {
                 output_el = input_el.parents('.input-exchange.orange-input').siblings('.input-exchange.col-lg-5').find('input.other_payments_input');
+
+                // console.log('input_sum: ' + input_sum);
+                // console.log(output_el);
 
                 let output_sum = calc_other_payments_input_sum(input_sum, percent);
                 if (output_sum === false)

@@ -165,13 +165,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-9 input-exchange">
+                    <div class="col-12 input-exchange">
                         <div class="row">
                             <span>ФИО держателя карты</span>
                             <input class="verification_card_name" placeholder="ФИО держателя карты" type="text" name="">
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12 input-exchange">
+                        <div class="row">
+                            <span>Тип целевого взноса</span>
+                            <input class="verification_deposit_type" placeholder="Тип целевого взноса" type="text" name="">
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -273,7 +283,7 @@
             let fields_to_fill = jQuery(
                 '.verification_prizm_address, .verification_prizm_public_key, .verification_waves_address' +
                 ', .verification_input_sum, .verification_output_sum, .verification_exchange_date' +
-                ', .verification_bank, .verification_card_num, .verification_card_name');
+                ', .verification_bank, .verification_card_num, .verification_card_name, .verification_deposit_type');
             let fields_to_hide = jQuery('.modal-content input').not(fields_to_fill);
 
             fields_to_fill.parents('.input-exchange').css('display', 'block');
@@ -292,11 +302,15 @@
                 jQuery('.passport-photo').css('display', 'block');
             }
 
+        jQuery('.verification_deposit_type').val('');
         //Заполняем данными нужные поля
         jQuery.each(data, function (item) {
             if (item !== 'passport_photos')
+            {
                 if (modal_el.find('.verification_' + item).length > 0)
                     modal_el.find('.verification_' + item).val(data[item]);
+
+            }
         });
 
         if (modal_type === 'verification') {

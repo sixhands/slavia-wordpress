@@ -96,3 +96,7 @@ jQuery('select.profil-mobile-menu.w-100').change(function(){
     let selectedVal = this.options[this.selectedIndex].value;
     window.location = selectedVal;
 });
+
+jQuery('#chat_button').click(() => {
+    Tawk_API.toggle();
+});

@@ -1,3 +1,11 @@
+/*******Обмен селект с поиском********/
+.other_payments.input_currency {
+    /*height: 100%;*/
+}
+.selectize-input.focus, .selectize-input.input-active, .selectize-input.dropdown-active {
+    /*height: 100% !important;*/
+}
+
 /************Настройки процентов по обмену****************/
 form#settings_form_commission-operations .operation_currencies > div.currency_percent:hover,
 form#settings_form_commission-operations .operation_currencies > div.currency_percent.active
