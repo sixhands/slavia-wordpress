@@ -4156,6 +4156,7 @@ function get_input_currencies()
     $prizm_price = rcl_slavia_get_crypto_price();
 
     $asset_inputs = array();
+    //$asset_inputs = get_field('asset_inputs', 306);
     for ($i = 1, $asset_input = get_field('asset_input_'.$i, 306);
          $i <= 10;
          $i++, $asset_input = get_field('asset_input_'.$i, 306)
@@ -4213,4 +4214,100 @@ function get_output_currencies()
         }
     }
     return $asset_outputs;
+}
+
+function get_input_currencies_2()
+{
+    $asset_inputs = get_field('asset_inputs', 306);
+
+//    if( have_rows('asset_inputs', 306) ):
+//        while( have_rows('asset_inputs', 306) )
+//        {
+//            the_row();
+//
+//            $asset_name = get_sub_field('asset_name');
+//            $asset_requisites = get_sub_field('asset_requisites');
+//            $asset_rate_rubles = get_sub_field('asset_rate_rubles');
+//
+//            if (have_rows('asset_types')):
+//                while (have_rows('asset_types'))
+//                {
+//                    the_row();
+//
+//                }
+//            endif;
+//        }
+//   endif;
+
+    return $asset_inputs;
+}
+function get_output_currencies_2()
+{
+    $asset_outputs = get_field('asset_outputs', 306);
+    return $asset_outputs;
+}
+function print_nested_assets($assets, $is_out_asset = false)
+{
+    $slav_address = get_field('slav_address', 306);
+    $prizm_address = get_field('prizm_address', 306);
+    $prizm_price = rcl_slavia_get_crypto_price();
+    ?>
+    <ul class="menu-list">
+        <?php if (isset($assets) && !empty($assets)): ?>
+            <?php foreach ($assets as $asset): ?>
+                <?php
+                if (empty($asset) || count($asset) == 0)
+                    continue;
+
+                if (!empty($asset['asset_name']) && !empty($asset['asset_requisites']) && !empty($asset['asset_rate_rubles']) && !$is_out_asset) {
+                    $name = $asset['asset_name'];
+                    $rate = $asset['asset_rate_rubles'];
+                    $requisites = $asset['asset_requisites'];
+                }
+                elseif (strcasecmp($asset['asset_name'], 'prizm') == 0)
+                {
+                    $name = $asset['asset_name'];
+                    $requisites = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
+                    $rate = $prizm_price;
+                }
+                elseif (strcasecmp($asset['asset_name'], 'slav') == 0)
+                {
+                    $name = $asset['asset_name'];
+                    $requisites = $slav_address;
+                    $rate = 1;
+                }
+                elseif (!empty($asset['asset_name']))
+                {
+                    $name = $asset['asset_name'];
+                    $requisites = '';
+                    $rate = '';
+                }
+                ?>
+                <li>
+                    <a data-percent="" data-rate="<?=$rate?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$requisites?>"<?php endif; ?> data-value="<?=htmlspecialchars($name, ENT_QUOTES, 'UTF-8')?>"><?=$name?></a>
+                    <?php if (!empty($asset['asset_types'])): ?>
+                        <ul>
+                        <?php foreach($asset['asset_types'] as $asset_type): ?>
+                            <li>
+                                <a data-percent="" data-rate="<?=$asset_type['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_type['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_type['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_type['asset_name']?></a>
+                                <?php if (!empty($asset_type['asset_types'])): ?>
+                                    <ul>
+                                        <?php foreach($asset_type['asset_types'] as $subtype): ?>
+                                        <li>
+                                            <a data-percent="" data-rate="<?=$subtype['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$subtype['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($subtype['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$subtype['asset_name']?></a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif;?>
+                            </li>
+
+                        <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </li>
+<!--                                            <option ></option>-->
+            <?php endforeach;?>
+        <?php endif; ?>
+    </ul>
+<?php
 }

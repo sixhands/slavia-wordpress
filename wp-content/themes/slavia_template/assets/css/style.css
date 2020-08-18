@@ -982,7 +982,7 @@ a:hover
 .exchange_deposit_text {
 	margin-top: 30px;
 }
-form.other_payments .input-exchange {
+form.other_payments .input-exchange:not(.nested_menu) {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

@@ -640,8 +640,67 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    jQuery('.nested_menu').click(function() {
+        let menu_el = jQuery(this).siblings('.menu-list');
+        let menu_display = menu_el.css('display');
+        if (menu_display === 'none')
+            menu_el.slideDown('normal');
+        else
+            if (menu_display === 'block')
+                menu_el.slideUp('normal');
+    });
+    jQuery('.menu-list a').click(function() {
+        jQuery(this).parents('.menu-list').find('a').removeClass('active');
+        //jQuery('.menu-list a').removeClass('active');
+
+       let ul_display = jQuery(this).siblings('ul').css('display');
+       let ul = jQuery(this).siblings('ul');
+       let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
+       if (ul.length === 0 || typeof ul === 'undefined') {
+           jQuery(this).addClass('active');
+           input_currency_el.val(jQuery(this).attr('data-value'));
+           jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text(jQuery(this).attr('data-value'));
+       }
+       else {
+           input_currency_el.val('');
+           jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
+       }
+
+        if (ul_display === 'none') {
+            ul.slideDown('normal');
+            //jQuery(this).addClass('active');
+        }
+        else
+        if (ul_display === 'block') {
+            ul.slideUp('normal');
+        }
+    });
+    //Nested currency menu open/close
+    // const links = document.querySelectorAll("form#other_payments .menu-list > li > a");
+    // for (const link of links) {
+    //     link.addEventListener(
+    //         "click",
+    //         e => {
+    //             const curr = e.srcElement;
+    //             [...links].forEach(link => {
+    //                 if (link !== curr) {
+    //                     link.classList.remove("is-active");
+    //                     link.parentNode.classList[
+    //                         curr.classList.contains("is-active") ? "remove" : "add"](
+    //                         "is-invisible");
+    //                 }
+    //             });
+    //             curr.parentNode.classList.remove("is-invisible");
+    //             curr.parentNode.classList.toggle("is-active");
+    //             curr.classList.toggle("is-active");
+    //         },
+    //         false);
+    //
+    // }
+    ////////////////////////////
+
     //selectize for search in assets in exchange
-    jQuery('.other_payments.input_currency').selectize({
+    /*jQuery('.other_payments.input_currency').selectize({
         onInitialize: function () {
             var s = this;
             this.revertSettings.$children.each(function () {
@@ -689,7 +748,7 @@ function tab_config()
             //jQuery(this).attr('data-rate', option.rate).attr('data-requisites', option.requisites);
         },
         sortField: 'text'
-    });
+    });*/
 
     //remove currency
     jQuery('form#settings_form_commission-all .operation_currencies a.settings_close').click(function() {
@@ -1170,12 +1229,22 @@ function tab_config()
         // if(value.val().match(/./g).length > 1){
         //     console.log('yep');
         // }
-        value.val(parseFloat(value.val()));
-        if(!parseFloat(value.val())){
-            value.val('0');
-        }else {
-            
+        // if(value.val().indexOf('.')){
+        //     console.log(value.val().indexOf('.'))
+        // }
+        console.log(value.val());
+        // if(value.val().indexOf('.') == -1 && parseFloat(value.val())){
+        //     value.val(parseFloat(value.val()));
+        // }
+
+        if((/\D/).test(value.val()) ){
+            value.val(parseFloat(value.val()));
         }
+        // if(!parseFloat(value.val()) ){
+        //     value.val('0');
+        // }else {
+            
+        // }
 
 
         // if(!value.val()){

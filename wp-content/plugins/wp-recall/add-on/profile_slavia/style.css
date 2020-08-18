@@ -1,3 +1,56 @@
+/********Вложенные валюты меню**********************/
+.nested_menu {
+    background-image: url(/wp-content/uploads/2019/12/select.png);
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background-color: white;
+    width: 100%;
+    height: 42px;
+    border: 1px solid #93A5CF;
+    border-radius: 4px;
+    padding: 1.5% 3%;
+    cursor: pointer;
+}
+.menu-list {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    z-index: 100;
+}
+form#other_deposit .menu-list {
+    width: 86%;
+}
+form#other_payments .menu-list {
+    width: 94%;
+}
+.menu-list ul {
+    list-style-type: none;
+    display: none;
+}
+.menu-list > li {
+    /*background: rgba(0, 0, 0, 0.6);*/
+    background: #575353;
+    padding-left: 3%;
+}
+.menu-list > li:first-child {
+    padding-top: 1%;
+}
+.menu-list > li:last-child {
+    padding-bottom: 1%;
+}
+.menu-list li > a {
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+    color: white !important;
+}
+.menu-list li > a:hover {
+    background: blue;
+}
+/*color: #2E2A5C;*/
+/******************************************/
+
 /*******Обмен селект с поиском********/
 .other_payments.input_currency {
     /*height: 100%;*/

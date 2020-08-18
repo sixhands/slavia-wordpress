@@ -8,9 +8,10 @@ $instruction_text_left = get_field('instruction_text_left', 306);
 $instruction_text_right = get_field('instruction_text_right', 306);
 
 
-$asset_inputs = get_input_currencies();
+$asset_inputs = get_input_currencies_2();
+print '<div style="display: none"><pre>'.print_r(get_output_currencies_2(), true).'</pre></div>';
 
-$asset_outputs = get_output_currencies();
+$asset_outputs = get_output_currencies_2();
 
 $deposit_types = array();
 
@@ -445,14 +446,21 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
 <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
-                                <select required class="other_payments input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">
-                                    <option value="">Вид вносимого имущества</option>
-                                    <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
-                                        <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option data-percent="" data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
+                                <input type="hidden" class="other_payments input_currency" name="exchange[input_currency]">
+
+                                <div class="nested_menu">
+                                    <a class="menu_link">Вид вносимого имущества</a>
+                                </div>
+
+                                <?php print_nested_assets($asset_inputs); ?>
+<!--                                <select required class="other_payments input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">-->
+<!--                                    <option value="">Вид вносимого имущества</option>-->
+                                    <?php //if (isset($asset_inputs) && !empty($asset_inputs)): ?>
+                                        <?php //foreach ($asset_inputs as $asset_input): ?>
+<!--                                            <option data-percent="" data-rate="--><?//=$asset_input['asset_rate_rubles']?><!--" data-requisites="--><?//=$asset_input['asset_requisites']?><!--" value="--><?//=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?><!--">--><?//=$asset_input['asset_name']?><!--</option>-->
+                                        <?php //endforeach;?>
+                                    <?php //endif; ?>
+<!--                                </select>-->
                             </div>
                         </div>
                     </div>
@@ -468,14 +476,22 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
 <!--                                <span class="select-exchange">Вид желаемого имущества</span>-->
-                                <select class="other_payments output_currency" name="exchange[output_currency]" placeholder="Вид желаемого имущества">
-                                    <option value="">Вид желаемого имущества</option>
-                                    <?php if (isset($asset_outputs) && !empty($asset_outputs)): ?>
-                                        <?php foreach ($asset_outputs as $asset_output): ?>
-                                            <option data-rate="<?=$asset_output['asset_rate_rubles']?>" value="<?=htmlspecialchars($asset_output['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_output['asset_name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
+                                <input type="hidden" class="other_payments output_currency" name="exchange[output_currency]">
+
+                                <div class="nested_menu">
+                                    <a class="menu_link">Вид желаемого имущества</a>
+                                </div>
+
+                                <?php print_nested_assets($asset_outputs, true); ?>
+
+<!--                                <select class="other_payments output_currency" name="exchange[output_currency]" placeholder="Вид желаемого имущества">-->
+<!--                                    <option value="">Вид желаемого имущества</option>-->
+<!--                                    --><?php //if (isset($asset_outputs) && !empty($asset_outputs)): ?>
+<!--                                        --><?php //foreach ($asset_outputs as $asset_output): ?>
+<!--                                            <option data-rate="--><?//=$asset_output['asset_rate_rubles']?><!--" value="--><?//=htmlspecialchars($asset_output['asset_name'], ENT_QUOTES, 'UTF-8')?><!--">--><?//=$asset_output['asset_name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+<!--                                </select>-->
                             </div>
                         </div>
                     </div>
@@ -551,14 +567,23 @@ if ($slav_to_rub == 0)
                         <div class="row">
                             <div class="select-exchange w-100">
                                 <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
-                                <select required class="other_deposit input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">
-                                    <option value="">Вид вносимого имущества</option>
-                                    <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
-                                        <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option data-rate="<?=$asset_input['asset_rate_rubles']?>" data-requisites="<?=$asset_input['asset_requisites']?>" value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
+
+                                <input type="hidden" class="other_payments input_currency" name="exchange[input_currency]">
+
+                                <div class="nested_menu">
+                                    <a class="menu_link">Вид вносимого имущества</a>
+                                </div>
+
+                                <?php print_nested_assets($asset_inputs); ?>
+
+<!--                                <select required class="other_deposit input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">-->
+<!--                                    <option value="">Вид вносимого имущества</option>-->
+<!--                                    --><?php //if (isset($asset_inputs) && !empty($asset_inputs)): ?>
+<!--                                        --><?php //foreach ($asset_inputs as $asset_input): ?>
+<!--                                            <option data-rate="--><?//=$asset_input['asset_rate_rubles']?><!--" data-requisites="--><?//=$asset_input['asset_requisites']?><!--" value="--><?//=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?><!--">--><?//=$asset_input['asset_name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+<!--                                </select>-->
                             </div>
                         </div>
                     </div>
@@ -1822,6 +1847,10 @@ if ($slav_to_rub == 0)
         requisites.find('option').not(':first-child').remove();
         requisites.append('<option selected>' + jQuery(this).find('option:selected').attr('data-requisites') + '</option>');
     });
+
+    //СОБЫТИЯ ДЛЯ МНОГОУРОВНЕВОГО МЕНЮ
+    
+    ////////////////////////////////////////////
     //output_sum = (input_sum*input_rate)/output_rate
     //input_sum = (output_sum*output_rate)/input_rate
 </script>
