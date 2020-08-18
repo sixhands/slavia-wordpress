@@ -1336,6 +1336,52 @@ if ($slav_to_rub == 0)
         return result;
     }
 
+    function other_payment_input_currency_change(el)
+    {
+        // let data = {
+        //     get_currency_percent: true,
+        //     type: 'sell',
+        //     currency: jQuery(this).find('option:selected').val()
+        // };
+        // jQuery.post( window.location, data, function(response)
+        // {
+        //     let response_data = JSON.parse(response);
+        //     let currency_options = jQuery('.other_payments.output_currency option');//el.find('option');//el.find('option');
+        //     let acquiring = (response_data['acquiring'] !== '' && typeof response_data['acquiring'] !== 'undefined') ? parseFloat(response_data['acquiring']) : 0;
+        //     let site = (response_data['site'] !== '' && typeof response_data['site'] !== 'undefined') ? parseFloat(response_data['site']) : 0;
+        //     jQuery.each(currency_options, function(index, el)
+        //     {
+        //         var value = jQuery(this).val();
+        //         var percent = parseFloat(0);
+        //         for (let key in response_data)
+        //             if (key.toLowerCase() === value.toLowerCase()) {
+        //                 percent += parseFloat(response_data[key]);
+        //                 //jQuery(this).attr('data-percent', response_data[key]);
+        //             }
+        //         percent += acquiring;
+        //         percent += site;
+        //         console.log(percent);
+        //         jQuery(this).attr('data-percent', percent);
+        //
+        //         //console.log(value);
+        //         // jQuery.each(response_data, function() {
+        //         //     var currency = jQuery(this);
+        //         //     console.log(currency);
+        //         // });
+        //     });
+        //     jQuery.each(el.find('option'), function() {
+        //         jQuery(this).attr('data-percent', '');
+        //     });
+        //     //console.log(currency_options);
+        // });
+
+        other_payments_print_result(el.parents('form.other_payments').find('.other_payments_input'));
+    }
+    function other_payment_output_currency_change(el)
+    {
+
+    }
+
     //Калькулятор
     function keyup_calc(/*event, */el, crypto_price, active_bank_val = false)//, is_backspace = false)
     {
@@ -1638,8 +1684,9 @@ if ($slav_to_rub == 0)
     //Other payments
     function get_currency_rates()
     {
-        let input_rate = jQuery('form#other_payments').find('select.other_payments.input_currency option:selected');//.not(':first-child');
-        let output_rate = jQuery('form#other_payments').find('select.other_payments.output_currency option:selected');//.not(':first-child');
+        let input_rate = jQuery('form#other_payments input.other_payments.input_currency').siblings('ul.menu-list').find('a.active');
+        //.find('select.other_payments.input_currency option:selected');//.not(':first-child');
+        let output_rate = jQuery('form#other_payments input.other_payments.output_currency').siblings('ul.menu-list').find('a.active');//.find('select.other_payments.output_currency option:selected');//.not(':first-child');
 
         //console.log(input_rate);
         //console.log(output_rate);
@@ -1715,7 +1762,7 @@ if ($slav_to_rub == 0)
             // console.log('input_sum: ' + input_sum);
             // console.log(output_el);
 
-            let output_sum = calc_other_payments_output_sum(input_sum, percent);
+            let output_sum = calc_other_payments_output_sum(input_sum/*, percent*/);
             if (output_sum === false)
                 return;
             else
@@ -1730,13 +1777,23 @@ if ($slav_to_rub == 0)
                 // console.log('input_sum: ' + input_sum);
                 // console.log(output_el);
 
-                let output_sum = calc_other_payments_input_sum(input_sum, percent);
+                let output_sum = calc_other_payments_input_sum(input_sum/*, percent*/);
                 if (output_sum === false)
                     return;
                 else
                     output_el.val(output_sum);
             }
 
+    }
+    function other_payments_is_output_currency(el) {
+        let currency_el = el.parents('.menu-list').siblings('input.other_payments');
+        let is_output_currency;
+        if (currency_el.hasClass('input_currency'))
+            is_output_currency = false;
+        else
+        if (currency_el.hasClass('output_currency'))
+            is_output_currency = true;
+        return is_output_currency;
     }
     jQuery('.other_payments_input, .exp_custom').keyup(function(event) {
         other_payments_print_result(jQuery(this));
@@ -1848,8 +1905,72 @@ if ($slav_to_rub == 0)
         requisites.append('<option selected>' + jQuery(this).find('option:selected').attr('data-requisites') + '</option>');
     });
 
-    //СОБЫТИЯ ДЛЯ МНОГОУРОВНЕВОГО МЕНЮ
-    
+    //СОБЫТИЯ ДЛЯ МНОГОУРОВНЕВОГО МЕНЮ*******************************
+    jQuery('.nested_menu').click(function() {
+        let menu_el = jQuery(this).siblings('.menu-list');
+        let menu_display = menu_el.css('display');
+        if (menu_display === 'none')
+            menu_el.slideDown('normal');
+        else
+        if (menu_display === 'block')
+            menu_el.slideUp('normal');
+    });
+    jQuery('.menu-list a').click(function() {
+        jQuery(this).parents('.menu-list').find('a').removeClass('active');
+        //jQuery('.menu-list a').removeClass('active');
+
+        let ul_display = jQuery(this).siblings('ul').css('display');
+        let ul = jQuery(this).siblings('ul');
+        let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
+
+        let form_id = jQuery(this).parents('form').attr('id');
+        //Условие выбора валюты нижнего уровня вложенности (больше вложенности в данной группе нет)
+        if (ul.length === 0 || typeof ul === 'undefined')
+        {
+            jQuery(this).addClass('active');
+            input_currency_el.val(jQuery(this).attr('data-value'));
+            jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text(jQuery(this).attr('data-value'));
+
+            if (form_id === 'other_payments')
+            {
+                let is_output_currency = other_payments_is_output_currency(jQuery(this));
+                //Иные взносы input_currency
+                if (!is_output_currency) {
+                    change_requisites(jQuery(this), jQuery('form.other_payments select.other_payments.requisites'));
+                    other_payment_input_currency_change(jQuery(this));
+                }
+                //Иные взносы output_currency
+            }
+
+            //Целевой взнос input_currency
+            else
+                if (form_id === 'other_deposit')
+                    change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'));
+        }
+
+        else {
+            input_currency_el.val('');
+            jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
+
+            if (form_id === 'other_payments') {
+                let is_output_currency = other_payments_is_output_currency(jQuery(this));
+                if (!is_output_currency)
+                    change_requisites(jQuery(this), jQuery('form.other_payments select.other_payments.requisites'), 'clear');
+            }
+            else
+                if (form_id === 'other_deposit')
+                    change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'), 'clear');
+        }
+
+        if (ul_display === 'none') {
+            ul.slideDown('normal');
+            //jQuery(this).addClass('active');
+        }
+        else
+        if (ul_display === 'block') {
+            ul.slideUp('normal');
+        }
+    });
     ////////////////////////////////////////////
     //output_sum = (input_sum*input_rate)/output_rate
     //input_sum = (output_sum*output_rate)/input_rate

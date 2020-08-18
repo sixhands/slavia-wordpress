@@ -35,6 +35,19 @@ function rcl_check_profile_form(){
 
 }
 
+function change_requisites(currency_el, requisite_el, requisite_val = '')
+{
+    if (typeof requisite_el !== 'undefined')
+    {
+        requisite_el.find('option').not(':first-child').remove();
+
+        if (requisite_val !== 'clear')
+            requisite_el.append('<option selected>' +
+                                currency_el.attr('data-requisites') +
+                                '</option>');
+    }
+}
+
 function settings_add_currency_percent()
 {
     let currency_name_template = jQuery('div.settings-commission .currency-template select');
@@ -640,41 +653,6 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
-    jQuery('.nested_menu').click(function() {
-        let menu_el = jQuery(this).siblings('.menu-list');
-        let menu_display = menu_el.css('display');
-        if (menu_display === 'none')
-            menu_el.slideDown('normal');
-        else
-            if (menu_display === 'block')
-                menu_el.slideUp('normal');
-    });
-    jQuery('.menu-list a').click(function() {
-        jQuery(this).parents('.menu-list').find('a').removeClass('active');
-        //jQuery('.menu-list a').removeClass('active');
-
-       let ul_display = jQuery(this).siblings('ul').css('display');
-       let ul = jQuery(this).siblings('ul');
-       let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
-       if (ul.length === 0 || typeof ul === 'undefined') {
-           jQuery(this).addClass('active');
-           input_currency_el.val(jQuery(this).attr('data-value'));
-           jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text(jQuery(this).attr('data-value'));
-       }
-       else {
-           input_currency_el.val('');
-           jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
-       }
-
-        if (ul_display === 'none') {
-            ul.slideDown('normal');
-            //jQuery(this).addClass('active');
-        }
-        else
-        if (ul_display === 'block') {
-            ul.slideUp('normal');
-        }
-    });
     //Nested currency menu open/close
     // const links = document.querySelectorAll("form#other_payments .menu-list > li > a");
     // for (const link of links) {
