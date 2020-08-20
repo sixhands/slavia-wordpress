@@ -970,6 +970,9 @@ a:hover
 			padding-left: 30px;
 			padding-right: 30px;
 		}
+		#personal_deposit .select-exchange {
+			padding-left: 0 !important;
+		}
 		.input-pd-right
 		{
 			margin-right: 45px;
@@ -1068,4 +1071,39 @@ form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exc
 
 #login-form-rcl.form-tab-rcl > .form-block-rcl {
 	margin: 0 !important;
+}
+#personal_deposit .select-exchange {
+	padding-left: 0 !important;
+}
+#personal_deposit input[type=checkbox] {
+	/*width: auto;*/
+	width: 20%;
+	height: auto;
+	align-self: flex-start;
+	margin-top: 3%;
+}
+#other_payments_is_public .select-exchange,
+#other_payments_is_reserve .select-exchange,
+#other_payments_is_save .select-exchange {
+	padding-right: 0;
+	display: flex;
+	margin-top: 10%;
+}
+#other_payments_is_public span,
+#other_payments_is_reserve span,
+#other_payments_is_save span {
+	text-align: left;
+	display: block;
+	padding-left: 10%;
+}
+#other_payments_reserve_id {
+	padding-right: 0;
+	visibility: hidden;
+	margin-bottom: 3%;
+}
+#other_payments_reserve_id .select-exchange {
+	padding-right: 0;
+}
+.no-margin {
+	margin: 0;
 }

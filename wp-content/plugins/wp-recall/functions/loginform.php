@@ -43,6 +43,9 @@ function rcl_get_authorize_form($type=false,$form=false){
 
             $login_form = rcl_get_option('login_form_recall');
 
+//            $log = new Rcl_Log();
+//            $log->insert_log("login form type: ".$login_form);
+
             if($login_form==1&&$type!='pageform'){
 
                 $redirect_url = rcl_format_url(get_permalink(rcl_get_option('page_login_form_recall')));
@@ -72,12 +75,13 @@ function rcl_get_authorize_form($type=false,$form=false){
                 if($typeform!='register'){
                     rcl_include_template('form-sign.php');
                 }
-                if($typeform!='sign' && $can_register){
-                    rcl_include_template('form-register.php');
-                }
                 if(!$typeform||$typeform=='sign'){
                     rcl_include_template('form-remember.php');
                 }
+                if($typeform!='sign' && $can_register){
+                    rcl_include_template('form-register.php');
+                }
+
 
             }else if(!$login_form){
 

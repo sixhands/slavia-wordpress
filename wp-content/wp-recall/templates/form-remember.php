@@ -1,11 +1,12 @@
 <?php global $typeform; ?>
+<?php echo $typeform ?>
 <div class="form-tab-rcl" id="remember-form-rcl">
-	<div class="form_head form_rmmbr">
-            <a href="#" class="link-login-rcl link-tab-rcl "><?php _e('Authorization','wp-recall'); ?></a>
-            <?php if($typeform!='sign' && rcl_is_register_open()){ ?>
-                <a href="#" class="link-register-rcl link-tab-rcl "><?php _e('Registration','wp-recall'); ?></a>
-            <?php } ?>
-	</div>
+<!--	<div class="form_head form_rmmbr">-->
+<!--            <a href="#" class="link-login-rcl link-tab-rcl ">--><?php //_e('Authorization','wp-recall'); ?><!--</a>-->
+<!--            --><?php //if($typeform!='sign' && rcl_is_register_open()){ ?>
+<!--                <a href="#" class="link-register-rcl link-tab-rcl ">--><?php //_e('Registration','wp-recall'); ?><!--</a>-->
+<!--            --><?php //} ?>
+<!--	</div>-->
     <span class="form-title"><?php _e('Password generation','wp-recall'); ?></span>
 
     <div class="form-block-rcl"><?php rcl_notice_form('remember'); ?></div>

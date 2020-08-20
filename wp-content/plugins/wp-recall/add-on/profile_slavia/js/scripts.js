@@ -635,6 +635,10 @@ function init_ref_buttons()
 }
 
 jQuery(document).ready(function(){
+    // jQuery('#login-form-rcl .link-remember-rcl').click(function() {
+    //     console.log("aaa");
+    //     rcl_show_login_form_tab('remember');
+    // })
     tab_config();
 });
 
@@ -653,7 +657,16 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
-
+    jQuery('#other_payments_is_reserve input[type=checkbox]').change(function() {
+        if (jQuery(this).is(':checked')) {
+            jQuery('#other_payments_reserve_id').css('visibility', 'visible');
+            jQuery('#other_payments_reserve_id select').attr('required', 'required');
+        }
+        else {
+            jQuery('#other_payments_reserve_id').css('visibility', 'hidden');
+            jQuery('#other_payments_reserve_id select').removeAttr('required');
+        }
+    });
     //selectize for search in assets in exchange
     /*jQuery('.other_payments.input_currency').selectize({
         onInitialize: function () {
