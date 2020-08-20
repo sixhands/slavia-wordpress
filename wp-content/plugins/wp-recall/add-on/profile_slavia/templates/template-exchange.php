@@ -1379,7 +1379,54 @@ if ($slav_to_rub == 0)
     }
     function other_payment_output_currency_change(el)
     {
+        let possible_rub_names = ["RUB", "rub", "Rub", "рубль", "Рубль"]; //Возможные названия рубля, учитывая регистр
 
+        let fields_to_show = el.parents('.input-exchange')
+            .siblings('#other_payments_card_name, #other_payments_card_num, #other_payments_bank');
+
+        // let data = {
+        //     get_currency_percent: true,
+        //     type: 'buy',
+        //     currency: jQuery(this).find('option:selected').val()
+        // };
+        // jQuery.post( window.location, data, function(response) {
+        //     let response_data = JSON.parse(response);
+        //     let currency_options = jQuery('.other_payments.input_currency option');//el.find('option');//el.find('option');
+        //     let acquiring = (response_data['acquiring'] !== '' && typeof response_data['acquiring'] !== 'undefined') ? parseFloat(response_data['acquiring']) : 0;
+        //     let site = (response_data['site'] !== '' && typeof response_data['site'] !== 'undefined') ? parseFloat(response_data['site']) : 0;
+        //     jQuery.each(currency_options, function(index, el) {
+        //         var value = jQuery(this).val();
+        //         var percent = parseFloat(0);
+        //         for (let key in response_data)
+        //             if (key.toLowerCase() === value.toLowerCase()) {
+        //                 percent += parseFloat(response_data[key]);
+        //                 //jQuery(this).attr('data-percent', response_data[key]);
+        //             }
+        //
+        //         percent += acquiring;
+        //         percent += site;
+        //         console.log(percent);
+        //         jQuery(this).attr('data-percent', percent);
+        //
+        //
+        //         //console.log(value);
+        //         // jQuery.each(response_data, function() {
+        //         //     var currency = jQuery(this);
+        //         //     console.log(currency);
+        //         // });
+        //     });
+        //     jQuery.each(el.find('option'), function() {
+        //         jQuery(this).attr('data-percent', '');
+        //     });
+        //     //console.log(currency_options);
+        // });
+
+        if (possible_rub_names.includes(el.val() ) )
+            fields_to_show.css('display', 'block');
+        else
+            fields_to_show.css('display', 'none');
+
+        other_payments_print_result(el.parents('form.other_payments').find('.other_payments_input'));
     }
 
     //Калькулятор
@@ -1940,6 +1987,10 @@ if ($slav_to_rub == 0)
                     other_payment_input_currency_change(jQuery(this));
                 }
                 //Иные взносы output_currency
+                else
+                {
+                    other_payment_output_currency_change(jQuery(this));
+                }
             }
 
             //Целевой взнос input_currency

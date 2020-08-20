@@ -1065,3 +1065,7 @@ form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exc
 .deposit_type_page .carousel-control-next > .carousel-control-next-icon {
 	right: -50%;
 }
+
+#login-form-rcl.form-tab-rcl > .form-block-rcl {
+	margin: 0 !important;
+}

@@ -4259,21 +4259,24 @@ function print_nested_assets($assets, $is_out_asset = false)
                 if (empty($asset) || count($asset) == 0)
                     continue;
 
-                if (!empty($asset['asset_name']) && !empty($asset['asset_requisites']) && !empty($asset['asset_rate_rubles']) && !$is_out_asset) {
+                if (!empty($asset['asset_name']) && !empty($asset['asset_rate_rubles'])) {
                     $name = $asset['asset_name'];
                     $rate = $asset['asset_rate_rubles'];
-                    $requisites = $asset['asset_requisites'];
+                    if (!$is_out_asset && !empty($asset['asset_requisites']))
+                        $requisites = $asset['asset_requisites'];
                 }
                 elseif (strcasecmp($asset['asset_name'], 'prizm') == 0)
                 {
                     $name = $asset['asset_name'];
-                    $requisites = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
+                    if (!$is_out_asset)
+                        $requisites = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
                     $rate = $prizm_price;
                 }
                 elseif (strcasecmp($asset['asset_name'], 'slav') == 0)
                 {
                     $name = $asset['asset_name'];
-                    $requisites = $slav_address;
+                    if (!$is_out_asset)
+                        $requisites = $slav_address;
                     $rate = 1;
                 }
                 elseif (!empty($asset['asset_name']))

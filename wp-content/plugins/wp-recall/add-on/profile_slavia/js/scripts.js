@@ -653,29 +653,6 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
-    //Nested currency menu open/close
-    // const links = document.querySelectorAll("form#other_payments .menu-list > li > a");
-    // for (const link of links) {
-    //     link.addEventListener(
-    //         "click",
-    //         e => {
-    //             const curr = e.srcElement;
-    //             [...links].forEach(link => {
-    //                 if (link !== curr) {
-    //                     link.classList.remove("is-active");
-    //                     link.parentNode.classList[
-    //                         curr.classList.contains("is-active") ? "remove" : "add"](
-    //                         "is-invisible");
-    //                 }
-    //             });
-    //             curr.parentNode.classList.remove("is-invisible");
-    //             curr.parentNode.classList.toggle("is-active");
-    //             curr.classList.toggle("is-active");
-    //         },
-    //         false);
-    //
-    // }
-    ////////////////////////////
 
     //selectize for search in assets in exchange
     /*jQuery('.other_payments.input_currency').selectize({
@@ -727,6 +704,15 @@ function tab_config()
         },
         sortField: 'text'
     });*/
+
+    //close nested menu when click outside
+    jQuery(document).on("click", function(event) {
+
+        if (!jQuery(event.target).closest(".menu-list").length && !jQuery(event.target).closest(".nested_menu").length) {
+
+            jQuery(".menu-list").slideUp("normal");
+        }
+    });
 
     //remove currency
     jQuery('form#settings_form_commission-all .operation_currencies a.settings_close').click(function() {
