@@ -657,15 +657,34 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    jQuery('form#personal_deposit').submit(function() {
+       console.log("personal submit");
+    });
+
     jQuery('#other_payments_is_reserve input[type=checkbox]').change(function() {
         if (jQuery(this).is(':checked')) {
             jQuery('#other_payments_reserve_id').css('visibility', 'visible');
             jQuery('#other_payments_reserve_id select').attr('required', 'required');
+
+            jQuery('#other_payments_is_public input[type=checkbox]').attr('disabled', 'disabled');
         }
         else {
             jQuery('#other_payments_reserve_id').css('visibility', 'hidden');
             jQuery('#other_payments_reserve_id select').removeAttr('required');
+
+            jQuery('#other_payments_is_public input[type=checkbox], #other_payments_is_save input[type=checkbox]').removeAttr('disabled');
         }
+    });
+    jQuery('#other_payments_is_public input[type=checkbox]').change(function() {
+        if (jQuery(this).is(':checked')) {
+            jQuery('#other_payments_is_reserve input[type=checkbox]').attr('disabled', 'disabled');
+        }
+        else {
+            jQuery('#other_payments_is_reserve input[type=checkbox]').removeAttr('disabled');
+        }
+    });
+    jQuery('#personal_deposit_reserve_id').change(function() {
+        jQuery('#other_payments_is_public input[type=checkbox], #other_payments_is_save input[type=checkbox]').attr('disabled', 'disabled');
     });
     //selectize for search in assets in exchange
     /*jQuery('.other_payments.input_currency').selectize({
@@ -1144,18 +1163,34 @@ function tab_config()
     //Блокируем ненужные символы
     //Где блокировать все кроме цифр
     var number_fields =
-        [ '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', '.other_payments_input', '.exp_custom', 'input.other_deposit', //Поля страницы обмена
-        '.bank_value', '.ref_value', //Поля страницы настроек
-        '#rcl-field-user_phone', 'input[name="verification[passport_number]"]', 'input[name="verification[passport_code]"]' //Страница профиля
+        [
+            '.prizm_to_rubles', '.rubles_to_prizm', '.rubles_to_waves', '#exp', '.other_payments_input',
+            '.exp_custom', 'input.other_deposit', '.personal_deposit_input:not(.currency_name)', //Поля страницы обмена
+            '.bank_value', '.ref_value', //Поля страницы настроек
+            '#rcl-field-user_phone', 'input[name="verification[passport_number]"]',
+            'input[name="verification[passport_code]"]' //Страница профиля
         ];
 
-    //Защита от подделки данных на фронте*****************
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').prop('unselectable', 'on').on('selectstart', false);
+    var exchange_inputs =
+        [
+            '.prizm_to_rubles',
+            '.rubles_to_prizm',
+            '.rubles_to_waves',
+            '#exp',
+            '.other_payments_input',
+            '.exp_custom',
+            'input.other_deposit',
+            '.personal_deposit_input:not(.currency_name)'
+        ];
+    var exchange_selector = exchange_inputs.join(', ');
 
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').prop('autocomplete', 'off');
+    //Защита от подделки данных на фронте*****************
+    jQuery(exchange_selector).prop('unselectable', 'on').on('selectstart', false);
+
+    jQuery(exchange_selector).prop('autocomplete', 'off');
 
     //Выставляем атрибуты при каждом клике мыши, если не выставлены
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').mousedown(function(){
+    jQuery(exchange_selector).mousedown(function(){
         let unselectable = jQuery(this).prop('unselectable');
         let autocomplete = jQuery(this).prop('autocomplete');
 
@@ -1165,41 +1200,43 @@ function tab_config()
         if (autocomplete === 'undefined' || autocomplete !== 'off')
             jQuery(this).prop('autocomplete', 'off');
     });
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').bind('cut copy paste', function (e) {
+    jQuery(exchange_selector).bind('cut copy paste', function (e) {
         e.preventDefault();
     });
 
     //Disable mouse right click
-    jQuery('.prizm_to_rubles, .rubles_to_prizm, .rubles_to_waves, #exp, .other_payments_input, .exp_custom, input.other_deposit').on("contextmenu",function(e){
+    jQuery(exchange_selector).on("contextmenu",function(e){
         return false;
     });
     /**********************************************************************************/
 
-    // jQuery(number_fields.join(', ')).keydown(function(event) {
-    //     var code = (event.keyCode ? event.keyCode : event.which);
-    //     //Проверяем на допустимые символы
-    //     var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
-    //         || ((code == 190 || code == 110) //numbers || period
-    //         && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
-    //         || code == 8 || code == 13 || code == 9 || code == 144 //144 - numlock
-    //         || code == 37 || code == 39); //37-left arrow, 39 - right arrow
-    //     //user_phone, verification inputs
-    //     if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
-    //     jQuery(this).attr('name') === 'verification[passport_number]' ||
-    //     jQuery(this).attr('name') === 'verification[passport_code]') && (code == 190 || code == 110))
-    //         is_allowed = false;
-    //     else
-    //         if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
-    //             jQuery(this).attr('name') === 'verification[passport_number]' ||
-    //             jQuery(this).attr('name') === 'verification[passport_code]') && (code == 32 || code == 109 || code == 173) )
-    //                 is_allowed = true;
-    //     if (!is_allowed) {
-    //         event.preventDefault();
-    //         return false;
-    //     }
-    // });
-    jQuery(number_fields.join(', ')).on('input',function(event) {
-        let value = jQuery(this);
+    jQuery(number_fields.join(', ')).keydown(function(event) {
+        var code = (event.keyCode ? event.keyCode : event.which);
+
+        //console.log(!((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1));
+        //Проверяем на допустимые символы
+        var is_allowed = ( ( (code >= 48 && code <= 57) || (code >= 96 && code <=105)) //96 to 105 - numpad
+            || ((code == 190 || code == 110) //numbers || period
+            && !((code == 190 || code == 110) && jQuery(this).val().indexOf('.') != -1)) //уже есть точка (110 - numpad dot)
+            || code == 8 || code == 13 || code == 9 || code == 144 //144 - numlock
+            || code == 37 || code == 39); //37-left arrow, 39 - right arrow
+        //user_phone, verification inputs
+        if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+        jQuery(this).attr('name') === 'verification[passport_number]' ||
+        jQuery(this).attr('name') === 'verification[passport_code]') && (code == 190 || code == 110))
+            is_allowed = false;
+        else
+            if ((jQuery(this).attr('id') === 'rcl-field-user_phone' ||
+                jQuery(this).attr('name') === 'verification[passport_number]' ||
+                jQuery(this).attr('name') === 'verification[passport_code]') && (code == 32 || code == 109 || code == 173) )
+                    is_allowed = true;
+        if (!is_allowed) {
+            event.preventDefault();
+            return false;
+        }
+    });
+    // jQuery(number_fields.join(', ')).on('input',function(event) {
+    //     let value = jQuery(this);
         // if(parseFloat(value.val()) == ''){
         //     value.val('');
         // }
@@ -1209,18 +1246,18 @@ function tab_config()
         // if(value.val().indexOf('.')){
         //     console.log(value.val().indexOf('.'))
         // }
-        console.log(value.val());
+        //console.log(value.val());
         // if(value.val().indexOf('.') == -1 && parseFloat(value.val())){
         //     value.val(parseFloat(value.val()));
         // }
 
-        if((/\D/).test(value.val()) ){
-            value.val(parseFloat(value.val()));
-        }
+        // if((/\D/).test(value.val()) ){
+        //     value.val(parseFloat(value.val()));
+        // }
         // if(!parseFloat(value.val()) ){
         //     value.val('0');
         // }else {
-            
+
         // }
 
 
@@ -1233,7 +1270,7 @@ function tab_config()
         //     event.preventDefault();
         //     return false;
         // }
-    })
+    //})
 
     jQuery('.copy-btn').click(function(e){
         var inputCopy = jQuery(this).prev()[0];

@@ -9,7 +9,7 @@ $instruction_text_right = get_field('instruction_text_right', 306);
 
 
 $asset_inputs = get_input_currencies_2();
-print '<div style="display: none"><pre>'.print_r(get_output_currencies_2(), true).'</pre></div>';
+print '<div style="display: none"><pre>'.print_r($asset_inputs, true).'</pre></div>';
 
 $asset_outputs = get_output_currencies_2();
 
@@ -627,6 +627,8 @@ if ($slav_to_rub == 0)
         <form id="personal_deposit" class="coop_maps question-bg col-lg-12 personal_deposit" action="" method="post" enctype="multipart/form-data" name="exchange">
             <h1 class="coop_maps-h1">Внести личный паевой взнос</h1>
 
+            <input type="hidden" name="exchange[is_personal_deposit]" value="yes">
+
             <div class="col-12">
                 <div class="row">
                     <div class="col-lg-7 input-exchange">
@@ -648,41 +650,41 @@ if ($slav_to_rub == 0)
                     <div class="col-lg-5 input-exchange">
                         <div class="row">
                             <span>Количество</span>
-                            <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_amount]">
+                            <input required id="personal_deposit_amount" placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_amount]">
                         </div>
                     </div>
 
                     <div class="col-lg-7 input-exchange">
                         <div class="select-exchange w-100">
                             <span>Короткое описание</span>
-                            <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[input_currency]">
+                            <input required placeholder="Название имущества" type="text" class="personal_deposit_input currency_name" name="exchange[input_currency]">
                         </div>
                     </div>
 
-                    <div class="col-lg-5 input-exchange orange-input">
+                    <div class="col-lg-5 input-exchange orange-input input-custom-rub">
                         <div class="row">
                             <span>Цена за 1 ед.</span>
-                            <input placeholder="0" class="exp_custom" type="text" name="exchange[rate]">
+                            <input id="personal_deposit_rate" placeholder="0" class="exp_custom" type="text" name="exchange[rate]">
                         </div>
                     </div>
 
                         <div id="other_payments_is_public" class="col-lg-2 input-exchange">
                             <div class="select-exchange w-100">
-                                <input type="checkbox" class="personal_deposit" name="exchange[is_public]">
+                                <input type="checkbox" class="personal_deposit is_public" name="exchange[is_public]">
                                 <span>Публичное имущество</span>
                             </div>
                         </div>
 
                         <div id="other_payments_is_reserve" class="col-lg-2 input-exchange">
                             <div class="select-exchange w-100">
-                                <input type="checkbox" class="personal_deposit" name="exchange[is_reserve]">
+                                <input type="checkbox" class="personal_deposit is_reserve" name="exchange[is_reserve]">
                                 <span>Резерв за пайщиком</span>
                             </div>
                         </div>
 
                         <div id="other_payments_is_save" class="col-lg-2 input-exchange">
                             <div class="select-exchange w-100">
-                                <input type="checkbox" class="personal_deposit" name="exchange[is_save]">
+                                <input type="checkbox" class="personal_deposit is_save" name="exchange[is_save]">
                                 <span>Спасти имущество</span>
                             </div>
                         </div>
@@ -690,19 +692,28 @@ if ($slav_to_rub == 0)
                         <div id="other_payments_reserve_id" class="col-lg-6 input-exchange">
                             <div class="select-exchange w-100">
                                 <span>Номер пайщика</span>
-                                <select class="personal_deposit" name="exchange[reserve_id]"></select>
+                                <?php $client_nums = get_client_nums(); ?>
+                                <select id="personal_deposit_reserve_id" class="personal_deposit" name="exchange[reserve_id]">
+                                    <option selected disabled>Выберите номер пайщика</option>
+                                    <?php foreach ($client_nums as $client_num): ?>
+                                        <?php if ($client_num['user_id'] == get_current_user_id())
+                                            continue;
+                                        ?>
+                                        <option value="<?=$client_num['user_id']?>"><?=$client_num['client_num']?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
 
-                    <div class="col-lg-5 input-exchange no-margin">
+                    <div class="col-lg-5 input-exchange no-margin input-custom-rub">
                         <span>Общая цена</span>
-                        <input required placeholder="0" type="text" class="personal_deposit_input" name="exchange[result_sum]">
+                        <input id="personal_deposit_result_sum" disabled placeholder="0" type="text" class="personal_deposit_input" name="exchange[result_sum]">
                     </div>
 
-                    <div class="col-7 input-exchange no-margin">
+                    <div class="col-7 input-exchange no-margin" style="display: none">
                         <div class="select-exchange w-100">
                             <span>Реквизиты</span>
-                            <select required class="other_payments requisites" name="exchange[requisites]">
+                            <select class="other_payments requisites" name="exchange[requisites]">
                                 <option disabled selected>Наши реквизиты</option>
                             </select>
                         </div>
@@ -1929,15 +1940,39 @@ if ($slav_to_rub == 0)
         requisites.append('<option selected>' + jQuery(this).find('option:selected').attr('data-requisites') + '</option>');
     });
 
+    //Личный паевый взнос расчет
+    jQuery('form#personal_deposit input#personal_deposit_amount, ' +
+            'form#personal_deposit input#personal_deposit_rate')
+        .keyup(function(e) {
+            let rate = jQuery('form#personal_deposit input#personal_deposit_rate').val();
+            //console.log(rate);
+            if (rate.length === 0)
+                rate = 0;
+            else
+                rate = parseFloat(rate);
+            let amount = jQuery('form#personal_deposit input#personal_deposit_amount').val();
+            //console.log(amount);
+            if (amount.length === 0)
+                amount = 0;
+            else
+                amount = parseFloat(amount);
+            let sum = amount * rate;
+            jQuery('form#personal_deposit input#personal_deposit_result_sum').val(sum);
+        });
+
     //СОБЫТИЯ ДЛЯ МНОГОУРОВНЕВОГО МЕНЮ*******************************
     jQuery('.nested_menu').click(function() {
         let menu_el = jQuery(this).siblings('.menu-list');
         let menu_display = menu_el.css('display');
-        if (menu_display === 'none')
-            menu_el.slideDown('normal');
-        else
-        if (menu_display === 'block')
-            menu_el.slideUp('normal');
+
+        jQuery(".menu-list").not(menu_el).slideUp("normal");
+        setTimeout(function() {
+            if (menu_display === 'none')
+                menu_el.slideDown('normal');
+            else
+            if (menu_display === 'block')
+                menu_el.slideUp('normal');
+        }, 400, menu_display, menu_el);
     });
     jQuery('.menu-list a').click(function() {
         jQuery(this).parents('.menu-list').find('a').removeClass('active');
@@ -1945,39 +1980,48 @@ if ($slav_to_rub == 0)
 
         let ul_display = jQuery(this).siblings('ul').css('display');
         let ul = jQuery(this).siblings('ul');
-        let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
 
         let form_id = jQuery(this).parents('form').attr('id');
         //Условие выбора валюты нижнего уровня вложенности (больше вложенности в данной группе нет)
         if (ul.length === 0 || typeof ul === 'undefined')
         {
             jQuery(this).addClass('active');
-            input_currency_el.val(jQuery(this).attr('data-value'));
+
             jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text(jQuery(this).attr('data-value'));
 
             if (form_id === 'other_payments')
             {
                 let is_output_currency = other_payments_is_output_currency(jQuery(this));
+
                 //Иные взносы input_currency
                 if (!is_output_currency) {
+                    let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
+                    input_currency_el.val(jQuery(this).attr('data-value'));
+
                     change_requisites(jQuery(this), jQuery('form.other_payments select.other_payments.requisites'));
                     other_payment_input_currency_change(jQuery(this));
                 }
                 //Иные взносы output_currency
                 else
                 {
+                    let output_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.output_currency');
+                    output_currency_el.val(jQuery(this).attr('data-value'));
                     other_payment_output_currency_change(jQuery(this));
                 }
             }
 
             //Целевой взнос input_currency
             else
-                if (form_id === 'other_deposit')
+                if (form_id === 'other_deposit') {
                     change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'));
+                    let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
+                    input_currency_el.val(jQuery(this).attr('data-value'));
+                }
         }
 
         else {
-            input_currency_el.val('');
+            let currency_el = jQuery(this).parents('.menu-list').siblings('input[type=hidden]');
+            currency_el.val('');
             jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
 
             if (form_id === 'other_payments') {

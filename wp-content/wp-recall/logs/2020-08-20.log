@@ -23,3 +23,237 @@ email: melissa.mcgeorge@yahoo.com; text:
 Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
 Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
 
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => display_name
+        )
+
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => display_name
+        )
+
+    [meta_key] => client_num
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => display_name
+        )
+
+    [meta_key] => client_num
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => display_name
+        )
+
+    [meta_key] => client_num
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => client_num
+        )
+
+    [meta_key] => client_num
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => display_name
+        )
+
+    [meta_key] => client_num
+    [meta_value] => 
+    [meta_compare] => EXISTS
+)
+
+query_args: Array
+(
+    [blog_id] => 1
+    [include] => 
+    [exclude] => 
+    [orderby] => display_name
+    [order] => ASC
+    [who] => 
+    [role] => 
+    [role__in] => Array
+        (
+            [0] => manager
+            [1] => customer
+            [2] => user
+            [3] => not_verified
+            [4] => need-confirm
+            [5] => director
+        )
+
+    [role__not_in] => Array
+        (
+        )
+
+    [fields] => Array
+        (
+            [0] => ID
+            [1] => user_login
+            [2] => client_num
+        )
+
+    [meta_key] => client_num
+    [meta_value] => 
+    [meta_compare] => EXISTS
+)
+

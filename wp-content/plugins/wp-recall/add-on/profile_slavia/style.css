@@ -296,6 +296,11 @@ img.client_num_sort_icon.complete {
 .ref-modal {
     top: 10%;
 }
+.ref-modal #stats_content .month_sum {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    font-size: 26px;
+}
 #tab-button-referral img {
     scale: 1.2;
 }

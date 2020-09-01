@@ -1818,6 +1818,23 @@ function get_people($sort_field, $order = 'DESC')
     return $user_arr;
 
 }
+function get_client_nums()
+{
+    $users = get_users(
+        array(
+            'fields' => array('ID'),
+            'role__in' => array('manager', 'customer', 'user', 'not_verified', 'need-confirm', 'director'),
+            'exclude' => 30,
+        )
+    );
+    $user_arr = array();
+    foreach ($users as $user) {
+        $client_num = get_user_meta($user->ID, 'client_num', true);
+        if (!empty($client_num))
+            array_push($user_arr, array('user_id' => $user->ID, 'client_num' => $client_num));
+    }
+    return $user_arr;
+}
 
 function save_exchange_request($input_currency, $input_sum, $output_currency = false, $output_sum = false, $bank = false, $card_num = false, $card_name = false)
 {
@@ -2044,6 +2061,94 @@ function sort_people($is_sort, $sort_field){
     }
     $content = rcl_get_include_template('template-people.php', __FILE__, $args);
     return $content;
+}
+
+//finds currency in acf fields by currency name;
+//returns row selector according to acf rules (ancestor name -> row number -> child name)
+function find_currency_by_name($name, $selector = 'asset_inputs')
+{
+    if (have_rows($selector, 306))
+    {
+        $i = 0;
+        while (have_rows($selector, 306))
+        {
+            the_row();
+            $i++;
+            $asset_name = get_sub_field('asset_name');
+            $log = new Rcl_Log();
+            $log->insert_log("asset_name: ".$asset_name);
+            if (strtolower($asset_name) == strtolower($name))
+            {
+                $result = array($selector, $i, 'asset_types');
+                return $result;
+            }
+        }
+    }
+    return false;
+}
+function find_currency_rate_by_name($currency_name, $is_out = false)
+{
+    $log = new Rcl_Log();
+    //$log->insert_log("currency name:".$currency_name);
+    if (strcasecmp($currency_name, 'prizm') == 0)
+        return rcl_slavia_get_crypto_price();
+    elseif (strcasecmp($currency_name, 'slav') == 0 || is_rub($currency_name))
+        return 1;
+    else {
+        if (!$is_out)
+            $selector = 'asset_inputs';
+        else
+            $selector = 'asset_outputs';
+
+        if (have_rows($selector, 306)) {
+            //$i = 0;
+            while (have_rows($selector, 306)) {
+                the_row();
+                //$i++;
+                $asset_name = get_sub_field('asset_name');
+
+                //$log->insert_log("name -level 1: ".$asset_name);
+                $asset_rate = get_sub_field('asset_rate_rubles');
+//                $log = new Rcl_Log();
+//                $log->insert_log("asset_name: " . $asset_name);
+                if (strtolower($asset_name) == strtolower($currency_name)) {
+                    //$result = array($selector, $i, 'asset_types');
+                    return $asset_rate;
+                }
+                //Проходиммся по вложенным валютам если они есть (второй уровень вложенности)
+                if (have_rows('asset_types')) {
+                    while (have_rows('asset_types')) {
+                        the_row();
+                        $asset_name_2 = get_sub_field('asset_name');
+                        //$log->insert_log("name -level 2: ".$asset_name_2);
+                        $asset_rate_2 = get_sub_field('asset_rate_rubles');
+                        if (strtolower($asset_name_2) == strtolower($currency_name)) {
+                            //$result = array($selector, $i, 'asset_types');
+                            return $asset_rate_2;
+                        }
+                        //третий уровень вложенности
+                        if (have_rows('asset_types_2')) {
+                            while (have_rows('asset_types_2')) {
+                                the_row();
+                                $asset_name_3 = get_sub_field('asset_name');
+                                //$log->insert_log("name -level 3: ".$asset_name_3);
+                                $asset_rate_3 = get_sub_field('asset_rate_rubles');
+                                if (strtolower($asset_name_3) == strtolower($currency_name)) {
+                                    //$result = array($selector, $i, 'asset_types');
+                                    return $asset_rate_3;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+function add_currency($row, $selector)
+{
+    return add_sub_row($selector, $row, 306);
 }
 ///////////////////////////////////
 
@@ -2902,11 +3007,13 @@ function rcl_edit_profile(){
             if (isset($_POST['ref_user_id']) && !empty($_POST['ref_user_id']))
             {
                 $ref_awards = new Ref_Awards();
+
                 if (isset($_POST['is_ref_list']) && $_POST['is_ref_list'] == 'true')
                 {
                     $result_arr = array(
                         "paid_sum" => $ref_awards->get_sum("paid", $user_ID, $_POST['ref_user_id']),
-                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $user_ID, $_POST['ref_user_id'])
+                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $user_ID, $_POST['ref_user_id']),
+                        "month_sum" => get_rub_sum_by_dates($_POST['ref_user_id'], $_POST['start_month'], $_POST['end_month'])
                     );
                     //$log->insert_log("result_arr: ".print_r($result_arr, true));
                 }
@@ -2914,7 +3021,8 @@ function rcl_edit_profile(){
                 {
                     $result_arr = array(
                         "paid_sum" => $ref_awards->get_sum("paid", $_POST['ref_user_id']),
-                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id'])
+                        "unpaid_sum" => $ref_awards->get_sum("unpaid", $_POST['ref_user_id']),
+                        "month_sum" => get_rub_sum_by_dates($_POST['ref_user_id'], $_POST['start_month'], $_POST['end_month'])
                     );
                 }
                 //$log->insert_log("result_arr: ".print_r($result_arr, true));
@@ -3227,8 +3335,26 @@ function rcl_edit_profile(){
                 count(get_user_meta($user_ID, 'verification', true)) > 0)
             {
                 $exchange = $_POST['exchange'];
+                $log->insert_log("EXCHANGE: ".print_r($exchange, true));
 
-                if (isset($exchange['requisites'])) {
+                if (isset($exchange['is_personal_deposit']) && $exchange['is_personal_deposit'] == 'yes') {
+                    //$log->insert_log("personal_deposit");
+                    $selector = 'asset_inputs';
+                    $new_row = array(
+                                    'asset_name' => $exchange['input_currency'],
+                                    'asset_requisites' => '',
+                                    'asset_rate_rubles' => $exchange['rate'],
+                                    'asset_types' => ''
+                                );
+                    $selector = find_currency_by_name($exchange['section'], $selector);
+
+                    $result = add_currency($new_row, $selector);
+
+                    $log->insert_log("row selector: ".$selector);
+                    $log->insert_log("new currency: ".$result);
+                }
+
+                elseif (isset($exchange['requisites'])) {
                     //other deposit
                     if (isset($exchange['deposit_type']))
                         save_exchange_request_other($exchange['input_currency'], $exchange['input_sum'], $exchange['requisites'],
@@ -3252,6 +3378,7 @@ function rcl_edit_profile(){
                 //просто взнос без получения
                 elseif (!isset($exchange['output_currency']) && !isset($exchange['output_sum']) && !isset($exchange['bank']))
                     save_exchange_request($exchange['input_currency'], $exchange['input_sum']);
+
                 else
                 {
                     if (isset($exchange['card_num']) && isset($exchange['card_name']))
@@ -3892,7 +4019,7 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
                                 '</div>' .
                                 //RUB
                                 '<div class="col-2 text-center stats_col">' .
-                                $user_stats['RUB']['input_sum'] . ' RUB' .
+                                $user_stats['RUB']['sum'] . ' RUB' .
                                 '</div>
                                             <div class="col-1 text-center stats_col">' .
                                 $user_stats['RUB']['exchange_num'] .
@@ -3925,7 +4052,7 @@ function show_all_stats($is_table = false, $filter_type = null, $filter_val = nu
                                         '</td>' .
                                         //RUB
                                         '<td>' .
-                                            $user_stats['RUB']['input_sum'] . ' RUB' .
+                                            $user_stats['RUB']['sum'] . ' RUB' .
                                         '</td>
                                         <td>' .
                                             $user_stats['RUB']['exchange_num'] .
@@ -3981,7 +4108,7 @@ function show_user_stats($userID)
                 '</div>'.
                 //RUB
                 '<div class="col-2 text-center stats_col">'.
-                $user_stats['RUB']['input_sum']. ' RUB'.
+                $user_stats['RUB']['sum']. ' RUB'.
                 '</div>
                 <div class="col-1 text-center stats_col">'.
                 $user_stats['RUB']['exchange_num'].
@@ -4090,9 +4217,117 @@ function is_var($var)
         return false;
 }
 
+//stat_row -> row where to add (adds rub data to passed stat row)
+function add_rub_stat($stat_row, $input_rate, $input_sum, $output_rate, $output_sum)
+{
+    $difference = ($output_rate * $output_sum) - ($input_rate * $input_sum);
+    $difference = round($difference, 2);
+    if (!isset($stat_row['RUB']))
+        $stat_row += array('RUB' =>
+            array('sum' => $difference, 'exchange_num' => 1));
+    else
+    {
+        $stat_row['RUB']['sum'] += $difference;
+        $stat_row['RUB']['exchange_num'] += 1;
+    }
+    return $stat_row;
+}
+function is_rub_row($input_currency, $output_currency)
+{
+    $possible_rub_names = array("RUB", "rub", "Rub", "рубль", "Рубль");
+    $rub_currency = false;
+    foreach ($possible_rub_names as $rub_name)
+    {
+        if (strcasecmp($input_currency, $rub_name) == 0)
+        {
+            $rub_currency = 'in';
+            break;
+        }
+        elseif (strcasecmp($output_currency, $rub_name) == 0)
+        {
+            $rub_currency = 'out';
+            break;
+        }
+    }
+    return $rub_currency;
+}
+function is_rub($currency)
+{
+    $possible_rub_names = array("RUB", "rub", "Rub", "рубль", "Рубль");
+    if (in_array($currency, $possible_rub_names))
+        return true;
+    else
+        return false;
+}
+function get_empty_stat_row($userid, $rub_currency, $currency_data)
+{
+    if ($rub_currency)
+    {
+        if ($rub_currency == 'in')
+        {
+            if (isset($currency_data['input_sum']) && isset($currency_data['output_sum']) &&
+                isset($currency_data['output_currency']) && isset($currency_data['output_rate']))
+            {
+                $stat_row = array($userid =>
+                    array(
+                        $currency_data['output_currency'] =>
+                            array('input_sum' => 0, 'output_sum' => $currency_data['output_sum'], 'exchange_num' => 1)
+                    )
+                );
+                $stat_row[$userid] = add_rub_stat($stat_row[$userid], 1, $currency_data['input_sum'],
+                    $currency_data['output_rate'], $currency_data['output_sum']);
+            }
+        }
+        elseif ($rub_currency == 'out')
+        {
+            if (isset($currency_data['input_sum']) && isset($currency_data['input_currency']) &&
+                isset($currency_data['input_rate']) && isset($currency_data['output_sum']))
+            {
+                $stat_row = array($userid =>
+                    array(
+                        $currency_data['input_currency'] =>
+                            array('input_sum' => $currency_data['input_sum'], 'output_sum' => 0, 'exchange_num' => 1)
+                    )
+                );
+                $stat_row[$userid] = add_rub_stat($stat_row[$userid], $currency_data['input_rate'], $currency_data['input_sum'],
+                    1, $currency_data['output_sum']);
+            }
+        }
+    }
+    else
+    {
+        if (isset($currency_data['input_sum']) && isset($currency_data['input_currency']) &&
+            isset($currency_data['input_rate']) && isset($currency_data['output_sum']) &&
+            isset($currency_data['output_currency']) && isset($currency_data['output_rate']))
+        {
+            $stat_row = array($userid =>
+                array(
+                    $currency_data['input_currency'] =>
+                        array('input_sum' => $currency_data['input_sum'], 'output_sum' => 0, 'exchange_num' => 1),
+
+                    $currency_data['output_currency'] =>
+                        array('input_sum' => 0, 'output_sum' => $currency_data['output_sum'], 'exchange_num' => 0)
+                )
+            );
+            $stat_row[$userid] = add_rub_stat($stat_row[$userid], $currency_data['input_rate'],
+                $currency_data['input_sum'], $currency_data['output_rate'], $currency_data['output_sum']);
+        }
+    }
+    return $stat_row;
+}
 function add_stats($userid, $input_currency, $input_sum, $output_currency, $output_sum) {
     //Добавляем в статистику
     $stats = rcl_get_option('user_stats');
+    $log = new Rcl_Log();
+    $rub_currency = is_rub_row($input_currency, $output_currency);
+
+    $input_rate = find_currency_rate_by_name($input_currency);
+    $output_rate = find_currency_rate_by_name($output_currency, true);
+
+    $log->insert_log("input_currency: ".$input_currency);
+    $log->insert_log("input_rate: ".$input_rate);
+    $log->insert_log("output_currency: ".$output_currency);
+    $log->insert_log("output_rate: ".$output_rate);
 
     if (isset($stats) && !empty($stats)) {
         //Если статистика на этого пользователя есть, то прибавляем к ней
@@ -4100,54 +4335,111 @@ function add_stats($userid, $input_currency, $input_sum, $output_currency, $outp
 
             $user_stat = $stats[$userid];
 
-            if (!isset($user_stat[$input_currency]))
-                $user_stat += array($input_currency =>
-                    array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
-            if (!isset($user_stat[$output_currency]))
-                $user_stat += array($output_currency =>
-                    array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+            if ($rub_currency)
+            {
+                if ($rub_currency == 'in')
+                {
+                    $log->insert_log("output_rate".$output_rate);
+                    if (!isset($user_stat[$output_currency]))
+                        $user_stat += array($output_currency =>
+                            array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+                    $user_stat[$output_currency]['output_sum'] += $output_sum;
 
-            //Прибавляем сумму по потраченной и получаемой валюте
-            $user_stat[$input_currency]['input_sum'] += $input_sum;
-            $user_stat[$output_currency]['output_sum'] += $output_sum;
+                    $log->insert_log("before rub".print_r($user_stat, true));
+                    $user_stat = add_rub_stat($user_stat, 1, $input_sum, $output_rate, $output_sum);
+                    $log->insert_log("added rub".print_r($user_stat, true));
+                }
+                elseif ($rub_currency == 'out')
+                {
+                    $log->insert_log("input_rate".$input_currency);
+                    if (!isset($user_stat[$input_currency]))
+                        $user_stat += array($input_currency =>
+                            array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+
+                    $user_stat[$input_currency]['input_sum'] += $input_sum;
+
+                    $log->insert_log("before rub".print_r($user_stat, true));
+                    $user_stat = add_rub_stat($user_stat, $input_rate, $input_sum, 1, $output_sum);
+                    $log->insert_log("added rub".print_r($user_stat, true));
+                }
+            }
+            else //not rub currency
+            {
+                if (!isset($user_stat[$input_currency]))
+                    $user_stat += array($input_currency =>
+                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+
+                if (!isset($user_stat[$output_currency]))
+                    $user_stat += array($output_currency =>
+                        array('input_sum' => 0, 'output_sum' => 0, 'exchange_num' => 0));
+
+                $user_stat[$input_currency]['input_sum'] += $input_sum;
+                $user_stat[$output_currency]['output_sum'] += $output_sum;
+
+                $log->insert_log("before rub".print_r($user_stat, true));
+                $user_stat = add_rub_stat($user_stat, $input_rate, $input_sum, $output_rate, $output_sum);
+                $log->insert_log("added rub".print_r($user_stat, true));
+            }
+
 
             $user_stat[$input_currency]['exchange_num'] += 1;
-            //$user_stat[$output_currency]['exchange_num'] += 1;
-
-//                                $user_stat['exchange_num'] += 1;
-//                                $user_stat['exchange_sum'] += $exchange_requests[$userid][$request_num]['input_sum'];
 
             $stats[$userid] = $user_stat;
 
-            $stat_exists = true;
+            //$stat_exists = true;
 
             //Если статистики для этого пользователя нет, добавляем статистику со значениями текущей операции
         } else {
-            $stats +=
-                array($userid =>
-                    array(
-                        $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
-                        $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
-                    )
-                );
-            $stat_exists = false;
+            $currency_data = array(
+                'input_sum' => $input_sum,
+                'input_currency' => $input_currency,
+                'input_rate' => $input_rate,
+                'output_sum' => $output_sum,
+                'output_currency' => $output_currency,
+                'output_rate' => $output_rate
+            );
+            $stat_row = get_empty_stat_row($userid, $rub_currency, $currency_data);
 
+            //$stat_exists = false;
+            $stats += $stat_row;
         }
     } //Если статистика полностью пустая
     else {
-        $stats =
-            array($userid =>
-                array(
-                    $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
-                    $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
-                )
-            );
-        $stat_exists = false;
+        $currency_data = array(
+            'input_sum' => $input_sum,
+            'input_currency' => $input_currency,
+            'input_rate' => $input_rate,
+            'output_sum' => $output_sum,
+            'output_currency' => $output_currency,
+            'output_rate' => $output_rate
+        );
+        $stat_row = get_empty_stat_row($userid, $rub_currency, $currency_data);
+
+        $stats = $stat_row;
+//            array($userid =>
+//                array(
+//                    $input_currency => array('input_sum' => $input_sum, 'output_sum' => 0, 'exchange_num' => 1),
+//                    $output_currency => array('input_sum' => 0, 'output_sum' => $output_sum, 'exchange_num' => 0)
+//                )
+//            );
+        //$stat_exists = false;
 
     }
     //$stats = array();
     rcl_update_option('user_stats', $stats);
 }
+
+//add_filter( 'wp_dropdown_users_args', 'add_client_num_to_dropdown', 10, 2 );
+//function add_client_num_to_dropdown( $query_args, $r ) {
+//    //$query_args['who'] = '';
+//    $query_args['meta_key'] = 'client_num';
+////    $query_args['meta_value'] = '';
+////    $query_args['meta_compare'] = 'EXISTS';
+//    $log = new Rcl_Log();
+//    $log->insert_log("query_args: ".print_r($query_args, true));
+//    return $query_args;
+//
+//}
 
 function get_input_currencies()
 {
@@ -4293,9 +4585,9 @@ function print_nested_assets($assets, $is_out_asset = false)
                         <?php foreach($asset['asset_types'] as $asset_type): ?>
                             <li>
                                 <a data-percent="" data-rate="<?=$asset_type['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_type['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_type['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_type['asset_name']?></a>
-                                <?php if (!empty($asset_type['asset_types'])): ?>
+                                <?php if (!empty($asset_type['asset_types_2'])): ?>
                                     <ul>
-                                        <?php foreach($asset_type['asset_types'] as $subtype): ?>
+                                        <?php foreach($asset_type['asset_types_2'] as $subtype): ?>
                                         <li>
                                             <a data-percent="" data-rate="<?=$subtype['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$subtype['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($subtype['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$subtype['asset_name']?></a>
                                         </li>
@@ -4313,4 +4605,58 @@ function print_nested_assets($assets, $is_out_asset = false)
         <?php endif; ?>
     </ul>
 <?php
+}
+
+function get_rub_sum_by_dates($userid, $start_date, $end_date)
+{
+    $log = new Rcl_Log();
+    $exchange_requests = rcl_get_option('exchange_requests');
+    $user_requests = $exchange_requests[$userid];
+    $sum = 0;
+    foreach($user_requests as $request_num => $request_value)
+    {
+        $start_time = strtotime($start_date);
+        $end_time = strtotime($end_date);
+
+        $start_filter = date('d.m.y', $start_time);
+        $end_filter = date('d.m.y', $end_time);
+
+        //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
+        $request_date = explode(' ', $request_value['date']);
+        $request_date = explode('.', $request_date[0]);
+        $day = $request_date[0];
+        $month = $request_date[1];
+        $year = $request_date[2];
+
+        $request_time = strtotime($month.'/'.$day.'/'.$year);
+        $new_date = date('d.m.y', $request_time);
+
+//        $log->insert_log("start_filter: ".print_r($start_filter, true));
+//        $log->insert_log("new_date: ".print_r($new_date, true));
+//        $log->insert_log("end_filter: ".print_r($end_filter, true));
+        //$log = new Rcl_Log();
+        //$log->insert_log("request: ".print_r($request_value, true));
+        //$log->insert_log("$new_date==$newfilter: ".$new_date == $newfilter);
+//                                    $log = new Rcl_Log();
+//                                    $log->insert_log("new_filter:".$newfilter);
+//                                    $log->insert_log("date_value:".$request_value['date']);
+//                                    $log->insert_log("------------------------------");
+        //$date_value = str_replace('.', '/', $request_value['date']);
+        if (isset($request_value['date']) && isset($new_date) && ($new_date >= $start_filter && $new_date <= $end_filter) &&
+            $request_value['status'] == 'completed')
+        {
+            $log->insert_log("is date in range: true:");
+            $log->insert_log("request value: ".print_r($request_value, true));
+            $input_currency_rate = find_currency_rate_by_name($request_value['input_currency']);
+            $sum += $input_currency_rate * $request_value['input_sum'];
+        }
+        else {
+            $log->insert_log("is date in range: false:");
+            continue;
+        }
+    }
+//    if ($sum == 0)
+//        return false;
+    //else
+    return $sum;
 }

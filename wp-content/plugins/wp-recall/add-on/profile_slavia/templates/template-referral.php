@@ -2,7 +2,7 @@
     <div class="row">
         <div class="coop_maps question-bg col-lg-12">
             <h1 class="coop_maps-h1 ib">Реферальная программа</h1>
-
+<div style="display: none"><?php print '<pre>'.print_r(rcl_get_option('ref_awards'), true).'</pre>'?></div>
             <div class="referral-tabs row">
                 <ul class="referral-tabs__items col-12">
                     <li id="ref_unpaid" class="referral-tabs__item btn-custom-one active">
@@ -120,6 +120,18 @@
             </div>
 
             <div class="row ref_stats" id="stats_content">
+                <div class="col-12 text-center" style="text-transform: uppercase">
+                    <?php
+                        date_default_timezone_set('Europe/Moscow');
+                        $lastMonth = date("Y-m-d", strtotime("-1 month"));
+                    ?>
+                    Оборот за последний месяц (с <span id="last_month"><?=$lastMonth?></span>) в рублях:
+                    <span id="this_month" style="display: none"><?=date("Y-m-d")?></span>
+                </div>
+                <div class="col-12 month_sum text-center">
+                    x руб
+                </div>
+
                 <div class="col-12 text-center" style="text-transform: uppercase">
                     Выплаченная сумма
                 </div>
@@ -413,12 +425,18 @@
 <script type="text/javascript">
     jQuery('.ref_stats .show_ref_stats > img, #ref_list .show_ref_stats > img').click(function(){
         let el = jQuery(this);
+
         let modal = jQuery('#modal-container-54506521');
         let request_user_id = el.attr('data-user-id');
 
+        let start_month = jQuery('#stats_content > div:first-child span#last_month').text();
+        let end_month = jQuery('#stats_content > div:first-child span#this_month').text();
+
         var data = {
             ref_user_id: request_user_id,
-            get_ref_stats: 'true'
+            get_ref_stats: 'true',
+            start_month: start_month,
+            end_month: end_month
         };
 
         if (el.parents('#ref_list').length > 0)
@@ -426,6 +444,7 @@
 
         jQuery.post( window.location, data, function(response) {
             if (response) {
+                console.log(response);
                 //console.log(response);
                 let sum_data = JSON.parse(response);
                 String.prototype.stripSlashes = function(){
@@ -434,9 +453,11 @@
 
                 let unpaid_sum = sum_data.unpaid_sum;
                 let paid_sum = sum_data.paid_sum;
+                let month_sum = sum_data.month_sum;
 
                 let unpaid_sum_content = jQuery('.modal-content #stats_content > .unpaid_sum');
                 let paid_sum_content = jQuery('.modal-content #stats_content > .paid_sum');
+                let month_sum_content = jQuery('.modal-content #stats_content > .month_sum');
 
                 // if (data.is_ref_list === 'true')
                 // {
@@ -451,6 +472,10 @@
 
                 unpaid_sum_content.find('.table-title ~ .table-text').remove();
                 paid_sum_content.find('.table-title ~ .table-text').remove();
+                if (month_sum !== 'false')
+                    month_sum_content.text(month_sum + ' руб');
+                else
+                    month_sum_content.text('0' + ' руб');
 
                 for (var key in unpaid_sum) {
                     unpaid_sum_content.append(
