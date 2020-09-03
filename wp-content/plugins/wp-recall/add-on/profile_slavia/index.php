@@ -2067,6 +2067,7 @@ function sort_people($is_sort, $sort_field){
 //returns row selector according to acf rules (ancestor name -> row number -> child name)
 function find_currency_by_name($name, $selector = 'asset_inputs')
 {
+    mb_internal_encoding('UTF-8');
     if (have_rows($selector, 306))
     {
         $i = 0;
@@ -2077,7 +2078,7 @@ function find_currency_by_name($name, $selector = 'asset_inputs')
             $asset_name = get_sub_field('asset_name');
             $log = new Rcl_Log();
             $log->insert_log("asset_name: ".$asset_name);
-            if (strtolower($asset_name) == strtolower($name))
+            if (mb_strtolower($asset_name) == mb_strtolower($name))
             {
                 $result = array($selector, $i, 'asset_types');
                 return $result;
@@ -2146,9 +2147,13 @@ function find_currency_rate_by_name($currency_name, $is_out = false)
         return false;
     }
 }
-function add_currency($row, $selector)
+function add_sub_currency($selector, $row)
 {
     return add_sub_row($selector, $row, 306);
+}
+function add_currency_section($selector, $row)
+{
+    return add_row($selector, $row, 306);
 }
 ///////////////////////////////////
 
@@ -3339,19 +3344,48 @@ function rcl_edit_profile(){
 
                 if (isset($exchange['is_personal_deposit']) && $exchange['is_personal_deposit'] == 'yes') {
                     //$log->insert_log("personal_deposit");
-                    $selector = 'asset_inputs';
-                    $new_row = array(
-                                    'asset_name' => $exchange['input_currency'],
-                                    'asset_requisites' => '',
-                                    'asset_rate_rubles' => $exchange['rate'],
-                                    'asset_types' => ''
-                                );
-                    $selector = find_currency_by_name($exchange['section'], $selector);
+                    $selectors = array('asset_inputs', 'asset_outputs');
+                    //$selector_input = 'asset_inputs';
+                    //$selector_output = 'asset_outputs';
 
-                    $result = add_currency($new_row, $selector);
+                    foreach ($selectors as $selector)
+                    {
+                        //asset_input
+                        $new_row = array(
+                            'asset_name' => $exchange['input_currency'],
+                            'asset_requisites' => '',
+                            'asset_rate_rubles' => $exchange['rate'],
+                            'asset_types' => ''
+                        );
+                        if (isset($exchange['is_reserve']) && $exchange['is_reserve'] == 'on' &&
+                            isset($exchange['reserve_id']) && $exchange['reserve_id'] > 0)
+                            $new_row['asset_reserve'] = $exchange['reserve_id'];
+                        elseif (isset($exchange['is_public']) && $exchange['is_public'] == 'on')
+                            $new_row['asset_reserve'] = 'public';
+                        else
+                            $new_row['asset_reserve'] = 'none';
 
-                    $log->insert_log("row selector: ".$selector);
-                    $log->insert_log("new currency: ".$result);
+                        $currency_selector = find_currency_by_name($exchange['section'], $selector);
+                        if ($currency_selector && !empty($currency_selector))
+                            $result = add_sub_currency($currency_selector, $new_row);
+                        //Если нету этого раздела
+                        else {
+                            $new_row['asset_name'] = $exchange['section'];
+                            $new_row['asset_rate_rubles'] = '';
+                            //Добавляем раздел
+                            $result = add_currency_section($selector, $new_row);
+                            //Ищем этот раздел, чтобы получить его селектор
+                            $currency_selector = find_currency_by_name($exchange['section'], $selector);
+                            //Добавляем имущество в найденный раздел
+                            $new_row['asset_name'] = $exchange['input_currency'];
+                            $new_row['asset_rate_rubles'] = $exchange['rate'];
+                            $result = add_sub_currency($currency_selector, $new_row);
+                        }
+                        $log->insert_log("new row: ".print_r($new_row, true));
+                    }
+
+                    //$log->insert_log("row selector: ".$selector_input);
+                    //$log->insert_log("new currency: ".$result);
                 }
 
                 elseif (isset($exchange['requisites'])) {
@@ -4253,8 +4287,11 @@ function is_rub_row($input_currency, $output_currency)
 }
 function is_rub($currency)
 {
-    $possible_rub_names = array("RUB", "rub", "Rub", "рубль", "Рубль");
-    if (in_array($currency, $possible_rub_names))
+    mb_internal_encoding('UTF-8');
+
+    $possible_rub_names = array("rub", "рубль");
+
+    if (in_array(mb_strtolower($currency), $possible_rub_names) )
         return true;
     else
         return false;
@@ -4538,6 +4575,37 @@ function get_output_currencies_2()
     $asset_outputs = get_field('asset_outputs', 306);
     return $asset_outputs;
 }
+
+function get_all_currencies()
+{
+    $asset_inputs = get_input_currencies_2();
+    $asset_outputs = get_output_currencies_2();
+
+    //$log = new Rcl_Log();
+
+    mb_internal_encoding('UTF-8');
+
+    $currencies = $asset_inputs;
+    foreach ($asset_outputs as $asset_output)
+    {
+        $is_same = false;
+        foreach ($currencies as $currency)
+        {
+            if ((mb_strtolower($asset_output['asset_name']) == mb_strtolower($currency['asset_name'])) ||
+                (is_rub($asset_output['asset_name']) && is_rub($currency['asset_name']) ) )
+            {
+                $is_same = true;
+                break;
+            }
+        }
+        if ($is_same)
+            continue;
+        else
+            array_push($currencies, $asset_output);
+    }
+    return $currencies;
+}
+
 function print_nested_assets($assets, $is_out_asset = false)
 {
     $slav_address = get_field('slav_address', 306);
@@ -4548,8 +4616,16 @@ function print_nested_assets($assets, $is_out_asset = false)
         <?php if (isset($assets) && !empty($assets)): ?>
             <?php foreach ($assets as $asset): ?>
                 <?php
-                if (empty($asset) || count($asset) == 0)
-                    continue;
+                if (empty($asset) || count($asset) == 0 || $asset['asset_reserve'] != 'public')
+                {
+                    if (empty($asset_type) || count($asset_type) == 0)
+                        continue;
+                    elseif (($asset['asset_reserve'] != 'public' && $asset['asset_reserve'] != 'none' &&
+                        get_current_user_id() != $asset['asset_reserve'] ))
+                            continue;
+                    elseif ($asset_type['asset_reserve'] == 'none')
+                        continue;
+                }
 
                 if (!empty($asset['asset_name']) && !empty($asset['asset_rate_rubles'])) {
                     $name = $asset['asset_name'];
@@ -4583,6 +4659,18 @@ function print_nested_assets($assets, $is_out_asset = false)
                     <?php if (!empty($asset['asset_types'])): ?>
                         <ul>
                         <?php foreach($asset['asset_types'] as $asset_type): ?>
+                            <?php
+                            if (empty($asset_type) || count($asset_type) == 0 || $asset_type['asset_reserve'] != 'public')
+                                {
+                                    if (empty($asset_type) || count($asset_type) == 0)
+                                        continue;
+                                    elseif (($asset_type['asset_reserve'] != 'public' && $asset_type['asset_reserve'] != 'none' &&
+                                        get_current_user_id() != $asset_type['asset_reserve'] ))
+                                            continue;
+                                    elseif ($asset_type['asset_reserve'] == 'none')
+                                        continue;
+                                }
+                            ?>
                             <li>
                                 <a data-percent="" data-rate="<?=$asset_type['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_type['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_type['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_type['asset_name']?></a>
                                 <?php if (!empty($asset_type['asset_types_2'])): ?>

@@ -635,11 +635,15 @@ if ($slav_to_rub == 0)
 <!--                        <div class="row">-->
                             <div class="select-exchange w-100">
                                 <span class="select-exchange">Раздел</span>
+                                <?php
+                                $all_currencies = get_all_currencies();
+                                //print '<pre style="display: none">'.print_r($all_currencies, true).'</pre>';
+                                ?>
                                 <select required class="personal_deposit input_currency" name="exchange[section]">
                                     <option disabled selected>Выберите раздел</option>
-                                    <?php if (isset($asset_inputs) && !empty($asset_inputs)): ?>
-                                        <?php foreach ($asset_inputs as $asset_input): ?>
-                                            <option value="<?=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_input['asset_name']?></option>
+                                    <?php if (isset($all_currencies) && !empty($all_currencies)): ?>
+                                        <?php foreach ($all_currencies as $currency): ?>
+                                            <option value="<?=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$currency['asset_name']?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
