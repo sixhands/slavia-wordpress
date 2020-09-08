@@ -1,0 +1,1653 @@
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Бетон-м450_м³
+    [input_amount] => 50
+    [input_currency] => Цемент
+    [rate] => 500
+    [is_reserve] => on
+    [reserve_id] => 85
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+exchange other:Array
+(
+    [input_sum] => 50
+    [input_currency] => Цемент
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 1
+    [is_save] => 
+    [reserve_id] => 85
+    [requisites] => 
+    [date] => 05.09.20 04:15:52
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => нефть
+    [input_amount] => 50
+    [input_currency] => Бразильская
+    [rate] => 1364
+    [is_public] => on
+    [is_save] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+exchange other:Array
+(
+    [input_sum] => 50
+    [input_currency] => Бразильская
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 1
+    [is_reserve] => 
+    [is_save] => 1
+    [requisites] => 
+    [date] => 05.09.20 04:21:19
+    [status] => personal_deposit
+)
+
+email: t3clintsman@yahoo.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: finnegan wu</p>
+    <p>Пароль: finnegan wu</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJmaW5uZWdhbiB3dSIsIjBlNjU5NzJkY2U2OGRhZDRkNTJkMDYzOTY3ZjBhNzA1Il0%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJmaW5uZWdhbiB3dSIsIjBlNjU5NzJkY2U2OGRhZDRkNTJkMDYzOTY3ZjBhNzA1Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => нефть
+    [input_amount] => 100005
+    [input_currency] => Марка @brend@
+    [rate] => 500
+    [is_reserve] => on
+    [reserve_id] => 24
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+exchange other:Array
+(
+    [input_sum] => 100005
+    [input_currency] => Марка @brend@
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 1
+    [is_save] => 
+    [reserve_id] => 24
+    [requisites] => 
+    [date] => 05.09.20 11:04:41
+    [status] => personal_deposit
+)
+
+email: chiggins0826@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: esme shannon</p>
+    <p>Пароль: esme shannon</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJlc21lIHNoYW5ub24iLCI4NGQ5ZWU0NGU0NTdkZGVmN2YyYzRmMjVkYzhmYTg2NSJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJlc21lIHNoYW5ub24iLCI4NGQ5ZWU0NGU0NTdkZGVmN2YyYzRmMjVkYzhmYTg2NSJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Бетон-м450_м³
+    [input_amount] => 1000
+    [input_currency] => Бетон в Москве в мешках от пайщика №888
+    [rate] => 975
+    [is_public] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+exchange other:Array
+(
+    [input_sum] => 1000
+    [input_currency] => Бетон в Москве в мешках от пайщика №888
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 1
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 14:30:23
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Драгоценные металлы
+    [input_amount] => 10
+    [input_currency] => Сапфиры
+    [rate] => 100000
+    [is_save] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Etherium
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+exchange other:Array
+(
+    [input_sum] => 10
+    [input_currency] => Сапфиры
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 
+    [is_save] => 1
+    [requisites] => 
+    [date] => 05.09.20 14:37:15
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Сталь
+    [input_amount] => 500
+    [input_currency] => Сталь марки Н400
+    [rate] => 300
+    [is_reserve] => on
+    [reserve_id] => 84
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+asset_name: Сталь
+exchange other:Array
+(
+    [input_sum] => 500
+    [input_currency] => Сталь марки Н400
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 1
+    [is_save] => 
+    [reserve_id] => 84
+    [requisites] => 
+    [date] => 05.09.20 14:52:02
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Продовольственные товары
+    [input_amount] => 500
+    [input_currency] => Хлеб Грубого помола
+    [rate] => 100
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Etherium
+asset_name: Продовольственные товары
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+exchange other:Array
+(
+    [input_sum] => 500
+    [input_currency] => Хлеб Грубого помола
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 14:55:29
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [input_amount] => 10
+    [input_currency] => реагент Нафталин
+    [rate] => 100
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Etherium
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Etherium
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: 
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+asset_name: Сталь
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+asset_name: Сталь
+asset_name: 
+exchange other:Array
+(
+    [input_sum] => 10
+    [input_currency] => реагент Нафталин
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 15:07:21
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [input_amount] => 55
+    [input_currency] => Нитки 10 микрон любой цвет.
+    [rate] => 10
+    [is_public] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: нефть
+asset_name: Блоки Bonolit d500
+asset_name: Bitcoin
+asset_name: Бетон-м450_м³
+asset_name: Etherium
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: 
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+asset_name: Сталь
+asset_name: 
+exchange other:Array
+(
+    [input_sum] => 55
+    [input_currency] => Нитки 10 микрон любой цвет.
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 1
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 15:10:42
+    [status] => personal_deposit
+)
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Нефть
+    [input_amount] => 1233
+    [input_currency] => Сибирь 1 бочка
+    [rate] => 1000
+    [is_public] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: Нефть
+asset_name: Услуга
+asset_name: Prizm
+asset_name: Драгоценные металлы
+asset_name: Блоки Bonolit D500
+asset_name: Рубль
+asset_name: Bitcoin
+asset_name: Иван чай
+asset_name: Продовольственные товары
+asset_name: Бетон-м450_м³
+asset_name: нефть
+exchange other:Array
+(
+    [input_sum] => 1233
+    [input_currency] => Сибирь 1 бочка
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 1
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 15:34:33
+    [status] => personal_deposit
+)
+
+input_currency: Бетон в Москве в мешках от пайщика №888
+input_rate: 
+output_currency: 
+output_rate: 
+before rubArray
+(
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -2000
+            [exchange_num] => 1
+        )
+
+    [Бетон в Москве в мешках от пайщика №888] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -2000
+            [exchange_num] => 2
+        )
+
+    [Бетон в Москве в мешках от пайщика №888] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 17:53:16
+    [filename] => -приема-Бетон-в-Москве-в-мешках-от-пайщика-№888-Пайщик-№3-Сергей-Сергеев-Андреевич-05-09-17-53.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-Бетон-в-Москве-в-мешках-от-пайщика-№888-Пайщик-№3-Сергей-Сергеев-Андреевич-05-09-17-53.pdf
+)
+
+input_currency: Сталь марки Н400
+input_rate: 300
+output_currency: 
+output_rate: 
+before rubArray
+(
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -2000
+            [exchange_num] => 2
+        )
+
+    [Бетон в Москве в мешках от пайщика №888] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Сталь марки Н400] => Array
+        (
+            [input_sum] => 500
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -152000
+            [exchange_num] => 3
+        )
+
+    [Бетон в Москве в мешках от пайщика №888] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Сталь марки Н400] => Array
+        (
+            [input_sum] => 500
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 17:54:09
+    [filename] => -приема-Сталь-марки-Н400-Пайщик-№3-Сергей-Сергеев-Андреевич-05-09-17-54.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-Сталь-марки-Н400-Пайщик-№3-Сергей-Сергеев-Андреевич-05-09-17-54.pdf
+)
+
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+is date in range: false:
+email: 7ya.ya7ya@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: 7ya.ya7ya@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: gumleyolti@enayu.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: 1zima1</p>
+    <p>Пароль: dead</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyIxemltYTEiLCIzNjQ0YTY4NGY5OGVhOGZlMjIzYzcxM2I3NzE4OWE3NyJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyIxemltYTEiLCIzNjQ0YTY4NGY5OGVhOGZlMjIzYzcxM2I3NzE4OWE3NyJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: gumleyolti@enayu.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: gumleyolti@enayu.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+EXCHANGE: Array
+(
+    [input_currency] => SLAV
+    [input_sum] => 10000
+    [output_currency] => 
+    [output_sum] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+)
+
+input_currency: SLAV
+input_rate: 1
+output_currency: 
+output_rate: 
+doc_1: Array
+(
+    [date] => 05.09.20 18:10:57
+    [filename] => -приема-SLAV-Пайщик-№456-asdsdasd-asdxczxvzv-dfgcvxcvxcvxcvdlg-05-09-18-10.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-SLAV-Пайщик-№456-asdsdasd-asdxczxvzv-dfgcvxcvxcvxcvdlg-05-09-18-10.pdf
+)
+
+EXCHANGE: Array
+(
+    [input_currency] => D350 3500₽/м3  Москва. пайщик №3
+    [input_sum] => 100
+    [output_currency] => Рубль
+    [output_sum] => 350000
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+)
+
+input_currency: D350 3500₽/м3  Москва. пайщик №3
+input_rate: 3500
+output_currency: Рубль
+output_rate: 1
+input_rateD350 3500₽/м3  Москва. пайщик №3
+before rubArray
+(
+    [SLAV] => Array
+        (
+            [input_sum] => 10000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -10000
+            [exchange_num] => 1
+        )
+
+    [D350 3500₽/м3  Москва. пайщик №3] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [SLAV] => Array
+        (
+            [input_sum] => 10000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -10000
+            [exchange_num] => 2
+        )
+
+    [D350 3500₽/м3  Москва. пайщик №3] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь С.С.С с ID 200 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Бодункова Ирина Ярославовна с ID 84 вознаграждение в размере 0.3 D350 3500₽/м3  Москва. пайщик №3 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь С.С.С с ID 200 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Бодункова Ирина Ярославовна с ID 84 вознаграждение в размере 0.3 D350 3500₽/м3  Москва. пайщик №3 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь С.С.С с ID 200 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Бодункова Ирина Ярославовна с ID 84 вознаграждение в размере 0.3 D350 3500₽/м3  Москва. пайщик №3 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sergeyandreevich88@yandex.ru; text: <p>Приглашенный вами пользователь С.С.С только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 0.3 D350 3500₽/м3  Москва. пайщик №3 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+doc_1: Array
+(
+    [date] => 05.09.20 18:11:48
+    [filename] => -приема-D350-3500₽м3-Москва.-пайщик-№3-Пайщик-№456-asdsdasd-asdxczxvzv-dfgcvxcvxcvxcvdlg-05-09-18-11.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-D350-3500₽м3-Москва.-пайщик-№3-Пайщик-№456-asdsdasd-asdxczxvzv-dfgcvxcvxcvxcvdlg-05-09-18-11.pdf
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [1] => Array
+        (
+            [date] => 05.09.20 18:11:45
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [host_client_num] => 42
+            [ref_name] => С.С.С
+            [ref_id] => 200
+            [award_sum] => 0.3
+            [award_currency] => D350 3500₽/м3  Москва. пайщик №3
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 05.09.20 18:11:45
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [host_client_num] => 42
+            [ref_name] => С.С.С
+            [ref_id] => 200
+            [award_sum] => 0.3
+            [award_currency] => D350 3500₽/м3  Москва. пайщик №3
+            [status] => processing
+        )
+
+)
+
+email: ; text: <p>Здравствуйте, . К сожалению, ваш запрос на верификацию был отклонен. Вы можете попробовать отправить новый запрос на верификацию в любой момент, либо связаться с нашим менеджером с помощью контактных данных, указанных на сайте vnuk2.ev88.fvds.ru.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: resosak405@acetesz.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: Test 1</p>
+    <p>Пароль: dead</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJUZXN0IDEiLCI3NTdiNTA1Y2ZkMzRjNjRjODVjYTViNTY5MGVlNTI5MyJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJUZXN0IDEiLCI3NTdiNTA1Y2ZkMzRjNjRjODVjYTViNTY5MGVlNTI5MyJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: detiwi6295@hapremx.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: Test 2</p>
+    <p>Пароль: dead</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJUZXN0IDIiLCI4NTRkNmZhZTVlZTQyOTExNjc3YzczOWVlMTczNDQ4NiJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJUZXN0IDIiLCI4NTRkNmZhZTVlZTQyOTExNjc3YzczOWVlMTczNDQ4NiJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: noepinephrine@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: ilil</p>
+    <p>Пароль: dead</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJpbGlsIiwiZTJjMGJlMjQ1NjBkNzhjNWU1OTljMmE5YzlkMGJiZDIiXQ%3D%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJpbGlsIiwiZTJjMGJlMjQ1NjBkNzhjNWU1OTljMmE5YzlkMGJiZDIiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: cht.sem@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: rom</p>
+    <p>Пароль: dead</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJyb20iLCIyNzRhZDQ3ODZjM2FiY2E2OWZhMDk3Yjg1ODY3ZDlhNCJd">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJyb20iLCIyNzRhZDQ3ODZjM2FiY2E2OWZhMDk3Yjg1ODY3ZDlhNCJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: noepinephrine@mail.ru; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт vnuk2.ev88.fvds.ru, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+EXCHANGE: Array
+(
+    [input_currency] => SLAV
+    [input_sum] => 10000
+    [output_currency] => 
+    [output_sum] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+)
+
+EXCHANGE: Array
+(
+    [input_currency] => SLAV
+    [input_sum] => 1000
+    [output_currency] => Prizm
+    [output_sum] => 1923.08
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+)
+
+input_currency: SLAV
+input_rate: 1
+output_currency: Prizm
+output_rate: 0.52
+before rubArray
+(
+    [Urals 1 барель] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -2425600
+            [exchange_num] => 2
+        )
+
+    [SLAV] => Array
+        (
+            [input_sum] => 1100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 1923.08
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [Urals 1 барель] => Array
+        (
+            [input_sum] => 1000
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -2425600
+            [exchange_num] => 3
+        )
+
+    [SLAV] => Array
+        (
+            [input_sum] => 1100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 1923.08
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 19:11:29
+    [filename] => -приема-SLAV-Пайщик-№42-Ирина-Бодункова-Ярославна-05-09-19-11.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-SLAV-Пайщик-№42-Ирина-Бодункова-Ярославна-05-09-19-11.pdf
+)
+
+EXCHANGE: Array
+(
+    [input_currency] => D500 625x250x500  1700₽/м3  Москва. пайщик №900
+    [input_sum] => 100
+    [output_currency] => Prizm
+    [output_sum] => 326923.08
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+)
+
+input_currency: D500 625x250x500  1700₽/м3  Москва. пайщик №900
+input_rate: 1700
+output_currency: Prizm
+output_rate: 0.52
+email: sergeyandreevich88@yandex.ru; text: <p>Пользователь Иляна Валерьевна Дарская с ID 203 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Тест с ID 201 вознаграждение в размере 0 D500 625x250x500  1700₽/м3  Москва. пайщик №900 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sivon59296@mailop7.com; text: <p>Пользователь Иляна Валерьевна Дарская с ID 203 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Тест с ID 201 вознаграждение в размере 0 D500 625x250x500  1700₽/м3  Москва. пайщик №900 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: blablba@mail.ru; text: <p>Пользователь Иляна Валерьевна Дарская с ID 203 только что совершил новую операцию.</p><p>Необходимо выплатить пригласившему его пользователю Тест с ID 201 вознаграждение в размере 0 D500 625x250x500  1700₽/м3  Москва. пайщик №900 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: resosak405@acetesz.com; text: <p>Приглашенный вами пользователь Иляна Валерьевна Дарская только что совершил новую операцию.</p><p>Вам причитается вознаграждение в размере 0 D500 625x250x500  1700₽/м3  Москва. пайщик №900 в соответствии с условиями реферальной программы.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+doc_1: Array
+(
+    [date] => 05.09.20 19:14:52
+    [filename] => -приема-D500-625x250x500-1700₽м3-Москва.-пайщик-№900-Пайщик-№-Иля-_______________-05-09-19-14.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-D500-625x250x500-1700₽м3-Москва.-пайщик-№900-Пайщик-№-Иля-_______________-05-09-19-14.pdf
+)
+
+EXCHANGE: Array
+(
+    [input_currency] => Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999
+    [input_sum] => 1
+    [output_currency] => 
+    [output_sum] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+)
+
+input_currency: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999
+input_rate: 90000000
+output_currency: 
+output_rate: 
+before rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 1
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -90000000
+            [exchange_num] => 2
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 1
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 19:17:30
+    [filename] => -приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-17.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-17.pdf
+)
+
+input_currency: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999
+input_rate: 90000000
+output_currency: 
+output_rate: 
+before rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -90000000
+            [exchange_num] => 2
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 2
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -180000000
+            [exchange_num] => 3
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 2
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 19:17:56
+    [filename] => -приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-17-1.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-17-1.pdf
+)
+
+input_currency: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999
+input_rate: 90000000
+output_currency: 
+output_rate: 
+before rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -180000000
+            [exchange_num] => 3
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 3
+            [output_sum] => 0
+            [exchange_num] => 2
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+added rubArray
+(
+    [D500 625x250x500  1700₽/м3  Москва. пайщик №900] => Array
+        (
+            [input_sum] => 100
+            [output_sum] => 0
+            [exchange_num] => 1
+        )
+
+    [Prizm] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 326923.08
+            [exchange_num] => 0
+        )
+
+    [RUB] => Array
+        (
+            [sum] => -270000000
+            [exchange_num] => 4
+        )
+
+    [Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999] => Array
+        (
+            [input_sum] => 3
+            [output_sum] => 0
+            [exchange_num] => 2
+        )
+
+    [] => Array
+        (
+            [input_sum] => 0
+            [output_sum] => 0
+            [exchange_num] => 0
+        )
+
+)
+
+doc_1: Array
+(
+    [date] => 05.09.20 19:18:04
+    [filename] => -приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-18.pdf
+    [url] => http://vnuk2.ev88.fvds.ru/wp-content/uploads/2020/09/Акт-приема-Дальний-Восток.-90млн.₽.-за-100тыс.-тон.-пайщика-№999-Пайщик-№-Иля-_______________-05-09-19-18.pdf
+)
+
+email: hippietrash11@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: mary caldwell</p>
+    <p>Пароль: mary caldwell</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJtYXJ5IGNhbGR3ZWxsIiwiZWFlMjdkNzdjYTIwZGIzMDllMDU2ZTNkMmRjZDdkNjkiXQ%3D%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJtYXJ5IGNhbGR3ZWxsIiwiZWFlMjdkNzdjYTIwZGIzMDllMDU2ZTNkMmRjZDdkNjkiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+EXCHANGE: Array
+(
+    [input_sum] => 100
+    [input_currency] => Сталь 53-59
+    [deposit_type] => ПрессСейл FORGING-PUL
+    [requisites] => ifdgjsdfgfsgisd4534
+)
+
+email: happymillmore@hotmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: mary chambers</p>
+    <p>Пароль: mary chambers</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJtYXJ5IGNoYW1iZXJzIiwiN2VhYmUzYTE2NDlmZmEyYjNmZjhjMDJlYmZkNTY1OWYiXQ%3D%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJtYXJ5IGNoYW1iZXJzIiwiN2VhYmUzYTE2NDlmZmEyYjNmZjhjMDJlYmZkNTY1OWYiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [input_amount] => 100000
+    [input_currency] => Запад. 50млн.₽.  100тыс.тон. пайщика №898
+    [rate] => 500
+    [is_public] => on
+)
+
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: Нефть
+asset_name: Газобетонные Блоки
+asset_name: Бетон
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: Нефть
+asset_name: Газобетонные Блоки
+asset_name: Бетон
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуга
+asset_name: 
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: Газобетонные блоки
+asset_name: Бетон
+asset_name: &lt;tnjy
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуги
+asset_name: Цифровые единицы
+asset_name: Сталь
+asset_name: RUB
+asset_name: Газобетонные блоки
+asset_name: Бетон
+asset_name: &lt;tnjy
+asset_name: Продовольственные товары
+asset_name: Драгоценные металлы
+asset_name: Услуги
+asset_name: 
+exchange other:Array
+(
+    [input_sum] => 100000
+    [input_currency] => Запад. 50млн.₽.  100тыс.тон. пайщика №898
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 1
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 05.09.20 23:11:55
+    [status] => personal_deposit
+)
+
+email: lisybloger2004@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: raelynn orr</p>
+    <p>Пароль: raelynn orr</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJyYWVseW5uIG9yciIsIjY5YWRjMWUxMDdmN2Y3ZDAzNWQ3YmFmMDQzNDJlMWNhIl0%3D">http://vnuk2.ev88.fvds.ru/profile/?rcl-confirmdata=WyJyYWVseW5uIG9yciIsIjY5YWRjMWUxMDdmN2Y3ZDAzNWQ3YmFmMDQzNDJlMWNhIl0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

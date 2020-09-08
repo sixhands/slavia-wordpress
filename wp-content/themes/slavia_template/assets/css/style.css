@@ -1104,6 +1104,9 @@ form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exc
 #other_payments_reserve_id .select-exchange {
 	padding-right: 0;
 }
+.modal-dialog input.personal_deposit[type="checkbox"] {
+	width: unset;
+}
 .no-margin {
 	margin: 0;
 }

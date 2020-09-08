@@ -182,6 +182,46 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div id="other_payments_is_public" class="col-lg-2 input-exchange">
+                        <div class="select-exchange w-100">
+                            <input type="checkbox" class="personal_deposit verification_is_public" name="" disabled>
+                            <span>Публичное имущество</span>
+                        </div>
+                    </div>
+
+                    <div id="other_payments_is_save" class="col-lg-2 input-exchange">
+                        <div class="select-exchange w-100">
+                            <input type="checkbox" class="personal_deposit verification_is_save" name="" disabled>
+                            <span>Спасти имущество</span>
+                        </div>
+                    </div>
+
+                    <div id="other_payments_is_reserve" class="col-lg-2 input-exchange">
+                        <div class="select-exchange w-100">
+                            <input type="checkbox" class="personal_deposit verification_is_reserve" name="" disabled>
+                            <span>Резерв за пайщиком</span>
+                        </div>
+                    </div>
+
+                    <div id="other_payments_reserve_id" class="col-lg-6 input-exchange">
+                        <div class="select-exchange w-100">
+                            <span>Номер пайщика</span>
+                            <?php //$client_nums = get_client_nums(); ?>
+                            <select id="personal_deposit_reserve_id" class="personal_deposit verification_reserve_id" name="" disabled>
+<!--                                <option selected disabled>Выберите номер пайщика</option>-->
+                                <!--                            --><?php //foreach ($client_nums as $client_num): ?>
+                                <!--                                --><?php //if ($client_num['user_id'] == get_current_user_id())
+                                //                                    continue;
+                                //                                ?>
+                                <!--                                <option value="--><?//=$client_num['user_id']?><!--">--><?//=$client_num['client_num']?><!--</option>-->
+                                <!--                            --><?php //endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
 
@@ -283,12 +323,17 @@
             let fields_to_fill = jQuery(
                 '.verification_prizm_address, .verification_prizm_public_key, .verification_waves_address' +
                 ', .verification_input_sum, .verification_output_sum, .verification_exchange_date' +
-                ', .verification_bank, .verification_card_num, .verification_card_name, .verification_deposit_type');
+                ', .verification_bank, .verification_card_num, .verification_card_name, .verification_deposit_type' +
+                ', .verification_is_public, .verification_is_save, .verification_is_reserve, .verification_reserve_id');
             let fields_to_hide = jQuery('.modal-content input').not(fields_to_fill);
 
             fields_to_fill.parents('.input-exchange').css('display', 'block');
             fields_to_hide.parents('.input-exchange').css('display', 'none');
             jQuery('.passport-photo').css('display', 'none');
+
+            //console.log(data);
+
+            jQuery('#other_payments_reserve_id').css('visibility', 'visible');
         }
         else
             if (modal_type === 'verification')
@@ -303,10 +348,24 @@
             }
 
         jQuery('.verification_deposit_type').val('');
+
         //Заполняем данными нужные поля
         jQuery.each(data, function (item) {
             if (item !== 'passport_photos')
             {
+                if (item === 'is_public' || item === 'is_reserve' || item === 'is_save')
+                {
+                    if (data[item] === true) {
+                        modal_el.find('.verification_' + item).prop("checked", true);
+                        if (item === 'is_reserve') {
+                            if (typeof data['reserve_id'] !== 'undefined')
+                                modal_el.find('.verification_reserve_id').append('<option selected>' + data['reserve_id'] + '</option>');
+                        }
+                    }
+                    else
+                        modal_el.find('.verification_' + item).prop("checked", false);
+                }
+
                 if (modal_el.find('.verification_' + item).length > 0)
                     modal_el.find('.verification_' + item).val(data[item]);
 

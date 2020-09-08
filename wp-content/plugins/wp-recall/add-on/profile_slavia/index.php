@@ -446,6 +446,7 @@ function get_new_document_field($user_id, $text = null, $filename = null)
     return !empty($result_field) ? $result_field : false;
 }
 
+//DEPRECATED
 function get_alternate_currency_rate($currency_name, $type = 'in')
 {
     $i = 0;
@@ -467,6 +468,7 @@ function get_alternate_currency_rate($currency_name, $type = 'in')
     return false;
 
 }
+/////
 function get_doc_fields($data)
 {
     $request = $data["request"];
@@ -503,8 +505,11 @@ function get_doc_fields($data)
         $user_full_name = $user_verification['name'] . ' ' . $user_verification['surname'] . ' ' . $user_verification['last_name'];
     }
 
+    $is_personal_deposit = (isset($request['is_public']) || isset($request['is_reserve']) ||
+                            isset($request['is_save']) || isset($request['reserve_id']) );
+
     //Если депозит или иной паевой взнос без второй валюты
-    if (isset($request['deposit_type']) || (!is_var($request['output_sum']) && !is_var($request['output_currency']) ) )
+    if (isset($request['deposit_type']) || (!is_var($request['output_sum']) && !is_var($request['output_currency']) ) || $is_personal_deposit)
         $is_deposit = true;
     else
         $is_deposit = false;
@@ -559,9 +564,10 @@ function get_doc_fields($data)
         //$input_doc_fields['sum'] = $request['input_sum'];
     }
     //Другие валюты
-    elseif (isset($request['requisites']) && !empty($request['requisites']))
+    elseif ((isset($request['requisites']) && !empty($request['requisites'])) || $is_personal_deposit)
     {
-        $this_currency_rate = get_alternate_currency_rate($input_doc_fields['currency'], 'in');
+        //$this_currency_rate = get_alternate_currency_rate($input_doc_fields['currency'], 'in');
+        $this_currency_rate = find_currency_rate_by_name($input_doc_fields['currency']);
         //if (isset($input_doc_fields['other_currency']) && !empty($input_doc_fields['other_currency']))
         //{
             //$other_currency_rate = get_alternate_currency_rate($input_doc_fields['other_currency'], 'out');
@@ -625,9 +631,9 @@ function get_doc_fields($data)
             //$output_doc_fields['sum'] = $request['output_sum'];
         }
         //Другие валюты
-        elseif (isset($request['requisites']) && !empty($request['requisites']))
+        elseif ((isset($request['requisites']) && !empty($request['requisites'])) || $is_personal_deposit)
         {
-            $this_currency_rate = get_alternate_currency_rate($output_doc_fields['currency'], 'out');
+            $this_currency_rate = find_currency_rate_by_name($output_doc_fields['currency'], true);//get_alternate_currency_rate($output_doc_fields['currency'], 'out');
             //$other_currency_rate = get_alternate_currency_rate($output_doc_fields['other_currency'], 'in');
 
             $rate = $this_currency_rate;// / $other_currency_rate;
@@ -873,7 +879,10 @@ function rcl_tab_profile_content($master_id)
 //        } //foreach
 //        $profile_args += array("stats_content" => $stats_content);
 //    } //if stats
-    $profile_args += array("stats_content" => show_all_stats());
+    if ($profile_args['is_manager'])
+        $profile_args += array("stats_content" => show_all_stats());
+    else
+        $profile_args += array("stats_content" => show_user_stats(get_current_user_id()));
 //    $side_text = get_field('verification_sidetext');
 //    $video_files = get_field('verification_video');
 //    $video_text = get_field('verification_modal_text');
@@ -1175,25 +1184,30 @@ function rcl_tab_operations_content($master_id)
 //                                    </div>
 //                                </div>';
             }
-            //Целевой взнос
-            elseif ($value['status'] == 'deposit_other')
+
+            elseif ($value['status'] == 'deposit_other' || $value['status'] == 'personal_deposit')
             {
-                if ($value['input_currency'] == 'RUB')
-                    $exchange_content .= '<div class="col-3 text-center">' . $deposit_type .
+                if ($value['input_currency'] == 'RUB') {
+                    if ($value['status'] == 'deposit_other')
+                        $bank_description = "\'Целевой взнос '" . $value['deposit_type'];
+                    elseif ($value['status'] == 'personal_deposit')
+                        $bank_description = 'Личный взнос ';
+                    $exchange_content .= '<div class="col-3 text-center">' .
                         '<a onclick="ipayCheckout({
-                            amount:' . $value['input_sum'] . ',
-                            currency:\'RUB\',
-                            order_number:\'\',
-                            description: \'Целевой взнос ' . $value['deposit_type'] . ' от пайщика №'.$client_num.'\'
-                            },
-                            function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
-                            function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
-                             
-                            class="btn-custom-one" style="display: inline-block;">Оплатить
-                        </a>' .
+                                                        amount:' . $value['input_sum'] . ',
+                                                        currency:\'RUB\',
+                                                        order_number:\'\',
+                                                        description: '. $bank_description . ' от пайщика №' . $client_num . '\'
+                                                        },
+                                                        function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
+                                                        function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
+                                                         
+                                                        class="btn-custom-one" style="display: inline-block;">Оплатить
+                                                    </a>' .
                         '</div>';
+                }
                 else
-                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">'.$deposit_type.'
+                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает подтверждения
                                         </div>';
             }
@@ -1404,7 +1418,8 @@ function rcl_tab_requests_content($master_id)
                     $currency_to_print = empty($request_value['output_currency']) ? $request_value['input_currency'] : $request_value['output_currency'];
                     $sum_to_print = empty($request_value['output_sum']) ? $request_value['input_sum'] : $request_value['output_sum'];
 
-                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other')
+                    if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other' ||
+                        $request_value['status'] == 'personal_deposit')
                     {
                         $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -1451,6 +1466,13 @@ function rcl_tab_requests_content($master_id)
                         elseif ($request_value['status'] == 'deposit_other')
                             $exchange_content .= '<div class="col-3 text-center">
                                                         <p>Целевой взнос</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>';
+                        elseif ($request_value['status'] == 'personal_deposit')
+                            $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Личный паевый взнос</p>
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
                                                             Закрыть сделку
                                                         </div>
@@ -1973,6 +1995,75 @@ function save_exchange_request_other(
     $log = new Rcl_Log();
     //$log->insert_log("currency: ".$input_currency);
 //    $log->insert_log("exchange other:".print_r($exchange_fields, true));
+
+    rcl_update_option('exchange_requests', $exchange_requests);
+}
+
+function save_exchange_personal_deposit($input_currency, $input_amount, $is_public = false,
+                                        $is_reserve = false, $is_save = false, $reserve_id = false)
+{
+    global $user_ID;
+    $exchange_requests = rcl_get_option('exchange_requests');
+
+    $exchange_fields = array();
+    $exchange_fields += array('input_sum' => $input_amount);
+    $exchange_fields += array('input_currency' => stripslashes($input_currency));
+    $exchange_fields += array('output_sum' => '');
+    $exchange_fields += array('output_currency' => '');
+
+    $exchange_fields += array('is_public' => $is_public);
+    $exchange_fields += array('is_reserve' => $is_reserve);
+    $exchange_fields += array('is_save' => $is_save);
+
+    if ($is_reserve && $reserve_id)
+        $exchange_fields += array('reserve_id' => $reserve_id);
+
+    $exchange_fields += array('requisites' => '');
+
+    date_default_timezone_set('Europe/Moscow');
+
+    $exchange_fields += array('date' => date('d.m.y H:i:s'));
+
+    $exchange_fields += array('status' => 'personal_deposit');
+
+    if (isset($exchange_requests) && !empty($exchange_requests))
+    {
+        if (isset($exchange_requests[$user_ID]) && !empty($exchange_requests[$user_ID]))
+        {
+            /*$new_request = array();*///array(count($exchange_requests[$user_ID]) => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
+        }
+        elseif (!isset($exchange_requests[$user_ID]))
+        {
+            $new_request = array(0 => $exchange_fields);
+            //array_push($new_request, $exchange_fields);
+
+            $exchange_requests += array($user_ID => $new_request); //Если еще нет запросов для этого пользователя, добавляем ключ id этого пользователя
+        }
+        elseif (empty($exchange_requests[$user_ID]))
+        {
+            //$new_request = array(0 => $exchange_fields);
+
+            //array_push($new_request, $exchange_fields);
+
+            array_push($exchange_requests[$user_ID], $exchange_fields);
+            //$exchange_requests[$user_ID] = $new_request;
+        }
+    }
+    //Если еще нету запросов на обмен
+    else
+    {
+        $new_request = array(0 => $exchange_fields);
+
+        $exchange_requests = array($user_ID => $new_request);
+    }
+
+    $log = new Rcl_Log();
+    //$log->insert_log("currency: ".$input_currency);
+    $log->insert_log("exchange other:".print_r($exchange_fields, true));
 
     rcl_update_option('exchange_requests', $exchange_requests);
 }
@@ -2524,6 +2615,31 @@ function rcl_edit_profile(){
                         if (isset($request['deposit_type']))
                             $user_verification += array('deposit_type' => $request['deposit_type']);
 
+                        //public
+                        if (isset($request['is_public']))
+                            $user_verification += array('is_public' => $request['is_public']);
+
+                        //reserve
+                        if (isset($request['is_reserve']) && $request['is_reserve'] == 'on')
+                        {
+                            $user_verification += array('is_reserve' => $request['is_reserve']);
+                            if (isset($request['reserve_id']) && $request['reserve_id'] > 0) {
+                                $client_num = get_user_meta($request['reserve_id'], 'client_num', true);
+                                if (empty($client_num))
+                                    $client_num = 'Номер пайщику не присвоен';
+                                $user_verification += array('reserve_id' => $client_num);
+                            }
+                            else
+                                $user_verification += array('reserve_id' => 0);
+                        }
+                        else
+                        {
+                            $user_verification += array('reserve_id' => 0);
+                        }
+
+                        //save
+                        if (isset($request['is_save']))
+                            $user_verification += array('is_save' => $request['is_save']);
 //                        $log->insert_log("date: ".print_r($user_verification, true));
                     }
                 }
@@ -2616,6 +2732,7 @@ function rcl_edit_profile(){
                                     "user_id" => $userid
                                     )
                                 );
+                                $log->insert_log("doc_fields: ".print_r($doc_fields, true));
                                 $is_deposit = $doc_fields['is_deposit'];
                                 $input_doc_fields = $doc_fields['input_fields'];
 
@@ -3381,8 +3498,38 @@ function rcl_edit_profile(){
                             $new_row['asset_rate_rubles'] = $exchange['rate'];
                             $result = add_sub_currency($currency_selector, $new_row);
                         }
-                        $log->insert_log("new row: ".print_r($new_row, true));
+                        //$log->insert_log("new row: ".print_r($new_row, true));
                     }
+
+                    //public
+                    if (isset($exchange['is_public']) && $exchange['is_public'] == 'on')
+                        $is_public = true;
+                    else
+                        $is_public = false;
+
+                    //reserve
+                    if (isset($exchange['is_reserve']) && $exchange['is_reserve'] == 'on')
+                    {
+                        $is_reserve = true;
+                        if (isset($exchange['reserve_id']) && $exchange['reserve_id'] > 0)
+                            $reserve_id = $exchange['reserve_id'];
+                        else
+                            $reserve_id = 0;
+                    }
+                    else
+                    {
+                        $is_reserve = false;
+                        $reserve_id = 0;
+                    }
+
+                    //save
+                    if (isset($exchange['is_save']) && $exchange['is_save'] == 'on')
+                        $is_save = true;
+                    else
+                        $is_save = false;
+//$exchange['section'] добавить к валюте если что
+                    save_exchange_personal_deposit($exchange['input_currency'], $exchange['input_amount'],
+                        $is_public, $is_reserve, $is_save, $reserve_id);
 
                     //$log->insert_log("row selector: ".$selector_input);
                     //$log->insert_log("new currency: ".$result);
@@ -3711,7 +3858,9 @@ function filter_data($filter_type, $datatype, $filter_val)
                                     if (!isset($request_value['date']) || !isset($new_date) || $new_date != $newfilter)
                                         continue;
                                 }
-                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' || $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other')
+                                if ($request_value['status'] == 'awaiting_payment' || $request_value['status'] == 'paid' ||
+                                    $request_value['status'] == 'deposit' || $request_value['status'] == 'deposit_other' ||
+                                    $request_value['status'] == 'personal_deposit')
                                 {
                                     $exchange_content .= '<div class="table-text w-100">
                                                 <div class="row">
@@ -3757,6 +3906,14 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                         </div>
                                                     </div>';
 
+                                    elseif ($request_value['status'] == 'personal_deposit')
+                                        $exchange_content .= '<div class="col-3 text-center">
+                                                        <p>Лицевой взнос</p>
+                                                        <div class="btn-custom-one btn-zayavki" data-request_num="'.$request_num.'" id="request_approve_'.$user.'">
+                                                            Закрыть сделку
+                                                        </div>
+                                                    </div>';
+
                                     elseif ($request_value['status'] == 'awaiting_payment')
                                         $exchange_content .= '<div class="col-3 text-center">
                                                         <div class="btn-custom-one btn-zayavki" data-request_num="' . $request_num . '" id="request_approve_' . $user . '">
@@ -3770,7 +3927,8 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                         </div>
                                             </div>
                                          </div>';
-                                } elseif ($request_value['status'] == 'completed')
+                                }
+                                elseif ($request_value['status'] == 'completed')
                                     continue;
                             } //inner foreach
                         } //filter comparison
@@ -3914,22 +4072,27 @@ function filter_data($filter_type, $datatype, $filter_val)
 //                                </div>';
 
                     //Целевой взнос
-                    elseif ($value['status'] == 'deposit_other')
+                    elseif ($value['status'] == 'deposit_other' || $value['status'] == 'personal_deposit')
                     {
-                        if ($value['input_currency'] == 'RUB')
+                        if ($value['input_currency'] == 'RUB') {
+                            if ($value['status'] == 'deposit_other')
+                                $bank_description = "\'Целевой взнос '" . $value['deposit_type'];
+                            elseif ($value['status'] == 'personal_deposit')
+                                $bank_description = 'Личный взнос ';
                             $exchange_content .= '<div class="col-3 text-center">' .
-                                                    '<a onclick="ipayCheckout({
+                                '<a onclick="ipayCheckout({
                                                         amount:' . $value['input_sum'] . ',
                                                         currency:\'RUB\',
                                                         order_number:\'\',
-                                                        description: \'Целевой взнос ' . $value['deposit_type'] . ' от пайщика №'.$client_num.'\'
+                                                        description: '. $bank_description . ' от пайщика №' . $client_num . '\'
                                                         },
                                                         function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
                                                         function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
                                                          
                                                         class="btn-custom-one" style="display: inline-block;">Оплатить
                                                     </a>' .
-                                                '</div>';
+                                '</div>';
+                        }
                         else
                             $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
                                        Ожидает подтверждения
@@ -4353,6 +4516,10 @@ function get_empty_stat_row($userid, $rub_currency, $currency_data)
     return $stat_row;
 }
 function add_stats($userid, $input_currency, $input_sum, $output_currency, $output_sum) {
+    if (!isset($output_sum) || empty($output_sum))
+        $output_sum = 0;
+    if (!isset($input_sum) || empty($input_sum))
+        $input_sum = 0;
     //Добавляем в статистику
     $stats = rcl_get_option('user_stats');
     $log = new Rcl_Log();

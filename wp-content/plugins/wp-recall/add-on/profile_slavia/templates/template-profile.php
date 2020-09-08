@@ -387,7 +387,7 @@
             </form>
         </div>
         <!-- Статистика -->
-        <?php if ($is_manager): ?>
+        <?php //if ($is_manager): ?>
         <div class="coop_maps question-bg col-lg-12">
             <div class="row">
                 <div class="col-12">
@@ -437,7 +437,7 @@
                 <?php if (isset($stats_content) && !empty($stats_content)) echo $stats_content; ?>
             </div>
         </div>
-        <?php endif; ?>
+        <?php //endif; ?>
 
     </div>
 </div>

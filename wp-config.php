@@ -75,7 +75,7 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_TEMP_DIR','/wp-content/wp-recall/temp');
+//define('WP_TEMP_DIR','/wp-content/wp-recall/temp');
 
 //define('FTP_USER', 'ftp');
 //define('FTP_PASS', 'Z{?w67/a6a!dRktJ');
@@ -88,6 +88,11 @@ define( 'WP_DEBUG', true );
 
 //define( 'WP_DEBUG_LOG', true );
 
+define('WP_MEMORY_LIMIT', '256M');
+
+define('AUTOSAVE_INTERVAL', 300); // seconds
+define('WP_POST_REVISIONS', false);
+//define('WP_POST_REVISIONS', 3);
 
 /* That's all, stop editing! Happy publishing. */
 
