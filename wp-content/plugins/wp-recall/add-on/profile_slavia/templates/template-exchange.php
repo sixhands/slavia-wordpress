@@ -9,9 +9,11 @@ $instruction_text_right = get_field('instruction_text_right', 306);
 
 
 $asset_inputs = get_input_currencies_2();
-print '<div style="display: none"><pre>'.print_r($asset_inputs, true).'</pre></div>';
 
 $asset_outputs = get_output_currencies_2();
+
+$deposits = get_deposits();
+print '<div style="display: none"><pre>'.print_r($deposits, true).'</pre></div>';
 
 $deposit_types = array();
 
@@ -568,22 +570,22 @@ if ($slav_to_rub == 0)
                             <div class="select-exchange w-100">
                                 <!--                                <span class="select-exchange">Вид вносимого имущества</span>-->
 
-                                <input type="hidden" class="other_payments input_currency" name="exchange[input_currency]">
+<!--                                <input type="hidden" class="other_payments input_currency" name="exchange[input_currency]">-->
+<!---->
+<!--                                <div class="nested_menu">-->
+<!--                                    <a class="menu_link">Вид вносимого имущества</a>-->
+<!--                                </div>-->
 
-                                <div class="nested_menu">
-                                    <a class="menu_link">Вид вносимого имущества</a>
-                                </div>
+                                <?php //print_nested_assets($asset_inputs); ?>
 
-                                <?php print_nested_assets($asset_inputs); ?>
-
-<!--                                <select required class="other_deposit input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">-->
-<!--                                    <option value="">Вид вносимого имущества</option>-->
+                                <select required class="other_deposit input_currency" name="exchange[input_currency]" placeholder="Вид вносимого имущества">
+                                    <option selected disabled value="">Вид вносимого имущества</option>
 <!--                                    --><?php //if (isset($asset_inputs) && !empty($asset_inputs)): ?>
 <!--                                        --><?php //foreach ($asset_inputs as $asset_input): ?>
 <!--                                            <option data-rate="--><?//=$asset_input['asset_rate_rubles']?><!--" data-requisites="--><?//=$asset_input['asset_requisites']?><!--" value="--><?//=htmlspecialchars($asset_input['asset_name'], ENT_QUOTES, 'UTF-8')?><!--">--><?//=$asset_input['asset_name']?><!--</option>-->
 <!--                                        --><?php //endforeach;?>
 <!--                                    --><?php //endif; ?>
-<!--                                </select>-->
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -593,9 +595,9 @@ if ($slav_to_rub == 0)
                             <div class="select-exchange w-100" style="margin-top: 0px; padding-left: 0; padding-right: 0">
                                 <select required class="other_deposit deposit_type" name="exchange[deposit_type]">
                                     <option disabled selected>Вид целевой программы</option>
-                                    <?php if (isset($deposit_types) && !empty($deposit_types)): ?>
-                                        <?php foreach ($deposit_types as $deposit_type): ?>
-                                            <option value="<?=$deposit_type?>"><?=$deposit_type?></option>
+                                    <?php if (isset($deposits) && !empty($deposits)): ?>
+                                        <?php foreach (array_keys($deposits) as $deposit_name): ?>
+                                            <option value="<?=$deposit_name?>"><?=$deposit_name?></option>
                                         <?php endforeach;?>
                                     <?php endif; ?>
                                 </select>
@@ -637,16 +639,25 @@ if ($slav_to_rub == 0)
                                 <span class="select-exchange">Раздел</span>
                                 <?php
                                 $all_currencies = get_all_currencies();
+
                                 //print '<pre style="display: none">'.print_r($all_currencies, true).'</pre>';
                                 ?>
-                                <select required class="personal_deposit input_currency" name="exchange[section]">
-                                    <option disabled selected>Выберите раздел</option>
-                                    <?php if (isset($all_currencies) && !empty($all_currencies)): ?>
-                                        <?php foreach ($all_currencies as $currency): ?>
-                                            <option value="<?=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$currency['asset_name']?></option>
-                                        <?php endforeach;?>
-                                    <?php endif; ?>
-                                </select>
+
+                                <input type="hidden" class="other_payments section" name="exchange[section]">
+
+                                <div class="nested_menu">
+                                    <a class="menu_link">Раздел</a>
+                                </div>
+
+                                <?php print_nested_assets($all_currencies, false, true); ?>
+<!--                                <select required class="personal_deposit input_currency" name="exchange[section]">-->
+<!--                                    <option disabled selected>Выберите раздел</option>-->
+<!--                                    --><?php //if (isset($all_currencies) && !empty($all_currencies)): ?>
+<!--                                        --><?php //foreach ($all_currencies as $currency): ?>
+<!--                                            <option value="--><?//=htmlspecialchars($currency['asset_name'], ENT_QUOTES, 'UTF-8')?><!--">--><?//=$currency['asset_name']?><!--</option>-->
+<!--                                        --><?php //endforeach;?>
+<!--                                    --><?php //endif; ?>
+<!--                                </select>-->
                             </div>
 <!--                        </div>-->
                     </div>
@@ -2013,29 +2024,40 @@ if ($slav_to_rub == 0)
                     other_payment_output_currency_change(jQuery(this));
                 }
             }
+            else
+                if (form_id === 'personal_deposit') {
+                    let section_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.section');
+                    section_el.val(jQuery(this).attr('data-value'));
+                }
 
             //Целевой взнос input_currency
-            else
-                if (form_id === 'other_deposit') {
-                    change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'));
-                    let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
-                    input_currency_el.val(jQuery(this).attr('data-value'));
-                }
+            // else
+            //     if (form_id === 'other_deposit') {
+            //         change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'));
+            //         let input_currency_el = jQuery(this).parents('.menu-list').siblings('input.other_payments.input_currency');
+            //         input_currency_el.val(jQuery(this).attr('data-value'));
+            //     }
         }
 
         else {
             let currency_el = jQuery(this).parents('.menu-list').siblings('input[type=hidden]');
-            currency_el.val('');
-            jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
+            if (form_id !== 'personal_deposit') {
+                currency_el.val('');
+                jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text('Вид вносимого имущества');
+            }
+            else {
+                currency_el.val(jQuery(this).attr('data-value'));
+                jQuery(this).parents('.menu-list').siblings('.nested_menu').children('.menu_link').text(currency_el.val());
+            }
 
             if (form_id === 'other_payments') {
                 let is_output_currency = other_payments_is_output_currency(jQuery(this));
                 if (!is_output_currency)
                     change_requisites(jQuery(this), jQuery('form.other_payments select.other_payments.requisites'), 'clear');
             }
-            else
-                if (form_id === 'other_deposit')
-                    change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'), 'clear');
+            //else
+                //if (form_id === 'other_deposit')
+                    //change_requisites(jQuery(this), jQuery('form.other_deposit select.other_deposit.requisites'), 'clear');
         }
 
         if (ul_display === 'none') {
@@ -2046,6 +2068,37 @@ if ($slav_to_rub == 0)
         if (ul_display === 'block') {
             ul.slideUp('normal');
         }
+    });
+
+    jQuery('form#other_deposit select.deposit_type').change(function() {
+        let data = {
+            get_deposit_assets: true,
+            deposit_name: jQuery(this).val()
+        };
+        let deposit_type = jQuery(this);
+        let input_currency = deposit_type.parents('form#other_deposit').find('select.other_deposit.input_currency');
+        jQuery.post( window.location, data, function(response) {
+            let deposit_assets = JSON.parse(response);
+            if (typeof deposit_assets !== 'undefined' && deposit_assets.length > 0) {
+                input_currency.find('option:not(:first-child)').remove();
+                jQuery.each(deposit_assets, function (index, el) {
+                    let value = el;
+                    console.log(value);
+                    input_currency.append(
+                        '<option data-rate="' + value.asset_rate_rubles +
+                        '" data-requisites="' + value.asset_requisites + '" value="' +
+                        value.asset_name + '">' + value.asset_name + '</option>'
+                    );
+                });
+                input_currency.find('option:nth-child(2)').prop('selected', true);
+
+                let requisites = jQuery('form#other_deposit select.other_deposit.requisites');
+                requisites.find('option').not(':first-child').remove();
+                requisites.append('<option selected>' + input_currency.find('option:selected').attr('data-requisites') + '</option>');
+                requisites.find('option:nth-child(2)').prop('selected', true);
+            }
+            //console.log(deposit_assets);
+        });
     });
     ////////////////////////////////////////////
     //output_sum = (input_sum*input_rate)/output_rate

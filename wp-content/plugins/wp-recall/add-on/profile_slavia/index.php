@@ -1189,15 +1189,15 @@ function rcl_tab_operations_content($master_id)
             {
                 if ($value['input_currency'] == 'RUB') {
                     if ($value['status'] == 'deposit_other')
-                        $bank_description = "\'Целевой взнос '" . $value['deposit_type'];
+                        $bank_description = "Целевой взнос " . $value['deposit_type'];
                     elseif ($value['status'] == 'personal_deposit')
-                        $bank_description = 'Личный взнос ';
+                        $bank_description = "Личный взнос ";
                     $exchange_content .= '<div class="col-3 text-center">' .
                         '<a onclick="ipayCheckout({
                                                         amount:' . $value['input_sum'] . ',
                                                         currency:\'RUB\',
                                                         order_number:\'\',
-                                                        description: '. $bank_description . ' от пайщика №' . $client_num . '\'
+                                                        description: \''. $bank_description . ' от пайщика №' . $client_num . '\'
                                                         },
                                                         function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
                                                         function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
@@ -1206,10 +1206,17 @@ function rcl_tab_operations_content($master_id)
                                                     </a>' .
                         '</div>';
                 }
-                else
-                    $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px; color: #EF701B">
-                                       Ожидает подтверждения
+                else {
+                    if ($value['status'] == 'deposit_other')
+                        $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px;">
+                                      <p>Целевой взнос</p>';
+                    elseif ($value['status'] == 'personal_deposit')
+                        $exchange_content .= '<div class="col-3 text-center" style="font-size: 15px;">
+                                      <p>Личный взнос</p>';
+
+                    $exchange_content .= '<p style="color: #EF701B">Ожидает подтверждения</p>
                                         </div>';
+                }
             }
 
             elseif ($value['status'] == 'completed')
@@ -2167,8 +2174,8 @@ function find_currency_by_name($name, $selector = 'asset_inputs')
             the_row();
             $i++;
             $asset_name = get_sub_field('asset_name');
-            $log = new Rcl_Log();
-            $log->insert_log("asset_name: ".$asset_name);
+            //$log = new Rcl_Log();
+            //$log->insert_log("asset_name: ".$asset_name);
             if (mb_strtolower($asset_name) == mb_strtolower($name))
             {
                 $result = array($selector, $i, 'asset_types');
@@ -3445,6 +3452,24 @@ function rcl_edit_profile(){
             }
         }
 
+        //Получение имуществ для конкретного целевого взноса
+        elseif (isset($_POST['get_deposit_assets']) && isset($_POST['get_deposit_assets']) == 'true' &&
+                isset($_POST['deposit_name']) && !empty($_POST['deposit_name']))
+        {
+            $deposits = get_deposits();
+            $deposit_name = $_POST['deposit_name'];
+            foreach($deposits[$deposit_name] as $key => $deposit)
+            {
+                if (strtolower($deposit['asset_name']) == 'prizm' || strtolower($deposit['asset_name']) == 'pzm') {
+                    $deposits[$deposit_name][$key]['asset_rate_rubles'] = rcl_slavia_get_crypto_price();
+                }
+                $deposits[$deposit_name][$key]['asset_name'] =
+                    htmlspecialchars($deposit['asset_name'], ENT_QUOTES, 'UTF-8');
+            }
+            //$log->insert_log("deposit: ". print_r($deposits[$deposit_name] , true));
+            echo json_encode($deposits[$deposit_name]);
+            exit;
+        }
         /*****************Сохраняем в запросы на обмен******************/
         elseif (isset($_POST['exchange']) && !empty($_POST['exchange']) )
             /*strpos(array_key_first($_POST), 'get_rubles') !== false ||
@@ -4076,7 +4101,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                     {
                         if ($value['input_currency'] == 'RUB') {
                             if ($value['status'] == 'deposit_other')
-                                $bank_description = "\'Целевой взнос '" . $value['deposit_type'];
+                                $bank_description = "Целевой взнос " . $value['deposit_type'];
                             elseif ($value['status'] == 'personal_deposit')
                                 $bank_description = 'Личный взнос ';
                             $exchange_content .= '<div class="col-3 text-center">' .
@@ -4084,7 +4109,7 @@ function filter_data($filter_type, $datatype, $filter_val)
                                                         amount:' . $value['input_sum'] . ',
                                                         currency:\'RUB\',
                                                         order_number:\'\',
-                                                        description: '. $bank_description . ' от пайщика №' . $client_num . '\'
+                                                        description: \''. $bank_description . ' от пайщика №' . $client_num . '\'
                                                         },
                                                         function(order) { successCallback(order, event, ' . $user_ID . ', ' . $key . ') },
                                                         function(order) { failureCallback(order, event, ' . $user_ID . ', ' . $key . ') })"
@@ -4773,7 +4798,38 @@ function get_all_currencies()
     return $currencies;
 }
 
-function print_nested_assets($assets, $is_out_asset = false)
+function get_deposits() {
+    if (have_rows('deposit_types', 306)) {
+        $deposits = array();
+        //$deposit_assets = array();
+        //$deposit_names = array();
+        while (have_rows('deposit_types', 306)) {
+            the_row();
+            $deposit_name = get_sub_field('deposit_name');
+            $deposits[$deposit_name] = array();
+            //Проходиммся по вложенным валютам если они есть (второй уровень вложенности)
+            if (have_rows('deposit_assets')) {
+                while (have_rows('deposit_assets')) {
+                    the_row();
+                    $asset_name = get_sub_field('asset_name');
+                    $asset_requisites = get_sub_field('asset_requisites');
+                    $asset_rate_rubles = get_sub_field('asset_rate_rubles');
+                    $row = array(
+                            "asset_name" => $asset_name,
+                            'asset_requisites' => $asset_requisites,
+                            'asset_rate_rubles' => $asset_rate_rubles
+                        );
+                    array_push($deposits[$deposit_name], $row);
+                }
+            }
+        }
+        return $deposits;
+    }
+    else
+        return false;
+}
+
+function print_nested_assets($assets, $is_out_asset = false, $is_section = false)
 {
     $slav_address = get_field('slav_address', 306);
     $prizm_address = get_field('prizm_address', 306);
@@ -4840,7 +4896,7 @@ function print_nested_assets($assets, $is_out_asset = false)
                             ?>
                             <li>
                                 <a data-percent="" data-rate="<?=$asset_type['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_type['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_type['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_type['asset_name']?></a>
-                                <?php if (!empty($asset_type['asset_types_2'])): ?>
+                                <?php if (!empty($asset_type['asset_types_2']) && !$is_section): ?>
                                     <ul>
                                         <?php foreach($asset_type['asset_types_2'] as $subtype): ?>
                                         <li>

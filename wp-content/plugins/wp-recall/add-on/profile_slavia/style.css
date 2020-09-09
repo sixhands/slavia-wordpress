@@ -25,6 +25,9 @@ form#other_deposit .menu-list {
 form#other_payments .menu-list {
     width: 94%;
 }
+form#personal_deposit .menu-list {
+    width: 88% !important;
+}
 .menu-list ul {
     list-style-type: none;
     display: none;
