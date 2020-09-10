@@ -73,7 +73,9 @@
 
                         </div>
                     </div>
+
                     <?php if (isset($arg_to_pass['ref_ids']) && !empty($arg_to_pass['ref_ids'])): ?>
+                        <?php //print '<pre>'.print_r($arg_to_pass, true).'</pre>';?>
                         <?php foreach($arg_to_pass['ref_ids'] as $user_id): ?>
                             <?php $user_data = get_userdata($user_id); ?>
                             <?php if (!isset($user_data) || empty($user_data))
@@ -179,7 +181,7 @@
 
 <a style="display: none;" id="modal-54506522" href="#modal-container-54506522" role="button" class="" data-toggle="modal">
 </a>
-<!--Модальное окно регистрации -->
+
 <div class="modal fade" id="modal-container-54506522" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 800px; ">
         <div class="modal-content text-left" style="padding: 40px;">
@@ -477,36 +479,58 @@
                 else
                     month_sum_content.text('0' + ' руб');
 
-                for (var key in unpaid_sum) {
-                    unpaid_sum_content.append(
-                    '<div class="table-text w-100"> ' +
-                        '<div class="row"> ' +
-                            '<div class="col-6 text-left">' +
-                                '<span>' + key.stripSlashes() + '</span>' +
-                            '</div>' +
-                            '<div class="col-6 text-left">' +
-                                '<span>' + (+unpaid_sum[key].toFixed(2)) + '</span>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>'
-                    );
-                }
-
-                for (var key in paid_sum) {
-                    //console.log(key);
-                    paid_sum_content.append(
+                if (unpaid_sum !== 'false')
+                    for (var key in unpaid_sum) {
+                        unpaid_sum_content.append(
                         '<div class="table-text w-100"> ' +
                             '<div class="row"> ' +
                                 '<div class="col-6 text-left">' +
                                     '<span>' + key.stripSlashes() + '</span>' +
                                 '</div>' +
                                 '<div class="col-6 text-left">' +
-                                    '<span>' + (+paid_sum[key].toFixed(2)) + '</span>' +
+                                    '<span>' + (+unpaid_sum[key].toFixed(2)) + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
+                        );
+                    }
+                else
+                    unpaid_sum_content.append(
+                        '<div class="table-text w-100"> ' +
+                            '<div class="row"> ' +
+                                '<div class="col-12 text-center">' +
+                                    '<span>' + 'Данные не найдены' + '</span>' +
                                 '</div>' +
                             '</div>' +
                         '</div>'
                     );
-                }
+
+                if (paid_sum !== 'false')
+                    for (var key in paid_sum) {
+                        //console.log(key);
+                        paid_sum_content.append(
+                            '<div class="table-text w-100"> ' +
+                                '<div class="row"> ' +
+                                    '<div class="col-6 text-left">' +
+                                        '<span>' + key.stripSlashes() + '</span>' +
+                                    '</div>' +
+                                    '<div class="col-6 text-left">' +
+                                        '<span>' + (+paid_sum[key].toFixed(2)) + '</span>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>'
+                        );
+                    }
+                else
+                    paid_sum_content.append(
+                        '<div class="table-text w-100"> ' +
+                            '<div class="row"> ' +
+                                '<div class="col-12 text-center">' +
+                                    '<span>' + 'Данные не найдены' + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
+                    );
 
                 jQuery('#modal-54506521').trigger('click');
             }

@@ -14,11 +14,15 @@ function rcl_insert_user( $data ) {
     if ( get_user_by( 'login', $data['user_login'] ) )
         return false;
 
+    //Первоначально user_registered не передавался
+    date_default_timezone_set('Europe/Moscow');
+
     $userdata = array_merge( $data, array(
         'user_nicename'	 => ''
     , 'nickname'		 => $data['user_email']
     , 'first_name'	 => $data['display_name']
     , 'rich_editing'	 => 'true'  // false - выключить визуальный редактор для пользователя.
+    , 'user_registered' => date('Y-m-d H:i:s')
     ) );
 
     $user_id = wp_insert_user( $userdata );
@@ -32,7 +36,9 @@ function rcl_insert_user( $data ) {
     if ( rcl_get_option( 'confirm_register_recall' ) ) {
         wp_update_user( array( 'ID' => $user_id, 'role' => 'need-confirm' ) );
     } else {
+        //$log = new Rcl_Log();
         $timeAction = current_time( 'mysql' );
+        //$log->insert_log("time_action: ".$timeAction);
     }
 
     global $wpdb;

@@ -374,3 +374,547 @@ EXCHANGE: Array
     [requisites] => okfghokdoghk
 )
 
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Urals
+    [input_amount] => 5
+    [input_currency] => Urals 5555
+    [rate] => 56
+    [is_save] => on
+)
+
+currency_selector: Array
+currency_selector: 
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => Цифровые единицы
+    [input_amount] => 5
+    [input_currency] => Etherium
+    [rate] => 546
+    [is_public] => on
+)
+
+currency_selector: Array
+currency_selector: Array
+EXCHANGE: Array
+(
+    [is_personal_deposit] => yes
+    [section] => D350
+    [input_amount] => 45
+    [input_currency] => d350 5435
+    [rate] => 351
+    [is_public] => on
+)
+
+currency_selector: Array
+currency_selector: 
+asset_info: Array
+(
+    [name] => Цифровые единицы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Сталь
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => RUB
+    [requisites] => 07645934
+    [rate] => 1
+)
+
+asset_info: Array
+(
+    [name] => Нефть
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Газобетонные Блоки
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Бетон
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Продовольственные товары
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Драгоценные металлы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Услуга
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => 
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Цифровые единицы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Сталь
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => RUB
+    [requisites] => 
+    [rate] => 1
+)
+
+asset_info: Array
+(
+    [name] => Нефть
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Газобетонные блоки
+    [requisites] => 
+    [rate] => 347
+)
+
+asset_info: Array
+(
+    [name] => Бетон
+    [requisites] => 
+    [rate] => 1
+)
+
+asset_info: Array
+(
+    [name] => Продовольственные товары
+    [requisites] => 
+    [rate] => 9600
+)
+
+asset_info: Array
+(
+    [name] => Драгоценные металлы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Услуга
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => 
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => D350
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Цифровые единицы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Сталь
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => RUB
+    [requisites] => 07645934
+    [rate] => 1
+)
+
+asset_info: Array
+(
+    [name] => Нефть
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Газобетонные Блоки
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Бетон
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Продовольственные товары
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Драгоценные металлы
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => Услуга
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => 
+    [requisites] => 
+    [rate] => 
+)
+
+asset_info: Array
+(
+    [name] => D350
+    [requisites] => 
+    [rate] => 
+)
+
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.37
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: ; rate: 1
+name: PRIZM; requisites: ; rate: 0.37
+name: BTC; requisites: ; rate: 
+name: ETH; requisites: ; rate: 
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь марки 1; requisites: ; rate: 5458
+name: Сталь марки 2; requisites: ; rate: 56635
+name: RUB; requisites: ; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Золото 1_г.; requisites: ; rate: 4040.41
+name: Серебро 1_г.; requisites: ; rate: 532
+name: Медь 1_г.; requisites: ; rate: 4572
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Газобетонные блоки; requisites: ; rate: 347
+name: Бетон; requisites: ; rate: 1
+name: Продовольственные товары; requisites: ; rate: 9600
+name: Драгоценные металлы; requisites: ; rate: 
+name: Золото 999,9 слитки; requisites: ; rate: 
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.37
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.37
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 0
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: ; rate: 1
+name: PRIZM; requisites: ; rate: 0.37
+name: BTC; requisites: ; rate: 
+name: ETH; requisites: ; rate: 
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь марки 1; requisites: ; rate: 5458
+name: Сталь марки 2; requisites: ; rate: 56635
+name: RUB; requisites: ; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Золото 1_г.; requisites: ; rate: 4040.41
+name: Серебро 1_г.; requisites: ; rate: 532
+name: Медь 1_г.; requisites: ; rate: 4572
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Газобетонные блоки; requisites: ; rate: 347
+name: Бетон; requisites: ; rate: 1
+name: Продовольственные товары; requisites: ; rate: 9600
+name: Драгоценные металлы; requisites: ; rate: 
+name: Золото 999,9 слитки; requisites: ; rate: 
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 0
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.37
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: ; requisites: ; rate: 0
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.38
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: ; rate: 1
+name: PRIZM; requisites: ; rate: 0.38
+name: BTC; requisites: ; rate: 
+name: ETH; requisites: ; rate: 
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь марки 1; requisites: ; rate: 5458
+name: Сталь марки 2; requisites: ; rate: 56635
+name: RUB; requisites: ; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Золото 1_г.; requisites: ; rate: 4040.41
+name: Серебро 1_г.; requisites: ; rate: 532
+name: Медь 1_г.; requisites: ; rate: 4572
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Газобетонные блоки; requisites: ; rate: 347
+name: Бетон; requisites: ; rate: 1
+name: Продовольственные товары; requisites: ; rate: 9600
+name: Драгоценные металлы; requisites: ; rate: 
+name: Золото 999,9 слитки; requisites: ; rate: 
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: Urals; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.38
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: ффрвар; requisites: ; rate: 235
+name: фпарвпрврвпр; requisites: ; rate: 341
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Бананы; requisites: ; rate: 54
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Магические кристаллы; requisites: ; rate: 542
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: hfhghd; requisites: ; rate: 35
+name: Urals; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: d350 5435; requisites: ; rate: 351

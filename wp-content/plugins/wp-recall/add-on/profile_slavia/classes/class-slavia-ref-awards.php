@@ -41,6 +41,7 @@
             if (in_array("host_id", array_keys($fields))) {
                 if (isset($items[$fields["host_id"]]) && !empty($items[$fields["host_id"]]))
                 {
+                    //$log->insert_log("items[host_id]1: ".print_r($items[$fields["host_id"]], true));
                     //$index = 0;
                     foreach ($items[$fields["host_id"]] as $index => $operation)
                     {
@@ -173,10 +174,11 @@
                 if ($ref_id != false)
                     $search_data += array("ref_id" => $ref_id);
                 $operations = $this->get_operations_by($search_data);
-                //$log = new Rcl_Log();
+                $log = new Rcl_Log();
 
                 $sum = array(); //array("prizm" => 1050, "slav" => 500, "rub" => 100)
-                if (!empty($operations)) {
+                if (!empty($operations) && $operations != false) {
+                    $log->insert_log("operations: ".print_r($operations, true));
                     foreach ($operations as $operation) {
                         $ref_sum = $operation["award_sum"];
                         $ref_currency = $operation["award_currency"];

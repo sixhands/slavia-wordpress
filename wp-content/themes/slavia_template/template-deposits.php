@@ -23,7 +23,7 @@ for ($i = 1, $deposit = get_field('deposit_'.$i);
             <h1 class="coop_maps-h1">Целевые программы</h1>
 
             <?php foreach ($deposit_types as $deposit_type): ?>
-                <div class="row">
+                <div class="row deposit_row">
                     <div class="col-12">
                         <div class="row">
                             <!--[xyz-ips snippet="show-card-images"]-->

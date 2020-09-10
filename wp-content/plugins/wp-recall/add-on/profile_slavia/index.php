@@ -1662,7 +1662,8 @@ function rcl_tab_referral_content($master_id)
         $ref_all = array(
             "unpaid" => $ref_awards->get_operations_by(array("status" => "processing")),
             "paid" => $ref_awards->get_operations_by(array("status" => "paid")),
-            "user_ids" => $ref_awards->get_all_ref_users()
+            "user_ids" => $ref_awards->get_all_ref_users(),
+            "ref_ids" => $ref_awards->get_user_refs($user_ID) //id рефералов данного пользователя
         );
 
         $profile_args += array("ref_all" => $ref_all);
@@ -2174,12 +2175,24 @@ function find_currency_by_name($name, $selector = 'asset_inputs')
             the_row();
             $i++;
             $asset_name = get_sub_field('asset_name');
-            //$log = new Rcl_Log();
-            //$log->insert_log("asset_name: ".$asset_name);
+
             if (mb_strtolower($asset_name) == mb_strtolower($name))
             {
                 $result = array($selector, $i, 'asset_types');
                 return $result;
+            }
+            if (have_rows('asset_types')) {
+                $j = 0;
+                while (have_rows('asset_types')) {
+                    the_row();
+                    $j++;
+                    $asset_name_2 = get_sub_field('asset_name');
+
+                    if (mb_strtolower($asset_name_2) == mb_strtolower($name)) {
+                        $result = array($selector, $i, 'asset_types', $j, 'asset_types_2');
+                        return $result;
+                    }
+                }
             }
         }
     }
@@ -2395,7 +2408,17 @@ function rcl_edit_profile(){
             else
                 $verification_requests = array($user_ID => $verification_fields); //Если нет запросов, добавляем новый
 
-            rcl_update_option('verification_requests', $verification_requests);
+            $is_user_verified = get_user_meta($user_ID, 'is_verified', true);
+            //$log->insert_log("verification exists: ".$verification_exists);
+            //$log->insert_log("is_verified: ".$is_user_verified);
+            if ($verification_exists || ($is_user_verified == 'yes' || $is_user_verified == 'waiting') )
+                $save_request = false;
+            else
+                $save_request = true;
+
+            //Если еще нет верификации, то сохраняем запрос
+            if ($save_request)
+                rcl_update_option('verification_requests', $verification_requests);
 
             /**********************************************************************/
 
@@ -2407,6 +2430,7 @@ function rcl_edit_profile(){
             $field_found = false;
             foreach ($profileFields as $field)
             {
+                //Обновляем поля верификации
                 if ($field['slug'] == 'verification') {
                     $field += array('value' => $verification_fields);
 
@@ -2415,93 +2439,92 @@ function rcl_edit_profile(){
                     continue;
                     //break;
                 }
-                if ($field['slug'] == 'passport_photos' && isset($_FILES) && !empty($_FILES)) {
-                    //Загружаем файлы
-                    if ( ! function_exists( 'wp_handle_upload' ) ) {
-                        require_once( ABSPATH . 'wp-admin/includes/file.php' );
-                    }
-                    $field += array('value' => array());
-                    for ($i=0; $i < count($_FILES['passport_photos']['name']); $i++)
-                    {
-                        $filetype	 = wp_check_filetype_and_ext( $_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i] );
-
-                        if (! in_array( $filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp','JPEG', 'GIF', 'BMP', 'PNG', 'WEBP', 'jpg', 'JPG'))) {
-                            wp_die(__('Prohibited file type!', 'wp-recall'));
-                            exit;
+                if ($save_request)
+                {
+                    if ($field['slug'] == 'passport_photos' && isset($_FILES) && !empty($_FILES)) {
+                        //Загружаем файлы
+                        if (!function_exists('wp_handle_upload')) {
+                            require_once(ABSPATH . 'wp-admin/includes/file.php');
                         }
-                        $maxsize = 5;
-                        if ( $_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024 ) {
-                            wp_die(__('File size exceedes maximum!', 'wp-recall'));
-                            exit;
-                        }
+                        $field += array('value' => array());
+                        for ($i = 0; $i < count($_FILES['passport_photos']['name']); $i++) {
+                            $filetype = wp_check_filetype_and_ext($_FILES['passport_photos']['tmp_name'][$i], $_FILES['passport_photos']['name'][$i]);
 
-                        $info = pathinfo( $_FILES['passport_photos']['name'][$i] );
-                        if( ! empty( $info['extension'] ) )
-                            $_FILES['passport_photos']['name'][$i]  = sprintf( 'passport_photo_%s.%s', current_time( 'm-d-H-i-s' ), $info['extension'] );
-
-                        $uploadedfile = array(
-                            'name'     => $_FILES['passport_photos']['name'][$i],
-                            'type'     => $_FILES['passport_photos']['type'][$i],
-                            'tmp_name' => $_FILES['passport_photos']['tmp_name'][$i],
-                            'error'    => $_FILES['passport_photos']['error'][$i],
-                            'size'     => $_FILES['passport_photos']['size'][$i]
-                        );
-
-                        $file = wp_handle_upload( $uploadedfile, array( 'test_form' => FALSE ) );
-
-                        if ($file && !isset( $file['error'] ))
-                            if ( $file['url'] ) {
-                                $attachment = array(
-                                    'post_mime_type' => $file['type'],
-                                    'post_title'	 => preg_replace( '/\.[^.]+$/', '', basename( $file['file'] ) ),
-                                    'post_name'		 => 'passport_photos' . '-' . $user_ID . '-' . 0,
-                                    'post_content'	 => '',
-                                    'guid'			 => $file['url'],
-                                    'post_parent'	 => 0,
-                                    'post_author'	 => $user_ID,
-                                    'post_status'	 => 'inherit'
-                                );
-
-                                $attach_id	 = wp_insert_attachment( $attachment, $file['file'], 0);
-                                $attach_data = wp_generate_attachment_metadata( $attach_id, $file['file'] );
-
-                                wp_update_attachment_metadata( $attach_id, $attach_data );
-                                $field['value'][] = $file['url'];
-                                continue;
+                            if (!in_array($filetype['ext'], array('jpeg', 'gif', 'bmp', 'png', 'webp', 'JPEG', 'GIF', 'BMP', 'PNG', 'WEBP', 'jpg', 'JPG'))) {
+                                wp_die(__('Prohibited file type!', 'wp-recall'));
+                                exit;
                             }
+                            $maxsize = 5;
+                            if ($_FILES['passport_photos']['size'][$i] > $maxsize * 1024 * 1024) {
+                                wp_die(__('File size exceedes maximum!', 'wp-recall'));
+                                exit;
+                            }
+
+                            $info = pathinfo($_FILES['passport_photos']['name'][$i]);
+                            if (!empty($info['extension']))
+                                $_FILES['passport_photos']['name'][$i] = sprintf('passport_photo_%s.%s', current_time('m-d-H-i-s'), $info['extension']);
+
+                            $uploadedfile = array(
+                                'name' => $_FILES['passport_photos']['name'][$i],
+                                'type' => $_FILES['passport_photos']['type'][$i],
+                                'tmp_name' => $_FILES['passport_photos']['tmp_name'][$i],
+                                'error' => $_FILES['passport_photos']['error'][$i],
+                                'size' => $_FILES['passport_photos']['size'][$i]
+                            );
+
+                            $file = wp_handle_upload($uploadedfile, array('test_form' => FALSE));
+
+                            if ($file && !isset($file['error']))
+                                if ($file['url']) {
+                                    $attachment = array(
+                                        'post_mime_type' => $file['type'],
+                                        'post_title' => preg_replace('/\.[^.]+$/', '', basename($file['file'])),
+                                        'post_name' => 'passport_photos' . '-' . $user_ID . '-' . 0,
+                                        'post_content' => '',
+                                        'guid' => $file['url'],
+                                        'post_parent' => 0,
+                                        'post_author' => $user_ID,
+                                        'post_status' => 'inherit'
+                                    );
+
+                                    $attach_id = wp_insert_attachment($attachment, $file['file'], 0);
+                                    $attach_data = wp_generate_attachment_metadata($attach_id, $file['file']);
+
+                                    wp_update_attachment_metadata($attach_id, $attach_data);
+                                    $field['value'][] = $file['url'];
+                                    continue;
+                                } else {
+                                    wp_die($file['error']);
+                                    exit;
+                                }
+                        }
+                        //Добавляем ссылки на файлы в verification_requests
+                        $verification_requests = rcl_get_option('verification_requests');
+                        foreach ($verification_requests as $key => $value) {
+                            if ($key == $user_ID) {
+                                $verification_requests[$key] += array('passport_photos' => $field['value']);
+                                break;
+                            }
+                        }
+                        rcl_update_option('verification_requests', $verification_requests);
+
+                        //$field += array('value' => $verification_fields);
+                        rcl_update_profile_fields($user_ID, array($field));
+                        $field_found = true;
+                        continue;
+                    }
+
+                    if ($field['slug'] == 'is_verified') {
+                        if (isset($field['value']))
+                            $field['value'] = 'waiting';
                         else
-                        {
-                            wp_die($file['error']);
-                            exit;
-                        }
+                            $field += array('value' => 'waiting');
+
+                        rcl_update_profile_fields($user_ID, array($field));
+                        //$field_found = true;
+                        continue;
+                        //break;
                     }
-                    //Добавляем ссылки на файлы в verification_requests
-                    $verification_requests = rcl_get_option('verification_requests');
-                    foreach ($verification_requests as $key => $value)
-                    {
-                        if ($key == $user_ID) {
-                            $verification_requests[$key] += array('passport_photos' => $field['value']);
-                            break;
-                        }
-                    }
-                    rcl_update_option('verification_requests', $verification_requests);
-
-                    //$field += array('value' => $verification_fields);
-                    rcl_update_profile_fields($user_ID, array($field));
-                    $field_found = true;
-                    continue;
-                }
-
-                if ($field['slug'] == 'is_verified') {
-                    if (isset($field['value']))
-                        $field['value'] = 'waiting';
-                    else
-                        $field += array('value' => 'waiting');
-
-                    rcl_update_profile_fields($user_ID, array($field));
-                    //$field_found = true;
-                    continue;
-                    //break;
                 }
             }
 
@@ -3154,6 +3177,9 @@ function rcl_edit_profile(){
                         "month_sum" => get_rub_sum_by_dates($_POST['ref_user_id'], $_POST['start_month'], $_POST['end_month'])
                     );
                 }
+                foreach ($result_arr as $key => $value)
+                    if ($result_arr[$key] == false)
+                        $result_arr[$key] = 'false';
                 //$log->insert_log("result_arr: ".print_r($result_arr, true));
                 echo json_encode($result_arr);
                 exit;
@@ -3508,6 +3534,7 @@ function rcl_edit_profile(){
                             $new_row['asset_reserve'] = 'none';
 
                         $currency_selector = find_currency_by_name($exchange['section'], $selector);
+                        $log->insert_log("currency_selector: ".$currency_selector);
                         if ($currency_selector && !empty($currency_selector))
                             $result = add_sub_currency($currency_selector, $new_row);
                         //Если нету этого раздела
@@ -4798,6 +4825,55 @@ function get_all_currencies()
     return $currencies;
 }
 
+function assign_rate_and_requisite($asset, $is_out_asset)
+{
+    $slav_address = get_field('slav_address', 306);
+    $prizm_address = get_field('prizm_address', 306);
+    $prizm_price = rcl_slavia_get_crypto_price();
+
+    $name = '';
+    $requisites = '';
+    $rate = 0;
+
+    if (!empty($asset['asset_name']) && !empty($asset['asset_rate_rubles'])) {
+        $name = $asset['asset_name'];
+        $rate = $asset['asset_rate_rubles'];
+        if (!$is_out_asset && !empty($asset['asset_requisites']))
+            $requisites = $asset['asset_requisites'];
+    }
+    elseif (strcasecmp($asset['asset_name'], 'prizm') == 0 || strcasecmp($asset['asset_name'], 'pzm') == 0)
+    {
+        $name = $asset['asset_name'];
+        if (!$is_out_asset)
+            $requisites = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
+        $rate = $prizm_price;
+    }
+    elseif (strcasecmp($asset['asset_name'], 'slav') == 0)
+    {
+        $name = $asset['asset_name'];
+        if (!$is_out_asset)
+            $requisites = $slav_address;
+        $rate = 1;
+    }
+    elseif (!empty($asset['asset_name']))
+    {
+        $name = $asset['asset_name'];
+        $requisites = '';
+        $rate = '';
+    }
+    //$log = new Rcl_Log();
+    //$log->insert_log("name: ".$name."; requisites: ".$requisites."; rate: ".$rate);
+    return array("name" => $name, "requisites" => $requisites, "rate" => $rate);
+}
+
+function is_asset_empty($asset)
+{
+    if (empty($asset['asset_name']))
+        return true;
+    else
+        return false;
+}
+
 function get_deposits() {
     if (have_rows('deposit_types', 306)) {
         $deposits = array();
@@ -4831,9 +4907,9 @@ function get_deposits() {
 
 function print_nested_assets($assets, $is_out_asset = false, $is_section = false)
 {
-    $slav_address = get_field('slav_address', 306);
-    $prizm_address = get_field('prizm_address', 306);
-    $prizm_price = rcl_slavia_get_crypto_price();
+//    $slav_address = get_field('slav_address', 306);
+//    $prizm_address = get_field('prizm_address', 306);
+//    $prizm_price = rcl_slavia_get_crypto_price();
     ?>
     <ul class="menu-list">
         <?php if (isset($assets) && !empty($assets)): ?>
@@ -4850,52 +4926,35 @@ function print_nested_assets($assets, $is_out_asset = false, $is_section = false
                         continue;
                 }
 
-                if (!empty($asset['asset_name']) && !empty($asset['asset_rate_rubles'])) {
-                    $name = $asset['asset_name'];
-                    $rate = $asset['asset_rate_rubles'];
-                    if (!$is_out_asset && !empty($asset['asset_requisites']))
-                        $requisites = $asset['asset_requisites'];
-                }
-                elseif (strcasecmp($asset['asset_name'], 'prizm') == 0)
-                {
-                    $name = $asset['asset_name'];
-                    if (!$is_out_asset)
-                        $requisites = $prizm_address;//'PRIZM-AWTX-HDBX-ADDH-7SMM7';
-                    $rate = $prizm_price;
-                }
-                elseif (strcasecmp($asset['asset_name'], 'slav') == 0)
-                {
-                    $name = $asset['asset_name'];
-                    if (!$is_out_asset)
-                        $requisites = $slav_address;
-                    $rate = 1;
-                }
-                elseif (!empty($asset['asset_name']))
-                {
-                    $name = $asset['asset_name'];
-                    $requisites = '';
-                    $rate = '';
-                }
+                if (is_asset_empty($asset))
+                    continue;
+
+                $asset_info = assign_rate_and_requisite($asset, $is_out_asset);
+
                 ?>
                 <li>
-                    <a data-percent="" data-rate="<?=$rate?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$requisites?>"<?php endif; ?> data-value="<?=htmlspecialchars($name, ENT_QUOTES, 'UTF-8')?>"><?=$name?></a>
+                    <a data-percent="" data-rate="<?=$asset_info['rate']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_info['requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_info['name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_info['name']?></a>
                     <?php if (!empty($asset['asset_types'])): ?>
                         <ul>
                         <?php foreach($asset['asset_types'] as $asset_type): ?>
                             <?php
                             if (empty($asset_type) || count($asset_type) == 0 || $asset_type['asset_reserve'] != 'public')
-                                {
-                                    if (empty($asset_type) || count($asset_type) == 0)
+                            {
+                                if (empty($asset_type) || count($asset_type) == 0)
+                                    continue;
+                                elseif (($asset_type['asset_reserve'] != 'public' && $asset_type['asset_reserve'] != 'none' &&
+                                    get_current_user_id() != $asset_type['asset_reserve'] ))
                                         continue;
-                                    elseif (($asset_type['asset_reserve'] != 'public' && $asset_type['asset_reserve'] != 'none' &&
-                                        get_current_user_id() != $asset_type['asset_reserve'] ))
-                                            continue;
-                                    elseif ($asset_type['asset_reserve'] == 'none')
-                                        continue;
-                                }
+                                elseif ($asset_type['asset_reserve'] == 'none')
+                                    continue;
+                            }
+                            if (is_asset_empty($asset_type))
+                                continue;
+                            $asset_info_2 = assign_rate_and_requisite($asset_type, $is_out_asset);
                             ?>
+
                             <li>
-                                <a data-percent="" data-rate="<?=$asset_type['asset_rate_rubles']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_type['asset_requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_type['asset_name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_type['asset_name']?></a>
+                                <a data-percent="" data-rate="<?=$asset_info_2['rate']?>"<?php if (!$is_out_asset): ?> data-requisites="<?=$asset_info_2['requisites']?>"<?php endif; ?> data-value="<?=htmlspecialchars($asset_info_2['name'], ENT_QUOTES, 'UTF-8')?>"><?=$asset_info_2['name']?></a>
                                 <?php if (!empty($asset_type['asset_types_2']) && !$is_section): ?>
                                     <ul>
                                         <?php foreach($asset_type['asset_types_2'] as $subtype): ?>
@@ -4922,52 +4981,54 @@ function get_rub_sum_by_dates($userid, $start_date, $end_date)
 {
     $log = new Rcl_Log();
     $exchange_requests = rcl_get_option('exchange_requests');
-    $user_requests = $exchange_requests[$userid];
-    $sum = 0;
-    foreach($user_requests as $request_num => $request_value)
-    {
-        $start_time = strtotime($start_date);
-        $end_time = strtotime($end_date);
+    if (isset($exchange_requests[$userid]) && !empty($exchange_requests[$userid])) {
+        $user_requests = $exchange_requests[$userid];
+        $sum = 0;
+        foreach ($user_requests as $request_num => $request_value) {
+            $start_time = strtotime($start_date);
+            $end_time = strtotime($end_date);
 
-        $start_filter = date('d.m.y', $start_time);
-        $end_filter = date('d.m.y', $end_time);
+            $start_filter = date('d.m.y', $start_time);
+            $end_filter = date('d.m.y', $end_time);
 
-        //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
-        $request_date = explode(' ', $request_value['date']);
-        $request_date = explode('.', $request_date[0]);
-        $day = $request_date[0];
-        $month = $request_date[1];
-        $year = $request_date[2];
+            //Берем первую часть выведенной даты - число,месяц,год и сравниваем с фильтром
+            $request_date = explode(' ', $request_value['date']);
+            $request_date = explode('.', $request_date[0]);
+            $day = $request_date[0];
+            $month = $request_date[1];
+            $year = $request_date[2];
 
-        $request_time = strtotime($month.'/'.$day.'/'.$year);
-        $new_date = date('d.m.y', $request_time);
+            $request_time = strtotime($month . '/' . $day . '/' . $year);
+            $new_date = date('d.m.y', $request_time);
 
 //        $log->insert_log("start_filter: ".print_r($start_filter, true));
 //        $log->insert_log("new_date: ".print_r($new_date, true));
 //        $log->insert_log("end_filter: ".print_r($end_filter, true));
-        //$log = new Rcl_Log();
-        //$log->insert_log("request: ".print_r($request_value, true));
-        //$log->insert_log("$new_date==$newfilter: ".$new_date == $newfilter);
+            //$log = new Rcl_Log();
+            //$log->insert_log("request: ".print_r($request_value, true));
+            //$log->insert_log("$new_date==$newfilter: ".$new_date == $newfilter);
 //                                    $log = new Rcl_Log();
 //                                    $log->insert_log("new_filter:".$newfilter);
 //                                    $log->insert_log("date_value:".$request_value['date']);
 //                                    $log->insert_log("------------------------------");
-        //$date_value = str_replace('.', '/', $request_value['date']);
-        if (isset($request_value['date']) && isset($new_date) && ($new_date >= $start_filter && $new_date <= $end_filter) &&
-            $request_value['status'] == 'completed')
-        {
-            $log->insert_log("is date in range: true:");
-            $log->insert_log("request value: ".print_r($request_value, true));
-            $input_currency_rate = find_currency_rate_by_name($request_value['input_currency']);
-            $sum += $input_currency_rate * $request_value['input_sum'];
+            //$date_value = str_replace('.', '/', $request_value['date']);
+            if (isset($request_value['date']) && isset($new_date) && ($new_date >= $start_filter && $new_date <= $end_filter) &&
+                $request_value['status'] == 'completed') {
+                $log->insert_log("is date in range: true:");
+                $log->insert_log("request value: " . print_r($request_value, true));
+                $input_currency_rate = find_currency_rate_by_name($request_value['input_currency']);
+                $sum += $input_currency_rate * $request_value['input_sum'];
+            } else {
+                $log->insert_log("is date in range: false:");
+                continue;
+            }
         }
-        else {
-            $log->insert_log("is date in range: false:");
-            continue;
-        }
+        return $sum;
     }
+    else
+        return false;
 //    if ($sum == 0)
 //        return false;
     //else
-    return $sum;
+
 }

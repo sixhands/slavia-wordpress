@@ -1,0 +1,377 @@
+email: svetlana-lana1977@list.ru; text: <p>Здравствуйте, Купавская Светлана Николаевна. К сожалению, ваш запрос на верификацию был отклонен. Вы можете попробовать отправить новый запрос на верификацию в любой момент, либо связаться с нашим менеджером с помощью контактных данных, указанных на сайте pkslav.com.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.32
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-Курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: ; rate: 1
+name: PRIZM; requisites: ; rate: 0.32
+name: BTC; requisites: ; rate: 
+name: ETH; requisites: ; rate: 
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь марки 1; requisites: ; rate: 5458
+name: Сталь марки 2; requisites: ; rate: 56635
+name: RUB; requisites: ; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Медь 1_г.; requisites: ; rate: 4572
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Газобетонные блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 1
+name: Продовольственные товары; requisites: ; rate: 9600
+name: Драгоценные металлы; requisites: ; rate: 
+name: Золото 999,9 слитки; requisites: ; rate: 
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.32
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-Курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 10.09.20 08:00:50
+            [host_name] => Директор
+            [host_id] => 24
+            [host_client_num] => 3
+            [ref_name] => ya7
+            [ref_id] => 228
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+            [host_client_num] => 42
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [4] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+            [host_client_num] => 
+        )
+
+    [5] => Array
+        (
+            [date] => 05.09.20 19:14:49
+            [host_name] => Тест
+            [host_id] => 201
+            [host_client_num] => 
+            [ref_name] => Иляна Валерьевна Дарская
+            [ref_id] => 203
+            [award_sum] => 0
+            [award_currency] => D500 625x250x500  1700₽/м3  Москва. пайщик №900
+            [status] => processing
+        )
+
+)
+
+items: Array
+(
+    [0] => Array
+        (
+            [date] => 22.05.20 17:48:36
+            [host_name] => Бодункова Ирина Ярославовна
+            [host_id] => 84
+            [ref_name] => zima zima zima
+            [ref_id] => 89
+            [award_sum] => 0
+            [award_currency] => Prizm
+            [status] => processing
+        )
+
+    [1] => Array
+        (
+            [date] => 22.05.20 15:58:48
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ddd
+            [ref_id] => 88
+            [award_sum] => 0.35
+            [award_currency] => Сталь
+            [status] => processing
+        )
+
+    [2] => Array
+        (
+            [date] => 22.05.20 15:06:24
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => "Бетон-м450"_[м³]
+            [status] => processing
+        )
+
+    [3] => Array
+        (
+            [date] => 22.05.20 15:06:08
+            [host_name] => aaa
+            [host_id] => 63
+            [ref_name] => ccc
+            [ref_id] => 87
+            [award_sum] => 0.07
+            [award_currency] => Стандарт плутониевого металла
+            [status] => processing
+        )
+
+    [4] => Array
+        (
+            [date] => 10.09.20 08:00:50
+            [host_name] => Директор
+            [host_id] => 24
+            [host_client_num] => 3
+            [ref_name] => ya7
+            [ref_id] => 228
+            [award_sum] => 0
+            [award_currency] => SLAV
+            [status] => processing
+        )
+
+    [5] => Array
+        (
+            [date] => 05.09.20 19:14:49
+            [host_name] => Тест
+            [host_id] => 201
+            [host_client_num] => 
+            [ref_name] => Иляна Валерьевна Дарская
+            [ref_id] => 203
+            [award_sum] => 0
+            [award_currency] => D500 625x250x500  1700₽/м3  Москва. пайщик №900
+            [status] => processing
+        )
+
+)
+
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.32
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: Сталь марки Н400; requisites: ; rate: 300
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-Курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: ; rate: 1
+name: PRIZM; requisites: ; rate: 0.32
+name: BTC; requisites: ; rate: 
+name: ETH; requisites: ; rate: 
+name: Prizm 10000 ; requisites: ; rate: 1
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь марки 1; requisites: ; rate: 5458
+name: Сталь марки 2; requisites: ; rate: 56635
+name: RUB; requisites: ; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Медь 1_г.; requisites: ; rate: 4572
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Газобетонные блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 1
+name: Продовольственные товары; requisites: ; rate: 9600
+name: Драгоценные металлы; requisites: ; rate: 
+name: Золото 999,9 слитки; requisites: ; rate: 
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+name: Цифровые единицы; requisites: ; rate: 
+name: SLAV; requisites: 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt; rate: 1
+name: PRIZM; requisites: PRIZM-AWTX-HDBX-ADDH-7SMM7; rate: 0.32
+name: Etherium; requisites: ; rate: 546
+name: Сталь; requisites: ; rate: 
+name: Сталь-53; requisites: ; rate: 
+name: Сталь 157; requisites: ; rate: 
+name: Сталь тест; requisites: ; rate: 25
+name: Сталь марки Н400; requisites: ; rate: 300
+name: RUB; requisites: 07645934; rate: 1
+name: Нефть; requisites: ; rate: 
+name: Urals; requisites: ; rate: 
+name: Brent; requisites: ; rate: 
+name: Газобетонные Блоки; requisites: ; rate: 
+name: Bonolit; requisites: ; rate: 
+name: Ytong; requisites: ; rate: 
+name: Бетон; requisites: ; rate: 
+name: D350; requisites: ; rate: 
+name: D400; requisites: ; rate: 
+name: Продовольственные товары; requisites: ; rate: 
+name: Молоко; requisites: ; rate: 50
+name: Сметана; requisites: ; rate: 72
+name: Драгоценные металлы; requisites: ; rate: 
+name: Алмазы 100 карат; requisites: ; rate: 500000
+name: Титан; requisites: ; rate: 356
+name: Услуга; requisites: ; rate: 
+name: Создание сайтов; requisites: ; rate: 
+name: Косметические услуги; requisites: ; rate: 
+name: Учеба-Курсы; requisites: ; rate: 
+name: Оздоровительные; requisites: ; rate: 
+email: dsfgs@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: mmm</p>
+    <p>Пароль: mmm</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJtbW0iLCJhYzFkZDIwOWNiY2M1ZTVkMWM2ZTI4NTk4ZThjYmJlOCJd">http://pkslav.com/profile/?rcl-confirmdata=WyJtbW0iLCJhYzFkZDIwOWNiY2M1ZTVkMWM2ZTI4NTk4ZThjYmJlOCJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: bnn@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: nnn</p>
+    <p>Пароль: nnn</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJubm4iLCI1NTVkNjcwMmM5NTBlY2I3MjlhOTY2NTA0YWYwYTYzNSJd">http://pkslav.com/profile/?rcl-confirmdata=WyJubm4iLCI1NTVkNjcwMmM5NTBlY2I3MjlhOTY2NTA0YWYwYTYzNSJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: fds@mail.ru; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: nnn</p>
+    <p>Пароль: nnn</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJubm4iLCIzMzVmNTM1MjA4OGQ3ZDliZjc0MTkxZTAwNmQ4ZTI0YyJd">http://pkslav.com/profile/?rcl-confirmdata=WyJubm4iLCIzMzVmNTM1MjA4OGQ3ZDliZjc0MTkxZTAwNmQ4ZTI0YyJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

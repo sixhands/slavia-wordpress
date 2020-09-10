@@ -1113,3 +1113,6 @@ form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exc
 form#personal_deposit input[type=checkbox]:disabled {
 	filter: invert(50%) brightness(1.5);
 }
+.deposit_type_page .deposit_row:not(:last-child) {
+	border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}

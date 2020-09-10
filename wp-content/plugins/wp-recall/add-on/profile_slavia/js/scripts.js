@@ -657,6 +657,13 @@ window.addEventListener('beforeunload', function (e) {
 rcl_add_action('rcl_upload_tab','tab_config');
 function tab_config()
 {
+    //Сохранение адресов prizm, slav и публичного ключа
+    //jQuery('input#waves_address, input#prizm_address, input#prizm_public_key').blur(function() {
+        //if (e.which == 13) {
+            //jQuery('form#profile_verification').submit();
+        //}
+    //});
+
     jQuery('form#personal_deposit').submit(function() {
        console.log("personal submit");
     });
