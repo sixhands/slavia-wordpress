@@ -1,0 +1,15 @@
+EXCHANGE: Array
+(
+    [input_currency] => Отбеливание зубов
+    [input_sum] => 100
+    [output_currency] => Продовольственные товары
+    [output_sum] => 0.54
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+)
+
+currency_selector: Array
+currency_selector: Array
+currency_selector: Array
+currency_selector: Array

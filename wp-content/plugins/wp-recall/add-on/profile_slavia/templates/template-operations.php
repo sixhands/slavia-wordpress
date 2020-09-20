@@ -12,6 +12,19 @@
                 </div>
             </div>
 
+            <div class="operation-tabs row">
+                <ul class="operation-tabs__items col-12">
+                    <li id="operation_my" class="operation-tabs__item btn-custom-one active">
+                        <a class="operation-tabs__link">Мои</a>
+                    </li>
+
+                    <li id="operation_to_me" class="operation-tabs__item btn-custom-one">
+                        <a class="operation-tabs__link">Адресованные мне</a>
+                    </li>
+
+                </ul>
+            </div>
+
             <div class="row operations">
                 <div class="table-title w-100">
                     <div class="row">
@@ -37,31 +50,38 @@
                         </div>
                     </div>
                 </div>
-<!--                <div class="table-text w-100">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            08.11.19-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            RUB-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            PRIZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            0.788 PZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center">-->
-<!--                            0.9188 PZM-->
-<!--                        </div>-->
-<!--                        <div class="col-2 text-center" style="font-size: 15px; color: #EF701B">-->
-<!--                            Ожидает проверки-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <?php if (isset($exchange_content) && !empty($exchange_content))
                     echo $exchange_content; ?>
             </div>
+
+            <div class="row reserved_operations">
+                <div class="table-title w-100">
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            Дата
+                        </div>
+                        <div class="col-2 text-center">
+                            От кого
+                        </div>
+                        <div class="col-2 text-center">
+                            Отдает
+                        </div>
+                        <div class="col-2 text-center">
+                            КОЛИЧЕСТВО
+                        </div>
+                        <div class="col-3 text-center">
+                            СТАТУС
+                        </div>
+                        <div class="col-1 text-center">
+                        </div>
+                    </div>
+                </div>
+
+                <?php if (isset($reserved_operations) && !empty($reserved_operations))
+                    echo $reserved_operations;
+                    ?>
+            </div>
+
         </div>
     </div>
 </div>
@@ -130,12 +150,26 @@
 
     jQuery('input.datepicker').change(function(){
         let el = jQuery(this);
+        let active_tab = jQuery('.operation-tabs__item.active');
+        let tab_type;
+        if (active_tab.attr('id') === 'operation_my')
+            tab_type = 'normal';
+        else
+            if (active_tab.attr('id') === 'operation_to_me')
+                tab_type = 'reserved';
         let search = {
             type: 'date',
+            operation_tab: tab_type,
             datatype: 'operations',
             val: el.val()
         };
-        let output_el = jQuery('.row.operations');
+        let output_el;
+        if (tab_type === 'normal')
+            output_el = jQuery('.operation-tabs ~ .row.operations');
+        else
+            if (tab_type === 'reserved')
+                output_el = jQuery('.operation-tabs ~ .row.reserved_operations');
+
         search_ajax(el, search, search_callback, output_el);
     });
 

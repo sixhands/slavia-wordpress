@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-lg-2" style="margin-top: 5%">
                     <div class="btn-modal">
-                        <input type="button" class="btn-custom-two text-center" onclick="document.location.href='<?php echo wp_logout_url('http://vnuk2.ev88.fvds.ru'); ?>';" value="Выход">
+                        <input type="button" class="btn-custom-two text-center" onclick="document.location.href='<?php echo wp_logout_url('http://pkslav.com'); ?>';" value="Выход">
                     </div>
                 </div>
             </div>
@@ -281,7 +281,9 @@
         <div class="coop_maps question-bg col-lg-12" style="<?=$is_verified_check ? 'padding-bottom: 20px;' : ''?>">
             <div class="col-12 verification_title">
                 <h1 class="coop_maps-h1 ib">Верификация профиля</h1>
-                <a class="verification_video_link" id="modal-54506521" href="#modal-container-54506521" role="button" class="" data-toggle="modal"><img src="/wp-content/uploads/2019/12/info.png" class="ib info-href"></a>
+                <a class="verification_video_link" id="modal-54506521" href="#modal-container-54506521" role="button" class="" data-toggle="modal">
+                    <img src="/wp-content/uploads/2020/09/video_icon.png" class="ib info-href">
+                </a>
                 <?php if ($is_verified_check): ?>
                 <img class="verification_close-btn" src="/wp-content/uploads/2019/12/close.png">
                 <?php endif; ?>
@@ -317,7 +319,7 @@
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
                             <span>Серия и номер паспорта</span>
-                            <input <?php if (isset($verification) && isset($verification['passport_number'])): ?>value="<?=$verification['passport_number']?>" <?php endif; ?>placeholder="____-______" required  type="text" name="verification[passport_number]">
+                            <input class="verification_passport_num" <?php if (isset($verification) && isset($verification['passport_number'])): ?>value="<?=$verification['passport_number']?>" <?php endif; ?> required  type="text" name="verification[passport_number]">
                         </div>
                     </div>
                     <div class="col-lg-4 input-exchange ">
@@ -330,8 +332,8 @@
                     </div>
                     <div class="col-lg-4 input-exchange">
                         <div class="row">
-                            <span>&nbsp;</span>
-                            <input <?php if (isset($verification) && isset($verification['passport_code'])): ?>value="<?=$verification['passport_code']?>" <?php endif; ?> placeholder="Код подразделения" required class="" type="text" name="verification[passport_code]">
+                            <span>Код подразеделения</span>
+                            <input required class="verification_passport_code" <?php if (isset($verification) && isset($verification['passport_code'])): ?>value="<?=$verification['passport_code']?>" <?php endif; ?> type="text" name="verification[passport_code]">
                         </div>
                     </div>
                     <div class="col-lg-12 input-exchange">

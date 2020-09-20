@@ -1,0 +1,540 @@
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.25
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 0
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.25
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.25
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.25
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.25
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+email: will@bimmerretrola.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: jerry jennings</p>
+    <p>Пароль: jerry jennings</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJqZXJyeSBqZW5uaW5ncyIsImU0YTYyMjJjZGI1YjM0Mzc1NDAwOTA0ZjAzZDhlNmE1Il0%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJqZXJyeSBqZW5uaW5ncyIsImU0YTYyMjJjZGI1YjM0Mzc1NDAwOTA0ZjAzZDhlNmE1Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: sergeydolgushin77@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: Sergeich</p>
+    <p>Пароль: yjdjtyfxfkj2020</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJTZXJnZWljaCIsImNiNzBhYjM3NTY2MjU3NmJkMWFjNWFhZjE2YjNmY2E0Il0%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJTZXJnZWljaCIsImNiNzBhYjM3NTY2MjU3NmJkMWFjNWFhZjE2YjNmY2E0Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: amppugh@hotmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: marie michael</p>
+    <p>Пароль: marie michael</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJtYXJpZSBtaWNoYWVsIiwiOTE4ODkwNWU3NGMyOGU0ODliNDRlOTU0ZWMwYjliY2EiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJtYXJpZSBtaWNoYWVsIiwiOTE4ODkwNWU3NGMyOGU0ODliNDRlOTU0ZWMwYjliY2EiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: jenfaith93@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: leila orr</p>
+    <p>Пароль: leila orr</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJsZWlsYSBvcnIiLCIwMjY2ZTMzZDNmNTQ2Y2I1NDM2YTEwNzk4ZTY1N2Q5NyJd">http://pkslav.com/profile/?rcl-confirmdata=WyJsZWlsYSBvcnIiLCIwMjY2ZTMzZDNmNTQ2Y2I1NDM2YTEwNzk4ZTY1N2Q5NyJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: macs4260@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: macsim</p>
+    <p>Пароль: 7c01n45z54p</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJtYWNzaW0iLCIzOGRiM2FlZDkyMGNmODJhYjA1OWJmY2NiZDAyYmU2YSJd">http://pkslav.com/profile/?rcl-confirmdata=WyJtYWNzaW0iLCIzOGRiM2FlZDkyMGNmODJhYjA1OWJmY2NiZDAyYmU2YSJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: minconeanthony@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: rylie dixon</p>
+    <p>Пароль: rylie dixon</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJyeWxpZSBkaXhvbiIsIjNjZWMwN2U5YmE1ZjViYjI1MmQxM2Y1ZjQzMWU0YmJiIl0%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJyeWxpZSBkaXhvbiIsIjNjZWMwN2U5YmE1ZjViYjI1MmQxM2Y1ZjQzMWU0YmJiIl0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: termunson@aol.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: madyson green</p>
+    <p>Пароль: madyson green</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJtYWR5c29uIGdyZWVuIiwiNjIxYmY2NmRkYjdjOTYyYWEwZDIyYWM5N2Q2OWI3OTMiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJtYWR5c29uIGdyZWVuIiwiNjIxYmY2NmRkYjdjOTYyYWEwZDIyYWM5N2Q2OWI3OTMiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.27
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+email: utmbbrainsurgeon@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: raelynn cowan</p>
+    <p>Пароль: raelynn cowan</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJyYWVseW5uIGNvd2FuIiwiMDc3ZTI5YjExYmU4MGFiNTdlMWEyZWNhYmI3ZGEzMzAiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJyYWVseW5uIGNvd2FuIiwiMDc3ZTI5YjExYmU4MGFiNTdlMWEyZWNhYmI3ZGEzMzAiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => PRIZM
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => PRIZM-AWTX-HDBX-ADDH-7SMM7
+    [date] => 11.09.20 01:38:49
+    [status] => completed
+)
+
+input_rate: 0.26
+request_value: Array
+(
+    [input_sum] => 50
+    [input_currency] => Молоко
+    [output_sum] => 0.01
+    [output_currency] => Алмазы 100 карат
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:17:05
+    [status] => completed
+)
+
+input_rate: 50
+request_value: Array
+(
+    [input_sum] => 10
+    [input_currency] => Сталь тест
+    [output_sum] => 0.48
+    [output_currency] => Косметические услуги
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 
+    [date] => 11.09.20 02:07:26
+    [status] => completed
+)
+
+input_rate: 
+request_value: Array
+(
+    [input_sum] => 5
+    [input_currency] => Аляска. танкер 100тыс. тон. от пайщика №453
+    [output_sum] => 0.07
+    [output_currency] => Сталь марки 2
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 11.09.20 03:06:15
+    [status] => completed
+)
+
+input_rate: 743
+email: danakimart@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: kolten navarro</p>
+    <p>Пароль: kolten navarro</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJrb2x0ZW4gbmF2YXJybyIsIjZjOTg4MmJiYWMxYzcwOTNiZDI1MDQxODgxMjc3NjU4Il0%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJrb2x0ZW4gbmF2YXJybyIsIjZjOTg4MmJiYWMxYzcwOTNiZDI1MDQxODgxMjc3NjU4Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: deet830@aol.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: jaylene short</p>
+    <p>Пароль: jaylene short</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJqYXlsZW5lIHNob3J0IiwiMTlmM2NkMzA4ZjE0NTViM2ZhMDlhMjgyZTBkNDk2ZjQiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJqYXlsZW5lIHNob3J0IiwiMTlmM2NkMzA4ZjE0NTViM2ZhMDlhMjgyZTBkNDk2ZjQiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

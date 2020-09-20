@@ -10,6 +10,13 @@
     border-radius: 4px;
     padding: 1.5% 3%;
     cursor: pointer;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.nested_menu::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 .menu-list {
     display: none;
@@ -49,7 +56,7 @@ form#personal_deposit .menu-list {
     color: white !important;
 }
 .menu-list li > a:hover {
-    background: blue;
+    background: #EF701B;
 }
 /*color: #2E2A5C;*/
 /******************************************/
@@ -63,6 +70,30 @@ form#personal_deposit .menu-list {
 }
 
 /************Настройки процентов по обмену****************/
+.commission_header .nested_menu {
+    margin-top: 45%;
+    margin-left: -10%;
+    margin-right: 5%;
+    font-size: 15px;
+    background-position-x: 111%;
+    background-size: 44%;
+    padding: 1.5% 5%;
+    z-index: 100;
+}
+.commission_header .menu-list {
+    top: 45%;
+    width: 100%;
+    left: 10%;
+    font-weight: normal;
+    font-size: 16px;
+    word-break: break-word;
+    word-wrap: break-word;
+}
+.commission_header .menu-list ul {
+    background: #575353;
+    padding-left: 15%;
+}
+
 form#settings_form_commission-operations .operation_currencies > div.currency_percent:hover,
 form#settings_form_commission-operations .operation_currencies > div.currency_percent.active
 {
@@ -298,7 +329,8 @@ img.client_num_sort_icon.complete {
 .ref-modal {
     top: 10%;
 }
-.ref-modal #stats_content .month_sum {
+.ref-modal #stats_content .month_sum,
+.ref-modal #stats_content .all_ref_sum{
     margin-top: 2%;
     margin-bottom: 3%;
     font-size: 26px;

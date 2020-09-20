@@ -1,0 +1,512 @@
+find_currency_rate_by_name call from: add_stats - input
+currency name:сталь 000035
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь 000035 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь 000035 : 
+asset_name_2: PRIZM == currency_name: сталь 000035 : 
+asset_name_2: Etherium == currency_name: сталь 000035 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь 000035 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь 000035 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь 000035 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 157 == currency_name: сталь 000035 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь 000035 : 
+asset_name_2: Сталь тест == currency_name: сталь 000035 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь 000035 : 
+asset_name_2: Сталь тест2 == currency_name: сталь 000035 : 
+asset_name_2: Сталь456376 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 99999 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 94595 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 995951 == currency_name: сталь 000035 : 
+asset_name_2: сталь 000035 == currency_name: сталь 000035 : 1
+find_currency_rate_by_name call from: get_doc_fields - input doc fields
+currency name:сталь 000035
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь 000035 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь 000035 : 
+asset_name_2: PRIZM == currency_name: сталь 000035 : 
+asset_name_2: Etherium == currency_name: сталь 000035 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь 000035 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь 000035 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь 000035 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 157 == currency_name: сталь 000035 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь 000035 : 
+asset_name_2: Сталь тест == currency_name: сталь 000035 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь 000035 : 
+asset_name_2: Сталь тест2 == currency_name: сталь 000035 : 
+asset_name_2: Сталь456376 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 99999 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 94595 == currency_name: сталь 000035 : 
+asset_name_2: Сталь 995951 == currency_name: сталь 000035 : 
+asset_name_2: сталь 000035 == currency_name: сталь 000035 : 1
+is_personal_deposit: 1
+is_deposit: 1
+input doc rate: 646
+find_currency_rate_by_name call from: add_stats - input
+currency name:сталь тест 220
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь тест 220 : 
+asset_name_2: PRIZM == currency_name: сталь тест 220 : 
+asset_name_2: Etherium == currency_name: сталь тест 220 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь тест 220 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 157 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест == currency_name: сталь тест 220 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест2 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь456376 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 99999 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 94595 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 995951 == currency_name: сталь тест 220 : 
+asset_name_2: сталь 000035 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: сталь тест 220 : 1
+find_currency_rate_by_name call from: get_doc_fields - input doc fields
+currency name:сталь тест 220
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь тест 220 : 
+asset_name_2: PRIZM == currency_name: сталь тест 220 : 
+asset_name_2: Etherium == currency_name: сталь тест 220 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь тест 220 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 157 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест == currency_name: сталь тест 220 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест2 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь456376 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 99999 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 94595 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 995951 == currency_name: сталь тест 220 : 
+asset_name_2: сталь 000035 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: сталь тест 220 : 1
+is_personal_deposit: 1
+is_deposit: 1
+input doc rate: 325
+find_currency_rate_by_name call from: add_stats - input
+currency name:сталь тест 220
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь тест 220 : 
+asset_name_2: PRIZM == currency_name: сталь тест 220 : 
+asset_name_2: Etherium == currency_name: сталь тест 220 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь тест 220 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 157 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест == currency_name: сталь тест 220 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест2 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь456376 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 99999 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 94595 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 995951 == currency_name: сталь тест 220 : 
+asset_name_2: сталь 000035 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: сталь тест 220 : 1
+find_currency_rate_by_name call from: add_stats - output
+currency name:Bonolit D3500
+is_out: 1
+level 1: 
+asset_name: Цифровые единицы == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: SLAV == currency_name: Bonolit D3500 : 
+asset_name_2: PRIZM == currency_name: Bonolit D3500 : 
+asset_name_2: BTC == currency_name: Bonolit D3500 : 
+asset_name_2: ETH == currency_name: Bonolit D3500 : 
+asset_name_2: Prizm 10000  == currency_name: Bonolit D3500 : 
+asset_name_2: Etherium == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Сталь == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Сталь марки 1 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь марки 2 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь тест2 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь456376 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 99999 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 94595 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 995951 == currency_name: Bonolit D3500 : 
+asset_name_2: сталь 000035 == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: RUB == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Нефть == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Urals == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Bonolit D3500 : 
+asset_name_2: Brent == currency_name: Bonolit D3500 : 
+asset_name_2: Медь 1_г. == currency_name: Bonolit D3500 : 
+asset_name_2: Алмазы 100 карат == currency_name: Bonolit D3500 : 
+asset_name_2: Изумруд == currency_name: Bonolit D3500 : 
+asset_name_2: Сапфиры == currency_name: Bonolit D3500 : 
+asset_name_2: Нефть barrels 5435 == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Газобетонные блоки == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Bonolit == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: Bonolit D3500 == currency_name: Bonolit D3500 : 1
+find_currency_rate_by_name call from: get_doc_fields - input doc fields
+currency name:сталь тест 220
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: SLAV == currency_name: сталь тест 220 : 
+asset_name_2: PRIZM == currency_name: сталь тест 220 : 
+asset_name_2: Etherium == currency_name: сталь тест 220 : 
+level 1: 
+asset_name: Сталь == currency_name: сталь тест 220 : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: сталь тест 220 : 
+asset_name_3: Сталь 53-76 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 157 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест == currency_name: сталь тест 220 : 
+asset_name_2: Сталь марки Н400 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь тест2 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь456376 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 99999 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 94595 == currency_name: сталь тест 220 : 
+asset_name_2: Сталь 995951 == currency_name: сталь тест 220 : 
+asset_name_2: сталь 000035 == currency_name: сталь тест 220 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: сталь тест 220 : 1
+is_personal_deposit: 
+is_deposit: 
+input doc rate: 325
+find_currency_rate_by_name call from: get_doc_fields - output doc fields
+currency name:Bonolit D3500
+is_out: 1
+level 1: 
+asset_name: Цифровые единицы == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: SLAV == currency_name: Bonolit D3500 : 
+asset_name_2: PRIZM == currency_name: Bonolit D3500 : 
+asset_name_2: BTC == currency_name: Bonolit D3500 : 
+asset_name_2: ETH == currency_name: Bonolit D3500 : 
+asset_name_2: Prizm 10000  == currency_name: Bonolit D3500 : 
+asset_name_2: Etherium == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Сталь == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Сталь марки 1 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь марки 2 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь тест2 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь456376 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 99999 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 94595 == currency_name: Bonolit D3500 : 
+asset_name_2: Сталь 995951 == currency_name: Bonolit D3500 : 
+asset_name_2: сталь 000035 == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: RUB == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Нефть == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Urals == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Bonolit D3500 : 
+asset_name_2: Brent == currency_name: Bonolit D3500 : 
+asset_name_2: Медь 1_г. == currency_name: Bonolit D3500 : 
+asset_name_2: Алмазы 100 карат == currency_name: Bonolit D3500 : 
+asset_name_2: Изумруд == currency_name: Bonolit D3500 : 
+asset_name_2: Сапфиры == currency_name: Bonolit D3500 : 
+asset_name_2: Нефть barrels 5435 == currency_name: Bonolit D3500 : 
+level 1: 
+asset_name: Газобетонные блоки == currency_name: Bonolit D3500 : 
+level 2: 
+asset_name_2: Bonolit == currency_name: Bonolit D3500 : 
+level 3: 
+asset_name_3: Bonolit D3500 == currency_name: Bonolit D3500 : 1
+output doc rate: 25
+find_currency_rate_by_name call from: add_stats - input
+currency name:Блоки Bonolit
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: SLAV == currency_name: Блоки Bonolit : 
+asset_name_2: PRIZM == currency_name: Блоки Bonolit : 
+asset_name_2: Etherium == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Сталь == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: Блоки Bonolit : 
+asset_name_3: Сталь 53-76 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 157 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь тест == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь марки Н400 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь тест2 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь456376 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 99999 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 94595 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 995951 == currency_name: Блоки Bonolit : 
+asset_name_2: сталь 000035 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: RUB == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Нефть == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Urals == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Блоки Bonolit : 
+asset_name_3: Дальний Восток. 1500₽ от 1 тон. от пайщика №999 == currency_name: Блоки Bonolit : 
+asset_name_2: Brent == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Аляска. танкер 100тыс. тон. от пайщика №453 == currency_name: Блоки Bonolit : 
+asset_name_3: Техас 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Газобетонные Блоки == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Bonolit == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D500 625x250x500  1700₽/м3  Москва. пайщик №900 == currency_name: Блоки Bonolit : 
+asset_name_3: D400 625x250x500 1500₽/м3  Москва. пайщик №874 == currency_name: Блоки Bonolit : 
+asset_name_3: D500 625x250x500 1600₽/м3 Москва. пайщик №95 == currency_name: Блоки Bonolit : 
+asset_name_3: Bonolit D3500 == currency_name: Блоки Bonolit : 
+asset_name_2: Ytong == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D400 625x250x500  5350₽/м3 Балашиха пайщик №798 == currency_name: Блоки Bonolit : 
+asset_name_2: Блок == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Бетон == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: D350 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D350 3500₽/м3  Москва. пайщик №3 == currency_name: Блоки Bonolit : 
+asset_name_3: D350 3200₽/м3  Ногинск. пайщик №1 == currency_name: Блоки Bonolit : 
+asset_name_2: D400 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D400 3700₽/м3  Ногинск. пайщик №1 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Продовольственные товары == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Молоко == currency_name: Блоки Bonolit : 
+asset_name_2: Хлеб белый Бантон == currency_name: Блоки Bonolit : 
+asset_name_2: Сметана == currency_name: Блоки Bonolit : 
+asset_name_2: Хлеб Грубого помола == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Драгоценные металлы == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Алмазы 100 карат == currency_name: Блоки Bonolit : 
+asset_name_2: Изумруд == currency_name: Блоки Bonolit : 
+asset_name_2: Сапфиры == currency_name: Блоки Bonolit : 
+asset_name_2: Титан == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Услуга == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Создание сайтов == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сайты под ключ от 25000₽ пайщик №432 == currency_name: Блоки Bonolit : 
+asset_name_3: Вертска html от 3000₽ пайщик №4323 == currency_name: Блоки Bonolit : 
+asset_name_3: Дизайн сайта от 5000₽ == currency_name: Блоки Bonolit : 
+asset_name_2: Косметические услуги == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Ногинск Маникюр 1000₽ пайщик №487 == currency_name: Блоки Bonolit : 
+asset_name_3: Отбеливание зубов == currency_name: Блоки Bonolit : 
+asset_name_2: Учеба-Курсы == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Балашиха. 995₽ Макроме 1 час. пайщик №42 == currency_name: Блоки Bonolit : 
+asset_name_3: г. Ногинск. 1000р. 1 час. скорочтение пайщик №39 == currency_name: Блоки Bonolit : 
+asset_name_2: Оздоровительные == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Москва 2500₽ Личный тренер Биомеханики 1час. пайщик №43 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Для зарезервированых == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Курага == currency_name: Блоки Bonolit : 
+asset_name_2: Prizm == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000000 prizm от пайщика №42 == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000 000 prizm от пайщика == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000000prizm от пайщика № 42 == currency_name: Блоки Bonolit : 
+find_currency_rate_by_name call from: get_doc_fields - input doc fields
+currency name:Блоки Bonolit
+is_out: 
+level 1: 
+asset_name: Цифровые единицы == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: SLAV == currency_name: Блоки Bonolit : 
+asset_name_2: PRIZM == currency_name: Блоки Bonolit : 
+asset_name_2: Etherium == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Сталь == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Сталь-53 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сталь 53-59 == currency_name: Блоки Bonolit : 
+asset_name_3: Сталь 53-76 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 157 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сталь 157-54 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь тест == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь марки Н400 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь тест2 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь456376 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 99999 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 94595 == currency_name: Блоки Bonolit : 
+asset_name_2: Сталь 995951 == currency_name: Блоки Bonolit : 
+asset_name_2: сталь 000035 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: сталь тест 220 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: RUB == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Нефть == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Urals == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Дальний Восток. 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Блоки Bonolit : 
+asset_name_3: Дальний Восток. 1500₽ от 1 тон. от пайщика №999 == currency_name: Блоки Bonolit : 
+asset_name_2: Brent == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Аляска. танкер 100тыс. тон. от пайщика №453 == currency_name: Блоки Bonolit : 
+asset_name_3: Техас 90млн.₽. за 100тыс. тон. пайщика №999 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Газобетонные Блоки == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Bonolit == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D500 625x250x500  1700₽/м3  Москва. пайщик №900 == currency_name: Блоки Bonolit : 
+asset_name_3: D400 625x250x500 1500₽/м3  Москва. пайщик №874 == currency_name: Блоки Bonolit : 
+asset_name_3: D500 625x250x500 1600₽/м3 Москва. пайщик №95 == currency_name: Блоки Bonolit : 
+asset_name_3: Bonolit D3500 == currency_name: Блоки Bonolit : 
+asset_name_2: Ytong == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D400 625x250x500  5350₽/м3 Балашиха пайщик №798 == currency_name: Блоки Bonolit : 
+asset_name_2: Блок == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Бетон == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: D350 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D350 3500₽/м3  Москва. пайщик №3 == currency_name: Блоки Bonolit : 
+asset_name_3: D350 3200₽/м3  Ногинск. пайщик №1 == currency_name: Блоки Bonolit : 
+asset_name_2: D400 == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: D400 3700₽/м3  Ногинск. пайщик №1 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Продовольственные товары == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Молоко == currency_name: Блоки Bonolit : 
+asset_name_2: Хлеб белый Бантон == currency_name: Блоки Bonolit : 
+asset_name_2: Сметана == currency_name: Блоки Bonolit : 
+asset_name_2: Хлеб Грубого помола == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Драгоценные металлы == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Алмазы 100 карат == currency_name: Блоки Bonolit : 
+asset_name_2: Изумруд == currency_name: Блоки Bonolit : 
+asset_name_2: Сапфиры == currency_name: Блоки Bonolit : 
+asset_name_2: Титан == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Услуга == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Создание сайтов == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Сайты под ключ от 25000₽ пайщик №432 == currency_name: Блоки Bonolit : 
+asset_name_3: Вертска html от 3000₽ пайщик №4323 == currency_name: Блоки Bonolit : 
+asset_name_3: Дизайн сайта от 5000₽ == currency_name: Блоки Bonolit : 
+asset_name_2: Косметические услуги == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Ногинск Маникюр 1000₽ пайщик №487 == currency_name: Блоки Bonolit : 
+asset_name_3: Отбеливание зубов == currency_name: Блоки Bonolit : 
+asset_name_2: Учеба-Курсы == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Балашиха. 995₽ Макроме 1 час. пайщик №42 == currency_name: Блоки Bonolit : 
+asset_name_3: г. Ногинск. 1000р. 1 час. скорочтение пайщик №39 == currency_name: Блоки Bonolit : 
+asset_name_2: Оздоровительные == currency_name: Блоки Bonolit : 
+level 3: 
+asset_name_3: Москва 2500₽ Личный тренер Биомеханики 1час. пайщик №43 == currency_name: Блоки Bonolit : 
+level 1: 
+asset_name: Для зарезервированых == currency_name: Блоки Bonolit : 
+level 2: 
+asset_name_2: Курага == currency_name: Блоки Bonolit : 
+asset_name_2: Prizm == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000000 prizm от пайщика №42 == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000 000 prizm от пайщика == currency_name: Блоки Bonolit : 
+asset_name_2: 1 000000prizm от пайщика № 42 == currency_name: Блоки Bonolit : 
+is_personal_deposit: 
+is_deposit: 1
+input doc rate: 
+email: cht.sem@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт pkslav.com, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: cht.sem@gmail.com; text: <p>Ваш профиль был успешно верифицирован и теперь вы сможете совершать операции по обмену.</p><p>Перейдите на сайт pkslav.com, чтобы начать совершать операции.</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+find_currency_rate_by_name call from: add_stats - input
+find_currency_rate_by_name call from: add_stats - input
+find_currency_rate_by_name call from: add_stats - output
+email: pnicholson@sohjlaw.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: erin caldwell</p>
+    <p>Пароль: erin caldwell</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJlcmluIGNhbGR3ZWxsIiwiMGY0OWM4OWQxZTcyOThiYjk5MzA3ODljOGVkNTlkNDgiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJlcmluIGNhbGR3ZWxsIiwiMGY0OWM4OWQxZTcyOThiYjk5MzA3ODljOGVkNTlkNDgiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

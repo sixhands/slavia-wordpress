@@ -302,14 +302,6 @@
 </div>
 <script type="text/javascript">
     //Получение id пользователя из id кнопки
-    function request_get_user_id(el)
-    {
-        let request_user_id = el.attr('id');
-        request_user_id = request_user_id.split('_');
-        request_user_id = request_user_id[request_user_id.length - 1];
-        request_user_id = parseInt(request_user_id);
-        return request_user_id;
-    }
 
     function fill_modal(modal_type, data)
     {
@@ -394,7 +386,7 @@
         //Открытие модального окна с данными верификации данного пользователя
         jQuery('.verification_requests .info-zayavki, .exchange_requests .info-zayavki').click(function(){
             //Получаем id текущего пользователя из кнопки
-            let request_user_id = request_get_user_id(jQuery(this).parent().next().children('.btn-zayavki'));
+            let request_user_id = request_get_user_id(jQuery(this).parent().next().children('.btn-zayavki, .waiting_for_user_approval, .approved_by_user'));
             //console.log(request_user_id);
             var is_exchange;
             if (jQuery(this).parents('.exchange_requests').length > 0)
@@ -408,7 +400,8 @@
             };
             if (is_exchange === 'true')
             {
-                let request_num = jQuery(this).parents('div.table-text').find('.btn-zayavki').attr('data-request_num');
+                let request_num = jQuery(this).parents('div.table-text').find('.btn-zayavki, .waiting_for_user_approval, .approved_by_user')
+                    .attr('data-request_num');
                 data['request_num'] = request_num;
             }
             //console.log(myajax.url);

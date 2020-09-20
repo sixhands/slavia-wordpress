@@ -1013,27 +1013,40 @@ form#get_prizm input[name="exchange[input_sum]"], form#get_prizm input[name="exc
 form#get_waves input[name="exchange[input_sum]"], form#get_waves input[name="exchange[output_sum]"] {
 	width: 95%;
 }
-	/******REFERRAL PAGE****************/
-.referral-tabs {
+	/******REFERRAL PAGE and operation tabs****************/
+.referral-tabs, .operation-tabs {
 	margin-top: 10px;
 }
-.referral-tabs__items {
+.referral-tabs__items, .operation-tabs__items {
 	list-style: none;
 	display: flex;
 	justify-content: center;
 }
-.referral-tabs__item {
+.referral-tabs__item, .operation-tabs__item {
 	border-radius: 0;
 	width: calc(100% / 3);
 	text-align: center;
 	/*background: #FDC501 !important;*/
 	background: linear-gradient(90deg, #FDC501 0%, #EF7F1B 100%);
 }
-.referral-tabs__item.active {
+.operation-tabs__item {
+	width: calc(100% / 2);
+}
+.operation-tabs ~ .reserved_operations {
+	display: none;
+}
+.operation-tabs ~ .reserved_operations .approve_by_user {
+	height: 45px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	padding-top: 5px;
+}
+.referral-tabs__item.active, .operation-tabs__item.active {
 	/*background: #EF7F1B !important;*/
 	background: linear-gradient(90deg, rgba(236,96,15,1) 0%, rgba(239,69,27,1) 100%);
 }
-.referral-tabs__link {
+.referral-tabs__link, .operation-tabs__link {
 	font-size: 18px;
 	font-weight: bold;
 }

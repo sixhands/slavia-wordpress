@@ -149,6 +149,8 @@
                         }
                     }
                 }
+                else
+                    return false;
             }
 //            $log = new Rcl_Log();
             //$log->insert_log("result_items: ".print_r($result_items, true));
@@ -178,7 +180,7 @@
 
                 $sum = array(); //array("prizm" => 1050, "slav" => 500, "rub" => 100)
                 if (!empty($operations) && $operations != false) {
-                    $log->insert_log("operations: ".print_r($operations, true));
+                    //$log->insert_log("operations: ".print_r($operations, true));
                     foreach ($operations as $operation) {
                         $ref_sum = $operation["award_sum"];
                         $ref_currency = $operation["award_currency"];

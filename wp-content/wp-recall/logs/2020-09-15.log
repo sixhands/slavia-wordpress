@@ -1,0 +1,101 @@
+exchange other:Array
+(
+    [input_sum] => 12
+    [input_currency] => Курага
+    [output_sum] => 
+    [output_currency] => 
+    [is_public] => 
+    [is_reserve] => 
+    [is_save] => 
+    [requisites] => 
+    [date] => 15.09.20 01:51:29
+    [status] => personal_deposit
+)
+
+doc rate: 
+email: hunter.michael.p@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: layla wu</p>
+    <p>Пароль: layla wu</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJsYXlsYSB3dSIsIjYzOTIzZjQ5ZTUyNDEzNDNhYTdhY2I2YTA2YTc1MWU3Il0%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJsYXlsYSB3dSIsIjYzOTIzZjQ5ZTUyNDEzNDNhYTdhY2I2YTA2YTc1MWU3Il0%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: affanyousuf@hotmail.co.uk; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: laurel james</p>
+    <p>Пароль: laurel james</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJsYXVyZWwgamFtZXMiLCJkYjhlMWFmMGNiM2FjYTFhZTJkMDAxODYyNDIwNDUyOSJd">http://pkslav.com/profile/?rcl-confirmdata=WyJsYXVyZWwgamFtZXMiLCJkYjhlMWFmMGNiM2FjYTFhZTJkMDAxODYyNDIwNDUyOSJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+request value: Array
+(
+    [input_sum] => 1000
+    [input_currency] => SLAV
+    [output_sum] => 
+    [output_currency] => 
+    [bank] => 
+    [card_num] => 
+    [card_name] => 
+    [requisites] => 3PAM1XRQG4cpvh15evZenJWvXBAcTcC2jjt
+    [date] => 12.09.20 16:33:40
+    [status] => completed
+)
+
+email: jbajwa08.jb@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: jerry jordan</p>
+    <p>Пароль: jerry jordan</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJqZXJyeSBqb3JkYW4iLCIyMGYwNzU5MWM2ZmNiMjIwZmZlNjM3Y2RhMjliYjNmNiJd">http://pkslav.com/profile/?rcl-confirmdata=WyJqZXJyeSBqb3JkYW4iLCIyMGYwNzU5MWM2ZmNiMjIwZmZlNjM3Y2RhMjliYjNmNiJd</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: jlgpino@yahoo.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: amelie jordan</p>
+    <p>Пароль: amelie jordan</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJhbWVsaWUgam9yZGFuIiwiMDdjZGZkMjMzNzNiMTdjNmIzMzcyNTFjMjJiN2VhNTciXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJhbWVsaWUgam9yZGFuIiwiMDdjZGZkMjMzNzNiMTdjNmIzMzcyNTFjMjJiN2VhNTciXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: masterzyh@gmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: arlo mcdaniel</p>
+    <p>Пароль: arlo mcdaniel</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJhcmxvIG1jZGFuaWVsIiwiZDM5NTc3MTA4NWFhYjA1MjQ0YTRmYjhmZDkxYmY0ZWUiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJhcmxvIG1jZGFuaWVsIiwiZDM5NTc3MTA4NWFhYjA1MjQ0YTRmYjhmZDkxYmY0ZWUiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+
+email: afiscus3@hotmail.com; text: 
+    <p>Вы или кто то другой зарегистрировались на сайте "МПК СЛАВИЯ" со следующими данными:</p>
+    <p>Логин: jayda flowers</p>
+    <p>Пароль: jayda flowers</p><p>Если это были вы, то подтвердите свою регистрацию перейдя по ссылке ниже:</p>
+        <p><a href="http://pkslav.com/profile/?rcl-confirmdata=WyJqYXlkYSBmbG93ZXJzIiwiOTJjOGM5NmU0YzM3MTAwNzc3YzcxOTBiNzZkMjgyMzMiXQ%3D%3D">http://pkslav.com/profile/?rcl-confirmdata=WyJqYXlkYSBmbG93ZXJzIiwiOTJjOGM5NmU0YzM3MTAwNzc3YzcxOTBiNzZkMjgyMzMiXQ%3D%3D</a></p>
+        <p>Не получается активировать аккаунт?</p>
+        <p>Скопируйте текст ссылки ниже, вставьте его в адресную строку браузера и нажмите Enter</p><p>Если это были не вы, то просто проигнорируйте это письмо</p><p><small>-----------------------------------------------------<br/>
+    Это сообщение было сформировано автоматически, не надо отвечать на него.<br/>
+    "МПК СЛАВИЯ"</small></p>; headers: From: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Reply-To: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+Return-Path: МПК СЛАВИЯ <cms.pkslav@gmail.com>
+

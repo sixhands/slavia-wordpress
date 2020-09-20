@@ -34,66 +34,122 @@ function rcl_check_profile_form(){
     return rclFormFactory.validate();
 
 }
-
-function change_requisites(currency_el, requisite_el, requisite_val = '')
+//Функция для нахождения первого имущества последнего уровня вложенности в многоуровневом меню, в аргументах передается элемент li
+// первого уровня, внутри которого нужно искать (допустим, есть такая структура: li >  li > a
+//                                                                                     li > li > a - выдаст этот элемент (первый элемент 3го уровня)
+//                                                                                     li > li > a
+function find_first_deepest_child(menu_el)
 {
-    if (typeof requisite_el !== 'undefined')
-    {
-        requisite_el.find('option').not(':first-child').remove();
+    let first_child = menu_el.children('li') //1 level
+        .children('ul')
+        .children('li') //2 level
+        .children('ul')
+        .children('li') //3 level
+        .children('a')[0];
+    return jQuery(first_child);
+}
 
-        if (requisite_val !== 'clear')
-            requisite_el.append('<option selected>' +
-                                currency_el.attr('data-requisites') +
-                                '</option>');
+function find_currency_in_menu(menu_el, currency_name, is_return_el = false)
+{
+    let found_el = menu_el.find("a")
+        .filter(function() {
+            return jQuery(this).attr('data-value').toLowerCase().indexOf(currency_name.toLowerCase()) > -1;
+        });
+    if (!is_return_el) {
+        if (found_el.length > 0)
+            return true;
+        else
+            return false;
     }
+    else
+        return found_el;
+}
+
+function get_currency_name_from_input_name(input_name)
+{
+    let name_split_right = input_name.split(']');
+    let name_split_left = name_split_right[name_split_right.length - 2].split('[');
+    return name_split_left[name_split_left.length - 1];
+}
+//Меняем атрибут name в скобках (например, exchange[aaa] на exchange[bbb], если new_name == bbb)
+function change_input_name(input_el, new_name)
+{
+    let input_name = input_el.attr('name');
+
+    let name_split_right = input_name.split(']');
+    let name_split_left = name_split_right[name_split_right.length - 2].split('[');
+    name_split_left[name_split_left.length - 1] = new_name;
+    name_split_right[name_split_right.length - 2] = name_split_left.join('[');
+    input_el.attr('name', name_split_right.join(']'));
+}
+
+//Удаляет выбранные ранее имущества из меню для данного имущества в настройках процентов
+function remove_prev_currencies(menu_el)
+{
+    let prev_currencies = menu_el.parents('.operation_currencies');
+    prev_currencies = prev_currencies.children('div:not(:last-child)');
+    jQuery.each(prev_currencies, function() {
+        let $this = jQuery(this);
+        let input = $this.find('input.commission');
+        let input_name = get_currency_name_from_input_name(input.attr('name'));
+        //let menu = $this.find('ul.menu-list');
+
+        let is_currency_selected = find_currency_in_menu(menu_el, input_name, false);
+        //console.log("currency name: " + input_name);
+        //console.log("is_currency_selected: " + is_currency_selected);
+        if (is_currency_selected) {
+            let el_to_remove = find_currency_in_menu(menu_el, input_name, true);
+            el_to_remove.closest('li').remove();
+        }
+    });
 }
 
 function settings_add_currency_percent()
 {
-    let currency_name_template = jQuery('div.settings-commission .currency-template select');
-    let currency_first_name = currency_name_template.find('option:first-child').val();
+    let currency_name_template_header = jQuery('div.settings-commission .currency-template .nested_menu');
+    let currency_name_template_menu = jQuery('div.settings-commission .currency-template ul.menu-list');
+    let currency_first_a;
 
     jQuery('#all-operations .operation_currencies').append(
         '<div class="col-2">' +
-            '<p class="commission_header" style="margin-top: -8%;">' +
+            '<div class="commission_header" style="margin-top: -8%;">' +
                 '<a class="settings_close">×</a>' +
-                currency_name_template.clone().prop('outerHTML') +
-            '</p>' +
+                currency_name_template_header.clone().prop('outerHTML') +
+                currency_name_template_menu.clone().prop('outerHTML') +
+            '</div>' +
             '<div class="col-12 input-exchange input-custom-procent">' +
-                '<input class="commission" value="0" placeholder="" type="text" name="currency_percent[' + currency_first_name + ']">' +
+                '<input class="commission" value="0" placeholder="" type="text" name="currency_percent[1]">' +
             '</div>' +
         '</div>');
 
-    let last_select = jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header select');
-    let all_currencies =
-        jQuery('form#settings_form_commission-all .operation_currencies > div:not(:last-child) .commission_header select, ' +
-                'form#settings_form_commission-all .operation_currencies > div .commission_header');
-    all_currencies.each(function() {
-        let cur_val;
-        if (jQuery(this).hasClass('currencies'))
-            cur_val = jQuery(this).val();
-        else
-            cur_val = jQuery(this).text();
-        last_select.find('option').each(function() {
-            //console.log(jQuery(this));
-           if (jQuery(this).val().toLowerCase() === cur_val.toLowerCase()) {
-               jQuery(this).remove();
-           }
-        });
+    //С учетом нового добавленного элемента
+    let currency_last_el = jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header');
+
+    let last_header = currency_last_el.find('.nested_menu');
+    let last_select = currency_last_el.find('.menu-list');
+
+    remove_prev_currencies(last_select);
+
+    //Если уже есть элемент с многоуровневым меню, добавить текст из него
+    if (last_select.length > 0)
+        currency_first_a = find_first_deepest_child(last_select);
+    else
+        currency_first_a = find_first_deepest_child(currency_name_template_menu);
+
+    console.log('first a: ');
+    console.log(currency_first_a);
+
+    let currency_first_name = currency_first_a.attr('data-value');
+    last_header.find('a.menu_link').text(currency_first_name);
+
+    change_input_name(currency_last_el.siblings('.input-exchange').find('input.commission'), currency_first_name);
+
+    last_header.click(function() {
+        open_nested_menu(jQuery(this));
     });
 
-    jQuery('form#settings_form_commission-all .operation_currencies > div:last-child .commission_header select').change(function() {
-        //console.log(jQuery(this));
-        let select_val = jQuery(this).val();
-        let input = jQuery(this).parents('.commission_header').siblings('.input-exchange').children('input.commission');
-        let input_name = input.attr('name');
-
-        let name_split_right = input_name.split(']');
-        let name_split_left = name_split_right[name_split_right.length - 2].split('[');
-        name_split_left[name_split_left.length - 1] = select_val;
-        name_split_right[name_split_right.length - 2] = name_split_left.join('[');
-        input.attr('name', name_split_right.join(']'));
-        //input.attr('name', input_name.replace(/\[(.*?)\]/g, '[' + select_val + ']'));
+    last_select.find('a').click(function() {
+        click_nested_menu_link(jQuery(this));
     });
 
     jQuery('form#settings_form_commission-all .operation_currencies > div:last-child a.settings_close').click(function() {
@@ -663,6 +719,35 @@ function tab_config()
             //jQuery('form#profile_verification').submit();
         //}
     //});
+    jQuery('.operation-tabs ~ .reserved_operations .approve_by_user').click(function() {
+        let request_user_id = request_get_user_id(jQuery(this));
+        let request_num = jQuery(this).attr('data-request_num');
+        var data = {
+            request_user_id: request_user_id,
+            request_num: request_num,
+            approve_by_user: 'true'
+        };
+        jQuery.post( window.location, data, function(response) {
+            console.log(response);
+            if (response && response === 'true') {
+                jQuery(this).parent().append('<p style="color: green">Получение подтверждено</p>');
+                jQuery(this).remove();
+
+            }
+        });
+    });
+
+    //СОБЫТИЯ ДЛЯ МНОГОУРОВНЕВОГО МЕНЮ*******************************
+    jQuery('.nested_menu').click(function() {
+        open_nested_menu(jQuery(this));
+    });
+
+    jQuery('.menu-list a').click(function() {
+        click_nested_menu_link(jQuery(this));
+    });
+
+    jQuery("form#profile_verification input.verification_passport_code").inputmask("999-999");
+    jQuery('form#profile_verification input.verification_passport_num').inputmask('9999-999999');
 
     jQuery('form#personal_deposit').submit(function() {
        console.log("personal submit");
@@ -856,6 +941,27 @@ function tab_config()
 
     jQuery('#exchange_chat_btn').click(() => {
         Tawk_API.toggle();
+    });
+
+    //operation tabs
+    jQuery('.operation-tabs__item').click(function() {
+        jQuery('.operation-tabs__item').removeClass('active');
+        jQuery(this).addClass('active');
+
+        let my_operations_block = jQuery('.operation-tabs ~ .operations');
+        let reserved_block = jQuery('.operation-tabs ~ .reserved_operations');
+
+        let cur_id = jQuery(this).attr('id');
+        switch (cur_id) {
+            case 'operation_my':
+                my_operations_block.css('display', 'block');
+                reserved_block.css('display', 'none');
+                break;
+            case 'operation_to_me':
+                my_operations_block.css('display', 'none');
+                reserved_block.css('display', 'block');
+                break;
+        }
     });
 
     jQuery('.ref-tab__content.' + jQuery('.referral-tabs__item.active').attr('id') ).css('display', 'block');

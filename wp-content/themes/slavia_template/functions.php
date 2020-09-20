@@ -139,7 +139,12 @@ function slavia_template_scripts() {
     wp_enqueue_script( 'tether', "https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js", array(), '1.0', true );
     wp_enqueue_script( 'bootstrap.min', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery', 'tether'), '1.0', true );
     wp_enqueue_script( 'owl_carousel', get_template_directory_uri() . '/assets/js/owl.carousel.js', array(), '1.0', true );
-    wp_enqueue_script( 'slavia_mask', get_template_directory_uri() . '/assets/js/mask.js', array(), '1.0', true );
+    //wp_enqueue_script( 'slavia_mask', get_template_directory_uri() . '/assets/js/mask.js', array(), '1.0', true );
+
+    //input mask plugin
+    wp_enqueue_script( 'mask_plugin', get_template_directory_uri() . '/assets/js/Inputmask-5.x/dist/jquery.inputmask.min.js', array('jquery'), '1.0', true );
+    /////////////////*******************************************
+
     wp_enqueue_script( 'slavia_scripts', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0', true );
 
     //https://securepayments.sberbank.ru/demopayment/docsite/assets/js/ipay.js

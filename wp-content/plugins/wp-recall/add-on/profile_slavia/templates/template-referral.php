@@ -122,6 +122,19 @@
             </div>
 
             <div class="row ref_stats" id="stats_content">
+                <div class="col-12 text-center all_ref_sum_content" style="text-transform: uppercase">
+                    <?php
+                    date_default_timezone_set('Europe/Moscow');
+                    $lastMonth = date("Y-m-d", strtotime("-1 month"));
+                    ?>
+                    Общий оборот ваших рефералов за последний месяц (с <span id="last_month"><?=$lastMonth?></span>) в рублях:
+                    <span id="this_month" style="display: none"><?=date("Y-m-d")?></span>
+                </div>
+                <div class="col-12 all_ref_sum text-center">
+                    x руб
+                </div>
+
+
                 <div class="col-12 text-center" style="text-transform: uppercase">
                     <?php
                         date_default_timezone_set('Europe/Moscow');
@@ -441,12 +454,17 @@
             end_month: end_month
         };
 
-        if (el.parents('#ref_list').length > 0)
+        if (el.parents('#ref_list').length > 0) {
             data.is_ref_list = 'true';
+            jQuery('#stats_content .all_ref_sum, #stats_content .all_ref_sum_content').css('display', 'none');
+        }
+        else {
+            jQuery('#stats_content .all_ref_sum, #stats_content .all_ref_sum_content').css('display', 'block');
+        }
 
         jQuery.post( window.location, data, function(response) {
             if (response) {
-                console.log(response);
+                //console.log(response);
                 //console.log(response);
                 let sum_data = JSON.parse(response);
                 String.prototype.stripSlashes = function(){
@@ -456,6 +474,7 @@
                 let unpaid_sum = sum_data.unpaid_sum;
                 let paid_sum = sum_data.paid_sum;
                 let month_sum = sum_data.month_sum;
+
 
                 let unpaid_sum_content = jQuery('.modal-content #stats_content > .unpaid_sum');
                 let paid_sum_content = jQuery('.modal-content #stats_content > .paid_sum');
@@ -475,9 +494,19 @@
                 unpaid_sum_content.find('.table-title ~ .table-text').remove();
                 paid_sum_content.find('.table-title ~ .table-text').remove();
                 if (month_sum !== 'false')
-                    month_sum_content.text(month_sum + ' руб');
+                    month_sum_content.text(month_sum.toFixed(2) + ' руб');
                 else
                     month_sum_content.text('0' + ' руб');
+
+                if (el.parents('#ref_list').length <= 0) {
+                    var all_ref_sum = sum_data.all_ref_sum;
+                    var all_ref_sum_content = jQuery('.modal-content #stats_content .all_ref_sum');
+
+                    if (all_ref_sum !== 'false')
+                        all_ref_sum_content.text(all_ref_sum.toFixed(2) + ' руб');
+                    else
+                        all_ref_sum_content.text('0' + ' руб');
+                }
 
                 if (unpaid_sum !== 'false')
                     for (var key in unpaid_sum) {
